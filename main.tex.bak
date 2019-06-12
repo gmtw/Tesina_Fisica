@@ -946,7 +946,7 @@ La evolución de onda relativista, asi como no relativista, tienen la misma evol
 
 
 \subsection{Prueba HLL}
-Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, presentando casos relativistas y no relativistas. La condicion incial es la mista que la de Lax, es decir, nuestra onda de choque tendra los mismos valores que la tabla \ref{Tabla_parametros}, con la misma densidad de energía $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$	
+Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, presentando casos relativistas y no relativistas. La condicion incial es la misma que la de Lax, es decir, nuestra onda de choque tendra los mismos valores que la tabla \ref{Tabla_parametros}, con la misma densidad de energía $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$	
 
 \begin{figure}[H]
 \centering
@@ -954,7 +954,7 @@ Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, pres
 \caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque3_t_0}
 \end{figure}
 
-La evolución del choque de onda centrada en el punto $(x,y)=0.5,0.5$.
+La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$.
 
 \begin{figure}[H]
 \centering
@@ -963,7 +963,7 @@ La evolución del choque de onda centrada en el punto $(x,y)=0.5,0.5$.
 \caption{Onda de choque centrada usando el método HLL, la evolución de la onda fue a distintos tiempos} \label{fig:HLL-prueba1}
 \end{figure}
 
-La evolucion de la onda usando relatividad, fue más lenta que la newtoniano, al igual que el método de lax se formó un anillo poco denso entre la onda que se expandia u el centro más denso
+La evolución de la onda usando relatividad, fue más lenta que la newtoniano, al igual que el método de lax se formó un anillo poco denso entre la onda que se expandia y el centro más denso
 
 \begin{figure}[H]
 \centering
@@ -978,7 +978,7 @@ La evolucion de la onda usando relatividad, fue más lenta que la newtoniano, al
 \caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque4_t_0}
 \end{figure}
 
-En la siguiente prueba se movio el centro de la onda de choque y este se colocó en el centro $(x,y) = (0.25,0.25)$
+En la siguiente prueba se movió el centro de la onda de choque y este se colocó en el punto $(x,y) = (0.25,0.25)$,
 
 \begin{figure}[H]
 \centering
