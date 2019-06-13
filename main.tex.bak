@@ -987,7 +987,7 @@ En la siguiente prueba se movió el centro de la onda de choque y este se coloc�
 \caption{Evolución de una onda no relativista.}  \label{fig:HLL-prueba2}
 \end{figure}
 
-Se muestra, a pesar de haber sido movido el centro, la misma evolución para una onda relativista
+Se muestra, a pesar de haber sido movido el centro, la misma evolución para una onda relativista.
 
 \begin{figure}[H]
 \centering
@@ -1003,7 +1003,7 @@ En esta sección, vamos a comparar las diferencias que hay entre el método de L
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque5_t_0}
+\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque5_t_0}
 \caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque5_t_0}
 \end{figure}
 
@@ -1012,37 +1012,43 @@ Las ondas tanto para Lax asi como HLL tienen un parecido bastante común, pero e
 
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3lax}}
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3hll}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3lax}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3hll}}
 \caption{Los gráficos de los métodos de Lax y HLL se desarrollaron al mismo tiempo.} \label{fig:Lax-hll-1}
 \end{figure}
 
-Al dispersarse por completo el centro de la onda, se puede ver con mejor claridad las diferencias que hay entre Lax y HLL, a
+Al dispersarse por completo el centro de la onda, se puede ver con mejor claridad las diferencias que hay entre Lax y HLL, se puede apreciar una onda más circular en Lax que en HLL, ya que en esta última se puede ver un ligero achatamiento
 
 \begin{figure}[H]
 \centering
 \subfigure[$t = 0.10$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW5lax}}
 \subfigure[$t = 0.10$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW5hll}}
-\caption{Segunda prueba de comparación de una onda de choque, entre el metodo de Lax no relativista (izquierda) y el método HLL (derecha); La resolución fue de  500x500 celdas} \label{fig:Lax-hll-newtoniano2}
+\caption{Al desvanecerse casi por completo la onda se puede notar una mayor diferencia que hay entre ambos métodos, sobre todo en el centro de la onda.} \label{fig:Lax-hll-newtoniano2}
 \end{figure}
 
-\subsection{Puebas relativistas Lax vs HLL} %300x300
+\subsection{Puebas relativistas Lax vs HLL} %200X200
+
+La onda de choque usando relatividad tiene su centro en el punto $(x,y) = (0.5, 0.2)$ y sus valores son los mismos propuestos en el cuadro \ref{Tabla_parametros}
 
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Lax-sedov-rel-5}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/HLL-sedov-rel-5}}
-\subfigure[$t = 0.2$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Lax-sedov-rel-9}}
-\subfigure[$t = 0.2$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/HLL-sedov-rel-9}}
+\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque6_t_0}
+\caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque6_t_0}
+\end{figure}
+
+En las coordenadas $(x,y) = (0.5, 0.0)$ se puede ver que el algoritmo de Lax tiene algunos errores puesto que el centro de la onda se deforma en estos puntos, mientras que hll es casi imperceptible
+
+\begin{figure}[H]
+\centering
+\subfigure[$t = 0.2$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax4}}
+\subfigure[$t = 0.2$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll4}}
 \caption{Primera prueba de comparación de una onda de choque, entre el metodo de Lax relativista (izquierda) y el método HLL relativista (derecha); La resolución fue de  300x300 celdas} \label{fig:Lax-hll-relativista}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.53]{./Figuras/Pruebas/Lax-sedov-rel-2_6}}
-\subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.53]{./Figuras/Pruebas/HLL-sedov-rel-2_6}}
-\subfigure[$t = 0.27$ s]{\includegraphics[scale = 0.53]{./Figuras/Pruebas/Lax-sedov-rel-2_12}}
-\subfigure[$t = 0.27$ s]{\includegraphics[scale = 0.53]{./Figuras/Pruebas/HLL-sedov-rel-2_12}}
+\subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax10}}
+\subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll10}}
 \caption{Segunda prueba de comparación de una onda de choque, entre el metodo de Lax relativista (izquierda) y el método HLL relativista (derecha); La resolución fue de  400x400 celdas} \label{fig:Lax-hll-relativista}
 \end{figure}
 
