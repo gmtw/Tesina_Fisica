@@ -984,7 +984,7 @@ En la siguiente prueba se movió el centro de la onda de choque y este se coloc�
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_3}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_5}}
-\caption{Evolución de una onda no relativista}  \label{fig:HLL-prueba2}
+\caption{Evolución de una onda no relativista.}  \label{fig:HLL-prueba2}
 \end{figure}
 
 Se muestra, a pesar de haber sido movido el centro, la misma evolución para una onda relativista
@@ -993,29 +993,37 @@ Se muestra, a pesar de haber sido movido el centro, la misma evolución para una
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_3-rel}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_5-rel}}
-\caption{Moviendo el centro no afecta nuestra onda de choque y esta se desarrola con normalidad}  \label{fig:HLL-prueba2}
+\caption{Moviendo el centro no afecta nuestra onda de choque y esta se desarrola con normalidad.}  \label{fig:HLL-prueba2}
 \end{figure}
 
 
-\subsection{Puebas no relativistas Lax vs HLL} %Resolución de 500x500
+\subsection{Puebas no relativistas Lax vs HLL} %Resolución de 200x200
+
+En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL, la onda de choque tendrá los valores iniciales del cuadro \ref{Tabla_parametros} y el centro se situará en el punto $(x,y) = (0.5,0.75)$ cm.
 
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Lax-sedov-newton3}}
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/HLL-sedov-newton3}}
-\subfigure[$t = 0.15$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Lax-sedov-newton7}}
-\subfigure[$t = 0.15$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/HLL-sedov-newton7}}
-\caption{Primera prueba de comparación de una onda de choque, entre el metodo de Lax no relativista (izquierda) y el método HLL (derecha); La resolución fue de  500x500 celdas} \label{fig:Lax-hll-1}
+\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque5_t_0}
+\caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque5_t_0}
 \end{figure}
 
+Las ondas tanto para Lax asi como HLL tienen un parecido bastante común, pero en el centro es del onda, en la parte más densa, se puede notar una imagen más difusa en el centro del método de HLL que en el de Lax.
+
 
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.025$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Lax-sedov-newton2_2}}
-\subfigure[$t = 0.025$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/HLL-sedov-newton2_2}}
-\subfigure[$t = 0.17$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Lax-sedov-newton2_8}}
-\subfigure[$t = 0.17$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/HLL-sedov-newton2_8}}
-\caption{Segunda prueba de comparación de una onda de choque, entre el metodo de Lax no relativista (izquierda) y el método HLL (derecha); La resolución fue de  500x500 celdas} \label{fig:Lax-hll-newtoniano2}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3lax}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3hll}}
+\caption{Los gráficos de los métodos de Lax y HLL se desarrollaron al mismo tiempo.} \label{fig:Lax-hll-1}
+\end{figure}
+
+Al dispersarse por completo el centro de la onda, se puede ver con mejor claridad las diferencias que hay entre Lax y HLL, se puede apreciar una onda más circular en Lax que en HLL, ya que en esta última se puede ver un ligero achatamiento
+
+\begin{figure}[H]
+\centering
+\subfigure[$t = 0.10$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW5lax}}
+\subfigure[$t = 0.10$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW5hll}}
+\caption{Al desvanecerse casi por completo la onda se puede notar una mayor diferencia que hay entre ambos métodos} \label{fig:Lax-hll-newtoniano2}
 \end{figure}
 
 \subsection{Puebas relativistas Lax vs HLL} %300x300
