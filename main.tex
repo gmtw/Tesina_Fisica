@@ -842,7 +842,7 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 Las siguientes pruebas verifican el buen funcionamiento del código al hacer tanto Lax como HLL en relativista y no relativista
 
 \section{Onda de choque}
-Las siguientes pruebas corresponden a una onda expansiva,sobre un medio constante, los parámetros con los que corrió el código son los siguientes:
+Las siguientes pruebas corresponden a una onda expansiva, sobre un medio con densidad constante, la condición de frontera que nosotros vamos a realizar va a ser la de \emph{outflow}\footnote{Esta frontera se refiere a cuando nosotros tengamos una onda u otro fenómeno físico más allá de nuestro dominio, es decir, que cuando pasen estos límites, nosotros perderemos información de esta, no habrá reflexión o no aparecerá en otro lado de nuestra frontera}, los parámetros con los que corrió el código son los siguientes:
 %tiempo = 0.5 s
 %lapso = tiempo/20
 
@@ -873,14 +873,14 @@ $v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 \\
 Co & Número de Courant & 0.7 \\ 
 \hline 
 \end{tabular}
-\caption{tabla}
+\caption{Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque}
 \end{center}
 \end{table}
 
 
 
 \subsection{Prueba Lax}
-Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con $\Gamma = 3/4$, asi como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante, la simulación es con una resolución de 200x200 al tiempo $t=0$ y con una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, el eje x va de 0 a 1 asi como el eje \textit{y} y la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5)$
+Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con $\Gamma = 3/4$, asi como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante, la simulación es con una resolución de 200x200 al tiempo $t=0 \, \mathrm{s}$  y con una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, nuestro dominio en el eje \emph{x} y \emph{y} va de 0 a 1 cm y la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$
 %===================IMAGE===============================
 \begin{figure}[H]
 \centering
@@ -939,7 +939,7 @@ La evolución de onda relativista, asi como no relativista, tienen la misma evol
 \centering
 \subfigure[$t = 0.07$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Lax-sedov2_4-rel}}
 \subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Lax-sedov2_6-rel}}
-\caption{Evolución de nuestra onda relativista, se puede aprecial que, al igual que la onda no relativista, esta no presenta fallos al cruzar nuestra frontera} \label{fig:Lax-prueba2}
+\caption{Evolución de nuestra onda relativista, se puede aprecial que, al igual que la onda no relativista, esta no presenta fallos al cruzar nuestra frontera.} \label{fig:Lax-prueba2}
 \end{figure}
 %===================IMAGE===============================
 
@@ -993,7 +993,7 @@ Se muestra, a pesar de haber sido movido el centro, la misma evolución para una
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_3-rel}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_5-rel}}
-\caption{Segunda prueba de una onda de choque usando el método de HLL no relativista (arriba) y relativista (abajo) a diferentes tiempos}  \label{fig:HLL-prueba2}
+\caption{Moviendo el centro no afecta nuestra onda de choque y esta se desarrola con normalidad}  \label{fig:HLL-prueba2}
 \end{figure}
 
 
@@ -1580,6 +1580,8 @@ Sustituyendo la ecuación \ref{var_x_complicada} en \ref{j_modificada_relativist
 
 
 \begin{thebibliography}{20}
+
+
 \bibitem{Berger:2013jza} 
   E.~Berger,
   %``Short-Duration Gamma-Ray Bursts,''
@@ -1588,7 +1590,8 @@ Sustituyendo la ecuación \ref{var_x_complicada} en \ref{j_modificada_relativist
   [arXiv:1311.2603 [astro-ph.HE]].
   %%CITATION = doi:10.1146/annurev-astro-081913-035926;%%
   %424 citations counted in INSPIRE as of 02 Jan 2019
-  
+ 
+%\bibitem{2012ApJ...760..122G} Gao, Y., \& Law, C.~K.\ 2012, \apj , 760, 122
 
  
 \end{thebibliography}
