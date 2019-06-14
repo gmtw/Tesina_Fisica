@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{fourier}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{hyperref} %Paquete para agregar hipervínculos
 
 \usepackage{subfigure} % subfiguras
 \usepackage{float} %fijar figuras
@@ -149,7 +150,7 @@ Una bonita historia
 \pagenumbering{arabic} % para empezar la numeración con números
 %Érase una vez...
 
-Los GRBs son destellos de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos, fueron descubiertos por los satélites \emph{Vela} a finales de la decada de los 60's, gracias a los datos recabados por BATSE se logró identificar 2 grupos principales de GRBs, los cortos y los largos, en los cuales este último tiene una duracion mayor a los 2 s.
+Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos, fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/vela5a.html}} a finales de la decada de los 60's, gracias a los datos recabados por el experimento BATSE\footnote{\url{https://gammaray.msfc.nasa.gov/batse/}} se logró identificar 2 grupos principales de GRBs, los cortos y los largos, en los cuales este último tiene una duracion mayor a los 2 s.
 
 \begin{figure} %fuente de la imagen: https://imagine.gsfc.nasa.gov/science/objects/bursts1.html
   \centering
@@ -158,16 +159,14 @@ Los GRBs son destellos de rayos gamma del orden de Mev, son cortos, intensos y n
   \label{fig:Batse_duration_GRBs}
 \end{figure}
 
-El objetivo principal del estudio de los GRBs es estudiar las propiedades de los estallidos de los rayos gamma, asi como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor mas atractivo. La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más liberar energía en el universo, la energía liberada es del orden de $10^{52}$ ergs.
+El objetivo principal del estudio de los GRBs es estudiar las propiedades de los estallidos de los rayos gamma, así como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor más atractivo. La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo, la energía liberada es del orden de $10^{52}$ ergs.
 
-Aunque hay mucha informacion acerca de los GRBs largos, los cortos son aún un estudio nuevo en el area de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. Dado a la teoría de los progenitores de los GRBs cortos, estos debido a las patadas natales, se forman en un ambiente de densidad bajo.
-
-En Mayo y Julio del 2005 datos de eyecciones recopiladas por el satélite \emph{swift} al seguir al seguir al GRB 050509B, descubrieron las primeras fases tardías de los GRBs cortos, tiempo después el satélite HETE-2 junto con el observatorio \emph{chandra} de rayos X siguieron al satélite 050709 el cual localizo la fase tardía en rayos X y despues en la banda óptica, con estos datos recabados de la fase tardía se pudo llegar a que los GRBs cortos tienen una escala de densidad y una energía mas baja que los GRBs largos, tambien se llego a la conclusión de que los GRBs cortos tienen orígenes cosmologicos y que las estrelas masivas no son sus progenitores como en el caso de GRBs cortos
+Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
 \section{Características de los GRBs}
-Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmologico, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy dificil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
+Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmologico, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy difícil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
 
-Las partes principales de los GRBs son la emisión propmt y  afterglow. %Piran2005
- La emisión prompt es definido como el periodo de tiempo donde el detector de rayos $\gamma$ detecta una señal sobre el fondo, mientras que la emisión afterglow es despues de la emisión prompt en el cual se pueden detectar otras longitudes de onda como el óptico, radio y los rayos X \ref{fig:Partes de GRBs}.
+%Las partes principales de los GRBs son la emisión propmt y  afterglow. %Piran2005
+ 
  
  \begin{figure} %fuente de la imagen:https://astrobites.org/2017/11/13/grb-afterglows-coming-out-of-a-cocoon/
   \centering
@@ -176,7 +175,14 @@ Las partes principales de los GRBs son la emisión propmt y  afterglow. %Piran20
   \label{fig:Partes de GRBs}
 \end{figure}
  
- 
+
+\subsection{Emisión pronta}
+La emisión pronta es definido como el periodo de tiempo donde el detector de rayos $\gamma$ detecta una señal sobre el fondo, mientras que la emisión afterglow es despues de la emisión prompt en el cual se pueden detectar otras longitudes de onda como el óptico, radio y los rayos X \ref{fig:Partes de GRBs}.
+\subsection{Emisión tardía}
+
+ En Mayo y Julio del 2005 datos de eyecciones recopiladas por el satélite \emph{swift} al seguir al seguir al GRB 050509B, descubrieron las primeras fases tardías de los GRBs cortos, tiempo después el satélite HETE-2 junto con el observatorio \emph{chandra} de rayos X siguieron al satélite 050709 el cual localizo la fase tardía en rayos X y despues en la banda óptica, con estos datos recabados de la fase tardía se pudo llegar a que los GRBs cortos tienen una escala de densidad y una energía mas baja que los GRBs largos, tambien se llego a la conclusión de que los GRBs cortos tienen orígenes cosmologicos y que las estrellas masivas no son sus progenitores como en el caso de GRBs cortos.
+\subsection{Energía y luminosidad}
+
 %
 \section{Características de los GRBs cortos}
 Los progenitores de los SGRBs tienen una amplia distribución de tiempo de retraso y su taza es influenciada en parte por la actividad de formación de las estrellas. Las patadas natales pueden ser las causantes de las distancias en las que estos nacen y los sitios de explosión de estos sistemas, la probabilidad para una galaxia de brillo $m$  a ser localizada a una separación $\delta R$ de la posición de un SGRB está dada por 
@@ -1042,14 +1048,16 @@ En las coordenadas $(x,y) = (0.5, 0.0)$ se puede ver que el algoritmo de Lax tie
 \centering
 \subfigure[$t = 0.2$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax4}}
 \subfigure[$t = 0.2$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll4}}
-\caption{Primera prueba de comparación de una onda de choque, entre el metodo de Lax relativista (izquierda) y el método HLL relativista (derecha); La resolución fue de  300x300 celdas} \label{fig:Lax-hll-relativista}
+\caption{En las pruebas relativistas, al comparar las imágenes se pueden apreciar una diferencia entre los métodos mas significativa.} \label{fig:Lax-hll-relativista}
 \end{figure}
+
+Otra diferencia que se nota es que el centro de HLL es más difuso que el de Lax y que esta última es más circular que HLL
 
 \begin{figure}[H]
 \centering
 \subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax10}}
 \subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll10}}
-\caption{Segunda prueba de comparación de una onda de choque, entre el metodo de Lax relativista (izquierda) y el método HLL relativista (derecha); La resolución fue de  400x400 celdas} \label{fig:Lax-hll-relativista}
+\caption{El centro de ambas ondas difieren significativamente} \label{fig:Lax-hll-relativista}
 \end{figure}
 
 \section{Jet}
