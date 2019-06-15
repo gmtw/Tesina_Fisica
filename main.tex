@@ -150,7 +150,7 @@ Una bonita historia
 \pagenumbering{arabic} % para empezar la numeración con números
 %Érase una vez...
 
-Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos, fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/vela5a.html}} a finales de la decada de los 60's, gracias a los datos recabados por BATSE\footnote{\url{https://gammaray.msfc.nasa.gov/batse/}} se logró identificar 2 grupos principales de GRBs, los cortos y los largos, en los cuales este último tiene una duracion mayor a los 2 s.
+Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos, fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/vela5a.html}} a finales de la decada de los 60's, gracias a los datos recabados por el experimento BATSE\footnote{\url{https://gammaray.msfc.nasa.gov/batse/}} se logró identificar 2 grupos principales de GRBs, los cortos y los largos, en los cuales este último tiene una duracion mayor a los 2 s.
 
 \begin{figure} %fuente de la imagen: https://imagine.gsfc.nasa.gov/science/objects/bursts1.html
   \centering
@@ -163,7 +163,7 @@ El objetivo principal del estudio de los GRBs es estudiar las propiedades de los
 
 Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
 \section{Características de los GRBs}
-Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmologico, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy dificil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
+Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmologico, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy difícil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
 
 %Las partes principales de los GRBs son la emisión propmt y  afterglow. %Piran2005
  
@@ -886,17 +886,16 @@ Co & Número de Courant & 0.7 \\
 
 
 \subsection{Prueba Lax}
-Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con $\Gamma = 3/4$, asi como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante, la simulación es con una resolución de 200x200 al tiempo $t=0 \, \mathrm{s}$  y con una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, nuestro dominio en el eje \emph{x} y \emph{y} va de 0 a 1 cm y la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$
+Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con la constante de relación específica $\Gamma = 3/4$, así como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante (ver figura\ref{fig:onda_choque1_t_0}) con una densidad de energía de $E = 0.15 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, densidad $\rho = 1 \, \mathrm{g}/\mathrm{cm}^3$ , velocidad $\vec{v} = 0 \, \mathrm{cm}/\mathrm{s}$ y una presión $P=0.1 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}} $la simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 200x200 celdas\footnote{Las celdas de nuestra malla miden $\mathrm{dominio}/200= 0.005 \, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna, sus valor de la densidad es de $\rho=5 \, \mathrm{g}/\mathrm{cm}^3$, su velocidad interna será la misma que la del ambiente, la presión interna de la onda $P=10 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$ y una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$,la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se correrá en el intervalo de tiempó $t \in \left[ 0 , 0.5 \right]$ s.
 %===================IMAGE===============================
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque1_t_0}
-\caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque1_t_0}
+\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque1_t_0}
+\caption{Condición inicial para una onda de choque círcular en el tiempo $t = 0$, las condiciones en el interior de la onda tienen valores más elevados que el medio que la rodea.} \label{fig:onda_choque1_t_0}
 \end{figure}
 
 %===================IMAGE===============================
-La evolución para la onda de choque no relativista muestra una expansion de la onda totalmente simétrica y circular
-y que la densidad y energía que conformaba a la onda se difuminan en el medio que los rodea (ver figura \ref{fig:Lax-newtoniano-prueba1}). 
+La evolución para la onda de choque no relativista muestra una expansión de la onda totalmente simétrica y circular además de una densidad y energía que conformaba a la onda se difuminan en el medio que los rodea (ver figura \ref{fig:Lax-newtoniano-prueba1}). 
 %===================IMAGE===============================
 
 
