@@ -885,8 +885,8 @@ Co & Número de Courant & 0.7 \\
 
 
 
-\subsection{Prueba Lax}
-Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con la constante de relación específica $\Gamma = 3/4$, así como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante (ver figura\ref{fig:onda_choque1_t_0}) con una densidad de energía de $E = 0.15 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, densidad $\rho = 1 \, \mathrm{g}/\mathrm{cm}^3$ , velocidad $\vec{v} = 0 \, \mathrm{cm}/\mathrm{s}$ y una presión $P=0.1 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}} $la simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 200x200 celdas\footnote{Las celdas de nuestra malla miden $\mathrm{dominio}/200= 0.005 \mathrm{cm}\, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna, sus valor de la densidad es de $\rho=5 \, \mathrm{g}/\mathrm{cm}^3$, su velocidad interna serála misma que la del ambiente, la presión interna de la onda $P=10 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$ y una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$,la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se correrá en el intervalo de tiempó $t \in \left[ 0 , 0.5 \right]$ s.
+\subsection{Prueba Lax} \label{subsec: Prueba Lax}
+Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con la constante de relación específica $\Gamma = 3/4$, así como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante (ver figura\ref{fig:onda_choque1_t_0}) con una densidad de energía de $E = 0.15 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, densidad $\rho = 1 \, \mathrm{g}/\mathrm{cm}^3$ , velocidad $\vec{v} = 0 \, \mathrm{cm}/\mathrm{s}$ y una presión $P=0.1 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}} $la simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 200x200 celdas\footnote{Las celdas de nuestra malla miden $\mathrm{dominio}/200= 0.005 \, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna, sus valor de la densidad es de $\rho=5 \, \mathrm{g}/\mathrm{cm}^3$, su velocidad interna será la misma que la del ambiente, la presión interna de la onda $P=10 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$ y una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$,la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se correrá en el intervalo de tiempó $t \in \left[ 0 , 0.5 \right]$ s.
 %===================IMAGE===============================
 \begin{figure}[H]
 \centering
@@ -951,7 +951,7 @@ La evolución de onda relativista, asi como no relativista, tienen la misma evol
 
 
 \subsection{Prueba HLL}
-Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, presentando casos relativistas y no relativistas. La condicion incial es la misma que la de Lax, es decir, nuestra onda de choque tendra los mismos valores que la tabla \ref{Tabla_parametros}, con la misma densidad de energía $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$	
+Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, presentando casos relativistas y no relativistas. La condicion incial es la misma que la de Lax, es decir, nuestra onda de choque tendra los mismos que habiamos dicho en la sección \ref{subsec: Prueba Lax}	
 
 \begin{figure}[H]
 \centering
@@ -959,7 +959,7 @@ Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, pres
 \caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque3_t_0}
 \end{figure}
 
-La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$.
+La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$. y al igual que en lax se presentan 2 ondas, una onda contra el medio, la cual tiene una velocidad de $1.98 \, \mathrm{cm}/\mathrm{s}$
 
 \begin{figure}[H]
 \centering
