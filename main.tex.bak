@@ -959,7 +959,8 @@ Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, se p
 \caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque3_t_0}
 \end{figure}
 
-La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$ cm, su radio es de $r = 0.2 \, \mathrm{cm}$ y al igual que en Lax se presentan 2 ondas, una onda contra el medio, la cual tiene una velocidad constante de $\vec{v}  = 1.98 \, \mathrm{cm}/\mathrm{s}$ y una onda contra el centro, el radio de la onda se expande a $r = 0.3$ cm al tiempo $t=0.05$ s, mientras que al tiempo $t = 0.1$ s, su radio aumenta hasta $r = 0.38$ cm y aumenta la velocidad de la onda hasta casi al doble $\vec{v}=3.80 \, \mathrm{cm}/\mathrm{s}$, entre estas 2 ondas se va creando un vacio (vea figura \ref{fig:HLL-prueba1}).
+La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$ cm, su radio es de $r = 0.2 \, \mathrm{cm}$ y al igual que en Lax se presentan 2 ondas, una onda contra el medio, la cual tiene una velocidad constante de $\vec{v}  = 1.98 \, \mathrm{cm}/\mathrm{s}$ y una onda contra el centro, el radio de la onda se expande a $r = 0.3$ cm al tiempo $t=0.05$ s, mientras que al tiempo $t = 0.1$ s, su radio aumenta hasta $r = 0.38$ cm y disminuye la velocidad de la onda a más de la mitad $\vec{v}=0.79 \, \mathrm{cm}/\mathrm{s}$, entre estas 2 ondas se va creando un vacio (vea figura \ref{fig:HLL-prueba1}).
+
 \begin{figure}[H]
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/HLL-sedov3}}
@@ -967,7 +968,7 @@ La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$ cm, su radio es de 
 \caption{Onda de choque centrada usando el método HLL, la evolución de la onda fue a distintos tiempos} \label{fig:HLL-prueba1}
 \end{figure}
 
-La evolución de la onda usando relatividad, fue más lenta que la newtoniano, al igual que el método de lax se formó un anillo poco denso entre la onda que se expandia y el centro más denso
+La evolución de la onda usando relatividad, fue más lenta que la newtoniano, su expansión al tiempo $t = 0.05$ s es de $r = 0.26$ cm, y una velocidad $\vec{v} = 1.34 \, \mathrm{cm}/\mathrm{s}$, para el tiempo $t = 0.1$ s, el radio de la onda se expandió a $r = 0.31$ cm y su velocidad correspondiente es de $\vec{1.1 \, \mathrm{cm}/\mathrm{s}}$, se pueden ver 2 ondas una contra el medio y otra en reversa que va dirigida hacia el centro provocando un vacío en el centro de la onda.
 
 \begin{figure}[H]
 \centering
@@ -1246,22 +1247,41 @@ Donde $C$ es el número de Courant y nos limita a que nuestros $\Delta t$ no sea
 
 \end{lstlisting}
 
-\subsection{Condiciones de frontera}
-Las condiciones de frontera se usará para obtener los valores de nuestras variables conservadas en los extremos de nuestra malla de puntos, con el fin de evitar errores numéricos, las condiciones de frontera que generalmente vamos a usar son de cuatro tipos las de \textit{outflow}, las de \textit{reflexión}, las \textit{periódicas} y las de \textit{jet}. Las del tipo \textit{outflow} serán aquellas en las que una vez los valores sobre la malla (ondas) queden fuera de esta, ya no sabremos que pasó después con estos datos, las de \textit{reflexión} serán aquellas en las que nuestros datos en vez de salir se reflejarán y las \textit{periódicas} serán parecidas a las de \textit{reflexión} solo que en vez de reflejarse las ondas, estas entrarán del lado contrario de donde salieron (como el famoso juego de Pac-Man) y las de tipo \textit{jet}, será para que de un lado de nuestra malla salga una fuente de partículas.
 
-En todas estas condiciones de frontera se le recomienda al lector interactuar con los parámetros, cambiarlos y mezclarlos entre si
 
-\begin{center}
-Condición de frontera \textit{outflow}
-\end{center}
-\begin{lstlisting}[frame=single]
- !---------------- Outflow ------------------
-        u(:,0   ,:)=u(:,1 ,:)
-        u(:,nx+1,:)=u(:,nx,:)
-        u(:,:,0   )=u(:,:,1 )
-        u(:,:,ny+1)=u(:,:,ny)
+\chapter{Condiciones de frontera} \label{aped.B}
 
-\end{lstlisting}
+
+Las condiciones de frontera se usará para obtener los valores de nuestras variables conservadas en los extremos de nuestra malla de puntos, con el fin de evitar errores numéricos, las condiciones de frontera que generalmente vamos a usar son de cuatro tipos las de \textit{outflow}, las de \textit{reflexión}, las \textit{periódicas} y las de \textit{jet}. Las del tipo \textit{outflow} serán aquellas en las que una vez los valores sobre la malla (ondas) queden fuera de esta, ya no sabremos que pasó después con estos datos, las de \textit{reflexión} serán aquellas en las que nuestros datos en vez de salir se reflejarán y las \textit{periódicas} serán parecidas a las de \textit{reflexión} solo que en vez de reflejarse las ondas, estas entrarán del lado contrario de donde salieron  y las de tipo \textit{jet}, será para que de un lado de nuestra malla salga una fuente de partículas.
+
+Para entender lo que son las condiciones de frontera, vamos suponer una malla de puntos, esta malla tendrá $n+2$ filas y $m+2$ columnas, para identificar los puntos vamos a indexarlos empezando desde el 0 hasta $n+1$ en el caso de las filas y de 0 hasta $m+1$ para el de las columnas.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{./Figuras/malla.png}
+\caption{Malla de puntos que resalta las fronteras, los puntos más oscuros representan representan una frontera \emph{fantasma}, es decir, ese conjunto de puntos estará allí como apoyo para resolver los cálculos que hará la computadora dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se graficarán} \label{fig: malla de puntos}
+\end{figure}
+
+La figura \ref{fig: malla de puntos} muestra los puntos más negros como unos puntos que nos van a servir de apoyo para calcular los valores de los puntos más grises, esto debido a que para calcular los valores de algún punto $(x_i, y_j$ necesitamos el punto posterior $x_{i+1}, y_{j+1}$ y el punto anterior $x_{i-1}, y_{j-1}$.
+
+Ahora, cuando llegamos a los últimos puntos de nuestro frontera, por ejemplo, el punto $x_{0}, y_{0}$, no podremos calcularlo debido a que no tendremos conocimiento acerca del punto anterior $x_{(-1)}, y_{(-1)}$, entonces tendremos que darles valores específicos a estos puntos, pero no podemos darles cualquier valor, en las siguientes secciones vamos a ver que valores válidos le podemos dar para el funcionamiento del código. 
+
+\subsection{Condiciones de frontera \emph{outflow}}
+
+Las condiciones \emph{outflow}, son en las que los valores de nuestra frontera fantasma(puntos negros) que toman los  mismos valores que su antecesor (puntos grises), los fenómenos físicos que atraviesan nuestra frontera, pasarán como si tuvieramos más dominio hacia afuera y una vez que salgan perderemos información sobre esta.
+
+\begin{figure}[H]
+\centering
+\subfigure[onda expandiendose antes de cruzar la frontera]{\includegraphics[scale = 0.50]{./Figuras/Apendice/outflow1}}
+\subfigure[onda expandiendose después de cruzar la frontera]{\includegraphics[scale = 0.50]{./Figuras/Apendice/outflow2}}
+\caption{Al pasar la onda nuestra frontera, esta sigue su trayecto normal como si el dominio fuera infinito} \label{fig:outflow}
+\end{figure}
+
+Las ecuaciones que obedece nuestra frontera son las siguientes:
+\begin{eqnarray}
+\textbf{U}(0,i)=\textbf{U}(1,i) \\
+\end{eqnarray}
+
 
 \begin{center}
 Condición de frontera de \textit{reflexión}
@@ -1324,7 +1344,9 @@ Condición de frontera de \textit{Jet}
  !---------------------------------------
 \end{lstlisting}
 
-\chapter{Condiciones de Rankine-Hugoniot no relativistas}\label{aped.B}
+
+
+\chapter{Condiciones de Rankine-Hugoniot no relativistas}\label{aped.C}
 Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservacion_momento_hidrodinamica} y \ref{conservacion_energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
 
 
