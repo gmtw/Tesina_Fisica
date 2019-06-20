@@ -921,15 +921,15 @@ Para el modo relativista, se nota una diferencia en el modo que se expande la on
 %===================IMAGE===============================
 
 
-La segunda prueba es variando la posición del nuestra onda de choque, su centro se colocó en las coordenadas $(x, y) = (0.75, 0.75)$, las fronteras tienen la configuración de \textit{outflow}.
+La segunda prueba es variando la posición del nuestra onda de choque, su centro se colocó en las coordenadas $(x, y) = (0.8, 0.8)$, las fronteras tienen la configuración de \textit{outflow}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque2_t_0}
-\caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque2_t_0}
+\caption{Onda de choque en el tiempo $t = 0$ s} \label{fig:onda_choque2_t_0}
 \end{figure}
 
- Se puede observar que al evolucionar la onda de choque esta no muestra ninguna anomalía en las fronteras(ver apéndice \ref{aped.B}) y se nota un buen funcionamiento del código no relativista usando Lax, el radio al tiempo $t = 0.07$s es $r = 0.34$ y su velocidad es $$.
+ Se puede observar que al evolucionar la onda de choque esta no muestra ninguna anomalía en las fronteras(ver apéndice \ref{aped.B}) y se nota un buen funcionamiento del código no relativista usando Lax, el radio al tiempo $t = 0.07$ s es $r = 0.34$ cm y su velocidad es $v = 2 \, \mathrm{cm}/\mathrm{s}$ y para el tiempo $t = 0.14$ s el radio $r = 0.42$ y su velocidad $v = 1.83 \, \mathrm{cm}/\mathrm{s}$.
 
 \begin{figure}[H]
 \centering
@@ -938,7 +938,7 @@ La segunda prueba es variando la posición del nuestra onda de choque, su centro
 \caption{Evolución de la onda de choque no relativista con el paso del tiempo, no hay ningún problema al momento que nuestra onda traspasa nuestro dominio} \label{fig:Lax-prueba2}
 \end{figure}
 
-La evolución de onda relativista, asi como no relativista, tienen la misma evolución temporal para la centrada, es decir no importa donde se coloque el centro de la onda, esta evolucionará de igual modo para una que este centrada o no.
+La evolución de onda relativista, asi como no relativista, tienen la misma evolución temporal para la centrada, es decir no importa donde se coloque el centro de la onda, esta evolucionará de igual modo para una que este centrada o no. Al tiempo $t = 0.07$ su radio es de $r =0.29 $ cm y su velocidad $v=1.28 \, \mathrm{cm}/\mathrm{s}$, y en el tiempo $t = 0.12$ s el radio $r = 0.33$ cm y su velocidad $v = $
 
 \begin{figure}[H]
 \centering
