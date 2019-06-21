@@ -785,7 +785,7 @@ Esta última ecuación nos servira para calcular los flujos usando el método de
 \begin{figure} %fuente de la imagen:libro del toro/
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/HLL.png}
-  \caption{Aproximación de 3 estados distinttos en el plano x-t, en el cual se trata de calcular los flujos en la región $U^{hll}$ limitados por las velocidades de señal de la onda}
+  \caption{Aproximación de 3 estados distintos en el plano x-t, en el cual se trata de calcular los flujos en la región $U^{hll}$ limitados por las velocidades de señal de la onda}
   \label{fig:HLL}
 \end{figure}
 
@@ -891,11 +891,11 @@ Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones re
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque1_t_0}
-\caption{Condición inicial para una onda de choque círcular en el tiempo $t = 0$, las condiciones en el interior de la onda tienen valores más elevados que el medio que la rodea.} \label{fig:onda_choque1_t_0}
+\caption{Condición inicial ($t = 0$) de una onda de choque (con Ein, rhoin, Pin y rin) que se va a expandir sobre un medio (con rhoout y Pout) estático. Véase el Cuadro 3.1 para más detalles.} \label{fig:onda_choque1_t_0}
 \end{figure}
 
 %===================IMAGE===============================
-La evolución para la onda de choque no relativista muestra una expansión de la onda totalmente simétrica y circular además de una densidad y energía que conformaba a la onda se difuminan en el medio que los rodea (ver figura \ref{fig:Lax-newtoniano-prueba1}). El radio de la onda al tiempo $ t =0.05$ s es de a $r = 0.3 $ cm y su velocidad $v = 2.0 \, \mathrm{cm}/\mathrm{s}$ mientras que al tiempo $t=0.1$ s $r = 0.38$ cm y su velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$
+La evolución para la onda de choque no relativista muestra una expansión de la onda simétrica. El radio de la onda al tiempo inicial fue de $r=0.2$~cm. A $t=0.05$~s la onda se expandió a un radio de $r=0.3$~cm mientras que para el tiempo $t=0.10$~s se expandió a un radio de $r=0.38$~cm. Debido a lo anterior, la velocidad de expansión de la onda fue de $v = 2.0 \, \mathrm{cm}/\mathrm{s}$ y $v = 1.8 \, \mathrm{cm}/\mathrm{s}$, respectivamente. FALTA MENCIONAR A FORWARD SHOCK Y LA REVERSE SHOCK.. y por ende el HUECO (ver figura \ref{fig:Lax-newtoniano-prueba1}). ADMÄS FALTA MENCIONAR QUE LA PARTE CENTRAL SE DIFUMINA... LO CUAL ES ESPERABLE DEBIDO A LA VISCOSIDAD NUMERICA.
 %===================IMAGE===============================
 
 
@@ -903,7 +903,7 @@ La evolución para la onda de choque no relativista muestra una expansión de la
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5}}
-\caption{Primera prueba de una onda de choque usando el método de Lax no relativista donde se deja evolucionar a distintos tiempos} \label{fig:Lax-newtoniano-prueba1}
+\caption{Evolución de la onda de choque mostrada en la Figura 3.1 usando el método de Lax no relativista. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10s.} \label{fig:Lax-newtoniano-prueba1}
 \end{figure}
 %===================IMAGE===============================
 
@@ -911,7 +911,7 @@ Para el modo relativista, se nota una diferencia en el modo que se expande la on
 
 
 %===================IMAGE===============================
-
+REHACER
 \begin{figure}[H]
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3-rel}}
@@ -921,21 +921,22 @@ Para el modo relativista, se nota una diferencia en el modo que se expande la on
 %===================IMAGE===============================
 
 
-La segunda prueba es variando la posición del nuestra onda de choque, su centro se colocó en las coordenadas $(x, y) = (0.8, 0.8)$, las fronteras tienen la configuración de \textit{outflow}.
+La segunda prueba consiste en realizar la misma prueba de la onda de choque resuelta con el método de Lax pero ubicando a la onda de choque en una esquina para poder analizar como se comporta la misma al interaccionar con las condiciones a la frontera. El centro de la nueva prueba se colocó en las coordenadas $(x, y) = (0.8, 0.8)$. Cabe señalar que las condiciones a la fronteras tienen la configuración de \textit{outflow}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque2_t_0}
-\caption{Onda de choque en el tiempo $t = 0$ s} \label{fig:onda_choque2_t_0}
+\caption{Condición inicial de la prueba número 2 para el resolvedor Lax no relativista. En esta prueba se tiene la misma condición inicial que la mostrada en la Figura 3.1, pero con las coordenadas de la onda de choque ubicadas en $(x, y) = (0.8, 0.8)$.} \label{fig:onda_choque2_t_0}
 \end{figure}
 
- Se puede observar que al evolucionar la onda de choque esta no muestra ninguna anomalía en las fronteras(ver apéndice \ref{aped.B}) y se nota un buen funcionamiento del código no relativista usando Lax, el radio al tiempo $t = 0.07$ s es $r = 0.34$ cm y su velocidad es $v = 2 \, \mathrm{cm}/\mathrm{s}$ y para el tiempo $t = 0.14$ s el radio $r = 0.42$ y su velocidad $v = 1.83 \, \mathrm{cm}/\mathrm{s}$.
+LAS FRONTERAS NO METEN RUIDO. Y LA EVOLUCIÓN ES CONSISTENTE CON LOS RESULTADOS DE ANTES, Y POR ENDE ESTA BIEN. 
+ Se puede observar que al evolucionar la onda de choque esta no muestra ninguna anomalía en las fronteras(ver apéndice \ref{aped.B}) y se nota un buen funcionamiento del código no relativista usando Lax DEBIDO A QUE... El radio al tiempo $t = 0.07$ s es $r = 0.34$ cm y su velocidad es $v = 2 \, \mathrm{cm}/\mathrm{s}$ y para el tiempo $t = 0.14$ s el radio $r = 0.42$ y su velocidad $v = 1.83 \, \mathrm{cm}/\mathrm{s}$. 
 
 \begin{figure}[H]
 \centering
 \subfigure[$t = 0.07$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Lax-sedov2_4}}
 \subfigure[$t = 0.12$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Lax-sedov2_6}}
-\caption{Evolución de la onda de choque no relativista con el paso del tiempo, no hay ningún problema al momento que nuestra onda traspasa nuestro dominio} \label{fig:Lax-prueba2}
+\caption{Evolución de la onda de choque mostrada en la Figura 3.4 usando el método de Lax no relativista. En el panel a) se muestra la onda de choque a t=0.07s, mientras que en el panel b) se muestra para t=0.12s.} \label{fig:Lax-prueba2}
 \end{figure}
 
 La evolución de onda relativista, asi como no relativista, tienen la misma evolución temporal para la centrada, es decir no importa donde se coloque el centro de la onda, esta evolucionará de igual modo para una que este centrada o no. Al tiempo $t = 0.07$ su radio es de $r =0.29 $ cm y su velocidad $v=1.28 \, \mathrm{cm}/\mathrm{s}$, y en el tiempo $t = 0.12$ s el radio $r = 0.33$ cm y su velocidad $v = 1.08 \, \mathrm{cm}/\mathrm{s}$
@@ -1410,7 +1411,7 @@ Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir 
  \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
 \end{equation}
 
-Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, $P \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}}\right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedaddes del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
+Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, $P \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}}\right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
 
 \begin{equation}\label{RH_momento_j}
 P_{j}+\frac{j^2}{\rho_{j}}=P_{m}+\frac{j^2}{\rho_{m}}
