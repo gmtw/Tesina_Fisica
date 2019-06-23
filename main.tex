@@ -848,7 +848,16 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 Las siguientes pruebas verifican el buen funcionamiento del código al hacer tanto Lax como HLL en relativista y no relativista
 
 \section{Onda de choque}
-Las siguientes pruebas corresponden a una onda expansiva, sobre un medio con densidad constante, la condición de frontera que nosotros vamos a realizar va a ser la de \emph{outflow}\footnote{Esta frontera se refiere a cuando nosotros tengamos una onda u otro fenómeno físico más allá de nuestro dominio, es decir, que cuando pasen estos límites, nosotros perderemos información de esta, no habrá reflexión o no aparecerá en otro lado de nuestra frontera}, los parámetros con los que corrió el código son los siguientes:
+La onda de choque se caracteriza por dividir nuestro dominio en 2 zonas distintas, la primera zona va a ser nuestro medio ambiente que se caracterizará por tener valores de sus variables primitivas $\rho_m, \, v_{x_m}, \, v_{y_m}, \, P_m$ relativamente bajas. Por otro lado, la otra zona tendrá valores muy distintos con respecto a la primera, los valores de las variables primitivas $\rho_{in}, \, v_{x_{in}}, \, v_{y_{in}}, \, P_{in}$ serán depositados en un círculo con un radio interno $r_{in}$. Estos distintas zonas se dejarán evolucionar a un determinado tiempo $t$ para analizar su comportamiento cuando interactuan estas 2 zonas. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque}
+\caption{La onda de choque se caracteriza por depositar energía $E, \, \rho_{in}, \, v_{x_{in}}, \, v_{y_{in}}, \, P_{in}$ sobre un medio en forma círcular con un radio $R_{int}$, la onda se dejará evolucionar con el paso del tiempo y veremos la interacción que hay entre estos 2 distintos medios.} \label{fig:onda_choque_example}
+\end{figure}
+
+
+En las siguientes pruebas se utilizarán los 2 métodos que ha hemos visto anteriormente que es el de Lax y el de HLL, en ambos métodos se usarán las ecuaciones de fluido no relativistas y las relativistas. La condición de frontera que nosotros vamos a utilizar va a ser la de \emph{outflow}\footnote{Para ver más detalles acerca de esta frontera y/o de otro tipo de fronteras veáse el apéndice \ref{aped.B}}, dado que este tipo de bordes se encuentran más en los \emph{jets} el cual es propósito principal al desarrollar este programa. Las simulaciones que vamos a realizar van a constatar de 2 distintos valores para nuestras variables primitivas, esto debido a que, necesitamos que la onda se expanda a velocidades cercanas a la velocidad de la luz, y así de este modo, comprobar la efectividad de nuestro código relativista. Los parámetros con los que corrió el código para el modo no relativista son los siguientes:
 %tiempo = 0.5 s
 %lapso = tiempo/20
 
@@ -879,7 +888,7 @@ $v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 \\
 Co & Número de Courant & 0.7 \\ 
 \hline 
 \end{tabular}
-\caption{Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque}
+\caption{Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque, estos valores son para fluidos no relativistas.}
 \end{center}
 \end{table}
 
