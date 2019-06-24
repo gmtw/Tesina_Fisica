@@ -848,12 +848,12 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 Las siguientes pruebas verifican el buen funcionamiento del código al hacer tanto Lax como HLL en relativista y no relativista
 
 \section{Onda de choque}
-La onda de choque se caracteriza por dividir nuestro dominio es 2 zonas distintas, la primera zona va a ser nuestro medio ambiente que se caracterizará por tener valores de sus variables primitivas $\rho_m, \, v_{x_m}, \, v_{y_m}, \, P_m$ relativamente bajas. Por otro lado, la otra zona tendrá valores muy distintos con respecto a la primera, los valores de las variables primitivas $\rho_{in}, \, v_{x_{in}}, \, v_{y_{in}}, \, P_{in}$ serán depositados en un círculo con un radio interno $r_{in}$. Estos distintas zonas se dejarán evolucionar a un determinado tiempo $t$ para analizar sus comportamiento cuando interactuan estas 2 zonas. 
+La onda de choque se caracteriza por dividir nuestro dominio en 2 zonas distintas. La zona I va a ser nuestro medio ambiente que se caracterizará por tener valores de sus variables primitivas $\rho_m, \, v_{x_m}, \, v_{y_m}, \, P_m$ situados en la mayor parte de nuestro dominio. Por otro lado, la zona II tendrá valores muy distintos con respecto a la primera, los valores de las variables primitivas $\rho_{in}, \, v_{x_{in}}, \, v_{y_{in}}, \, P_{in}$ serán depositados en esta zona sobre un círculo con un radio interno $R_{in}$. Veremos como evoluciona esta discontinuidad que hay entre estas zonas a un determinado tiempo $t$, para así poder analizar su comportamiento cuando interactuan estas 2 zonas. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque}
-\caption{La onda de choque se caracteriza por depositar energía $E, \, \rho_{in}, \, v_{x_{in}}, \, v_{y_{in}}, \, P_{in}$ sobre un medio en forma círcular con un radio $R_{int}$, la onda se dejará evolucionar con el paso del tiempo y veremos la interacción que hay entre estos 2 distintos medios.} \label{fig:onda_choque_example}
+\caption{La onda de choque se caracteriza por depositar energía $E,$ densidad $\rho_{in}$, velocidades $ v_{x_{in}}, \, v_{y_{in}}$ y presión $ P_{in}$ sobre un medio en forma círcular con un radio interno $R_{int}$, a esta parte de nuestro dominio la llamaremos zona II. El resto de nuestro dominio estará bajo el resguardo de la zona I, en esta parte de nuestro dominio es donde estarán las otras variables primitivas $\rho_m, \, v_{x_m}, \, v_{y_m}, \, P_m$ de nuestro dominio y tendrán valores mas bajos que los de la zona I. La onda se dejará evolucionar con el paso del tiempo y analizaremos la interacción que hay entre estos 2 distintos medios.} \label{fig:onda_choque_example}
 \end{figure}
 
 
