@@ -956,12 +956,15 @@ Se puede observar que al evolucionar la onda de choque, esta no muestra ninguna 
 
 Al salir de nuestro dominio, la onda sigue conservando su forma y las áreas que habiamos visto en la figura \ref{fig:Lax-newtoniano-prueba1-analisis}. El aspecto de la onda no se deforma a pesar de que ya no se encuentra en nuestro dominio.
 
+%===================IMAGE_LAX_NO_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}[H]
 \centering
 \subfigure[]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov2_07-analisis}}
 \subfigure[]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov2_12-analisis}}
-\caption{Al igual que en la figura \ref{fig:Lax-newtoniano-prueba1-analisis}, la onda presenta 4 áreas descritas, y estas se vuelven más grandes con el paso del tiempo. En el área 4 se puede ver la difuminidad que presenta la onda, al separarse la \emph{forward shock} y la \emph{reverse shock}.} \label{fig:Lax-prueba2_no_centrado-analisis}
+\caption{Al igual que en la figura \ref{fig:Lax-newtoniano-prueba1-analisis}, la onda presenta 5 áreas descritas, y estas se vuelven más grandes con el paso del tiempo. En el área 4 se puede ver la difuminidad que presenta la onda, al separarse la \emph{forward shock} y la \emph{reverse shock}.} \label{fig:Lax-prueba2_no_centrado-analisis}
 \end{figure}
+%===================IMAGE_LAX_NO_CENTRADO_EVOLUCION_ANALISIS===============================
+
 
 %===================LAX_RELATIVISTA===============================
 
@@ -995,14 +998,14 @@ La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$ cm, su radio es de 
 %===================IMAGE_HLL_CENTRADO_EVOLUCION===============================
 
 
-Al igual que lo que paso con Lax, el método HLL muestra el mismo comportamiento. Se pueden ver 2 ondas distintas, una que avanza hacia adelante (\emph{forward shock}) y otra que avanza en sentido contrario, es decir, se contrae y choca con la misma onda (\emph{reverse shock}).
+Al igual que lo que paso con Lax, el método HLL muestra el mismo comportamiento. Se pueden ver 2 ondas distintas, una que avanza hacia adelante (\emph{forward shock}) y otra que avanza en sentido contrario, es decir, se contrae y choca con la misma onda (\emph{reverse shock}), la cavidad que se va formando entre estas 2 ondas es prueba de la viscosidad que tiene nuestro método.
 
 %===================IMAGE_HLL_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}[H]
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_05-analisis.png}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.44]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_10-analisis.png}}
-\caption{En la onda se logran distinguir 2 ondas distintas al evolucionar la misma. una onda hacia adelante (\emph{forward shock}) y otra onda que se contrae (\emph{reverse shock}), la separación entre las 2 ondas dejan ver un hueco en la onda de menor densidad. La discusión de las áreas de las ondas es la misma que ya habiamos dicho en figura \ref{fig:Lax-newtoniano-prueba1-analisis} y \ref{fig:Lax-prueba2_no_centrado-analisis}. Se puede ver también como, con el paso del tiempo, las áreas donde barren las ondas incrementan su tamaño.} \label{fig:HLL-prueba1-analisis}
+\caption{En la onda se logran distinguir 2 ondas distintas al evolucionar la misma. Una onda hacia adelante (\emph{forward shock}) y otra onda que se contrae (\emph{reverse shock}), la separación entre las 2 ondas dejan ver un hueco en la onda de menor densidad. La discusión de las áreas de las ondas es la misma que ya habiamos dicho en figura \ref{fig:Lax-newtoniano-prueba1-analisis} y \ref{fig:Lax-prueba2_no_centrado-analisis}. Se puede ver también como, con el paso del tiempo, las áreas donde barren las ondas incrementan su tamaño.} \label{fig:HLL-prueba1-analisis}
 \end{figure}
 %===================IMAGE_HLL_CENTRADO_EVOLUCION_ANALISIS===============================
 
@@ -1029,47 +1032,44 @@ Al pasar el dominio, la onda se sigue comportando como si estuviera centrada, ya
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION===============================
 
-Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward shock} que va contra el medio a la que hemos llamado el área 1 (veáse figura \ref{fig:HLL-prueba2-analisis}). El área 2, es el material del área 1 que va barriendo la \emph{forward shock}
+Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward shock} que va contra el medio a la que hemos llamado el área 1 (veáse figura \ref{fig:HLL-prueba2-analisis}). El área 2, es el material del área 1 que va barriendo la \emph{forward shock}. El área 3 es lo contrario, es decir, es el material barrido del área 5 por la \emph{reverse shock} y entre estas 2 ondas se va formando un hueco entre estas 2 ondas que es el área 4 muestra la viscosidadde nuestro método. Dado  que no se muestran anomálias en la evolución de nuestra onda cerca de las fronteras y que estas tienen las velocidades y radios a los instantes de tiempo especificados, podemos decir que nuestro código funciona bien.
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}[H]
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05-analisis.png}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.49]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10-analisis.png}}
-\caption{La velocidad de la onda tiene el mismo comportamiento que la onda centrada.}  \label{fig:HLL-prueba2-analisis}
+\caption{Las áreas mostradas en el panel a) y en el panel b) son las mismas discutidas en la figura \ref{fig:HLL-prueba1-analisis}.}\label{fig:HLL-prueba2-analisis}
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
 
 
 
 
-\subsection{Puebas no relativistas Lax vs HLL} %Resolución de 200x200
+\subsection{Puebas no relativistas Lax vs HLL}
 
-En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL, la onda de choque tendrá los valores iniciales del cuadro \ref{Tabla_parametros} y el centro se situará en el punto $(x,y) = (0.5,0.75)$ cm.
+En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL. Las ondas que vamos a ocupar son las de las figuras \ref{fig:onda_choque1_t_0} y la \ref{fig:onda_choque3_t_0}. La onda esta centrada en el punto $(x,y)=(0.5,0.5)$
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque5_t_0}
-\caption{Onda de choque en el tiempo $t = 0$} \label{fig:onda_choque5_t_0}
+\subfigure[]{\includegraphics[width=0.45 \textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque1_t_0}}
+\subfigure[]{\includegraphics[width=0.465 \textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque3_t_0}}
+\caption{Condición inicial ($t = 0$) misma para las 2 ondas de choque usando los dos métodos que hemos utilizado que es el de Lax y el de HLL (con $\rho_{in}=5.0, \, v_{x_{in}}=v_{y_{in}}=0.0, \, P_{in}=10.0$ y $E_{in}=3.75$), de radio interno $R_{in} = 0.2$ cm. que se va a expandir sobre un medio (con $\rho_{out}=1.0$  y $ P_{out}=0.1$) estático. Véase el Cuadro \ref{Tabla_parametros} para más detalles.} \label{fig:comparacion_inicial_lax_hll_NR}
 \end{figure}
 
-La onda de Lax al tiempo $t = 0.05$ s tiene un radio $r=0.31$ cm y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$, mientras que la onda de HLL tiene un radio $r = 0.31$ y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$. Al avanzar la onda se ve una diferencia entre el método de Lax y HLL, la onda contra el centro de la onda se ve más difusa en HLL que con Lax, por lo que HLL es menos viscoso y resuelve mejor las discontinuidades.
+
+La onda de Lax al tiempo (ver figura \ref{fig:Lax-newtoniano-prueba1}) $t = 0.05$ s tiene un radio $r=0.31$ cm y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$, mientras que la onda de HLL (ver figura \ref{fig:HLL-prueba1}) tiene un radio $r = 0.31$ y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$. Al avanzar la onda se ve una diferencia entre el método de Lax y HLL, la onda contra el centro de la onda se ve más difusa en HLL que con Lax, por lo que HLL es menos viscoso y resuelve mejor las discontinuidades.
 
 
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3lax}}
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW3hll}}
-\caption{Ambos método tienen los mismos valores en cuestión de radio y velocidad de la onda.} \label{fig:Lax-hll-newtoniano1}
+\subfigure[]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/comparacion1}}
+\subfigure[]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/comparacion2}}
+\caption{Las ondas de choque están establecidas al tiempo $t = 0.5$, ambas imágenes tienen una resolución de 1000x1000, mientras que Lax (panel a)) es un poco más rápido que HLL (panel b)), HLL tiene menor viscosidad en la zona de discontinuidad. La zona de discontinuidad es donde tanto la \emph{forward shock} y la \emph{reverse shock} se separan. En las 2 imagenes, aunque es mínima, se puede notar una difuminación mayor en Lax en esta zona}  \label{fig:Lax-hll-newtoniano1}
 \end{figure}
 
 Al dispersarse por completo el centro de la onda, se puede ver con mejor claridad que hay 2 diferentes tipos de onda, una contra el medio y otra contra en centro de la misma, para Lax, el radio toma el valor $r = 0.38$ y una velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s} $. En el caso de HLL es el mismo radio $r = 0.38 $ cm y la misma velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$
 
-\begin{figure}[H]
-\centering
-\subfigure[$t = 0.10$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW5lax}}
-\subfigure[$t = 0.10$ s]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/BW5hll}}
-\caption{Al desvanecerse casi por completo la onda se puede notar que se descompone en 2 ondas una contra el medio y otra contra el centro de la onda.} \label{fig:Lax-hll-newtoniano2}
-\end{figure}
+
 
 \subsection{Puebas relativistas Lax vs HLL} %200X200
 
