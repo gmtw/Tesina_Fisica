@@ -96,7 +96,7 @@ Julio César Sosa Mondragón  }\\[1cm]
 TUTOR  }\\[1cm]
 
   \large{
-Dr. Diego López Cámara  }
+Dr. Diego López Cámara Ramírez}
 }
 
 \end{minipage}
@@ -848,16 +848,54 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 Las siguientes pruebas verifican el buen funcionamiento del código al hacer tanto Lax como HLL en relativista y no relativista
 
 \section{Onda de choque} %Shock Wave and High Pressure Phenomena) Isabelle Sochet (eds.
-La onda de choque es la onda producida por un en gas que producia por la liberación rápida de energía comprimida sobre un volumen fijo. Esta explosión divide a nuestro dominio en 2 zonas distintas. La zona I va a ser nuestro medio ambiente que se caracterizará por tener valores de sus variables primitivas $\rho_m, \, v_{x_m}, \, v_{y_m}, \, P_m$ situados en la mayor parte de nuestro dominio. Por otro lado, la zona II tendrá valores muy distintos con respecto a la primera, los valores de las variables primitivas $\rho_{in}, \, v_{x_{in}}, \, v_{y_{in}}, \, P_{in}$ serán depositados en esta zona sobre un círculo con un radio interno $R_{in}$. Veremos como evoluciona esta discontinuidad que hay entre estas zonas a un determinado tiempo $t$, para así poder analizar su comportamiento cuando interactuan estas 2 zonas. 
+La onda de choque se produce por la liberación rápida de energía comprimida en un volumen fijo. Esta explosión divide a nuestro dominio en 2 zonas distintas como se muestra en la Figura 3.1. La zona I, estará determinado por la densidad, presión, y velocidades del medio ambiente ($\rho_m, \, P_m\, v_{x_m}, \, v_{y_m}$, respectivamente). La zona II (i.e. la región de la onda de choque), se produce al depositar una energía $E_{in}$ dentro de una región definida por un radio interno ($R_{in}$) en reposo. Para ver más detalles véase el cuadro 3.1.
+
+\begin{table}[htbp]\label{Tabla_parametros}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
+\hline 
+$R_{in}$ & Radio interno de la onda expansiva & 0.2 \\ 
+\hline 
+$\rho_{in}$ &  Densidad interna de la onda expansiva & 5.0 \\ 
+\hline 
+$\rho_{out}$ &  Densidad del medio  & 1.0 \\
+\hline 
+$P_{int}$ & Presión interna de la onda expansiva & 10.0 \\ 
+\hline 
+$P_{out}$ &  Presión del medio  & 0.1 \\ 
+\hline 
+$v_{x_{int}}$ & Velocidad interna en el eje x de la onda expansiva & 0.0 \\ 
+\hline 
+$v_{y_{int}}$ & Velocidad interna en el eje y de la onda expansiva & 0.0 \\ 
+\hline 
+$v_{x_{out}}$ & Velocidad en el eje x del medio & 0.0 \\
+\hline 
+$v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 \\ 
+\hline 
+Co & Número de Courant & 0.7 \\ 
+\hline 
+\end{tabular}
+\caption{Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque, estos valores son para fluidos no relativistas.}
+\end{center}
+\end{table}
+
+La $E_{in}$ de la onda de choque está determinada por la $\rho_{in}$, $P_{in}$, y $v_{x_{in}}$ y $v_{y_{in}}$ ya que es la suma de la energía cinética más la energía térmica
+$E_{in} = {\frac{1}{2}} \rho_{in} v_{in}^2 + {\frac{P_{in}}{\Gamma -1 }}$).
+Dado que la zona II está en reposo $v_{x_{in}}=0$ y $v_{y_{in}}=0$, se tiene:
+$E_{in} = {\frac{P_{in}}{\Gamma -1 }}$)
+Cabe señalar que los valores de la densidad y presión del medio ambiente tendrán valores mas bajos que sus respectivos de la onda de choque. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque}
-\caption{La onda de choque se caracteriza por depositar energía $E,$ densidad $\rho_{in}$, velocidades $ v_{x_{in}}, \, v_{y_{in}}$ y presión $ P_{in}$ sobre un medio en forma círcular con un radio interno $R_{int}$, a esta parte de nuestro dominio la llamaremos zona II. El resto de nuestro dominio estará bajo el resguardo de la zona I, en esta parte de nuestro dominio es donde estarán las otras variables primitivas $\rho_m, \, v_{x_m}, \, v_{y_m}, \, P_m$ y tendrán valores mas bajos que los de la zona I. La onda se dejará evolucionar con el paso del tiempo y analizaremos la interacción que hay entre estos 2 distintos medios.} \label{fig:onda_choque_example}
+\caption{La zona I (medio ambiente), se caracterizará por tener valores de densidad, presión y velocidades ($\rho_m, \, P_m \, v_{x_m}, \, v_{y_m}$, respectivamente). La zona II (onda de choque) se produce al depositar una energía ($E_{in}$) dentro de un circulo (con $R_{in}$).} \label{fig:onda_choque_example}
 \end{figure}
 
+La onda de choque se dejó evolucionar con el paso del tiempo, y se analizó la interacción que hay entre las zonas I y II. En específico, se siguió la evolución de una onda de choque con una velocidad de expansión muy por debajo de la velocidad de la luz (denominado como caso newtoniano), y además la evolución de una onda de choque cuya velocidad de expansión estaba cercana a la velocidad de la luz (caso relativista). Cabe señalar que en ambos casos se siguió la evolución utilizando el método numéricos de Lax y el de HLL (véase la Sección tal tal para mayor información). La condición a la frontera utilizada en todos los bordes fue la de \emph{outflow}\footnote{Para ver más detalles acerca de esta frontera y/o de otro tipo de fronteras veáse el apéndice \ref{aped.B}}. 
 
-En las siguientes pruebas se utilizarán los 2 métodos que ha hemos visto anteriormente que es el de Lax y el de HLL, en ambos métodos se usarán las ecuaciones de fluido no relativistas y las relativistas. La condición de frontera que nosotros vamos a utilizar va a ser la de \emph{outflow}\footnote{Para ver más detalles acerca de esta frontera y/o de otro tipo de fronteras veáse el apéndice \ref{aped.B}}, dado que este tipo de bordes se encuentran más en los \emph{jets} el cual es propósito principal al desarrollar este programa. Las simulaciones que vamos a realizar van a constatar de 2 distintos valores para nuestras variables primitivas, esto debido a que, necesitamos que la onda se expanda a velocidades cercanas a la velocidad de la luz, y así de este modo, comprobar la efectividad de nuestro código relativista. Los parámetros con los que corrió el código para el modo no relativista son los siguientes:
+
 %tiempo = 0.5 s
 %lapso = tiempo/20
 
@@ -867,7 +905,7 @@ En las siguientes pruebas se utilizarán los 2 métodos que ha hemos visto anter
 \hline 
 \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
 \hline 
-$r_{in}$ & Radio interno de la onda expansiva & 0.2 \\ 
+$R_{in}$ & Radio interno de la onda expansiva & 0.2 \\ 
 \hline 
 $\rho_{in}$ &  Densidad interna de la onda expansiva & 5.0 \\ 
 \hline 
@@ -893,9 +931,15 @@ Co & Número de Courant & 0.7 \\
 \end{table}
 
 
+\subsection{Caso newtoniano} 
+\subsubsection{Lax} \label{subsec: Prueba Lax}
+Como primeras pruebas se realiza: explicas la 3.2, y además se llevó a cabó (explicas la figura 3.5).
 
-\subsection{Prueba Lax} \label{subsec: Prueba Lax}
-Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con la constante de relación específica $\Gamma = 3/4$, así como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante (ver figura\ref{fig:onda_choque1_t_0}) con una densidad de energía de $E = 0.15 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, densidad $\rho = 1 \, \mathrm{g}/\mathrm{cm}^3$ , velocidad $\vec{v} = 0 \, \mathrm{cm}/\mathrm{s}$ y una presión $P=0.1 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}} $la simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 200x200 celdas\footnote{Las celdas de nuestra malla miden $\mathrm{dominio}/200= 0.005 \, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna, sus valor de la densidad es de $\rho=5 \, \mathrm{g}/\mathrm{cm}^3$, su velocidad interna será la misma que la del ambiente, la presión interna de la onda $P=10 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$ y una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$,la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se correrá en el intervalo de tiempó $t \in \left[ 0 , 0.5 \right]$ s.
+Las dos primeras pruebas: 
+
+1. Newtoniano + Lax + onda choque centrada 2. Newtoniano + Lax + onda choque borde
+
+pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con la constante de relación específica $\Gamma = 3/4$, así como las no relativistas $\Gamma = 5/3$, la descripción del fenómeno es de una onda expansiva sobre un medio constante (ver figura\ref{fig:onda_choque1_t_0}) con una densidad de energía de $E = 0.15 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, densidad $\rho = 1 \, \mathrm{g}/\mathrm{cm}^3$ , velocidad $\vec{v} = 0 \, \mathrm{cm}/\mathrm{s}$ y una presión $P=0.1 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}} $la simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 200x200 celdas\footnote{Las celdas de nuestra malla miden $\mathrm{dominio}/200= 0.005 \, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna, sus valor de la densidad es de $\rho=5 \, \mathrm{g}/\mathrm{cm}^3$, su velocidad interna será la misma que la del ambiente, la presión interna de la onda $P=10 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$ y una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$,la onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se correrá en el intervalo de tiempó $t \in \left[ 0 , 0.5 \right]$ s.
 %===================IMAGE_LAX_CENTRADO_T=0===============================
 \begin{figure}[H]
 \centering
@@ -925,7 +969,7 @@ Se puede ver que cuando la onda se empieza a expandir por el medio constante, ap
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.495]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3-analisis}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5-analisis}}
-\caption{En la evolución dde la onda usando el método de Lax, podemos encontrar 4 áreas distintas. El área 1 la identificaremos como el material que no ha sido chocado todavía por nuestra onda. El área 2 será el material que es chocado por nuestra onda, esta onda que se llama \emph{forward shock}. En el área 3 podemos ver una onda que va contra si misma que es la \emph{reverse shock}, esta onda arrastra el interior de la onda, va en sentido contrario a la \emph{forward shock}, el material que esta onda aun no ha chocado es al área 5 y el área 4 es el vacío que se va formando cuando se separan la \emph{forward shock} y \emph{reverse shock}.  } \label{fig:Lax-newtoniano-prueba1-analisis}
+\caption{En la evolución de la onda usando el método de Lax, podemos encontrar 4 áreas distintas. El área 1 la identificaremos como el material que no ha sido chocado todavía por nuestra onda. El área 2 será el material que es chocado por nuestra onda, esta onda que se llama \emph{forward shock}. En el área 3 podemos ver una onda que va contra si misma que es la \emph{reverse shock}, esta onda arrastra el interior de la onda, va en sentido contrario a la \emph{forward shock}, el material que esta onda aun no ha chocado es al área 5 y el área 4 es el vacío que se va formando cuando se separan la \emph{forward shock} y \emph{reverse shock}.  } \label{fig:Lax-newtoniano-prueba1-analisis}
 \end{figure}
 %===================IMAGE_LAX_CENTRADO_EVOLUCION_ANALISIS===============================
 
@@ -967,14 +1011,13 @@ Al salir de nuestro dominio, la onda sigue conservando su forma y las áreas que
 
 
 %===================LAX_RELATIVISTA===============================
-
-Ahora toca el turno de probar la onda de choque, en la cual las velocidades a la que se expande la onda sean cercanas a la velocidad de la luz.
+%
+%Ahora toca el turno de probar la onda de choque, en la cual las velocidades a la que se expande la onda sean cercanas a la velocidad de la luz.
+%
 %===================LAX_RELATIVISTA===============================
 
 
-
-
-\subsection{Prueba HLL}
+\subsubsection{HLL} \label{subsec: Prueba HLL}
 Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, se presentarán casos relativistas y no relativistas. La condicion inicial es la misma que la de Lax, es decir, nuestra onda de choque tendra los mismos valores en la que habiamos dicho en la sección \ref{subsec: Prueba Lax}	
 
 %===================IMAGE_HLL_CENTRADO_T=0===============================
@@ -1032,7 +1075,7 @@ Al pasar el dominio, la onda se sigue comportando como si estuviera centrada, ya
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION===============================
 
-Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward shock} que va contra el medio a la que hemos llamado el área 1 (veáse figura \ref{fig:HLL-prueba2-analisis}). El área 2, es el material del área 1 que va barriendo la \emph{forward shock}. El área 3 es lo contrario, es decir, es el material barrido del área 5 por la \emph{reverse shock} y entre estas 2 ondas se va formando un hueco entre estas 2 ondas que es el área 4 muestra la viscosidadde nuestro método. Dado  que no se muestran anomálias en la evolución de nuestra onda cerca de las fronteras y que estas tienen las velocidades y radios a los instantes de tiempo especificados, podemos decir que nuestro código funciona bien.
+Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward shock} que va contra el medio a la que hemos llamado el área 1 (veáse figura \ref{fig:HLL-prueba2-analisis}). El área 2, es el material del área 1 que va barriendo la \emph{forward shock}. El área 3 es lo contrario, es decir, es el material barrido del área 5 por la \emph{reverse shock} y entre estas 2 ondas se va formando un hueco entre estas 2 ondas que es el área 4 muestra la viscosidad de nuestro método. Dado  que no se muestran anomálias en la evolución de nuestra onda cerca de las fronteras y que estas tienen las velocidades y radios a los instantes de tiempo especificados, podemos decir que nuestro código funciona bien.
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}[H]
 \centering
