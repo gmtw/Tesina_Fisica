@@ -1092,12 +1092,12 @@ Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward 
 
 En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL. Las ondas que vamos a ocupar son las de las figuras \ref{fig:onda_choque1_t_0} y la \ref{fig:onda_choque3_t_0}. La onda esta centrada en el punto $(x,y)=(0.5,0.5)$
 
-\begin{figure}[H]
-\centering
-\subfigure[]{\includegraphics[width=0.45 \textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque1_t_0}}
-\subfigure[]{\includegraphics[width=0.465 \textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque3_t_0}}
-\caption{Condición inicial ($t = 0$) misma para las 2 ondas de choque usando los dos métodos que hemos utilizado que es el de Lax y el de HLL (con $\rho_{in}=5.0, \, v_{x_{in}}=v_{y_{in}}=0.0, \, P_{in}=10.0$ y $E_{in}=3.75$), de radio interno $R_{in} = 0.2$ cm. que se va a expandir sobre un medio (con $\rho_{out}=1.0$  y $ P_{out}=0.1$) estático. Véase el Cuadro \ref{Tabla_parametros} para más detalles.} \label{fig:comparacion_inicial_lax_hll_NR}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\subfigure[]{\includegraphics[width=0.45 \textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque1_t_0}}
+%\subfigure[]{\includegraphics[width=0.465 \textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque3_t_0}}
+%\caption{Condición inicial ($t = 0$) misma para las 2 ondas de choque usando los dos métodos que hemos utilizado que es el de Lax y el de HLL (con $\rho_{in}=5.0, \, v_{x_{in}}=v_{y_{in}}=0.0, \, P_{in}=10.0$ y $E_{in}=3.75$), de radio interno $R_{in} = 0.2$ cm. que se va a expandir sobre un medio (con $\rho_{out}=1.0$  y $ P_{out}=0.1$) estático. Véase el Cuadro \ref{Tabla_parametros} para más detalles.} \label{fig:comparacion_inicial_lax_hll_NR}
+%\end{figure}
 
 
 La onda de Lax al tiempo (ver figura \ref{fig:Lax-newtoniano-prueba1}) $t = 0.05$ s tiene un radio $r=0.31$ cm y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$, mientras que la onda de HLL (ver figura \ref{fig:HLL-prueba1}) tiene un radio $r = 0.31$ y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$. Al avanzar la onda se ve una diferencia entre el método de Lax y HLL, la onda contra el centro de la onda se ve más difusa en HLL que con Lax, por lo que HLL es menos viscoso y resuelve mejor las discontinuidades.
@@ -1131,7 +1131,7 @@ $\rho_{in}$ &  Densidad interna de la onda expansiva & $10^{-3}$ \\
 \hline 
 $\rho_{out}$ &  Densidad del medio  & $10^{-10}$ \\
 \hline 
-$P_{int}$ & Presión interna de la onda expansiva & $2\times10^{-18}$ \\ 
+$P_{int}$ & Presión interna de la onda expansiva & $2\times10^{18}$ \\ 
 \hline 
 $P_{out}$ &  Presión del medio  & $\rho_{in} \times 10^{-10}$ \\ 
 \hline 
@@ -1153,22 +1153,56 @@ Co & Número de Courant & 0.7 \\
 
 
 
-
-Hubo también modificaciones a nuestro dominio, los valores de nuestras coordenadas x,y tienen valores entre $0$ y $2 \times 10^{10}$ [cm], nuestra onda de choque tenía un radio $r = 0.2 \times 10^{10}$ cm y estaba centrada en los puntos $(x,y) = (10^{10}, 10^{10})$ [cm] se puede ver que el algoritmo de Lax tiene algunos errores puesto que el centro de la onda se deforma en estos puntos, mientras que HLL es casi imperceptible, el radio al tiempo $t=0.025$ s es de $r =  0.24 \times 10^{10}$ su velocidad $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$
+La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá un comportamiento parecido a la onda de choque. Las dimensiones del dominio se modificaron para poder evaluar mejor la expansión de la onda. Los valores de nuestras coordenadas x,y tienen valores entre $0$ y $2 \times 10^{10}$ [cm].La presión interna de la onda incrementa 18 ordenes de magnitud y la densidad disminuye a tres ordenes de magnitud, para ver más detalles vea el cuadro \ref{Tabla_parametros_relatividad}. La expansión de la onda disminuye muy rapidamente, su radio inicial es de  $r = 0.2 \times 10^{10}$ cm y estaba centrada en los puntos $(x,y) = (10^{10}, 10^{10})$ cm, ver figura \ref{fig:Lax-relativista}. El radio al tiempo $t=0.025$ s es de $r =  0.24 \times 10^{10}$ y su velocidad $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$. La velocidad de la onda alcanza casi el 33\% de la velocidad de la luz.
 
 \begin{figure}[H]
 \centering
-\subfigure[]{\includegraphics[width=0.45\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel0}}
-\subfigure[$t = 0.06$ s]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
-\caption{En las pruebas relativistas, al comparar las imágenes se pueden apreciar una diferencia entre los métodos mas significativa.} \label{fig:Lax-hll-relativista}
+\subfigure[]{\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel0}}
+\subfigure[]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
+\caption{Evaluación de nuestra onda relativista. En el panel a) es al instante $t=0$ s y en el panel b) es al tiempo $t = 0.05$ s. La velocidad que alcanza la onda en los primeros instantes de su vida es de $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$, casi un 33\% de la velocidad de la luz} \label{fig:Lax-relativista}
 \end{figure}
 
-Al avanzar la onda, al tiempo $t = 0.2$ s, en ambos métodos se sigue mostrando 2 ondas una contra el medio y una contra el centro, el radio para Lax $r = 0.39$cm su velocidad $v = 0.95 \, \mathrm{cm}/\mathrm{s}$ el radio usando HLL es de $r = 0.39$ cm y su velocidad $v = 0.95 \, \mathrm{cm}/\mathrm{s}$
+Al continuar viendo la evolución de la onda, es más difícil distinguir las ondas que se originan en el interior de la onda de choque, que como en el caso Newtoniano, ver figura \ref{fig:Lax-relativista-t-1.97}.
+
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.2$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79}}
-\caption{El centro de la onda de HLL se ve más difuminada que al usar Lax} \label{fig:Lax-hll-relativista}
+\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79}
+\caption{Evolución de la onda al tiempo $t = 1.97$ s. Esta onda es la continuación del fenómeno que vimos en la figura \ref{fig:Lax-relativista}. La ondas que se generan son más difíciles de apreciar que en el caso newtoniano.} \label{fig:Lax-relativista-t-1.97}
 \end{figure}
+
+A pesar de las dificultades, podemos ver las mismas áreas que en el caso newtoniano. Donde el área 1 es el medio que no ha sido tocado, el área 2 el material barrido por la \emph{forward shock}, que podemos notar que su densidad es casi la misma que el medio ambiente. El área 3 es el material que ha sido tocado por la \emph{reverse shock}. El área 4 muestra la discontinuidad que se genera entre estas 2 ondas y el área 5 el material que no ha sido tocado por la \emph{reverse shock}.
+\begin{figure}[H]
+\centering
+{\includegraphics[scale=0.6]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79-analisis}}
+\caption{Análisis de la onda de choque al tiempo $t = 1.97$ s. Se pueden apreciar las mismas áreas que vimos en el caso newtoniano. La discontinuidad que hay en el área 4 no se puede notar como en el caso no relativista.}
+\end{figure}
+
+Se hicieron las mismas pruebas usando el método de HLL. El radio inicial de nuestra onda es el mismo que el que se usó con Lax, $r = 0.2 \times 10^{10}$ cm y se desplazó al tiempo $t=0.025$ s $r =  0.24 \times 10^{10}$ con lo que su velocidad fue $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$. 
+
+\begin{figure}[H]
+\centering
+\subfigure[]{\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel0}}
+\subfigure[$t = 0.06$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel01}}
+\caption{Desarro}
+\end{figure}
+
+Al igual que el método de Lax, la velocidad que alcanza es cerca del 33 \% de la velocidad de la luz.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79}
+\caption{asda}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79-analisis}
+\caption{asda}
+\end{figure}
+
+
 
 \section{Jet}
 
