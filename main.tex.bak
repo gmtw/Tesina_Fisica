@@ -1219,6 +1219,7 @@ El desarrollo al tiempo $t = 1.97$ s, las 2 ondas tanto la centrada como la que 
 
 
 \subsubsection{Lax vs HLL}
+En la última parte de la onda de choque vamos a comparar los dos métodos que hemos visto hasta ahora.
 
 
 \begin{figure}[H]
@@ -1232,13 +1233,20 @@ A pesar de las dificultades, podemos ver las mismas áreas que en el caso newton
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79-analisis}
-\caption{asda}
+\caption{Las áreas apreciadas son muy parecidos al método de Lax}
 \end{figure}
 
 
 \section{Jet}
 
-En esta parte vamos a simular un jet con las siguientes caracteristicas
+El jet  es una emisión delgada de gas a velocidades altas, que se propaga en un medio ambiente gaseoso. Para poder simular nuestro jet vamos a inyectar continuamente energía y presión de un lado de la frontera con velocidades, en nuestro caso, cercanas a la de la luz.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_jet/hll/hll_jet}
+\caption{Para poder simular nuestro jet, se inyectarán energía y presión constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro.}
+\end{figure}
+
 \chapter{Medios de densidad}
 
 \section{Condiciones de frontera}
