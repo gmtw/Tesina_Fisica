@@ -1159,7 +1159,7 @@ La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá u
 \begin{figure}[H]
 \centering
 \subfigure[]{\includegraphics[width=0.45\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel0}}
-\subfigure[]{\includegraphics[scale = 0.43]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
+\subfigure[]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
 \caption{Evaluación de nuestra onda relativista. En el panel a) es al instante $t=0$ s y en el panel b) es al tiempo $t = 0.05$ s. La velocidad que alcanza la onda en los primeros instantes de su vida es de $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$, casi un 33\% de la velocidad de la luz} \label{fig:Lax-relativista}
 \end{figure}
 

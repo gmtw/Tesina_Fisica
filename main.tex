@@ -1110,8 +1110,14 @@ La onda de Lax al tiempo (ver figura \ref{fig:Lax-newtoniano-prueba1}) $t = 0.05
 \caption{Las ondas de choque están establecidas al tiempo $t = 0.5$, ambas imágenes tienen una resolución de 1000x1000, mientras que Lax (panel a)) es un poco más rápido que HLL (panel b)), HLL tiene menor viscosidad en la zona de discontinuidad. La zona de discontinuidad es donde tanto la \emph{forward shock} y la \emph{reverse shock} se separan. En las 2 imagenes, aunque es mínima, se puede notar una difuminación mayor en Lax en esta zona. Por esto podemos decir que HLL es un método para resolver este tipo de discontinuidades.}  \label{fig:Lax-hll-newtoniano1}
 \end{figure}
 
+
 Al dispersarse por completo el centro de la onda, para ambas, se puede ver con mejor claridad que hay 2 diferentes tipos de onda, una contra el medio y otra contra en centro de la misma, para Lax, el radio toma el valor $r = 0.38$ y una velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s} $. En el caso de HLL es el mismo radio $r = 0.38 $ cm y la misma velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$.
 
+\begin{figure}[H]
+\centering
+\subfigure[]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/perfil_radial/perfil_radial_newtoniano}}
+\caption{jadhj}
+\end{figure}
 
 
 \subsection{Caso relativista} 
@@ -1159,7 +1165,7 @@ La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá u
 \begin{figure}[H]
 \centering
 \subfigure[]{\includegraphics[width=0.45\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel0}}
-\subfigure[]{\includegraphics[scale = 0.43]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
+\subfigure[]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
 \caption{Evaluación de nuestra onda relativista. En el panel a) es al instante $t=0$ s y en el panel b) es al tiempo $t = 0.05$ s. La velocidad que alcanza la onda en los primeros instantes de su vida es de $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$, casi un 33\% de la velocidad de la luz} \label{fig:Lax-relativista}
 \end{figure}
 
@@ -1234,6 +1240,12 @@ A pesar de las dificultades, podemos ver las mismas áreas que en el caso newton
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79-analisis}
 \caption{Las áreas apreciadas son muy parecidos al método de Lax}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfigure[]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/perfil_radial/relativistico_densidad.png}}
+\caption{jadhj}
 \end{figure}
 
 
