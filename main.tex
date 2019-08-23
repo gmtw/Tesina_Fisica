@@ -1228,7 +1228,7 @@ El desarrollo al tiempo $t = 1.97$ s, las 2 ondas tanto la centrada como la que 
 En la última parte de la onda de choque vamos a comparar los dos métodos que hemos visto hasta ahora.
 
 
-\begin{figure}[H]
+\begin{figure}[H] \label{fig:analisis_onda_relativista_lax1}
 \centering
 {\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79-analisis}}
 \caption{Análisis de la onda de choque al tiempo $t = 1.97$ s. Se pueden apreciar las mismas áreas que vimos en el caso newtoniano. La discontinuidad que hay en el área 4 no se puede notar como en el caso no relativista.}
@@ -1236,16 +1236,18 @@ En la última parte de la onda de choque vamos a comparar los dos métodos que h
 
 A pesar de las dificultades, podemos ver las mismas áreas que en el caso newtoniano. Donde el área 1 es el medio que no ha sido tocado, el área 2 el material barrido por la \emph{forward shock}, que podemos notar que su densidad es casi la misma que el medio ambiente. El área 3 es el material que ha sido tocado por la \emph{reverse shock}. El área 4 muestra la discontinuidad que se genera entre estas 2 ondas y el área 5 el material que no ha sido tocado por la \emph{reverse shock}.
 
-\begin{figure}[H]
+\begin{figure}[H] \label{fig:analisis_onda_relativista_hll1}
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79-analisis}
 \caption{Las áreas apreciadas son muy parecidos al método de Lax}
 \end{figure}
 
-\begin{figure}[H]
+Se visualizó un perfil radial de las figuras \ref{fig:analisis_onda_relativista_lax1} y \ref{fig:analisis_onda_relativista_hll1} y se sobrepusieron en la figura \ref{fig:perfil_radial_relativista_newtoniano}, el error que hay entre ellas al comparar los picos de las densidades mas altas es apenas del $\approx 4 \, \%$
+
+\begin{figure}[H] \label{fig:perfil_radial_relativista_newtoniano}
 \centering
 \subfigure[]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/perfil_radial/relativistico_densidad.png}}
-\caption{jadhj}
+\caption{La diferencia que hay entre los picos de densidad, sugieren un error aproximado del $\approx 4 \, \%$}
 \end{figure}
 
 
@@ -1253,10 +1255,40 @@ A pesar de las dificultades, podemos ver las mismas áreas que en el caso newton
 
 El jet  es una emisión delgada de gas a velocidades altas, que se propaga en un medio ambiente gaseoso. Para poder simular nuestro jet vamos a inyectar continuamente energía y presión de un lado de la frontera con velocidades, en nuestro caso, cercanas a la de la luz.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_jet/hll/hll_jet}
+\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_jet/jet_ejemplo}
 \caption{Para poder simular nuestro jet, se inyectarán energía y presión constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro.}
+\end{figure}
+
+Las pruebas del jet van a ser en un medio con una densidad más grande que con la que se le está inyectando al jet. En general para todas las pruebas la densidad del jet será de $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, la presión será $P_{jet} = 20 \times \rho_{jet} \frac{g}{\mathrm{s^2} \mathrm{cm}}$, es decir, la presión sera 20 veces mas grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad va a variar pero se empezará con un valor de $\rho_{ma}  = 300 \, g/\mathrm{cm}^2$, y al igual que nuestro jet $P_{ma} = 20 \times \rho_{ma} \frac{g}{\mathrm{s^2} \mathrm{cm}}$. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959 \times c \, \mathrm{cm}/ \mathrm{s}$.
+
+\subsection{Lax}
+
+Las pruebas del jet van a ser usando Lax, van a ser usando una densida $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, con una resolución de 500 pixeles. El tamaño de nuestro dominio será cuadado, con una longitud de $x = y = 1\times 10^9 \, \mathrm{cm}$
+
+\begin{figure}[H] \label{fig:jet_ma_300}%Snapshot 20 
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20} 
+\caption{Para poder simular nuestro jet, se inyectarán energía y presión constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro.}
+\end{figure}
+
+La siguiente prueba fue haciendo nuestro medio ambiente más denso, pero las condiciones del jet como presión y velocidad se mantuvieron iguales que en nuestra anterior prueba. El jet mostró mas dificultades al escapar debido a la densidad y presión más elevadas.
+
+\begin{figure}[H] %Snapshot 20
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20_ma_500} 
+\caption{Se puede apreciar perfectamente como la velocidad del jet es menor con respecto a \ref{fig:jet_ma_300} debido a que la densidad de nuestro medio ambiente es 1.6 veces mas grande.}
+\end{figure}
+
+\subsection{HLL}
+
+La siguiente parte fue usando el método de HLL, el cual ha mostrado ser un método más difícil de aplicar debido al tiempo de ejecución que lleva en un ordenador.
+
+\begin{figure}[H] %Snapshot 20
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_300} 
+\caption{La imágen de HLL tiene una resolución de 250x250 píxeles y es aun más lento que Lax.}
 \end{figure}
 
 \chapter{Medios de densidad}
@@ -1833,6 +1865,58 @@ x= \frac{m_0^2 c^2}{\rho}+ \frac{\Gamma}{\Gamma-1}\frac{m_0^2 P}{\rho^2}
 
 Sustituyendo la ecuación \ref{var_x_complicada} en \ref{j_modificada_relativista}
 
+\begin{equation}
+-\overline{j}^{2} = \left( x_m - x_j \right) = P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-n_j^2 u_j^2 \left(\frac{m_0^2 c^2}{\rho_m} +
+\frac{\Gamma}{\Gamma-1} \frac{m_0^2 P_m}{\rho_m^2}-
+\frac{m_0^2 c^2}{\rho_j}-
+\frac{\Gamma}{\Gamma-1} \frac{m_0^2 P_j}{\rho_j^2} \right) = 
+P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-n_j^2 u_j^2 
+\left[m_0^2 c^2 \left( \frac{1}{\rho_m} - \frac{1}{\rho_j} \right)+
+\frac{\Gamma}{\Gamma-1} m_0^2 \left( \frac{P_m}{\rho_m^2}- \frac{P_j}{\rho_j^2}\right) \right] = 
+P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-u_j^2 
+\left[\rho_j^2 c^2 \left( \frac{\rho_j}{\rho_m} - 1 \right)+
+\frac{\Gamma}{\Gamma-1} \left( P_m \frac{\rho_j^2}{\rho_m^2} - P_j \right) \right] = 
+P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-u_j^2 
+\left[\frac{\rho_j^2 c^2}{P_j}  \left( \frac{\rho_j}{\rho_m} - 1 \right)+
+\frac{\Gamma}{\Gamma-1} \left( \frac{P_m}{P_j} \frac{\rho_j^2}{\rho_m^2} - 1 \right) \right] = 
+\frac{P_m}{P_j} - 1
+\end{equation}
+
+
+Sabemos que $V = \frac{m_0}{\rho}$ y e introduciendo la siguiente notación $\hat{P}=P_m/P_j$, $\hat{V}=V_m/V_j$ y $\hat{c} = \frac{c}{\sqrt{P_j V_j}}$ llegamos a la relación de Rayleigh
+
+\begin{equation}
+-u_j^2
+\left[ \hat{c}  \left( \hat{V} - 1 \right)+
+\frac{\Gamma}{\Gamma-1} \left( \hat{P} \hat{V}^2 - 1 \right) \right] = 
+\hat{P} - 1
+\end{equation}
+
+Para obtener la ecuación de Rankine-Hugoniot
 
 \begin{thebibliography}{20}
 
