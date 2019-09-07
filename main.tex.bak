@@ -1265,17 +1265,17 @@ Las pruebas del jet van a ser en un medio con una densidad más grande que con l
 
 \subsection{Lax}
 
-Las pruebas del jet van a ser usando Lax, van a ser usando una densida $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, con una resolución de 500 pixeles. El tamaño de nuestro dominio será cuadado, con una longitud de $x = y = 1\times 10^9 \, \mathrm{cm}$
+Las pruebas del jet van a ser usando Lax, van a ser usando una densida $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, con una resolución de 500 pixeles. El tamaño de nuestro dominio será cuadrado, con una longitud de $x = y = 1\times 10^9 \, \mathrm{cm}$. Se puede ver como el jet desplaza el material del medio ambiente y va creando un hueco donde hay menor densidad. A esta parte se le conoce como el capullo del jet.
 
 \begin{figure}[H] \label{fig:jet_ma_300}%Snapshot 20 
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20} 
-\caption{Para poder simular nuestro jet, se inyectarán energía y presión constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro.}
+\caption{Ejección de un jet al tiempo $t = 0.2$ s, con una densidad  $\rho = 100 \, \mathrm{g}/\mathrm{cm}^3$, una velocidad de sobre el eje y $v_y = 0.9797959 \, \mathrm{c}$  y una presión 20 veces la  magnitud de la densidad $P = 20 \times \vert \rho \vert$. La densidad del medio ambiente es $\rho = 300 \, \mathrm{g}/\mathrm{cm}^3$ y la presión es 20 veces mayor la del medio ambiente.}
 \end{figure}
 
-La siguiente prueba fue haciendo nuestro medio ambiente más denso, pero las condiciones del jet como presión y velocidad se mantuvieron iguales que en nuestra anterior prueba. El jet mostró mas dificultades al escapar debido a la densidad y presión más elevadas.
+La siguiente prueba fue haciendo nuestro medio ambiente más denso, pero las condiciones del jet como presión y velocidad se mantuvieron iguales que en nuestra anterior prueba. El jet mostró mas dificultades al escapar debido a la densidad y presión más elevadas. Se formó al igual que en la figura \ref{fig:jet_ma_300} una menor densidad debido al desplazamiento de materia que hizo el jet.
 
-\begin{figure}[H] %Snapshot 20
+\begin{figure}[H] \label{fig:jet_100_t_20_ma_500}%Snapshot 20
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20_ma_500} 
 \caption{Se puede apreciar perfectamente como la velocidad del jet es menor con respecto a \ref{fig:jet_ma_300} debido a que la densidad de nuestro medio ambiente es 1.6 veces mas grande.}
@@ -1283,23 +1283,41 @@ La siguiente prueba fue haciendo nuestro medio ambiente más denso, pero las con
 
 \subsection{HLL}
 
-La siguiente parte fue usando el método de HLL, el cual ha mostrado ser un método más difícil de aplicar debido al tiempo de ejecución que lleva en un ordenador.
+La siguiente parte fue usando el método de HLL, el cual ha mostrado ser un método más difícil de aplicar debido al tiempo de ejecución que lleva en un ordenador. Al igual que el método de Lax, este se hizo con una resolución de 500x500 pixeles.
 
-\begin{figure}[H] %Snapshot 20
+\begin{figure}[H] \label{fig:jet_hll_100_ma_300_500pix} %Snapshot 20
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_300_500pix} 
-\caption{La imágen de HLL tiene una resolución de 250x250 píxeles y es aun más lento que Lax.}
+\caption{La imágen de HLL tiene una resolución de 500x500 píxeles. El tiempo es $t =0.2 $ s. El método de HLL nos muestra una distribución de las densidades entre el medio ambiente y el del jet casi homogeneas, dicho de otra manera, sin muchas discontinuidades. }
 \end{figure}
+
+Al incrementar la densidad del medio externo a 500 g/cc, usando el método de HLL, se puede ver que la interaccion del jet con el medio ambiente se hace más difícil de apreciar dado que no hay mucha diferencia de densidad entre estas dos interacciones. Ademas de que con este método no podemos apreciar, apesar de la resolución que estamos introduciendo, las discontinuidades presentes entre el jet y el medio ambiente. 
 
 \begin{figure}[H] %Snapshot 20
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_500_500pix} 
-\caption{Esta prueba tiene una densidad de medio ambiente un poco mayor que en la anterior.}
+\caption{Esta prueba tiene una densidad de medio ambiente es de 500 g/cc. La interacción que hay entre el medio ambiente y el jet es pobremente notoria apesar de la resolución que estamos ejerciendo.}
 \end{figure}
 
+\subsection{Comparación Lax-HLL}
+
+Al ver las figuras \ref{fig:jet_ma_300} y \ref{fig:jet_hll_100_ma_300_500pix} podemos notar grandes diferencias entre ambos métodos. En la figura \ref{fig:analisis_jet_densidad_300}, en los ovalos blancos podemos ver que la densidad usando el método de Lax, es sutilmente mas grande que en el que vemos usando HLL. En los par de ovalos negros erguidos se puede ver una menor densidad en Lax pero que no existe en HLL. Además que en el óvalo acostado, donde el jet es inyectado, es donde ocurre la mayor anomalía dado que en HLL no se registra una densidad de 100 g/cc (que es la densidad de nuestro jet).
+
+\begin{figure}[H] \label{fig:analisis_jet_densidad_300} %Snapshot 20
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_300} 
+\caption{La diferencia que hay entre HLL (panel izquierdo) y Lax (panel derecho) es notoriamente mayor, dado que HLL en el ovalo blanco muestra una menor densidad que Lax. En los óvalos negros muestra una densidad mayor a diferencia de Lax y la anomalía mas grande es en la parte de abajo donde se inyecta el jet dado que no se muestra una densidad de 100 g/cc como se esta inyectando el jet.}
+\end{figure}
+
+En la prueba con densidad de medio ambiente mayor sigue habiendo grandes diferencias entre ambos métodos. Al igual que en la figura \ref{fig:analisis_jet_densidad_300} en el óvalo blanco de la figura \ref{fig:analisis_jet_densidad_500} la densidad sigue siendo mayor en Lax que en HLL y en el círculo negro se nota una densidad mucho menor en Lax, que en HLL.
+
+\begin{figure}[H] \label{fig:analisis_jet_densidad_500} %Snapshot 20
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_500} 
+\caption{La comparación entre las 2 figuras aún con una densidad de medio ambiente de $300 \, g/\mathrm{cm}^2 $ sigue siendo significativa dado la diferencia de densidades que fueron marcados con los ovalos blancos y en los círculos negros.}
+\end{figure}
 \chapter{Medios de densidad}
 
-\section{Condiciones de frontera}
 \subsection{SGRB en medio de densidad 1}
 \subsection{SGRB en medio de densidad 2}
 
