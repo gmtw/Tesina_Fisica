@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{book}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}	
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -1314,12 +1314,32 @@ En la prueba con densidad de medio ambiente mayor sigue habiendo grandes diferen
 \begin{figure}[H] \label{fig:analisis_jet_densidad_500} %Snapshot 20
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_500} 
-\caption{La comparación entre las 2 figuras aún con una densidad de medio ambiente de $300 \, g/\mathrm{cm}^2 $ sigue siendo significativa dado la diferencia de densidades que fueron encontrados en los ovalos blancos y en los círculos negros.}
+\caption{La comparación entre las 2 figuras aún con una densidad de medio ambiente de $300 \, g/\mathrm{cm}^2 $ sigue siendo significativa dado la diferencia de densidades que fueron marcados con los ovalos blancos y en los círculos negros.}
 \end{figure}
 \chapter{Medios de densidad}
 
-\subsection{SGRB en medio de densidad 1}
-\subsection{SGRB en medio de densidad 2}
+En este capítulo, probaremos el código con diferentes medios de densidad, con el fin de ver las interacciones que hay entre el jet y su entorno. El método que vamos a usar para realizar nuestras pruebas va a ser el de Lax, dado que, como hemos visto hasta ahora, el tiempo de ejecucioón del programa ha sido mucho menor usandolo asi como la viscosidad que se ha visto en nuestros gráficos.
+
+\section{SGRB en medio de densidad 1}
+En este primer subsección tomaremos una valor de una densidad de medio ambiente muy bajo, es decir, que el jet este expuesto al vacío, la densidad del jet que vamos a utilizar va a ser de $\rho_{jet} = 100 \, g/\mathrm{cm}^3 $ y la presión que vamos a utilizar va a ser de 20 veces mayor que la magnitud de la densidad. La densidad del medio ambiente tendrá un valor de $\rho_{jet} = 10^{-10} \, g/\mathrm{cm}^3 $, al igual que el jet, su presión será 20 veces mas grande el módulo de la densidad.
+
+\begin{figure}[H]
+\centering
+\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_nulo_10a}}
+\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_nulo_80a}}
+\caption{Al tener únicamente velocidad sobre el eje y, el jet forma perfectamente un cilindro. Pero se puede observar que el jet se expande simétricamente sobre el eje x. Esta expansión sobre el eje x es solo para densidades muy bajas comparadas a la del jet.}
+\end{figure}
+
+\section{SGRB en medio de densidad 2}
+
+Ahora aumentaremos la densidad de nuestro medio ambiente, esta será 10 veces más grande que nuestro jet, es decir, tendrá una densidad $\rho_{ma} = 1000 \, g/\mathrm{cm}^3 $. El jet, en sus primeros instantes de vida, desplaza la materia isotrópicamente. Enseguida se puede ver, que a pesar de que el jet esta colimado, forma un pequeño capullo donde la densidad es mas grande que en sus alrededores como se muestra en en panel b) de la figura \ref{fig:medio_ambiente_1000}.
+
+\begin{figure}[H] \label{fig:medio_ambiente_1000}
+\centering
+\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_10a}}
+\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_70a}}
+\caption{En los primeros instantes $t~0.1$ s el jet desplaza la materia del medio ambiente isotrópicamente, al ir avanzando, el jet va desplazando el material y se reduce su velocidad a $v = 0.4c$}
+\end{figure}
 
 \section{Comparación con el GRB170817}
 
