@@ -1318,10 +1318,10 @@ En la prueba con densidad de medio ambiente mayor sigue habiendo grandes diferen
 \end{figure}
 \chapter{Medios de densidad}
 
-En este capítulo, probaremos el código con diferentes medios de densidad, con el fin de ver las interacciones que hay entre el jet y su entorno. El método que vamos a usar para realizar nuestras pruebas va a ser el de Lax, dado que, como hemos visto hasta ahora, el tiempo de ejecucioón del programa ha sido mucho menor usandolo asi como la viscosidad que se ha visto en nuestros gráficos.
+En este capítulo, probaremos el código con diferentes medios de densidad, con el fin de ver las interacciones que hay entre el jet y su entorno. El método que vamos a usar para realizar nuestras pruebas va a ser el de Lax, dado que, como hemos visto hasta ahora, el tiempo de ejecución del programa ha sido mucho menor usandolo asi como la viscosidad que se ha visto en nuestros gráficos.
 
 \section{SGRB en medio de densidad 1}
-En este primer subsección tomaremos una valor de una densidad de medio ambiente muy bajo, es decir, que el jet este expuesto al vacío, la densidad del jet que vamos a utilizar va a ser de $\rho_{jet} = 100 \, g/\mathrm{cm}^3 $ y la presión que vamos a utilizar va a ser de 20 veces mayor que la magnitud de la densidad. La densidad del medio ambiente tendrá un valor de $\rho_{jet} = 10^{-10} \, g/\mathrm{cm}^3 $, al igual que el jet, su presión será 20 veces mas grande el módulo de la densidad.
+En este primer subsección tomaremos una valor de una densidad de medio ambiente muy bajo, es decir, que el jet este expuesto al vacío, la densidad del jet que vamos a utilizar va a ser de $\rho_{jet} = 100 \, g/\mathrm{cm}^3 $ y la presión que vamos a utilizar va a ser de 20 veces mayor que la magnitud de la densidad. La densidad del medio ambiente tendrá un valor de $\rho_{jet} = 10^{-10} \, g/\mathrm{cm}^3 $, al igual que el jet, su presión será 20 veces mas grande el módulo de la densidad. La velocidad del jet disminuye a 
 
 \begin{figure}[H]
 \centering
@@ -1338,7 +1338,7 @@ Ahora aumentaremos la densidad de nuestro medio ambiente, esta será 10 veces m�
 \centering
 \subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_10a}}
 \subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_70a}}
-\caption{En los primeros instantes $~0.1$ s el jet desplaza la materia del medio ambiente isotrópicamente, al ir avanzando, el jet va desplazando el material y se reduce su velocidad a $v = 0.4c$}
+\caption{En los primeros instantes $t~0.1$ s el jet desplaza la materia del medio ambiente isotrópicamente, al ir avanzando, el jet va desplazando el material y se reduce su velocidad a $v = 0.4c$}
 \end{figure}
 
 \section{Comparación con el GRB170817}
