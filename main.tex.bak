@@ -1987,7 +1987,51 @@ m _ { 0 } ^ { 2 } \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m 
 
 Al igualar las ecuaciones \ref{side_left_perfect} y \ref{side_right_perfect} obtenemos una versión más simplificada de la ecuación \ref{Ecuacion_a_desarrollar}, con lo que nos queda.
 
+\begin{eqnarray} \label{Ecuacion_simplificada}
+c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } - \frac { P _ { j } } { \rho _ { j } } \right) - \left( \frac { P _ { m } } { \rho _ { j } } - \frac { P _ { j } } { \rho _ { m } } \right) \right]
+\nonumber \\ 
+= \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } P _ { j } \left( \frac { 1 } { \rho _ { j } ^ { 2 } } - \frac { 1 } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } - \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } \right] \right]
+\end{eqnarray}
 
+Multiplicando por $\left( \frac{\rho_j}{P_j}\right)^2$
+
+\begin{eqnarray}
+\frac { \rho _ { j } } { P _ { j } } c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { P _ { j } } \frac { \rho _ { j } } { \rho _ { m } } - 1 \right) - \left( \frac { P _ { m } } { P _ { j } } - \frac { \rho _ { 1 } } { \rho _ { m } } \right) \right] \nonumber \\
+=\left( \frac { \Gamma } { \Gamma - 1 } \right) \frac { P _ { m } } { P _ { j } } \left( 1 - \frac { \rho _ { j } ^ { 2 } } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { P _ { j } } \frac { \rho _ { j } } { \rho _ { m } } \right) ^ { 2 } - 1 \right]
+\end{eqnarray}
+
+Con lo que al final nos queda.
+
+\begin{equation} \label{ecuacion_RH}
+\hat { c } ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) ( \hat { P } \hat { V } - 1 ) - ( \hat { P } - \hat { V } ) \right] =
+\left( \frac { \Gamma } { \Gamma - 1 } \right) \hat { P } \left( 1 - \hat { V } ^ { 2 } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \hat { p } ^ { 2 } \hat { V } ^ { 2 } - 1 \right]
+\end{equation}
+
+Si tomamos el límite no relativista, es decir, que $\hat{c} \longrightarrow \infty$, el lado derecho de la ecuación desaparece y nos queda.
+
+\begin{equation*}
+( \Gamma + 1 ) \hat{P} \hat { V } - ( \Gamma + 1 ) = ( \Gamma - 1 ) \hat { P } - ( \Gamma - 1 ) \hat { V }
+\end{equation*}
+
+Entonces
+
+\begin{equation*}
+( \Gamma + 1 ) \hat { P } \hat { V } + ( \Gamma - 1 ) \hat { V } = ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P }
+\end{equation*}
+
+Entonces
+
+\begin{equation*}
+\hat { V } [ ( \Gamma + 1 ) \hat { P } + ( \Gamma - 1 ) ] = ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P }
+\end{equation*}
+
+Entonces
+
+\begin{equation}
+\hat { V } = \frac { ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P } } { ( \Gamma + 1 ) \hat { P } + ( \Gamma - 1 ) }
+\end{equation}
+
+Con lo que volvemos a la ecuación 
 
 \begin{thebibliography}{20}
 
