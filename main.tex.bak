@@ -152,14 +152,15 @@ Una bonita historia
 
 Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos, fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/vela5a.html}} a finales de la decada de los 60's, gracias a los datos recabados por el experimento BATSE\footnote{\url{https://gammaray.msfc.nasa.gov/batse/}} se logró identificar 2 grupos principales de GRBs, los cortos y los largos, en los cuales este último tiene una duracion mayor a los 2 s.
 
-\begin{figure} %fuente de la imagen: https://imagine.gsfc.nasa.gov/science/objects/bursts1.html
+\begin{figure} 
+%fuente de la imagen: https://imagine.gsfc.nasa.gov/science/objects/bursts1.html
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/burst_durations_labelled.jpg}
   \caption{Gráfico que muestra la diferencia de tiempo que existe entre GRBs cortos y GRBs largos. Se pueden apreciar 2 picos que marcan la diferencia de duracion entre los GRBs}
   \label{fig:Batse_duration_GRBs}
 \end{figure}
 
-El objetivo principal del estudio de los GRBs es estudiar las propiedades de los estallidos de los rayos gamma, así como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor más atractivo. La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo, la energía liberada es del orden de $10^{52}$ ergs.
+El objetivo principal del estudio de los GRBs es analizar las propiedades de los estallidos de los rayos gamma, así como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor más atractivo. La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo, la energía liberada es del orden de $10^{52}$ ergs.
 
 Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
 \section{Características de los GRBs}
@@ -176,9 +177,27 @@ Muchas de las características de los GRBS ya sean estos largos o cortos, son la
 \end{figure}
  
 
-\subsection{Emisión pronta}
-La emisión pronta es definido como el periodo de tiempo donde el detector de rayos $\gamma$ detecta una señal sobre el fondo, mientras que la emisión afterglow es despues de la emisión prompt en el cual se pueden detectar otras longitudes de onda como el óptico, radio y los rayos X \ref{fig:Partes de GRBs}.
+\subsection{Emisión pronta} %Azzam
+La emisión pronta es definido como el periodo de tiempo donde el detector de rayos $\gamma$ detecta una señal sobre el fondo. Estas consisten en fotones de alta energía, no tiene espectro térmico. El espectro térmico es producido por un gas en equilibio térmico. Además, tiene bastantes carterísticas observacionales.
+
+El flujo de energía varia dentro de cientos de Kev. La emisión de las curvas de luz son notoriamente irregulares sobre escalas de tiempo muy pequeñas (ver figura \ref{lightcurve}). %Short gamma-ray bursts: A review; P. D’Avanzo
+En los GRBs cortos, su espectro de emisión, se ha encontrado más duro que en los GRBs largos, esto debido a que es una combinación de componentes espectrales duros de baja energía. 
+
+\begin{figure}
+\centering %Fuente Zhang
+\includegraphics[width=1.0\textwidth]{Figuras/lightcurve_different}
+\caption{\label{lightcurve} Diferentes curvas de luz captadas por el detector Batse detectadas en la emisión pronta de los GRBs. Las curvas de luz difieren bastantes unas de otras, mientras que BATSE 332 es un decaimiento exponencial , BATSE Trigger 1989  tiene 2 picos de intensidad. }
+\end{figure}
 \subsection{Emisión tardía}
+La emisión afterglow es despues de la emisión prompt en el cual se pueden detectar otras longitudes de onda como el óptico, radio y los rayos X. %\ref{fig:Partes de GRBs}.
+La propiedad de "multiples longitudes de onda", hace una propiedad única de la emisión tardía. Estos cubren un amplio rango de frecuencias, desde las ondas de radio hasta los Tev. El espectro de banda ancha es descrito como una ley de potencias inversa, ya que la fuerza del choque se reduce a medida que la onda expansiva va desacelerando. Con lo que se espera que todas las longitudes de onda de las curvas de luz decaigan como ley de potencias. Entonces la densidad de flujo puede ser representada como:
+
+\begin{equation}
+F_{\nu}(t,\nu) \propto t^{-\alpha} \nu^{\beta}
+\end{equation}
+
+Donde $\alpha$ y $\beta$ son reales positivos.
+
 
  En Mayo y Julio del 2005 datos de eyecciones recopiladas por el satélite \emph{swift} al seguir al seguir al GRB 050509B, descubrieron las primeras fases tardías de los GRBs cortos, tiempo después el satélite HETE-2 junto con el observatorio \emph{chandra} de rayos X siguieron al satélite 050709 el cual localizo la fase tardía en rayos X y despues en la banda óptica, con estos datos recabados de la fase tardía se pudo llegar a que los GRBs cortos tienen una escala de densidad y una energía mas baja que los GRBs largos, tambien se llego a la conclusión de que los GRBs cortos tienen orígenes cosmologicos y que las estrellas masivas no son sus progenitores como en el caso de GRBs cortos.
 \subsection{Energía y luminosidad}
@@ -846,10 +865,10 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 %======================================================================================
 \chapter{Verificación del código}
 
-Las siguientes pruebas verifican el buen funcionamiento del código al hacer tanto Lax como HLL en relativista y no relativista.
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
 
 \section{Onda de choque} %Shock Wave and High Pressure Phenomena) Isabelle Sochet (eds.
-La onda de choque se produce por la liberación rápida de energía comprimida en un volumen fijo. Esta explosión divide a nuestro dominio en 2 zonas distintas como se muestra en la figura \ref{fig:onda_choque_example}. La zona I, estará determinado por la densidad, presión, y velocidades del medio ambiente ($\rho_m, \, P_m\, v_{x_m}, \, v_{y_m}$, respectivamente). La zona II (i.e. la región de la onda de choque), se produce al depositar una energía $E_{in}$ dentro de una región definida por un radio interno ($R_{in}$) en reposo. Para ver más detalles véase el cuadro \ref{fig:onda_choque_example}.
+La onda de choque se produce por la liberación rápida de energía comprimida dentro de un volumen de radio $R$. Esta explosión divide a nuestro dominio en 2 zonas distintas como se muestra en la figura \ref{fig:onda_choque_example}. La zona I, estará determinado por la densidad, presión, y velocidades del medio ambiente ($\rho_m, \, P_m\, v_{x_m}, \, v_{y_m}$, respectivamente). La zona II (i.e. dentro de la onda de choque), se produce al depositar una densidad de energía $E_{in}$ dentro de una región definida por un radio interno ($R_{in}$) en reposo. Para ver más detalles véase el cuadro \ref{fig:onda_choque_example}.
 
 \begin{table}[htbp]\label{Tabla_parametros}
 \begin{center}
@@ -888,10 +907,10 @@ Dado que la zona II está en reposo $v_{x_{in}}=0$ y $v_{y_{in}}=0$, se tiene:
 $E_{in} = {\frac{P_{in}}{\Gamma -1 }}$).
 Cabe señalar que los valores de la densidad y presión del medio ambiente tendrán valores mas bajos que sus respectivos de la onda de choque. 
 
-\begin{figure}[H]\label{fig:onda_choque_example}
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/prueba_example}
-\caption{La zona I (medio ambiente), se caracterizará por tener valores de densidad, presión y velocidades ($\rho_m, \, P_m \, v_{x_m}, \, v_{y_m}$, respectivamente) mostrados en el cuadro \ref{Tabla_parametros}. La zona II (onda de choque) se produce al depositar una energía ($E_{in}$) y una presión ($P_{in}$) dentro de un círculo (con $R_{in}$).} \label{fig:onda_choque_example}
+\includegraphics[width=0.6\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/prueba_example}
+\caption{\label{fig:onda_choque_example}La zona I (medio ambiente), se caracterizará por tener valores de densidad, presión y velocidades ($\rho_m, \, P_m \, v_{x_m}, \, v_{y_m}$, respectivamente) mostrados en el cuadro \ref{Tabla_parametros}. La zona II (onda de choque) se produce al depositar una energía ($E_{in}$) y una presión ($P_{in}$) dentro de un círculo (con $R_{in}$).}
 \end{figure}
 
 La onda de choque se dejó evolucionar con el paso del tiempo, y se analizó la interacción que hay entre las zonas I y II. En específico, se siguió la evolución de una onda de choque con una velocidad de expansión muy por debajo de la velocidad de la luz (denominado como caso newtoniano), y además la evolución de una onda de choque cuya velocidad de expansión estaba cercana a la velocidad de la luz (caso relativista). Cabe señalar que en ambos casos se siguieron los cambios que se produjeron utilizando los método numéricos de Lax y el de HLL (véase la Sección \ref{sec:Diferencias_finitas} para mayor información). La condición a la frontera utilizada en todos los bordes fue la de \emph{outflow}\footnote{Para ver más detalles acerca de esta frontera y/o de otro tipo de fronteras veáse el apéndice \ref{aped.B}}. 
@@ -910,7 +929,7 @@ La onda de choque se dejó evolucionar con el paso del tiempo, y se analizó la 
 
 %1. Newtoniano + Lax + onda choque centrada 2. Newtoniano + Lax + onda choque borde
 
-Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con la constante de relación específica $\Gamma = 3/4$, así como las no relativistas $\Gamma = 5/3$. La descripción del fenómeno es de una onda expansiva sobre un medio constante (ver figura \ref{fig:onda_choque_example}) con una densidad de energía de $E = 0.15 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$, densidad $\rho = 1 \, \mathrm{g}/\mathrm{cm}^3$ , velocidades $v = 0 \, \mathrm{cm}/\mathrm{s}$ y una presión $P=0.1 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}} $. La simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 500x500 pixeles al tiempo $t=0 \, \mathrm{s}$  y en la onda interna. Su valor de la densidad es de $\rho=5 \, \mathrm{g}/\mathrm{cm}^3$, su velocidad interna será la misma que la del ambiente, la presión interna de la onda $P=10 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$ y una densidad de energía interna $E = 3.75 \frac{\mathrm{g}}{\mathrm{s}^2 \mathrm{cm}}$. La onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se correrá en el intervalo de tiempó $t \in \left[ 0 , 0.5 \right]$ s.
+Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones relativistas con la constante de relación específica $\Gamma = 3/4$, así como las newtoniana $\Gamma = 5/3$. La descripción del fenómeno es de una onda expansiva sobre un medio constante (ver figura \ref{fig:onda_choque_example}) con una densidad de energía de $E = 0.15 \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, densidad $\rho = 1 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ , velocidades $v = 0 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ y una presión $P=0.1 \, \mathrm{erg} \cdot \mathrm{cm}^{-3} $. La simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 500x500 pixeles\footnote{Los píxeles de nuestra malla miden $l_x\cdot 500^{-1} = l_y\cdot 500^{-1}  = 1 \, \mathrm{cm} \cdot 500^{-1} = 0.005 \, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna. Su valor de la densidad es de $\rho=5 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, su velocidad interna será la misma que la del ambiente, la presión interna de la onda $P=10 \, \mathrm{erg} \cdot \mathrm{cm}^{-3} $ y una densidad de energía interna $E = 3.75 \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$. La onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se correrá en el intervalo de tiempo $t \in \left[ 0 , 0.5 \right]$ s.
 %%===================IMAGE_LAX_CENTRADO_T=0===============================
 %\begin{figure}[H]
 %\centering
@@ -919,45 +938,45 @@ Las siguientes pruebas fueron usando el método de Lax, usando las ecuaciones re
 %\end{figure}
 %%===================IMAGE_LAX_CENTRADO_T=0===============================
 
-La evolución para la onda de choque no relativista muestra una expansión de la onda simétrica. El radio de la onda al tiempo inicial fue de $r=0.2$ [cm]. A $t=0.05$ [s] la onda se expandió a un radio de $r=0.3$~cm mientras que para el tiempo $t=0.10$ [s] se expandió a un radio de $r=0.38$~cm. Debido a lo anterior, la velocidad de expansión de la onda fue de $v = 2.0 \, \mathrm{cm}/\mathrm{s}$ y $v = 1.8 \, \mathrm{cm}/\mathrm{s}$, respectivamente.% FALTA MENCIONAR A FORWARD SHOCK Y LA REVERSE SHOCK.. y por ende el HUECO (ver figura \ref{fig:Lax-newtoniano-prueba1}). ADMÄS FALTA MENCIONAR QUE LA PARTE CENTRAL SE DIFUMINA... LO CUAL ES ESPERABLE DEBIDO A LA VISCOSIDAD NUMERICA.
+La evolución para la onda de choque newtoniano muestra una expansión de la onda simétrica. El radio de la onda al tiempo inicial fue de $r=0.2$ cm. A $t=0.05$ s la onda se expandió a un radio de $r=0.3$~cm mientras que para el tiempo $t=0.10$ s se expandió a un radio de $r=0.38$~cm. Debido a lo anterior, la velocidad de expansión de la onda fue de $v = 2.0 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ y $v = 1.8 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$, respectivamente.% FALTA MENCIONAR A FORWARD SHOCK Y LA REVERSE SHOCK.. y por ende el HUECO (ver figura \ref{fig:Lax-newtoniano-prueba1}). ADMÄS FALTA MENCIONAR QUE LA PARTE CENTRAL SE DIFUMINA... LO CUAL ES ESPERABLE DEBIDO A LA VISCOSIDAD NUMERICA.
 
 
 %===================IMAGE_LAX_CENTRADO_EVOLUCION===============================
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5}}
-\caption{\label{fig:Lax-newtoniano_sedov-3-5}Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque_example} usando el método de Lax no relativista. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10s. En la figura \ref{fig:Lax-newtoniano-prueba1-analisis} se analizará más a fondo las partes que se forman al desarrollarse dicha onda.}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5}}
+\caption{\label{fig:Lax-newtoniano_sedov-3-5}Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque_example} usando el método de Lax newtoniano. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10 s. En la figura \ref{fig:Lax-newtoniano-prueba1-analisis} se analizará más a fondo las partes que se forman al desarrollarse dicha onda.}
 \end{figure}
 %===================IMAGE_LAX_CENTRADO_EVOLUCION===============================
 
 
-Se puede ver que cuando la onda se empieza a expandir por el medio constante, aparecen 4 áreas distintas que interactuan entre nuestro medio ambiente y la onda. El área 1 (ver figura \ref{fig:Lax-newtoniano-prueba1-analisis}) es el material al cual la onda no ha tocad0. En el área 2, se muestra una onda que va chocando con el material del medio ambiente, a esta onda la llamaremos \emph{forward shock}\footnote{La palabra \emph{forward shock} viene del inglés y la podemos interpretar como choque hacia adelante. }. El área 3 presenta el material chocado con el mismo centro de la onda, esta se caracteriza por ir en reversa y llamaremos \emph{reverse shock}\footnote{La palabra \emph{reverse shock} viene del inglés y la podemos traducir como choque hacia atras}, el material contra el cual aún no ha chocado esta onda es el área 5. La separación que hay entre estas 2 ondas vas creando un vacio que se ve difuminado, esto debido a la viscosidad que presenta nuestro resolvedor de Riemann.
+Cuando la onda se empieza a expandir por el medio constante, aparecen 4 áreas distintas que interactuan entre nuestro medio ambiente y la onda. El área 1 (ver figura \ref{fig:Lax-newtoniano-prueba1-analisis}) es el material al cual la onda no ha tocado. En el área 2, se muestra una onda que va chocando con el material del medio ambiente, a esta onda la llamaremos \emph{forward shock}\footnote{La palabra \emph{forward shock} viene del inglés y la podemos interpretar como choque hacia adelante. }. El área 3 presenta el material chocado con el mismo centro de la onda, esta se caracteriza por ir en reversa y llamaremos \emph{reverse shock}\footnote{La palabra \emph{reverse shock} viene del inglés y la podemos traducir como choque hacia atras}, el material contra el cual aún no ha chocado esta onda es el área 5. La separación que hay entre estas 2 ondas vas creando un vacio que se ve difuminado, esto debido a la viscosidad que presenta nuestro resolvedor de Riemann.
 
 
 %===================IMAGE_LAX_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}[H] 
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.495]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3-analisis}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5-analisis}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.595]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3-analisis}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5-analisis}}
 \caption{\label{fig:Lax-newtoniano-prueba1-analisis}En la evolución de la onda usando el método de Lax, podemos encontrar 4 áreas distintas. El área 1 la identificaremos como el material que no ha sido chocado todavía por nuestra onda. El área 2 será el material que es chocado por nuestra onda, esta onda que se llama \emph{forward shock}. En el área 3 podemos ver una onda que va contra si misma que es la \emph{reverse shock}, esta onda arrastra el interior de la onda, va en sentido contrario a la \emph{forward shock}, el material que esta onda aun no ha chocado es al área 5 y el área 4 es el vacío que se va formando cuando se separan la \emph{forward shock} y \emph{reverse shock}.} 
 \end{figure}
 %===================IMAGE_LAX_CENTRADO_EVOLUCION_ANALISIS===============================
 
 
-La segunda prueba consiste en realizar el mismo proceso descrito anteriorment de la onda de choque resuelta con el método de Lax pero, ubicando a la onda de choque en una esquina para poder analizar como se comporta la misma al interaccionar con las condiciones a la frontera. El centro de la nueva prueba se colocó en las coordenadas $(x, y) = (0.25, 0.75)$ [cm]. Cabe señalar que las condiciones a la fronteras tienen la configuración de \textit{outflow}\footnote{Para este y otros tipos de frontera vea el apéndice \ref{aped.B}}.
+La segunda prueba consiste en realizar el mismo proceso descrito anteriormente de la onda de choque resuelta con el método de Lax pero, ubicando a la onda de choque en una esquina para poder analizar como se comporta con las condiciones a la frontera. El centro de la nueva prueba se colocó en las coordenadas $(x, y) = (0.25, 0.75)$ [cm]. Cabe señalar que las condiciones a la fronteras tienen la configuración de \textit{outflow}\footnote{Para este y otros tipos de frontera vea el apéndice \ref{aped.B}}.
 
 %===================IMAGE_LAX_NO_CENTRADO_T=0===============================
 \begin{figure}[H] \label{fig:onda_choque2_t_0}
 \centering
 \includegraphics[width=0.6\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque2_t_0}
-\caption{Condición inicial de la prueba número 2 para el resolvedor Lax no relativista. En esta prueba se tiene la misma condición inicial que la mostrada en la figura \ref{fig:onda_choque_example}, pero con las coordenadas de la onda de choque ubicadas en $(x, y) = (0.25, 0.75)$ [cm]. Esto con la finalidad de mostrar que sin importar donde se coloquen la onda de choque, esta se comportará de igual manera que si estuviera centrado.} 
+\caption{Condición inicial de la prueba número 2 para el resolvedor Lax newtoniano. En esta prueba se tiene la misma condición inicial que la mostrada en la figura \ref{fig:onda_choque_example}, pero con las coordenadas de la onda de choque ubicadas en $(x, y) = (0.25, 0.75)$ [cm]. Esto con la finalidad de mostrar que sin importar donde se coloquen la onda de choque, esta se comportará de igual manera que si estuviera centrado.} 
 \end{figure}
 %===================IMAGE_LAX_NO_CENTRADO_T=0===============================
 
 
 %LAS FRONTERAS NO METEN RUIDO. Y LA EVOLUCIÓN ES CONSISTENTE CON LOS RESULTADOS DE ANTES, Y POR ENDE ESTA BIEN. 
-Se puede observar que al evolucionar la onda de choque, esta no muestra ninguna anomalía en las fronteras (ver apéndice \ref{aped.B}) y se nota un buen funcionamiento del código no relativista usando Lax ya que tiene el mismo comportamiento que de la onda centrada. El radio al tiempo $t = 0.07$ s es $r = 0.34$ cm y su velocidad es $v = 2 \, \mathrm{cm}/\mathrm{s}$ y para el tiempo $t = 0.14$ s el radio $r = 0.42$ y su velocidad $v = 1.83 \, \mathrm{cm}/\mathrm{s}$. Con lo que podemos observar que tiene las mismas particularidades que la onda mostrada en la figura \ref{fig:Lax-newtoniano_sedov-3-5}.
+Al evolucionar la onda de choque en la figura \ref{fig:Lax-prueba2_no_centrado},  esta no muestra ninguna anomalía en las fronteras (ver apéndice \ref{aped.B}) y puedo concluir que las condiciones a la frontera no introducen errores numéricos para el caso newtoniano y usando Lax, ya que tiene el mismo comportamiento que de la onda centrada. El radio al tiempo $t = 0.07$ s es $r = 0.34$ cm y su velocidad es $v = 2 \, \mathrm{cm}/\mathrm{s}$ y para el tiempo $t = 0.14$ s el radio $r = 0.42$ y su velocidad $v = 1.83 \, \mathrm{cm}/\mathrm{s}$. Con lo que podemos observar que tiene las mismas particularidades que la onda mostrada en la figura \ref{fig:Lax-newtoniano_sedov-3-5}.
 
 
 %===================IMAGE_LAX_NO_CENTRADO_EVOLUCION===============================
@@ -965,18 +984,18 @@ Se puede observar que al evolucionar la onda de choque, esta no muestra ninguna 
 \centering
 \subfigure[]{\includegraphics[scale = 0.46]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov2_07}}
 \subfigure[]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov2_12}}
-\caption{Evolución de la onda de choque mostrada en la Figura \ref{fig:onda_choque2_t_0} usando el método de Lax no relativista. En el panel a) se muestra la onda de choque a t=0.07s, mientras que en el panel b) se muestra para t=0.12s. Al evolucionar la onda se observa que al pasar la frontera no hay ruido o errores y que la velocidad asi como el radio son los mismos que en la onda centrada.} \label{fig:Lax-prueba2_no_centrado}
+\caption{\label{fig:Lax-prueba2_no_centrado}Evolución de la onda de choque mostrada en la Figura \ref{fig:onda_choque2_t_0} usando el método de Lax no relativista. En el panel a) se muestra la onda de choque a t=0.07s, mientras que en el panel b) se muestra para t=0.12s. Al evolucionar la onda se observa que al pasar la frontera no hay ruido o errores y que la velocidad asi como el radio son los mismos que en la onda centrada.} 
 \end{figure}
 %===================IMAGE_LAX_NO_CENTRADO_EVOLUCION===============================
 
-Al salir de nuestro dominio, la onda sigue conservando su forma y las áreas que habiamos visto en la figura \ref{fig:Lax-newtoniano-prueba1-analisis}. El aspecto de la onda no se deforma a pesar de que ya no se encuentra en nuestro dominio.
+En la figura \ref{fig:Lax-prueba2_no_centrado-analisis}, al salir de nuestro dominio, la onda sigue conservando su forma y las áreas que habiamos visto en la figura \ref{fig:Lax-newtoniano-prueba1-analisis}. El aspecto de la onda no se deforma a pesar de que se sale del dominio computacional.
 
 %===================IMAGE_LAX_NO_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}[H]
 \centering
 \subfigure[]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov2_07-analisis}}
 \subfigure[]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov2_12-analisis}}
-\caption{Al igual que en la figura \ref{fig:Lax-newtoniano-prueba1-analisis}, la onda presenta 5 áreas descritas, y estas se vuelven más grandes con el paso del tiempo. En el área 4 se puede ver la difuminidad que presenta la onda, al separarse la \emph{forward shock} y la \emph{reverse shock}.} \label{fig:Lax-prueba2_no_centrado-analisis}
+\caption{\label{fig:Lax-prueba2_no_centrado-analisis}Al igual que en la figura \ref{fig:Lax-newtoniano-prueba1-analisis}, la onda presenta 5 áreas descritas, y estas se vuelven más grandes con el paso del tiempo. En el área 4 se puede ver la difuminidad que presenta la onda, al separarse la \emph{forward shock} y la \emph{reverse shock}.} 
 \end{figure}
 %===================IMAGE_LAX_NO_CENTRADO_EVOLUCION_ANALISIS===============================
 
@@ -988,25 +1007,26 @@ Al salir de nuestro dominio, la onda sigue conservando su forma y las áreas que
 %===================LAX_RELATIVISTA===============================
 
 
-Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, se presentarán casos relativistas y no relativistas. La condicion inicial es la misma que la de Lax, es decir, nuestra onda de choque tendra los mismos valores en la que habiamos dicho en el cuadro \ref{Tabla_parametros}.	
+Las siguientes pruebas son usando HLL, similarmente como en el caso de Lax, se presentarán casos relativistas y newtonianos. 
+%La condicion inicial es la misma que la de Lax, es decir, nuestra onda de choque tendra los mismos valores en la que habiamos dicho en el cuadro \ref{Tabla_parametros}.	
 
 %===================IMAGE_HLL_CENTRADO_T=0===============================
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque3_t_0}
-\caption{Onda de choque en el tiempo $t = 0$, los valores con los que fue suministrado nuestra onda de choque son los mismos que habiamos dicho en el Cuadro \ref{Tabla_parametros} } \label{fig:onda_choque3_t_0}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque3_t_0}
+%\caption{Onda de choque en el tiempo $t = 0$, los valores con los que fue suministrado nuestra onda de choque son los mismos que habiamos dicho en el Cuadro \ref{Tabla_parametros} } \label{fig:onda_choque3_t_0}
+%\end{figure}
 %===================IMAGE_HLL_CENTRADO_T=0===============================
 
 
-La onda de choque fue centrada en el punto $(x,y)=(0.5,0.5)$ cm, su radio es de $r = 0.2 \, \mathrm{cm}$ y al igual que en Lax se presentan 2 ondas, una onda contra el medio, la cual tiene una velocidad constante de $\vec{v}  = 2 \, \mathrm{cm}/\mathrm{s}$ y una onda contra el centro, el radio de la onda se expande a $r = 0.3$ cm al tiempo $t=0.05$ s, mientras que al tiempo $t = 0.1$ s, su radio aumenta hasta $r = 0.38$ cm y disminuye la velocidad de la onda a más de la mitad $\vec{v}=1.8 \, \mathrm{cm}/\mathrm{s}$, entre estas 2 ondas se va creando un vacio (vea figura \ref{fig:HLL-prueba1}).
+Las condiciones iniciales para la onda de choque son las mismas que las que habiamos tenido en la figura \ref{fig:onda_choque_example}, centrada en el punto $(x,y)=(0.5,0.5)$ cm, su radio es de $r = 0.2 \, \mathrm{cm}$ y al igual que en Lax se presentan 2 ondas, una onda contra el medio, la cual tiene una velocidad constante de $\vec{v}  = 2 \, \mathrm{cm}/\mathrm{s}$ y una onda contra el centro, el radio de la onda se expande a $r = 0.3$ cm al tiempo $t=0.05$ s, mientras que al tiempo $t = 0.1$ s, su radio aumenta hasta $r = 0.38$ cm y disminuye la velocidad de la onda a más de la mitad $\vec{v}=1.8 \, \mathrm{cm}/\mathrm{s}$, entre estas 2 ondas se va creando un vacio (vea figura \ref{fig:HLL-prueba1}).
 
 %===================IMAGE_HLL_CENTRADO_EVOLUCION===============================
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_05.png}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_10.png}}
-\caption{Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque3_t_0} usando el método de HLL no relativista. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10s.} \label{fig:HLL-prueba1}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_05.png}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_10.png}}
+\caption{Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque_example} usando el método de HLL newtoniano. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10s.} \label{fig:HLL-prueba1}
 \end{figure}
 %===================IMAGE_HLL_CENTRADO_EVOLUCION===============================
 
@@ -1033,15 +1053,15 @@ En la siguiente prueba se movió el centro de la onda de choque (ver figura \ref
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_T=0===============================
 
-Al pasar el dominio, la onda se sigue comportando como si estuviera centrada, ya que tiene los mismos radios y velocidades de la misma y al llegar al final de nuestro dominio se nota que no hay ninguna irregularidad de nuestras fronteras.
+Al pasar el dominio, la onda se sigue comportando como si estuviera centrada, ya que tiene los mismos radios y velocidades de la misma y al llegar al final de nuestro dominio, se nota que no hay ninguna irregularidad de nuestras fronteras (ver figura \ref{fig:HLL-prueba2}).
 
 
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION===============================
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05.png}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10.png}}
-\caption{\label{fig:HLL-prueba2}Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque4_t_0} usando el método de HLL no relativista. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10s.}  
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05.png}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10.png}}
+\caption{\label{fig:HLL-prueba2}Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque4_t_0} usando el método de HLL newtoniano. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10s.}  
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION===============================
 
@@ -1049,8 +1069,8 @@ Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward 
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}[H]
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05-analisis.png}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.49]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10-analisis.png}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05-analisis.png}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.54]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10-analisis.png}}
 \caption{\label{fig:HLL-prueba2-analisis}Las áreas mostradas en el panel a) y en el panel b) son las mismas discutidas en la figura \ref{fig:HLL-prueba1-analisis}.}
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
@@ -1059,7 +1079,7 @@ Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward 
 
 
 
-En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL. Las ondas que vamos a ocupar son las de las figuras \ref{fig:Lax-newtoniano_sedov-3-5} y la \ref{fig:onda_choque3_t_0}. La onda esta centrada en el punto $(x,y)=(0.5,0.5)$
+En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL. Las ondas que vamos a ocupar son las de las figuras \ref{fig:Lax-newtoniano_sedov-3-5} y la \ref{fig:HLL-prueba1}. La onda esta centrada en el punto $(x,y)=(0.5,0.5)$
 
 %\begin{figure}[H]
 %\centering
@@ -1069,18 +1089,24 @@ En esta sección, vamos a comparar las diferencias que hay entre el método de L
 %\end{figure}
 
 
-La onda de Lax al tiempo  $t = 0.05$ s (ver figura \ref{fig:Lax-newtoniano_sedov-3-5}) tiene un radio $r=0.31$ cm y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$, mientras que la onda de HLL (ver figura \ref{fig:HLL-prueba1}) tiene un radio $r = 0.31$ y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$. Al avanzar la onda se ve una diferencia entre el método de Lax y HLL, la onda contra el centro de la onda se ve más difusa en HLL que con Lax, por lo que HLL es menos viscoso y resuelve mejor las discontinuidades.
+La onda de Lax al tiempo  $t = 0.05$ s (ver figura \ref{fig:Lax-newtoniano_sedov-3-5}) tiene un radio $r=0.31$ cm y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$, mientras que la onda de HLL (ver figura \ref{fig:HLL-prueba1}) tiene un radio $r = 0.31$ y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$. Al avanzar la onda se ve una diferencia entre el método de Lax y HLL, la onda contra el centro de la onda se ve más difusa en HLL que con Lax, por lo que se puede concluir que HLL es menos viscoso y resuelve mejor las discontinuidades.
 
 
 \begin{figure}[H]
 \centering
 \subfigure[]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/comparacion1}}
 \subfigure[]{\includegraphics[scale = 0.50]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-new/comparacion2}}
-\caption{\label{fig:Lax-hll-newtoniano1}Las ondas de choque están establecidas al tiempo $t = 0.5$, ambas imágenes tienen una resolución de 1000x1000, mientras que Lax (panel a)) es un poco más rápido que HLL (panel b)), HLL tiene menor viscosidad en la zona de discontinuidad. La zona de discontinuidad es donde tanto la \emph{forward shock} y la \emph{reverse shock} se separan. En las 2 imagenes, aunque es mínima, se puede notar una difuminación mayor en Lax en esta zona. Por esto podemos decir que HLL es un método para resolver este tipo de discontinuidades.}  
+\caption{\label{fig:Lax-hll-newtoniano1}Las ondas de choque están establecidas al tiempo $t = 0.5$, ambas imágenes tienen una resolución de 500x500, mientras que Lax (panel a)) es un poco más rápido que HLL (panel b)), HLL tiene menor viscosidad en la zona de discontinuidad.}  
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{./Figuras/Pruebas/expansion_radial/expansion_radial_newtoniano}
+\caption{\label{fig:expansion_radial_newtoniano}Expansión del radio de la onda del choque conforme avanza el tiempo.  } 
 \end{figure}
 
 
-Al dispersarse por completo el centro de la onda, para ambas, se puede ver con mejor claridad que hay 2 diferentes tipos de onda, una contra el medio y otra contra en centro de la misma, para Lax, el radio toma el valor $r = 0.38$ y una velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s} $. En el caso de HLL es el mismo radio $r = 0.38 $ cm y la misma velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$.
+La zona de discontinuidad es donde tanto la \emph{forward shock} y la \emph{reverse shock} se separan. En las 2 imágenes, aunque es mínima, se puede notar una difuminación mayor en Lax en esta zona. Por esto podemos decir que HLL es un método para resolver este tipo de discontinuidades. Al dispersarse por completo el centro de la onda, para ambas, se puede ver con mejor claridad que hay 2 diferentes tipos de onda, una contra el medio y otra contra en centro de la misma, para Lax, el radio toma el valor $r = 0.38$ y una velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s} $. En el caso de HLL es el mismo radio $r = 0.38 $ cm y la misma velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$.
 
 \begin{figure}[H]
 \centering
@@ -1234,7 +1260,7 @@ Las pruebas del jet van a ser en un medio con una densidad más grande que con l
 
 \subsection{Lax}
 
-Las pruebas del jet van a ser usando Lax, van a ser usando una densida $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, con una resolución de 500 pixeles. El tamaño de nuestro dominio será cuadrado, con una longitud de $x = y = 1\times 10^9 \, \mathrm{cm}$. Se puede ver como el jet desplaza el material del medio ambiente y va creando un hueco donde hay menor densidad. A esta parte se le conoce como el capullo del jet.
+Las pruebas del jet van a ser usando Lax, van a ser usando una densidad $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, con una resolución de 500 pixeles. El tamaño de nuestro dominio será cuadrado, con una longitud de $x = y = 1\times 10^9 \, \mathrm{cm}$. Se puede ver como el jet desplaza el material del medio ambiente y va creando un hueco donde hay menor densidad. A esta parte se le conoce como el capullo del jet.
 
 \begin{figure}[H] \label{fig:jet_ma_300}%Snapshot 20 
 \centering
@@ -2031,7 +2057,7 @@ Entonces
 \hat { V } = \frac { ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P } } { ( \Gamma + 1 ) \hat { P } + ( \Gamma - 1 ) }
 \end{equation}
 
-Con lo que volvemos a la ecuación 
+Con lo que volvemos a la ecuación \ref{RH_no_rel_choque_no_fuerte}
 
 \begin{thebibliography}{20}
 
