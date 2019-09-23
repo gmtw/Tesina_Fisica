@@ -1079,7 +1079,7 @@ Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward 
 
 
 
-En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL. Las ondas que vamos a ocupar son las de las figuras \ref{fig:Lax-newtoniano_sedov-3-5} y la \ref{fig:HLL-prueba1}. La onda esta centrada en el punto $(x,y)=(0.5,0.5)$
+En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL. Las ondas que vamos a ocupar son las de las figuras \ref{fig:Lax-newtoniano_sedov-3-5} y la \ref{fig:HLL-prueba1}. La onda esta centrada en el punto $(x,y)=(0.5,0.5)$ cm.
 
 %\begin{figure}[H]
 %\centering
@@ -1089,7 +1089,7 @@ En esta sección, vamos a comparar las diferencias que hay entre el método de L
 %\end{figure}
 
 
-La onda de Lax al tiempo  $t = 0.05$ s (ver figura \ref{fig:Lax-newtoniano_sedov-3-5}) tiene un radio $r=0.31$ cm y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$, mientras que la onda de HLL (ver figura \ref{fig:HLL-prueba1}) tiene un radio $r = 0.31$ y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$. Al avanzar la onda se ve una diferencia entre el método de Lax y HLL, la onda contra el centro de la onda se ve más difusa en HLL que con Lax, por lo que se puede concluir que HLL es menos viscoso y resuelve mejor las discontinuidades.
+La onda de Lax al tiempo  $t = 0.05$ s (ver figura \ref{fig:Lax-newtoniano_sedov-3-5}) tiene un radio $r=0.31$ cm y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$, mientras que la onda de HLL (ver figura \ref{fig:HLL-prueba1}) tiene un radio $r = 0.31$ y una velocidad $v = 2.2 \, \mathrm{cm}/\mathrm{s}$. Al avanzar la onda se ve una diferencia entre el método de Lax y HLL, la onda contra el centro de la onda se ve más difusa en HLL que con Lax.
 
 
 \begin{figure}[H]
@@ -1099,63 +1099,85 @@ La onda de Lax al tiempo  $t = 0.05$ s (ver figura \ref{fig:Lax-newtoniano_sedov
 \caption{\label{fig:Lax-hll-newtoniano1}Las ondas de choque están establecidas al tiempo $t = 0.5$, ambas imágenes tienen una resolución de 500x500, mientras que Lax (panel a)) es un poco más rápido que HLL (panel b)), HLL tiene menor viscosidad en la zona de discontinuidad.}  
 \end{figure}
 
-\begin{figure}[H]
+El radio de la onda, usando el método de Lax al expandirse, es más rápido que hll, obteniendo la pendiente de las rectas de la figura \ref{fig:expansion_radial_newtoniano} podemos obtener la rapidez con las que se expande la onda. La velocidad para Lax es $v_{lax} = 1.50 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ mientras que la velocidad con hll es ligeremante menor $v_{hll} = 1.48  \, \mathrm{cm} \cdot \mathrm{s}^{-1}$, por lo que su error relativo es $\delta  = 0.013$, el error es muy pequeño y no afecta de manera tan significante la simulación numérica.
+
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{./Figuras/Pruebas/expansion_radial/expansion_radial_newtoniano}
-\caption{\label{fig:expansion_radial_newtoniano}Expansión del radio de la onda de choque conforme avanza el tiempo. La recta verde muestra el crecimientro del radio usando el método de Lax, mientras que la recta roja es usando HLL. } 
+\caption{\label{fig:expansion_radial_newtoniano}Expansión del radio de la onda de choque conforme avanza el tiempo. Las variables $m_{lax}$ y $m_{hll}$ son las pendientes de las rectas respectivamente y en consecuencia las velocidades de la expansión de la onda.} 
 \end{figure}
 
 
-La zona de discontinuidad es donde tanto la \emph{forward shock} y la \emph{reverse shock} se separan. En las 2 imágenes, aunque es mínima, se puede notar una difuminación mayor en Lax en esta zona. Por esto podemos decir que HLL es un método para resolver este tipo de discontinuidades. Al dispersarse por completo el centro de la onda, para ambas, se puede ver con mejor claridad que hay 2 diferentes tipos de onda, una contra el medio y otra contra en centro de la misma, para Lax, el radio toma el valor $r = 0.38$ y una velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s} $. En el caso de HLL es el mismo radio $r = 0.38 $ cm y la misma velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$.
+La zona de discontinuidad es donde tanto la \emph{forward shock} y la \emph{reverse shock} se separan. En las 2 imágenes (ver la figura \ref{fig:Lax-hll-newtoniano1}), aunque es mínima, se puede notar una difuminación mayor en Lax en esta zona.
 
-\begin{figure}[H]
+Realizando un perfil radial de la onda a diferentes distancias de radio del centro de la onda al tiempo $t = 0.1$ (ver figura \ref{fig:perfil_radial_t_10}) de la onda. Donde el perfil que vamos a tomar va a ser del radio paralelo al eje y. Se observa que en la parte central del eje x, las densidades, usando tanto Lax como HLL, son casi idénticas mostrando un error relativo $\delta \lessapprox 0.02$.
+
+\begin{figure}
 \centering
 \includegraphics[scale = 0.4]{./Figuras/Pruebas/perfil_radial/perfil_radial_t_10}
-\caption{Perfil radial de la onda de choque al tiempo $t = 0.1$ s, la linea verde corresponde al método de Lax, mientras que la linea roja punteada corresponde al método de hll.}
+\caption{\label{fig:perfil_radial_t_10}Perfil radial de la onda de choque al tiempo $t = 0.1$ s. La recta amarilla muestra el crecimientro del radio usando el método de Lax, mientras que la recta azul punteada es usando HLL. Cada par de linea (punteada y sólida) sobre la gráfica representa un perfil radial distinto. El radio, del cual estamos tomando para cada perfil, es el que esta paralelo al eje y.}
 \end{figure}
+
+
+
+Por esto podemos decir que HLL, es un método para resolver este tipo de discontinuidades, pero la diferencia entre ambos métodos es muy pequeña por lo que usar Lax o HLL para resolver las ecuaciones de la hidrodinámica con mi código es válido para cualquiera de los dos métodos.
+% Al dispersarse por completo el centro de la onda, para ambas, se puede ver con mejor claridad que hay 2 diferentes tipos de onda, una contra el medio y otra contra en centro de la misma, para Lax, el radio toma el valor $r = 0.38$ y una velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s} $. En el caso de HLL es el mismo radio $r = 0.38 $ cm y la misma velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$.
 
 
 \subsection{Caso relativista} 
  %200X200
 
 \subsubsection{Lax}
-Para el caso relativista, usaremos otros valores en nuestra onda de choque, debido a que queremos que la velocidad con la que se expande nuestra onda tenga velocidades cercanas a la de la luz.
+Para el caso relativista, usaremos otros valores en nuestra onda de choque, debido a que queremos que la velocidad con la que se expande nuestra onda tenga velocidades cercanas a la de la luz. Los valores se obtienen tomando en cuenta la aproximación que hay entre la velocidad de la luz y la velocidad del sonido.
 
-\begin{table}[htbp]\label{Tabla_parametros_relatividad}
+
+\begin{equation}
+c \thicksim c_s = \sqrt{\frac{P}{\rho}}
+\end{equation}
+
+Por lo que podemos hacer la siguiente aproximación
+
+\begin{equation}
+\frac{P}{\rho} \thicksim 10^{21}
+\end{equation}
+
+Entonces si suponemos una presión $P = 2\times 10^{18} \, \mathrm{ergs} \cdot \mathrm{cm}^{-3}$, la densidad tendría que ser $\rho = 10^{-3} \, \mathrm{g} \mathrm{cm}^{-3}$
+
+\begin{table}[htbp]
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline 
 \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
 \hline 
-$R_{in}$ & Radio interno de la onda expansiva & $0.2\times10^{10}$ \\ 
+$R_{in}$ & Radio interno de la onda expansiva & $0.2\times10^{10}$ [cm] \\ 
 \hline 
-$\rho_{in}$ &  Densidad interna de la onda expansiva & $10^{-3}$ \\ 
+$\rho_{in}$ &  Densidad interna de la onda expansiva & $10^{-3} \, [\mathrm{g} \cdot \mathrm{cm}^{-3}]$ \\ 
 \hline 
-$\rho_{out}$ &  Densidad del medio  & $10^{-10}$ \\
+$\rho_{out}$ &  Densidad del medio  & $10^{-10} \, [\mathrm{g} \cdot \mathrm{cm}^{-3}]$ \\
 \hline 
-$P_{int}$ & Presión interna de la onda expansiva & $2\times10^{18}$ \\ 
+$P_{int}$ & Presión interna de la onda expansiva & $2\times10^{18} \, [\mathrm{erg} \cdot \mathrm{cm}^{-3}]$ \\ 
 \hline 
-$P_{out}$ &  Presión del medio  & $\rho_{in} \times 10^{-10}$ \\ 
+$P_{out}$ &  Presión del medio  & $\rho_{in} \times 10^{-13} \, [\mathrm{erg} \cdot \mathrm{cm}^{-3}]$  \\ 
 \hline 
-$v_{x_{int}}$ & Velocidad interna en el eje x de la onda expansiva & 0.0 \\ 
+$v_{x_{int}}$ & Velocidad interna en el eje x de la onda expansiva & 0.0 $ [\mathrm{cm} \cdot \mathrm{s}^{-1}]$\\ 
 \hline 
-$v_{y_{int}}$ & Velocidad interna en el eje y de la onda expansiva & 0.0 \\ 
+$v_{y_{int}}$ & Velocidad interna en el eje y de la onda expansiva & 0.0 $ [\mathrm{cm} \cdot \mathrm{s}^{-1}]$\\ 
 \hline 
-$v_{x_{out}}$ & Velocidad en el eje x del medio & 0.0 \\
+$v_{x_{out}}$ & Velocidad en el eje x del medio & 0.0 $ [\mathrm{cm} \cdot \mathrm{s}^{-1}]$ \\
 \hline 
-$v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 \\ 
+$v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 $ [\mathrm{cm} \cdot \mathrm{s}^{-1}]$\\ 
 \hline 
-Co & Número de Courant & 0.7 \\ 
+Co & Número de Courant & 0.7 \\ 	
 \hline 
 \end{tabular}
-\caption{Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque, estos valores son para fluidos relativistas.}
+\caption{\label{Tabla_parametros_relatividad}Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque, estos valores son para fluidos relativistas.}
 \end{center}
 \end{table}
 
 
 
 
-La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá un comportamiento parecido a la onda de choque. Las dimensiones del dominio se modificaron para poder evaluar mejor la expansión de la onda. Los valores de nuestras coordenadas x,y tienen valores entre $0$ y $2 \times 10^{10}$ [cm].La presión interna de la onda incrementa 18 ordenes de magnitud y la densidad disminuye a tres ordenes de magnitud, para ver más detalles vea el cuadro \ref{Tabla_parametros_relatividad}. La expansión de la onda disminuye muy rapidamente, su radio inicial es de  $r = 0.2 \times 10^{10}$ cm y estaba centrada en los puntos $(x,y) = (10^{10}, 10^{10})$ cm, ver figura \ref{fig:Lax-relativista}. El radio al tiempo $t=0.025$ s es de $r =  0.24 \times 10^{10}$ y su velocidad $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$. La velocidad de la onda alcanza casi el 33\% de la velocidad de la luz.
+La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá un comportamiento parecido a la onda de choque. Las dimensiones del dominio tambien se modificarón para esta prueba, dado que, como se requiere observar la expansión de la onda, este alcanzará valores del orden de magnitud de la velocidad de la luz. Los valores de nuestras coordenadas x,y tienen valores entre $0$ y $2 \times 10^{10}$ [cm].La presión interna de la onda incrementa 18 órdenes de magnitud y la densidad disminuye a tres órdenes de magnitud, para ver más detalles vea el cuadro \ref{Tabla_parametros_relatividad}. La expansión de la onda disminuye muy rapidamente, su radio inicial es de  $r = 0.2 \times 10^{10}$ cm y estaba centrada en los puntos $(x,y) = (10^{10}, 10^{10})$ cm, ver figura \ref{fig:Lax-relativista}. El radio al tiempo $t=0.025$ s es de $r =  0.24 \times 10^{10}$ cm y su velocidad $v = 1.0 \times 10^{10} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$. La velocidad de la onda alcanza casi el 33\% de la velocidad de la luz.
 
 \begin{figure}[H]
 \centering
