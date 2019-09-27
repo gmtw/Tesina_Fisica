@@ -1175,23 +1175,25 @@ Co & Número de Courant & 0.7 \\
 \end{table}
 
 
-
-
-La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá un comportamiento parecido a la onda de choque. Las dimensiones del dominio tambien se modificarón para esta prueba, dado que, como se requiere observar la expansión de la onda, este alcanzará valores del orden de magnitud de la velocidad de la luz. Los valores de nuestras coordenadas x,y tienen valores entre $0$ y $2 \times 10^{10}$ [cm].La presión interna de la onda incrementa 18 órdenes de magnitud y la densidad disminuye a tres órdenes de magnitud, para ver más detalles vea el cuadro \ref{Tabla_parametros_relatividad}. La expansión de la onda disminuye muy rapidamente, su radio inicial es de  $r = 0.2 \times 10^{10}$ cm y estaba centrada en los puntos $(x,y) = (10^{10}, 10^{10})$ cm, ver figura \ref{fig:Lax-relativista}. El radio al tiempo $t=0.025$ s es de $r =  0.24 \times 10^{10}$ cm y su velocidad $v = 1.0 \times 10^{10} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$. La velocidad de la onda alcanza casi el 33\% de la velocidad de la luz.
+La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá un comportamiento parecido a la onda de choque. Las dimensiones del dominio tambien se modificarón para esta prueba, dado que, como se requiere observar la expansión de la onda, este alcanzará valores del orden de magnitud de la velocidad de la luz. Los valores de nuestras coordenadas x,y tienen valores entre $0$ y $2 \times 10^{10}$ cm. La presión interna de la onda incrementa 18 órdenes de magnitud y la densidad disminuye a tres órdenes de magnitud, para ver más detalles vea el cuadro \ref{Tabla_parametros_relatividad}. La expansión de la onda disminuye muy rapidamente, su radio inicial es de  $r = 0.2 \times 10^{10}$ cm y estaba centrada en los puntos $(x,y) = (10^{10}, 10^{10})$ cm, ver figura \ref{fig:Lax-relativista}.
+% El radio al tiempo $t=0.025$ s es de $r =  0.24 \times 10^{10}$ cm y su velocidad $v = 1.0 \times 10^{10} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$. La velocidad de la onda alcanza casi el 33\% de la velocidad de la luz.
 
 \begin{figure}[H]
 \centering
-\subfigure[]{\includegraphics[width=0.45\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel0}}
-\subfigure[]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
-\caption{Evaluación de nuestra onda relativista. En el panel a) es al instante $t=0$ s y en el panel b) es al tiempo $t = 0.05$ s. La velocidad que alcanza la onda en los primeros instantes de su vida es de $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$, casi un 33\% de la velocidad de la luz} \label{fig:Lax-relativista}
+{\includegraphics[width=0.45\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
+%\subfigure[]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/}}
+%\caption{Evaluación de nuestra onda relativista. En el panel a) es al instante $t=0$ s y en el panel b) es al tiempo $t = 0.05$ s. La velocidad que alcanza la onda en los primeros instantes de su vida es de $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$, casi un 33\% de la velocidad de la luz} 
+\caption{\label{fig:Lax-relativista}Condición inicial para nuestra onda de choque relativista, tanto para Lax como para HLL. Las condiciones de densidad y presión son muy distintas a las de las condiciones newtonianas. La densidad $\rho_{in} = 0.001 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y la presión $P_{in} = 2 \times 10^{18} \, \mathrm{ergs} \cdot \mathrm{cm}^{-3}$.}
 \end{figure}
 
-Para revisar si nuestra onda, usando el método de Lax, no tiene problemas en la frontera por usar velocidades muy altas; se movió el centro de la misma al punto $(x,y) = (0.3 \times 10^{10}, 0.3 \times 10^{10})$ cm.
+Al calcular la velocidad de la expansión del radio de la onda, tenemos un valor de 
+Para revisar si la onda, usando el método de Lax, no tiene problemas en la frontera por usar velocidades muy altas; se movió el centro de la misma al punto $(x,y) = (0.3 \times 10^{10}, 0.3 \times 10^{10})$ cm.
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel0-no-centrado}
-\caption{Condición inicial de nuestra onda de choque centredo en el punto $(x,y) = (0.3 \times 10^{10}, 0.3 \times 10^{10})$ cm. La densidad $\rho$, presión $P$ y densidad de Energía $E$ son los mismos que desarrollamos para el centrado, vea el cuadro \ref{Tabla_parametros_relatividad}.} \label{fig:bwlax-rel-no-centrado}
+\subfigure[t = 0.05 s]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel08}}
+\subfigure[t = 0.65 s]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel97}}
+\caption{\label{fig:bwlax-rel08_97}El radio de la expansión de la onda se esta moviendose a 79 \% de la velocidad de la luz al tiempo $t = 0.5$ s. Al tiempo $t = 0.65$ s la velocidad de la onda decrece rapidamente al 19 \% de la velocidad de la luz.} 
 \end{figure}
 
 Cuando nuestra onda toca las fronteras, esta evoluciona con normalidad, ya que no se observa alguna anomalía cuando las traspasa. Recordemos que aún seguimos usando la condición de \emph{Outflow}.
