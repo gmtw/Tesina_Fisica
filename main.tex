@@ -1180,7 +1180,7 @@ La onda de choque, aunque tendrá distintos valores que el newtoniano, tendrá u
 
 \begin{figure}[H]
 \centering
-{\includegraphics[width=0.45\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel01}}
+{\includegraphics[width=0.45\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel00}}
 %\subfigure[]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/}}
 %\caption{Evaluación de nuestra onda relativista. En el panel a) es al instante $t=0$ s y en el panel b) es al tiempo $t = 0.05$ s. La velocidad que alcanza la onda en los primeros instantes de su vida es de $v = 1.0 \times 10^{10} \, \mathrm{cm}/\mathrm{s}$, casi un 33\% de la velocidad de la luz} 
 \caption{\label{fig:Lax-relativista}Condición inicial para nuestra onda de choque relativista, tanto para Lax como para HLL. Las condiciones de densidad y presión son muy distintas a las de las condiciones newtonianas. La densidad $\rho_{in} = 0.001 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y la presión $P_{in} = 2 \times 10^{18} \, \mathrm{ergs} \cdot \mathrm{cm}^{-3}$.}
@@ -1191,20 +1191,22 @@ Para revisar si la onda, usando el método de Lax, no tiene problemas en la fron
 
 \begin{figure}[H]
 \centering
-\subfigure[t = 0.05 s]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel08}}
-\subfigure[t = 0.65 s]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel97}}
-\caption{\label{fig:bwlax-rel08_97}El radio de la expansión de la onda se esta moviendose a 79 \% de la velocidad de la luz al tiempo $t = 0.5$ s. Al tiempo $t = 0.65$ s la velocidad de la onda decrece rapidamente al 19 \% de la velocidad de la luz.} 
+\subfigure[t = 0.05 s]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel05}}
+\subfigure[t = 0.65 s]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel65}}
+\caption{\label{fig:bwlax-rel08_97}El radio de la expansión de la onda se esta moviendose a 79 \% de la velocidad de la luz al tiempo $t = 0.05$ s. Al tiempo $t = 0.65$ s la velocidad de la onda decrece rapidamente al 19 \% de la velocidad de la luz.} 
 \end{figure}
 
-Cuando nuestra onda toca las fronteras, esta evoluciona con normalidad, ya que no se observa alguna anomalía cuando las traspasa. Recordemos que aún seguimos usando la condición de \emph{Outflow}.
+Las velocidad que alcanza la onda de choque decrece rápidamente (ver figura ). La velocidad máxima que alcanza la onda es de $v = 0.79c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ y luego se mantiene con una velocidad $v = 0.19 \cdot c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$
 
-La expansión del radio de nuestra onda de choque es lo mismo para el centrado y el no centrado ya que sus radios son $r \approx 10^{9}$ cm.
+Cuando la onda toca las fronteras, esta evoluciona con normalidad, ya que no se observa alguna anomalía cuando las traspasa. Recordemos que aún seguimos usando la condición de \emph{outflow}. La expansión del radio de nuestra onda de choque es lo mismo para el centrado y el no centrado ya que sus radios son $r \approx 10^{9}$ cm.
 
 \begin{figure}[H] 
 \centering
-\subfigure[]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79}}
-\subfigure[]{\includegraphics[scale = 0.46]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79-no-centrado}}
-\caption{Evolución de la onda al tiempo $t = 1.97$ s. En el panel a) se desarrolla la onda de choque centrada (ver figura \ref{fig:Lax-relativista}). En el panel b) se muestra el desarrollo de la onda no centrada (ver figura \ref{fig:bwlax-rel-no-centrado}).} \label{fig:Lax-relativista-t-1.97}
+\subfigure[t = 0 s]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-nc-rel00}}
+\subfigure[t = 0.65]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-nc-rel65}}
+%\subfigure[]{\includegraphics[scale = 0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79}}
+%\subfigure[]{\includegraphics[scale = 0.46]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwlax-rel79-no-centrado}}
+\caption{\label{fig:bwlaxnc-rel00_65}La evolución de la onda no centrada se comporta igual que onda de la figura \ref{fig:bwlax-rel08_97}, no hay un cambio diferente en la velocidad y desarrollo de la misma que si estuviera centrada.} 
 \end{figure}
 
 
@@ -1216,8 +1218,8 @@ Se hicieron las mismas pruebas usando el método de HLL. El radio inicial de nue
 
 \begin{figure}[H] 	
 \centering
-\subfigure[]{\includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel0}}
-\subfigure[$t = 0.06$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel01}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel00}}
+\subfigure[$t = 0.65$ s]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel65}}
 \caption{Expansión de la onda de choque. En el panel a) se muestra la condición inicial de la onda de choque. En el panel b) se muestra al instante $t = 0.025$ s. La velocidad de la onda decrece rapidamente.} \label{fig:bwhll-rel-centrado}
 \end{figure}
 
@@ -1225,18 +1227,20 @@ Al igual que el método de Lax, la velocidad que alcanza es cerca del 33 \% de l
 
 Se movió el centro de la onda, para revisar que, al igual que el método de Lax, el método de HLL no tuviera problemas con las fronteras.
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel0-no-centrado}
-\caption{Condición inicial de nuestra onda de choque, usando el método de HLL, centrado en el punto $(x,y) = (0.3 \times 10^{10}, 0.3 \times 10^{10})$ cm. La densidad $\rho$, presión $P$ y densidad de Energía $E$ son los mismos que desarrollamos para el centrado, vea el cuadro \ref{Tabla_parametros_relatividad}.} \label{fig:bwhll-rel-no-centrado}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel0-no-centrado}
+%\caption{Condición inicial de nuestra onda de choque, usando el método de HLL, centrado en el punto $(x,y) = (0.3 \times 10^{10}, 0.3 \times 10^{10})$ cm. La densidad $\rho$, presión $P$ y densidad de Energía $E$ son los mismos que desarrollamos para el centrado, vea el cuadro \ref{Tabla_parametros_relatividad}.} \label{fig:bwhll-rel-no-centrado}
+%\end{figure}
 
 El desarrollo al tiempo $t = 1.97$ s, las 2 ondas tanto la centrada como la que no esta centrada tienen el mismo incremento de radio $r \approx 10^{9}$ cm.
 
 \begin{figure}[H]
 \centering
-\subfigure[]{\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79}}
-\subfigure[]{\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79-no-centrado}}
+%\subfigure[]{\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79}}
+%\subfigure[]{\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79-no-centrado}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-nc-rel00}}
+\subfigure[$t = 0.65$ s]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-nc-rel65}}
 \caption{Evolución de la onda al tiempo $t = 1.97$. En el panel a) se muestra el desarrollo de la figura \ref{fig:bwhll-rel-centrado}. En el panel b) se muestra el desarrollo de la figura \ref{fig:bwhll-rel-no-centrado}, asi como un correcto funcionamiento de onda sobre las fronteras.}
 \end{figure}
 
