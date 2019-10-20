@@ -960,8 +960,8 @@ Cuando la onda se empieza a expandir por el medio constante, aparecen 5 áreas d
 %===================IMAGE_LAX_CENTRADO_EVOLUCION_ANALISIS===============================
 \begin{figure}
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.595]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3-analisis}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.6]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5-analisis}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.42]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov3-analisis}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.425]{./Figuras/Pruebas/Prueba_onda_choque/Lax/Lax-sedov5-analisis}}
 \caption{\label{fig:Lax-newtoniano-prueba1-analisis}En la evolución de la onda usando el método de Lax,  se encuentran 5 áreas distintas. El área 1 la identificaremos como el material que no ha sido chocado todavía por nuestra onda. El área 2 será el material que es chocado por nuestra onda, esta onda que se llama \emph{forward shock}. En el área 3 podemos ver una onda que va contra si misma que es la \emph{reverse shock}, esta onda arrastra el interior de la onda, va en sentido contrario a la \emph{forward shock}, el material que esta onda aun no ha chocado es al área 5 y el área 4 es el vacío que se va formando cuando se separan la \emph{forward shock} y \emph{reverse shock}.} 
 \end{figure}
 %===================IMAGE_LAX_CENTRADO_EVOLUCION_ANALISIS===============================
@@ -1027,8 +1027,8 @@ Las condiciones iniciales para la onda de choque son las mismas que las que se h
 %===================IMAGE_HLL_CENTRADO_EVOLUCION===============================
 \begin{figure}
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_05.png}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_10.png}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_05.png}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov_10.png}}
 \caption{\label{fig:HLL-prueba1}Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque_example} usando el método de HLL newtoniano. En el panel a) se muestra la onda de choque a t=0.05 s, mientras que en el panel b) se muestra para t=0.10 s.} 
 \end{figure}
 %===================IMAGE_HLL_CENTRADO_EVOLUCION===============================
@@ -1053,7 +1053,7 @@ En la siguiente prueba se movió el centro de la onda de choque (ver figura \ref
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{./Figuras/Pruebas/Prueba_onda_choque/onda_choque4_t_0}
-\caption{\label{fig:onda_choque4_t_0}Onda de choque en el tiempo $t = 0$, los valores con los que fue suministrado nuestra onda de choque son los mismos que se habian propuesto en el Cuadro \ref{Tabla_parametros} }
+\caption{\label{fig:onda_choque4_t_0}Onda de choque en el tiempo $t = 0$, centrado en los puntos $(x,y) = (0.25,0.25)$ cm. Los valores con los que fue suministrado nuestra onda de choque son los mismos que se habian propuesto en el Cuadro \ref{Tabla_parametros} }
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_T=0===============================
 
@@ -1063,18 +1063,18 @@ En la siguiente prueba se movió el centro de la onda de choque (ver figura \ref
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION===============================
 \begin{figure}
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05.png}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10.png}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05.png}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10.png}}
 \caption{\label{fig:HLL-prueba2}Evolución de la onda de choque mostrada en la figura \ref{fig:onda_choque4_t_0} usando el método de HLL newtoniano. En el panel a) se muestra la onda de choque a t=0.05s, mientras que en el panel b) se muestra para t=0.10s.}  
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION===============================
 
 Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward shock} que va contra el medio a la que hemos llamado el área 1 (veáse figura \ref{fig:HLL-prueba2-analisis}). El área 2, es el material del área 1 que va barriendo la \emph{forward shock}. El área 3 es lo contrario, es decir, es el material barrido del área 5 por la \emph{reverse shock} y entre estas 2 ondas se va formando un hueco entre estas 2 ondas que es el área 4 muestra la viscosidad de nuestro método. Dado  que no se muestran anomálias en la evolución de nuestra onda cerca de las fronteras y que se expanden simétricamente, puedo concluir que el código, usando HLL, funciona correctamente.
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
-\begin{figure}[H]
+\begin{figure}
 \centering
-\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.55]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05-analisis.png}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.54]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10-analisis.png}}
+\subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05-analisis.png}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.49]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10-analisis.png}}
 \caption{\label{fig:HLL-prueba2-analisis}Las áreas mostradas en el panel a) y en el panel b) son las mismas discutidas en la figura \ref{fig:HLL-prueba1-analisis}.}
 \end{figure}
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
@@ -1126,9 +1126,9 @@ en el panel c) de la respectiva figura se muestra que el máximo ubicado en el p
 
 \begin{figure}
 \centering
-\subfigure[t = 0.05 s]{\includegraphics[scale = 0.3]{./Figuras/Pruebas/perfil_radial/perfil_radial_1}}
-\subfigure[t = 0.5 s]{\includegraphics[scale = 0.3]{./Figuras/Pruebas/perfil_radial/perfil_radial_2}}
-\subfigure[t = 0.75 s]{\includegraphics[scale = 0.3]{./Figuras/Pruebas/perfil_radial/perfil_radial_4}}
+\subfigure[t = 0.05 s]{\includegraphics[scale = 0.2]{./Figuras/Pruebas/perfil_radial/perfil_radial_1}}
+\subfigure[t = 0.5 s]{\includegraphics[scale = 0.2]{./Figuras/Pruebas/perfil_radial/perfil_radial_2}}
+\subfigure[t = 0.75 s]{\includegraphics[scale = 0.2]{./Figuras/Pruebas/perfil_radial/perfil_radial_4}}
 \caption{\label{fig:Perfil_radial_newtoniano}Perfil radial de la onda de choque newtoniano. El gráfico muestra la densidad $\rho$ vs eje x, tanto de Lax (linea verde) como de hll (linea punteada roja). Los paneles muestran distintos tiempos para la expansión de la onda.}  
 \end{figure}
 
@@ -1300,9 +1300,9 @@ La velocidad de expansión, para ambos casos (ver figura \ref{fig:expansion_radi
 
 \begin{figure}
 \centering
-\subfigure[$t = 0.1$]{\includegraphics[scale=0.3]{./Figuras/Pruebas/perfil_radial/perfil_radial_relativista_10}}
-\subfigure[$t = 0.25$]{\includegraphics[scale=0.3]{./Figuras/Pruebas/perfil_radial/perfil_radial_relativista_25}}
-\subfigure[$t = 0.50$]{\includegraphics[scale=0.3]{./Figuras/Pruebas/perfil_radial/perfil_radial_relativista_50}}
+\subfigure[$t = 0.1$]{\includegraphics[scale=0.2]{./Figuras/Pruebas/perfil_radial/perfil_radial_relativista_10}}
+\subfigure[$t = 0.25$]{\includegraphics[scale=0.2]{./Figuras/Pruebas/perfil_radial/perfil_radial_relativista_25}}
+\subfigure[$t = 0.50$]{\includegraphics[scale=0.2]{./Figuras/Pruebas/perfil_radial/perfil_radial_relativista_50}}
 \caption{\label{fig:perfil_de_densidad_radial_relativista}Perfil de densidad radial de la onda de choque. Cada panel muestra distintas fases de tiempo. La linea verde muestra la densidad sobre el eje x del método de Lax, mientras la linea punteada roja muestra el método de HLL. Las diferencias entre ambos métodos son mayores conforme avanza el tiempo.}
 \end{figure}
 
@@ -1310,99 +1310,146 @@ Los perfiles de densidad muestran una notoria diferencia entre los máximos glob
 
 Por lo tanto en mi código se puede utilizar, en caso newtoniano, ambos métodos numéricos. Pero para el caso relativista es mejor usar Lax, dado que HLL aparte de que su tiempo de ejecución es mucho mayor que Lax, las diferencias entre ambos son más notorias conforme avanza el tiempo y muestra una menor viscosidad Lax. 
 
-\chapter{Jet}
+
+%==============================CAPITULO JET======================================
+%============================================================================
+
+
+\chapter{Jet en diferentes medios de densidad}
+
+En este capítulo se utilizará un jet para probar el programa con distintos medios de densidad, en los cuales, la densidad del medio varía de ser menos que el jet, hasta ser diez veces más denso que el mismo jet.
+El jet  es una emisión delgada de gas a velocidades altas, que se propaga en un medio ambiente gaseoso. Para poder simular el jet, se le inyectará presión y densidad continuamente con una velocidad constante cercana a la de la luz. 
+
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/jet_ejemplo}
+\caption{\label{fig:condicion_inicial_jet}Para poder simular el jet, se inyectará energía y presión constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro. El jet tendrá un diámentro $D_{jet} = 4 \times 10^{8}$ cm. }
+\end{figure}
+
+\section{Diferencia de los métodos numéricos sobre el jet}
+
+Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para observar el método más eficiente en cuanto a simulación de jets (ver figura \ref{fig:jet_ma_300}). Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas. Los jets  tendrán una densidad $\rho_{jet} = 100 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La dendidad del medio ambiente será $\rho_{ma} = 300 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, al similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
+
+
+
+
+\begin{figure} %Snapshot 20 
+\centering
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_20_ma_300}}
+\subfigure[HLL]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_20_ma_300}}
+\caption{\label{fig:jet_ma_300}Ejección de el jet al tiempo $t = 0.2$ s, con una densidad  $\rho = 100 \, \mathrm{g}/\mathrm{cm}^3$, una velocidad de sobre el eje y $v_y = 0.9797959 \, \mathrm{c}$  y una presión 20 veces la  magnitud de la densidad $P = 20 \times \vert \rho \vert$. La densidad del medio ambiente es $\rho = 300 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y la presión es 20 veces mayor la del medio ambiente.}
+\end{figure}
+
+En la figura \ref{fig:jet_ma_300_analisis}, en ambos métodos, se observa un jet con un radio $r_{jet} = 4 \times 10^{8} $ cm y un capullo que envuelve completamente al jet. En la misma figura se observa una diferencia notable en las densidades del jet. En Lax se observa las diferentes densidades que se forman en el medio ambiente, mientras que con HLL sólo se observa el capullo pero no se visualiza correctamente la eyección del jet.
+ %Las diferencias entre el método de Lax y HLL son abismales, dado que Lax muestra con un gran detalle las discontinuidades que se forman con la evolución del jet. También se dibujó una linea que muestra de donde se va a visualizar el perfil radial de la figura 
+
+\begin{figure} %Snapshot 20 
+\centering
+\subfigure[Lax]{\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_20_ma_300_analisis}}
+\subfigure[HLL]{\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_20_ma_300_analisis}}
+\caption{\label{fig:jet_ma_300_analisis} El jet, al ser eyectado se puede observar la formación del capullo. Asi como el despalzamiento de materia debido a lla presión del jet. Las rectas negras en las posiciones $y = 2 \times \, 10^9$ e $y = 0.5 \times \, 10^9$ son los perfiles de densidad que se analizarón en la figura \ref{fig:perfil_de_densidad_jet}.}
+\end{figure}
+
+Al realizar los perfiles del jet sobre las rectas $y = 2 \times 10^9$ cm y $y = 0.5 \times 10^9$ cm , la diferencia que hay entre Lax y HLL no son tan grandes dado que cuando se analizan, los perfiles cercanos a la eyección del jet los errores relativos no son tan grandes. En el panel b) de la  figura \ref{fig:perfil_de_densidad_jet} se observa un error relativo $\delta = 0.021$ cerca de las fronteras, mientas que en los demas son casi lo mismo. En el panel a) de la misma figura se observa lo mismo que el panel b) salvo que la diferencia entre las fronteras es un poco mayor, dado que, el error incrementa a $\delta  = 0.1$.
+
+La diferencia entre Lay y HLL usando mi codigo para el jet es mínima. Con que ambós métodos se pueden usar, pero debido a que Lax es más rápido, a partir de aquí se usará este último método. Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
+
+
+\begin{figure}
+\centering
+\subfigure[$y = 2 \times 10^9$ cm]{\includegraphics[scale=0.2]{./Figuras/Pruebas/perfil_densidad_jet/perfil_densidad_jet_2_9}}
+\subfigure[$y = 0.5 \times 10^9$ cm]{\includegraphics[scale=0.2]{./Figuras/Pruebas/perfil_densidad_jet/perfil_de_densidad_05_9}}
+\caption{\label{fig:perfil_de_densidad_jet} En el panel a) se muestra el perfil de densidad de densidad de la recta $y = 0.5 \times 10^9$. El error relativo entre Lax y HLL es $\delta = 0.021$. Mientras en el panel b) se muestra sobre la recta $y = 2 \times 10^9$. El error relativo entre Lax y HLL es $\delta = 0.1$. }
+\end{figure}
+
+
+%La siguiente prueba fue haciendo nuestro medio ambiente más denso, pero las condiciones del jet como presión y velocidad se mantuvieron iguales que en nuestra anterior prueba. El jet mostró mas dificultades al escapar debido a la densidad y presión más elevadas. Se formó al igual que en la figura \ref{fig:jet_ma_300} una menor densidad debido al desplazamiento de materia que hizo el jet.
+%
+%\begin{figure} %Snapshot 20
+%\centering
+%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20_ma_500} 
+%\caption{\label{fig:jet_100_t_20_ma_500}Se puede apreciar perfectamente como la velocidad del jet es menor con respecto a \ref{fig:jet_ma_300} debido a que la densidad de nuestro medio ambiente es 1.6 veces mas grande.}
+%\end{figure}
+
+%AQUI FALTA PONER LOS PERFILES RADIALES
+
 
 \section{SGRB en medio de densidad 1}
 
-En este primer subsección tomaremos una valor de una densidad de medio ambiente muy bajo, es decir, que el jet este expuesto al vacío, la densidad del jet que vamos a utilizar va a ser de $\rho_{jet} = 100 \, g/\mathrm{cm}^3 $ y la presión que vamos a utilizar va a ser de 20 veces mayor que la magnitud de la densidad. La densidad del medio ambiente tendrá un valor de $\rho_{jet} = 10^{-10} \, g/\mathrm{cm}^3 $, al igual que el jet, su presión será 20 veces mas grande el módulo de la densidad. La velocidad del jet disminuye a $v = 0.83c$
 
-\begin{figure}[H]
+Las pruebas del jet van a ser en un medio con una densidad de ambiente casi nula. En general para todas las pruebas la densidad del jet será de $\rho_{jet}  = 100 \, g \cdot \mathrm{cm}^{-2}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-2}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
+
+
+%En este primer subsección tomaremos una valor de una densidad de medio ambiente muy bajo, es decir, que el jet este expuesto al vacío, la densidad del jet que vamos a utilizar va a ser de $\rho_{jet} = 100 \, g/\mathrm{cm}^3 $ y la presión que vamos a utilizar va a ser de 20 veces mayor que la magnitud de la densidad. La densidad del medio ambiente tendrá un valor de $\rho_{jet} = 10^{-10} \, g/\mathrm{cm}^3 $, al igual que el jet, su presión será 20 veces mas grande el módulo de la densidad. La velocidad del jet disminuye a $v = 0.83c$
+
+\begin{figure}
 \centering
-\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_nulo_10a}}
-\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_nulo_80a}}
+\subfigure[]{\includegraphics[scale = 0.5]{./Figuras/densidad_de_medios_ambientes/medio_nulo_10a}}
+\subfigure[]{\includegraphics[scale = 0.5]{./Figuras/densidad_de_medios_ambientes/jet_lax_80_ma_10^-10}}
 \caption{Al tener únicamente velocidad sobre el eje y, el jet forma perfectamente un cilindro. Pero se puede observar que el jet se expande simétricamente sobre el eje x. Esta expansión sobre el eje x es solo para densidades muy bajas comparadas a la del jet.}
 \end{figure}
 
+
+
 \section{SGRB en medio de densidad 2}
 
-El jet  es una emisión delgada de gas a velocidades altas, que se propaga en un medio ambiente gaseoso. Para poder simular nuestro jet vamos a inyectar continuamente energía y presión de un lado de la frontera con velocidades, en nuestro caso, cercanas a la de la luz.
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_jet/jet_ejemplo}
-\caption{Para poder simular nuestro jet, se inyectarán energía y presión constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro.}
-\end{figure}
-
-Las pruebas del jet van a ser en un medio con una densidad más grande que con la que se le está inyectando al jet. En general para todas las pruebas la densidad del jet será de $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, la presión será $P_{jet} = 20 \times \rho_{jet} \frac{g}{\mathrm{s^2} \mathrm{cm}}$, es decir, la presión sera 20 veces mas grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad va a variar pero se empezará con un valor de $\rho_{ma}  = 300 \, g/\mathrm{cm}^2$, y al igual que nuestro jet $P_{ma} = 20 \times \rho_{ma} \frac{g}{\mathrm{s^2} \mathrm{cm}}$. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959 \times c \, \mathrm{cm}/ \mathrm{s}$.
-
-\subsection{Lax}
-
-Las pruebas del jet van a ser usando Lax, van a ser usando una densidad $\rho_{jet}  = 100 \, g/\mathrm{cm}^2$, con una resolución de 500 pixeles. El tamaño de nuestro dominio será cuadrado, con una longitud de $x = y = 1\times 10^9 \, \mathrm{cm}$. Se puede ver como el jet desplaza el material del medio ambiente y va creando un hueco donde hay menor densidad. A esta parte se le conoce como el capullo del jet.
-
-\begin{figure}[H] \label{fig:jet_ma_300}%Snapshot 20 
-\centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20} 
-\caption{Ejección de un jet al tiempo $t = 0.2$ s, con una densidad  $\rho = 100 \, \mathrm{g}/\mathrm{cm}^3$, una velocidad de sobre el eje y $v_y = 0.9797959 \, \mathrm{c}$  y una presión 20 veces la  magnitud de la densidad $P = 20 \times \vert \rho \vert$. La densidad del medio ambiente es $\rho = 300 \, \mathrm{g}/\mathrm{cm}^3$ y la presión es 20 veces mayor la del medio ambiente.}
-\end{figure}
-
-La siguiente prueba fue haciendo nuestro medio ambiente más denso, pero las condiciones del jet como presión y velocidad se mantuvieron iguales que en nuestra anterior prueba. El jet mostró mas dificultades al escapar debido a la densidad y presión más elevadas. Se formó al igual que en la figura \ref{fig:jet_ma_300} una menor densidad debido al desplazamiento de materia que hizo el jet.
-
-\begin{figure}[H] \label{fig:jet_100_t_20_ma_500}%Snapshot 20
-\centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20_ma_500} 
-\caption{Se puede apreciar perfectamente como la velocidad del jet es menor con respecto a \ref{fig:jet_ma_300} debido a que la densidad de nuestro medio ambiente es 1.6 veces mas grande.}
-\end{figure}
-
-\subsection{HLL}
-
-La siguiente parte fue usando el método de HLL, el cual ha mostrado ser un método más difícil de aplicar debido al tiempo de ejecución que lleva en un ordenador. Al igual que el método de Lax, este se hizo con una resolución de 500x500 pixeles.
-
-\begin{figure}[H] \label{fig:jet_hll_100_ma_300_500pix} %Snapshot 20
-\centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_300_500pix} 
-\caption{La imágen de HLL tiene una resolución de 500x500 píxeles. El tiempo es $t =0.2 $ s. El método de HLL nos muestra una distribución de las densidades entre el medio ambiente y el del jet casi homogeneas, dicho de otra manera, sin muchas discontinuidades. }
-\end{figure}
-
-Al incrementar la densidad del medio externo a 500 g/cc, usando el método de HLL, se puede ver que la interaccion del jet con el medio ambiente se hace más difícil de apreciar dado que no hay mucha diferencia de densidad entre estas dos interacciones. Ademas de que con este método no podemos apreciar, apesar de la resolución que estamos introduciendo, las discontinuidades presentes entre el jet y el medio ambiente. 
-
-\begin{figure}[H] %Snapshot 20
-\centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_500_500pix} 
-\caption{Esta prueba tiene una densidad de medio ambiente es de 500 g/cc. La interacción que hay entre el medio ambiente y el jet es pobremente notoria apesar de la resolución que estamos ejerciendo.}
-\end{figure}
-
-\subsection{Comparación Lax-HLL}
-
-Al ver las figuras \ref{fig:jet_ma_300} y \ref{fig:jet_hll_100_ma_300_500pix} podemos notar grandes diferencias entre ambos métodos. En la figura \ref{fig:analisis_jet_densidad_300}, en los ovalos blancos podemos ver que la densidad usando el método de Lax, es sutilmente mas grande que en el que vemos usando HLL. En los par de ovalos negros erguidos se puede ver una menor densidad en Lax pero que no existe en HLL. Además que en el óvalo acostado, donde el jet es inyectado, es donde ocurre la mayor anomalía dado que en HLL no se registra una densidad de 100 g/cc (que es la densidad de nuestro jet).
-
-\begin{figure}[H] \label{fig:analisis_jet_densidad_300} %Snapshot 20
-\centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_300} 
-\caption{La diferencia que hay entre HLL (panel izquierdo) y Lax (panel derecho) es notoriamente mayor, dado que HLL en el ovalo blanco muestra una menor densidad que Lax. En los óvalos negros muestra una densidad mayor a diferencia de Lax y la anomalía mas grande es en la parte de abajo donde se inyecta el jet dado que no se muestra una densidad de 100 g/cc como se esta inyectando el jet.}
-\end{figure}
-
-En la prueba con densidad de medio ambiente mayor sigue habiendo grandes diferencias entre ambos métodos. Al igual que en la figura \ref{fig:analisis_jet_densidad_300} en el óvalo blanco de la figura \ref{fig:analisis_jet_densidad_500} la densidad sigue siendo mayor en Lax que en HLL y en el círculo negro se nota una densidad mucho menor en Lax, que en HLL.
-
-\begin{figure}[H] \label{fig:analisis_jet_densidad_500} %Snapshot 20
-\centering
-\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_500} 
-\caption{La comparación entre las 2 figuras aún con una densidad de medio ambiente de $300 \, g/\mathrm{cm}^2 $ sigue siendo significativa dado la diferencia de densidades que fueron marcados con los ovalos blancos y en los círculos negros.}
-\end{figure}
-\chapter{Medios de densidad}
-
-En este capítulo, probaremos el código con diferentes medios de densidad, con el fin de ver las interacciones que hay entre el jet y su entorno. El método que vamos a usar para realizar nuestras pruebas va a ser el de Lax, dado que, como hemos visto hasta ahora, el tiempo de ejecución del programa ha sido mucho menor usandolo asi como la viscosidad que se ha visto en nuestros gráficos.
 
 
-Ahora aumentaremos la densidad de nuestro medio ambiente, esta será 10 veces más grande que nuestro jet, es decir, tendrá una densidad $\rho_{ma} = 1000 \, g/\mathrm{cm}^3 $. El jet, en sus primeros instantes de vida, desplaza la materia isotrópicamente. Enseguida se puede ver, que a pesar de que el jet esta colimado, forma un pequeño capullo donde la densidad es mas grande que en sus alrededores como se muestra en en panel b) de la figura \ref{fig:medio_ambiente_1000}.
 
-\begin{figure}[H] \label{fig:medio_ambiente_1000}
-\centering
-\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_10a}}
-\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_70a}}
-\caption{En los primeros instantes $t~0.1$ s el jet desplaza la materia del medio ambiente isotrópicamente, al ir avanzando, el jet va desplazando el material y se reduce su velocidad a $v = 0.4c$}
-\end{figure}
 
-\section{Comparación con el GRB170817}
+
+%\subsection{HLL}
+%
+%La siguiente parte fue usando el método de HLL, el cual ha mostrado ser un método más difícil de aplicar debido al tiempo de ejecución que lleva en un ordenador. Al igual que el método de Lax, este se hizo con una resolución de 500x500 pixeles.
+%
+%\begin{figure}[H] \label{fig:jet_hll_100_ma_300_500pix} %Snapshot 20
+%\centering
+%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_300_500pix} 
+%\caption{La imágen de HLL tiene una resolución de 500x500 píxeles. El tiempo es $t =0.2 $ s. El método de HLL nos muestra una distribución de las densidades entre el medio ambiente y el del jet casi homogeneas, dicho de otra manera, sin muchas discontinuidades. }
+%\end{figure}
+%
+%Al incrementar la densidad del medio externo a 500 g/cc, usando el método de HLL, se puede ver que la interaccion del jet con el medio ambiente se hace más difícil de apreciar dado que no hay mucha diferencia de densidad entre estas dos interacciones. Ademas de que con este método no podemos apreciar, apesar de la resolución que estamos introduciendo, las discontinuidades presentes entre el jet y el medio ambiente. 
+%
+%\begin{figure}[H] %Snapshot 20
+%\centering
+%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_500_500pix} 
+%\caption{Esta prueba tiene una densidad de medio ambiente es de 500 g/cc. La interacción que hay entre el medio ambiente y el jet es pobremente notoria apesar de la resolución que estamos ejerciendo.}
+%\end{figure}
+
+%\subsection{Comparación Lax-HLL}
+%
+%Al ver las figuras \ref{fig:jet_ma_300} y \ref{fig:jet_hll_100_ma_300_500pix} podemos notar grandes diferencias entre ambos métodos. En la figura \ref{fig:analisis_jet_densidad_300}, en los ovalos blancos podemos ver que la densidad usando el método de Lax, es sutilmente mas grande que en el que vemos usando HLL. En los par de ovalos negros erguidos se puede ver una menor densidad en Lax pero que no existe en HLL. Además que en el óvalo acostado, donde el jet es inyectado, es donde ocurre la mayor anomalía dado que en HLL no se registra una densidad de 100 g/cc (que es la densidad de nuestro jet).
+%
+%\begin{figure}[H] \label{fig:analisis_jet_densidad_300} %Snapshot 20
+%\centering
+%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_300} 
+%\caption{La diferencia que hay entre HLL (panel izquierdo) y Lax (panel derecho) es notoriamente mayor, dado que HLL en el ovalo blanco muestra una menor densidad que Lax. En los óvalos negros muestra una densidad mayor a diferencia de Lax y la anomalía mas grande es en la parte de abajo donde se inyecta el jet dado que no se muestra una densidad de 100 g/cc como se esta inyectando el jet.}
+%\end{figure}
+%
+%En la prueba con densidad de medio ambiente mayor sigue habiendo grandes diferencias entre ambos métodos. Al igual que en la figura \ref{fig:analisis_jet_densidad_300} en el óvalo blanco de la figura \ref{fig:analisis_jet_densidad_500} la densidad sigue siendo mayor en Lax que en HLL y en el círculo negro se nota una densidad mucho menor en Lax, que en HLL.
+%
+%\begin{figure}[H] \label{fig:analisis_jet_densidad_500} %Snapshot 20
+%\centering
+%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_500} 
+%\caption{La comparación entre las 2 figuras aún con una densidad de medio ambiente de $300 \, g/\mathrm{cm}^2 $ sigue siendo significativa dado la diferencia de densidades que fueron marcados con los ovalos blancos y en los círculos negros.}
+%\end{figure}
+
+%\chapter{Medios de densidad}
+%
+%
+%
+%
+%Ahora aumentaremos la densidad de nuestro medio ambiente, esta será 10 veces más grande que nuestro jet, es decir, tendrá una densidad $\rho_{ma} = 1000 \, g/\mathrm{cm}^3 $. El jet, en sus primeros instantes de vida, desplaza la materia isotrópicamente. Enseguida se puede ver, que a pesar de que el jet esta colimado, forma un pequeño capullo donde la densidad es mas grande que en sus alrededores como se muestra en en panel b) de la figura \ref{fig:medio_ambiente_1000}.
+%
+%\begin{figure}[H] \label{fig:medio_ambiente_1000}
+%\centering
+%\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_10a}}
+%\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_70a}}
+%\caption{En los primeros instantes $t~0.1$ s el jet desplaza la materia del medio ambiente isotrópicamente, al ir avanzando, el jet va desplazando el material y se reduce su velocidad a $v = 0.4c$}
+%\end{figure}
+%
+%\section{Comparación con el GRB170817}
 
 
 \chapter{Conclusiones}
@@ -2124,6 +2171,10 @@ Entonces
 \end{equation}
 
 Con lo que volvemos a la ecuación \ref{RH_no_rel_choque_no_fuerte}
+
+\chapter{Velocidad de lós métodos numéricos} \label{aped.D}
+
+Esto está en construcción
 
 \begin{thebibliography}{20}
 
