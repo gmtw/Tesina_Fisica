@@ -1353,7 +1353,7 @@ En la figura \ref{fig:jet_ma_300_analisis}, en ambos métodos, se observa un jet
 
 Al realizar los perfiles del jet sobre las rectas $y = 2 \times 10^9$ cm y $y = 0.5 \times 10^9$ cm , la diferencia que hay entre Lax y HLL no son tan grandes dado que cuando se analizan, los perfiles cercanos a la eyección del jet los errores relativos no son tan grandes. En el panel b) de la  figura \ref{fig:perfil_de_densidad_jet} se observa un error relativo $\delta = 0.021$ cerca de las fronteras, mientas que en los demas son casi lo mismo. En el panel a) de la misma figura se observa lo mismo que el panel b) salvo que la diferencia entre las fronteras es un poco mayor, dado que, el error incrementa a $\delta  = 0.1$.
 
-La diferencia entre Lay y HLL usando mi codigo para el jet es mínima. Con que ambós métodos se pueden usar, pero debido a que Lax es más rápido, a partir de aquí se usará este último método. Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
+La diferencia entre Lay y HLL usando mi código para el jet es mínima. Con lo que ambos métodos se pueden usar, pero debido a que Lax es más rápido, a partir de aquí se usará este último método. Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
 
 
 \begin{figure}
@@ -1390,14 +1390,38 @@ Las pruebas del jet van a ser en un medio con una densidad de ambiente casi nula
 \caption{Al tener únicamente velocidad sobre el eje y, el jet forma perfectamente un cilindro. Pero se puede observar que el jet se expande simétricamente sobre el eje x. Esta expansión sobre el eje x es solo para densidades muy bajas comparadas a la del jet.}
 \end{figure}
 
+Al realizar un campo vectorial de las velocidades del jet. La velocidad en si se conserva y no cambia salvo, cuando se empieza a alejar del centro donde se emite el jet.
+
+
+\begin{figure}
+\centering
+\subfigure[$t = 0.01$ s]{\includegraphics[scale = 0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t01_ma_10^-10}}
+\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t10_ma_10^-10}}
+\caption{\label{fig:campo_de_velocidades_medio_bajo} Campo vectorial de la inyección del jet. La velocidad es $v = 99c \, \mathrm{cm}\cdot \mathrm{s}^{-1}$. Conforme avanza el tiempo el radio del jet se va expandiendo támbien.}
+\end{figure}
+
+
 
 
 \section{SGRB en medio de densidad 2}
 
+Para esta sección, las propiedades del jet se mantendrán iguales que en la anterior sección, sólo que esta vez el medio que lo rodea será 5 veces más denso que el jet. El jet en esta ocasión muestra la formación de un capullo que rodea la eyección del jet, debido a que el mismo va removiendo la materia del medio ambiente.
 
+\begin{figure}
+\centering
+\subfigure[$t = 0.2$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_t20_ma_500}}
+\subfigure[$t = 0.3$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_t30_ma_500}}
+\caption{\label{fig:jet_ma_500} Al evolucionar con el tiempo el jet muestra la formación de un capullo mucho menos denso que el medio ambiente que los rodea. Y en medio de este capullo se muestra una forma ovaloide que viene siendo el material de la eyección del jet y que es más denso que el mismo.}
+\end{figure}
 
+Si se analiza el campo de velocidades del jet. Vemos que cuando el material del jet choca contra el material del medio ambiente, este, hace que cambie la dirección de la velocidad hacia donde va el jet.
 
-
+\begin{figure}
+\centering
+\subfigure[$t = 0.2$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_vector_t20_ma_500}}
+\subfigure[$t = 0.3$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_vector_t30_ma_500}}
+\caption{\label{fig:jet_vec_ma_500} El centro del jet mantiene la velocidad cercana a la de la luz. Mientras que la materia a su alrededor tiende a bajar rápidamente su velocidad.}
+\end{figure}
 
 %\subsection{HLL}
 %
