@@ -150,7 +150,9 @@ Una bonita historia
 \pagenumbering{arabic} % para empezar la numeración con números
 %Érase una vez...
 
-Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos, fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/vela5a.html}} a finales de la decada de los 60's, gracias a los datos recabados por el experimento BATSE\footnote{\url{https://gammaray.msfc.nasa.gov/batse/}} se logró identificar 2 grupos principales de GRBs, los cortos y los largos, en los cuales este último tiene una duracion mayor a los 2 s.
+Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos.
+Estos consisten en la emisión de energías altas como los rayos $\gamma$ y los rayos X, asi como energías bajas como el óptico, el radio, entre otros. %Piran2005
+Fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/vela5a.html}} a finales de la decada de los 60's, gracias a los datos recabados por el experimento BATSE\footnote{\url{https://gammaray.msfc.nasa.gov/batse/}} se logró identificar 2 grupos principales de GRBs, los cortos y los largos, en los cuales este último tiene una duracion mayor a los 2 s.
 
 \begin{figure} 
 %fuente de la imagen: https://imagine.gsfc.nasa.gov/science/objects/bursts1.html
@@ -160,7 +162,9 @@ Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de
   \label{fig:Batse_duration_GRBs}
 \end{figure}
 
-El objetivo principal del estudio de los GRBs es analizar las propiedades de los estallidos de los rayos gamma, así como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor más atractivo. La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo, la energía liberada es del orden de $10^{52}$ ergs.
+El objetivo principal del estudio de los GRBs es analizar las propiedades de los estallidos de los rayos gamma, así como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor más atractivo.
+Las categorias de los GRBs largos y cortos son aproximadamente 75\% y 25\% de la población. %Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
+ La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo, la energía liberada es del orden de $10^{52}$ ergs.
 
 Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
 \section{Características de los GRBs}
@@ -181,7 +185,7 @@ Muchas de las características de los GRBS ya sean estos largos o cortos, son la
 La emisión pronta es definido como el periodo de tiempo donde el detector de rayos $\gamma$ detecta una señal sobre el fondo. Estas consisten en fotones de alta energía, no tiene espectro térmico. El espectro térmico es producido por un gas en equilibio térmico. Además, tiene bastantes carterísticas observacionales.
 
 El flujo de energía varia dentro de cientos de Kev. La emisión de las curvas de luz son notoriamente irregulares sobre escalas de tiempo muy pequeñas (ver figura \ref{lightcurve}). %Short gamma-ray bursts: A review; P. D’Avanzo
-En los GRBs cortos, su espectro de emisión, se ha encontrado más duro que en los GRBs largos, esto debido a que es una combinación de componentes espectrales duros de baja energía. 
+En los GRBs cortos, su espectro de emisión, se ha encontrado más duro que en los GRBs largos, esto debido a que es una combinación de componentes espectrales duros de baja energía. Una característica de principal es la duración de esta emisión, esta llega a ser del orden $\geq \, 10^{-2} $ s a $10^{3}$ s. Los valores promedio de dichas emisiones son $t \sim 20 $ s para GRBs largos y $t \sim 0.2 $ s para los cortos. %Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
 
 \begin{figure}
 \centering %Fuente Zhang
@@ -189,8 +193,8 @@ En los GRBs cortos, su espectro de emisión, se ha encontrado más duro que en l
 \caption{\label{lightcurve} Diferentes curvas de luz captadas por el detector Batse detectadas en la emisión pronta de los GRBs. Las curvas de luz difieren bastantes unas de otras, mientras que BATSE 332 es un decaimiento exponencial , BATSE Trigger 1989  tiene 2 picos de intensidad. }
 \end{figure}
 \subsection{Emisión tardía}
-La emisión afterglow es despues de la emisión prompt en el cual se pueden detectar otras longitudes de onda como el óptico, radio y los rayos X. %\ref{fig:Partes de GRBs}.
-La propiedad de "multiples longitudes de onda", hace una propiedad única de la emisión tardía. Estos cubren un amplio rango de frecuencias, desde las ondas de radio hasta los Tev. El espectro de banda ancha es descrito como una ley de potencias inversa, ya que la fuerza del choque se reduce a medida que la onda expansiva va desacelerando. Con lo que se espera que todas las longitudes de onda de las curvas de luz decaigan como ley de potencias. Entonces la densidad de flujo puede ser representada como:
+La emisión tardía,conocida tambien como \emph{afterglow},  es después de la emisión prompt en el cual se pueden detectar otras longitudes de onda como el óptico, radio y los rayos X. %\ref{fig:Partes de GRBs}.
+La propiedad de "multiples longitudes de onda", hace una propiedad única de la emisión tardía. Estos cubren un amplio rango de frecuencias, desde las ondas de radio hasta los Tev. El espectro de banda ancha es descrito como una ley de potencias inversa, ya que la fuerza del choque se reduce a medida que la onda expansiva va desacelerando. Con lo que se espera que todas las longitudes de onda de las curvas de luz decaigan como ley de potencias. Entonces la densidad de flujo es proporcional a:
 
 \begin{equation}
 F_{\nu}(t,\nu) \propto t^{-\alpha} \nu^{\beta}
@@ -200,48 +204,74 @@ Donde $\alpha$ y $\beta$ son reales positivos.
 
 
  En Mayo y Julio del 2005 datos de eyecciones recopiladas por el satélite \emph{swift} al seguir al seguir al GRB 050509B, descubrieron las primeras fases tardías de los GRBs cortos, tiempo después el satélite HETE-2 junto con el observatorio \emph{chandra} de rayos X siguieron al satélite 050709 el cual localizo la fase tardía en rayos X y despues en la banda óptica, con estos datos recabados de la fase tardía se pudo llegar a que los GRBs cortos tienen una escala de densidad y una energía mas baja que los GRBs largos, tambien se llego a la conclusión de que los GRBs cortos tienen orígenes cosmologicos y que las estrellas masivas no son sus progenitores como en el caso de GRBs cortos.
+ 
 \subsection{Energía y luminosidad}
+Los GRBs largos tienen una luminosidad isotrópica $L_{iso} \sim 10^{49}-10^{54} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$. También  hay GRBs largos con una luminosidad baja, sus valores rondan acerca de $L_{iso} \sim 5 \times 10^{46}-10^{49} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$, pero estos son solo una pequeña fracción de los GRBs largos observados. Los GRBs cortos tiene generalmente una luminosidad de $L_{iso} \sim 10^{49} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$.
+
+La distribución de energías es amplia para los GRBs, estos cubren valores $E_{iso} \sim 10^{49}-10^{55}$ ergs para los largos y para los cortos $E_{iso} \sim 3.3 \times 10^{46}-10^{53}$ ergs. %the physics of gamma ray burst
 
 %
 \section{Características de los GRBs cortos}
-Los progenitores de los SGRBs tienen una amplia distribución de tiempo de retraso y su taza es influenciada en parte por la actividad de formación de las estrellas. Las patadas natales pueden ser las causantes de las distancias en las que estos nacen y los sitios de explosión de estos sistemas, la probabilidad para una galaxia de brillo $m$  a ser localizada a una separación $\delta R$ de la posición de un SGRB está dada por 
+Los GRBS cortos, aunque tiene muchas carcteristicas en común con los GRBs largos, también tienen sus propias peculariedades que lo hacen único.
+
+\subsection{Progenitores} %ghrels2009
+Los GRBs cortos por lo general se localizan en medios de baja formación estelar por lo que no se espera poder encontrarlos ambientes estelares jovenes además de que, conllevan una carencia para poder asociarlos con SNs. El modelo más aceptado en la literatura de los progenitores de los GRBs cortos son la fusión de objetos compactos binarios. Estos pueden comprender a dos estrellas de neutrones (NS-NS), una estrella de neutrones y un agujero negro (NS-BH) o dos agujeros negros (BH-BH). La fusión se logra a cabo debido a la pérdida de momento angular y energía debido a las ondas gravitacionales. La interacción de este fenómeno lleva a la extracción de energía por procesos magnetohidrodinámicos (MHD), los cuales impulsan un flujo relativista colimado. 
+
+Las patadas natales pueden ser las causantes de las distancias en las que estos nacen y los sitios de explosión de estos sistemas, la probabilidad para una galaxia de brillo $m$  a ser localizada a una separación $\delta R$ de la posición de un SGRB está dada por 
 
 \begin{equation}
 P_{cc} = 1 - \exp ^{- \pi (\delta R)^{2} \sum(\leq m)}
 \end{equation}
+Donde $\sum(\leq m) = 1.3\cdot 10^{0.33(m-24)-2.44} \mathrm{arcsec} ^{-2}$ son el número de cuentas de la galaxia. Los SGRBs sin galaxias anfitrionas se exhiben cerca galaxias de campo con una baja probabilidad de coincidencia, generalmente las distancias medias de separación del SGRB con su galaxia anfitriona es de $ \frac{\delta R}{r_e} \approx 1.5$ donde $r_e$ es el radio estelar. 
 
-Donde $\sum(\leq m) = 1.3\cdot 10^{0.33(m-24)-2.44 arcsec ^{-2}}$ son el número de cuentas de la galaxia. Los SGRBs sin galaxias anfitrionas se exhiben cerca galaxias de campo con una baja probabilidad de coincidencia, generalmente las distancias medias de separación del SGRB con su galaxia anfitriona es de $ \frac{\delta R}{r_e} \approx 1.5$ donde $r_e$ es el radio estelar. Otra característica que distingue también a las SGRB es que sus anfitriones tienden a ser mas largos que los anfitriones de los largos.
+\subsection{Propiedades de las explosiones de los SGRB}
 
-Los parámetros claves de interes de la emisión pronta y tardia:
+Los parámetros claves de interés de la emisión pronta y tardia:
 \begin{itemize}
-\item $E_{\gamma}$: Escala de energía
-\item $E_k$: Energía cinética de la onda de choque de la emisión tardía
-\item $\theta_j$: El ángulo de apertura del jet
-\item $n$: Densidad del medio ambiente
+\item $E_{\gamma}$: Energía de rayos $\gamma$.
+\item $E_k$: Energía cinética de la onda de choque de la emisión tardía.
+\item $\theta_j$: El ángulo de apertura del jet.
+\item $n$: Densidad del medio ambiente.
 \end{itemize}
 
-El espectro de emisión sincrotrónica (flujo relativista interactuando con el medio circundante) se caracteríza por 3 frecuencias:
+La emisión del sincrotrón de la emisión tardía incluye dos parámetros libres que tienen relación con la física del choque relativista:
+\begin{itemize}
+\item $\epsilon_{B}$: Fracción de energía del post-choque de los campos magnéticos.
+\item $\epsilon_e$: Radiación relativista de los electrones. 
+\end{itemize}
+
+
+
+El flujo relativista interactuando con el medio circundante es el espectro de emisión sincrotónico. Esta se caracteríza por 3 frecuencias de corte:
 \begin{itemize}
 \item $\nu_a$: Auto absorción
 \item $\nu_m$: Factor mínimo de Lorentz
 \item $\nu_c$: enfriamiento sincrotrónico
 \end{itemize}
 
-La mayoría de estas frecuencias se encuentran entre 1 $\thicksim$ 10 GHz por lo cual ha sido difícil de detectarlas. La colimación del jet también influye en la taza de los SGRBs y proporciona una restricción adicional al modelo progenitor, la firmatura de la colimación de los destellos de los SGRBs son los llamados "Jet Break" que ocurren al tiempo $t_j$ cuando $\Gamma_j(t_j) = 1/ \theta_j$, esto lidera al cambio de emisión del espectro sincrotrónico
+Tomando en cuenta los valores de estos parámetros y la pendiente del espectro para $\nu < \nu_m$ se pueden llegar a encontrar los siguientes valores $E_{k, \, \mathrm{iso}}$, $n$, $\epsilon_{B}$ y $\epsilon_e$. La evolución temporal del espectro también se puede usar para encontrar el ángulo de apertura del jet $\theta_j$. La relacción que existe entre el ángulo de apertura $\theta_j$ y el tiempo $(t_j)$ al cual ocurre el jet break  está dado por la siguiente fórmula.
 
-\begin{equation}
-F_\nu \propto t^{-1} \longrightarrow F_\nu \propto t^{-p}
-\end{equation}
-
-La relación entre el "jet break" y el ángulo de apertura esta dado por:
-
+%La mayoría de estas frecuencias se encuentran entre 1 $\thicksim$ 10 GHz por lo cual ha sido difícil de detectarlas. La colimación del jet también influye en la taza de los SGRBs y proporciona una restricción adicional al modelo progenitor, la firmatura de la colimación de los destellos de los SGRBs son los llamados "Jet Break" que ocurren al tiempo $t_j$ cuando $\Gamma_j(t_j) = 1/ \theta_j$, esto lidera al cambio de emisión del espectro sincrotrónico
+%
+%\begin{equation}
+%F_\nu \propto t^{-1} \longrightarrow F_\nu \propto t^{-p}
+%\end{equation}
+%
+%La relación entre el "jet break" y el ángulo de apertura esta dado por:
+%
 \begin{equation}
 \theta_j = 0.13 \left( \frac{t_{j,d}}{1+z} \right)^{3/8}
 \left(\frac{n_0}{E_{52}} \right)^{1/8}
 \end{equation}
-
-\section{GRB del 17 de agosto del 2017}
 %
+%\section{GRB del 17 de agosto del 2017}
+%
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{./Figuras/Distribucion_angulo_apertura}
+\caption{La figura muestra la distribución de los ángulos de apertura para los GRBs largos (rojos) y los GRBs cortos (azules). Las flechas muestran el límite superior e inferior de los ángulos. }
+\end{figure}
 \chapter{Teoría}
 Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las variables macroscópicas.
 
@@ -1317,8 +1347,8 @@ Por lo tanto en mi código se puede utilizar, en caso newtoniano, ambos métodos
 
 \chapter{Jet en diferentes medios de densidad}
 
-En este capítulo se utilizará un jet para probar el programa con distintos medios de densidad, en los cuales, la densidad del medio varía de ser menos que el jet, hasta ser diez veces más denso que el mismo jet.
-El jet  es una emisión delgada de gas a velocidades altas, que se propaga en un medio ambiente gaseoso. Para poder simular el jet, se le inyectará presión y densidad continuamente con una velocidad constante cercana a la de la luz. 
+En este capítulo se utilizará un jet, que se mueve a velocidades relativistas, para probar el programa con distintos medios de densidad, en los cuales, la densidad del medio varía de ser menos que el jet, hasta ser diez veces más denso que el mismo jet.
+El jet  se modelará como un flujo de densidad $\rho$ con velocidad $v \simeq c$, que se propaga en un medio ambiente con $\rho = \mathrm{cte}$. Para poder simular el jet, se le inyectará presión y densidad continuamente con una velocidad constante cercana a la de la luz. En la figura \ref{fig:condicion_inicial_jet} se muestra las condiciones iniciales del jet. El cual tendrá una eyección a la mitad del dominio sobre el eje x y cuyo radio será $r = 4 \times 10^{8} \, \mathrm{cm}$.
 
 
 \begin{figure}
@@ -1327,168 +1357,95 @@ El jet  es una emisión delgada de gas a velocidades altas, que se propaga en un
 \caption{\label{fig:condicion_inicial_jet}Para poder simular el jet, se inyectará masa y energía constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro. El jet tendrá un diámentro $D_{jet} = 4 \times 10^{8}$ cm. }
 \end{figure}
 
+
+
 \section{Diferencia de los métodos numéricos sobre el jet}
 
-Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para observar el método más eficiente en cuanto a simulación de jets (ver figura \ref{fig:jet_ma_300}). Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas. Los jets  tendrán una densidad $\rho_{jet} = 100 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 300 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
+Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para determinar el método más eficiente en cuanto a simulación de jets (ver figura \ref{fig:condicion_inicial_jet}). Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas $\gamma = 5.0$. Los jets  tendrán una densidad $\rho_{jet} = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 1 \times 10^{4} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
 
 
 
 
-\begin{figure} %Snapshot 20 
-\centering
-\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_20_ma_300}}
-\subfigure[HLL]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_20_ma_300}}
-\caption{\label{fig:jet_ma_300}Ejección de el jet al tiempo $t = 0.2$ s, con una densidad  $\rho = 100 \, \mathrm{g}/\mathrm{cm}^3$, una velocidad de sobre el eje y $v_y = 0.9797959 \, \mathrm{c}$  y una presión 20 veces la  magnitud de la densidad $P = 20 \times \vert \rho \vert$. La densidad del medio ambiente es $\rho = 300 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y la presión es 20 veces mayor la del medio ambiente.}
-\end{figure}
 
-En la figura \ref{fig:jet_ma_300_analisis}, en ambos métodos, se observa un jet con un radio $r_{jet} = 4 \times 10^{8} $ cm y un capullo que lo envuelve completamente. En la misma figura se observa una diferencia notable en las densidades. En Lax se observa las diferentes densidades que se forman en el medio ambiente, mientras que con HLL sólo se observa el capullo pero no se visualiza correctamente la eyección del jet.
- %Las diferencias entre el método de Lax y HLL son abismales, dado que Lax muestra con un gran detalle las discontinuidades que se forman con la evolución del jet. También se dibujó una linea que muestra de donde se va a visualizar el perfil radial de la figura 
+
+
+En la figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un jet con un radio $r_{jet} = 4 \times 10^{8} $ cm y un capullo que lo envuelve completamente. El capullo en el panel a) de la misma figura alcanza la altura $y \approx 1 \times 10^{10}$ cm. En el panel b) el capullo alcanza la altura aproximadamente $y \approx 7 \times 10^{9}$ cm. A diferencia de HLL, en el cual se observa que la densidad del capullo alcanza densidades cercanas a $\rho \simeq 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, con Lax, las densidades bajan a $\rho \simeq 4000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$.
+ 
 
 \begin{figure} %Snapshot 20 
 \centering
-\subfigure[Lax]{\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_20_ma_300_analisis}}
-\subfigure[HLL]{\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_20_ma_300_analisis}}
-\caption{\label{fig:jet_ma_300_analisis} El jet, al ser eyectado se puede observar la formación del capullo. Asi como el despalzamiento de materia debido a lla presión del jet. Las rectas negras en las posiciones $y = 2 \times \, 10^9$ e $y = 0.5 \times \, 10^9$ son los perfiles de densidad que se analizarón en la figura \ref{fig:perfil_de_densidad_jet}.}
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_80_ma_1e4}}
+\subfigure[HLL]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/hll/jet_HLL_80_ma_1e4}}
+\caption{\label{fig:jet_ma_1000_analisis} Jet al tiempo $t = 0.8$ s. La altura del capullo de Lax es cercana a $y = 1 \times 10^{10}$ cm, mientras con HLL la altura apenas alcanza $y = 7 \times 10^{9}$ cm. Las densidad en la eyección de es aproximadamente $\rho   \lesssim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, para el caso de HLL la densidad es $\rho   \lesssim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. }
 \end{figure}
 
-Al realizar los perfiles del jet sobre las rectas $y = 2 \times 10^9$ cm y $y = 0.5 \times 10^9$ cm , la diferencia que hay entre Lax y HLL no son tan grandes dado que cuando se analizan, los perfiles cercanos a la eyección del jet los errores relativos no son tan grandes. En el panel b) de la  figura \ref{fig:perfil_de_densidad_jet} se observa un error relativo $\delta = 0.021$ cerca de las fronteras, mientas que en los demas son casi lo mismo. En el panel a) de la misma figura se observa lo mismo que el panel b) salvo que la diferencia entre las fronteras es un poco mayor, dado que, el error incrementa a $\delta  = 0.1$.
-
-La diferencia entre Lax y HLL usando mi código para el jet es mínima. Con lo que ambos métodos se pueden usar, pero debido a que Lax es más rápido, a partir de aquí se usará este último método. Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
 
 
 \begin{figure}
 \centering
-\subfigure[$y = 2 \times 10^9$ cm]{\includegraphics[scale=0.2]{./Figuras/Pruebas/perfil_densidad_jet/perfil_densidad_jet_2_9}}
-\subfigure[$y = 0.5 \times 10^9$ cm]{\includegraphics[scale=0.2]{./Figuras/Pruebas/perfil_densidad_jet/perfil_de_densidad_05_9}}
-\caption{\label{fig:perfil_de_densidad_jet} En el panel a) se muestra el perfil de densidad de densidad de la recta $y = 0.5 \times 10^9$. El error relativo entre Lax y HLL es $\delta = 0.021$. Mientras en el panel b) se muestra sobre la recta $y = 2 \times 10^9$. El error relativo entre Lax y HLL es $\delta = 0.1$. }
+\subfigure[$y = 4 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_1}}
+\subfigure[$y = 6 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_2}}
+\caption{En el panel a) se observa la densidad que hay sobre el eje x, a la altura del eje $y = 4 \times 10^{9}$ cm. En el panel b) es similar que el panel a) solo que cambia la altura $y = 6 \times 10^{9}$ cm.}
 \end{figure}
 
-
-%La siguiente prueba fue haciendo nuestro medio ambiente más denso, pero las condiciones del jet como presión y velocidad se mantuvieron iguales que en nuestra anterior prueba. El jet mostró mas dificultades al escapar debido a la densidad y presión más elevadas. Se formó al igual que en la figura \ref{fig:jet_ma_300} una menor densidad debido al desplazamiento de materia que hizo el jet.
-%
-%\begin{figure} %Snapshot 20
-%\centering
-%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/lax/jet_100_t_20_ma_500} 
-%\caption{\label{fig:jet_100_t_20_ma_500}Se puede apreciar perfectamente como la velocidad del jet es menor con respecto a \ref{fig:jet_ma_300} debido a que la densidad de nuestro medio ambiente es 1.6 veces mas grande.}
-%\end{figure}
-
-%AQUI FALTA PONER LOS PERFILES RADIALES
+En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_1000_analisis} usando Lax es aproximadamente $\rho = 1000 \sim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Pero en el caso de HLL, la densidad se eleva a $\rho = 7000 \sim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Como la densidad del jet que se propuso del jet fue $\rho = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la densidad de Lax es la mas cercana a los valores propuestos. Y tambien dado que HLL es aproximadamente 18 veces más lento que Lax para simular el jet, se usará el método de Lax de aquí en adelante.
+ Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
 
 
-\section{SGRB en medio de densidad 1}
 
 
-Las pruebas del jet van a ser en un medio con una densidad de ambiente casi nula. En general para todas las pruebas la densidad del jet será de $\rho_{jet}  = 100 \, g \cdot \mathrm{cm}^{-2}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-2}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
-
-Se observa en la figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la falta de densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
+\section{SGRB en medio de densidad bajo}
 
 
-%En este primer subsección tomaremos una valor de una densidad de medio ambiente muy bajo, es decir, que el jet este expuesto al vacío, la densidad del jet que vamos a utilizar va a ser de $\rho_{jet} = 100 \, g/\mathrm{cm}^3 $ y la presión que vamos a utilizar va a ser de 20 veces mayor que la magnitud de la densidad. La densidad del medio ambiente tendrá un valor de $\rho_{jet} = 10^{-10} \, g/\mathrm{cm}^3 $, al igual que el jet, su presión será 20 veces mas grande el módulo de la densidad. La velocidad del jet disminuye a $v = 0.83c$
+Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo . En general para todas las pruebas la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-2}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-2}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
 
 \begin{figure}
 \centering
-\subfigure[$t = 0.01$ s]{\includegraphics[scale = 0.5]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_LAX_01_ma_10^-10}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.5]{./Figuras/densidad_de_medios_ambientes/medio_bajo/medio_nulo_10a}}
-\caption{\label{fig:jet_ma_bajo_densidad}Al tener únicamente velocidad sobre el eje y, el jet forma perfectamente un cilindro. Pero se puede observar que el jet se expande simétricamente sobre el eje x. Esta expansión sobre el eje x es solo para densidades muy bajas comparadas a la del jet.}
+\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_1^-10}
+\caption{\label{fig:jet_ma_bajo_densidad}Eyección del jet relativista al tiempo $t = 0.8$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
 \end{figure}
 
-Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:campo_de_velocidades_medio_bajo}). La velocidad no cambia en el centro ya que $v_{y} = 0.9796 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$, la velocidad en el eje x es $v_{x} \leq 0.06 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ . Se observa que la velocidad se mantiene sobre todo el jet y que el medio ambiente no afecta en nada la velocidad del mismo (ver figura \ref{fig:vel_10_10}).
+Se observa en la figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la baja densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
 
+
+
+
+Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:vector_velocidades_baja}). La velocidad en sus extremos $v_{y} = 0.97354 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ con lo que la velocidad baja un 0.63\% con respecto a la velocidad que se habia esablecido en el jet. La velocidad en el eje x es $v_{x} = 0.1745 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ . Con lo que puedo concluir que el jet, a pesar de ser colimado, tiene un ángulo con respecto al jet de $\theta  = 10.16^{o}$
 
 \begin{figure}
 \centering
-\subfigure[$t = 0.01$ s]{\includegraphics[scale = 0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t01_ma_10^-10}}
-\subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t10_ma_10^-10}}
-\caption{\label{fig:campo_de_velocidades_medio_bajo} Campo vectorial de la inyección del jet. La velocidad del jet se mantiente sobre $v_{y} = 0.9796 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$. Conforme avanza el tiempo el radio del jet se va expandiendo támbien.}
+\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t80_ma_10^-10}
+\caption{\label{fig:vector_velocidades_baja}Eyección del jet relativista al tiempo $t = 0.8$ s}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.3]{./Figuras/velocidades_jet_capitulo4/vel_10_10}
-\caption{\label{fig:vel_10_10} La gráfica muestra la velocidad del jet sobre la recta paralela al eje y, que pasa por la ordenada $x  = 5 \times 10^{9}$ cm al tiempo $t = 0.1$ s.}
+\includegraphics[scale=0.5]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_baja}
+\caption{\label{fig:velocidades_baja}Eyección del jet relativista al tiempo $t = 0.1$ s}
 \end{figure}
 
 
 
-\section{SGRB en medio de densidad 2}
 
-Para esta sección, las propiedades del jet se mantendrán iguales que en la anterior sección, sólo que esta vez el medio que lo rodea será 5 veces más denso. El jet en esta ocasión muestra la formación de un capullo (figura \ref{fig:jet_ma_500}) que rodea la eyección del mismo, debido a que esta removiendo la materia del medio ambiente. 
+%==============================================================================
+%=================================================================================
+
+\section{SGRB en medio de densidad alto}
+En esta sección el jet va a tener las mismas condiciones que el de la figura \ref{fig:jet_ma_1000_analisis}. Dado que el medio ambiente es 10 veces mayor que el jet se puede observar un capullo que envuelve a la misma. El capullo alcanza un una densidad de cercana a los $\rho = 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$.
+
+La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdot \mathrm{s}^{-1}$ mientras a los extremos va bajando al 70\% de la velocidad de la luz. Una diferencia con la propagación del medio bajo es que las velocidades del medio ambiente con las que el jet esta interactuando tienen una dirección opuesta 
 
 \begin{figure}
 \centering
-\subfigure[$t = 0.2$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_t20_ma_500}}
-\subfigure[$t = 0.3$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_t30_ma_500}}
-\caption{\label{fig:jet_ma_500} Al evolucionar con el tiempo el jet muestra la formación de un capullo mucho menos denso que el medio ambiente que los rodea. Y en medio de este capullo  se muestra una forma ovaloide que viene siendo el material de la eyección del jet y que es más denso que el mismo.}
+\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_vector_t80_ma_1e4}
+\caption{\label{fig:jet_vel_alto}Eyección del jet relativista al tiempo $t = 0.8$ s}
 \end{figure}
-
-Si se analiza el campo de velocidades del jet. Vemos que cuando el material del jet choca contra el material del medio ambiente, este, hace que cambie la dirección de la velocidad hacia donde va el jet (ver figura \ref{fig:jet_vec_ma_500}). Aun así esto hace que se mantenga la velocidad unicamente sobre el jet. 
 
 \begin{figure}
 \centering
-\subfigure[$t = 0.2$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_vector_t20_ma_500}}
-\subfigure[$t = 0.3$ s]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_vector_t30_ma_500}}
-\caption{\label{fig:jet_vec_ma_500} El centro del jet mantiene la velocidad cercana a la de la luz. Mientras que la materia a su alrededor tiende a bajar rápidamente su velocidad.}
+\includegraphics[scale=0.5]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_alta}
+\caption{\label{fig:velocidades_alta}Eyección del jet relativista al tiempo $t = 0.1$ s}
 \end{figure}
-
-La velocidad del jet de
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.3]{./Figuras/velocidades_jet_capitulo4/vel_500}
-\caption{\label{fig:vel_500} La explicación es la misma que en la figura \ref{fig:vel_10_10}, solo que en esta ocasión $t = 0.3$ s}
-\end{figure}
-
-%\subsection{HLL}
-%
-%La siguiente parte fue usando el método de HLL, el cual ha mostrado ser un método más difícil de aplicar debido al tiempo de ejecución que lleva en un ordenador. Al igual que el método de Lax, este se hizo con una resolución de 500x500 pixeles.
-%
-%\begin{figure}[H] \label{fig:jet_hll_100_ma_300_500pix} %Snapshot 20
-%\centering
-%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_300_500pix} 
-%\caption{La imágen de HLL tiene una resolución de 500x500 píxeles. El tiempo es $t =0.2 $ s. El método de HLL nos muestra una distribución de las densidades entre el medio ambiente y el del jet casi homogeneas, dicho de otra manera, sin muchas discontinuidades. }
-%\end{figure}
-%
-%Al incrementar la densidad del medio externo a 500 g/cc, usando el método de HLL, se puede ver que la interaccion del jet con el medio ambiente se hace más difícil de apreciar dado que no hay mucha diferencia de densidad entre estas dos interacciones. Ademas de que con este método no podemos apreciar, apesar de la resolución que estamos introduciendo, las discontinuidades presentes entre el jet y el medio ambiente. 
-%
-%\begin{figure}[H] %Snapshot 20
-%\centering
-%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/hll/jet_hll_100_ma_500_500pix} 
-%\caption{Esta prueba tiene una densidad de medio ambiente es de 500 g/cc. La interacción que hay entre el medio ambiente y el jet es pobremente notoria apesar de la resolución que estamos ejerciendo.}
-%\end{figure}
-
-%\subsection{Comparación Lax-HLL}
-%
-%Al ver las figuras \ref{fig:jet_ma_300} y \ref{fig:jet_hll_100_ma_300_500pix} podemos notar grandes diferencias entre ambos métodos. En la figura \ref{fig:analisis_jet_densidad_300}, en los ovalos blancos podemos ver que la densidad usando el método de Lax, es sutilmente mas grande que en el que vemos usando HLL. En los par de ovalos negros erguidos se puede ver una menor densidad en Lax pero que no existe en HLL. Además que en el óvalo acostado, donde el jet es inyectado, es donde ocurre la mayor anomalía dado que en HLL no se registra una densidad de 100 g/cc (que es la densidad de nuestro jet).
-%
-%\begin{figure}[H] \label{fig:analisis_jet_densidad_300} %Snapshot 20
-%\centering
-%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_300} 
-%\caption{La diferencia que hay entre HLL (panel izquierdo) y Lax (panel derecho) es notoriamente mayor, dado que HLL en el ovalo blanco muestra una menor densidad que Lax. En los óvalos negros muestra una densidad mayor a diferencia de Lax y la anomalía mas grande es en la parte de abajo donde se inyecta el jet dado que no se muestra una densidad de 100 g/cc como se esta inyectando el jet.}
-%\end{figure}
-%
-%En la prueba con densidad de medio ambiente mayor sigue habiendo grandes diferencias entre ambos métodos. Al igual que en la figura \ref{fig:analisis_jet_densidad_300} en el óvalo blanco de la figura \ref{fig:analisis_jet_densidad_500} la densidad sigue siendo mayor en Lax que en HLL y en el círculo negro se nota una densidad mucho menor en Lax, que en HLL.
-%
-%\begin{figure}[H] \label{fig:analisis_jet_densidad_500} %Snapshot 20
-%\centering
-%\includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/analisis_jet_densidad_500} 
-%\caption{La comparación entre las 2 figuras aún con una densidad de medio ambiente de $300 \, g/\mathrm{cm}^2 $ sigue siendo significativa dado la diferencia de densidades que fueron marcados con los ovalos blancos y en los círculos negros.}
-%\end{figure}
-
-%\chapter{Medios de densidad}
-%
-%
-%
-%
-%Ahora aumentaremos la densidad de nuestro medio ambiente, esta será 10 veces más grande que nuestro jet, es decir, tendrá una densidad $\rho_{ma} = 1000 \, g/\mathrm{cm}^3 $. El jet, en sus primeros instantes de vida, desplaza la materia isotrópicamente. Enseguida se puede ver, que a pesar de que el jet esta colimado, forma un pequeño capullo donde la densidad es mas grande que en sus alrededores como se muestra en en panel b) de la figura \ref{fig:medio_ambiente_1000}.
-%
-%\begin{figure}[H] \label{fig:medio_ambiente_1000}
-%\centering
-%\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_10a}}
-%\subfigure[]{\includegraphics[scale = 0.450]{./Figuras/densidad_de_medios_ambientes/medio_1000gcc_70a}}
-%\caption{En los primeros instantes $t~0.1$ s el jet desplaza la materia del medio ambiente isotrópicamente, al ir avanzando, el jet va desplazando el material y se reduce su velocidad a $v = 0.4c$}
-%\end{figure}
-%
-%\section{Comparación con el GRB170817}
 
 
 \chapter{Conclusiones}
@@ -2098,7 +2055,7 @@ $\Rightarrow$
 \end{equation}
 
 
-Sabemos que $V = \frac{m_0}{\rho}$ y e introduciendo la siguiente notación $\hat{P}=P_m/P_j$, $\hat{V}=V_m/V_j$ y $\hat{c} = \frac{c}{\sqrt{P_j V_j}}$ llegamos a la relación de Rayleigh
+Sabemos que $V = \frac{m_0}{\rho}$ y e introduciendo la siguiente notación $\hat{P}=P_m/P_j$, $\hat{V}=V_m/V_j = \rho_j / \rho_m$ y $\hat{c} = \frac{c}{\sqrt{P_j V_j}}$ llegamos a la relación de Rayleigh
 
 \begin{equation}
 -u_j^2
