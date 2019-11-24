@@ -1354,14 +1354,14 @@ El jet  se modelará como un flujo de densidad $\rho$ con velocidad $v \simeq c$
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/jet_ejemplo}
-\caption{\label{fig:condicion_inicial_jet}Para poder simular el jet, se inyectará masa y energía constante del lado de la parte de abajo de nuestro dominio. Sobre esta parte, sólo se inyectara a una pequeña fracción de este lado en el centro. El jet tendrá un diámentro $D_{jet} = 4 \times 10^{8}$ cm. }
+\caption{\label{fig:condicion_inicial_jet}La condición inicial de la simulación para que se efectué la eyección del jet será que, del lado de una de las fronteras, tenga valores  densidad ($\rho$), velocidad ($v$) y presión ($P$) constantes. En este caso los valores estarán localizados en la parte de abajo del dominio. El jet tendrá un diámentro $D_{jet} = 4 \times 10^{8}$ cm. Así que estará localizado en los puntos $(x,y) = (0, \, [5\, \times 10^9 - 2\, \times 10^8, 5\, \times 10^9 + 2\, \times 10^8] )$ cm.}
 \end{figure}
 
 
 
 \section{Diferencia de los métodos numéricos sobre el jet}
 
-Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para determinar el método más eficiente en cuanto a simulación de jets (ver figura \ref{fig:condicion_inicial_jet}). Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas $\gamma = 5.0$. Los jets  tendrán una densidad $\rho_{jet} = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 1 \times 10^{4} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
+Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para determinar el método más eficiente en cuanto a simulación de jets. Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas $\gamma = 5.0$. Los jets tendrán una densidad $\rho_{jet} = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 1 \times 10^{4} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
 
 
 
@@ -1376,7 +1376,7 @@ En la figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un je
 \centering
 \subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_80_ma_1e4}}
 \subfigure[HLL]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/hll/jet_HLL_80_ma_1e4}}
-\caption{\label{fig:jet_ma_1000_analisis} Jet al tiempo $t = 0.8$ s. La altura del capullo de Lax es cercana a $y = 1 \times 10^{10}$ cm, mientras con HLL la altura apenas alcanza $y = 7 \times 10^{9}$ cm. Las densidad en la eyección de es aproximadamente $\rho   \lesssim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, para el caso de HLL la densidad es $\rho   \lesssim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. }
+\caption{\label{fig:jet_ma_1000_analisis} Jet al tiempo $t = 0.8$ s. La altura del capullo de Lax es cercana a $y = 1 \times 10^{10}$ cm, mientras con HLL la altura apenas alcanza $y = 7 \times 10^{9}$ cm. Las densidad en la eyección usando Lax es aproximadamente $\rho   \lesssim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, para el caso de HLL la densidad es $\rho   \lesssim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. }
 \end{figure}
 
 
@@ -1397,7 +1397,7 @@ En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_100
 \section{SGRB en medio de densidad bajo}
 
 
-Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo . En general para todas las pruebas la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-2}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-2}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
+Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo. En general para todas las pruebas, la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-3}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$ y la velocidad del medio ambiente será nula. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
 
 \begin{figure}
 \centering
@@ -1410,7 +1410,7 @@ Se observa en la figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a l
 
 
 
-Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:vector_velocidades_baja}). La velocidad en sus extremos $v_{y} = 0.97354 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ con lo que la velocidad baja un 0.63\% con respecto a la velocidad que se habia esablecido en el jet. La velocidad en el eje x es $v_{x} = 0.1745 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ . Con lo que puedo concluir que el jet, a pesar de ser colimado, tiene un ángulo con respecto al jet de $\theta  = 10.16^{o}$
+Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:vector_velocidades_baja}) de la parte de eyección de la frontera. La velocidad en sus extremos $v_{y} = 0.97354 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ con lo que la velocidad baja un 0.63\% con respecto a la velocidad que se habia esablecido en el jet. La velocidad en el eje x es $v_{x} = 0.1745 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ . Con estas velocidades en el eje X e Y puedo concluir que el jet, a pesar de ser colimado, tiene un ángulo con respecto al jet de $\theta  = 10.16^{o}$.
 
 \begin{figure}
 \centering
@@ -1418,9 +1418,11 @@ Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:v
 \caption{\label{fig:vector_velocidades_baja}Eyección del jet relativista al tiempo $t = 0.8$ s}
 \end{figure}
 
+La velocidad en la figura \ref{fig:velocidades_baja} del medio ambiente cuando interactua con el medio ambiente toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet, es decir, tienen una velocidad $v = 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ 
+
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_baja}
+\includegraphics[scale=0.4]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_baja}
 \caption{\label{fig:velocidades_baja}Eyección del jet relativista al tiempo $t = 0.1$ s}
 \end{figure}
 
@@ -1433,7 +1435,9 @@ Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:v
 \section{SGRB en medio de densidad alto}
 En esta sección el jet va a tener las mismas condiciones que el de la figura \ref{fig:jet_ma_1000_analisis}. Dado que el medio ambiente es 10 veces mayor que el jet se puede observar un capullo que envuelve a la misma. El capullo alcanza un una densidad de cercana a los $\rho = 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$.
 
-La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdot \mathrm{s}^{-1}$ mientras a los extremos va bajando al 70\% de la velocidad de la luz. Una diferencia con la propagación del medio bajo es que las velocidades del medio ambiente con las que el jet esta interactuando tienen una dirección opuesta 
+La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdot \mathrm{s}^{-1}$ mientras a los extremos va bajando al 70\% de la velocidad de la luz. Una diferencia con la propagación del medio bajo es que las velocidades del medio ambiente con las que el jet esta interactuando tienen una dirección opuesta.
+
+
 
 \begin{figure}
 \centering
@@ -1441,16 +1445,24 @@ La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdo
 \caption{\label{fig:jet_vel_alto}Eyección del jet relativista al tiempo $t = 0.8$ s}
 \end{figure}
 
+Se analizó la velocidad del medio ambiente al interactuar con el jet sobre la recta $x = 5 \times 10^9 \, \mathrm{cm}$ que es paralela al eje y. La velocidad con la que el jet mueve el medio ambiente es $v = 7000 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$. La cual decrece rápidamente hasta llegar a $v = 1000 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$
+
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_alta}
+\includegraphics[scale=0.4]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_alta}
 \caption{\label{fig:velocidades_alta}Eyección del jet relativista al tiempo $t = 0.1$ s}
 \end{figure}
 
 
 \chapter{Conclusiones}
 
-
+Al realizar las diferentes simulaciones tanto con la onda de choque, asi como para el jet en sus diferentes medios de densidad puedo concluir que:
+\begin{itemize}
+\item La velocidad del tiempo de ejecucuón de mi código usando HLL es 20 veces más grande que el que usamos con Lax.
+\item La velocidad de la onda de choque relativista decrece rápidamente llegando a velocidades newtonianas a pesar de no tener un medio ambiente denso quu lo rodea.
+\item La simulación del jet o de la onda de choque funcionan exactamente donde se les impongan las condiciones iniciales, pero se debe de tener en cuenta que para el uso de HLL la malla de 
+\item A pesar de tener un ángulo de apertura $\theta = 0^{o}$ el jet no resulta ser totalmente colimado y es que resulta que se va "abriendo" con un ángulo $\theta = 10^{o}$
+\end{itemize}
 
 \appendix
 \chapter{Código}\label{aped.A}
@@ -2186,7 +2198,75 @@ Esto está en construcción
  
 %\bibitem{2012ApJ...760..122G} Gao, Y., \& Law, C.~K.\ 2012, \apj , 760, 122
 
- 
+\bibitem{Zhang:PGRB}
+
+Zhang, B. (2018). GRB Phenomenology. In The Physics of Gamma-Ray Bursts (pp. 27-121). Cambridge: Cambridge University Press. doi:10.1017/9781139226530.004
+% 2019-The Physics of Gamma-Ray Bursts.pdf
+
+\bibitem{MB-HLLC-RSfRF}
+A. Mignone, G. Bodo, An HLLC Riemann solver for relativistic flows – II. Magnetohydrodynamics, Monthly Notices of the Royal Astronomical Society, Volume 368, Issue 3, May 2006, Pages 1040–1054, https://doi.org/10.1111/j.1365-2966.2006.10162.x
+%0601640.pdf
+
+\bibitem{PAFD}
+Clarke, C., \& Carswell, B. (2007). Blast waves. In Principles of Astrophysical Fluid Dynamics (pp. 89-106). Cambridge: Cambridge University Press. doi:10.1017/CBO9780511813450.009
+%Cathie Clarke, Bob Carswell - Principles of astrophysical fluid dynamics (2007, Cambridge University Press).pdf
+
+\bibitem{Decade-sgrb}
+Fong, W. et al. “A DECADE OF SHORT-DURATION GAMMA-RAY BURST BROADBAND AFTERGLOWS: ENERGETICS, CIRCUMBURST DENSITIES, AND JET OPENING ANGLES.” The Astrophysical Journal 815.2 (2015): 102. Crossref. Web.
+%1509.02922.pdf
+
+\bibitem{Ecasgrb}
+Teboul, O \& Piran, T. (2017). Emission of cocoon afterglow for short Gamma Ray Burst : a counterpart of gravitational waves?. 
+
+\bibitem{ESRM}
+Mignone, A., and Jonathan C. McKinney. “Equation of State in Relativistic Magnetohydrodynamics: Variable Versus Constant Adiabatic Index.” Monthly Notices of the Royal Astronomical Society 378.3 (2007): 1118–1130. Crossref. Web.
+%mignone2007.pdf
+
+\bibitem{GRB:CAP}
+Azzam, W.J. \& Zitouni, Hannachi \& Guessoum, Nidhal. (2017). Gamma-Ray Bursts: Characteristics and Prospects. Journal of Physics: Conference Series. 869. 012065. 10.1088/1742-6596/869/1/012065. 
+%Azzam_2017_J._Phys.__Conf._Ser._869_012065.pdf
+
+\bibitem{GRB:PPP}
+ZHANG, BING, and PETER MÉSZÁROS. “GAMMA-RAY BURSTS: PROGRESS, PROBLEMS \& PROSPECTS.” International Journal of Modern Physics A 19.15 (2004): 2385–2472. Crossref. Web.
+%zhang2004.pdf
+
+\bibitem{PGRB-piran}
+Piran, Tsvi. “The Physics of Gamma-Ray Bursts.” Reviews of Modern Physics 76.4 (2005): 1143–1210. Crossref. Web.
+%piran2005.pdf
+
+\bibitem{PSGRB}
+Lee, William H, and Enrico Ramirez-Ruiz. “The Progenitors of Short Gamma-Ray Bursts.” New Journal of Physics 9.1 (2007): 17–17. Crossref. Web.
+%lee2007.pdf
+
+\bibitem{PGRB-RJ}
+Kumar, Pawan, and Bing Zhang. “The Physics of Gamma-Ray Bursts \& Relativistic Jets.” Physics Reports 561 (2015): 1–109. Crossref. Web.
+%kumar2015.pdf
+
+\bibitem{GRB-SE}
+Gehrels, N., E. Ramirez-Ruiz, and D.B. Fox. “Gamma-Ray Bursts in theSwiftEra.” Annual Review of Astronomy and Astrophysics 47.1 (2009): 567–617. Crossref. Web.
+%gehrels2009.pdf
+
+\bibitem{PNCCA}
+Mignone, A. et al. “PLUTO: A Numerical Code for Computational Astrophysics.” The Astrophysical Journal Supplement Series 170.1 (2007): 228–242. Crossref. Web.
+%Mignone_2007_ApJS_170_228.pdf
+
+\bibitem{GRB-levan}
+Levan, Andrew et al. “Gamma-Ray Burst Progenitors.” Space Science Reviews 202.1-4 (2016): 33–78. Crossref. Web.
+%Levan2016_Article_Gamma-RayBurstProgenitors.pdf
+
+\bibitem{Diego}
+Lazzati, Davide et al. “Off-Axis Prompt X-Ray Transients from the Cocoon of Short Gamma-Ray Bursts.” The Astrophysical Journal 848.1 (2017): L6. Crossref. Web.
+%Lazzati_2017_ApJL_848_L6.pdf
+
+\bibitem{RHRRC}
+Gao, Yang, and Chung K. Law. “RANKINE-HUGONIOT RELATIONS IN RELATIVISTIC COMBUSTION WAVES.” The Astrophysical Journal 760.2 (2012): 122. Crossref. Web.
+%Gao_2012_ApJ_760_122.pdf
+
+\bibitem{1973ApJ...179..897T} Thorne, K.~S.\ 1973.\ Relativistic Shocks: the Taub Adiabat.\ The Astrophysical Journal 179, 897.
+
+
 \end{thebibliography}
+
+
 
 \end{document}
