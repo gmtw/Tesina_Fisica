@@ -1369,10 +1369,10 @@ Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y 
 
 
 
-En la figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un jet con un radio $r_{jet} = 4 \times 10^{8} $ cm y un capullo que lo envuelve completamente. El capullo en el panel a) de la misma figura alcanza la altura $y \approx 1 \times 10^{10}$ cm. En el panel b) el capullo alcanza la altura aproximadamente $y \approx 7 \times 10^{9}$ cm. A diferencia de HLL, en el cual se observa que la densidad del capullo alcanza densidades cercanas a $\rho \simeq 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, con Lax, las densidades bajan a $\rho \simeq 4000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$.
+En la figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un jet con un radio $r_{jet} = 4 \times 10^{8} $ cm y un capullo que lo envuelve completamente. El capullo en el panel a) de la misma figura alcanza la altura $y \approx 1 \times 10^{10}$ cm. En el panel b) el capullo alcanza la altura aproximadamente $y \approx 7 \times 10^{9}$ cm. A diferencia de HLL, en el cual se observa que la densidad del capullo alcanza densidades cercanas a $\rho \simeq 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, con Lax, las densidades bajan a $\rho \simeq 4000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Las diferencias que hay al analizar los perfiles de densidades muestras una diferencia $\delta \sim 40\%$ (ver figura \ref{fig:perfil_densidades_jet}).
  
 
-\begin{figure} %Snapshot 20 
+\begin{figure} 
 \centering
 \subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_80_ma_1e4}}
 \subfigure[HLL]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/hll/jet_HLL_80_ma_1e4}}
@@ -1385,7 +1385,7 @@ En la figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un je
 \centering
 \subfigure[$y = 4 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_1}}
 \subfigure[$y = 6 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_2}}
-\caption{En el panel a) se observa la densidad que hay sobre el eje x, a la altura del eje $y = 4 \times 10^{9}$ cm. En el panel b) es similar que el panel a) solo que cambia la altura $y = 6 \times 10^{9}$ cm.}
+\caption{\label{fig:perfil_densidades_jet}En el panel a) se observa la densidad que hay sobre el eje x, a la altura del eje $y = 4 \times 10^{9}$ cm. En el panel b) es similar que el panel a) solo que cambia la altura $y = 6 \times 10^{9}$ cm. Lax difiere un 40\% con respecto a HLL en cuestion de la densidad que se tiene. El perfil fue tomado al tiempo $t = 0.8$ s.}
 \end{figure}
 
 En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_1000_analisis} usando Lax es aproximadamente $\rho = 1000 \sim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Pero en el caso de HLL, la densidad se eleva a $\rho = 7000 \sim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Como la densidad del jet que se propuso del jet fue $\rho = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la densidad de Lax es la mas cercana a los valores propuestos. Y tambien dado que HLL es aproximadamente 18 veces más lento que Lax para simular el jet, se usará el método de Lax de aquí en adelante.
@@ -1402,7 +1402,7 @@ Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo.
 \begin{figure}
 \centering
 \includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_1^-10}
-\caption{\label{fig:jet_ma_bajo_densidad}Eyección del jet relativista al tiempo $t = 0.8$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
+\caption{\label{fig:jet_ma_bajo_densidad}Eyección del jet relativista al tiempo $t = 0.05$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
 \end{figure}
 
 Se observa en la figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la baja densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
@@ -1415,7 +1415,7 @@ Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:v
 \begin{figure}
 \centering
 \includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t80_ma_10^-10}
-\caption{\label{fig:vector_velocidades_baja}Eyección del jet relativista al tiempo $t = 0.8$ s}
+\caption{\label{fig:vector_velocidades_baja}Eyección del jet relativista al tiempo $t = 0.8$ s. Las velocidades son tomadas de la frontera de donde se eyecta el jet.}
 \end{figure}
 
 La velocidad en la figura \ref{fig:velocidades_baja} del medio ambiente cuando interactua con el medio ambiente toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet, es decir, tienen una velocidad $v = 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ 
