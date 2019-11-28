@@ -168,7 +168,7 @@ Las categorias de los GRBs largos y cortos son aproximadamente 75\% y 25\% de la
 
 Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
 \section{Características de los GRBs}
-Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s \cite{PGRB-piran}, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmológico, mientras los GRB, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy difícil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
+Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s \cite{PGRB-piran}, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmologico, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy difícil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
 
 %Las partes principales de los GRBs son la emisión propmt y  afterglow. %Piran2005
  
@@ -1350,13 +1350,13 @@ Por lo tanto en mi código se puede utilizar, en caso newtoniano, ambos métodos
 En este capítulo se utilizará un jet, que se mueve a velocidades relativistas, para probar el programa con distintos medios de densidad, en los cuales, la densidad del medio varía de ser menos que el jet, hasta ser diez veces más denso que el mismo jet.
 El jet  se modelará como un flujo de densidad $\rho$ con velocidad $v \simeq c$, que se propaga en un medio ambiente con $\rho = \mathrm{cte}$. Para poder simular el jet, se le inyectará presión y densidad continuamente con una velocidad constante cercana a la de la luz. En la figura \ref{fig:condicion_inicial_jet} se muestra las condiciones iniciales del jet. El cual tendrá una eyección a la mitad del dominio sobre el eje x y cuyo radio será $r = 4 \times 10^{8} \, \mathrm{cm}$.
 
-
+%====================================FIGURE==============================================
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/jet_ejemplo}
 \caption{\label{fig:condicion_inicial_jet}La condición inicial de la simulación para que se efectué la eyección del jet será que, del lado de una de las fronteras, tenga valores  densidad ($\rho$), velocidad ($v$) y presión ($P$) constantes. En este caso los valores estarán localizados en la parte de abajo del dominio. El jet tendrá un diámentro $D_{jet} = 4 \times 10^{8}$ cm. Así que estará localizado en los puntos $(x,y) = (0, \, [5\, \times 10^9 - 2\, \times 10^8, 5\, \times 10^9 + 2\, \times 10^8] )$ cm.}
 \end{figure}
-
+%====================================FIGURE==============================================
 
 
 \section{Diferencia de los métodos numéricos sobre el jet}
@@ -1366,28 +1366,25 @@ Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y 
 
 
 
-
-
-
 En la figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un jet con un radio $r_{jet} = 4 \times 10^{8} $ cm y un capullo que lo envuelve completamente. El capullo en el panel a) de la misma figura alcanza la altura $y \approx 1 \times 10^{10}$ cm. En el panel b) el capullo alcanza la altura aproximadamente $y \approx 7 \times 10^{9}$ cm. A diferencia de HLL, en el cual se observa que la densidad del capullo alcanza densidades cercanas a $\rho \simeq 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, con Lax, las densidades bajan a $\rho \simeq 4000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Las diferencias que hay al analizar los perfiles de densidades muestras una diferencia $\delta \sim 40\%$ (ver figura \ref{fig:perfil_densidades_jet}).
  
-
+%====================================FIGURE==============================================
 \begin{figure} 
 \centering
 \subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_80_ma_1e4}}
 \subfigure[HLL]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/hll/jet_HLL_80_ma_1e4}}
 \caption{\label{fig:jet_ma_1000_analisis} Jet al tiempo $t = 0.8$ s. La altura del capullo de Lax es cercana a $y = 1 \times 10^{10}$ cm, mientras con HLL la altura apenas alcanza $y = 7 \times 10^{9}$ cm. Las densidad en la eyección usando Lax es aproximadamente $\rho   \lesssim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, para el caso de HLL la densidad es $\rho   \lesssim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. }
 \end{figure}
+%====================================FIGURE==============================================
 
-
-
+%====================================FIGURE==============================================
 \begin{figure}
 \centering
 \subfigure[$y = 4 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_1}}
 \subfigure[$y = 6 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_2}}
 \caption{\label{fig:perfil_densidades_jet}En el panel a) se observa la densidad que hay sobre el eje x, a la altura del eje $y = 4 \times 10^{9}$ cm. En el panel b) es similar que el panel a) solo que cambia la altura $y = 6 \times 10^{9}$ cm. Lax difiere un 40\% con respecto a HLL en cuestion de la densidad que se tiene. El perfil fue tomado al tiempo $t = 0.8$ s.}
 \end{figure}
-
+%====================================FIGURE==============================================
 En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_1000_analisis} usando Lax es aproximadamente $\rho = 1000 \sim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Pero en el caso de HLL, la densidad se eleva a $\rho = 7000 \sim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Como la densidad del jet que se propuso del jet fue $\rho = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la densidad de Lax es la mas cercana a los valores propuestos. Y tambien dado que HLL es aproximadamente 18 veces más lento que Lax para simular el jet, se usará el método de Lax de aquí en adelante.
  Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
 
@@ -1399,38 +1396,45 @@ En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_100
 
 Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo. En general para todas las pruebas, la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-3}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$ y la velocidad del medio ambiente será nula. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
 
+%====================================FIGURE==============================================
 \begin{figure}
 \centering
 \includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_1^-10}
 \caption{\label{fig:jet_ma_bajo_densidad}Eyección del jet relativista al tiempo $t = 0.05$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
 \end{figure}
+%====================================FIGURE==============================================
 
 Se observa en la figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la baja densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
 
 
-
-
 Al realizar un campo vectorial de las velocidades del jet (ver figura \ref{fig:vector_velocidades_baja}) de la parte de eyección de la frontera. La velocidad en sus extremos $v_{y} = 0.97354 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ con lo que la velocidad baja un 0.63\% con respecto a la velocidad que se habia esablecido en el jet. La velocidad en el eje x es $v_{x} = 0.1745 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ . Con estas velocidades en el eje X e Y puedo concluir que el jet, a pesar de ser colimado, tiene un ángulo con respecto al jet de $\theta  = 10.16^{o}$.
 
+
+%====================================FIGURE==============================================
 \begin{figure}
 \centering
 \includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t80_ma_10^-10}
 \caption{\label{fig:vector_velocidades_baja}Eyección del jet relativista al tiempo $t = 0.8$ s. Las velocidades son tomadas de la frontera de donde se eyecta el jet.}
 \end{figure}
+%====================================FIGURE==============================================
 
-La velocidad en la figura \ref{fig:velocidades_baja} del medio ambiente cuando interactua con el medio ambiente toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet, es decir, tienen una velocidad $v = 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ 
 
+La velocidad en la figura \ref{fig:velocidades_baja} del medio ambiente cuando interactua con el medio ambiente toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet, es decir, tienen una velocidad $v = 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
+
+
+%====================================FIGURE==============================================
 \begin{figure}
 \centering
 \includegraphics[scale=0.4]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_baja}
-\caption{\label{fig:velocidades_baja}Eyección del jet relativista al tiempo $t = 0.1$ s}
+\caption{\label{fig:velocidades_baja}Eyección del jet relativista al tiempo $t = 0.1$ s. La velocidad que ocasiona el jet al medio ambiente es $v_y \sim 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$}
 \end{figure}
+%====================================FIGURE==============================================
 
 
 
 
-%==============================================================================
-%=================================================================================
+%======================================================================================
+%======================================================================================
 
 \section{SGRB en medio de densidad alto}
 En esta sección el jet va a tener las mismas condiciones que el de la figura \ref{fig:jet_ma_1000_analisis}. Dado que el medio ambiente es 10 veces mayor que el jet se puede observar un capullo que envuelve a la misma. El capullo alcanza un una densidad de cercana a los $\rho = 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$.
@@ -1438,20 +1442,24 @@ En esta sección el jet va a tener las mismas condiciones que el de la figura \r
 La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdot \mathrm{s}^{-1}$ mientras a los extremos va bajando al 70\% de la velocidad de la luz. Una diferencia con la propagación del medio bajo es que las velocidades del medio ambiente con las que el jet esta interactuando tienen una dirección opuesta.
 
 
-
+%====================================FIGURE==============================================
 \begin{figure}
 \centering
 \includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_vector_t80_ma_1e4}
-\caption{\label{fig:jet_vel_alto}Eyección del jet relativista al tiempo $t = 0.8$ s}
+\caption{\label{fig:jet_vel_alto}Eyección del jet relativista al tiempo $t = 0.8$ s. La velocidad en el centro del jet se mantiene en la misma velocidad $v \sim 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$} 
 \end{figure}
+%====================================FIGURE==============================================
 
 Se analizó la velocidad del medio ambiente al interactuar con el jet sobre la recta $x = 5 \times 10^9 \, \mathrm{cm}$ que es paralela al eje y. La velocidad con la que el jet mueve el medio ambiente es $v = 7000 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$. La cual decrece rápidamente hasta llegar a $v = 1000 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$
 
+
+%====================================FIGURE==============================================
 \begin{figure}
 \centering
 \includegraphics[scale=0.4]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_alta}
 \caption{\label{fig:velocidades_alta}Eyección del jet relativista al tiempo $t = 0.1$ s}
 \end{figure}
+%====================================FIGURE==============================================
 
 
 \chapter{Conclusiones}
@@ -1461,7 +1469,7 @@ Al realizar las diferentes simulaciones tanto con la onda de choque, asi como pa
 \item La velocidad del tiempo de ejecucuón de mi código usando HLL es 20 veces más grande que el que usamos con Lax.
 \item La velocidad de la onda de choque relativista decrece rápidamente llegando a velocidades newtonianas a pesar de no tener un medio ambiente denso quu lo rodea.
 \item La simulación del jet o de la onda de choque funcionan exactamente donde se les impongan las condiciones iniciales, pero se debe de tener en cuenta que para el uso de HLL la malla de 
-\item A pesar de tener un ángulo de apertura $\theta = 0^{o}$ el jet no resulta ser totalmente colimado y es que resulta que se va "abriendo" con un ángulo $\theta = 10^{o}$
+\item A pesar de tener un ángulo de apertura $\theta = 0^{o}$ el jet no resulta ser totalmente colimado y es que resulta que se va \"abriendo\" con un ángulo $\theta = 10^{o}$
 \end{itemize}
 
 \appendix
