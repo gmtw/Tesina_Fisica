@@ -1361,7 +1361,59 @@ El jet  se modelará como un flujo de densidad $\rho$ con velocidad $v \simeq c$
 
 \section{Diferencia de los métodos numéricos sobre el jet}
 
-Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para determinar el método más eficiente en cuanto a simulación de jets. Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas $\gamma = 5.0$. Los jets tendrán una densidad $\rho_{jet} = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 1 \times 10^{4} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
+Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para determinar el método más eficiente en cuanto a simulación de jets. Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas $\gamma = 5.0$. Tomando en cuenta la ecuación de continuidad de masa de Rankine-Hugoniot
+\begin{equation}\label{eq:masa_?}
+\rho_j V_j \gamma_j = \rho_m V_m \gamma_m 
+\end{equation}
+
+Donde $\rho$ es la densidad, $\gamma$ es el factor de lorentz y $V$ es el volumen. Los subíndices j, $\infty$ se refieren al jet inicial y al jey en infinito. Así como la ecuación de momentos
+
+\begin{equation}\label{eq:momentos_?}
+\left( \rho_j + 4P_j \right) V_j \gamma_j^2 + P_j = 
+\left( \rho_{\infty} + 4P_{\infty} \right) V_{\infty} \gamma_{\infty}^2 + P_{\infty}
+\end{equation}
+
+Donde $P$ es la presión. Si despejamos $\rho_{\infty}$ de la ecuación \ref{eq:masa_?} y la sustitumos en \ref{eq:momentos_?} y si suponemos un choque fuerte ($P \rightarrow 0$).
+Tenemos la siguiente ecuación 
+
+\begin{equation}
+\left( \rho_j + 4P_j \right) V_j \gamma_j^2 + P_j =
+\rho_{\infty} V_{\infty} \gamma_{\infty} \gamma_{\infty} 
+\end{equation}
+
+Despejando $\gamma_{\infty}$
+
+\begin{equation}
+\gamma_{\infty} = \frac{\rho_j + P_j}{\rho_j}\gamma_j + \frac{P_j}{\rho_j V_j \gamma_j}
+\end{equation}
+
+Como el segundo término es muy pequeño y lo podemos despreciar con lo que al final nos queda
+
+\begin{equation}
+\gamma_{\infty} =  \left( \frac{P_j}{\rho_j} + 1 \right) \gamma_j
+\end{equation}
+
+Y si despejamos la presión $P_j$ nos queda lo siguiente
+
+\begin{equation}
+P_j = \frac{\rho_j}{4} \left( \frac{\gamma_{\infty}}{\gamma_j} - 1 \right)
+\end{equation}
+
+Lo valores del factor de lorentz que normalmente se toman para una simulación de jets son: $ \gamma_j \sim 5$ y $\gamma \sim 400$ por lo que sustituyendo en nuestra anterior ecuación nos quedaria
+
+\begin{equation}
+P_j \approx \frac{\rho_j}{4}80
+\end{equation}
+
+Con lo que finalmente nos queda la siguiente aproximación
+
+\begin{equation}
+P_j \approx 20 \times \rho_j
+\end{equation}
+
+Usando esto podemos tomar valores de la presión en función de la densidad del jet.
+
+Los jets tendrán una densidad $\rho_{jet} = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 1 \times 10^{4} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
 
 
 
