@@ -897,7 +897,7 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 
 En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
 
-\section{Onda de choque} %Shock Wave and High Pressure Phenomena) Isabelle Sochet (eds.
+\section{Onda de choque} \label{sec:onda de choque}%Shock Wave and High Pressure Phenomena) Isabelle Sochet (eds.
 La onda de choque se produce por la liberación rápida de energía comprimida dentro de un volumen de radio $R$. Esta explosión divide a nuestro dominio en 2 zonas distintas como se muestra en la Figura \ref{fig:onda_choque_example}. La zona I, estará determinado por la densidad, presión, y velocidades del medio ambiente ($\rho_m, \, P_m\, v_{x_m}, \, v_{y_m}$, respectivamente). La zona II (i.e. dentro de la onda de choque), se produce al depositar una densidad de energía $E_{in}$ dentro de una región definida por un radio interno ($R_{in}$) en reposo. Para ver más detalles véase el cuadro \ref{fig:onda_choque_example}.
 
 \begin{table}[htbp]
@@ -951,7 +951,7 @@ La onda de choque se dejó evolucionar con el paso del tiempo, y se analizó la 
 
 
 
-\subsection{Caso newtoniano} 
+\subsection{Caso newtoniano} \label{subs:caso_newtoniano}
 %\subsubsection{Lax} \label{subsec: Prueba Lax}
 %Como primeras pruebas se realiza: explicas la 3.2, y además se llevó a cabó (explicas la figura 3.5).
 
@@ -1101,7 +1101,7 @@ En la siguiente prueba se movió el centro de la onda de choque (ver Figura \ref
 
 Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward shock} que va contra el medio a la que hemos llamado el área 1 (veáse Figura \ref{fig:HLL-prueba2-analisis}). El área 2, es el material del área 1 que va barriendo la \emph{forward shock}. El área 3 es lo contrario, es decir, es el material barrido del área 5 por la \emph{reverse shock} y entre estas 2 ondas se va formando un hueco entre estas 2 ondas que es el área 4 muestra la viscosidad de nuestro método. Dado  que no se muestran anomálias en la evolución de nuestra onda cerca de las fronteras y que se expanden simétricamente, puedo concluir que el código, usando HLL, funciona correctamente.
 %===================IMAGE_HLL_NO_CENTRADO_EVOLUCION_ANALISIS===============================
-\begin{figure}
+\begin{figure} 
 \centering
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.5]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_05-analisis.png}}
 \subfigure[$t = 0.1$ s]{\includegraphics[scale = 0.49]{./Figuras/Pruebas/Prueba_onda_choque/HLL/HLL-sedov2_10-analisis.png}}
@@ -1111,7 +1111,7 @@ Al expandirse la onda, al igual que Lax se separan en 2 ondas. La \emph{forward 
 
 
 
-\subsubsection{Lax vs HLL}
+\subsubsection{Lax vs HLL}\label{subs:Lax_vs_HLl}
 
 En esta sección, vamos a comparar las diferencias que hay entre el método de Lax y el HLL. Las ondas que vamos a ocupar son las de las Figuras \ref{fig:Lax-newtoniano_sedov-3-5} y la \ref{fig:HLL-prueba1}. La onda esta centrada en el punto $(x,y)=(0.5,0.5)$ cm.
 
@@ -1168,7 +1168,7 @@ Por esto podemos decir que HLL, es un método para resolver este tipo de discont
 % Al dispersarse por completo el centro de la onda, para ambas, se puede ver con mejor claridad que hay 2 diferentes tipos de onda, una contra el medio y otra contra en centro de la misma, para Lax, el radio toma el valor $r = 0.38$ y una velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s} $. En el caso de HLL es el mismo radio $r = 0.38 $ cm y la misma velocidad $v = 1.8 \, \mathrm{cm}/\mathrm{s}$.
 
 
-\subsection{Caso relativista} 
+\subsection{Caso relativista} \label{subs:caso_relativista}
  %200X200
 
 
@@ -1293,7 +1293,7 @@ Se movió el centro de la onda, para revisar que, al igual que el método de Lax
 
 
 
-\subsubsection{Lax vs HLL}
+\subsubsection{Lax vs HLL} \label{subs:Lax_vs_HLL_relativista}
 En la última parte del caso relativista vamos a comparar los dos métodos que hemos visto hasta ahora.
 
 
@@ -1359,7 +1359,7 @@ El jet  se modelará como un flujo de densidad $\rho$ con velocidad $v \simeq c$
 %====================================FIGURE==============================================
 
 
-\section{Diferencia de los métodos numéricos sobre el jet}
+\section{Diferencia de los métodos numéricos sobre el jet}\label{sec:Diferencia_de_los_metodos_numéricos_sobre_el_jet}
 
 Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para determinar el método más eficiente en cuanto a simulación de jets. Las pruebas de esta sección y del capítulo en general se usarán jets con velocidades relativistas $\gamma = 5.0$. Tomando en cuenta la ecuación de continuidad de masa de Rankine-Hugoniot
 \begin{equation}\label{eq:masa_?}
@@ -1443,7 +1443,7 @@ En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_100
 
 
 
-\section{SGRB en medio de densidad bajo}
+\section{SGRB en medio de densidad bajo}\label{sec:SGRB_en_medio_de_densidad_bajo}
 
 
 Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo. En general para todas las pruebas, la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-3}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$ y la velocidad del medio ambiente será nula. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
@@ -1488,7 +1488,7 @@ La velocidad en la Figura \ref{fig:velocidades_baja} del medio ambiente cuando i
 %======================================================================================
 %======================================================================================
 
-\section{SGRB en medio de densidad alto}
+\section{SGRB en medio de densidad alto}\label{sec:SGRB_en_medio_de_densidad_alto}
 En esta sección el jet va a tener las mismas condiciones que el de la Figura \ref{fig:jet_ma_1000_analisis}. Dado que el medio ambiente es 10 veces mayor que el jet se puede observar un capullo que envuelve a la misma. El capullo alcanza un una densidad de cercana a los $\rho = 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$.
 
 La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdot \mathrm{s}^{-1}$ mientras a los extremos va bajando al 70\% de la velocidad de la luz. Una diferencia con la propagación del medio bajo es que las velocidades del medio ambiente con las que el jet esta interactuando tienen una dirección opuesta.
@@ -1521,14 +1521,26 @@ La motivación principal de este trabajo es poder realizar simulaciones de jets,
 La simulación partio de resolver las ecuaciones de la hidrodinámica en una dimensión y tomando velocidades newtonianas. Posteriormente se incremento la dimensión de la simulación y se tomó velocidades relativistas. Se realizaron varias pruebas con la onda de choque para poder verificar que la simulación no tiene fallos en las fronteras y poder observar los errores numéricos que puedra presentar el código.
 
 \begin{itemize}
-\item La velocidad del tiempo de ejecucuón de mi código usando HLL es 20 veces más grande que el que usamos con Lax.
+\item La posición de la onda de choque no altera el compartamiento de la misma, ya que al desplazar el centro no cambia la velocidad de expansión. Asimismo el código funciona perfectamente en las fronteras ya que no transmite algún ruido por salirse y se comporta como si la onda tuviera dominio infinito. Esto es para ambos métodos de Lax y HLL. (Sección \ref{sec:onda de choque})
 
-\item La velocidad de la onda de choque relativista decrece rápidamente llegando a velocidades newtonianas a pesar de no tener un medio ambiente denso que lo rodea.
+\item Tanto en Lax, como en HLL para el caso newtoniano muestran dos tipos de onda. Una se va alejando del centro de la misma (\emph{forward shock}) y una onda que se va acercando a la misma (\emph{reverse shock}). Estas se muestran independientemente si se mueve la onda de choque hacia las fronteras. (Sección \ref{sec:onda de choque})
 
-\item La simulación del jet o de la onda de choque funcionan exactamente donde se les impongan las condiciones iniciales, pero se debe de tener en cuenta que para el uso de HLL la malla de ?
+\item En el caso newtoniano, la velocidad de expansión de la onda fue un 1.3\% más veloz que el método de HLL. Pero HLL muestra una discontinuidad menós viscosa (ver figura \ref{fig:Lax-hll-newtoniano1}) con una diferencia de densidades menores al $<0.5 \% $ lo que hace 
+a HLL un mejor resolvedor de Riemann para mí código. Aún así se pueden usar ambos métodos para el choque de onda. (Sección\ref{subs:Lax_vs_HLl})
 
-\item A pesar de tener un ángulo de apertura $\theta = 0^{o}$ el jet no resulta ser totalmente colimado y es que resulta que se va \"abriendo\" con un ángulo $\theta = 10^{o}$
+\item Para el caso relativista la expansión de la onda de choque tiene un descenso rápido de velocidad llegando al 19 \% de la velocidad de la luz al tiempo $< 0.7$ s sin importar la presión o energía que contenga. (Sección \ref{subs:Lax_vs_HLL_relativista}).
+
+\item Una diferencia entre las ondas de choque newtonianas y relativistas es que no muestran una discontinuidad, aunque siguen presentando las ondas \emph{forward} y \emph{reverse shock} como en el caso newtoniano. (Sección \ref{subs:Lax_vs_HLL_relativista}).
+
+\item Para el caso del jet relativista, el capullo es 4 veces mas denso usando Lax que HLL. Otra diferencia con los jet relativistas es que HLL muestra una eyección 4 veces más densa que las condiciones que se habian impuesto, mientras que con Lax se muestrasn las condiciones dadas. Por tal motivos Lax es un mejor método para mi programa y HLL es un método ineficiente. (Sección \ref{sec:Diferencia_de_los_metodos_numéricos_sobre_el_jet}).
+
+\item El jet en condiciones de densidad mantiene su velocidad cercana a la de la velocidad de la luz. A pesar de que el jet tuvo únicamente velocidad sobre el eje Y, este no es totalmente colimado y mantiene un ángulo de apertura de $\sim 10^o$. (Sección \ref{sec:SGRB_en_medio_de_densidad_bajo}).
+
+\item El jet en un medio de densidad alto al chocar con un medio de densidad 10 mas denso que el mismo ya no muestra velocidades relativistas dado que su velocidad disminuye a velocidades newtonianas. (Sección \ref{sec:SGRB_en_medio_de_densidad_alto}).
+
+
 \end{itemize}
+
 
 \appendix
 \chapter{Código}\label{aped.A}
