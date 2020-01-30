@@ -1448,41 +1448,35 @@ En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_100
 
 Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo. En general para todas las pruebas, la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-3}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$ y la velocidad del medio ambiente será nula. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
 
+Se observa en la Figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la baja densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
+
 %====================================FIGURE==============================================
-\begin{figure}
+\begin{figure}\
 \centering
-\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_1^-10}
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_01^-10}}
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_03^-10}}
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_05^-10}}
 \caption{\label{fig:jet_ma_bajo_densidad}Eyección del jet relativista al tiempo $t = 0.05$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
 \end{figure}
 %====================================FIGURE==============================================
 
-Se observa en la Figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la baja densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
 
 
-Al realizar un campo vectorial de las velocidades del jet (ver Figura \ref{fig:vector_velocidades_baja}) de la parte de eyección de la frontera, la velocidad en sus extremos $v_{y} = 0.97354 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ con lo que la velocidad baja un 0.63\% con respecto a la velocidad que se habia establecido en el jet. La velocidad en el eje x es $v_{x} = 0.1745 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ con esto puedo concluir que a pesar de que el jet no tenga velocidades en el eje X, la densidad del medio ambiente influye en como el jet se desvia un 17 \% la velocidad para el eje X. Con estas velocidades en el eje X e Y puedo concluir que el jet, a pesar de ser colimado, tiene un ángulo con respecto al jet de $\theta  = 10.16^{o}$.
-
-
-%====================================FIGURE==============================================
-\begin{figure}
-\centering
-\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_vector_t80_ma_10^-10}
-\caption{\label{fig:vector_velocidades_baja}Eyección del jet relativista al tiempo $t = 0.8$ s. Las velocidades son tomadas de la frontera de donde se eyecta el jet.}
-\end{figure}
-%====================================FIGURE==============================================
-
-
-La velocidad en la Figura \ref{fig:velocidades_baja} del medio ambiente cuando interactua con el jet toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet, es decir, tienen una velocidad $v = 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.
+Al realizar un campo vectorial de las velocidades del jet (ver Figura \ref{fig:jet_ma_bajo_densidad_vel}) de la parte de eyección de la frontera, la velocidad en sus extremos $v_{y} = 0.97354 c \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ con lo que la velocidad baja un 0.63\% con respecto a la velocidad que se habia establecido en el jet. La velocidad en el eje x es $v_{x} = 0.1745 \, c$ con esto puedo concluir que a pesar de que el jet no tenga velocidades en el eje X, la densidad del medio ambiente influye en como el jet se desvia un 17 \% la velocidad para el eje X. Con estas velocidades en el eje X e Y puedo concluir que el jet, a pesar de ser colimado, tiene un ángulo con respecto al jet de $\theta  = 10.16^{o}$.
 
 
 %====================================FIGURE==============================================
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_baja}
-\caption{\label{fig:velocidades_baja}Perfil de velocidad del jet. La gráfica muestra la velocidad del jet jet y medio ambiente que existe en la recta $x = 5\times 10^9$ al tiempo $t = 0.1$ s. La velocidad que ocasiona el jet al medio ambiente es $v_y \sim 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.}
+\subfigure[Lax]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_lax_b01}}
+\subfigure[Lax]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_lax_b03}}
+\subfigure[Lax]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_lax_b05}}
+\caption{\label{fig:jet_ma_bajo_densidad_vel}Eyección del jet relativista al tiempo $t = 0.05$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
 \end{figure}
 %====================================FIGURE==============================================
 
 
+La velocidad en la Figura \ref{fig:velocidades_baja} del medio ambiente cuando interactua con el jet toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet, es decir, tienen una velocidad $v = 0.97\mathrm{c} \,\mathrm{cm} \cdot \mathrm{s}^{-1}$.
 
 
 %======================================================================================
@@ -1497,10 +1491,13 @@ La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdo
 %====================================FIGURE==============================================
 \begin{figure}
 \centering
-\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_vector_t80_ma_1e4}
-\caption{\label{fig:jet_vel_alto}Perfil del jet relativista al tiempo $t = 0.8$ s. La velocidad en el centro del jet se mantiene en la misma velocidad $v \sim 0.97\mathrm{c} \, \mathrm{cm} \cdot \mathrm{s}^{-1}$} 
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_lax_20_ma_10^-10}}
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_lax_50_ma_10^-10}}
+\subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_lax_80_ma_10^-10}}
+\caption{\label{fig:jet_ma_alto_densidad}Eyección del jet relativista al tiempo $t = 0.05$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
 \end{figure}
 %====================================FIGURE==============================================
+
 
 Se analizó la velocidad del medio ambiente al interactuar con el jet sobre la recta $x = 5 \times 10^9 \, \mathrm{cm}$ que es paralela al eje y. La velocidad con la que el jet mueve el medio ambiente es $v = 7000 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$. La cual decrece rápidamente hasta llegar a $v = 1000 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$
 
@@ -1508,8 +1505,10 @@ Se analizó la velocidad del medio ambiente al interactuar con el jet sobre la r
 %====================================FIGURE==============================================
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_alta}
-\caption{\label{fig:velocidades_alta} Perfil de velocidad del jet con el medio de densidad alto al tiempo $t = 0.1$ s. La velocidad del jet baja rápidamente $v = 7000 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$.}
+\subfigure[Lax]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_lax_a20}}
+\subfigure[Lax]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_lax_a50}}
+\subfigure[Lax]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_lax_a80}}
+\caption{\label{fig:jet_ma_alto_densidad}Eyección del jet relativista al tiempo $t = 0.05$ s. Debido a la poca densidad del medio ambiente que lo rodea no hay una formación del capullo, además de que el jet es colimado.}
 \end{figure}
 %====================================FIGURE==============================================
 
