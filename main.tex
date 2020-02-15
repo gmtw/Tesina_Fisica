@@ -1350,6 +1350,9 @@ Por lo tanto en mi código se puede utilizar, en caso newtoniano, ambos métodos
 En este capítulo se utilizará un jet, que se mueve a velocidades relativistas, para probar el programa con distintos medios de densidad, en los cuales, la densidad del medio varía de ser menos que el jet, hasta ser diez veces más denso que el mismo jet.
 El jet  se modelará como un flujo de densidad $\rho$ con velocidad $v \simeq c$, que se propaga en un medio ambiente con $\rho = \mathrm{cte}$. Para poder simular el jet, se le inyectará presión y densidad continuamente con una velocidad constante cercana a la de la luz. En la Figura \ref{fig:condicion_inicial_jet} se muestra las condiciones iniciales del jet. El cual tendrá una eyección a la mitad del dominio sobre el eje x y cuyo radio será $r = 4 \times 10^{8} \, \mathrm{cm}$.
 
+
+
+
 %====================================FIGURE==============================================
 \begin{figure}
 \centering
@@ -1411,7 +1414,39 @@ Con lo que finalmente nos queda la siguiente aproximación
 P_j \approx 20 \times \rho_j
 \end{equation}
 
-Usando esto podemos tomar valores de la presión en función de la densidad del jet.
+Usando esto podemos tomar valores de la presión en función de la densidad del jet.  El Cuadro \ref{Cuadro: propiedades-jet-comparacion} muestran los parámetros con el cual se van a simular el jet. Cabe destacar que los valores de dicha tabla, se aplicaran para los métodos de HLL y Lax.
+
+%====================================TABLE=================================
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
+\hline 
+$\rho_{in}$ &  Densidad del jet & 1000 [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
+\hline 
+$\rho_{out}$ &  Densidad del medio ambiente & $1.0 \times 10^{4}$  [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
+\hline 
+$P_{int}$ & Presión interna del jet& $20 \times \lvert \rho_{jet} \lvert$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
+\hline 
+$P_{out}$ &  Presión del medio ambiente & $20 \times \lvert \rho_{ma} \lvert$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
+\hline 
+$v_{x_{int}}$ & Velocidad interna en el eje x del jet & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+\hline 
+$v_{y_{int}}$ & Velocidad interna en el eje y del jet & 0.9797959 c \\ 
+\hline 
+$v_{x_{out}}$ & Velocidad en el eje x del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
+\hline 
+$v_{y_{out}}$ & Velocidad en el eje y del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+\hline 
+Co & Número de Courant & 0.7 \\ 
+\hline 
+\end{tabular}
+\caption{\label{Cuadro: propiedades-jet-comparacion}Los parámetros son para un jet relativista colimado sobre un medio ambiente más denso que el mismo Jet. Los valores se aplicarán tanto para el método de Lax como el método de HLL}
+\end{center}
+\end{table}
+
+%====================================TABLE=================================
 
 Los jets tendrán una densidad $\rho_{jet} = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 1 \times 10^{4} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
 
@@ -1437,7 +1472,7 @@ En la Figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un je
 \caption{\label{fig:perfil_densidades_jet}En el panel a) se observa la densidad que hay sobre el eje x, a la altura del eje $y = 4 \times 10^{9}$ cm. En el panel b) es similar que el panel a) solo que cambia la altura $y = 6 \times 10^{9}$ cm. Lax difiere un 40\% con respecto a HLL en cuestion de la densidad que se tiene. El perfil fue tomado al tiempo $t = 0.8$ s.}
 \end{figure}
 %====================================FIGURE==============================================
-En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_1000_analisis} usando Lax es aproximadamente $\rho = 1000 \sim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Pero en el caso de HLL, la densidad se eleva a $\rho = 7000 \sim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Como la densidad del jet que se propuso del jet fue $\rho = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la densidad de Lax es la mas cercana a los valores propuestos. Y tambien dado que HLL es aproximadamente 18 veces más lento que Lax para simular el jet, se usará el método de Lax de aquí en adelante.
+En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_1000_analisis} usando Lax es aproximadamente $\rho = 1000 \sim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Pero en el caso de HLL, la densidad se eleva a $\rho = 7000 \sim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Como la densidad del jet que se propuso del jet fue $\rho = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la densidad de Lax es la más cercana a los valores propuestos. Y tambien dado que HLL es aproximadamente 18 veces más lento que Lax para simular el jet, se usará el método de Lax de aquí en adelante.
  Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
 
 
@@ -1447,6 +1482,37 @@ En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_100
 
 
 Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo. En general para todas las pruebas, la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-3}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$ y la velocidad del medio ambiente será nula. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959 \, c$.
+
+%====================================TABLE=================================
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
+\hline 
+$\rho_{in}$ &  Densidad del jet & 1000 [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
+\hline 
+$\rho_{out}$ &  Densidad del medio ambiente & $1.0 \times 10^{-10}$  [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
+\hline 
+$P_{int}$ & Presión interna del jet& $20 \times \lvert \rho_{jet} \lvert$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
+\hline 
+$P_{out}$ &  Presión del medio ambiente & $20 \times \lvert \rho_{ma} \lvert$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
+\hline 
+$v_{x_{int}}$ & Velocidad interna en el eje x del jet & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+\hline 
+$v_{y_{int}}$ & Velocidad interna en el eje y del jet & 0.9797959 c \\ 
+\hline 
+$v_{x_{out}}$ & Velocidad en el eje x del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
+\hline 
+$v_{y_{out}}$ & Velocidad en el eje y del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+\hline 
+Co & Número de Courant & 0.7 \\ 
+\hline 
+\end{tabular}
+\caption{\label{Cuadro: propiedades-jet-densidad-baja} La densidad del medio ambiente es 11 veces denso que la del mismo jet.}
+\end{center}
+\end{table}
+%==========================================TABLE===================================================
 
 Se observa en la Figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la baja densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
 
@@ -1483,6 +1549,37 @@ La velocidad del medio ambiente cuando interactua con el jet toma una velocidad 
 
 \section{SGRB en medio de densidad alto}\label{sec:SGRB_en_medio_de_densidad_alto}
 En esta sección el jet va a tener las mismas condiciones que el de la Figura \ref{fig:jet_ma_1000_analisis}. Dado que el medio ambiente es 10 veces mayor que el jet se puede observar un capullo que envuelve a la misma. El capullo alcanza un una densidad de cercana a los $\rho \sim 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ (ver figura \ref{fig:jet_ma_alto_densidad}).
+
+%====================================TABLE=================================
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
+\hline 
+$\rho_{in}$ &  Densidad del jet & 1000 [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
+\hline 
+$\rho_{out}$ &  Densidad del medio ambiente & $1.0 \times 10^{4}$  [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
+\hline 
+$P_{int}$ & Presión interna del jet& $20 \times \lvert \rho_{jet} \lvert$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
+\hline 
+$P_{out}$ &  Presión del medio ambiente & $20 \times \lvert \rho_{ma} \lvert$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
+\hline 
+$v_{x_{int}}$ & Velocidad interna en el eje x del jet & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+\hline 
+$v_{y_{int}}$ & Velocidad interna en el eje y del jet & 0.9797959 c \\ 
+\hline 
+$v_{x_{out}}$ & Velocidad en el eje x del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
+\hline 
+$v_{y_{out}}$ & Velocidad en el eje y del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+\hline 
+Co & Número de Courant & 0.7 \\ 
+\hline 
+\end{tabular}
+\caption{\label{Cuadro: propiedades-jet-densidad-baja} La densidad del medio ambiente es 10 veces denso que la del mismo jet.}
+\end{center}
+\end{table}
+%==========================================TABLE===================================================
 
 La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdot \mathrm{s}^{-1}$. Al graficar la velocidad contra la distancia (ver Figura \ref{fig:jet_ma_alto_densidad_vel}) se nota que, la pérdida de velocidad del jet es lineal al tiempo $t = 0.2 \, s$ pero conforme se va formando el capullo que envuelve al jet, la velocidad se mentiene constante con $v \sim 2.25 \,c $. Por lo que puedo inferir que conforme pase el tiempo y el capullo se haga más grande el jet solo perderá, el 25 \% de su velocidad.
 
