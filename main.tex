@@ -164,16 +164,15 @@ Fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc
 
 El objetivo principal del estudio de los GRBs es analizar las propiedades de los estallidos de los rayos gamma, así como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor más atractivo.
 Las categorias de los GRBs largos y cortos son aproximadamente 75\% y 25\% de la población \cite{GRB:PPP}. %Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
- La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo \cite{Berger:2013jza}, la energía liberada es del orden de $10^{52}$ ergs.
+La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo \cite{Berger:2013jza}, la energía liberada es del orden de $10^{52}$ ergs.
 
 Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
 \section{Características de los GRBs}
 Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s \cite{PGRB-piran}, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmologico, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy difícil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
 
 %Las partes principales de los GRBs son la emisión propmt y  afterglow. %Piran2005
- 
- 
- \begin{figure} %fuente de la imagen:https://astrobites.org/2017/11/13/grb-afterglows-coming-out-of-a-cocoon/
+
+\begin{figure} %fuente de la imagen:https://astrobites.org/2017/11/13/grb-afterglows-coming-out-of-a-cocoon/
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/Gamma-ray_burst_by_a_blackhole-768x432.jpg}
   \caption{Diferentes partes de un GRB en general, mostrando las partes más características como el afterflow y la emisión prompt}
@@ -203,7 +202,7 @@ F_{\nu}(t,\nu) \propto t^{-\alpha} \nu^{\beta}
 Donde $\alpha$ y $\beta$ son reales positivos.
 
 
- En Mayo y Julio del 2005 datos de eyecciones recopiladas por el satélite \emph{swift} al seguir al seguir al GRB 050509B, descubrieron las primeras fases tardías de los GRBs cortos, tiempo después el satélite HETE-2 junto con el observatorio \emph{chandra} de rayos X siguieron al satélite 050709 el cual localizo la fase tardía en rayos X y despues en la banda óptica, con estos datos recabados de la fase tardía se pudo llegar a que los GRBs cortos tienen una escala de densidad y una energía mas baja que los GRBs largos, tambien se llego a la conclusión de que los GRBs cortos tienen orígenes cosmologicos \cite{Berger:2013jza} y que las estrellas masivas no son sus progenitores como en el caso de GRBs cortos.
+En Mayo y Julio del 2005 datos de eyecciones recopiladas por el satélite \emph{swift} al seguir al seguir al GRB 050509B, descubrieron las primeras fases tardías de los GRBs cortos, tiempo después el satélite HETE-2 junto con el observatorio \emph{chandra} de rayos X siguieron al satélite 050709 el cual localizo la fase tardía en rayos X y despues en la banda óptica, con estos datos recabados de la fase tardía se pudo llegar a que los GRBs cortos tienen una escala de densidad y una energía mas baja que los GRBs largos, tambien se llego a la conclusión de que los GRBs cortos tienen orígenes cosmologicos \cite{Berger:2013jza} y que las estrellas masivas no son sus progenitores como en el caso de GRBs cortos.
  
 \subsection{Energía y luminosidad}
 Los GRBs largos tienen una luminosidad isotrópica $L_{iso} \sim 10^{49}-10^{54} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$. También  hay GRBs largos con una luminosidad baja, sus valores rondan acerca de $L_{iso} \sim 5 \times 10^{46}-10^{49} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$, pero estos son solo una pequeña fracción de los GRBs largos observados. Los GRBs cortos tiene generalmente una luminosidad de $L_{iso} \sim 10^{49} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$.
@@ -375,6 +374,140 @@ $
 
 El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar tos términos fuente es decir $\mathbf{S}=0$ en el siguiente capitulo si se trataran fuentes particulares.
 
+\subsection{Rankine-Hugoniot}
+Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservacion_momento_hidrodinamica} y \ref{conservacion_energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
+
+
+La conservación de masa
+\begin{equation}
+  \nabla \cdot \left( \rho \mathbf{u} \right)=0
+\end{equation}
+
+El momento
+\begin{equation}
+  \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = 0
+\end{equation}
+
+Ecuación de la energía
+
+\begin{equation}
+ \nabla \cdot \left[ \mathbf{u} \left( E+P \right) \right] = 0
+\end{equation}
+
+Considerando una dimensión:
+
+\begin{equation}
+\dfrac{d \left( \rho u \right)}{d x} = 0
+\end{equation}
+
+\begin{equation}
+\dfrac{d \left( \rho u^2 \right)}{d x}+ \dfrac{d P}{d x}=0
+\end{equation}
+
+\begin{equation}
+\dfrac{d \left( u\left[E+P \right] \right)}{d x} = 0
+\end{equation}
+
+Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando la ecuación de estado $E = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $E \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}^2}\right]$ es la densidad de energía por unidad de volumen
+
+\begin{equation}\label{RH_masa}
+\rho_j u_j = \rho_m u_m
+\end{equation}
+
+\begin{equation}\label{RH_momento}
+\rho_j u_{j}^{2}+P_j = \rho_m u_{m}^{2}+P_m
+\end{equation}
+
+\begin{equation}\label{RH_Energia}
+\frac{1}{2} u_{j}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}} =
+ \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
+\end{equation}
+
+Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, $P \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}}\right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
+
+\begin{equation}\label{RH_momento_j}
+P_{j}+\frac{j^2}{\rho_{j}}=P_{m}+\frac{j^2}{\rho_{m}}
+\end{equation}
+
+y la ecuación \ref{RH_Energia} llegamos a:
+
+\begin{equation}\label{RH_Energia_j}
+\frac{1}{2} \frac{j^{2}}{\rho_{j}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}}=
+\frac{1}{2} \frac{j^{2}}{\rho_{m}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
+\end{equation}
+
+Despejando $j$ de la ecuación \ref{RH_momento_j} obtenemos:
+\begin{equation}\label{j^2}
+-j^{2}=\frac{P_{j}-P_{m}}{\frac{1}{\rho_{m}}-\frac{1}{\rho_{j}}}
+\end{equation}
+
+Ahora sustituyendo la ecuación en \ref{j^2} en \ref{RH_Energia_j} obtenemos:
+
+\begin{equation*}
+\frac{1}{2} \left( \frac{P_{m}-P_{j}}{\frac{1}{\rho_{j}}-\frac{1}{\rho_{m}}} \right)
+\left(\frac{1}{\rho_{j}^{2}}-\frac{1}{\rho_{m}^{2}} \right)
+=
+\frac{\Gamma}{\Gamma-1}
+\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation*}
+\frac{1}{2}	\left( P_{m} - P_{j} \right)
+\left( \frac{1}{\rho_{j}}+\frac{1}{\rho_{m}} \right)
+=
+\frac{\Gamma}{\Gamma-1}
+\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation*}
+\frac{1}{\rho_{m}} \left( \frac{1}{2} P_{m}- \frac{1}{2} P_{j}-
+\frac{\Gamma}{\Gamma-1} P_{m} \right)
+=
+\frac{1}{\rho_{j}} \left( \frac{1}{2} P_{j}- \frac{1}{2} P_{m}-
+\frac{\Gamma}{\Gamma-1} P_{j} \right)
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation*}
+\frac{1}{\rho_{m}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{m} + P_{j} \right]
+=
+\frac{1}{\rho_{j}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{j} + P_{m} \right]
+\end{equation*}
+
+Con lo que nos queda:
+
+\begin{equation}\label{RH_no_rel_choque_no_fuerte}
+\frac{\rho_{m}}{\rho_j} =
+\frac{\left( \Gamma +1 \right) P_{m}+ \left( \Gamma -1 \right) P_{j
+}}{\left(\Gamma +1 \right) P_{j}+ \left( \Gamma -1 \right) P_{m}}
+= \frac{u_j}{u_m}
+\end{equation}
+
+Si consideramos choque fuerte, es decir, $P_j \gg P_m$, implicaría que $P_m \simeq 0$, por lo que
+
+\begin{equation}
+\rho_j = \frac{\Gamma +1}{\Gamma-1} \rho_m 
+\end{equation}
+Tomando a $\Gamma = 5/3$ da
+
+\begin{equation}
+\rho_j = 4 \rho_m
+\end{equation}
+
+\begin{equation}
+u_j = \frac{1}{4} u_m
+\end{equation}
+
+\begin{equation}
+P_{j} = \frac{3}{4}\rho_m u_m^{2}
+\end{equation}
+
+
 \section{Hidrodinámica relativista}
 En esta parte se añadirá a los códigos que ya hemos generado previamente, las próximas secciones abordara acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales
 
@@ -445,6 +578,302 @@ H_{3}& = \rho v_{z} v_{y} \gamma^{2} h \\
 H_{4}& = \rho v_{z}^{2} \gamma^{2} h + P
 \end{align}
 
+\subsection{Rankine-Hugoniot Relativista}
+
+Para poder encontrar las relaciones de Rankine-Hugoniot, usaremos la siguiente ecuación de estado:
+\begin{equation}\label{EoS_relativista}
+\Gamma = 1+\frac{P}{\rho \epsilon}
+\end{equation}
+Donde $\epsilon \left[ \frac{s^2}{\mathrm{cm}^2}\right]$ es la energía interna del sistema\\
+\textit{Ecuación de conservación de número de partículas o de masa}:
+\begin{equation}\label{Ecuacion_particulas_relativista}
+n_j u_j = n_m u_m
+\end{equation}
+Donde $n \left[ \mathrm{cm}^{-3}\right]$ es la densidad del número de partículas y $u$ es la cuadrivelocidad donde $u=\beta \gamma$, teniendo en cuenta que $\beta = \frac{v}{c}$ y $\gamma = \left( 1 - \beta \right)^{-1/2}$ es el factor de lorentz.\\
+
+Ecuación de momento: 
+\begin{equation}\label{Ecuacion_momento_relativista}
+\omega_j u_{j}^{2}+P_j=\omega_j u_{j}^{2}+P_j
+\end{equation}
+Donde $\omega = e + P$ es la entalpia específica por unidad de volumen, donde $e$ es la densidad de energía interna, usando la ecuación \ref{EoS_relativista}  que puede ser escrita como:
+
+\begin{equation}\label{Energia_densidad_fluido}
+e = \rho \left( c^2+ \epsilon \right)= nm_{0}c^{2} + \frac{\Gamma}{\Gamma -1}P
+\end{equation}
+
+Donde $m_0$ es la masa en reposo y $c$ es la velocidad de la luz
+
+Ecuación de la Energía
+
+\begin{equation}\label{Ecuacion_energia_relativista}
+\omega_j \gamma_j u_j=\omega_m \gamma_m u_m
+\end{equation}
+
+Definiendo una nueva variable $x=\frac{\omega}{n^{2}}$ y usando la ecuación \ref{Ecuacion_particulas_relativista} tenemos $\overline{j}=n_j u_j = n_m u_m$, por lo que usando  la ecuación \ref{Ecuacion_momento_relativista} la podemos escribir como:
+
+\begin{equation*}
+n_{j}^2 x_{j} u_{j}^{2} + P_{j}
+=
+n_{m}^2 x_{m} u_{m}^{2} + P_{m}
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation}
+x_{j} \overline{j}^{2}+P_{j}
+= 
+x_{m} \overline{j}^{2}+P_{m}
+\end{equation}
+
+Con lo que al final nos queda:
+\begin{equation} \label{j_modificada_relativista}
+-\overline{j}^{2}=\frac{P_{m}-P_{j}}{x_{m}-x_{j}}
+\end{equation}
+
+Ahora usando la ecuación \ref{Ecuacion_energia_relativista}
+podemos reescribirla como:
+
+\begin{equation*}
+\frac{\omega_j}{n_j}\gamma_j \overline{j}= \frac{\omega_m}{n_m}\gamma_m \overline{j}
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation} \label{Ecuacion_energia_relativista_mod}
+\frac{\omega_m^2}{n_j^2}\gamma_m^2- \frac{\omega_m^2}{n_j^2}\gamma_j^2= 0
+\end{equation}
+
+La ecuación \ref{Ecuacion_energia_relativista_mod} la usaremos mas tarde, ahora volviendo a \ref{j_modificada_relativista} la podemos multiplicar por  $x_m^2-x_j^2$ queda lo siguiente:
+
+\begin{equation*}
+- \left( x_m^2 \overline{j}^{2}-x_j^2 \overline{j}^{2} \right) =
+\frac{P_m-P_j}{x_m-x_j} \left( x_m-x_j \right) \left( x_m+x_j \right)
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation} \label{Ecuacion_A}
+-x_m^2 u_m^2 n_m^2 + x_j^2 u_j^2 n_j^2 =
+\left( P_m-P_j \right) \left( x_m+x_j \right) 
+\end{equation}
+
+restando la ecuación \ref{Ecuacion_energia_relativista_mod} de la \ref{Ecuacion_A}
+
+\begin{equation}
+-\left( \frac{\omega_{m}}{n_m^2}\right)^2 u_m^2 n_m^2 +
+\left( \frac{\omega_{j}}{n_j^2}\right)^2 u_j^2 n_j^2 -
+\frac{\omega_m^2}{n_j^2}\gamma_m^2 +
+\frac{\omega_m^2}{n_j^2}\gamma_j^2
+=
+\left( P_m-P_j \right) \left( x_m+x_j \right) 
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation} \label{ec_mod_beta-lor}
+-\frac{\omega_{m}}{n_m^2} \left( u_m^2-\gamma_m^2 \right)
++\frac{\omega_{j}}{n_j^2} \left( u_j^2-\gamma_j^2 \right)
+=\left( P_m-P_j \right) \left( x_m+x_j \right) 
+\end{equation}
+
+
+Sabemos que:
+
+\begin{equation}
+u = \beta \gamma
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+u^2 = \beta^2 \gamma^2 
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+u^2 = \frac{\beta^2}{1-\beta^2} 
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+u^2-\gamma^2 = \frac{\beta^2}{1-\beta^2}-\frac{1}{1-\beta^2}
+\end{equation}
+
+Entonces al final:
+\begin{equation} \label{beta-lor}
+u^2-\gamma^2 = -1
+\end{equation}
+
+Sustituyendo la ecuación \ref{beta-lor} a la \ref{Ecuacion_energia_relativista_mod} nos queda:
+
+\begin{equation} \label{Choque adiabatico}
+x_m \omega_m- x_j \omega_j = \left( P_m-P_j \right) \left( x_m+x_j \right) 
+\end{equation}
+
+Podemos reescribir a $x$ usando la ecuación  como \ref{Energia_densidad_fluido} como:
+\begin{equation} \label{var_x_complicada}
+x= \frac{m_0^2 c^2}{\rho}+ \frac{\Gamma}{\Gamma-1}\frac{m_0^2 P}{\rho^2}
+\end{equation}
+
+Sustituyendo la ecuación \ref{var_x_complicada} en \ref{j_modificada_relativista}
+
+\begin{equation}
+-\overline{j}^{2} = \left( x_m - x_j \right) = P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-n_j^2 u_j^2 \left(\frac{m_0^2 c^2}{\rho_m} +
+\frac{\Gamma}{\Gamma-1} \frac{m_0^2 P_m}{\rho_m^2}-
+\frac{m_0^2 c^2}{\rho_j}-
+\frac{\Gamma}{\Gamma-1} \frac{m_0^2 P_j}{\rho_j^2} \right) = 
+P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-n_j^2 u_j^2 
+\left[m_0^2 c^2 \left( \frac{1}{\rho_m} - \frac{1}{\rho_j} \right)+
+\frac{\Gamma}{\Gamma-1} m_0^2 \left( \frac{P_m}{\rho_m^2}- \frac{P_j}{\rho_j^2}\right) \right] = 
+P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-u_j^2 
+\left[\rho_j^2 c^2 \left( \frac{\rho_j}{\rho_m} - 1 \right)+
+\frac{\Gamma}{\Gamma-1} \left( P_m \frac{\rho_j^2}{\rho_m^2} - P_j \right) \right] = 
+P_m - P_j
+\end{equation}
+
+$\Rightarrow$
+
+\begin{equation}
+-u_j^2 
+\left[\frac{\rho_j^2 c^2}{P_j}  \left( \frac{\rho_j}{\rho_m} - 1 \right)+
+\frac{\Gamma}{\Gamma-1} \left( \frac{P_m}{P_j} \frac{\rho_j^2}{\rho_m^2} - 1 \right) \right] = 
+\frac{P_m}{P_j} - 1
+\end{equation}
+
+
+Sabemos que $V = \frac{m_0}{\rho}$ y e introduciendo la siguiente notación $\hat{P}=P_m/P_j$, $\hat{V}=V_m/V_j = \rho_j / \rho_m$ y $\hat{c} = \frac{c}{\sqrt{P_j V_j}}$ llegamos a la relación de Rayleigh
+
+\begin{equation}
+-u_j^2
+\left[ \hat{c}  \left( \hat{V} - 1 \right)+
+\frac{\Gamma}{\Gamma-1} \left( \hat{P} \hat{V}^2 - 1 \right) \right] = 
+\hat{P} - 1
+\end{equation}
+
+Para obtener la ecuación de Rankine-Hugoniot vamos a sustituir la ecuación \ref{var_x_complicada} en \ref{Choque adiabatico} y obtenemos la siguiente ecuación
+\begin{eqnarray}\label{Ecuacion_a_desarrollar}
+\underbrace { \left( \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { m } } { \rho _ { m } ^ { 2 } } \right) } _ { x _ { m } } \underbrace { \left( n _ { m } m _ { 0 } c ^ { 2 } + \frac { \Gamma } { \Gamma - 1 } P _ { m } \right) } _ { w _ { m } }
+- \underbrace { \left( \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { j } } { \rho _ { j } ^ { 2 } } \right) } _ { x _ { j } } \underbrace { \left( n _ { j } m _ { 0 } c ^ { 2 } + \frac { \Gamma } { \Gamma - 1 } P _ { j } \right) } _ { w _ { j } } = \nonumber \\ 
+\left( P _ { m } - P _ { j } \right) \left( \underbrace { \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } } + \frac { \Gamma } { \Gamma - 1 }  { m _ { 0 } ^ { 2 } P _ { m } } { \rho _ { m } ^ { 2 } } } _ { x _ { m } } + \underbrace { \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { j } } { p _ { m } ^ { 2 } } } _ { x _ { j } } \right)
+\end{eqnarray}
+
+Ahora, la ecuación \ref{Ecuacion_a_desarrollar} la vamos a desarrollar por pasos: primero, vamos a tomar el lado izquierdo de esta ecuación, con lo que nos va a quedar lo siguiente.
+
+\begin{eqnarray}\label{side_left}
+\frac { m _ { 0 } ^ { 2 } c ^ { 4 } } { \rho _ { m } } \rho _ { m } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } } P _ { m } +
+\frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } ^ { 2 } } P _ { m } \rho _ { m } + \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { m _ { 0 } ^ { 2 } } { \rho _ { m } ^ { 2 } } P _ { m } ^ { 2 } \right)- \nonumber \\
+ \frac { m _ { 0 } ^ { 2 } c ^ { 4 } } { \rho _ { j } } \rho _ { j } - \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } } P _ { j }
+ - \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } ^ { 2 } } P _ { j } \rho _ { j } - \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { m _ { 0 } ^ { 2 } } { \rho _ { j } ^ { 2 } } P _ { j } ^ { 2 } \right)
+\end{eqnarray}
+
+Ahora, desarrollando la parte derecha de la ecuación \ref{Ecuacion_a_desarrollar} obtenemos el siguiente resultado:
+
+\begin{eqnarray}\label{side_right}
+\frac { m _ { 0 } ^ { 2 } c ^ { 2 } P _ { m } } { \rho _ { m } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { m } ^ { 2 } } { \rho _ { m } ^ { 2 } } + \frac { m _ { 0 } ^ { 2 } c ^ { 2 } P _ { m } } { \rho _ { j } } + \frac { \Gamma } { \Gamma - 1 } m _ { 0 } ^ { 2 } P _ { m } \frac { P _ { j } } { \rho _ { j } ^ { 2 } }
+\nonumber \\
+\frac { m _ { 0 } ^ { 2 } c ^ { 2 } P _ { j } } { \rho _ { m } } - \frac { \Gamma } { \Gamma - 1 } m _ { 0 } ^ { 2 } P _ { m } \frac { P _ { j } } { \rho _ { m } ^ { 2 } } - m _ { 0 } ^ { 2 } c ^ { 2 } \frac { P _ { j } } { \rho _ { j } } - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { m _ { 0 } ^ { 2 } } { \rho _ { j } ^ { 2 } } P _ { j } ^ { 2 } \right)
+\end{eqnarray}
+
+Si sumamos únicamente los términos que contengan en factor $c^2$ de las ecuaciones \ref{side_left} y \ref{side_right} llegamos a 
+
+\begin{equation*}
+m _ { 0 } ^ { 2 } c ^ { 2 } \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right)
+\left( \frac { P _ { m } } { \rho _ { m } } \right) 
++ \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } \right) - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { j } } { \rho _ { j } } \right)  - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { j } } { \rho _ { j } } \right) - \left( \frac { P _ { m } } { \rho _ { m } } \right) - \left( \frac { P _ { m } } { \rho _ { j } } \right) - \left( \frac { P _ { j } } { \rho _ { m } } \right) - \left( \frac { P _ { j } } { \rho _ { j } } \right) \right]
+\end{equation*}
+
+Entonces
+
+\begin{equation}\label{side_left_perfect}
+m _ { 0 } ^ { 2 } c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } - \frac { P _ { j } } { \rho _ { j } } \right) - \left( \frac { P _ { m } } { \rho _ { j } } - \frac { P _ { j } } { \rho _ { m } } \right) \right]
+\end{equation}
+
+Tomando ahora todos los términos de las ecuaciones \ref{side_left} y \ref{side_right} que no contengan el factor $c^2$, podemos llegar a la siguiente ecuación
+
+\begin{equation*}
+m _ { 0 } ^ { 2 } \left[ - \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } + \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } + \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } + \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } \frac { P _ { j } } { \rho _ { j } ^ { 2 } } - \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { j } \left( \frac { P _ { m } } { \rho _ { m } ^ { 2 } } \right) - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 }\right]
+\end{equation*}
+
+Entonces
+
+\begin{equation*}
+m _ { 0 } ^ { 2 } \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } P _ { j } \left( \frac { 1 } { \rho _ { j } ^ { 2 } } - \frac { 1 } { \rho _ { m } ^ { 2 } } \right) - \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } \left( \frac { \Gamma ^ { 2 } } { ( \Gamma - 1 ) ^ { 2 } } - \frac { \Gamma } { \Gamma - 1 } \right) + \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } \left( \frac { \Gamma ^ { 2 } } { ( \Gamma - 1 ) ^ { 2 } } - \frac { \Gamma } { \Gamma - 1 } \right) \right]
+\end{equation*}
+
+Entonces
+
+\begin{equation}\label{side_right_perfect}
+m _ { 0 } ^ { 2 } \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } P _ { j } \left( \frac { 1 } { \rho _ { j } ^ { 2 } } - \frac { 1 } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } - \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } \right] \right]
+\end{equation}
+
+Al igualar las ecuaciones \ref{side_left_perfect} y \ref{side_right_perfect} obtenemos una versión más simplificada de la ecuación \ref{Ecuacion_a_desarrollar}, con lo que nos queda.
+
+\begin{eqnarray} \label{Ecuacion_simplificada}
+c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } - \frac { P _ { j } } { \rho _ { j } } \right) - \left( \frac { P _ { m } } { \rho _ { j } } - \frac { P _ { j } } { \rho _ { m } } \right) \right]
+\nonumber \\ 
+= \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } P _ { j } \left( \frac { 1 } { \rho _ { j } ^ { 2 } } - \frac { 1 } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } - \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } \right] \right]
+\end{eqnarray}
+
+Multiplicando por $\left( \frac{\rho_j}{P_j}\right)^2$
+
+\begin{eqnarray}
+\frac { \rho _ { j } } { P _ { j } } c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { P _ { j } } \frac { \rho _ { j } } { \rho _ { m } } - 1 \right) - \left( \frac { P _ { m } } { P _ { j } } - \frac { \rho _ { 1 } } { \rho _ { m } } \right) \right] \nonumber \\
+=\left( \frac { \Gamma } { \Gamma - 1 } \right) \frac { P _ { m } } { P _ { j } } \left( 1 - \frac { \rho _ { j } ^ { 2 } } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { P _ { j } } \frac { \rho _ { j } } { \rho _ { m } } \right) ^ { 2 } - 1 \right]
+\end{eqnarray}
+
+Con lo que al final nos queda.
+
+\begin{equation} \label{ecuacion_RH}
+\hat { c } ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) ( \hat { P } \hat { V } - 1 ) - ( \hat { P } - \hat { V } ) \right] =
+\left( \frac { \Gamma } { \Gamma - 1 } \right) \hat { P } \left( 1 - \hat { V } ^ { 2 } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \hat { p } ^ { 2 } \hat { V } ^ { 2 } - 1 \right]
+\end{equation}
+
+Si tomamos el límite no relativista, es decir, que $\hat{c} \longrightarrow \infty$, el lado derecho de la ecuación desaparece y nos queda.
+
+\begin{equation*}
+( \Gamma + 1 ) \hat{P} \hat { V } - ( \Gamma + 1 ) = ( \Gamma - 1 ) \hat { P } - ( \Gamma - 1 ) \hat { V }
+\end{equation*}
+
+Entonces
+
+\begin{equation*}
+( \Gamma + 1 ) \hat { P } \hat { V } + ( \Gamma - 1 ) \hat { V } = ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P }
+\end{equation*}
+
+Entonces
+
+\begin{equation*}
+\hat { V } [ ( \Gamma + 1 ) \hat { P } + ( \Gamma - 1 ) ] = ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P }
+\end{equation*}
+
+Entonces
+
+\begin{equation}
+\hat { V } = \frac { ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P } } { ( \Gamma + 1 ) \hat { P } + ( \Gamma - 1 ) }
+\end{equation}
+
+Con lo que volvemos a la ecuación \ref{RH_no_rel_choque_no_fuerte}
+
 
 
 \section{Desacoplamiento de las ecuaciones de la hidrodinámica}
@@ -466,6 +895,32 @@ Para la ecuacion de la energía $u_5=E$ combinando con la ecuacion de estado y l
 \begin{equation}
 P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u_i \right)^2}{2} \right]
 \end{equation}
+
+La implementación en el código es muy sencilla, el bloque de código esta en una subrutina llamada \emph{fluxes}, donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. El bucle corre por toda la malla de puntos que definimos para poder discretizar el fluido, \emph{nx} y \emph{ny} son el número total de puntos en los que se discretiza el eje \emph{x} y el eje \emph{y} respectivamente, las variables \emph{i}, \emph{j} son contadores y antes de que se computen los flujos, se tienen que calcular las primitivas, esta desacoplamineto en el método newtoniano es sencillo pero en el método relativista se vuelve muy complicado.
+
+\begin{lstlisting}[frame=single] 
+  
+ do i=0,nx+1
+  do j=0,ny+1
+  	!Desacoplamiento de las primitivas
+    rho=u(1,i,j)
+    vx=u(2,i,j)/rho
+    vy=u(3,i,j)/rho
+    P=(u(4,i,j)-0.5*rho*(vx**2+vy**2))*(gamma-1.)
+
+    f(1,i,j)=rho*vx
+    f(2,i,j)=rho*vx*vx+P
+    f(3,i,j)=rho*vx*vy
+    f(4,i,j)=vx*(u(4,i,j)+P)
+
+    g(1,i,j)=rho*vy
+    g(2,i,j)=rho*vx*vy
+    g(3,i,j)=rho*vy*vy+P
+    g(4,i,j)=vy*(u(4,i,j)+P)
+
+\end{lstlisting}
+
+
 
 \section{Desacoplamiento de las ecuaciones de la hidrodinámica relativista}
 Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
@@ -505,7 +960,7 @@ Nosotros no sabemos como es la expresión $\dfrac{dE}{dW^{'}}$, así que asumire
 \end{equation}
 
 Para calcular $\dfrac{dp}{d\chi}$ tenemos que por ser el caso de un gas ideal
-\begin{equation}
+\begin{equation} \label{entalpia_funcion_presion_densidad}
 h=1+\frac{\Gamma}{\Gamma-1}\frac{p}{\rho}
 \end{equation}
 Donde $h$ también puede ser escrito como
@@ -621,6 +1076,44 @@ Presión térmica
 p&=&\frac{\Gamma-1}{\Gamma} \chi
 \end{eqnarray}
 
+Aunque en el método newtoniano se podian desacoplar las ecuaciones sobre el mismo bucle, para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y asi poder obtenerlas en funcion de las conservadas. Al igual que en el método newtoniano vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. Las variables conservadas las reasignmos a unas nuevas llamadas \emph{qu} para que podamos usar la subrutina, una vez que se desacoplan, los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
+
+\begin{lstlisting}[frame=single] 
+ do i=0,nx+1
+  do j=0,ny+1           
+     qu(1) = u(1,i,j)
+     qu(2) = u(2,i,j)
+     qu(3) = u(3,i,j)
+     qu(4) = u(4,i,j)
+
+    ! Desacoplamiento de las primitivas
+    call uprim(u,qp)
+
+    qpp(:,i,j)=qp
+
+    rho = qpp(1, i,j)
+    vx  = qpp(2, i,j)
+    vy  = qpp(3, i,j)
+    P   = qpp(4, i,j)
+
+    lor=1/sqrt(1-(vx**2+vy**2))
+    h=1.+gamma/(gamma-1.)*P/rho
+              
+    f(1,i,j)=rho*vx*lor
+    f(2,i,j)=rho*vx*vx*lor**2*h+P
+    f(3,i,j)=rho*vx*vy*lor**2*h
+    f(4,i,j)=rho*vx*lor**2*h
+
+    g(1,i,j)=rho*vy*lor
+    g(2,i,j)=rho*vx*vy*lor**2*h
+    g(3,i,j)=rho*vy*vy*lor**2*h+P
+    g(4,i,j)=rho*vy*lor**2*h
+
+
+  end do
+ end do
+
+\end{lstlisting}
 
 
 \section{Diferencias finitas} \label{sec:Diferencias_finitas}
@@ -700,6 +1193,12 @@ Pero esta solución es inestable, por el primer término del lado derecho de la 
 \begin{equation}\label{ec_estable}
 u_i^{n+1} =(u_{i+1}^n-u_{i-1}^n) + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
 \end{equation}
+
+
+
+
+En el código, la impelemtacion de los flujos es bastante sencillo
+
 
 
 \subsection{HLL}
@@ -887,6 +1386,226 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 \end{array}
 \right.
 \end{equation}
+
+\section{Ecuaciones de Sedov-Taylor}
+Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
+
+\subsection{Una aproximación}
+
+Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la onda es constante entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $ entonces podemos aproximar la energía cinética de la onda como 
+
+\begin{equation}
+	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_w R^3 \left( \frac{R}{t} \right) ^2 = \rho_w \frac{R^5}{t^2}
+\end{equation}
+
+Ahora la energía térmica de una explosion es 
+
+\begin{equation} \label{eq_energia_termica}
+	E_{th} \sim \frac{3}{2}PV
+\end{equation}
+
+Para encontrar la presión, primero defineremos algunas ecuaciones antes.
+
+La entalpia estancada se define en términos de la entalpia y la velocidad de la onda 
+
+\begin{equation}
+	h_0 = h + \frac{1}{2} v^2
+\end{equation}
+
+La cual la podemos rescribir como
+
+\begin{equation} \label{eq_entalpia}
+	h_0 = h + \left( 1 +\frac{1}{2} \frac{v^2}{h} \right)
+\end{equation}
+
+Ahora sabemos que la velocidad del sonido puede ser definida como 
+
+\begin{equation} \label{eq_sonido_1}
+	a = \sqrt{\frac{\Gamma P}{\rho}}
+\end{equation}
+
+y tambien como 
+
+\begin{equation} \label{eq_sonido_2}
+	a = \sqrt{(\Gamma-1) h}
+\end{equation}
+
+Donde $a$ es la velocidad del sonido, $h$ la entalpia, $v$ la velocidad, $P$ la presión y $\rho$ la densidad. Tambien definimos el número de Mach como 
+
+\begin{equation} \label{eq_Mach}
+	M = \frac{v}{a}
+\end{equation}
+
+Si combinamos la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo sustituimos en la ecuación \ref{eq_entalpia} nos queda la entalpia en funcion de la velocidad de la onda y del sonido
+
+\begin{equation} \label{h_0_funcion_aire_mach}
+	h_0 = \frac{a^2}{\Gamma - 1} \left( 1 + \frac{\Gamma - 1}{2} M^2 \right)
+\end{equation}
+
+Esta ecuacion servirá más adelate. Volviendo a las ecuaciones de Rankine Hugoniot podemos usar la ecuacion
+\ref{RH_Energia} y \ref{entalpia_funcion_presion_densidad} para obtener la ecuacion de la energía en funcion de la entalpia, lo que nos va a quedar al final como
+
+\begin{equation}\label{RH_entalpia}
+  h_w +\frac{1}{2}v_w^2 = h_w +\frac{1}{2}v_w^2
+\end{equation} 
+
+
+Donde $ h $ es la entalpia y $v$ la velocidad, los sub-índices $w$, $m$ corresponden a la onda y al medio respectivamente.
+
+Si dividimos la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los sub-índices $j$ por $w$
+obtenemos la siguiente ecuación 
+
+\begin{equation} \label{RH_momento_masa}
+  v_w + \frac{P_w}{\rho_w v_w} = v_m + \frac{P_m}{\rho_m v_m}
+\end{equation}
+
+Usando la ecuación \ref{eq_sonido_1} en la ecuación \ref{RH_momento_masa} podemos reescribir la ecuación de 
+la siguiente manera:
+
+\begin{equation} \label{eq_diferencia_velocidades}
+  v_w-v_m = \frac{1}{\Gamma} \left(\frac{a_m^2}{v_m} - \frac{a_w^2}{v_w} \right)
+\end{equation}
+
+Por simplicidad definimos la entalpia estancada como 
+
+\begin{equation}
+  h_w + \frac{1}{2} v_w = h_w + \frac{1}{2} v_w \equiv h_0
+\end{equation}
+
+Por lo que podemos definir a la velocidad del sonido como:
+
+\begin{equation} \label{eq_sonido_onda}
+  a_w = \left( \Gamma-1 \right) h_w = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_w^2 \right)
+\end{equation}
+
+\begin{equation} \label{eq_sonido_medio}
+  a_m = \left( \Gamma-1 \right) h_m = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_m^2 \right)
+\end{equation}
+
+Sustituyendo las ecuaciones \ref{eq_sonido_onda} y \ref{eq_sonido_medio} en la ecuación \ref{eq_diferencia_velocidades}
+nos queda
+
+\begin{equation}
+  v_w-v_m = \frac{\Gamma - 1}{\Gamma} \left[ \frac{h_0}{v_m} - \frac{h_0}{u_w} + \frac{1}{2} \left( v_w - v_m\right) \right]
+\end{equation}
+
+Dividiendo por $ \left( v_w - v_m \right)$
+
+\begin{equation}
+  1 = \frac{\Gamma - 1}{\Gamma} \left( \frac{h_0}{v_m v_w} + \frac{1}{2} \right)
+\end{equation}
+
+Que al final la podemos reescribir como
+
+\begin{equation} \label{eq_denominador}
+  \frac{1}{v_w v_m} = \frac{1}{\left( \Gamma -1\right) h_0} \frac{\Gamma + 1}{2}
+\end{equation}
+
+Otra ecuación que nos va a servir es la definicion de Mach ya que como
+
+\begin{equation}\label{velocidad_aire_mach}
+  v_w^2 = a_w^2 M_w^2
+\end{equation}
+
+Entonces usando \ref{h_0_funcion_aire_mach} podemos reescribir la ecuación \ref{velocidad_aire_mach} como
+como
+
+\begin{equation} \label{eq_numerador}
+  v_w^2 = M_w^2 \frac{\left( \Gamma -1 \right) h_0}{1+\frac{\Gamma - 1}{2} M_w^2}
+\end{equation}
+
+Usando la ecuación de momentos \ref{RH_masa} podemos reescribirla como
+
+\begin{equation} \label{eq_fraccion_momentos}
+  \frac{\rho_m }{\rho_w} = \frac{ v_w}{v_m} = \frac{v_w^2}{v_w v_m}
+\end{equation}
+
+Como ya sabemos cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador})
+de la fracción, podemos definir el cociente de las densidades \ref{eq_fraccion_momentos} como 
+
+\begin{equation}\label{eq_fraccion_momentos_funcion_mach}
+  \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}
+\end{equation}
+
+Entonces para encontrar las presiones combinamos las ecuaciones \ref{RH_momento} y \ref{RH_masa} tenemos
+
+\begin{equation}
+  P_m - P_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right)
+\end{equation}
+
+Usando la siguiente relación $\rho v^2 = \Gamma P M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y
+\ref{eq_Mach},dividiendo por $P_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación \ref{eq_fraccion_momentos_funcion_mach}
+nos queda
+
+\begin{equation} \label{eq_fraccion_Presiones}
+  \frac{P_m}{P_w} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_w^2 -1\right)
+\end{equation}
+
+Usando la siguiente relación $ P_w = \frac{\rho a_w }{\Gamma}$ se puede obtener el límite del choque fuerte
+
+\begin{equation}
+  P_m  \simeq \frac{2 \rho_w v_w^2}{\Gamma + 1}
+\end{equation}
+
+Con esto ya podemos obtener la energía térmica de la ecuación \ref{eq_energia_termica} por lo que nos queda 
+
+\begin{equation}
+  E_{th} \sim P_m R^3 \sim \rho_w v_w^2 R^3 \sim \rho_w \frac{R^5}{t^2}
+\end{equation}
+
+Como tiene el mismo orden que el de la energía cinética, entonces la energía total que es una cantidad conservada, se espera que
+
+\begin{equation}
+  E_t = E_{kin} + E_{th} \sim \rho_w \frac{R^5}{t^2}
+\end{equation}
+
+Despejando el radio, obtenemos lo siguiente
+
+\begin{equation}
+  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}
+\end{equation}
+
+\subsection{Análisis dimensional}
+  Otra aproximación es el análisis dimensional, si consideramos un choque fuerte,
+es decir, $P_w \gg P_m$,
+entonces las únicas variables que podemos tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
+Las dimensiones de estas cantidades son 
+
+\begin{equation}
+  \left[ \rho_w \right] = \frac{M}{L^3}
+\end{equation}
+
+\begin{equation}
+  \left[E\right] = M \frac{L^2}{T^2}
+\end{equation}
+
+\begin{equation}
+  \left[ t\right] = T
+\end{equation}
+
+La única cantidad que se puede construir que contenga la energía el tiempo y la densidad y que su dimensión sea
+la longitud es:
+
+\begin{equation}
+  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L
+\end{equation}
+
+Por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
+
+\begin{equation}
+  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}
+\end{equation}
+
+Por lo que la constante $\eta$ debe ser de la siguiente manera
+
+\begin{equation}
+  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}
+\end{equation}
+
+
+
+
+
 
 
 %\section{Hidrodinámica con fuentes}
@@ -1923,433 +2642,8 @@ donde $j\in \left[ a,b \right]$ y $a\geq 0, \, b\leq n+1$. Los puntos de la fron
 
 
 \chapter{Condiciones de Rankine-Hugoniot no relativistas}\label{aped.C}
-Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservacion_momento_hidrodinamica} y \ref{conservacion_energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
-
-
-La conservación de masa
-\begin{equation}
- \nabla \cdot \left( \rho \mathbf{u} \right)=0
-\end{equation}
-
-El momento
-\begin{equation}
- \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = 0
-\end{equation}
-
-Ecuación de la energía
-
-\begin{equation}
- \nabla \cdot \left[ \mathbf{u} \left( E+P \right) \right] = 0
-\end{equation}
-
-Considerando una dimensión:
-
-\begin{equation}
-\dfrac{d \left( \rho u \right)}{d x} = 0
-\end{equation}
-
-\begin{equation}
-\dfrac{d \left( \rho u^2 \right)}{d x}+ \dfrac{d P}{d x}=0
-\end{equation}
-
-\begin{equation}
-\dfrac{d \left( u\left[E+P \right] \right)}{d x} = 0
-\end{equation}
-
-Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando la ecuación de estado $E = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $E \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}^2}\right]$ es la densidad de energía por unidad de volumen
-
-\begin{equation}\label{RH_masa}
-\rho_j u_j = \rho_m u_m
-\end{equation}
-
-\begin{equation}\label{RH_momento}
-\rho_j u_{j}^{2}+P_j = \rho_m u_{m}^{2}+P_m
-\end{equation}
-
-\begin{equation}\label{RH_Energia}
-\frac{1}{2} u_{j}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}} =
- \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
-\end{equation}
-
-Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, $P \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}}\right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
-
-\begin{equation}\label{RH_momento_j}
-P_{j}+\frac{j^2}{\rho_{j}}=P_{m}+\frac{j^2}{\rho_{m}}
-\end{equation}
-
-y la ecuación \ref{RH_Energia} llegamos a:
-
-\begin{equation}\label{RH_Energia_j}
-\frac{1}{2} \frac{j^{2}}{\rho_{j}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}}=
-\frac{1}{2} \frac{j^{2}}{\rho_{m}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
-\end{equation}
-
-Despejando $j$ de la ecuación \ref{RH_momento_j} obtenemos:
-\begin{equation}\label{j^2}
--j^{2}=\frac{P_{j}-P_{m}}{\frac{1}{\rho_{m}}-\frac{1}{\rho_{j}}}
-\end{equation}
-
-Ahora sustituyendo la ecuación en \ref{j^2} en \ref{RH_Energia_j} obtenemos:
-
-\begin{equation*}
-\frac{1}{2} \left( \frac{P_{m}-P_{j}}{\frac{1}{\rho_{j}}-\frac{1}{\rho_{m}}} \right)
-\left(\frac{1}{\rho_{j}^{2}}-\frac{1}{\rho_{m}^{2}} \right)
-=
-\frac{\Gamma}{\Gamma-1}
-\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation*}
-\frac{1}{2}	\left( P_{m} - P_{j} \right)
-\left( \frac{1}{\rho_{j}}+\frac{1}{\rho_{m}} \right)
-=
-\frac{\Gamma}{\Gamma-1}
-\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation*}
-\frac{1}{\rho_{m}} \left( \frac{1}{2} P_{m}- \frac{1}{2} P_{j}-
-\frac{\Gamma}{\Gamma-1} P_{m} \right)
-=
-\frac{1}{\rho_{j}} \left( \frac{1}{2} P_{j}- \frac{1}{2} P_{m}-
-\frac{\Gamma}{\Gamma-1} P_{j} \right)
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation*}
-\frac{1}{\rho_{m}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{m} + P_{j} \right]
-=
-\frac{1}{\rho_{j}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{j} + P_{m} \right]
-\end{equation*}
-
-Con lo que nos queda:
-
-\begin{equation}\label{RH_no_rel_choque_no_fuerte}
-\frac{\rho_{m}}{\rho_j} =
-\frac{\left( \Gamma +1 \right) P_{m}+ \left( \Gamma -1 \right) P_{j
-}}{\left(\Gamma +1 \right) P_{j}+ \left( \Gamma -1 \right) P_{m}}
-= \frac{u_j}{u_m}
-\end{equation}
-
-Si consideramos choque fuerte, es decir, $P_j \gg P_m$, implicaría que $P_m \simeq 0$, por lo que
-
-\begin{equation}
-\rho_j = \frac{\Gamma +1}{\Gamma-1} \rho_m 
-\end{equation}
-Tomando a $\Gamma = 5/3$ da
-
-\begin{equation}
-\rho_j = 4 \rho_m
-\end{equation}
-
-\begin{equation}
-u_j = \frac{1}{4} u_m
-\end{equation}
-
-\begin{equation}
-P_{j} = \frac{3}{4}\rho_m u_m^{2}
-\end{equation}
 
 \chapter{Condiciones de Rankine-Hugoniot relativistas}\label{aped.C}
-
-Para poder encontrar las relaciones de Rankine-Hugoniot, usaremos la siguiente ecuación de estado:
-\begin{equation}\label{EoS_relativista}
-\Gamma = 1+\frac{P}{\rho \epsilon}
-\end{equation}
-Donde $\epsilon \left[ \frac{s^2}{\mathrm{cm}^2}\right]$ es la energía interna del sistema\\
-\textit{Ecuación de conservación de número de partículas o de masa}:
-\begin{equation}\label{Ecuacion_particulas_relativista}
-n_j u_j = n_m u_m
-\end{equation}
-Donde $n \left[ \mathrm{cm}^{-3}\right]$ es la densidad del número de partículas y $u$ es la cuadrivelocidad donde $u=\beta \gamma$, teniendo en cuenta que $\beta = \frac{v}{c}$ y $\gamma = \left( 1 - \beta \right)^{-1/2}$ es el factor de lorentz.\\
-
-Ecuación de momento: 
-\begin{equation}\label{Ecuacion_momento_relativista}
-\omega_j u_{j}^{2}+P_j=\omega_j u_{j}^{2}+P_j
-\end{equation}
-Donde $\omega = e + P$ es la entalpia específica por unidad de volumen, donde $e$ es la densidad de energía interna, usando la ecuación \ref{EoS_relativista}  que puede ser escrita como:
-
-\begin{equation}\label{Energia_densidad_fluido}
-e = \rho \left( c^2+ \epsilon \right)= nm_{0}c^{2} + \frac{\Gamma}{\Gamma -1}P
-\end{equation}
-
-Donde $m_0$ es la masa en reposo y $c$ es la velocidad de la luz
-
-Ecuación de la Energía
-
-\begin{equation}\label{Ecuacion_energia_relativista}
-\omega_j \gamma_j u_j=\omega_m \gamma_m u_m
-\end{equation}
-
-Definiendo una nueva variable $x=\frac{\omega}{n^{2}}$ y usando la ecuación \ref{Ecuacion_particulas_relativista} tenemos $\overline{j}=n_j u_j = n_m u_m$, por lo que usando  la ecuación \ref{Ecuacion_momento_relativista} la podemos escribir como:
-
-\begin{equation*}
-n_{j}^2 x_{j} u_{j}^{2} + P_{j}
-=
-n_{m}^2 x_{m} u_{m}^{2} + P_{m}
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation}
-x_{j} \overline{j}^{2}+P_{j}
-= 
-x_{m} \overline{j}^{2}+P_{m}
-\end{equation}
-
-Con lo que al final nos queda:
-\begin{equation} \label{j_modificada_relativista}
--\overline{j}^{2}=\frac{P_{m}-P_{j}}{x_{m}-x_{j}}
-\end{equation}
-
-Ahora usando la ecuación \ref{Ecuacion_energia_relativista}
-podemos reescribirla como:
-
-\begin{equation*}
-\frac{\omega_j}{n_j}\gamma_j \overline{j}= \frac{\omega_m}{n_m}\gamma_m \overline{j}
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation} \label{Ecuacion_energia_relativista_mod}
-\frac{\omega_m^2}{n_j^2}\gamma_m^2- \frac{\omega_m^2}{n_j^2}\gamma_j^2= 0
-\end{equation}
-
-La ecuación \ref{Ecuacion_energia_relativista_mod} la usaremos mas tarde, ahora volviendo a \ref{j_modificada_relativista} la podemos multiplicar por  $x_m^2-x_j^2$ queda lo siguiente:
-
-\begin{equation*}
-- \left( x_m^2 \overline{j}^{2}-x_j^2 \overline{j}^{2} \right) =
-\frac{P_m-P_j}{x_m-x_j} \left( x_m-x_j \right) \left( x_m+x_j \right)
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation} \label{Ecuacion_A}
--x_m^2 u_m^2 n_m^2 + x_j^2 u_j^2 n_j^2 =
-\left( P_m-P_j \right) \left( x_m+x_j \right) 
-\end{equation}
-
-restando la ecuación \ref{Ecuacion_energia_relativista_mod} de la \ref{Ecuacion_A}
-
-\begin{equation}
--\left( \frac{\omega_{m}}{n_m^2}\right)^2 u_m^2 n_m^2 +
-\left( \frac{\omega_{j}}{n_j^2}\right)^2 u_j^2 n_j^2 -
-\frac{\omega_m^2}{n_j^2}\gamma_m^2 +
-\frac{\omega_m^2}{n_j^2}\gamma_j^2
-=
-\left( P_m-P_j \right) \left( x_m+x_j \right) 
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation} \label{ec_mod_beta-lor}
--\frac{\omega_{m}}{n_m^2} \left( u_m^2-\gamma_m^2 \right)
-+\frac{\omega_{j}}{n_j^2} \left( u_j^2-\gamma_j^2 \right)
-=\left( P_m-P_j \right) \left( x_m+x_j \right) 
-\end{equation}
-
-
-Sabemos que:
-
-\begin{equation}
-u = \beta \gamma
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation}
-u^2 = \beta^2 \gamma^2 
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation}
-u^2 = \frac{\beta^2}{1-\beta^2} 
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation}
-u^2-\gamma^2 = \frac{\beta^2}{1-\beta^2}-\frac{1}{1-\beta^2}
-\end{equation}
-
-Entonces al final:
-\begin{equation} \label{beta-lor}
-u^2-\gamma^2 = -1
-\end{equation}
-
-Sustituyendo la ecuación \ref{beta-lor} a la \ref{Ecuacion_energia_relativista_mod} nos queda:
-
-\begin{equation} \label{Choque adiabatico}
-x_m \omega_m- x_j \omega_j = \left( P_m-P_j \right) \left( x_m+x_j \right) 
-\end{equation}
-
-Podemos reescribir a $x$ usando la ecuación  como \ref{Energia_densidad_fluido} como:
-\begin{equation} \label{var_x_complicada}
-x= \frac{m_0^2 c^2}{\rho}+ \frac{\Gamma}{\Gamma-1}\frac{m_0^2 P}{\rho^2}
-\end{equation}
-
-Sustituyendo la ecuación \ref{var_x_complicada} en \ref{j_modificada_relativista}
-
-\begin{equation}
--\overline{j}^{2} = \left( x_m - x_j \right) = P_m - P_j
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation}
--n_j^2 u_j^2 \left(\frac{m_0^2 c^2}{\rho_m} +
-\frac{\Gamma}{\Gamma-1} \frac{m_0^2 P_m}{\rho_m^2}-
-\frac{m_0^2 c^2}{\rho_j}-
-\frac{\Gamma}{\Gamma-1} \frac{m_0^2 P_j}{\rho_j^2} \right) = 
-P_m - P_j
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation}
--n_j^2 u_j^2 
-\left[m_0^2 c^2 \left( \frac{1}{\rho_m} - \frac{1}{\rho_j} \right)+
-\frac{\Gamma}{\Gamma-1} m_0^2 \left( \frac{P_m}{\rho_m^2}- \frac{P_j}{\rho_j^2}\right) \right] = 
-P_m - P_j
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation}
--u_j^2 
-\left[\rho_j^2 c^2 \left( \frac{\rho_j}{\rho_m} - 1 \right)+
-\frac{\Gamma}{\Gamma-1} \left( P_m \frac{\rho_j^2}{\rho_m^2} - P_j \right) \right] = 
-P_m - P_j
-\end{equation}
-
-$\Rightarrow$
-
-\begin{equation}
--u_j^2 
-\left[\frac{\rho_j^2 c^2}{P_j}  \left( \frac{\rho_j}{\rho_m} - 1 \right)+
-\frac{\Gamma}{\Gamma-1} \left( \frac{P_m}{P_j} \frac{\rho_j^2}{\rho_m^2} - 1 \right) \right] = 
-\frac{P_m}{P_j} - 1
-\end{equation}
-
-
-Sabemos que $V = \frac{m_0}{\rho}$ y e introduciendo la siguiente notación $\hat{P}=P_m/P_j$, $\hat{V}=V_m/V_j = \rho_j / \rho_m$ y $\hat{c} = \frac{c}{\sqrt{P_j V_j}}$ llegamos a la relación de Rayleigh
-
-\begin{equation}
--u_j^2
-\left[ \hat{c}  \left( \hat{V} - 1 \right)+
-\frac{\Gamma}{\Gamma-1} \left( \hat{P} \hat{V}^2 - 1 \right) \right] = 
-\hat{P} - 1
-\end{equation}
-
-Para obtener la ecuación de Rankine-Hugoniot vamos a sustituir la ecuación \ref{var_x_complicada} en \ref{Choque adiabatico} y obtenemos la siguiente ecuación
-\begin{eqnarray}\label{Ecuacion_a_desarrollar}
-\underbrace { \left( \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { m } } { \rho _ { m } ^ { 2 } } \right) } _ { x _ { m } } \underbrace { \left( n _ { m } m _ { 0 } c ^ { 2 } + \frac { \Gamma } { \Gamma - 1 } P _ { m } \right) } _ { w _ { m } }
-- \underbrace { \left( \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { j } } { \rho _ { j } ^ { 2 } } \right) } _ { x _ { j } } \underbrace { \left( n _ { j } m _ { 0 } c ^ { 2 } + \frac { \Gamma } { \Gamma - 1 } P _ { j } \right) } _ { w _ { j } } = \nonumber \\ 
-\left( P _ { m } - P _ { j } \right) \left( \underbrace { \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } } + \frac { \Gamma } { \Gamma - 1 }  { m _ { 0 } ^ { 2 } P _ { m } } { \rho _ { m } ^ { 2 } } } _ { x _ { m } } + \underbrace { \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { j } } { p _ { m } ^ { 2 } } } _ { x _ { j } } \right)
-\end{eqnarray}
-
-Ahora, la ecuación \ref{Ecuacion_a_desarrollar} la vamos a desarrollar por pasos: primero, vamos a tomar el lado izquierdo de esta ecuación, con lo que nos va a quedar lo siguiente.
-
-\begin{eqnarray}\label{side_left}
-\frac { m _ { 0 } ^ { 2 } c ^ { 4 } } { \rho _ { m } } \rho _ { m } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } } P _ { m } +
-\frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { m } ^ { 2 } } P _ { m } \rho _ { m } + \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { m _ { 0 } ^ { 2 } } { \rho _ { m } ^ { 2 } } P _ { m } ^ { 2 } \right)- \nonumber \\
- \frac { m _ { 0 } ^ { 2 } c ^ { 4 } } { \rho _ { j } } \rho _ { j } - \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } } P _ { j }
- - \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } c ^ { 2 } } { \rho _ { j } ^ { 2 } } P _ { j } \rho _ { j } - \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { m _ { 0 } ^ { 2 } } { \rho _ { j } ^ { 2 } } P _ { j } ^ { 2 } \right)
-\end{eqnarray}
-
-Ahora, desarrollando la parte derecha de la ecuación \ref{Ecuacion_a_desarrollar} obtenemos el siguiente resultado:
-
-\begin{eqnarray}\label{side_right}
-\frac { m _ { 0 } ^ { 2 } c ^ { 2 } P _ { m } } { \rho _ { m } } + \frac { \Gamma } { \Gamma - 1 } \frac { m _ { 0 } ^ { 2 } P _ { m } ^ { 2 } } { \rho _ { m } ^ { 2 } } + \frac { m _ { 0 } ^ { 2 } c ^ { 2 } P _ { m } } { \rho _ { j } } + \frac { \Gamma } { \Gamma - 1 } m _ { 0 } ^ { 2 } P _ { m } \frac { P _ { j } } { \rho _ { j } ^ { 2 } }
-\nonumber \\
-\frac { m _ { 0 } ^ { 2 } c ^ { 2 } P _ { j } } { \rho _ { m } } - \frac { \Gamma } { \Gamma - 1 } m _ { 0 } ^ { 2 } P _ { m } \frac { P _ { j } } { \rho _ { m } ^ { 2 } } - m _ { 0 } ^ { 2 } c ^ { 2 } \frac { P _ { j } } { \rho _ { j } } - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { m _ { 0 } ^ { 2 } } { \rho _ { j } ^ { 2 } } P _ { j } ^ { 2 } \right)
-\end{eqnarray}
-
-Si sumamos únicamente los términos que contengan en factor $c^2$ de las ecuaciones \ref{side_left} y \ref{side_right} llegamos a 
-
-\begin{equation*}
-m _ { 0 } ^ { 2 } c ^ { 2 } \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right)
-\left( \frac { P _ { m } } { \rho _ { m } } \right) 
-+ \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } \right) - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { j } } { \rho _ { j } } \right)  - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { j } } { \rho _ { j } } \right) - \left( \frac { P _ { m } } { \rho _ { m } } \right) - \left( \frac { P _ { m } } { \rho _ { j } } \right) - \left( \frac { P _ { j } } { \rho _ { m } } \right) - \left( \frac { P _ { j } } { \rho _ { j } } \right) \right]
-\end{equation*}
-
-Entonces
-
-\begin{equation}\label{side_left_perfect}
-m _ { 0 } ^ { 2 } c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } - \frac { P _ { j } } { \rho _ { j } } \right) - \left( \frac { P _ { m } } { \rho _ { j } } - \frac { P _ { j } } { \rho _ { m } } \right) \right]
-\end{equation}
-
-Tomando ahora todos los términos de las ecuaciones \ref{side_left} y \ref{side_right} que no contengan el factor $c^2$, podemos llegar a la siguiente ecuación
-
-\begin{equation*}
-m _ { 0 } ^ { 2 } \left[ - \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } + \left( \frac { \Gamma } { \Gamma - 1 } \right) ^ { 2 } \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } + \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } + \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } \frac { P _ { j } } { \rho _ { j } ^ { 2 } } - \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { j } \left( \frac { P _ { m } } { \rho _ { m } ^ { 2 } } \right) - \left( \frac { \Gamma } { \Gamma - 1 } \right) \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 }\right]
-\end{equation*}
-
-Entonces
-
-\begin{equation*}
-m _ { 0 } ^ { 2 } \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } P _ { j } \left( \frac { 1 } { \rho _ { j } ^ { 2 } } - \frac { 1 } { \rho _ { m } ^ { 2 } } \right) - \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } \left( \frac { \Gamma ^ { 2 } } { ( \Gamma - 1 ) ^ { 2 } } - \frac { \Gamma } { \Gamma - 1 } \right) + \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } \left( \frac { \Gamma ^ { 2 } } { ( \Gamma - 1 ) ^ { 2 } } - \frac { \Gamma } { \Gamma - 1 } \right) \right]
-\end{equation*}
-
-Entonces
-
-\begin{equation}\label{side_right_perfect}
-m _ { 0 } ^ { 2 } \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } P _ { j } \left( \frac { 1 } { \rho _ { j } ^ { 2 } } - \frac { 1 } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } - \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } \right] \right]
-\end{equation}
-
-Al igualar las ecuaciones \ref{side_left_perfect} y \ref{side_right_perfect} obtenemos una versión más simplificada de la ecuación \ref{Ecuacion_a_desarrollar}, con lo que nos queda.
-
-\begin{eqnarray} \label{Ecuacion_simplificada}
-c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { \rho _ { m } } - \frac { P _ { j } } { \rho _ { j } } \right) - \left( \frac { P _ { m } } { \rho _ { j } } - \frac { P _ { j } } { \rho _ { m } } \right) \right]
-\nonumber \\ 
-= \left[ \left( \frac { \Gamma } { \Gamma - 1 } \right) P _ { m } P _ { j } \left( \frac { 1 } { \rho _ { j } ^ { 2 } } - \frac { 1 } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { \rho _ { m } } \right) ^ { 2 } - \left( \frac { P _ { j } } { \rho _ { j } } \right) ^ { 2 } \right] \right]
-\end{eqnarray}
-
-Multiplicando por $\left( \frac{\rho_j}{P_j}\right)^2$
-
-\begin{eqnarray}
-\frac { \rho _ { j } } { P _ { j } } c ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) \left( \frac { P _ { m } } { P _ { j } } \frac { \rho _ { j } } { \rho _ { m } } - 1 \right) - \left( \frac { P _ { m } } { P _ { j } } - \frac { \rho _ { 1 } } { \rho _ { m } } \right) \right] \nonumber \\
-=\left( \frac { \Gamma } { \Gamma - 1 } \right) \frac { P _ { m } } { P _ { j } } \left( 1 - \frac { \rho _ { j } ^ { 2 } } { \rho _ { m } ^ { 2 } } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \left( \frac { P _ { m } } { P _ { j } } \frac { \rho _ { j } } { \rho _ { m } } \right) ^ { 2 } - 1 \right]
-\end{eqnarray}
-
-Con lo que al final nos queda.
-
-\begin{equation} \label{ecuacion_RH}
-\hat { c } ^ { 2 } \left[ \left( \frac { \Gamma + 1 } { \Gamma - 1 } \right) ( \hat { P } \hat { V } - 1 ) - ( \hat { P } - \hat { V } ) \right] =
-\left( \frac { \Gamma } { \Gamma - 1 } \right) \hat { P } \left( 1 - \hat { V } ^ { 2 } \right) - \frac { \Gamma } { ( \Gamma - 1 ) ^ { 2 } } \left[ \hat { p } ^ { 2 } \hat { V } ^ { 2 } - 1 \right]
-\end{equation}
-
-Si tomamos el límite no relativista, es decir, que $\hat{c} \longrightarrow \infty$, el lado derecho de la ecuación desaparece y nos queda.
-
-\begin{equation*}
-( \Gamma + 1 ) \hat{P} \hat { V } - ( \Gamma + 1 ) = ( \Gamma - 1 ) \hat { P } - ( \Gamma - 1 ) \hat { V }
-\end{equation*}
-
-Entonces
-
-\begin{equation*}
-( \Gamma + 1 ) \hat { P } \hat { V } + ( \Gamma - 1 ) \hat { V } = ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P }
-\end{equation*}
-
-Entonces
-
-\begin{equation*}
-\hat { V } [ ( \Gamma + 1 ) \hat { P } + ( \Gamma - 1 ) ] = ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P }
-\end{equation*}
-
-Entonces
-
-\begin{equation}
-\hat { V } = \frac { ( \Gamma + 1 ) + ( \Gamma - 1 ) \hat { P } } { ( \Gamma + 1 ) \hat { P } + ( \Gamma - 1 ) }
-\end{equation}
-
-Con lo que volvemos a la ecuación \ref{RH_no_rel_choque_no_fuerte}
 
 \chapter{Velocidad de lós métodos numéricos} \label{aped.D}
 
