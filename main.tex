@@ -271,6 +271,7 @@ Tomando en cuenta los valores de estos parámetros y la pendiente del espectro p
 \includegraphics[scale=0.7]{./Figuras/Distribucion_angulo_apertura}
 \caption{La figura muestra la distribución de los ángulos de apertura para los GRBs largos (rojos) y los GRBs cortos (azules). Las flechas muestran el límite superior e inferior de los ángulos. }
 \end{figure}
+
 \chapter{Teoría}
 Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las variables macroscópicas.
 
@@ -291,6 +292,27 @@ l = n^{-1/3} \ll L
 
 
 \section{Ecuaciones de la hidrodinámica}
+
+Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
+hacia la derecha sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
+$\rho_0$ y $P_0$ mientras que los flujos que estan comprimidos detras del frente de onda se mueven con una velocidad $v_p$ y que tienen
+densidad y presión $\rho_p$, $P_p$.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.7]{./Figuras/Teoria/move_shock.png}
+  \caption{Choque en movimiento}
+\end{figure}
+  
+
+Si considerámos nuestro sistema de referencia posicionado sobre la onda, usando las transformaciones de Galileo, las direciones de las velocidades
+se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.7]{./Figuras/Teoria/stationary_shock.png}
+  \caption{Choque estacionario}
+\end{figure}
 
 Considerando una serie de elementos de volumen fijos, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
 
