@@ -293,26 +293,6 @@ l = n^{-1/3} \ll L
 
 \section{Ecuaciones de la hidrodinámica}
 
-Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
-hacia la derecha sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
-$\rho_0$ y $P_0$ mientras que los flujos que estan comprimidos detras del frente de onda se mueven con una velocidad $v_p$ y que tienen
-densidad y presión $\rho_p$, $P_p$.
-
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.7]{./Figuras/Teoria/move_shock.png}
-  \caption{Choque en movimiento}
-\end{figure}
-  
-
-Si considerámos nuestro sistema de referencia posicionado sobre la onda, usando las transformaciones de Galileo, las direciones de las velocidades
-se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$
-
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.7]{./Figuras/Teoria/stationary_shock.png}
-  \caption{Choque estacionario}
-\end{figure}
 
 Considerando una serie de elementos de volumen fijos, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
 
@@ -396,7 +376,52 @@ $
 
 El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar tos términos fuente es decir $\mathbf{S}=0$ en el siguiente capitulo si se trataran fuentes particulares.
 
+La implementación en el código es muy sencilla, el bloque de código esta en una subrutina llamada \emph{fluxes}, 
+donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. 
+
+
+\begin{lstlisting}[frame=single]
+
+  f(1,i,j)=rho*vx
+  f(2,i,j)=rho*vx*vx+P
+  f(3,i,j)=rho*vx*vy
+  f(4,i,j)=vx*(u(4,i,j)+P)
+
+  g(1,i,j)=rho*vy
+  g(2,i,j)=rho*vx*vy
+  g(3,i,j)=rho*vy*vy+P
+  g(4,i,j)=vy*(u(4,i,j)+P)
+
+\end{lstlisting}
+
+Las variables \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle, el término $\mathbf{H}$ no es incluido, debido a que es computacionalmente 
+caro. El término \emph{u} hace alusión a las variables conservadas.
+  
+
 \subsection{Rankine-Hugoniot}
+
+Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
+hacia la derecha (ver figura \ref{fig_move_shock}) sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
+$\rho_0$ y $P_0$ mientras que los flujos que estan comprimidos detras del frente de onda se mueven con una velocidad $v_p$ y que tienen
+densidad y presión $\rho_p$, $P_p$.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.7]{./Figuras/Teoria/move_shock.png}
+  \caption{Onda de choque en movimiento sobre un flujo estacionario, tanto la onda como el flujo que esta a la izquierda se mueven a la derecha}\label{fig_move_shock}
+\end{figure}
+  
+
+Si considerámos nuestro sistema de referencia posicionado sobre la onda (ver figura \ref{fig_stationary_shock}), usando las transformaciones de Galileo, las direciones de las velocidades
+se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$
+
+\begin{figure} 
+  \centering
+  \includegraphics[scale=0.7]{./Figuras/Teoria/stationary_shock.png}
+  \caption{Al tomar nuestro sistema de referencia sobre la onda, nuestro choque en movimiento se transforma en una choque estacionario, y los
+  flujos que estan a la derecha e izquierda de la onda se mueven hacia la izquierda } \label{fig_stationary_shock}
+\end{figure}
+
 Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservacion_momento_hidrodinamica} y \ref{conservacion_energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
 
 
@@ -568,7 +593,7 @@ T^{\mu \nu} =
 rho h \gamma^2 v_{y} & \rho h \gamma^2 v_{y}v_{x} & \rho h \gamma^2 v_{y}^{2}+P & \rho h \gamma^2 v_{y}v_{z}\\
 
 \rho h \gamma^2 v_{z} & \rho h \gamma^2 v_{z}v_{x} & \rho h \gamma^2 v_{z}v_{y} & \rho h \gamma^2 v_{z}^2 + P
-   
+
 \end{pmatrix}
 \end{equation}
 Entonces nuestras ecuaciones quedarían de la siguiente manera
@@ -600,6 +625,28 @@ H_{3}& = \rho v_{z} v_{y} \gamma^{2} h \\
 H_{4}& = \rho v_{z}^{2} \gamma^{2} h + P
 \end{align}
 
+La implementación en el código es de la siguiente manera:
+
+\begin{lstlisting}[frame=single]
+  lor=1/sqrt(1-(vx**2+vy**2))
+  h=1.+gamma/(gamma-1.)*P/rho
+  
+  f(1,i,j)=rho*vx*lor
+  f(2,i,j)=rho*vx*vx*lor**2*h+P
+  f(3,i,j)=rho*vx*vy*lor**2*h
+  f(4,i,j)=rho*vx*lor**2*h
+
+  g(1,i,j)=rho*vy*lor
+  g(2,i,j)=rho*vx*vy*lor**2*h
+  g(3,i,j)=rho*vy*vy*lor**2*h+P
+  g(4,i,j)=rho*vy*lor**2*h
+
+\end{lstlisting}
+
+A diferencia de los flujos newtonianos, para los flujos relativistas se tienen que calcular antes el factor de Lorentz \emph{lor} y la entalpía \emph{h},
+las variables \emph{i}, \emph{j} son contadores sobre el espacio.
+
+
 \subsection{Rankine-Hugoniot Relativista}
 
 Para poder encontrar las relaciones de Rankine-Hugoniot, usaremos la siguiente ecuación de estado:
@@ -611,6 +658,7 @@ Donde $\epsilon \left[ \frac{s^2}{\mathrm{cm}^2}\right]$ es la energía interna 
 \begin{equation}\label{Ecuacion_particulas_relativista}
 n_j u_j = n_m u_m
 \end{equation}
+
 Donde $n \left[ \mathrm{cm}^{-3}\right]$ es la densidad del número de partículas y $u$ es la cuadrivelocidad donde $u=\beta \gamma$, teniendo en cuenta que $\beta = \frac{v}{c}$ y $\gamma = \left( 1 - \beta \right)^{-1/2}$ es el factor de lorentz.\\
 
 Ecuación de momento: 
@@ -896,7 +944,40 @@ Entonces
 
 Con lo que volvemos a la ecuación \ref{RH_no_rel_choque_no_fuerte}
 
+\subsection{Luminosidad}
 
+Para calcular la luminosidad de una onda de choque podemos partir de que la energía se puede escribir de la siquiente manera
+
+\begin{equation} \label{eq._energia_relativista}
+  E = \gamma M c^2
+\end{equation}
+
+y como sabemos que $L \equiv \dfrac{d E}{d t}$ entonces derivando la ecuación \ref{eq._energia_relativista} respecto al tiempo
+
+Entonces tenemos 
+
+\begin{equation} \label{eq._luminosidad_relativista}
+  \dfrac{d E}{d t} = \gamma \dot{ M }  c^2
+\end{equation}
+
+La taza de flujo de masa $\dot{M}$ se puede escribir como
+
+\begin{equation}
+  \dot{M} = \rho u A
+\end{equation}
+
+Donde $\rho$ es la densidad, $u$ es la cuadrivelocidad y $A$ es el área, que en este caso, corresponde a una esfera
+entonces la luminosidad se puede escribir como:
+
+\begin{equation}
+  L \equiv \dfrac{d E}{d t} = 4\pi r^2 \rho v \gamma^2 c^2
+\end{equation}
+
+Despejando la densidad
+
+\begin{equation}
+  \rho = \frac{L}{4\pi r^2 v \gamma^2 c^2}
+\end{equation}
 
 \section{Desacoplamiento de las ecuaciones de la hidrodinámica}
 
@@ -918,27 +999,18 @@ Para la ecuacion de la energía $u_5=E$ combinando con la ecuacion de estado y l
 P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u_i \right)^2}{2} \right]
 \end{equation}
 
-La implementación en el código es muy sencilla, el bloque de código esta en una subrutina llamada \emph{fluxes}, donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. El bucle corre por toda la malla de puntos que definimos para poder discretizar el fluido, \emph{nx} y \emph{ny} son el número total de puntos en los que se discretiza el eje \emph{x} y el eje \emph{y} respectivamente, las variables \emph{i}, \emph{j} son contadores y antes de que se computen los flujos, se tienen que calcular las primitivas, esta desacoplamineto en el método newtoniano es sencillo pero en el método relativista se vuelve muy complicado.
+En el código se implenta de la siguiente manera.
+Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento
+es sencillo, se implmenta directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
 
 \begin{lstlisting}[frame=single] 
   
- do i=0,nx+1
-  do j=0,ny+1
-  	!Desacoplamiento de las primitivas
-    rho=u(1,i,j)
-    vx=u(2,i,j)/rho
-    vy=u(3,i,j)/rho
-    P=(u(4,i,j)-0.5*rho*(vx**2+vy**2))*(gamma-1.)
 
-    f(1,i,j)=rho*vx
-    f(2,i,j)=rho*vx*vx+P
-    f(3,i,j)=rho*vx*vy
-    f(4,i,j)=vx*(u(4,i,j)+P)
-
-    g(1,i,j)=rho*vy
-    g(2,i,j)=rho*vx*vy
-    g(3,i,j)=rho*vy*vy+P
-    g(4,i,j)=vy*(u(4,i,j)+P)
+    !Desacoplamiento de las primitivas
+    rho = u (1,i,j)
+    vx  = u(2,i,j)/rho
+    vy  = u(3,i,j)/rho
+    P   = (u(4,i,j)-0.5*rho*(vx**2+vy**2))*(gamma-1.)
 
 \end{lstlisting}
 
@@ -1048,7 +1120,7 @@ Con todo esto ya sabemos cuanto es lo que vale la ecuación \ref{derivada_E_W}, 
 
 El método de Newton-Raphson es un algoritmo iterativo que se usa para encontrar raíces  de una función real:
 
-\begin{equation}
+\begin{equation} \label{eq_Newton_Raphson}
 W^{'(k+1)}=W^{'}-\frac{f(W^{'})}{\dfrac{d f(W^{'})}{d W^{'}}}
 \end{equation}
 
@@ -1058,7 +1130,9 @@ De la ecuación de la energía, podemos utilizarla como a la función a la que q
 f(W^{'})=W^{'}-E^{'}-p
 \end{equation}
 
-Donde $E^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{dE}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuaciones \ref{ecuacion_de_energia} y \ref{modulos de los momentos} podemos llegar a que la presión es:
+Donde $E^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{dE}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
+Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuaciones \ref{ecuacion_de_energia} 
+y \ref{modulos de los momentos} podemos llegar a que la presión es:
 %===============================================================================================
 
 \begin{equation} \label{presion_de_newton}
@@ -1098,15 +1172,19 @@ Presión térmica
 p&=&\frac{\Gamma-1}{\Gamma} \chi
 \end{eqnarray}
 
-Aunque en el método newtoniano se podian desacoplar las ecuaciones sobre el mismo bucle, para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y asi poder obtenerlas en funcion de las conservadas. Al igual que en el método newtoniano vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. Las variables conservadas las reasignmos a unas nuevas llamadas \emph{qu} para que podamos usar la subrutina, una vez que se desacoplan, los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
+Aunque en el método newtoniano se podian desacoplar las ecuaciones sobre el mismo bucle, 
+para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y asi poder obtenerlas en funcion de las conservadas. 
+Al igual que en el método newtoniano vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, 
+y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. 
+Las variables conservadas las reasignmos a unas nuevas llamadas \emph{qu} para que podamos usar la subrutina, una vez que se desacoplan, 
+los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
 
 \begin{lstlisting}[frame=single] 
- do i=0,nx+1
-  do j=0,ny+1           
-     qu(1) = u(1,i,j)
-     qu(2) = u(2,i,j)
-     qu(3) = u(3,i,j)
-     qu(4) = u(4,i,j)
+        
+    qu(1) = u(1,i,j)
+    qu(2) = u(2,i,j)
+    qu(3) = u(3,i,j)
+    qu(4) = u(4,i,j)
 
     ! Desacoplamiento de las primitivas
     call uprim(u,qp)
@@ -1118,25 +1196,37 @@ Aunque en el método newtoniano se podian desacoplar las ecuaciones sobre el mis
     vy  = qpp(3, i,j)
     P   = qpp(4, i,j)
 
-    lor=1/sqrt(1-(vx**2+vy**2))
-    h=1.+gamma/(gamma-1.)*P/rho
-              
-    f(1,i,j)=rho*vx*lor
-    f(2,i,j)=rho*vx*vx*lor**2*h+P
-    f(3,i,j)=rho*vx*vy*lor**2*h
-    f(4,i,j)=rho*vx*lor**2*h
-
-    g(1,i,j)=rho*vy*lor
-    g(2,i,j)=rho*vx*vy*lor**2*h
-    g(3,i,j)=rho*vy*vy*lor**2*h+P
-    g(4,i,j)=rho*vy*lor**2*h
-
-
-  end do
- end do
 
 \end{lstlisting}
 
+La subrutina de desacoplamiento para las variables conservadas que se mencionan en esta sección recibirá las variables conservadas
+y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular 
+(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}
+
+\begin{lstlisting}
+  
+  m2 = sum(qu(2:3)**2)               ! v^2
+
+  call newrap(qu, w, m2)
+
+  alpha = m2 / w**2   ! alpha < 1 !
+  u2  = alpha/(1.0-alpha)
+
+  lor = sqrt(1.0 + u2)
+
+  ! velocities
+  qp(2:3) = qu(2:3) / w
+
+  ! determination of the mass density
+  qp(1) = qu(1)/lor
+
+  ! thermal pressure
+  chi = (w - qu(1)*(1.0+u2/(lor+1.0)))/(1.0+u2)
+
+  qp(4)   = (gamma - 1.0)/gamma * chi
+
+  qp(4) =max(qp(4),1d-10*qp(1))
+\end{lstlisting}
 
 \section{Diferencias finitas} \label{sec:Diferencias_finitas}
 Si tenemos una función $f(x)$ lo suficientemente diferenciable la podemos aproximar por el Teorema de Taylor  en la vecindad de un punto $x_0+\Delta x$ entonces si conocemos todas sus $n$ derivadas de la función $f(x)$ en el punro $x_0$ podemos aproximar de la siguiente manera
@@ -1216,10 +1306,23 @@ Pero esta solución es inestable, por el primer término del lado derecho de la 
 u_i^{n+1} =(u_{i+1}^n-u_{i-1}^n) + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
 \end{equation}
 
+En el código, la implementación de la conservada posterior es bastante sencillo
+
+\begin{lstlisting}
+
+  call fluxes(nx,ny,neq,gamma,u,f,g,bound)
+
+  do i=1,nx
+    do j=1,ny
+      up(:,i,j)=0.25*( u(:,i-1,j)+u(:,i+1,j)+u(:,i,j-1)+u(:,i,j+1) ) &
+                  -dtx*0.5*(f(:,i+1,j)-f(:,i-1,j) ) &
+                  -dty*0.5*(g(:,i,j+1)-g(:,i,j-1) )
+    end do
+  end do
+  
+\end{lstlisting}
 
 
-
-En el código, la impelemtacion de los flujos es bastante sencillo
 
 
 
@@ -1398,7 +1501,7 @@ F_{hll} = \frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L}
 
 Con lo que el flujo intermedio de la celda de Gudonov esta dado por:
 
-\begin{equation}
+\begin{equation} \label{fluxesHLL}
 F_{i+\frac{1}{2}}^{hll} = 
 \left\lbrace
 \begin{array}{rr}
@@ -1409,12 +1512,110 @@ F_R \quad \textup{si} \quad  0 \geq  S_R
 \right.
 \end{equation}
 
+La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax}.
+
+\begin{lstlisting}
+  call fluxesHLL(fhll, ghll)
+      
+        do i=1,nx
+          do j=1,ny
+            up(:,i,j) = u(:,i,j)                                     &
+                        + 0.5*dtx*(fhll(:,i-1,j)-fhll(:,i+1,j))      &
+                        + 0.5*dty*(ghll(:,i,j-1)-ghll(:,i,j+1))
+          end do
+        end do
+
+\end{lstlisting}
+
+La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
+y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
+significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas mas rápidas de los estados iniciales \emph{U}, para ver
+toda la subrutina completa ver el apéndice 
+
+\begin{lstlisting}
+  do i=1,nx
+  do j=1,ny
+    
+    if (0 .le. s_l(i,j)) then !less or equal 0<=sl
+      fhll(:,i,j)=f_l(:, i,j)
+
+    else if (s_l(i,j) .le. 0 .and. 0 .le. s_r(i,j)) then !sl<=0<=sr
+  
+      fhll(:,i,j)=(s_r(i,j)*f_l(:,i,j)-s_l(i,j)*f_r(:,i,j)+s_l(i,j)*s_r(i,j)*(u_r(:,i,j)-u_l(:,i,j)))/&
+      (s_r(i,j)-s_l(i,j))
+
+
+    else if (s_r(i,j) .le. 0) then !sr<=0
+        fhll(:,i,j)=f_r(:,i,j)
+
+    endif
+
+    if(0 .le. s_d(i,j)) then
+      ghll(:,i,j)= g_d(:,i,j)
+
+    else if(s_d(i,j) .le. 0 .and. 0 .le. s_u(i,j)) then
+
+      ghll(:,i,j)=(s_u(i,j)*g_d(:,i,j)-s_d(i,j)*g_u(:,i,j)+s_d(i,j)*s_u(i,j)*(u_u(:,i,j)-u_d(:,i,j)))/&
+      (s_u(i,j)-s_d(i,j))
+
+    else if(s_u(i,j) .le. 0) then
+        ghll(:,i,j) = g_u(:,i,j)
+
+    endif
+  end do
+end do
+\end{lstlisting}
+
+
 \section{Ecuaciones de Sedov-Taylor}
-Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
+Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. 
+Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
 
-\subsection{Una aproximación}
+\subsection{Análisis dimensional}
+Si consideramos un choque fuerte,
+es decir, $P_w \gg P_m$,
+entonces las únicas variables que podemos tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
+Las dimensiones de estas cantidades son 
 
-Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la onda es constante entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $ entonces podemos aproximar la energía cinética de la onda como 
+\begin{equation}
+  \left[ \rho_w \right] = \frac{M}{L^3}
+\end{equation}
+
+\begin{equation}
+  \left[E\right] = M \frac{L^2}{T^2}
+\end{equation}
+
+\begin{equation}
+  \left[ t\right] = T
+\end{equation}
+
+La única cantidad que se puede construir que contenga la energía el tiempo y la densidad y que su dimensión sea
+la longitud es:
+
+\begin{equation}
+  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L
+\end{equation}
+
+Por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
+
+\begin{equation}
+  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}
+\end{equation}
+
+Por lo que la constante $\eta$ debe ser de la siguiente manera
+
+\begin{equation}
+  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}
+\end{equation}
+
+
+
+\subsection{Aproximación en función de la presión y densidad}
+
+Otra aproximación es buscando el cociente de presiones y densidades en función del número Mach.
+Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y
+la densidad de la onda es constante entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
+entonces podemos aproximar la energía cinética de la onda como 
 
 \begin{equation}
 	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_w R^3 \left( \frac{R}{t} \right) ^2 = \rho_w \frac{R^5}{t^2}
@@ -1583,57 +1784,34 @@ Como tiene el mismo orden que el de la energía cinética, entonces la energía 
 
 Despejando el radio, obtenemos lo siguiente
 
-\begin{equation}
+\begin{equation} \label{eq_Radio_proporcional}
   R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}
 \end{equation}
 
-\subsection{Análisis dimensional}
-  Otra aproximación es el análisis dimensional, si consideramos un choque fuerte,
-es decir, $P_w \gg P_m$,
-entonces las únicas variables que podemos tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
-Las dimensiones de estas cantidades son 
+Vemos que la figura \ref{fig_Radio_v_tiempo} parece una funcion logaritmica y su radio de expansion no crece muy rápidamente conforme avanza el tiempo,
+Para tiempos $t = 4$ y $t = 100$, el radio es $R = 1.74$ y $R = 6.30$ respectivamente
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Radio_vs_tiempo.png}
+  \caption{Radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_Radio_v_tiempo}
+\end{figure}
+
+Si derivamos la ecuación \ref{eq_Radio_proporcional}, obtenemos la velocidad
 
 \begin{equation}
-  \left[ \rho_w \right] = \frac{M}{L^3}
-\end{equation}
-
-\begin{equation}
-  \left[E\right] = M \frac{L^2}{T^2}
-\end{equation}
-
-\begin{equation}
-  \left[ t\right] = T
-\end{equation}
-
-La única cantidad que se puede construir que contenga la energía el tiempo y la densidad y que su dimensión sea
-la longitud es:
-
-\begin{equation}
-  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L
-\end{equation}
-
-Por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
-
-\begin{equation}
-  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}
-\end{equation}
-
-Por lo que la constante $\eta$ debe ser de la siguiente manera
-
-\begin{equation}
-  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}
+  \dfrac{dE}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}
 \end{equation}
 
 
+A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (ver \ref{fig_velocidad_vs_radio})
 
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Velocidad_vs_tiempo.png}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_velocidad_vs_radio}
+\end{figure}
 
-
-
-
-%\section{Hidrodinámica con fuentes}
-
-%=======================================================================================
-%======================================================================================
 \chapter{Verificación del código}
 
 En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
@@ -2516,7 +2694,7 @@ Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales 
 
 Donde $C$ es el número de Courant y nos limita a que nuestros $\Delta t$ no sean tan grandes
 \begin{lstlisting}[frame=single]
- !==============================================================================
+!==============================================================================
 ! CFL criterium module
 !------------------------------------------------------------------------------
       subroutine courant(dt)
@@ -2663,9 +2841,292 @@ Relativista
 donde $j\in \left[ a,b \right]$ y $a\geq 0, \, b\leq n+1$. Los puntos de la frontera que no sean del jet se pueden combinar con los 3 tipos de frontera mencionados anteriormente.
 
 
-\chapter{Condiciones de Rankine-Hugoniot no relativistas}\label{aped.C}
+\chapter{Subrutina de Newton-Raphson}\label{ap_newrap}
 
-\chapter{Condiciones de Rankine-Hugoniot relativistas}\label{aped.C}
+Subrutina de Newton-Raphson, los valores de de entrada son $m^2$ y las conservadas y devuelve $W$
+\begin{lstlisting}
+  subroutine newrap(qu, w, m2)
+
+!    use parameters, only : neq, gamma
+    use globals , only : neq, gamma
+    implicit none
+    ! real, intent(in) :: qu(neq)
+    real, intent(in)  :: m2
+    real, intent(out) :: w
+    real, parameter :: eps = 1d-10
+    real :: a, b, c, mu, alpha, u2, lor, chi, dpdchi, dpdrho
+    real :: w0, dpdw, f, dfdw, pg, dv2dw, dchidw, drhodw, qu(neq)
+    integer :: k
+
+    !print*, qu(4)**2, m2+qu(1)**2, qu(4)
+
+    !if(qu(4)**2 .lt. m2+qu(1)**2 .or. qu(4).le. 0.0) then !.lt. -> '<'; .le. -> '<=='
+    !  print*,'error in newrap'
+    !  stop
+    !end if
+
+    a = 3.0;   b = 2.0 * (-qu(4));   c = m2
+    if(b**2-a*c .lt. 0.0) then
+      print*,'b**2-a*c<0'
+      stop
+    end if
+    w = ( - b + sqrt(b**2-a*c) ) / a   ! initial guess for w = rho * h * lor**2
+
+    w0 = w
+    mu = 1.0
+  100 continue
+    do k = 1, 40
+
+      alpha = m2 / w**2   ! alpha < 1 !
+
+      u2  = alpha/(1.0-alpha)
+
+      if(u2 .lt. 0.0) then
+        print*,'u2<0cc'
+        print*,qu
+        stop
+      end if
+
+      lor = sqrt(1.0 + u2)
+
+      chi = (w - qu(1)*(1.0+u2/(lor+1.0)))/(1.0+u2)
+
+      ! ideal gas case        
+      pg     = (gamma - 1.0)/gamma * chi
+      dpdchi = (gamma - 1.0)/gamma
+      dpdrho = 0.0
+
+      f = w - pg - qu(4)  ! f(w) = 0
+
+      if(abs(f) .lt. eps) return
+
+      dv2dw  = lor/w**3*m2
+      dchidw = 1.0/lor**2 + dv2dw*(qu(1)+2.0*lor*chi)
+
+      drhodw = dv2dw*qu(1)
+
+      dpdw = dpdchi*dchidw + dpdrho*drhodw
+
+      dfdw   = 1.0 - dpdw    ! df/dw
+
+      w  = w0 - mu * f / dfdw                       ! Newton-raphson iteration
+
+      if(abs(w-w0).lt.eps) return
+
+      w0 = w
+
+    end do
+
+    if(mu .gt. 0.1) then
+      mu = mu/2.0
+      goto 100
+    end if
+
+  end subroutine newrap
+
+\end{lstlisting}
+
+\chapter{Subrutinas de Flujos calculados mediante el método de HLL}\label{ap_subrutina_fluxesHLL}
+
+\begin{lstlisting}
+  !     !Este modulo calcula los flujos hll
+      use globals
+      implicit none
+!     real, intent(in) :: time
+    
+    real, intent(out)::fhll(neq,0:nx+1,0:ny+1), ghll(neq,0:nx+1,0:ny+1)! esta es la variable que se obtiene y va para la subrutina ulax
+
+    real :: rho_l(0:nx+1,0:ny+1), rho_r(0:nx+1,0:ny+1),rho_u(0:nx+1,0:ny+1),rho_d(0:nx+1,0:ny+1)
+    real :: vx_l(0:nx+1,0:ny+1), vx_r(0:nx+1,0:ny+1), vx_u(0:nx+1,0:ny+1), vx_d(0:nx+1,0:ny+1)
+    real :: vy_l(0:nx+1,0:ny+1), vy_r(0:nx+1,0:ny+1), vy_u(0:nx+1,0:ny+1), vy_d(0:nx+1,0:ny+1)
+    real :: P_l(0:nx+1, 0:ny+1), P_r(0:nx+1, 0:ny+1), P_u(0:nx+1,0:ny+1), P_d(0:nx+1,0:ny+1)
+
+    real :: lor_l(0:nx+1, 0:ny+1), lor_r(0:nx+1, 0:ny+1), lor_u(0:nx+1, 0:ny+1), lor_d(0:nx+1, 0:ny+1)
+    real :: h_l(0:nx+1,0:ny+1), h_r(0:nx+1,0:ny+1), h_u(0:nx+1,0:ny+1), h_d(0:nx+1,0:ny+1)
+
+    real ::s_l(0:nx+1,0:ny+1),s_r(0:nx+1,0:ny+1), s_d(0:nx+1,0:ny+1), s_u(0:nx+1,0:ny+1)
+    
+    
+
+    real :: f_l(neq, 0:nx+1,0:ny+1), f_r(neq,0:nx+1,0:ny+1), u_l(neq,0:nx+1,0:ny+1), u_r(neq,0:nx+1,0:ny+1)
+    real :: g_d(neq, 0:nx+1,0:ny+1), g_u(neq,0:nx+1,0:ny+1), u_d(neq,0:nx+1,0:ny+1), u_u(neq,0:nx+1,0:ny+1)
+
+    integer :: i,j
+
+    call RL(nx,ny, neq, gamma, u, rho_l,rho_d, rho_r,rho_u, vx_l,vx_d, vx_r,vx_u, &
+  vy_l,vy_r,vy_u, vy_d,P_l,P_d, P_r,P_u)
+
+    call wavespeeds(s_l,s_d, s_r,s_u,rho_l,rho_d, rho_r,rho_u, vx_l,vx_d, vx_r,vx_u, &
+  vy_l,vy_r,vy_u, vy_d,P_l,P_d, P_r,P_u )
+
+    
+!       !igual calculamos los flujos y conservadas de lado derecho e izquierdo
+
+  if(choose_rel==0)then
+  
+      do i=1,nx
+        do j=1,ny
+          u_l(1,i,j) = rho_l(i,j)
+          u_l(2,i,j) = rho_l(i,j)*vx_l(i,j)
+          u_l(3,i,j) = rho_l(i,j)*vy_l(i,j)
+          u_l(4,i,j) = 0.5*rho_l(i,j)*(vx_l(i,j)**2+vy_l(i,j)**2)+P_l(i,j)/(gamma-1.)
+
+          u_d(1,i,j) = rho_d(i,j)
+          u_d(2,i,j) = rho_d(i,j)*vx_d(i,j)
+          u_d(3,i,j) = rho_d(i,j)*vy_d(i,j)
+          u_d(4,i,j) = 0.5*rho_d(i,j)*(vx_d(i,j)**2+vy_d(i,j)**2)+P_d(i,j)/(gamma-1.)
+
+          u_r(1,i,j) = rho_r(i,j)
+          u_r(2,i,j) = rho_r(i,j)*vx_r(i,j)
+          u_r(3,i,j) = rho_r(i,j)*vy_r(i,j)
+          u_r(4,i,j) = 0.5*rho_r(i,j)*(vx_r(i,j)**2+vy_r(i,j)**2)+P_r(i,j)/(gamma-1.)
+
+          u_u(1,i,j) = rho_u(i,j)
+          u_u(2,i,j) = rho_u(i,j)*vx_u(i,j)
+          u_u(3,i,j) = rho_u(i,j)*vy_u(i,j)
+          u_u(4,i,j) = 0.5*rho_u(i,j)*(vx_u(i,j)**2+vy_u(i,j)**2)+P_u(i,j)/(gamma-1.)
+
+!========================================================
+
+          f_l(1,i,j) = rho_l(i,j)*vx_l(i,j)
+          f_l(2,i,j) = rho_l(i,j)*vx_l(i,j)**2+P_l(i,j)
+          f_l(3,i,j) = rho_l(i,j)*vx_l(i,j)*vy_l(i,j)
+          f_l(4,i,j) = vx_l(i,j)*(u_l(4,i,j)+P_l(i,j))
+
+          f_r(1,i,j) = rho_r(i,j)*vx_r(i,j)
+          f_r(2,i,j) = rho_r(i,j)*vx_r(i,j)**2+P_r(i,j)
+          f_r(3,i,j) = rho_r(i,j)*vx_r(i,j)*vy_r(i,j)
+          f_r(4,i,j) = vx_r(i,j)*(u_r(4,i,j)+P_r(i,j))
+
+          g_d(1,i,j) = rho_d(i,j)*vy_d(i,j)
+          g_d(2,i,j) = rho_d(i,j)*vx_d(i,j)*vy_d(i,j)
+          g_d(3,i,j) = rho_d(i,j)*vy_d(i,j)**2 + P_d(i,j)
+          g_d(4,i,j) = vy_d(i,j)*(u_d(4,i,j)+P_d(i,j))
+
+          g_u(1,i,j) = rho_u(i,j)*vy_u(i,j)
+          g_u(2,i,j) = rho_u(i,j)*vx_u(i,j)*vy_u(i,j)
+          g_u(3,i,j) = rho_u(i,j)*vy_u(i,j)**2 + P_u(i,j)
+          g_u(4,i,j) = vy_u(i,j)*(u_u(4,i,j)+P_u(i,j))
+
+        end do
+      end do
+
+  elseif(choose_rel==1)then
+
+      do i=1,nx
+        do j=1,ny
+
+          lor_l(i,j) = 1/sqrt(1-(vx_l(i,j)**2+vy_l(i,j)**2))
+          lor_d(i,j) = 1/sqrt(1-(vx_d(i,j)**2+vy_d(i,j)**2))
+          lor_r(i,j) = 1/sqrt(1-(vx_r(i,j)**2+vy_r(i,j)**2))
+          lor_u(i,j) = 1/sqrt(1-(vx_u(i,j)**2+vy_u(i,j)**2))
+
+          h_l(i,j)=1.+gamma/(gamma-1.)*P_l(i,j)/rho_l(i,j)
+          h_d(i,j)=1.+gamma/(gamma-1.)*P_d(i,j)/rho_d(i,j)
+          h_r(i,j)=1.+gamma/(gamma-1.)*P_r(i,j)/rho_r(i,j)
+          h_u(i,j)=1.+gamma/(gamma-1.)*P_u(i,j)/rho_u(i,j)
+
+          u_l(1,i,j) = rho_l(i,j)*lor_l(i,j)
+          u_l(2,i,j) = rho_l(i,j)*vx_l(i,j)*lor_l(i,j)**2*h_l(i,j)
+          u_l(3,i,j) = rho_l(i,j)*vy_l(i,j)*lor_l(i,j)**2*h_l(i,j)
+          u_l(4,i,j) = rho_l(i,j)*lor_l(i,j)**2*h_l(i,j)-P_l(i,j)
+
+          u_d(1,i,j) = rho_d(i,j)*lor_d(i,j)
+          u_d(2,i,j) = rho_d(i,j)*vx_d(i,j)*lor_d(i,j)**2*h_d(i,j)
+          u_d(3,i,j) = rho_d(i,j)*vy_d(i,j)*lor_d(i,j)**2*h_d(i,j)
+          u_d(4,i,j) = rho_d(i,j)*lor_d(i,j)**2*h_d(i,j)-P_d(i,j)
+
+          u_r(1,i,j) = rho_r(i,j)*lor_r(i,j)
+          u_r(2,i,j) = rho_r(i,j)*vx_r(i,j)*lor_r(i,j)**2*h_r(i,j)
+          u_r(3,i,j) = rho_r(i,j)*vy_r(i,j)*lor_r(i,j)**2*h_r(i,j)
+          u_r(4,i,j) = rho_r(i,j)*lor_r(i,j)**2*h_r(i,j)-P_r(i,j)
+
+          u_u(1,i,j) = rho_u(i,j)*lor_u(i,j)
+          u_u(2,i,j) = rho_u(i,j)*vx_u(i,j)*lor_u(i,j)**2*h_u(i,j)
+          u_u(3,i,j) = rho_u(i,j)*vy_u(i,j)*lor_u(i,j)**2*h_u(i,j)
+          u_u(4,i,j) = rho_u(i,j)*lor_u(i,j)**2*h_u(i,j)-P_u(i,j)
+
+!==========================================================================
+
+          f_l(1,i,j) = rho_l(i,j)*vx_l(i,j)*lor_l(i,j)
+          f_l(2,i,j) = rho_l(i,j)*vx_l(i,j)**2*lor_l(i,j)**2*h_l(i,j)+P_l(i,j)
+          f_l(3,i,j) = rho_l(i,j)*vx_l(i,j)*vy_l(i,j)*lor_l(i,j)**2*h_l(i,j)
+          f_l(4,i,j) = rho_l(i,j)*vx_l(i,j)*lor_l(i,j)**2*h_l(i,j)
+
+          f_r(1,i,j) = rho_r(i,j)*vx_r(i,j)*lor_r(i,j)
+          f_r(2,i,j) = rho_r(i,j)*vx_r(i,j)**2*lor_r(i,j)**2*h_r(i,j)+P_r(i,j)
+          f_r(3,i,j) = rho_r(i,j)*vx_r(i,j)*vy_r(i,j)*lor_r(i,j)**2*h_r(i,j)
+          f_r(4,i,j) = rho_r(i,j)*vx_r(i,j)*lor_r(i,j)**2*h_r(i,j)
+
+          g_d(1,i,j) = rho_d(i,j)*vy_d(i,j)*lor_d(i,j)
+          g_d(2,i,j) = rho_d(i,j)*vx_d(i,j)*vy_d(i,j)*lor_d(i,j)**2*h_d(i,j)
+          g_d(3,i,j) = rho_d(i,j)*vy_d(i,j)**2*lor_d(i,j)**2*h_d(i,j)+P_d(i,j)
+          g_d(4,i,j) = rho_d(i,j)*vy_d(i,j)*lor_d(i,j)**2*h_d(i,j)
+
+          g_u(1,i,j) = rho_u(i,j)*vy_u(i,j)*lor_u(i,j)
+          g_u(2,i,j) = rho_u(i,j)*vx_u(i,j)*vy_u(i,j)*lor_u(i,j)**2*h_u(i,j)
+          g_u(3,i,j) = rho_u(i,j)*vy_u(i,j)**2*lor_u(i,j)**2*h_u(i,j)+P_u(i,j)
+          g_u(4,i,j) = rho_u(i,j)*vy_u(i,j)*lor_u(i,j)**2*h_u(i,j)
+
+        end do
+      end do
+
+  endif
+
+      do i=1,nx
+        do j=1,ny
+          
+          if (0 .le. s_l(i,j)) then !less or equal 0<=sl
+            fhll(:,i,j)=f_l(:, i,j)
+
+          else if (s_l(i,j) .le. 0 .and. 0 .le. s_r(i,j)) then !sl<=0<=sr
+        
+            fhll(:,i,j)=(s_r(i,j)*f_l(:,i,j)-s_l(i,j)*f_r(:,i,j)+s_l(i,j)*s_r(i,j)*(u_r(:,i,j)-u_l(:,i,j)))/&
+            (s_r(i,j)-s_l(i,j))
+
+      
+          else if (s_r(i,j) .le. 0) then !sr<=0
+              fhll(:,i,j)=f_r(:,i,j)
+
+          endif
+
+          if(0 .le. s_d(i,j)) then
+            ghll(:,i,j)= g_d(:,i,j)
+
+          else if(s_d(i,j) .le. 0 .and. 0 .le. s_u(i,j)) then
+
+            ghll(:,i,j)=(s_u(i,j)*g_d(:,i,j)-s_d(i,j)*g_u(:,i,j)+s_d(i,j)*s_u(i,j)*(u_u(:,i,j)-u_d(:,i,j)))/&
+            (s_u(i,j)-s_d(i,j))
+
+          else if(s_u(i,j) .le. 0) then
+              ghll(:,i,j) = g_u(:,i,j)
+
+          endif
+        end do
+      end do
+
+  fhll(:,nx+1,:) = fhll(:,nx-1,:)
+!   fhll(:,nx,:)   = fhll(:,nx-1,:)     
+  fhll(:,0,:)    = fhll(:,2,:)
+!   fhll(:,1,:)    = fhll(:,2,:)     
+  fhll(:,:,ny+1) = fhll(:,:,ny-1)
+!   fhll(:,:,ny)   = fhll(:,:,ny-1)
+  fhll(:,:,0)    = fhll(:,:,2)
+!   fhll(:,:,1)    = fhll(:,:,2)
+
+  ghll(:,nx+1,:) = ghll(:,nx-1,:)
+!   ghll(:,nx,:)   = ghll(:,nx-1,:)     
+  ghll(:,0,:)    = ghll(:,2,:)
+!   ghll(:,1,:)    = ghll(:,2,:)     
+  ghll(:,:,ny+1) = ghll(:,:,ny-1)
+!   ghll(:,:,ny)   = ghll(:,:,ny-1)
+  ghll(:,:,0)    = ghll(:,:,2)
+!   ghll(:,:,1)    = ghll(:,:,2)
+
+  return
+
+
+\end{lstlisting}
 
 \chapter{Velocidad de lós métodos numéricos} \label{aped.D}
 
