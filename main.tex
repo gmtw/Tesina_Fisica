@@ -309,12 +309,12 @@ El momento
 Ecuación de la energía
 
 \begin{equation} \label{conservacion_energia_hidrodinamica}
-\dfrac{\partial E }{\partial t} + \nabla \cdot \left[ \mathbf{u} \left( E+p \right) \right] =G-L+\mathbf{f_{ext} \cdot \mathbf{u}}
+\dfrac{\partial E }{\partial t} + \nabla \cdot \left[ \mathbf{u} \left( e+p \right) \right] =G-L+\mathbf{f_{ext} \cdot \mathbf{u}}
 \end{equation}
 
 Ecuación de estado
 \begin{equation}
-E=\frac{1}{2} \rho \mathbf{u}^{2} + \frac{p}{\Gamma - 1}
+e=\frac{1}{2} \rho \mathbf{u}^{2} + \frac{p}{\Gamma - 1}
 \end{equation}
 
 Con estas ecuaciones podemos formar una matriz de $5x5$ escritas en coordenadas cartesianas:
@@ -323,7 +323,7 @@ Con estas ecuaciones podemos formar una matriz de $5x5$ escritas en coordenadas 
 \dfrac{\partial \mathbf{U}}{\partial t}+\dfrac{\partial \mathbf{F}}{\partial x}+\dfrac{\partial \mathbf{G}}{\partial y}+\dfrac{\partial \mathbf{H}}{\partial z}= \mathbf{S}
 \end{equation}
 
-Donde\\
+Donde
 \begin{center}
 
 
@@ -342,7 +342,7 @@ $\mathbf{F} =
 \rho u^{2}+P \\
 \rho uv \\
 \rho uw \\
-u(E+P) \\
+u(e+P) \\
 \end{smallmatrix}\right)
 $,
 $\mathbf{G} =
@@ -351,7 +351,7 @@ $\mathbf{G} =
 \rho vu \\
 \rho v^{2}+P \\
 \rho vw \\
-v(E+P) \\
+v(e+P) \\
 \end{smallmatrix}\right)
 $,
 $\mathbf{H} =
@@ -360,7 +360,7 @@ $\mathbf{H} =
 \rho wu \\
 \rho wv \\
 \rho w^{2}+P \\
-w(E+P) \\
+w(e+P) \\
 \end{smallmatrix}\right)
 $, 
 $\mathbf{S} =
@@ -438,7 +438,7 @@ El momento
 Ecuación de la energía
 
 \begin{equation}
- \nabla \cdot \left[ \mathbf{u} \left( E+P \right) \right] = 0
+ \nabla \cdot \left[ \mathbf{u} \left( e+P \right) \right] = 0
 \end{equation}
 
 Considerando una dimensión:
@@ -452,10 +452,12 @@ Considerando una dimensión:
 \end{equation}
 
 \begin{equation}
-\dfrac{d \left( u\left[E+P \right] \right)}{d x} = 0
+\dfrac{d \left( u\left[e +P \right] \right)}{d x} = 0
 \end{equation}
 
-Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando la ecuación de estado $E = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $E \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}^2}\right]$ es la densidad de energía por unidad de volumen
+Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando 
+la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
+es la densidad de energía por unidad de volumen
 
 \begin{equation}\label{RH_masa}
 \rho_j u_j = \rho_m u_m
@@ -470,7 +472,9 @@ Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir 
  \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
 \end{equation}
 
-Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, $P \left[\frac{\mathrm{g}}{\mathrm{cm} \cdot \mathrm{s}}\right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
+Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, 
+$P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas 
+$\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
 
 \begin{equation}\label{RH_momento_j}
 P_{j}+\frac{j^2}{\rho_{j}}=P_{m}+\frac{j^2}{\rho_{m}}
@@ -653,13 +657,14 @@ Para poder encontrar las relaciones de Rankine-Hugoniot, usaremos la siguiente e
 \begin{equation}\label{EoS_relativista}
 \Gamma = 1+\frac{P}{\rho \epsilon}
 \end{equation}
-Donde $\epsilon \left[ \frac{s^2}{\mathrm{cm}^2}\right]$ es la energía interna del sistema\\
+Donde $\epsilon \left[ \frac{g}{\mathrm{erg}}\right]$ es la energía interna del sistema\\
 \textit{Ecuación de conservación de número de partículas o de masa}:
 \begin{equation}\label{Ecuacion_particulas_relativista}
 n_j u_j = n_m u_m
 \end{equation}
 
-Donde $n \left[ \mathrm{cm}^{-3}\right]$ es la densidad del número de partículas y $u$ es la cuadrivelocidad donde $u=\beta \gamma$, teniendo en cuenta que $\beta = \frac{v}{c}$ y $\gamma = \left( 1 - \beta \right)^{-1/2}$ es el factor de lorentz.\\
+Donde $n \left[ \mathrm{cm}^{-3}\right]$ es la densidad del número de partículas y $u$ es la cuadrivelocidad donde $u=\beta \gamma$,
+teniendo en cuenta que $\beta = \frac{v}{c}$ y $\gamma = \left( 1 - \beta \right)^{-1/2}$ es el factor de lorentz.
 
 Ecuación de momento: 
 \begin{equation}\label{Ecuacion_momento_relativista}
@@ -1020,14 +1025,15 @@ es sencillo, se implmenta directamente en la subrutina \emph{fluxes}, para que s
 Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
 
 \begin{equation}\label{ecuacion_de_energia}
-E=W-p
+e=W-p
 \end{equation}
 
 \begin{equation}\label{modulos de los momentos}
 \abs{m}^2= W^{2}\abs{v}^{2}
 \end{equation}
 
-Donde $W=D h \gamma$ y $D=\rho \gamma$. Para evitar errores en el límite no relativista se debe resolver la ecuación conservada restando la densidad de masa a la energía para definir una nueva variable conservada ($E^{'}=E-D$), para las cancelaciones en el límite ultra-relativista basados en $\gamma \abs{v^2}$ que se tiene cuando $\abs{v} \rightarrow 1$, se debe de crear otra variable, que en este caso seria $\abs{u}^2=\gamma \abs{v^2}$ e introduciendo las variables $W^{'}=W-D$. Podemos re-escribir la última ecuación de la siguiente manera
+Donde $W=D h \gamma$ y $D=\rho \gamma$. Para evitar errores en el límite no relativista se debe resolver la ecuación conservada restando la densidad de masa 
+a la energía para definir una nueva variable conservada ($e^{'}=e-D$), para las cancelaciones en el límite ultra-relativista basados en $\gamma \abs{v^2}$ que se tiene cuando $\abs{v} \rightarrow 1$, se debe de crear otra variable, que en este caso seria $\abs{u}^2=\gamma \abs{v^2}$ e introduciendo las variables $W^{'}=W-D$. Podemos re-escribir la última ecuación de la siguiente manera
 
 \begin{eqnarray*}
  W^{'}& = &D(h \gamma -1)\\
@@ -1045,10 +1051,10 @@ Recordando que $D=\rho \gamma$ y que a partir de la variable introducida $u^{2}$
 
 Donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \ref{ecuacion_de_energia} queda como
 \begin{equation}\label{derivada_E_W}
-\dfrac{dE}{dW^{'}}=1-\dfrac{dp}{dW^{'}}
+\dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}
 \end{equation}
 
-Nosotros no sabemos como es la expresión $\dfrac{dE}{dW^{'}}$, así que asumiremos que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena (para mas detalles consulte)
+Nosotros no sabemos como es la expresión $\dfrac{de}{dW^{'}}$, así que asumiremos que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena (para mas detalles consulte)
 \begin{equation}\label{cadena}
 \dfrac{dp}{dW^{'}}=\dfrac{\partial p}{\partial\chi}\Bigg |_{\rho} \dfrac{d\chi}{dW^{'}} + \dfrac{\partial p}{\partial \rho}\Big |_{\chi} \dfrac{d \rho}{d W^{'}}
 \end{equation}
@@ -1124,13 +1130,13 @@ El método de Newton-Raphson es un algoritmo iterativo que se usa para encontrar
 W^{'(k+1)}=W^{'}-\frac{f(W^{'})}{\dfrac{d f(W^{'})}{d W^{'}}}
 \end{equation}
 
-De la ecuación de la energía, podemos utilizarla como a la función a la que queremos encontrar la raíz
+De la ecuación de la densidad de energía, podemos utilizarla como a la función a la que queremos encontrar la raíz
 
 \begin{equation} \label{ecuación_f}
-f(W^{'})=W^{'}-E^{'}-p
+f(W^{'})=W^{'}-e^{'}-p
 \end{equation}
 
-Donde $E^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{dE}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
+Donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
 Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuaciones \ref{ecuacion_de_energia} 
 y \ref{modulos de los momentos} podemos llegar a que la presión es:
 %===============================================================================================
@@ -1356,7 +1362,9 @@ U_R \quad \textup{si} \quad x>0
   \label{fig:Plano x_t}
 \end{figure}
 
-Si consideramos un control de volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas mas rápidas de los estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Si usamos la forma integral de la ecuacion \ref{Ecuacion_discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
+Si consideramos un control de volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas mas rápidas de los 
+estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Si usamos la forma integral de la 
+ecuacion \ref{Ecuacion_discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
 
 \begin{equation*}\label{Forma_integral_conservadas}
 \int_{x_L}^{x_R} \left[ U\left( x, T \right) -
@@ -1529,8 +1537,8 @@ La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax}.
 
 La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
 y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
-significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas mas rápidas de los estados iniciales \emph{U}, para ver
-toda la subrutina completa ver el apéndice 
+significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas mas rápidas de los estados iniciales \emph{U}, 
+para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
 
 \begin{lstlisting}
   do i=1,nx
@@ -1800,7 +1808,7 @@ Para tiempos $t = 4$ y $t = 100$, el radio es $R = 1.74$ y $R = 6.30$ respectiva
 Si derivamos la ecuación \ref{eq_Radio_proporcional}, obtenemos la velocidad
 
 \begin{equation}
-  \dfrac{dE}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}
+  \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}
 \end{equation}
 
 
@@ -1878,7 +1886,9 @@ La onda de choque se dejó evolucionar con el paso del tiempo, y se analizó la 
 
 %1. Newtoniano + Lax + onda choque centrada 2. Newtoniano + Lax + onda choque borde
 
-Las siguientes pruebas fueron usando el método de Lax, como este es un caso newtoniano, La constante de relacion específica es $\Gamma = 5/3$. La descripción del fenómeno es de una onda expansiva sobre un medio constante (ver Figura \ref{fig:onda_choque_example}) con una densidad de energía de $E = 0.15 \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, densidad $\rho = 1 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ , velocidades $v = 0 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ y una presión $P=0.1 \, \mathrm{erg} \cdot \mathrm{cm}^{-3} $. La simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 500x500 pixeles\footnote{Los píxeles de nuestra malla miden $l_x\cdot 500^{-1} = l_y\cdot 500^{-1}  = 1 \, \mathrm{cm} \cdot 500^{-1} = 0.005 \, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna. La densidad de la onda es $\rho=5 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la velocidad interna será la misma que la del ambiente, la presión interna $P=10 \, \mathrm{erg} \cdot \mathrm{cm}^{-3} $ y una densidad de energía interna $E = 3.75 \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$. La onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se corrió en el intervalo de tiempo $t \in \left[ 0 , 0.2 \right]$ s.
+Las siguientes pruebas fueron usando el método de Lax, como este es un caso newtoniano, La constante de relacion específica es $\Gamma = 5/3$. La descripción del fenómeno es de una onda expansiva sobre un medio constante (ver Figura \ref{fig:onda_choque_example}) 
+con una densidad de energía de $e = 0.15 \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, densidad $\rho = 1 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ , velocidades $v = 0 \, \mathrm{cm} \cdot \mathrm{s}^{-1}$ y una presión $P=0.1 \, \mathrm{erg} \cdot \mathrm{cm}^{-3} $. La simulación es sobre un dominio de 0 a 1 cm sobre el eje \emph{x} y de 0 a 1 cm sobre el eje \emph{y}, con una resolución de 500x500 pixeles\footnote{Los píxeles de nuestra malla miden $l_x\cdot 500^{-1} = l_y\cdot 500^{-1}  = 1 \, \mathrm{cm} \cdot 500^{-1} = 0.005 \, \mathrm{cm}$} al tiempo $t=0 \, \mathrm{s}$  y en la onda interna. La densidad de la onda es $\rho=5 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la velocidad interna será la misma que la del ambiente, la presión interna $P=10 \, \mathrm{erg} \cdot \mathrm{cm}^{-3} $ 
+y una densidad de energía interna $e = 3.75 \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$. La onda de choque esta centrada en el punto $(x,y) = (0.5, 0.5) \, \mathrm{cm}$, y se corrió en el intervalo de tiempo $t \in \left[ 0 , 0.2 \right]$ s.
 %%===================IMAGE_LAX_CENTRADO_T=0===============================
 %\begin{figure}[H]
 %\centering
@@ -1916,7 +1926,12 @@ Cuando la onda se empieza a expandir por el medio constante, aparecen 5 áreas d
 %===================IMAGE_LAX_CENTRADO_EVOLUCION_ANALISIS===============================
 
 
-La siguiente prueba consiste en realizar el mismo proceso descrito anteriormente de la onda de choque resuelta con el método de Lax pero, ubicando a la onda de choque en una esquina para poder analizar como se comporta con las condiciones a la frontera, asi como verificar que tiene el mismo comportamiento independientemente de que se mueva de lugar. El centro de la onda se colocó en las coordenadas $(x, y) = (0.25, 0.75)$ [cm], como se ve en la Figura \ref{fig:onda_choque2_t_0}. Cabe señalar que las condiciones a la fronteras tienen la configuración de \textit{outflow}\footnote{Para este y otros tipos de frontera vea el apéndice \ref{aped.B}}.
+La siguiente prueba consiste en realizar el mismo proceso descrito anteriormente de la onda de choque resuelta con 
+el método de Lax pero, ubicando a la onda de choque en una esquina para poder analizar como se comporta con las condiciones a la frontera, 
+asi como verificar que tiene el mismo comportamiento independientemente de que se mueva de lugar. 
+El centro de la onda se colocó en las coordenadas $(x, y) = (0.25, 0.75)$ [cm], como se ve en la Figura \ref{fig:onda_choque2_t_0}. 
+Cabe señalar que las condiciones a la fronteras tienen la configuración de
+\textit{outflow}\footnote{Para este y otros tipos de frontera vea el apéndice \ref{aped.B}}.
 
 %===================IMAGE_LAX_NO_CENTRADO_T=0===============================
 \begin{figure} 
@@ -1929,7 +1944,12 @@ La siguiente prueba consiste en realizar el mismo proceso descrito anteriormente
 
 %LAS FRONTERAS NO METEN RUIDO. Y LA EVOLUCIÓN ES CONSISTENTE CON LOS RESULTADOS DE ANTES, Y POR ENDE ESTA BIEN. 
 
-En la Figura \ref{fig:Lax-prueba2_no_centrado-analisis}, al salir del dominio computacional, la onda sigue conservando su forma y las áreas que habiamos visto en la Figura \ref{fig:Lax-newtoniano-prueba1-analisis}. El aspecto de la onda no se deforma a pesar de que se sale del dominio computacional. Al evolucionar la onda de choque en la Figura \ref{fig:Lax-prueba2_no_centrado},  esta no muestra ninguna anomalía en las fronteras (ver apéndice \ref{aped.B}). Las áreas presentadas en la Figura \ref{fig:Lax-prueba2_no_centrado-analisis} son las mismas presentes en la Figura \ref{fig:Lax-newtoniano-prueba1-analisis} Con lo que podemos observar que tiene las mismas particularidades que la onda mostrada en la Figura \ref{fig:Lax-newtoniano_sedov-3-5} y puedo concluir que las condiciones a la frontera no introducen errores numéricos para el caso newtoniano usando Lax.% ya que tiene el mismo comportamiento que el de la onda centrada. %El radio al tiempo $t = 0.07$ s es $r = 0.34$ cm y su velocidad es $v = 2 \, \mathrm{cm}/\mathrm{s}$ y para el tiempo $t = 0.14$ s el radio $r = 0.42$ y su velocidad $v = 1.83 \, \mathrm{cm}/\mathrm{s}$. Con lo que podemos observar que tiene las mismas particularidades que la onda mostrada en la figura \ref{fig:Lax-newtoniano_sedov-3-5}.
+En la Figura \ref{fig:Lax-prueba2_no_centrado-analisis}, al salir del dominio computacional, la onda sigue conservando su forma y las áreas que habiamos visto en la Figura \ref{fig:Lax-newtoniano-prueba1-analisis}. El aspecto de la onda no se deforma a pesar de que se sale del dominio computacional. Al evolucionar la onda de choque en la Figura \ref{fig:Lax-prueba2_no_centrado},
+esta no muestra ninguna anomalía en las fronteras (ver apéndice \ref{aped.B}). 
+Las áreas presentadas en la Figura \ref{fig:Lax-prueba2_no_centrado-analisis} son las mismas presentes en 
+la Figura \ref{fig:Lax-newtoniano-prueba1-analisis} Con lo que podemos observar que tiene las mismas particularidades que la 
+onda mostrada en la Figura \ref{fig:Lax-newtoniano_sedov-3-5} y puedo concluir que las condiciones a la frontera no introducen 
+errores numéricos para el caso newtoniano usando Lax.% ya que tiene el mismo comportamiento que el de la onda centrada. %El radio al tiempo $t = 0.07$ s es $r = 0.34$ cm y su velocidad es $v = 2 \, \mathrm{cm}/\mathrm{s}$ y para el tiempo $t = 0.14$ s el radio $r = 0.42$ y su velocidad $v = 1.83 \, \mathrm{cm}/\mathrm{s}$. Con lo que podemos observar que tiene las mismas particularidades que la onda mostrada en la figura \ref{fig:Lax-newtoniano_sedov-3-5}.
 
 
 %===================IMAGE_LAX_NO_CENTRADO_EVOLUCION===============================
@@ -2206,7 +2226,8 @@ Se movió el centro de la onda, para revisar que, al igual que el método de Lax
 %\subfigure[]{\includegraphics[scale=0.45]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-rel79-no-centrado}}
 \subfigure[$t = 0.05$ s]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-nc-rel00}}
 \subfigure[$t = 0.65$ s]{\includegraphics[scale = 0.15]{./Figuras/Pruebas/Prueba_onda_choque/Lax-HLL-rel/bwhll-nc-rel65}}
-\caption{\label{fig:HLL-relativista-no-centrado} Evolución de la onda de choque centrada en el punto $x=y = 0.3 \times 10^{10}$ cm. La onda se expande cerca del dominio computacional sin ningun error sobre las mismas.}
+\caption{\label{fig:HLL-relativista-no-centrado} Evolución de la onda de choque centrada en el punto $x=y = 0.3 \times 10^{10}$ cm. 
+La onda se expande cerca del dominio computacional sin ningun error sobre las mismas.}
 \end{figure}
 
 
