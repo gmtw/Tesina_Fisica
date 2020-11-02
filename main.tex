@@ -379,8 +379,9 @@ $
 
 El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar tos términos fuente es decir $\mathbf{S}=0$ en el siguiente capitulo si se trataran fuentes particulares.
 
-La implementación en el código es muy sencilla, el bloque de código esta en una subrutina llamada \emph{fluxes}, 
-donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. 
+La implementación en el código se hará en 2 dimensiones por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero el bloque de código esta en una subrutina llamada \emph{fluxes}, 
+donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas.Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
+la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ . 
 
 
 \begin{lstlisting}[frame=single]
@@ -639,7 +640,8 @@ H_{3}& = \rho v_{z} v_{y} \gamma^{2} h \\
 H_{4}& = \rho v_{z}^{2} \gamma^{2} h + P
 \end{align}
 
-La implementación en el código es de la siguiente manera:
+La implementación en el código es de la siguiente manera, el factor de Lorentz $\gamma$ es la variable lor, $h$ la entalpía, al igual que en la hidrodinámica
+newtoniana solo se considerará 2 dimensiones:
 
 \begin{lstlisting}[frame=single]
   lor=1/sqrt(1-(vx**2+vy**2))
@@ -1356,7 +1358,7 @@ P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u
 
 En el código se implenta de la siguiente manera.
 Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento
-es sencillo, se implmenta directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
+se implmenta directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
 
 \begin{lstlisting}[frame=single] 
   
@@ -1664,7 +1666,7 @@ Pero esta solución es inestable, por el primer término del lado derecho de la 
 u_i^{n+1} =(u_{i+1}^n-u_{i-1}^n) + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
 \end{equation}
 
-En el código, la implementación de la conservada posterior es bastante sencillo
+En el código, la implementación de la ecuación \ref{ec_estable}, que es conservada posterior, es la siguiente
 
 \begin{lstlisting} [frame=single]
 
@@ -1890,7 +1892,7 @@ La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax}.
 La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
 y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
 significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas mas rápidas de los estados iniciales \emph{U}, 
-para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
+, las variable \emph{dtx} es la derivada con respecto a \emph{x} y \emph{dty} la derivada con respecto a \emph{y}. Para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
 
 \begin{lstlisting} [frame=single]
   do i=1,nx
