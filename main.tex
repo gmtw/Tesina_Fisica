@@ -273,6 +273,9 @@ Tomando en cuenta los valores de estos parámetros y la pendiente del espectro p
 \end{figure}
 
 \chapter{Teoría}
+
+Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
+las ecuaciones de la hidrodinámica.
 Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las variables macroscópicas.
 
 \begin{equation}
@@ -400,6 +403,9 @@ caro. El término \emph{u} hace alusión a las variables conservadas.
 
 \subsection{Rankine-Hugoniot}
 
+Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque
+, esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se ruelve con las ecuaciones de 
+Rankine Hugoniot.
 Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
 hacia la derecha (ver figura \ref{fig_move_shock}) sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
 $\rho_0$ y $P_0$ mientras que los flujos que estan comprimidos detras del frente de onda se mueven con una velocidad $v_p$ y que tienen
@@ -560,7 +566,11 @@ P_{j} = \frac{3}{4}\rho_m u_m^{2}
 
 
 \section{Hidrodinámica relativista}
-En esta parte se añadirá a los códigos que ya hemos generado previamente, las próximas secciones abordara acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales
+Los GRBs generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si nos servira como apoyo para poder pasar
+a la hidrodinámica relativista.
+En esta parte se añadirá a los códigos que ya hemos generado previamente, las próximas secciones abordara acerca de como cambian nuestras primitivas,
+como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y 
+de las condiciones iniciales.
 
 \subsection{Primitivas}
 Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservacion de masa:
@@ -949,6 +959,97 @@ Entonces
 
 Con lo que volvemos a la ecuación \ref{RH_no_rel_choque_no_fuerte}
 
+\subsubsection{Choque Fuerte}
+
+Si suponenmos las condiciones de Rankine-Hugoniot en un jet relativista, la presión interna del jet va a a ser mucho más grande que la del medio que lo está
+rodeando. Si colocamos nuestro marco de referencia sobre el jet, su masa será:
+
+\begin{equation}
+  M = \pi \rho v_j R^2 t
+\end{equation}
+
+Donde $M$, $\rho$, $v_j$ y $R$ son la masa, densidad, velocidad y radio del jet respectivamente, $t$ es el tiempo. Si multiplicamos todo por $c^2$,
+que es la velocidad de la luz al cuadrado, obtenemos la energía.
+
+\begin{equation}
+  E = Mc^2 = \pi \rho v_j R^2 t c^2
+\end{equation}
+
+
+
+Si ahora nos movemos al sistema de referencia visto desde la Tierra, la energía se vuelve:
+
+
+
+\begin{equation}
+  E = \gamma_{j} \gamma_{\infty} E_j
+\end{equation}
+
+Donde $\gamma_j$ es el factor de lorentz del jet, $\gamma_{\infty}$ es el factor de lorentz de la onda de ¿choque? (Preguntar a Diego) y $E_j$ es la energía 
+del jet.
+
+Si derivamos con respecto al tiempo obtenemos la luminosidad.
+
+
+\begin{equation}
+  L = \dfrac{dE}{dt} = \gamma_{j} \gamma_{\infty}  \pi \rho v_j R^2 c^2
+\end{equation}
+
+Podemos obtener la densidad del jet despejando $\rho$ de la anterior ecuación
+
+\begin{equation}
+  \rho_j = \frac{L}{\gamma_{j} \gamma_{\infty}  \pi v_j R^2 c^2}
+\end{equation}
+
+Si ahora consideramos la conservación de masa:
+
+\begin{equation}
+  \rho_j V_j \gamma_j=  \rho_{\infty} V_{\infty} \gamma_{\infty}
+\end{equation}
+
+Donde $V_j$, $V_\infty$ es el volumen del jet y del medio que lo rodea respectivamente, despejando $\rho{_infty}$ obtenemos:
+
+\begin{equation}\label{eq_masa_densidad_despejada}
+  \rho_\infty = \rho_j \frac{V_j \gamma_j }{V_\infty \gamma_\infty}
+\end{equation}
+
+Si ahora consideramos la ecuación de momentos
+
+\begin{equation}
+  \left( \rho_j + 4P_j \right)V_j \gamma^2 +P_j = \left( \rho_\infty + 4P_\infty \right)V_\infty \gamma^2 +P_\infty
+\end{equation}
+
+y tomando un choque fuerte $P_j \gg P_\infty $ Podemos reducir la ecuación a 
+
+\begin{equation} \label{eq_momentos_choque_fuerte}
+  \left( \rho_j + 4P_j \right)V_j \gamma^2 +P_j =  \rho_\infty  V_\infty \gamma_{\infty}^{2} 
+\end{equation}
+
+Sustituyendo la ecuación \ref{eq_masa_densidad_despejada} en \ref{eq_momentos_choque_fuerte} obtenemos
+
+\begin{equation} \label{eq_momentos_choque_fuerte}
+  \left( \rho_j + 4P_j \right)V_j \gamma^2 +P_j = \rho_j V_j \gamma_j \gamma_\infty
+\end{equation}
+
+Despejando $\gamma_\infty$ tenemos lo siguiente
+
+\begin{equation}
+  \gamma_\infty = \frac{\rho_j +4P_j}{\rho_j} \gamma_j +\frac{P_j}{\rho_j V_j \gamma_j}
+\end{equation}
+
+Podemos ver que el segundo término va a ser muy pequeño comparado con el primenr término, por lo tanto lo podemos despreciar, quedando como resultado
+
+\begin{equation}
+  \gamma_\infty = \frac{\rho_j +4P_j}{\rho_j} \gamma_j 
+\end{equation}
+
+Despejando la presión obtenemos
+
+\begin{equation}
+  P_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right)
+\end{equation}
+
+
 \subsection{Luminosidad}
 
 Para calcular la luminosidad de una onda de choque podemos partir de que la energía se puede escribir de la siquiente manera
@@ -984,598 +1085,10 @@ Despejando la densidad
   \rho = \frac{L}{4\pi r^2 v \gamma^2 c^2}
 \end{equation}
 
-\section{Desacoplamiento de las ecuaciones de la hidrodinámica}
-
-Al final del metodo de las diferencias finitas, obtenemos nuestras variables conservadas (\emph{U}), pero para calcular nuestros flujos de nuevo necesitamos recuperar nuestras primitas, es decir, calcular nuestras variables primitivas $(\rho, \, u, \, v,\, w, \, P )$ en función de nuestras variables conservadas $(u_1, \, u_2, \, u_3, \, u_4, \, u_5)$.
-
-Despejar la densidad es sencillo ya que es directo $u_1= \rho$ por lo tanto:
-
-\begin{equation}\label{primitiva_densidad}
-\rho = u_1
-\end{equation}
-
-Para las velocidades $u_i=\rho \upsilon$, donde $i=2,3,4$ y $\upsilon=u,v,w$, nos da $\upsilon= u_i/ \rho$ y usando la ecuación \ref{primitiva_densidad} queda:
-
-\begin{equation} \label{primitiva_velocidades}
-\upsilon = u_1/u_i
-\end{equation}
-Para la ecuacion de la energía $u_5=E$ combinando con la ecuacion de estado y la ecuación \ref{primitiva_velocidades} obtenemos
-\begin{equation}
-P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u_i \right)^2}{2} \right]
-\end{equation}
-
-En el código se implenta de la siguiente manera.
-Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento
-es sencillo, se implmenta directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
-
-\begin{lstlisting}[frame=single] 
-  
-
-    !Desacoplamiento de las primitivas
-    rho = u (1,i,j)
-    vx  = u(2,i,j)/rho
-    vy  = u(3,i,j)/rho
-    P   = (u(4,i,j)-0.5*rho*(vx**2+vy**2))*(gamma-1.)
-
-\end{lstlisting}
-
-
-
-\section{Desacoplamiento de las ecuaciones de la hidrodinámica relativista}
-Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
-
-\begin{equation}\label{ecuacion_de_energia}
-e=W-p
-\end{equation}
-
-\begin{equation}\label{modulos de los momentos}
-\abs{m}^2= W^{2}\abs{v}^{2}
-\end{equation}
-
-Donde $W=D h \gamma$ y $D=\rho \gamma$. Para evitar errores en el límite no relativista se debe resolver la ecuación conservada restando la densidad de masa 
-a la energía para definir una nueva variable conservada ($e^{'}=e-D$), para las cancelaciones en el límite ultra-relativista basados en $\gamma \abs{v^2}$ que se tiene cuando $\abs{v} \rightarrow 1$, se debe de crear otra variable, que en este caso seria $\abs{u}^2=\gamma \abs{v^2}$ e introduciendo las variables $W^{'}=W-D$. Podemos re-escribir la última ecuación de la siguiente manera
-
-\begin{eqnarray*}
- W^{'}& = &D(h \gamma -1)\\
-&=& D\left[ \left(1-\epsilon+ \frac{p}{\rho}\right) \gamma - 1 \right]\\
-&=& D \left(\gamma-1 \right) \frac{\gamma+1}{\gamma+1}+\frac{D \gamma }{\rho}\left(\rho \epsilon + p \right)
-\end{eqnarray*}
-
-Recordando que $D=\rho \gamma$ y que a partir de la variable introducida $u^{2}$ podemos re-scribir el factor de Lorentz como $\gamma^{2} = 1- u^{2}$
-
-\begin{eqnarray}\label{W_prima}
-\nonumber W^{'}&=&\frac{D u^{2}}{\gamma + 1}
-+\frac{\rho\gamma \gamma}{ \rho }\left(\rho \epsilon + p \right)\\
-&=& \frac{D u^{2}}{\gamma + 1} + \gamma^{2} \chi
-\end{eqnarray}
-
-Donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \ref{ecuacion_de_energia} queda como
-\begin{equation}\label{derivada_E_W}
-\dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}
-\end{equation}
-
-Nosotros no sabemos como es la expresión $\dfrac{de}{dW^{'}}$, así que asumiremos que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena (para mas detalles consulte)
-\begin{equation}\label{cadena}
-\dfrac{dp}{dW^{'}}=\dfrac{\partial p}{\partial\chi}\Bigg |_{\rho} \dfrac{d\chi}{dW^{'}} + \dfrac{\partial p}{\partial \rho}\Big |_{\chi} \dfrac{d \rho}{d W^{'}}
-\end{equation}
-
-Para calcular $\dfrac{dp}{d\chi}$ tenemos que por ser el caso de un gas ideal
-\begin{equation} \label{entalpia_funcion_presion_densidad}
-h=1+\frac{\Gamma}{\Gamma-1}\frac{p}{\rho}
-\end{equation}
-Donde $h$ también puede ser escrito como
-\begin{equation}
-h=1+\epsilon+\frac{p}{\rho}
-\end{equation}
-Si combinamos estas 2 últimas ecuaciones podemos llegar a que 
-\begin{equation}
-p(\chi,\rho)=\frac{\Gamma-1}{\Gamma}\chi
-\end{equation}
-
-Con lo que al derivar con respecto de $\chi$ nos da como resultado
-\begin{eqnarray}\label{der_presion}
-& \dfrac{d p}{d \chi}&=\frac{\Gamma-1}{\Gamma}\\ &\dfrac{d p}{d \rho}&= 0
-\end{eqnarray}
-
-De la ecuación \ref{W_prima} podemos despejar $\chi$, lo que queda como
-\begin{equation}
-\chi=\frac{W^{'}}{\gamma}- \frac{D u^{2}}{(1+\gamma)\gamma^{2}}
-\end{equation}
-
-Derivando implícitamente la ecuación \ref{W_prima} respecto a $W^{'}$ nos quedaría
-\begin{eqnarray*}
-W^{'}&=&D\left(\gamma-1 \right) + \chi \gamma^{2}\\%saloto de linea
-&=& D\left(\frac{1}{\sqrt{1-\nu^{2}}} -1\right)+\chi \dfrac{1}{1-\nu^{2}} \\%saloto de linea
-\dfrac{d W^{'}}{d W^{'}} &=& D \dfrac{d (1-v^2)^{-1/2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+\dfrac{d (1-v^2)^{-1} }{d W^{'}}\chi \\  %salto de linea 
-1 &=& \frac{D(1-v^2)^{-3/2}}{2} \dfrac{d v^{2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+ \chi (1-v^2)^{-2}  \dfrac{d v^{2}}{d W^{'}} \\ %salto de linea
-\frac{1}{\gamma ^2} &=& \frac{D \gamma}{2} \dfrac{d v^{2}}{d W^{'}} + \dfrac{d \chi}{dW^{'}} + \chi \gamma^2 \dfrac{d v^2}{dW^{'}} \\ %salto de linea
-\end{eqnarray*}
-
-Con lo que al final la ecuación se puede escribir de la siguiente manera
-
-\begin{equation}\label{der_chi}
-\dfrac{d \chi}{dW^{'}}=\frac{1}{\gamma^2}-\frac{\gamma}{2}(D-2\gamma \chi) \dfrac{d v^2}{dW^{'}}
-\end{equation}
-
-Y para
-
-\begin{equation}\label{der_rho}
-\dfrac{d \rho}{d W^{'}}= D \dfrac{d\left(1/ \rho \right) }{d W^{'}} = - \frac{D \gamma}{2}  \dfrac{d v^2}{dW^{'}}
-\end{equation}
-
-despejando la ecuación \ref{modulos de los momentos} podemos llegar a escribir el módulo de la velocidad al cuadrado de la siguiente manera
-\begin{equation}
-\abs{v^{2}} = \frac{\abs{m^{2}}}{W^{'}} 
-\end{equation}
-Donde $m_i= \rho v_i \gamma h$ para $i=x,y$.
-
-Podemos demostrar que $\dfrac{d \abs{v^2}}{W}=\dfrac{d \abs{v^2}}{W^{'}}$ para esto vamos a partir de de lo siguiente 
-\begin{eqnarray*}
-\abs{v^2}&=& \abs{m^{2}} \left(W^{'} + D \right)^{-2} \\
-\dfrac{d \abs{v^2}}{d W^{'}} &=& \frac{-2 \abs{m}^2}{W^{'}+D^{3}} \\
-&=& \frac{2 \abs{m}^2}{W^{3}} \\
-&=& \dfrac{d \abs{v^2}}{d W^{'}}
-\end{eqnarray*}
-
-Con lo que podemos decir que 
-
-\begin{equation}\label{der_v2}
-\dfrac{d\abs{v}^2}{d W^{'} }=-\frac{2 \abs{m}^{2}}{W^{3}}
-\end{equation}
-Con todo esto ya sabemos cuanto es lo que vale la ecuación \ref{derivada_E_W}, con esto ya podemos usar el método de Newton-Raphson para poder encontrar $W^{'}$.\\
-
-El método de Newton-Raphson es un algoritmo iterativo que se usa para encontrar raíces  de una función real:
-
-\begin{equation} \label{eq_Newton_Raphson}
-W^{'(k+1)}=W^{'}-\frac{f(W^{'})}{\dfrac{d f(W^{'})}{d W^{'}}}
-\end{equation}
-
-De la ecuación de la densidad de energía, podemos utilizarla como a la función a la que queremos encontrar la raíz
-
-\begin{equation} \label{ecuación_f}
-f(W^{'})=W^{'}-e^{'}-p
-\end{equation}
-
-Donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
-Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuaciones \ref{ecuacion_de_energia} 
-y \ref{modulos de los momentos} podemos llegar a que la presión es:
-%===============================================================================================
-
-\begin{equation} \label{presion_de_newton}
-p=\frac{\abs{m}^{2}-W^{2}\abs{v}^{2}+4W^{2}-4EW}{4W}
-\end{equation}
-
-Como podemos ver el denominador es una función convexa cuadrática que depende $\abs{v}^{2}$ y $W$ y cumple con que $W$ este fuera del intervalo de las raíces positivas y negativas.
-
-Al denominador de la  ecuación podemos encontrar $W$ ya que $\abs{v}^{2}=1-1/\gamma^{2}$ suponiendo $\gamma \rightarrow \infty$ podemos despejar $W$
-
-\begin{equation}\label{suposicion_de_W}
-W=\frac{-(-2E)+\sqrt{(-2E)^{2}-(3)(\abs{m}^{2})}}{3}
-\end{equation}
-
-Con esto ya se puede hacer las aproximaciones para obtener $W$, y podemos calcular las siguientes relaciones 
-\begin{eqnarray}
-\abs{v}^{2} &=& \frac{\abs{m}^{2}}{W^{2}}\label{prim_v2}\\ 
-u^{2}&=&\frac{\abs{v}^{2}}{1-\abs{v}^{2}}\label{u2}\\
-\gamma &=& \sqrt{1+u^{2}}
-\end{eqnarray}
-Y las nuevas primitivas.\\
-
-Velocidades:
-\begin{eqnarray}
-v_{x}&=&\frac{u_{2}}{W}\\
-v_{y}&=&\frac{u_{3}}{W}\\
-\end{eqnarray}
-
-Densidad de masa 
-\begin{equation}
-\rho=\frac{D}{\gamma}
-\end{equation}
-
-Presión térmica
-\begin{eqnarray}
-\chi&=&\frac{W-D}{\gamma^{2}}-\frac{D \abs{u}^{2}}{(1+\gamma)\gamma^{2}}\\
-p&=&\frac{\Gamma-1}{\Gamma} \chi
-\end{eqnarray}
-
-Aunque en el método newtoniano se podian desacoplar las ecuaciones sobre el mismo bucle, 
-para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y asi poder obtenerlas en funcion de las conservadas. 
-Al igual que en el método newtoniano vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, 
-y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. 
-Las variables conservadas las reasignmos a unas nuevas llamadas \emph{qu} para que podamos usar la subrutina, una vez que se desacoplan, 
-los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
-
-\begin{lstlisting}[frame=single] 
-        
-    qu(1) = u(1,i,j)
-    qu(2) = u(2,i,j)
-    qu(3) = u(3,i,j)
-    qu(4) = u(4,i,j)
-
-    ! Desacoplamiento de las primitivas
-    call uprim(u,qp)
-
-    qpp(:,i,j)=qp
-
-    rho = qpp(1, i,j)
-    vx  = qpp(2, i,j)
-    vy  = qpp(3, i,j)
-    P   = qpp(4, i,j)
-
-
-\end{lstlisting}
-
-La subrutina de desacoplamiento para las variables conservadas que se mencionan en esta sección recibirá las variables conservadas
-y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular 
-(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}
-
-\begin{lstlisting}
-  
-  m2 = sum(qu(2:3)**2)               ! v^2
-
-  call newrap(qu, w, m2)
-
-  alpha = m2 / w**2   ! alpha < 1 !
-  u2  = alpha/(1.0-alpha)
-
-  lor = sqrt(1.0 + u2)
-
-  ! velocities
-  qp(2:3) = qu(2:3) / w
-
-  ! determination of the mass density
-  qp(1) = qu(1)/lor
-
-  ! thermal pressure
-  chi = (w - qu(1)*(1.0+u2/(lor+1.0)))/(1.0+u2)
-
-  qp(4)   = (gamma - 1.0)/gamma * chi
-
-  qp(4) =max(qp(4),1d-10*qp(1))
-\end{lstlisting}
-
-\section{Diferencias finitas} \label{sec:Diferencias_finitas}
-Si tenemos una función $f(x)$ lo suficientemente diferenciable la podemos aproximar por el Teorema de Taylor  en la vecindad de un punto $x_0+\Delta x$ entonces si conocemos todas sus $n$ derivadas de la función $f(x)$ en el punro $x_0$ podemos aproximar de la siguiente manera
-
-\begin{equation}\label{Serie_Taylor}
-f\left( x_0 + \Delta x\right) = f\left( x_0 \right)+
-\sum_n \frac{\left( \Delta x \right) ^2}{k!}f^{(k)} \left(x_0
-\right)
-\end{equation}
-
-Si truncamos la serie de Taylor y quitamos los términos de segundo orden podemos escribir la ecuación \ref{Serie_Taylor} como:
-
-\begin{equation}
-f\left( x_0 + \Delta x \right) = f(x_0) - \Delta x f^{(1)} (x_0) + O \left( \Delta x \right)
-\end{equation}
-
-Despejando $f(x_0)$ queda lo que se conoce como diferrencia finita hacia adelante
-\begin{equation}\label{fwd}
-f_{fwd}^{'}=\frac{f\left(x + \Delta x \right) - f(x) }{\Delta x}=\frac{f_{i+1}-f_{i}}{\Delta x}
-\end{equation}
-
-Tambien se puede hacer en el entorno $x_0- \Delta x$ y siguiendo los mismos pasos anteriores llegamos a lo que se le conoce como diferencia finita hacia atras.
-
-
-
-\begin{equation}\label{bwd}
-f_{back}^{'}=\frac{f\left(x \right) - f(x - \Delta x) }{\Delta x}=\frac{f_{i}-f_{i-1}}{\Delta x}
-\end{equation}
-
-Si obtenemos el promedio de las ecuaciones \ref{fwd} y \ref{bwd} obtenemos la central:
-
-\begin{equation} \label{Centrada}
-f_{central}^{'}=\frac{f\left(x + \Delta x\right) - f(x - \Delta x) }{2\Delta x}=\frac{f_{i+1}-f_{i-1}}{2 \Delta x}
-\end{equation}
-
-
-
-\subsection{Lax-Friederich}
-
-Si consideramos la siguiente ecuación diferencial parcial
-
-\begin{equation} \label{ecu_conser}
-u_t+ f\left(u \right)_t=0
-\end{equation}
-
-Un método conservativo para resolver este tipo de ecuación diferencial es 
-
-\begin{equation}\label{esquema conservativo}
-u_i^{n+1} = u_i^{n} -\frac{\Delta t}{\Delta x} \left(f_{i-\frac{1}{2}} - f_{i+\frac{1}{2}}\right)
-\end{equation}
-
-
-
-Si hacemos la siguiente elección de flujo 
-
-\begin{equation}
-f_{i+\frac{1}{2}} = f_{i+\frac{1}{2}} \left(
-u_{i} , u_{i+1}\right) =\frac{1}{2} \left(f_{i} + f_{i+1} \right) 
-\end{equation}
-
-Y para 
-
-\begin{equation}
-f_{i-\frac{1}{2}} = f_{i-\frac{1}{2}} \left(
-u_{i} , u_{i-1}\right) =\frac{1}{2} \left(f_{i} - f_{i-1} \right) 
-\end{equation}
-
-Y lo sustituimos en la ecuación \ref{esquema conservativo} nos queda el siguiente resultado
-
-\begin{equation}\label{ec_inestable}
-u_i^{n+1} = u_i^{n} + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
-\end{equation}
-
-Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable  Peter Lax y Kurt O. Friedrichs sustituyerón este término por $(u_{i+1}^n-u_{i-1}^n)$  por lo que podemos reescribir la ecuación \ref{ec_inestable} como
-
-\begin{equation}\label{ec_estable}
-u_i^{n+1} =(u_{i+1}^n-u_{i-1}^n) + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
-\end{equation}
-
-En el código, la implementación de la conservada posterior es bastante sencillo
-
-\begin{lstlisting}
-
-  call fluxes(nx,ny,neq,gamma,u,f,g,bound)
-
-  do i=1,nx
-    do j=1,ny
-      up(:,i,j)=0.25*( u(:,i-1,j)+u(:,i+1,j)+u(:,i,j-1)+u(:,i,j+1) ) &
-                  -dtx*0.5*(f(:,i+1,j)-f(:,i-1,j) ) &
-                  -dty*0.5*(g(:,i,j+1)-g(:,i,j-1) )
-    end do
-  end do
-  
-\end{lstlisting}
-
-
-
-
-
-\subsection{HLL}
-
-	Otro método para resolver las ecuaciones de la hidrodinámica es usar el método de Harten-Van-Leer. Definiendo el flujo numérico intercelda de Gudonov
-
-\begin{equation}
-F_{i+\frac{1}{2}}=F \left( U_{i+\frac{1}{2}} \right)
-\end{equation}
-
-Para el cual $U_{i+\frac{1}{2}}(0)$ tiene la misma solución para $U_{i+\frac{1}{2}}(x/t)$ con lo que el problema de Riemann se reduce a :
-
-\begin{equation} \label{Ecuacion_discreta_conservada}
-\begin{array}{ll}
-U_t + F \left( U \right)_x = 0 \\
-U \left(x,0 \right) = 
-\left\lbrace
-\begin{array}{rr}
-U_L \quad \textup{si} \quad x<0  \\
-U_R \quad \textup{si} \quad x>0
-\end{array}
-\right.
-\end{array}
-\end{equation}
-
-\begin{figure} %fuente de la imagen:libro del toro/
-  \centering
-    \includegraphics[width=0.5\textwidth]{Figuras/HLL_onda.png}
-  \caption{Plano x-t que muestra que muestra un volumen definido}
-  \label{fig:Plano x_t}
-\end{figure}
-
-Si consideramos un control de volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas mas rápidas de los 
-estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Si usamos la forma integral de la 
-ecuacion \ref{Ecuacion_discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
-
-\begin{equation*}\label{Forma_integral_conservadas}
-\int_{x_L}^{x_R} \left[ U\left( x, T \right) -
- U\left( x, 0 \right) \right] dx = 
- \int_{0}^{T} \left[ F \left(U\left( x_L, t \right) \right) -
- F \left(U\left( x_R, t \right) \right) \right] dt 
-\end{equation*}
-Entonces
-\begin{equation}\label{integral_consistencia}
-\int_{x_L}^{x_R} U\left( x, T \right) dx =\int_{x_L}^{x_R} U\left( x, 0 \right) dx+
-\int_{0}^{T}  F \left(U\left( x_L, t \right) \right)dt -
-\int_{0}^{T}  F \left(U\left( x_R, t \right) \right) dt
-\end{equation}
-
-Usando las condiciones de la ecuación \ref{Ecuacion_discreta_conservada} podemos evualuar la integral
-
-\begin{equation*}
-\int_{x_L}^{x_R} U\left( x, T \right) dx = 
-x_R U_R -x_L U_L+T F_L-T F_R
-\end{equation*}
-Donde $F_L = F \left( U_L \right)$ y $F_R = F \left( U_R \right)$, entonces
-
-\begin{equation}\label{Condición_de_consistencia}
-\int_{x_L}^{x_R} U\left( x, T \right) dx = 
-x_R U_R -x_L U_L+T \left( F_L- F_R \right)
-\end{equation}
-
-Si separamos ahora la ecuación \ref{integral_consistencia} en 3 integrales de la siguiente manera:
-
-\begin{equation}
-\int_{x_L}^{x_R} U\left( x, T \right) dx = 
-\int_{x_L}^{T S_L} U \left(x, T \right)dx+
-\int_{T S_L}^{T S_R} U \left(x, T \right)dx+
-\int_{T S_R}^{x_R} U \left(x, T \right)dx
-\end{equation}
-
-Si ahora evualuamos el tercer y el primer término en el lado derecho, obtenemos:
-
-\begin{equation}\label{condicion_consistencia_2}
-\int_{x_L}^{x_R} U\left( x, T \right) dx =
-\int_{T S_L}^{T S_R} U \left(x, T \right)dx+
-\left( T S_L - x_L \right) U_L+
-\left( x_L - T S_R \right) U_R
-\end{equation}
-
-Si combinamos la ecuación \ref{Condición_de_consistencia} y 
-\ref{condicion_consistencia_2}
-
-\begin{equation*}
-x_R U_R -x_L U_L+T \left( F_L- F_R \right) =
-\int_{T S_L}^{T S_R} U \left(x, T \right)dx+
-\left( T S_L - x_L \right) U_L+
-\left( x_L - T S_R \right) U_R
-\end{equation*}
-
-Entonces 
-
-\begin{equation*}
-\int_{T S_L}^{T S_R} U \left(x, T \right)dx=
-\left( T S_L - x_L \right) U_L+ x_L U_L +
-\left( x_L - T S_R \right) U_R-x_R U_R -
-T \left( F_L- F_R \right)
-\end{equation*}
-
-Con lo que al final nos queda
-
-\begin{equation} \label{ull_sin_promedio}
-\int_{T S_L}^{T S_R} U \left(x, T \right)dx=
-T \left( S_R U_R - S_L U_L + F_L - F_R \right)
-\end{equation}
-
-Si dividimos la ecuación \ref{ull_sin_promedio} por la diferencia de las velocidades maximas de las señales de las ondas, obtenemos el promedio de la funcion que esta entre las velocidades de la onda, entonces
-
-\begin{equation}
-\frac{1}{T \left( S_R -S_L \right)}\int_{T S_L}^{T S_R} U \left(x, T \right)dx =
-\frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}
-\end{equation}
-
-Si conocemos las velocidades de la onda podemos escribir la ecuación como 
-
-\begin{equation}\label{u_hll}
-U^{hll} = \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}
-\end{equation}
-
-Ahora si aplicamos la forma integral ( como en el caso de la ecuación \ref{Condición_de_consistencia}) a lado izquierdo de nustro plano obtenemos lo siguiente
-
-\begin{equation}
-\int_{T S_L}^{0} U\left( x, T \right) dx = 
--T S_L U_L+T \left( F_L- F_{0L} \right)
-\end{equation}
-Donde $F_{0L}$ es el flujo a lo largo del eje $t$. Si despejamos $F_{0L}$, nos queda lo siguiente
-
-\begin{equation}\label{ec F_0L}
-F_{0L} = F_L - S_L U_L + \frac{1}{T}  \int_{T S_L}^{0} U\left( x, T \right) dx
-\end{equation}
-
-Esta última ecuación nos servira para calcular los flujos usando el método de Harteen-Van-Leer, el cual dividian el plano en tres espacios:
-
-\begin{figure} %fuente de la imagen:libro del toro/
-  \centering
-    \includegraphics[width=0.5\textwidth]{Figuras/HLL.png}
-  \caption{Aproximación de 3 estados distintos en el plano x-t, en el cual se trata de calcular los flujos en la región $U^{hll}$ limitados por las velocidades de señal de la onda}
-  \label{fig:HLL}
-\end{figure}
-
-\begin{equation}
-U \left(x,t \right) = 
-\left\lbrace
-\begin{array}{rr}
-U_L \quad \textup{si} \quad \frac{x}{t}< S_L  \\
-U_{hll} \quad \textup{si} \quad S_L< \frac{x}{t} <S_R \\
-U_R \quad \textup{si} \quad  \frac{x}{t} > S_R
-\end{array}
-\right.
-\end{equation}
-
-Los flujos $F_R$ y $F_L$ pueden ser calculados directamente ya que solo dependen de $U_R$ y $U_L$ respectivamente pero $F_{hll} \neq F \left( U_{hll} \right)$, asi que resolvemos la integral de la ecuación \ref{ec F_0L} para asi obtener el flujo a traves del eje t
-
-\begin{equation*}
-F_{hll} = F_L -S_L U_L+ \frac{1}{T}U_{hll}\left(0- TS_L\right)
-\end{equation*}
-
-Entonces
-\begin{equation}\label{f_hll 1}
-F_{hll} = F_L +S_L \left( U_{hll} -U_L \right)
-\end{equation}
-
-Si sustituimos \ref{u_hll} en \ref{f_hll 1} obtenemos:
-
-\begin{equation*}
-F_{hll} = F_L +S_L \left( \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L} -U_L \right)
-\end{equation*}
-Entonces
-\begin{equation*}
-F_{hll} = \frac{F_L S_R -F_L S_L+S_L S_R U_R-S_L^2 U_L+S_L  F_L- S_L F_R-S_R S_L U_L + S_L^2 U_L}{S_R-S_L}
-\end{equation*}
-
-Eliminando términos semejantes queda
-\begin{equation}
-F_{hll} = \frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L}
-\end{equation}
-
-Con lo que el flujo intermedio de la celda de Gudonov esta dado por:
-
-\begin{equation} \label{fluxesHLL}
-F_{i+\frac{1}{2}}^{hll} = 
-\left\lbrace
-\begin{array}{rr}
-F_L \quad \textup{si} \quad 0 \leq S_L  \\
-\frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L} \quad \textup{si} \quad S_L \leq 0 \leq S_R \\
-F_R \quad \textup{si} \quad  0 \geq  S_R
-\end{array}
-\right.
-\end{equation}
-
-La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax}.
-
-\begin{lstlisting}
-  call fluxesHLL(fhll, ghll)
-      
-        do i=1,nx
-          do j=1,ny
-            up(:,i,j) = u(:,i,j)                                     &
-                        + 0.5*dtx*(fhll(:,i-1,j)-fhll(:,i+1,j))      &
-                        + 0.5*dty*(ghll(:,i,j-1)-ghll(:,i,j+1))
-          end do
-        end do
-
-\end{lstlisting}
-
-La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
-y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
-significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas mas rápidas de los estados iniciales \emph{U}, 
-para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
-
-\begin{lstlisting}
-  do i=1,nx
-  do j=1,ny
-    
-    if (0 .le. s_l(i,j)) then !less or equal 0<=sl
-      fhll(:,i,j)=f_l(:, i,j)
-
-    else if (s_l(i,j) .le. 0 .and. 0 .le. s_r(i,j)) then !sl<=0<=sr
-  
-      fhll(:,i,j)=(s_r(i,j)*f_l(:,i,j)-s_l(i,j)*f_r(:,i,j)+s_l(i,j)*s_r(i,j)*(u_r(:,i,j)-u_l(:,i,j)))/&
-      (s_r(i,j)-s_l(i,j))
-
-
-    else if (s_r(i,j) .le. 0) then !sr<=0
-        fhll(:,i,j)=f_r(:,i,j)
-
-    endif
-
-    if(0 .le. s_d(i,j)) then
-      ghll(:,i,j)= g_d(:,i,j)
-
-    else if(s_d(i,j) .le. 0 .and. 0 .le. s_u(i,j)) then
-
-      ghll(:,i,j)=(s_u(i,j)*g_d(:,i,j)-s_d(i,j)*g_u(:,i,j)+s_d(i,j)*s_u(i,j)*(u_u(:,i,j)-u_d(:,i,j)))/&
-      (s_u(i,j)-s_d(i,j))
-
-    else if(s_u(i,j) .le. 0) then
-        ghll(:,i,j) = g_u(:,i,j)
-
-    endif
-  end do
-end do
-\end{lstlisting}
-
-
 \section{Ecuaciones de Sedov-Taylor}
+
+Una forma de verificar si nuesto código funciona es usar el problema de Sedov-Taylor, que básicamente es modelar una onda de choque esférico con una determinada 
+energía, presión y densidad sobre un medio externo. 
 Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. 
 Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
 
@@ -1819,6 +1332,601 @@ A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrec
     \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Velocidad_vs_tiempo.png}
   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_velocidad_vs_radio}
 \end{figure}
+
+
+\section{Desacoplamiento de las ecuaciones de la hidrodinámica}
+
+Al final del metodo de las diferencias finitas, obtenemos nuestras variables conservadas (\emph{U}), pero para calcular nuestros flujos de nuevo necesitamos recuperar nuestras primitas, es decir, calcular nuestras variables primitivas $(\rho, \, u, \, v,\, w, \, P )$ en función de nuestras variables conservadas $(u_1, \, u_2, \, u_3, \, u_4, \, u_5)$.
+
+Despejar la densidad es sencillo ya que es directo $u_1= \rho$ por lo tanto:
+
+\begin{equation}\label{primitiva_densidad}
+\rho = u_1
+\end{equation}
+
+Para las velocidades $u_i=\rho \upsilon$, donde $i=2,3,4$ y $\upsilon=u,v,w$, nos da $\upsilon= u_i/ \rho$ y usando la ecuación \ref{primitiva_densidad} queda:
+
+\begin{equation} \label{primitiva_velocidades}
+\upsilon = u_1/u_i
+\end{equation}
+Para la ecuacion de la energía $u_5=E$ combinando con la ecuacion de estado y la ecuación \ref{primitiva_velocidades} obtenemos
+\begin{equation}
+P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u_i \right)^2}{2} \right]
+\end{equation}
+
+En el código se implenta de la siguiente manera.
+Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento
+es sencillo, se implmenta directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
+
+\begin{lstlisting}[frame=single] 
+  
+
+    !Desacoplamiento de las primitivas
+    rho = u (1,i,j)
+    vx  = u(2,i,j)/rho
+    vy  = u(3,i,j)/rho
+    P   = (u(4,i,j)-0.5*rho*(vx**2+vy**2))*(gamma-1.)
+
+\end{lstlisting}
+
+
+
+\section{Desacoplamiento de las ecuaciones de la hidrodinámica relativista}
+Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
+
+\begin{equation}\label{ecuacion_de_energia}
+e=W-p
+\end{equation}
+
+\begin{equation}\label{modulos de los momentos}
+\abs{m}^2= W^{2}\abs{v}^{2}
+\end{equation}
+
+Donde $W=D h \gamma$ y $D=\rho \gamma$. Para evitar errores en el límite no relativista se debe resolver la ecuación conservada restando la densidad de masa 
+a la energía para definir una nueva variable conservada ($e^{'}=e-D$), para las cancelaciones en el límite ultra-relativista basados en $\gamma \abs{v^2}$ que se tiene cuando $\abs{v} \rightarrow 1$, se debe de crear otra variable, que en este caso seria $\abs{u}^2=\gamma \abs{v^2}$ e introduciendo las variables $W^{'}=W-D$. Podemos re-escribir la última ecuación de la siguiente manera
+
+\begin{eqnarray*}
+ W^{'}& = &D(h \gamma -1)\\
+&=& D\left[ \left(1-\epsilon+ \frac{p}{\rho}\right) \gamma - 1 \right]\\
+&=& D \left(\gamma-1 \right) \frac{\gamma+1}{\gamma+1}+\frac{D \gamma }{\rho}\left(\rho \epsilon + p \right)
+\end{eqnarray*}
+
+Recordando que $D=\rho \gamma$ y que a partir de la variable introducida $u^{2}$ podemos re-scribir el factor de Lorentz como $\gamma^{2} = 1- u^{2}$
+
+\begin{eqnarray}\label{W_prima}
+\nonumber W^{'}&=&\frac{D u^{2}}{\gamma + 1}
++\frac{\rho\gamma \gamma}{ \rho }\left(\rho \epsilon + p \right)\\
+&=& \frac{D u^{2}}{\gamma + 1} + \gamma^{2} \chi
+\end{eqnarray}
+
+Donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \ref{ecuacion_de_energia} queda como
+\begin{equation}\label{derivada_E_W}
+\dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}
+\end{equation}
+
+Nosotros no sabemos como es la expresión $\dfrac{de}{dW^{'}}$, así que asumiremos que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena (para mas detalles consulte)
+\begin{equation}\label{cadena}
+\dfrac{dp}{dW^{'}}=\dfrac{\partial p}{\partial\chi}\Bigg |_{\rho} \dfrac{d\chi}{dW^{'}} + \dfrac{\partial p}{\partial \rho}\Big |_{\chi} \dfrac{d \rho}{d W^{'}}
+\end{equation}
+
+Para calcular $\dfrac{dp}{d\chi}$ tenemos que por ser el caso de un gas ideal
+\begin{equation} \label{entalpia_funcion_presion_densidad}
+h=1+\frac{\Gamma}{\Gamma-1}\frac{p}{\rho}
+\end{equation}
+Donde $h$ también puede ser escrito como
+\begin{equation}
+h=1+\epsilon+\frac{p}{\rho}
+\end{equation}
+Si combinamos estas 2 últimas ecuaciones podemos llegar a que 
+\begin{equation}
+p(\chi,\rho)=\frac{\Gamma-1}{\Gamma}\chi
+\end{equation}
+
+Con lo que al derivar con respecto de $\chi$ nos da como resultado
+\begin{eqnarray}\label{der_presion}
+& \dfrac{d p}{d \chi}&=\frac{\Gamma-1}{\Gamma}\\ &\dfrac{d p}{d \rho}&= 0
+\end{eqnarray}
+
+De la ecuación \ref{W_prima} podemos despejar $\chi$, lo que queda como
+\begin{equation}
+\chi=\frac{W^{'}}{\gamma}- \frac{D u^{2}}{(1+\gamma)\gamma^{2}}
+\end{equation}
+
+Derivando implícitamente la ecuación \ref{W_prima} respecto a $W^{'}$ nos quedaría
+\begin{eqnarray*}
+W^{'}&=&D\left(\gamma-1 \right) + \chi \gamma^{2}\\%saloto de linea
+&=& D\left(\frac{1}{\sqrt{1-\nu^{2}}} -1\right)+\chi \dfrac{1}{1-\nu^{2}} \\%saloto de linea
+\dfrac{d W^{'}}{d W^{'}} &=& D \dfrac{d (1-v^2)^{-1/2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+\dfrac{d (1-v^2)^{-1} }{d W^{'}}\chi \\  %salto de linea 
+1 &=& \frac{D(1-v^2)^{-3/2}}{2} \dfrac{d v^{2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+ \chi (1-v^2)^{-2}  \dfrac{d v^{2}}{d W^{'}} \\ %salto de linea
+\frac{1}{\gamma ^2} &=& \frac{D \gamma}{2} \dfrac{d v^{2}}{d W^{'}} + \dfrac{d \chi}{dW^{'}} + \chi \gamma^2 \dfrac{d v^2}{dW^{'}} \\ %salto de linea
+\end{eqnarray*}
+
+Con lo que al final la ecuación se puede escribir de la siguiente manera
+
+\begin{equation}\label{der_chi}
+\dfrac{d \chi}{dW^{'}}=\frac{1}{\gamma^2}-\frac{\gamma}{2}(D-2\gamma \chi) \dfrac{d v^2}{dW^{'}}
+\end{equation}
+
+Y para
+
+\begin{equation}\label{der_rho}
+\dfrac{d \rho}{d W^{'}}= D \dfrac{d\left(1/ \rho \right) }{d W^{'}} = - \frac{D \gamma}{2}  \dfrac{d v^2}{dW^{'}}
+\end{equation}
+
+despejando la ecuación \ref{modulos de los momentos} podemos llegar a escribir el módulo de la velocidad al cuadrado de la siguiente manera
+\begin{equation}
+\abs{v^{2}} = \frac{\abs{m^{2}}}{W^{'}} 
+\end{equation}
+Donde $m_i= \rho v_i \gamma h$ para $i=x,y$.
+
+Podemos demostrar que $\dfrac{d \abs{v^2}}{W}=\dfrac{d \abs{v^2}}{W^{'}}$ para esto vamos a partir de de lo siguiente 
+\begin{eqnarray*}
+\abs{v^2}&=& \abs{m^{2}} \left(W^{'} + D \right)^{-2} \\
+\dfrac{d \abs{v^2}}{d W^{'}} &=& \frac{-2 \abs{m}^2}{W^{'}+D^{3}} \\
+&=& \frac{2 \abs{m}^2}{W^{3}} \\
+&=& \dfrac{d \abs{v^2}}{d W^{'}}
+\end{eqnarray*}
+
+Con lo que podemos decir que 
+
+\begin{equation}\label{der_v2}
+\dfrac{d\abs{v}^2}{d W^{'} }=-\frac{2 \abs{m}^{2}}{W^{3}}
+\end{equation}
+Con todo esto ya sabemos cuanto es lo que vale la ecuación \ref{derivada_E_W}, con esto ya podemos usar el método de Newton-Raphson para poder encontrar $W^{'}$.\\
+
+El método de Newton-Raphson es un algoritmo iterativo que se usa para encontrar raíces  de una función real:
+
+\begin{equation} \label{eq_Newton_Raphson}
+W^{'(k+1)}=W^{'}-\frac{f(W^{'})}{\dfrac{d f(W^{'})}{d W^{'}}}
+\end{equation}
+
+De la ecuación de la densidad de energía, podemos utilizarla como a la función a la que queremos encontrar la raíz
+
+\begin{equation} \label{ecuación_f}
+f(W^{'})=W^{'}-e^{'}-p
+\end{equation}
+
+Donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
+Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuaciones \ref{ecuacion_de_energia} 
+y \ref{modulos de los momentos} podemos llegar a que la presión es:
+%===============================================================================================
+
+\begin{equation} \label{presion_de_newton}
+p=\frac{\abs{m}^{2}-W^{2}\abs{v}^{2}+4W^{2}-4EW}{4W}
+\end{equation}
+
+Como podemos ver el denominador es una función convexa cuadrática que depende $\abs{v}^{2}$ y $W$ y cumple con que $W$ este fuera del intervalo de las raíces positivas y negativas.
+
+Al denominador de la  ecuación podemos encontrar $W$ ya que $\abs{v}^{2}=1-1/\gamma^{2}$ suponiendo $\gamma \rightarrow \infty$ podemos despejar $W$
+
+\begin{equation}\label{suposicion_de_W}
+W=\frac{-(-2E)+\sqrt{(-2E)^{2}-(3)(\abs{m}^{2})}}{3}
+\end{equation}
+
+Con esto ya se puede hacer las aproximaciones para obtener $W$, y podemos calcular las siguientes relaciones 
+\begin{eqnarray}
+\abs{v}^{2} &=& \frac{\abs{m}^{2}}{W^{2}}\label{prim_v2}\\ 
+u^{2}&=&\frac{\abs{v}^{2}}{1-\abs{v}^{2}}\label{u2}\\
+\gamma &=& \sqrt{1+u^{2}}
+\end{eqnarray}
+Y las nuevas primitivas.\\
+
+Velocidades:
+\begin{eqnarray}
+v_{x}&=&\frac{u_{2}}{W}\\
+v_{y}&=&\frac{u_{3}}{W}\\
+\end{eqnarray}
+
+Densidad de masa 
+\begin{equation}
+\rho=\frac{D}{\gamma}
+\end{equation}
+
+Presión térmica
+\begin{eqnarray}
+\chi&=&\frac{W-D}{\gamma^{2}}-\frac{D \abs{u}^{2}}{(1+\gamma)\gamma^{2}}\\
+p&=&\frac{\Gamma-1}{\Gamma} \chi
+\end{eqnarray}
+
+Aunque en el método newtoniano se podian desacoplar las ecuaciones sobre el mismo bucle, 
+para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y asi poder obtenerlas en funcion de las conservadas. 
+Al igual que en el método newtoniano vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, 
+y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. 
+Las variables conservadas las reasignmos a unas nuevas llamadas \emph{qu} para que podamos usar la subrutina, una vez que se desacoplan, 
+los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
+
+\begin{lstlisting}[frame=single] 
+        
+    qu(1) = u(1,i,j)
+    qu(2) = u(2,i,j)
+    qu(3) = u(3,i,j)
+    qu(4) = u(4,i,j)
+
+    ! Desacoplamiento de las primitivas
+    call uprim(u,qp)
+
+    qpp(:,i,j)=qp
+
+    rho = qpp(1, i,j)
+    vx  = qpp(2, i,j)
+    vy  = qpp(3, i,j)
+    P   = qpp(4, i,j)
+
+
+\end{lstlisting}
+
+La subrutina de desacoplamiento para las variables conservadas que se mencionan en esta sección recibirá las variables conservadas
+y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular 
+(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}
+
+\begin{lstlisting} [frame=single]
+  
+  m2 = sum(qu(2:3)**2)               ! v^2
+
+  call newrap(qu, w, m2)
+
+  alpha = m2 / w**2   ! alpha < 1 !
+  u2  = alpha/(1.0-alpha)
+
+  lor = sqrt(1.0 + u2)
+
+  ! velocities
+  qp(2:3) = qu(2:3) / w
+
+  ! determination of the mass density
+  qp(1) = qu(1)/lor
+
+  ! thermal pressure
+  chi = (w - qu(1)*(1.0+u2/(lor+1.0)))/(1.0+u2)
+
+  qp(4)   = (gamma - 1.0)/gamma * chi
+
+  qp(4) =max(qp(4),1d-10*qp(1))
+\end{lstlisting}
+
+\section{Diferencias finitas} \label{sec:Diferencias_finitas}
+Ya hemos visto que ecuaciones describen la hidrodinámica, ahora nos toca resolverlas, dado que analíticamente es difícil, se va a hacer computacionalmente, para 
+eso se hará uso del método numérico de las diferencias finitas.
+Si tenemos una función $f(x)$ lo suficientemente diferenciable la podemos aproximar por el Teorema de Taylor  en la vecindad de un punto $x_0+\Delta x$ entonces si conocemos todas sus $n$ derivadas de la función $f(x)$ en el punro $x_0$ podemos aproximar de la siguiente manera
+
+\begin{equation}\label{Serie_Taylor}
+f\left( x_0 + \Delta x\right) = f\left( x_0 \right)+
+\sum_n \frac{\left( \Delta x \right) ^2}{k!}f^{(k)} \left(x_0
+\right)
+\end{equation}
+
+Si truncamos la serie de Taylor y quitamos los términos de segundo orden podemos escribir la ecuación \ref{Serie_Taylor} como:
+
+\begin{equation}
+f\left( x_0 + \Delta x \right) = f(x_0) - \Delta x f^{(1)} (x_0) + O \left( \Delta x \right)
+\end{equation}
+
+Despejando $f(x_0)$ queda lo que se conoce como diferrencia finita hacia adelante
+\begin{equation}\label{fwd}
+f_{fwd}^{'}=\frac{f\left(x + \Delta x \right) - f(x) }{\Delta x}=\frac{f_{i+1}-f_{i}}{\Delta x}
+\end{equation}
+
+Tambien se puede hacer en el entorno $x_0- \Delta x$ y siguiendo los mismos pasos anteriores llegamos a lo que se le conoce como diferencia finita hacia atras.
+
+
+
+\begin{equation}\label{bwd}
+f_{back}^{'}=\frac{f\left(x \right) - f(x - \Delta x) }{\Delta x}=\frac{f_{i}-f_{i-1}}{\Delta x}
+\end{equation}
+
+Si obtenemos el promedio de las ecuaciones \ref{fwd} y \ref{bwd} obtenemos la central:
+
+\begin{equation} \label{Centrada}
+f_{central}^{'}=\frac{f\left(x + \Delta x\right) - f(x - \Delta x) }{2\Delta x}=\frac{f_{i+1}-f_{i-1}}{2 \Delta x}
+\end{equation}
+
+
+
+\subsection{Lax-Friederich}
+
+Si consideramos la siguiente ecuación diferencial parcial
+
+\begin{equation} \label{ecu_conser}
+u_t+ f\left(u \right)_t=0
+\end{equation}
+
+Un método conservativo para resolver este tipo de ecuación diferencial es 
+
+\begin{equation}\label{esquema conservativo}
+u_i^{n+1} = u_i^{n} -\frac{\Delta t}{\Delta x} \left(f_{i-\frac{1}{2}} - f_{i+\frac{1}{2}}\right)
+\end{equation}
+
+
+
+Si hacemos la siguiente elección de flujo 
+
+\begin{equation}
+f_{i+\frac{1}{2}} = f_{i+\frac{1}{2}} \left(
+u_{i} , u_{i+1}\right) =\frac{1}{2} \left(f_{i} + f_{i+1} \right) 
+\end{equation}
+
+Y para 
+
+\begin{equation}
+f_{i-\frac{1}{2}} = f_{i-\frac{1}{2}} \left(
+u_{i} , u_{i-1}\right) =\frac{1}{2} \left(f_{i} - f_{i-1} \right) 
+\end{equation}
+
+Y lo sustituimos en la ecuación \ref{esquema conservativo} nos queda el siguiente resultado
+
+\begin{equation}\label{ec_inestable}
+u_i^{n+1} = u_i^{n} + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
+\end{equation}
+
+Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable  Peter Lax y Kurt O. Friedrichs sustituyerón este término por $(u_{i+1}^n-u_{i-1}^n)$  por lo que podemos reescribir la ecuación \ref{ec_inestable} como
+
+\begin{equation}\label{ec_estable}
+u_i^{n+1} =(u_{i+1}^n-u_{i-1}^n) + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
+\end{equation}
+
+En el código, la implementación de la conservada posterior es bastante sencillo
+
+\begin{lstlisting} [frame=single]
+
+  call fluxes(nx,ny,neq,gamma,u,f,g,bound)
+
+  do i=1,nx
+    do j=1,ny
+      up(:,i,j)=0.25*( u(:,i-1,j)+u(:,i+1,j)+u(:,i,j-1)+u(:,i,j+1) ) &
+                  -dtx*0.5*(f(:,i+1,j)-f(:,i-1,j) ) &
+                  -dty*0.5*(g(:,i,j+1)-g(:,i,j-1) )
+    end do
+  end do
+  
+\end{lstlisting}
+
+
+
+
+
+\subsection{HLL}
+
+	Otro método para resolver las ecuaciones de la hidrodinámica es usar el método de Harten-Van-Leer. Definiendo el flujo numérico intercelda de Gudonov
+
+\begin{equation}
+F_{i+\frac{1}{2}}=F \left( U_{i+\frac{1}{2}} \right)
+\end{equation}
+
+Para el cual $U_{i+\frac{1}{2}}(0)$ tiene la misma solución para $U_{i+\frac{1}{2}}(x/t)$ con lo que el problema de Riemann se reduce a :
+
+\begin{equation} \label{Ecuacion_discreta_conservada}
+\begin{array}{ll}
+U_t + F \left( U \right)_x = 0 \\
+U \left(x,0 \right) = 
+\left\lbrace
+\begin{array}{rr}
+U_L \quad \textup{si} \quad x<0  \\
+U_R \quad \textup{si} \quad x>0
+\end{array}
+\right.
+\end{array}
+\end{equation}
+
+\begin{figure} %fuente de la imagen:libro del toro/
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figuras/HLL_onda.png}
+  \caption{Plano x-t que muestra que muestra un volumen definido}
+  \label{fig:Plano x_t}
+\end{figure}
+
+Si consideramos un control de volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas mas rápidas de los 
+estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Si usamos la forma integral de la 
+ecuacion \ref{Ecuacion_discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
+
+\begin{equation*}\label{Forma_integral_conservadas}
+\int_{x_L}^{x_R} \left[ U\left( x, T \right) -
+ U\left( x, 0 \right) \right] dx = 
+ \int_{0}^{T} \left[ F \left(U\left( x_L, t \right) \right) -
+ F \left(U\left( x_R, t \right) \right) \right] dt 
+\end{equation*}
+Entonces
+\begin{equation}\label{integral_consistencia}
+\int_{x_L}^{x_R} U\left( x, T \right) dx =\int_{x_L}^{x_R} U\left( x, 0 \right) dx+
+\int_{0}^{T}  F \left(U\left( x_L, t \right) \right)dt -
+\int_{0}^{T}  F \left(U\left( x_R, t \right) \right) dt
+\end{equation}
+
+Usando las condiciones de la ecuación \ref{Ecuacion_discreta_conservada} podemos evualuar la integral
+
+\begin{equation*}
+\int_{x_L}^{x_R} U\left( x, T \right) dx = 
+x_R U_R -x_L U_L+T F_L-T F_R
+\end{equation*}
+Donde $F_L = F \left( U_L \right)$ y $F_R = F \left( U_R \right)$, entonces
+
+\begin{equation}\label{Condición_de_consistencia}
+\int_{x_L}^{x_R} U\left( x, T \right) dx = 
+x_R U_R -x_L U_L+T \left( F_L- F_R \right)
+\end{equation}
+
+Si separamos ahora la ecuación \ref{integral_consistencia} en 3 integrales de la siguiente manera:
+
+\begin{equation}
+\int_{x_L}^{x_R} U\left( x, T \right) dx = 
+\int_{x_L}^{T S_L} U \left(x, T \right)dx+
+\int_{T S_L}^{T S_R} U \left(x, T \right)dx+
+\int_{T S_R}^{x_R} U \left(x, T \right)dx
+\end{equation}
+
+Si ahora evualuamos el tercer y el primer término en el lado derecho, obtenemos:
+
+\begin{equation}\label{condicion_consistencia_2}
+\int_{x_L}^{x_R} U\left( x, T \right) dx =
+\int_{T S_L}^{T S_R} U \left(x, T \right)dx+
+\left( T S_L - x_L \right) U_L+
+\left( x_L - T S_R \right) U_R
+\end{equation}
+
+Si combinamos la ecuación \ref{Condición_de_consistencia} y 
+\ref{condicion_consistencia_2}
+
+\begin{equation*}
+x_R U_R -x_L U_L+T \left( F_L- F_R \right) =
+\int_{T S_L}^{T S_R} U \left(x, T \right)dx+
+\left( T S_L - x_L \right) U_L+
+\left( x_L - T S_R \right) U_R
+\end{equation*}
+
+Entonces 
+
+\begin{equation*}
+\int_{T S_L}^{T S_R} U \left(x, T \right)dx=
+\left( T S_L - x_L \right) U_L+ x_L U_L +
+\left( x_L - T S_R \right) U_R-x_R U_R -
+T \left( F_L- F_R \right)
+\end{equation*}
+
+Con lo que al final nos queda
+
+\begin{equation} \label{ull_sin_promedio}
+\int_{T S_L}^{T S_R} U \left(x, T \right)dx=
+T \left( S_R U_R - S_L U_L + F_L - F_R \right)
+\end{equation}
+
+Si dividimos la ecuación \ref{ull_sin_promedio} por la diferencia de las velocidades maximas de las señales de las ondas, obtenemos el promedio de la funcion que esta entre las velocidades de la onda, entonces
+
+\begin{equation}
+\frac{1}{T \left( S_R -S_L \right)}\int_{T S_L}^{T S_R} U \left(x, T \right)dx =
+\frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}
+\end{equation}
+
+Si conocemos las velocidades de la onda podemos escribir la ecuación como 
+
+\begin{equation}\label{u_hll}
+U^{hll} = \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}
+\end{equation}
+
+Ahora si aplicamos la forma integral ( como en el caso de la ecuación \ref{Condición_de_consistencia}) a lado izquierdo de nustro plano obtenemos lo siguiente
+
+\begin{equation}
+\int_{T S_L}^{0} U\left( x, T \right) dx = 
+-T S_L U_L+T \left( F_L- F_{0L} \right)
+\end{equation}
+Donde $F_{0L}$ es el flujo a lo largo del eje $t$. Si despejamos $F_{0L}$, nos queda lo siguiente
+
+\begin{equation}\label{ec F_0L}
+F_{0L} = F_L - S_L U_L + \frac{1}{T}  \int_{T S_L}^{0} U\left( x, T \right) dx
+\end{equation}
+
+Esta última ecuación nos servira para calcular los flujos usando el método de Harteen-Van-Leer, el cual dividian el plano en tres espacios:
+
+\begin{figure} %fuente de la imagen:libro del toro/
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figuras/HLL.png}
+  \caption{Aproximación de 3 estados distintos en el plano x-t, en el cual se trata de calcular los flujos en la región $U^{hll}$ limitados por las velocidades de señal de la onda}
+  \label{fig:HLL}
+\end{figure}
+
+\begin{equation}
+U \left(x,t \right) = 
+\left\lbrace
+\begin{array}{rr}
+U_L \quad \textup{si} \quad \frac{x}{t}< S_L  \\
+U_{hll} \quad \textup{si} \quad S_L< \frac{x}{t} <S_R \\
+U_R \quad \textup{si} \quad  \frac{x}{t} > S_R
+\end{array}
+\right.
+\end{equation}
+
+Los flujos $F_R$ y $F_L$ pueden ser calculados directamente ya que solo dependen de $U_R$ y $U_L$ respectivamente pero $F_{hll} \neq F \left( U_{hll} \right)$, asi que resolvemos la integral de la ecuación \ref{ec F_0L} para asi obtener el flujo a traves del eje t
+
+\begin{equation*}
+F_{hll} = F_L -S_L U_L+ \frac{1}{T}U_{hll}\left(0- TS_L\right)
+\end{equation*}
+
+Entonces
+\begin{equation}\label{f_hll 1}
+F_{hll} = F_L +S_L \left( U_{hll} -U_L \right)
+\end{equation}
+
+Si sustituimos \ref{u_hll} en \ref{f_hll 1} obtenemos:
+
+\begin{equation*}
+F_{hll} = F_L +S_L \left( \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L} -U_L \right)
+\end{equation*}
+Entonces
+\begin{equation*}
+F_{hll} = \frac{F_L S_R -F_L S_L+S_L S_R U_R-S_L^2 U_L+S_L  F_L- S_L F_R-S_R S_L U_L + S_L^2 U_L}{S_R-S_L}
+\end{equation*}
+
+Eliminando términos semejantes queda
+\begin{equation}
+F_{hll} = \frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L}
+\end{equation}
+
+Con lo que el flujo intermedio de la celda de Gudonov esta dado por:
+
+\begin{equation} \label{fluxesHLL}
+F_{i+\frac{1}{2}}^{hll} = 
+\left\lbrace
+\begin{array}{rr}
+F_L \quad \textup{si} \quad 0 \leq S_L  \\
+\frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L} \quad \textup{si} \quad S_L \leq 0 \leq S_R \\
+F_R \quad \textup{si} \quad  0 \geq  S_R
+\end{array}
+\right.
+\end{equation}
+
+La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax}.
+
+\begin{lstlisting} [frame=single]
+  call fluxesHLL(fhll, ghll)
+      
+        do i=1,nx
+          do j=1,ny
+            up(:,i,j) = u(:,i,j)                                     &
+                        + 0.5*dtx*(fhll(:,i-1,j)-fhll(:,i+1,j))      &
+                        + 0.5*dty*(ghll(:,i,j-1)-ghll(:,i,j+1))
+          end do
+        end do
+
+\end{lstlisting}
+
+La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
+y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
+significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas mas rápidas de los estados iniciales \emph{U}, 
+para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
+
+\begin{lstlisting} [frame=single]
+  do i=1,nx
+  do j=1,ny
+    
+    if (0 .le. s_l(i,j)) then !less or equal 0<=sl
+      fhll(:,i,j)=f_l(:, i,j)
+
+    else if (s_l(i,j) .le. 0 .and. 0 .le. s_r(i,j)) then !sl<=0<=sr
+  
+      fhll(:,i,j)=(s_r(i,j)*f_l(:,i,j)-s_l(i,j)*f_r(:,i,j)+s_l(i,j)*s_r(i,j)*(u_r(:,i,j)-u_l(:,i,j)))/&
+      (s_r(i,j)-s_l(i,j))
+
+
+    else if (s_r(i,j) .le. 0) then !sr<=0
+        fhll(:,i,j)=f_r(:,i,j)
+
+    endif
+
+    if(0 .le. s_d(i,j)) then
+      ghll(:,i,j)= g_d(:,i,j)
+
+    else if(s_d(i,j) .le. 0 .and. 0 .le. s_u(i,j)) then
+
+      ghll(:,i,j)=(s_u(i,j)*g_d(:,i,j)-s_d(i,j)*g_u(:,i,j)+s_d(i,j)*s_u(i,j)*(u_u(:,i,j)-u_d(:,i,j)))/&
+      (s_u(i,j)-s_d(i,j))
+
+    else if(s_u(i,j) .le. 0) then
+        ghll(:,i,j) = g_u(:,i,j)
+
+    endif
+  end do
+end do
+\end{lstlisting}
+
+
 
 \chapter{Verificación del código}
 
@@ -2865,7 +2973,7 @@ donde $j\in \left[ a,b \right]$ y $a\geq 0, \, b\leq n+1$. Los puntos de la fron
 \chapter{Subrutina de Newton-Raphson}\label{ap_newrap}
 
 Subrutina de Newton-Raphson, los valores de de entrada son $m^2$ y las conservadas y devuelve $W$
-\begin{lstlisting}
+\begin{lstlisting} [frame=single]
   subroutine newrap(qu, w, m2)
 
 !    use parameters, only : neq, gamma
@@ -2949,7 +3057,7 @@ Subrutina de Newton-Raphson, los valores de de entrada son $m^2$ y las conservad
 
 \chapter{Subrutinas de Flujos calculados mediante el método de HLL}\label{ap_subrutina_fluxesHLL}
 
-\begin{lstlisting}
+\begin{lstlisting} [frame=single]
   !     !Este modulo calcula los flujos hll
       use globals
       implicit none
