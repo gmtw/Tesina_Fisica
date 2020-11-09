@@ -979,7 +979,12 @@ que es la velocidad de la luz al cuadrado, obtenemos la energía.
 
 
 
-Si ahora nos movemos al sistema de referencia visto desde la Tierra, la energía se vuelve:
+Como tenemos nuestro sistema de referencia en la onda de choque inicial ($\gamma_j$) sobre nuestro objeto compacto. La energía del jet es:
+\begin{equation}
+  E = \gamma_{\infty} E
+\end{equation}
+Donde $\gamma_{\infty}$ es factor de lorentz con el que se mueve el jet cuando ya se ha alejado del objecto compacto.
+Y si ahora nos movemos al sistema de referencia visto desde la Tierra, la energía se vuelve:
 
 
 
@@ -987,7 +992,7 @@ Si ahora nos movemos al sistema de referencia visto desde la Tierra, la energía
   E = \gamma_{j} \gamma_{\infty} E_j
 \end{equation}
 
-Donde $\gamma_j$ es el factor de lorentz del jet, $\gamma_{\infty}$ es el factor de lorentz de la onda de ¿choque? (Preguntar a Diego) y $E_j$ es la energía 
+Donde $\gamma_j$ es el factor de lorentz del jet y $E_j$ es la energía 
 del jet.
 
 Si derivamos con respecto al tiempo obtenemos la luminosidad.
@@ -1003,7 +1008,7 @@ Podemos obtener la densidad del jet despejando $\rho$ de la anterior ecuación
   \rho_j = \frac{L}{\gamma_{j} \gamma_{\infty}  \pi v_j R^2 c^2}
 \end{equation}
 
-Si ahora consideramos la conservación de masa:
+Considerando la conservación de masa:
 
 \begin{equation}
   \rho_j V_j \gamma_j=  \rho_{\infty} V_{\infty} \gamma_{\infty}
@@ -1016,6 +1021,12 @@ Donde $V_j$, $V_\infty$ es el volumen del jet y del medio que lo rodea respectiv
 \end{equation}
 
 Si ahora consideramos la ecuación de momentos
+
+\begin{equation}
+  \left( e_j + P_j\right) v^2_j \gamma^2_j + P_j = \left( e_{\infty} + P_{\infty}\right) v^2_{\infty} \gamma^2_{\infty} + P_{\infty}
+\end{equation}
+
+entonces
 
 \begin{equation}
   \left( \rho_j + 4P_j \right)V_j \gamma^2 +P_j = \left( \rho_\infty + 4P_\infty \right)V_\infty \gamma^2 +P_\infty
@@ -1358,7 +1369,7 @@ P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u
 
 En el código se implenta de la siguiente manera.
 Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento
-se implmenta directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
+se implementa directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
 
 \begin{lstlisting}[frame=single] 
   
@@ -1371,9 +1382,11 @@ se implmenta directamente en la subrutina \emph{fluxes}, para que se puedan calc
 
 \end{lstlisting}
 
+Racordemos que la variable \emph{u(4,i,j)} es la energía.
 
 
-\section{Desacoplamiento de las ecuaciones de la hidrodinámica relativista}
+
+\section{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
 Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
 
 \begin{equation}\label{ecuacion_de_energia}
@@ -1559,7 +1572,7 @@ los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que
 
 La subrutina de desacoplamiento para las variables conservadas que se mencionan en esta sección recibirá las variables conservadas
 y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular 
-(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}
+(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}.
 
 \begin{lstlisting} [frame=single]
   
@@ -1585,6 +1598,9 @@ y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular
 
   qp(4) =max(qp(4),1d-10*qp(1))
 \end{lstlisting}
+
+Las variables \emph{qp} mostradas en el código son las primitivas mientras que las otras son auxiliares mostradas en el capitulo 
+\ref{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
 
 \section{Diferencias finitas} \label{sec:Diferencias_finitas}
 Ya hemos visto que ecuaciones describen la hidrodinámica, ahora nos toca resolverlas, dado que analíticamente es difícil, se va a hacer computacionalmente, para 
