@@ -713,13 +713,13 @@ las variables \emph{i}, \emph{j} son contadores sobre el espacio.
 Considerando la conservación de masa:
 
 \begin{equation}
-  \rho_j V_j \gamma_j=  \rho_{\infty} V_{\infty} \gamma_{\infty}
+  \rho_j v_j \gamma_j=  \rho_{\infty} v_{\infty} \gamma_{\infty}
 \end{equation}
 
-Donde $V_j$, $V_\infty$ es el volumen del jet y del medio que lo rodea respectivamente, despejando $\rho_{\infty}$ obtenemos:
+Donde $v_j$, $v_\infty$ es la velocidad del jet y del medio que lo rodea respectivamente, despejando $\rho_{\infty}$ obtenemos:
 
 \begin{equation}\label{eq_masa_densidad_despejada}
-  \rho_\infty = \rho_j \frac{V_j \gamma_j }{V_\infty \gamma_\infty}
+  \rho_\infty = \rho_j \frac{v_j \gamma_j }{v_\infty \gamma_\infty}
 \end{equation}
 
 Si ahora consideramos la ecuación de momentos
@@ -742,43 +742,39 @@ cinética es $e_k = \rho c^2$ pero como estamos considerando a $c = 1$ esto se r
   \left( \rho_j + 4P_j \right) v^2_j \gamma^2_j  +P_j = \left( \rho_\infty + 4P_\infty \right) v^2_{\infty} \gamma^2_{\infty}  +P_\infty
 \end{equation}
 
-La ecuación de conservación de masa tambien se puede reescribir como:
-
-\begin{equation}\label{eq_masa_relativista_modificada}
-  \frac{v_j \gamma_j}{V_j}= \frac{v_{\infty} \gamma_{\infty}}{V_{\infty}}
-\end{equation}
-
-Con la ecuación \ref{eq_masa_relativista_modificada} podemos modificar la ecuación \ref{eq_momentos_relativista_modificada}, con lo que nos queda:
+Con la ecuación \ref{eq_masa_densidad_despejada} podemos modificar la ecuación \ref{eq_momentos_relativista_modificada}, con lo que nos queda:
 
 \begin{equation}
-  \left( \rho_j + 4P_j \right)V_j \gamma^2 +P_j = \left( \rho_\infty + 4P_\infty \right)V_\infty \gamma^2 +P_\infty
+  \left( \rho_j + 4P_j \right)v_j \gamma^2 +P_j = \left( \rho_\infty + 4P_\infty \right)v_\infty \gamma^2 +P_\infty
 \end{equation}
 
 y tomando un choque fuerte $P_j \gg P_\infty $ Podemos reducir la ecuación a 
 
 \begin{equation} \label{eq_momentos_choque_fuerte}
-  \left( \rho_j + 4P_j \right)V_j \gamma^2 +P_j =  \rho_\infty  V_\infty \gamma_{\infty}^{2} 
+  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j =  \rho_\infty  v_\infty^2 \gamma_{\infty}^{2} 
 \end{equation}
 
 Sustituyendo la ecuación \ref{eq_masa_densidad_despejada} en \ref{eq_momentos_choque_fuerte} obtenemos
 
 \begin{equation} \label{eq_momentos_choque_fuerte}
-  \left( \rho_j + 4P_j \right)V_j \gamma^2 +P_j = \rho_j V_j \gamma_j \gamma_\infty
+  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j = \rho_j v_j v_\infty \gamma_j \gamma_\infty
 \end{equation}
 
-Despejando $\gamma_\infty$ tenemos lo siguiente
+Suponiendo $\left( \rho_j + 4P_j \right)v_j^2 \gamma^2 \gg P_j $
+
+
 
 \begin{equation}
-  \gamma_\infty = \frac{\rho_j +4P_j}{\rho_j} \gamma_j +\frac{P_j}{\rho_j V_j \gamma_j}
-\end{equation}
-
-Podemos ver que el segundo término va a ser muy pequeño comparado con el primenr término, por lo tanto lo podemos despreciar, quedando como resultado
-
-\begin{equation}
-  \gamma_\infty = \frac{\rho_j +4P_j}{\rho_j} \gamma_j 
+  \left( \rho_j + 4P_j \right)v_j \gamma_j = \rho_\infty v_\infty  \gamma_\infty
 \end{equation}
 
 Despejando la presión obtenemos
+
+\begin{equation}
+  P_j = \frac{\rho_j}{4}\left(\frac{v_\infty}{v_j} \frac{\gamma_\infty}{\gamma_j}-1\right)
+\end{equation}
+
+Como $v_j \thickapprox v_\infty \thickapprox c$
 
 \begin{equation}
   P_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right)
