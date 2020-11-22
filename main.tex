@@ -400,170 +400,44 @@ la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ .
 
 Las variables \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle, el término $\mathbf{H}$ no es incluido, debido a que es computacionalmente 
 caro. El término \emph{u} hace alusión a las variables conservadas.
+
+\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica}
+
+Al final del metodo de las diferencias finitas, obtenemos nuestras variables conservadas (\emph{U}), pero para calcular nuestros flujos de nuevo necesitamos recuperar nuestras primitas, es decir, calcular nuestras variables primitivas $(\rho, \, u, \, v,\, w, \, P )$ en función de nuestras variables conservadas $(u_1, \, u_2, \, u_3, \, u_4, \, u_5)$.
+
+Despejar la densidad es sencillo ya que es directo $u_1= \rho$ por lo tanto:
+
+\begin{equation}\label{primitiva_densidad}
+\rho = u_1
+\end{equation}
+
+Para las velocidades $u_i=\rho \upsilon$, donde $i=2,3,4$ y $\upsilon=u,v,w$, nos da $\upsilon= u_i/ \rho$ y usando la ecuación \ref{primitiva_densidad} queda:
+
+\begin{equation} \label{primitiva_velocidades}
+\upsilon = u_1/u_i
+\end{equation}
+Para la ecuacion de la energía $u_5=E$ combinando con la ecuacion de estado y la ecuación \ref{primitiva_velocidades} obtenemos
+\begin{equation}
+P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u_i \right)^2}{2} \right]
+\end{equation}
+
+En el código se implenta de la siguiente manera.
+Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento
+se implementa directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
+
+\begin{lstlisting}[frame=single] 
   
 
-\subsection{Rankine-Hugoniot}
+    !Desacoplamiento de las primitivas
+    rho = u (1,i,j)
+    vx  = u(2,i,j)/rho
+    vy  = u(3,i,j)/rho
+    P   = (u(4,i,j)-0.5*rho*(vx**2+vy**2))*(gamma-1.)
 
-Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque
-, esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se ruelve con las ecuaciones de 
-Rankine Hugoniot.
-Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
-hacia la derecha (ver figura \ref{fig_move_shock}) sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
-$\rho_0$ y $P_0$ mientras que los flujos que estan comprimidos detras del frente de onda se mueven con una velocidad $v_p$ y que tienen
-densidad y presión $\rho_p$, $P_p$.
+\end{lstlisting}
 
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.7]{./Figuras/Teoria/move_shock.png}
-  \caption{Onda de choque en movimiento sobre un flujo estacionario, tanto la onda como el flujo que esta a la izquierda se mueven a la derecha}\label{fig_move_shock}
-\end{figure}
+Racordemos que la variable \emph{u(4,i,j)} es la energía.
   
-
-Si considerámos nuestro sistema de referencia posicionado sobre la onda (ver figura \ref{fig_stationary_shock}), usando las transformaciones de Galileo, las direciones de las velocidades
-se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$
-
-\begin{figure} 
-  \centering
-  \includegraphics[scale=0.7]{./Figuras/Teoria/stationary_shock.png}
-  \caption{Al tomar nuestro sistema de referencia sobre la onda, nuestro choque en movimiento se transforma en una choque estacionario, y los
-  flujos que estan a la derecha e izquierda de la onda se mueven hacia la izquierda } \label{fig_stationary_shock}
-\end{figure}
-
-Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservacion_momento_hidrodinamica} y \ref{conservacion_energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
-
-
-La conservación de masa
-\begin{equation}
-  \nabla \cdot \left( \rho \mathbf{u} \right)=0
-\end{equation}
-
-El momento
-\begin{equation}
-  \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = 0
-\end{equation}
-
-Ecuación de la energía
-
-\begin{equation}
- \nabla \cdot \left[ \mathbf{u} \left( e+P \right) \right] = 0
-\end{equation}
-
-Considerando una dimensión:
-
-\begin{equation}
-\dfrac{d \left( \rho u \right)}{d x} = 0
-\end{equation}
-
-\begin{equation}
-\dfrac{d \left( \rho u^2 \right)}{d x}+ \dfrac{d P}{d x}=0
-\end{equation}
-
-\begin{equation}
-\dfrac{d \left( u\left[e +P \right] \right)}{d x} = 0
-\end{equation}
-
-Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando 
-la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
-es la densidad de energía por unidad de volumen
-
-\begin{equation}\label{RH_masa}
-\rho_j u_j = \rho_m u_m
-\end{equation}
-
-\begin{equation}\label{RH_momento}
-\rho_j u_{j}^{2}+P_j = \rho_m u_{m}^{2}+P_m
-\end{equation}
-
-\begin{equation}\label{RH_Energia}
-\frac{1}{2} u_{j}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}} =
- \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
-\end{equation}
-
-Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, 
-$P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas 
-$\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
-
-\begin{equation}\label{RH_momento_j}
-P_{j}+\frac{j^2}{\rho_{j}}=P_{m}+\frac{j^2}{\rho_{m}}
-\end{equation}
-
-y la ecuación \ref{RH_Energia} llegamos a:
-
-\begin{equation}\label{RH_Energia_j}
-\frac{1}{2} \frac{j^{2}}{\rho_{j}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}}=
-\frac{1}{2} \frac{j^{2}}{\rho_{m}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
-\end{equation}
-
-Despejando $j$ de la ecuación \ref{RH_momento_j} obtenemos:
-\begin{equation}\label{j^2}
--j^{2}=\frac{P_{j}-P_{m}}{\frac{1}{\rho_{m}}-\frac{1}{\rho_{j}}}
-\end{equation}
-
-Ahora sustituyendo la ecuación en \ref{j^2} en \ref{RH_Energia_j} obtenemos:
-
-\begin{equation*}
-\frac{1}{2} \left( \frac{P_{m}-P_{j}}{\frac{1}{\rho_{j}}-\frac{1}{\rho_{m}}} \right)
-\left(\frac{1}{\rho_{j}^{2}}-\frac{1}{\rho_{m}^{2}} \right)
-=
-\frac{\Gamma}{\Gamma-1}
-\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation*}
-\frac{1}{2}	\left( P_{m} - P_{j} \right)
-\left( \frac{1}{\rho_{j}}+\frac{1}{\rho_{m}} \right)
-=
-\frac{\Gamma}{\Gamma-1}
-\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation*}
-\frac{1}{\rho_{m}} \left( \frac{1}{2} P_{m}- \frac{1}{2} P_{j}-
-\frac{\Gamma}{\Gamma-1} P_{m} \right)
-=
-\frac{1}{\rho_{j}} \left( \frac{1}{2} P_{j}- \frac{1}{2} P_{m}-
-\frac{\Gamma}{\Gamma-1} P_{j} \right)
-\end{equation*}
-
-$\Rightarrow$
-
-\begin{equation*}
-\frac{1}{\rho_{m}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{m} + P_{j} \right]
-=
-\frac{1}{\rho_{j}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{j} + P_{m} \right]
-\end{equation*}
-
-Con lo que nos queda:
-
-\begin{equation}\label{RH_no_rel_choque_no_fuerte}
-\frac{\rho_{m}}{\rho_j} =
-\frac{\left( \Gamma +1 \right) P_{m}+ \left( \Gamma -1 \right) P_{j
-}}{\left(\Gamma +1 \right) P_{j}+ \left( \Gamma -1 \right) P_{m}}
-= \frac{u_j}{u_m}
-\end{equation}
-
-Si consideramos choque fuerte, es decir, $P_j \gg P_m$, implicaría que $P_m \simeq 0$, por lo que
-
-\begin{equation}
-\rho_j = \frac{\Gamma +1}{\Gamma-1} \rho_m 
-\end{equation}
-Tomando a $\Gamma = 5/3$ da
-
-\begin{equation}
-\rho_j = 4 \rho_m
-\end{equation}
-
-\begin{equation}
-u_j = \frac{1}{4} u_m
-\end{equation}
-
-\begin{equation}
-P_{j} = \frac{3}{4}\rho_m u_m^{2}
-\end{equation}
 
 
 \section{Hidrodinámica relativista}
@@ -662,449 +536,7 @@ newtoniana solo se considerará 2 dimensiones:
 A diferencia de los flujos newtonianos, para los flujos relativistas se tienen que calcular antes el factor de Lorentz \emph{lor} y la entalpía \emph{h},
 las variables \emph{i}, \emph{j} son contadores sobre el espacio.
 
-
-\subsubsection{Rankine-Hugoniot Relativista}
-
-% Si suponenmos las condiciones de Rankine-Hugoniot en un jet relativista, la presión interna del jet va a a ser mucho más grande que la del medio que lo está
-% rodeando. Si colocamos nuestro marco de referencia sobre el jet, su masa será:
-
-% \begin{equation}
-%   M = \pi \rho v_j R^2 t
-% \end{equation}
-
-% Donde $M$, $\rho$, $v_j$ y $R$ son la masa, densidad, velocidad y radio del jet respectivamente, $t$ es el tiempo. Si multiplicamos todo por $c^2$,
-% que es la velocidad de la luz al cuadrado, obtenemos la energía.
-
-% \begin{equation}
-%   E = Mc^2 = \pi \rho v_j R^2 t c^2
-% \end{equation}
-
-
-
-% Como tenemos nuestro sistema de referencia en la onda de choque inicial ($\gamma_j$) sobre nuestro objeto compacto. La energía del jet es:
-% \begin{equation}
-%   E = \gamma_{\infty} E
-% \end{equation}
-% Donde $\gamma_{\infty}$ es factor de lorentz con el que se mueve el jet cuando ya se ha alejado del objecto compacto.
-% Y si ahora nos movemos al sistema de referencia visto desde la Tierra, la energía se vuelve:
-
-
-
-% \begin{equation}
-%   E = \gamma_{j} \gamma_{\infty} E_j
-% \end{equation}
-
-% Donde $\gamma_j$ es el factor de lorentz del jet y $E_j$ es la energía 
-% del jet.
-
-% Si derivamos con respecto al tiempo obtenemos la luminosidad.
-
-
-% \begin{equation}
-%   L = \dfrac{dE}{dt} = \gamma_{j} \gamma_{\infty}  \pi \rho v_j R^2 c^2
-% \end{equation}
-
-% Podemos obtener la densidad del jet despejando $\rho$ de la anterior ecuación
-
-% \begin{equation}
-%   \rho_j = \frac{L}{\gamma_{j} \gamma_{\infty}  \pi v_j R^2 c^2}
-% \end{equation}
-
-Considerando la conservación de masa:
-
-\begin{equation}
-  \rho_j v_j \gamma_j=  \rho_{\infty} v_{\infty} \gamma_{\infty}
-\end{equation}
-
-Donde $v_j$, $v_\infty$ es la velocidad del jet y del medio que lo rodea respectivamente, despejando $\rho_{\infty}$ obtenemos:
-
-\begin{equation}\label{eq_masa_densidad_despejada}
-  \rho_\infty = \rho_j \frac{v_j \gamma_j }{v_\infty \gamma_\infty}
-\end{equation}
-
-Si ahora consideramos la ecuación de momentos
-
-\begin{equation}
-  \left( e_j + P_j\right) v^2_j \gamma^2_j + P_j = \left( e_{\infty} + P_{\infty}\right) v^2_{\infty} \gamma^2_{\infty} + P_{\infty}
-\end{equation}
-
-La densidad de energía se compone de la energía interna del sistema y de la energía cinética
-
-\begin{equation} \label{eq_densidad_de_energia}
-  e = e_{int} + e_k
-\end{equation}
-
-La energía interna para un sistema ultra-relativista es $ P = \frac{1}{3}e_{int}$ lo que implica que $e_{int} = 3P$, mientras que la densidad de energía
-cinética es $e_k = \rho c^2$ pero como estamos considerando a $c = 1$ esto se reduce a $e_k = \rho$. Si sustituimos todo esto en la ecuación
-\ref{eq_densidad_de_energia} entonces nos queda:
-
-\begin{equation} \label{eq_momentos_relativista_modificada}
-  \left( \rho_j + 4P_j \right) v^2_j \gamma^2_j  +P_j = \left( \rho_\infty + 4P_\infty \right) v^2_{\infty} \gamma^2_{\infty}  +P_\infty
-\end{equation}
-
-Con la ecuación \ref{eq_masa_densidad_despejada} podemos modificar la ecuación \ref{eq_momentos_relativista_modificada}, con lo que nos queda:
-
-\begin{equation}
-  \left( \rho_j + 4P_j \right)v_j \gamma^2 +P_j = \left( \rho_\infty + 4P_\infty \right)v_\infty \gamma^2 +P_\infty
-\end{equation}
-
-y tomando un choque fuerte $P_j \gg P_\infty $ Podemos reducir la ecuación a 
-
-\begin{equation} \label{eq_momentos_choque_fuerte}
-  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j =  \rho_\infty  v_\infty^2 \gamma_{\infty}^{2} 
-\end{equation}
-
-Sustituyendo la ecuación \ref{eq_masa_densidad_despejada} en \ref{eq_momentos_choque_fuerte} obtenemos
-
-\begin{equation} \label{eq_momentos_choque_fuerte}
-  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j = \rho_j v_j v_\infty \gamma_j \gamma_\infty
-\end{equation}
-
-Suponiendo $\left( \rho_j + 4P_j \right)v_j^2 \gamma^2 \gg P_j $
-
-
-
-\begin{equation}
-  \left( \rho_j + 4P_j \right)v_j \gamma_j = \rho_\infty v_\infty  \gamma_\infty
-\end{equation}
-
-Despejando la presión obtenemos
-
-\begin{equation}
-  P_j = \frac{\rho_j}{4}\left(\frac{v_\infty}{v_j} \frac{\gamma_\infty}{\gamma_j}-1\right)
-\end{equation}
-
-Como $v_j \thickapprox v_\infty \thickapprox c$
-
-\begin{equation}
-  P_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right)
-\end{equation}
-
-
-\subsection{Luminosidad}
-Si suponenmos las condiciones de Rankine-Hugoniot en un jet relativista y si colocamos nuestro marco de referencia sobre el jet, la energía será:
-
-\begin{equation} \label{eq._energia_relativista}
-  E = \gamma_{\infty} M c^2
-\end{equation}
-
-Donde $\gamma_{\infty}$ es factor de lorentz con el que se mueve el jet cuando ya se ha alejado del objecto compactoy como sabemos 
-que $L \equiv \dfrac{d E}{d t}$ entonces derivando la ecuación \ref{eq._energia_relativista} respecto al tiempo
-
-Entonces tenemos 
-
-\begin{equation} \label{eq._luminosidad_relativista}
-  \dfrac{d E}{d t} = \gamma_{j} \dot{ M }  c^2
-\end{equation}
-
-La taza de flujo de masa $\dot{M}$ se puede escribir como
-
-\begin{equation}
-  \dot{M} = \rho_j u_j A_j
-\end{equation}
-
-Donde $\rho$ es la densidad, $u_j = v_j \gamma_{j}$ es la cuadrivelocidad,  y $A_j$ es el área, que en este caso, corresponde la parte esférica del jet
-entonces la luminosidad se puede escribir como:
-
-\begin{equation}
-  L \equiv \dfrac{d E}{d t} = 4\pi r_j^2 \rho_j v_j \gamma_j \gamma_{\infty} c^2
-\end{equation}
-
-Despejando la densidad
-
-\begin{equation}
-  \rho = \frac{L}{4\pi r_j^2 v_j \gamma_j \gamma_{\infty} c^2}
-\end{equation}
-
-\section{Ecuaciones de Sedov-Taylor}
-
-Una forma de verificar si nuesto código funciona es usar el problema de Sedov-Taylor, que básicamente es modelar una onda de choque esférico con una determinada 
-energía, presión y densidad sobre un medio externo. 
-Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. 
-Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
-
-\subsection{Análisis dimensional}
-Si consideramos un choque fuerte,
-es decir, $P_w \gg P_m$,
-entonces las únicas variables que podemos tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
-Las dimensiones de estas cantidades son 
-
-\begin{equation}
-  \left[ \rho_w \right] = \frac{M}{L^3}
-\end{equation}
-
-\begin{equation}
-  \left[E\right] = M \frac{L^2}{T^2}
-\end{equation}
-
-\begin{equation}
-  \left[ t\right] = T
-\end{equation}
-
-La única cantidad que se puede construir que contenga la energía el tiempo y la densidad y que su dimensión sea
-la longitud es:
-
-\begin{equation}
-  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L
-\end{equation}
-
-Por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
-
-\begin{equation}
-  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}
-\end{equation}
-
-Por lo que la constante $\eta$ debe ser de la siguiente manera
-
-\begin{equation}
-  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}
-\end{equation}
-
-
-
-\subsection{Aproximación en función de la presión y densidad}
-
-Otra aproximación es buscando el cociente de presiones y densidades en función del número Mach.
-Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y
-la densidad de la onda es constante entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
-entonces podemos aproximar la energía cinética de la onda como 
-
-\begin{equation}
-	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_w R^3 \left( \frac{R}{t} \right) ^2 = \rho_w \frac{R^5}{t^2}
-\end{equation}
-
-Ahora la energía térmica de una explosion es 
-
-\begin{equation} \label{eq_energia_termica}
-	E_{th} \sim \frac{3}{2}PV
-\end{equation}
-
-Para encontrar la presión, primero defineremos algunas ecuaciones antes.
-
-La entalpia estancada se define en términos de la entalpia y la velocidad de la onda 
-
-\begin{equation}
-	h_0 = h + \frac{1}{2} v^2
-\end{equation}
-
-La cual la podemos rescribir como
-
-\begin{equation} \label{eq_entalpia}
-	h_0 = h + \left( 1 +\frac{1}{2} \frac{v^2}{h} \right)
-\end{equation}
-
-Ahora sabemos que la velocidad del sonido puede ser definida como 
-
-\begin{equation} \label{eq_sonido_1}
-	a = \sqrt{\frac{\Gamma P}{\rho}}
-\end{equation}
-
-y tambien como 
-
-\begin{equation} \label{eq_sonido_2}
-	a = \sqrt{(\Gamma-1) h}
-\end{equation}
-
-Donde $a$ es la velocidad del sonido, $h$ la entalpia, $v$ la velocidad, $P$ la presión y $\rho$ la densidad. Tambien definimos el número de Mach como 
-
-\begin{equation} \label{eq_Mach}
-	M = \frac{v}{a}
-\end{equation}
-
-Si combinamos la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo sustituimos en la ecuación \ref{eq_entalpia} nos queda la entalpia en funcion de la velocidad de la onda y del sonido
-
-\begin{equation} \label{h_0_funcion_aire_mach}
-	h_0 = \frac{a^2}{\Gamma - 1} \left( 1 + \frac{\Gamma - 1}{2} M^2 \right)
-\end{equation}
-
-Esta ecuacion servirá más adelate. Volviendo a las ecuaciones de Rankine Hugoniot podemos usar la ecuacion
-\ref{RH_Energia} y \ref{entalpia_funcion_presion_densidad} para obtener la ecuacion de la energía en funcion de la entalpia, lo que nos va a quedar al final como
-
-\begin{equation}\label{RH_entalpia}
-  h_w +\frac{1}{2}v_w^2 = h_w +\frac{1}{2}v_w^2
-\end{equation} 
-
-
-Donde $ h $ es la entalpia y $v$ la velocidad, los sub-índices $w$, $m$ corresponden a la onda y al medio respectivamente.
-
-Si dividimos la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los sub-índices $j$ por $w$
-obtenemos la siguiente ecuación 
-
-\begin{equation} \label{RH_momento_masa}
-  v_w + \frac{P_w}{\rho_w v_w} = v_m + \frac{P_m}{\rho_m v_m}
-\end{equation}
-
-Usando la ecuación \ref{eq_sonido_1} en la ecuación \ref{RH_momento_masa} podemos reescribir la ecuación de 
-la siguiente manera:
-
-\begin{equation} \label{eq_diferencia_velocidades}
-  v_w-v_m = \frac{1}{\Gamma} \left(\frac{a_m^2}{v_m} - \frac{a_w^2}{v_w} \right)
-\end{equation}
-
-Por simplicidad definimos la entalpia estancada como 
-
-\begin{equation}
-  h_w + \frac{1}{2} v_w = h_w + \frac{1}{2} v_w \equiv h_0
-\end{equation}
-
-Por lo que podemos definir a la velocidad del sonido como:
-
-\begin{equation} \label{eq_sonido_onda}
-  a_w = \left( \Gamma-1 \right) h_w = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_w^2 \right)
-\end{equation}
-
-\begin{equation} \label{eq_sonido_medio}
-  a_m = \left( \Gamma-1 \right) h_m = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_m^2 \right)
-\end{equation}
-
-Sustituyendo las ecuaciones \ref{eq_sonido_onda} y \ref{eq_sonido_medio} en la ecuación \ref{eq_diferencia_velocidades}
-nos queda
-
-\begin{equation}
-  v_w-v_m = \frac{\Gamma - 1}{\Gamma} \left[ \frac{h_0}{v_m} - \frac{h_0}{u_w} + \frac{1}{2} \left( v_w - v_m\right) \right]
-\end{equation}
-
-Dividiendo por $ \left( v_w - v_m \right)$
-
-\begin{equation}
-  1 = \frac{\Gamma - 1}{\Gamma} \left( \frac{h_0}{v_m v_w} + \frac{1}{2} \right)
-\end{equation}
-
-Que al final la podemos reescribir como
-
-\begin{equation} \label{eq_denominador}
-  \frac{1}{v_w v_m} = \frac{1}{\left( \Gamma -1\right) h_0} \frac{\Gamma + 1}{2}
-\end{equation}
-
-Otra ecuación que nos va a servir es la definicion de Mach ya que como
-
-\begin{equation}\label{velocidad_aire_mach}
-  v_w^2 = a_w^2 M_w^2
-\end{equation}
-
-Entonces usando \ref{h_0_funcion_aire_mach} podemos reescribir la ecuación \ref{velocidad_aire_mach} como
-como
-
-\begin{equation} \label{eq_numerador}
-  v_w^2 = M_w^2 \frac{\left( \Gamma -1 \right) h_0}{1+\frac{\Gamma - 1}{2} M_w^2}
-\end{equation}
-
-Usando la ecuación de momentos \ref{RH_masa} podemos reescribirla como
-
-\begin{equation} \label{eq_fraccion_momentos}
-  \frac{\rho_m }{\rho_w} = \frac{ v_w}{v_m} = \frac{v_w^2}{v_w v_m}
-\end{equation}
-
-Como ya sabemos cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador})
-de la fracción, podemos definir el cociente de las densidades \ref{eq_fraccion_momentos} como 
-
-\begin{equation}\label{eq_fraccion_momentos_funcion_mach}
-  \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}
-\end{equation}
-
-Entonces para encontrar las presiones combinamos las ecuaciones \ref{RH_momento} y \ref{RH_masa} tenemos
-
-\begin{equation}
-  P_m - P_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right)
-\end{equation}
-
-Usando la siguiente relación $\rho v^2 = \Gamma P M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y
-\ref{eq_Mach},dividiendo por $P_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación \ref{eq_fraccion_momentos_funcion_mach}
-nos queda
-
-\begin{equation} \label{eq_fraccion_Presiones}
-  \frac{P_m}{P_w} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_w^2 -1\right)
-\end{equation}
-
-Usando la siguiente relación $ P_w = \frac{\rho a_w }{\Gamma}$ se puede obtener el límite del choque fuerte
-
-\begin{equation}
-  P_m  \simeq \frac{2 \rho_w v_w^2}{\Gamma + 1}
-\end{equation}
-
-Con esto ya podemos obtener la energía térmica de la ecuación \ref{eq_energia_termica} por lo que nos queda 
-
-\begin{equation}
-  E_{th} \sim P_m R^3 \sim \rho_w v_w^2 R^3 \sim \rho_w \frac{R^5}{t^2}
-\end{equation}
-
-Como tiene el mismo orden que el de la energía cinética, entonces la energía total que es una cantidad conservada, se espera que
-
-\begin{equation}
-  E_t = E_{kin} + E_{th} \sim \rho_w \frac{R^5}{t^2}
-\end{equation}
-
-Despejando el radio, obtenemos lo siguiente
-
-\begin{equation} \label{eq_Radio_proporcional}
-  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}
-\end{equation}
-
-Vemos que la figura \ref{fig_Radio_v_tiempo} parece una funcion logaritmica y su radio de expansion no crece muy rápidamente conforme avanza el tiempo,
-Para tiempos $t = 4$ y $t = 100$, el radio es $R = 1.74$ y $R = 6.30$ respectivamente
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Radio_vs_tiempo.png}
-  \caption{Radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_Radio_v_tiempo}
-\end{figure}
-
-Si derivamos la ecuación \ref{eq_Radio_proporcional}, obtenemos la velocidad
-
-\begin{equation}
-  \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}
-\end{equation}
-
-
-A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (ver \ref{fig_velocidad_vs_radio})
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Velocidad_vs_tiempo.png}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_velocidad_vs_radio}
-\end{figure}
-
-
-\section{Desacoplamiento de las ecuaciones de la hidrodinámica}
-
-Al final del metodo de las diferencias finitas, obtenemos nuestras variables conservadas (\emph{U}), pero para calcular nuestros flujos de nuevo necesitamos recuperar nuestras primitas, es decir, calcular nuestras variables primitivas $(\rho, \, u, \, v,\, w, \, P )$ en función de nuestras variables conservadas $(u_1, \, u_2, \, u_3, \, u_4, \, u_5)$.
-
-Despejar la densidad es sencillo ya que es directo $u_1= \rho$ por lo tanto:
-
-\begin{equation}\label{primitiva_densidad}
-\rho = u_1
-\end{equation}
-
-Para las velocidades $u_i=\rho \upsilon$, donde $i=2,3,4$ y $\upsilon=u,v,w$, nos da $\upsilon= u_i/ \rho$ y usando la ecuación \ref{primitiva_densidad} queda:
-
-\begin{equation} \label{primitiva_velocidades}
-\upsilon = u_1/u_i
-\end{equation}
-Para la ecuacion de la energía $u_5=E$ combinando con la ecuacion de estado y la ecuación \ref{primitiva_velocidades} obtenemos
-\begin{equation}
-P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u_i \right)^2}{2} \right]
-\end{equation}
-
-En el código se implenta de la siguiente manera.
-Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento
-se implementa directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
-
-\begin{lstlisting}[frame=single] 
-  
-
-    !Desacoplamiento de las primitivas
-    rho = u (1,i,j)
-    vx  = u(2,i,j)/rho
-    vy  = u(3,i,j)/rho
-    P   = (u(4,i,j)-0.5*rho*(vx**2+vy**2))*(gamma-1.)
-
-\end{lstlisting}
-
-Racordemos que la variable \emph{u(4,i,j)} es la energía.
-
-
-
-\section{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
+\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
 Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
 
 \begin{equation}\label{ecuacion_de_energia}
@@ -1319,6 +751,7 @@ y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular
 
 Las variables \emph{qp} mostradas en el código son las primitivas mientras que las otras son auxiliares mostradas en el capitulo 
 \ref{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
+
 
 \section{Diferencias finitas} \label{sec:Diferencias_finitas}
 Ya hemos visto que ecuaciones describen la hidrodinámica, ahora nos toca resolverlas, dado que analíticamente es difícil, se va a hacer computacionalmente, para 
@@ -1663,6 +1096,584 @@ significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las
   end do
 end do
 \end{lstlisting}
+
+
+
+\section{Ecuaciones de Rankine-Hugoniot}
+
+\subsection{Rankine-Hugoniot}
+
+Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque
+, esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se ruelve con las ecuaciones de 
+Rankine Hugoniot.
+Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
+hacia la derecha (ver figura \ref{fig_move_shock}) sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
+$\rho_0$ y $P_0$ mientras que los flujos que estan comprimidos detras del frente de onda se mueven con una velocidad $v_p$ y que tienen
+densidad y presión $\rho_p$, $P_p$.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.7]{./Figuras/Teoria/move_shock.png}
+  \caption{Onda de choque en movimiento sobre un flujo estacionario, tanto la onda como el flujo que esta a la izquierda se mueven a la derecha}\label{fig_move_shock}
+\end{figure}
+  
+
+Si considerámos nuestro sistema de referencia posicionado sobre la onda (ver figura \ref{fig_stationary_shock}), usando las transformaciones de Galileo, las direciones de las velocidades
+se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$
+
+\begin{figure} 
+  \centering
+  \includegraphics[scale=0.7]{./Figuras/Teoria/stationary_shock.png}
+  \caption{Al tomar nuestro sistema de referencia sobre la onda, nuestro choque en movimiento se transforma en una choque estacionario, y los
+  flujos que estan a la derecha e izquierda de la onda se mueven hacia la izquierda } \label{fig_stationary_shock}
+\end{figure}
+
+Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservacion_momento_hidrodinamica} y \ref{conservacion_energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
+
+
+La conservación de masa
+\begin{equation}
+  \nabla \cdot \left( \rho \mathbf{u} \right)=0
+\end{equation}
+
+El momento
+\begin{equation}
+  \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = 0
+\end{equation}
+
+Ecuación de la energía
+
+\begin{equation}
+ \nabla \cdot \left[ \mathbf{u} \left( e+P \right) \right] = 0
+\end{equation}
+
+Considerando una dimensión:
+
+\begin{equation}
+\dfrac{d \left( \rho u \right)}{d x} = 0
+\end{equation}
+
+\begin{equation}
+\dfrac{d \left( \rho u^2 \right)}{d x}+ \dfrac{d P}{d x}=0
+\end{equation}
+
+\begin{equation}
+\dfrac{d \left( u\left[e +P \right] \right)}{d x} = 0
+\end{equation}
+
+Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando 
+la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
+es la densidad de energía por unidad de volumen
+
+\begin{equation}\label{RH_masa}
+\rho_j u_j = \rho_m u_m
+\end{equation}
+
+\begin{equation}\label{RH_momento}
+\rho_j u_{j}^{2}+P_j = \rho_m u_{m}^{2}+P_m
+\end{equation}
+
+\begin{equation}\label{RH_Energia}
+\frac{1}{2} u_{j}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}} =
+ \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
+\end{equation}
+
+Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, 
+$P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas 
+$\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
+
+\begin{equation}\label{RH_momento_j}
+P_{j}+\frac{j^2}{\rho_{j}}=P_{m}+\frac{j^2}{\rho_{m}}
+\end{equation}
+
+y la ecuación \ref{RH_Energia} llegamos a:
+
+\begin{equation}\label{RH_Energia_j}
+\frac{1}{2} \frac{j^{2}}{\rho_{j}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}}=
+\frac{1}{2} \frac{j^{2}}{\rho_{m}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
+\end{equation}
+
+Despejando $j$ de la ecuación \ref{RH_momento_j} obtenemos:
+\begin{equation}\label{j^2}
+-j^{2}=\frac{P_{j}-P_{m}}{\frac{1}{\rho_{m}}-\frac{1}{\rho_{j}}}
+\end{equation}
+
+Ahora sustituyendo la ecuación en \ref{j^2} en \ref{RH_Energia_j} obtenemos:
+
+\begin{equation*}
+\frac{1}{2} \left( \frac{P_{m}-P_{j}}{\frac{1}{\rho_{j}}-\frac{1}{\rho_{m}}} \right)
+\left(\frac{1}{\rho_{j}^{2}}-\frac{1}{\rho_{m}^{2}} \right)
+=
+\frac{\Gamma}{\Gamma-1}
+\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation*}
+\frac{1}{2}	\left( P_{m} - P_{j} \right)
+\left( \frac{1}{\rho_{j}}+\frac{1}{\rho_{m}} \right)
+=
+\frac{\Gamma}{\Gamma-1}
+\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation*}
+\frac{1}{\rho_{m}} \left( \frac{1}{2} P_{m}- \frac{1}{2} P_{j}-
+\frac{\Gamma}{\Gamma-1} P_{m} \right)
+=
+\frac{1}{\rho_{j}} \left( \frac{1}{2} P_{j}- \frac{1}{2} P_{m}-
+\frac{\Gamma}{\Gamma-1} P_{j} \right)
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation*}
+\frac{1}{\rho_{m}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{m} + P_{j} \right]
+=
+\frac{1}{\rho_{j}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{j} + P_{m} \right]
+\end{equation*}
+
+Con lo que nos queda:
+
+\begin{equation}\label{RH_no_rel_choque_no_fuerte}
+\frac{\rho_{m}}{\rho_j} =
+\frac{\left( \Gamma +1 \right) P_{m}+ \left( \Gamma -1 \right) P_{j
+}}{\left(\Gamma +1 \right) P_{j}+ \left( \Gamma -1 \right) P_{m}}
+= \frac{u_j}{u_m}
+\end{equation}
+
+Si consideramos choque fuerte, es decir, $P_j \gg P_m$, implicaría que $P_m \simeq 0$, por lo que
+
+\begin{equation}
+\rho_j = \frac{\Gamma +1}{\Gamma-1} \rho_m 
+\end{equation}
+Tomando a $\Gamma = 5/3$ da
+
+\begin{equation}
+\rho_j = 4 \rho_m
+\end{equation}
+
+\begin{equation}
+u_j = \frac{1}{4} u_m
+\end{equation}
+
+\begin{equation}
+P_{j} = \frac{3}{4}\rho_m u_m^{2}
+\end{equation}
+
+
+
+
+\subsection{Rankine-Hugoniot Relativista}
+
+% Si suponenmos las condiciones de Rankine-Hugoniot en un jet relativista, la presión interna del jet va a a ser mucho más grande que la del medio que lo está
+% rodeando. Si colocamos nuestro marco de referencia sobre el jet, su masa será:
+
+% \begin{equation}
+%   M = \pi \rho v_j R^2 t
+% \end{equation}
+
+% Donde $M$, $\rho$, $v_j$ y $R$ son la masa, densidad, velocidad y radio del jet respectivamente, $t$ es el tiempo. Si multiplicamos todo por $c^2$,
+% que es la velocidad de la luz al cuadrado, obtenemos la energía.
+
+% \begin{equation}
+%   E = Mc^2 = \pi \rho v_j R^2 t c^2
+% \end{equation}
+
+
+
+% Como tenemos nuestro sistema de referencia en la onda de choque inicial ($\gamma_j$) sobre nuestro objeto compacto. La energía del jet es:
+% \begin{equation}
+%   E = \gamma_{\infty} E
+% \end{equation}
+% Donde $\gamma_{\infty}$ es factor de lorentz con el que se mueve el jet cuando ya se ha alejado del objecto compacto.
+% Y si ahora nos movemos al sistema de referencia visto desde la Tierra, la energía se vuelve:
+
+
+
+% \begin{equation}
+%   E = \gamma_{j} \gamma_{\infty} E_j
+% \end{equation}
+
+% Donde $\gamma_j$ es el factor de lorentz del jet y $E_j$ es la energía 
+% del jet.
+
+% Si derivamos con respecto al tiempo obtenemos la luminosidad.
+
+
+% \begin{equation}
+%   L = \dfrac{dE}{dt} = \gamma_{j} \gamma_{\infty}  \pi \rho v_j R^2 c^2
+% \end{equation}
+
+% Podemos obtener la densidad del jet despejando $\rho$ de la anterior ecuación
+
+% \begin{equation}
+%   \rho_j = \frac{L}{\gamma_{j} \gamma_{\infty}  \pi v_j R^2 c^2}
+% \end{equation}
+
+Considerando la conservación de masa:
+
+\begin{equation}
+  \rho_j v_j \gamma_j=  \rho_{\infty} v_{\infty} \gamma_{\infty}
+\end{equation}
+
+Donde $v_j$, $v_\infty$ es la velocidad del jet y del medio que lo rodea respectivamente, despejando $\rho_{\infty}$ obtenemos:
+
+\begin{equation}\label{eq_masa_densidad_despejada}
+  \rho_\infty = \rho_j \frac{v_j \gamma_j }{v_\infty \gamma_\infty}
+\end{equation}
+
+Si ahora consideramos la ecuación de momentos
+
+\begin{equation}
+  \left( e_j + P_j\right) v^2_j \gamma^2_j + P_j = \left( e_{\infty} + P_{\infty}\right) v^2_{\infty} \gamma^2_{\infty} + P_{\infty}
+\end{equation}
+
+La densidad de energía se compone de la energía interna del sistema y de la energía cinética
+
+\begin{equation} \label{eq_densidad_de_energia}
+  e = e_{int} + e_k
+\end{equation}
+
+La energía interna para un sistema ultra-relativista es $ P = \frac{1}{3}e_{int}$ lo que implica que $e_{int} = 3P$, mientras que la densidad de energía
+cinética es $e_k = \rho c^2$ pero como estamos considerando a $c = 1$ esto se reduce a $e_k = \rho$. Si sustituimos todo esto en la ecuación
+\ref{eq_densidad_de_energia} entonces nos queda:
+
+\begin{equation} \label{eq_momentos_relativista_modificada}
+  \left( \rho_j + 4P_j \right) v^2_j \gamma^2_j  +P_j = \left( \rho_\infty + 4P_\infty \right) v^2_{\infty} \gamma^2_{\infty}  +P_\infty
+\end{equation}
+
+Con la ecuación \ref{eq_masa_densidad_despejada} podemos modificar la ecuación \ref{eq_momentos_relativista_modificada}, con lo que nos queda:
+
+\begin{equation}
+  \left( \rho_j + 4P_j \right)v_j \gamma^2 +P_j = \left( \rho_\infty + 4P_\infty \right)v_\infty \gamma^2 +P_\infty
+\end{equation}
+
+y tomando un choque fuerte $P_j \gg P_\infty $ Podemos reducir la ecuación a 
+
+\begin{equation} \label{eq_momentos_choque_fuerte}
+  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j =  \rho_\infty  v_\infty^2 \gamma_{\infty}^{2} 
+\end{equation}
+
+Sustituyendo la ecuación \ref{eq_masa_densidad_despejada} en \ref{eq_momentos_choque_fuerte} obtenemos
+
+\begin{equation} \label{eq_momentos_choque_fuerte}
+  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j = \rho_j v_j v_\infty \gamma_j \gamma_\infty
+\end{equation}
+
+Suponiendo $\left( \rho_j + 4P_j \right)v_j^2 \gamma^2 \gg P_j $
+
+
+
+\begin{equation}
+  \left( \rho_j + 4P_j \right)v_j \gamma_j = \rho_\infty v_\infty  \gamma_\infty
+\end{equation}
+
+Despejando la presión obtenemos
+
+\begin{equation}
+  P_j = \frac{\rho_j}{4}\left(\frac{v_\infty}{v_j} \frac{\gamma_\infty}{\gamma_j}-1\right)
+\end{equation}
+
+Como $v_j \thickapprox v_\infty \thickapprox c$
+
+\begin{equation}
+  P_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right)
+\end{equation}
+
+
+\subsection{Luminosidad}
+Si suponenmos las condiciones de Rankine-Hugoniot en un jet relativista y si colocamos nuestro marco de referencia sobre el jet, la energía será:
+
+\begin{equation} \label{eq._energia_relativista}
+  E = \gamma_{\infty} M c^2
+\end{equation}
+
+Donde $\gamma_{\infty}$ es factor de lorentz con el que se mueve el jet cuando ya se ha alejado del objecto compactoy como sabemos 
+que $L \equiv \dfrac{d E}{d t}$ entonces derivando la ecuación \ref{eq._energia_relativista} respecto al tiempo
+
+Entonces tenemos 
+
+\begin{equation} \label{eq._luminosidad_relativista}
+  \dfrac{d E}{d t} = \gamma_{j} \dot{ M }  c^2
+\end{equation}
+
+La taza de flujo de masa $\dot{M}$ se puede escribir como
+
+\begin{equation}
+  \dot{M} = \rho_j u_j A_j
+\end{equation}
+
+Donde $\rho$ es la densidad, $u_j = v_j \gamma_{j}$ es la cuadrivelocidad,  y $A_j$ es el área, que en este caso, corresponde la parte esférica del jet
+entonces la luminosidad se puede escribir como:
+
+\begin{equation}
+  L \equiv \dfrac{d E}{d t} = 4\pi r_j^2 \rho_j v_j \gamma_j \gamma_{\infty} c^2
+\end{equation}
+
+Despejando la densidad
+
+\begin{equation}
+  \rho = \frac{L}{4\pi r_j^2 v_j \gamma_j \gamma_{\infty} c^2}
+\end{equation}
+
+
+\section{Ecuaciones de Sedov-Taylor}
+
+Una forma de verificar si nuesto código funciona es usar el problema de Sedov-Taylor, que básicamente es modelar una onda de choque esférico con una determinada 
+energía, presión y densidad sobre un medio externo. 
+Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. 
+Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
+
+\subsection{Análisis dimensional}
+Si consideramos un choque fuerte,
+es decir, $P_w \gg P_m$,
+entonces las únicas variables que podemos tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
+Las dimensiones de estas cantidades son 
+
+\begin{equation}
+  \left[ \rho_w \right] = \frac{M}{L^3}
+\end{equation}
+
+\begin{equation}
+  \left[E\right] = M \frac{L^2}{T^2}
+\end{equation}
+
+\begin{equation}
+  \left[ t\right] = T
+\end{equation}
+
+La única cantidad que se puede construir que contenga la energía el tiempo y la densidad y que su dimensión sea
+la longitud es:
+
+\begin{equation}
+  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L
+\end{equation}
+
+Por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
+
+\begin{equation}
+  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}
+\end{equation}
+
+Por lo que la constante $\eta$ debe ser de la siguiente manera
+
+\begin{equation}
+  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}
+\end{equation}
+
+
+
+\subsection{Aproximación en función de la presión y densidad}
+
+Otra aproximación es buscando el cociente de presiones y densidades en función del número Mach.
+Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y
+la densidad de la onda es constante entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
+entonces podemos aproximar la energía cinética de la onda como 
+
+\begin{equation}
+	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_w R^3 \left( \frac{R}{t} \right) ^2 = \rho_w \frac{R^5}{t^2}
+\end{equation}
+
+Ahora la energía térmica de una explosion es 
+
+\begin{equation} \label{eq_energia_termica}
+	E_{th} \sim \frac{3}{2}PV
+\end{equation}
+
+Para encontrar la presión, primero defineremos algunas ecuaciones antes.
+
+La entalpia estancada se define en términos de la entalpia y la velocidad de la onda 
+
+\begin{equation}
+	h_0 = h + \frac{1}{2} v^2
+\end{equation}
+
+La cual la podemos rescribir como
+
+\begin{equation} \label{eq_entalpia}
+	h_0 = h + \left( 1 +\frac{1}{2} \frac{v^2}{h} \right)
+\end{equation}
+
+Ahora sabemos que la velocidad del sonido puede ser definida como 
+
+\begin{equation} \label{eq_sonido_1}
+	a = \sqrt{\frac{\Gamma P}{\rho}}
+\end{equation}
+
+y tambien como 
+
+\begin{equation} \label{eq_sonido_2}
+	a = \sqrt{(\Gamma-1) h}
+\end{equation}
+
+Donde $a$ es la velocidad del sonido, $h$ la entalpia, $v$ la velocidad, $P$ la presión y $\rho$ la densidad. Tambien definimos el número de Mach como 
+
+\begin{equation} \label{eq_Mach}
+	M = \frac{v}{a}
+\end{equation}
+
+Si combinamos la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo sustituimos en la ecuación \ref{eq_entalpia} nos queda la entalpia en funcion de la velocidad de la onda y del sonido
+
+\begin{equation} \label{h_0_funcion_aire_mach}
+	h_0 = \frac{a^2}{\Gamma - 1} \left( 1 + \frac{\Gamma - 1}{2} M^2 \right)
+\end{equation}
+
+Esta ecuacion servirá más adelate. Volviendo a las ecuaciones de Rankine Hugoniot podemos usar la ecuacion
+\ref{RH_Energia} y \ref{entalpia_funcion_presion_densidad} para obtener la ecuacion de la energía en funcion de la entalpia, lo que nos va a quedar al final como
+
+\begin{equation}\label{RH_entalpia}
+  h_w +\frac{1}{2}v_w^2 = h_w +\frac{1}{2}v_w^2
+\end{equation} 
+
+
+Donde $ h $ es la entalpia y $v$ la velocidad, los sub-índices $w$, $m$ corresponden a la onda y al medio respectivamente.
+
+Si dividimos la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los sub-índices $j$ por $w$
+obtenemos la siguiente ecuación 
+
+\begin{equation} \label{RH_momento_masa}
+  v_w + \frac{P_w}{\rho_w v_w} = v_m + \frac{P_m}{\rho_m v_m}
+\end{equation}
+
+Usando la ecuación \ref{eq_sonido_1} en la ecuación \ref{RH_momento_masa} podemos reescribir la ecuación de 
+la siguiente manera:
+
+\begin{equation} \label{eq_diferencia_velocidades}
+  v_w-v_m = \frac{1}{\Gamma} \left(\frac{a_m^2}{v_m} - \frac{a_w^2}{v_w} \right)
+\end{equation}
+
+Por simplicidad definimos la entalpia estancada como 
+
+\begin{equation}
+  h_w + \frac{1}{2} v_w = h_w + \frac{1}{2} v_w \equiv h_0
+\end{equation}
+
+Por lo que podemos definir a la velocidad del sonido como:
+
+\begin{equation} \label{eq_sonido_onda}
+  a_w = \left( \Gamma-1 \right) h_w = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_w^2 \right)
+\end{equation}
+
+\begin{equation} \label{eq_sonido_medio}
+  a_m = \left( \Gamma-1 \right) h_m = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_m^2 \right)
+\end{equation}
+
+Sustituyendo las ecuaciones \ref{eq_sonido_onda} y \ref{eq_sonido_medio} en la ecuación \ref{eq_diferencia_velocidades}
+nos queda
+
+\begin{equation}
+  v_w-v_m = \frac{\Gamma - 1}{\Gamma} \left[ \frac{h_0}{v_m} - \frac{h_0}{u_w} + \frac{1}{2} \left( v_w - v_m\right) \right]
+\end{equation}
+
+Dividiendo por $ \left( v_w - v_m \right)$
+
+\begin{equation}
+  1 = \frac{\Gamma - 1}{\Gamma} \left( \frac{h_0}{v_m v_w} + \frac{1}{2} \right)
+\end{equation}
+
+Que al final la podemos reescribir como
+
+\begin{equation} \label{eq_denominador}
+  \frac{1}{v_w v_m} = \frac{1}{\left( \Gamma -1\right) h_0} \frac{\Gamma + 1}{2}
+\end{equation}
+
+Otra ecuación que nos va a servir es la definicion de Mach ya que como
+
+\begin{equation}\label{velocidad_aire_mach}
+  v_w^2 = a_w^2 M_w^2
+\end{equation}
+
+Entonces usando \ref{h_0_funcion_aire_mach} podemos reescribir la ecuación \ref{velocidad_aire_mach} como
+como
+
+\begin{equation} \label{eq_numerador}
+  v_w^2 = M_w^2 \frac{\left( \Gamma -1 \right) h_0}{1+\frac{\Gamma - 1}{2} M_w^2}
+\end{equation}
+
+Usando la ecuación de momentos \ref{RH_masa} podemos reescribirla como
+
+\begin{equation} \label{eq_fraccion_momentos}
+  \frac{\rho_m }{\rho_w} = \frac{ v_w}{v_m} = \frac{v_w^2}{v_w v_m}
+\end{equation}
+
+Como ya sabemos cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador})
+de la fracción, podemos definir el cociente de las densidades \ref{eq_fraccion_momentos} como 
+
+\begin{equation}\label{eq_fraccion_momentos_funcion_mach}
+  \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}
+\end{equation}
+
+Entonces para encontrar las presiones combinamos las ecuaciones \ref{RH_momento} y \ref{RH_masa} tenemos
+
+\begin{equation}
+  P_m - P_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right)
+\end{equation}
+
+Usando la siguiente relación $\rho v^2 = \Gamma P M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y
+\ref{eq_Mach},dividiendo por $P_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación \ref{eq_fraccion_momentos_funcion_mach}
+nos queda
+
+\begin{equation} \label{eq_fraccion_Presiones}
+  \frac{P_m}{P_w} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_w^2 -1\right)
+\end{equation}
+
+Usando la siguiente relación $ P_w = \frac{\rho a_w }{\Gamma}$ se puede obtener el límite del choque fuerte
+
+\begin{equation}
+  P_m  \simeq \frac{2 \rho_w v_w^2}{\Gamma + 1}
+\end{equation}
+
+Con esto ya podemos obtener la energía térmica de la ecuación \ref{eq_energia_termica} por lo que nos queda 
+
+\begin{equation}
+  E_{th} \sim P_m R^3 \sim \rho_w v_w^2 R^3 \sim \rho_w \frac{R^5}{t^2}
+\end{equation}
+
+Como tiene el mismo orden que el de la energía cinética, entonces la energía total que es una cantidad conservada, se espera que
+
+\begin{equation}
+  E_t = E_{kin} + E_{th} \sim \rho_w \frac{R^5}{t^2}
+\end{equation}
+
+Despejando el radio, obtenemos lo siguiente
+
+\begin{equation} \label{eq_Radio_proporcional}
+  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}
+\end{equation}
+
+Vemos que la figura \ref{fig_Radio_v_tiempo} parece una funcion logaritmica y su radio de expansion no crece muy rápidamente conforme avanza el tiempo,
+Para tiempos $t = 4$ y $t = 100$, el radio es $R = 1.74$ y $R = 6.30$ respectivamente
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Radio_vs_tiempo.png}
+  \caption{Radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_Radio_v_tiempo}
+\end{figure}
+
+Si derivamos la ecuación \ref{eq_Radio_proporcional}, obtenemos la velocidad
+
+\begin{equation}
+  \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}
+\end{equation}
+
+
+A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (ver \ref{fig_velocidad_vs_radio})
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Velocidad_vs_tiempo.png}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_velocidad_vs_radio}
+\end{figure}
+
+
+
+
+
+
 
 
 
