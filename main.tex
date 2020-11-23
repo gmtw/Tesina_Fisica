@@ -1384,6 +1384,9 @@ Como $v_j \thickapprox v_\infty \thickapprox c$
   P_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right)
 \end{equation}
 
+Para poder simular las condiciones de un jet, necesitamos saber la densidad, velocidad y presión del mismo, como los jet tienen velocidades cercanas a la
+de la luz, se pueden tomar valores cercanos a esta constante. La densidad se obtendá en la siguiente sección 
+
 
 \subsection{Luminosidad}
 Si suponenmos las condiciones de Rankine-Hugoniot en un jet relativista y si colocamos nuestro marco de referencia sobre el jet, la energía será:
@@ -1419,6 +1422,9 @@ Despejando la densidad
 \begin{equation}
   \rho = \frac{L}{4\pi r_j^2 v_j \gamma_j \gamma_{\infty} c^2}
 \end{equation}
+
+Al obtener la densidad ya podemos simular el jet dado que la luminosidad se puede obtener de detectores de Rayos $\gamma$ y las velocidades tambien ? preguntar a 
+Diego
 
 
 \section{Ecuaciones de Sedov-Taylor}
@@ -1678,6 +1684,19 @@ A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrec
 
 
 \chapter{Verificación del código}
+
+Para ver que el código realmente funciona se implementará un explosión esférica como la que se trata en las Ecuaciones de Sedov-Taylor. 
+Los valores del choque esférico fue para la densidad
+$\rho = 3.48 x 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$, la presión $P = 2.01 x 10^{-6} $ $\mathrm{dyn}$, se tomo un radio de 2 pc. Los valores para el medio que rodean
+la onda de choque fue $\rho = 1.67 \, x \, 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$ y la presión $P = 8.97 x 10^{-10} $ $\mathrm{dyn}$
+
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{./Figuras/verificacion_del_codigo/Radio_vs_tiempo_computacionalmente.png}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. Se empleo el método de Lax dada su rapidez con la que se calculaba
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
 
 En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
 
