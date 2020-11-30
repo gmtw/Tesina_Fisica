@@ -1101,7 +1101,7 @@ end do
 
 \section{Ecuaciones de Rankine-Hugoniot}
 
-\subsection{Rankine-Hugoniot}
+\subsection{Rankine-Hugoniot Newtoniano}
 
 Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque
 , esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se ruelve con las ecuaciones de 
@@ -1427,14 +1427,14 @@ Al obtener la densidad ya podemos simular el jet dado que la luminosidad se pued
 Diego
 
 
-\section{Ecuaciones de Sedov-Taylor}
+\section{Ecuaciones de Sedov-Taylor por soluciones}
 
 Una forma de verificar si nuesto código funciona es usar el problema de Sedov-Taylor, que básicamente es modelar una onda de choque esférico con una determinada 
 energía, presión y densidad sobre un medio externo. 
 Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. 
 Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
 
-\subsection{Análisis dimensional}
+\subsection{Aproximación en funcion del analisis dimensional}
 Si consideramos un choque fuerte,
 es decir, $P_w \gg P_m$,
 entonces las únicas variables que podemos tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
@@ -1473,7 +1473,7 @@ Por lo que la constante $\eta$ debe ser de la siguiente manera
 
 
 
-\subsection{Aproximación en función de la presión y densidad}
+\subsection{Aproximación en funcion de la conservación de la energia}
 
 Otra aproximación es buscando el cociente de presiones y densidades en función del número Mach.
 Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y
@@ -1693,15 +1693,27 @@ la onda de choque fue $\rho = 1.67 \, x \, 10^{-24} $ $\mathrm{g} \, \mathrm{cm}
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.5\textwidth]{./Figuras/verificacion_del_codigo/Radio_vs_tiempo_computacionalmente.png}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. Se empleo el método de Lax dada su rapidez con la que se calculaba
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion_del_codigo/Radio_vs_tiempo_computacionalmente.png}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
   } \label{fig_velocidad_vs_radio_computacionalmente}
 \end{figure}
 
 En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
 
+\begin{figure}
+  \centering
+  \subfigure[$t = 5.676 \,\times 10^9$ s]{\includegraphics[scale = 0.25]{./Figuras/verificacion_del_codigo/t_06.png}}
+  \subfigure[$t = 11.352 \,\times 10^9$ s]{\includegraphics[scale = 0.25]{./Figuras/verificacion_del_codigo/t_12.png}}
+  \subfigure[$t = 23.65 \,\times 10^9$ s]{\includegraphics[scale = 0.25]{./Figuras/verificacion_del_codigo/t_25.png}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+
 \section{Onda de choque} \label{sec:onda de choque}%Shock Wave and High Pressure Phenomena) Isabelle Sochet (eds.
-La onda de choque se produce por la liberación rápida de energía comprimida dentro de un volumen de radio $R$. Esta explosión divide a nuestro dominio en 2 zonas distintas como se muestra en la Figura \ref{fig:onda_choque_example}. La zona I, estará determinado por la densidad, presión, y velocidades del medio ambiente ($\rho_m, \, P_m\, v_{x_m}, \, v_{y_m}$, respectivamente). La zona II (i.e. dentro de la onda de choque), se produce al depositar una densidad de energía $E_{in}$ dentro de una región definida por un radio interno ($R_{in}$) en reposo. Para ver más detalles véase el cuadro \ref{fig:onda_choque_example}.
+La onda de choque se produce por la liberación rápida de energía comprimida dentro de un volumen de radio $R$. Esta explosión divide a nuestro dominio en 2 
+zonas distintas como se muestra en la Figura \ref{fig:onda_choque_example}. La zona I, estará determinado por la densidad, presión, y velocidades del medio 
+ambiente ($\rho_m, \, P_m\, v_{x_m}, \, v_{y_m}$, respectivamente). La zona II (i.e. dentro de la onda de choque), se produce al depositar una densidad de 
+energía $E_{in}$ dentro de una región definida por un radio interno ($R_{in}$) en reposo. Para ver más detalles véase el cuadro \ref{fig:onda_choque_example}.
 
 \begin{table}[htbp]
 \begin{center}
