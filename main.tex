@@ -1427,7 +1427,7 @@ Al obtener la densidad ya podemos simular el jet dado que la luminosidad se pued
 Diego
 
 
-\section{Ecuaciones de Sedov-Taylor por soluciones}
+\section{Ecuaciones de Sedov-Taylor por soluciones} \label{seccion_ecuaciones_de_sedov_taylor}
 
 Una forma de verificar si nuesto código funciona es usar el problema de Sedov-Taylor, que básicamente es modelar una onda de choque esférico con una determinada 
 energía, presión y densidad sobre un medio externo. 
@@ -1677,16 +1677,17 @@ A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrec
 
 
 
-
-
-
-
-
+% ======================================NUEVO CAPITULO ================================================
+% ======================================NUEVO CAPITULO ================================================
+% ======================================NUEVO CAPITULO ================================================
+% ======================================NUEVO CAPITULO ================================================
 
 \chapter{Verificación del código}
 
-Para ver que el código realmente funciona se implementará un explosión esférica como la que se trata en las Ecuaciones de Sedov-Taylor. 
-Los valores del choque esférico fue para la densidad
+Para validar que el código realmente funciona se implementará un explosión esférica como la que se trata en las ecuaciones de Sedov-Taylor. Como
+este problema es hidrodinámico, tenemos que ver que el radio de la onda de choque se expanda como $t^{0.4}$. Las simulaciones se programaróna para 
+que corriera de un tiempo $t = 0$ s hasta $t = 9.6 \times 10^{10}$ s
+Los valores del choque esférico estan dados en la tabla \ref{Tabla_parametros_sedov}
 % $\rho = 3.48 x 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$, la presión $P = 2.01 x 10^{-6} $ $\mathrm{dyn}$, se tomo un radio de 2 pc.
 % Los valores para el medio que rodean la onda de choque fue $\rho = 1.67 \, x \, 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$ y 
 % la presión $P = 8.97 x 10^{-10} $ $\mathrm{dyn}$
@@ -1719,53 +1720,61 @@ Los valores del choque esférico fue para la densidad
   Co & Número de Courant & 0.7 \\ 
   \hline 
   \end{tabular}
-  \caption{\label{Tabla_parametros}Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque, estos valores son para fluidos newtonianos.}
+  \caption{\label{Tabla_parametros_sedov}Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque,
+  las velocidades que alcanza la onda son velocidades no relativistas.}
   \end{center}
   \end{table}
   
   % ========================================= Caso 1 ========================================================================
+  \section{Casos newtonianos}
+
+  Las siguientes simulaciones presentan una onda de choque como se mostro en la sección \ref{seccion_ecuaciones_de_sedov_taylor}. La figura 
+  \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250} muestra la velocidad de una onda expansiva con una resolución de 250x250 pixeles
+  con un error del 32 \% sobre el exponente. El programa paró a tiempo $t= 4.12 \times 10^{10}$ s mucho antes de lo estipulado.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_1/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+  $ a = 0.8593$ con un coeficiente de relación $R^2=0.994$. 
+  El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, 
-es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+La figura \ref{fig_cmap_lax_newtoniano_250} muestra la evolución de la onda de choque con una resolución de 250x250 usando el método de Lax 
+newtoniano
 
 \begin{figure}
   \centering
   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_0}}
   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_20}}
   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+  \caption{Evolución de la onda de choque de la 
+  figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250}} \label{fig_cmap_lax_newtoniano_250}
 \end{figure}
 
   % ========================================= Caso 1 ========================================================================
-
+Al aumentar la resolución los exponentes tienen un menor error,  ya que para resoluciones de 500x500 y de 1000x1000, los errores son del 11 \% y
+del 6 \% respectivamente
 
   % ========================================= Caso 2 ========================================================================
 
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_2/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+  $ a = 0.44$ con un coeficiente de relación $R^2=0.992$. 
+  El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_500}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_0}}
   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_20}}
   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-\end{figure}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_500}}
+\end{figure} \label{fig_cmap_lax_newtoniano_500}
   % ========================================= Caso 2 ========================================================================
 
 
@@ -1775,22 +1784,24 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_3/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+  $ a = 0.419$ con un coeficiente de relación $R^2=0.992$. 
+  El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_0}}
   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_20}}
   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}}
 \end{figure}
   % ========================================= caso_3 ========================================================================
-
+Para el caso HLL newtoniano se tienen los mismos casos, pero HLL es sutílmente mejor al aproximarse al exponente , tanto para HLL con Lax en
+el caso newtoniano el tiempo para para casos donde la resolución es de 250x250 el programa para al tiempo $t= 4.12 \times 10^{10}$, para 500x500 
+$t= 8.13 \times 10^{10}$
 
 
   % ========================================= caso_4 ========================================================================
@@ -1798,19 +1809,19 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
   \begin{figure}
     \centering
       \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_4/Expansion}
-    \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-    un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-    } \label{fig_velocidad_vs_radio_computacionalmente}
+    \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+    $ a = 0.474$ con un coeficiente de relación $R^2=0.988$. 
+    El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}
   \end{figure}
   
-  En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+  
   
   \begin{figure}
     \centering
     \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_0}}
     \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_20}}
     \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_40}}
-    \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+    \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}}
   \end{figure}
     % ========================================= caso_4 ========================================================================
   
@@ -1821,44 +1832,52 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
  \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_5/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+  $ a = 0.427$ con un coeficiente de relación $R^2=0.982$. 
+  El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_0}}
   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_20}}
   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}}
 \end{figure}
   % ========================================= caso_5 ========================================================================
 
- % ========================================= caso_6 ========================================================================
+% ========================================= caso_6 ========================================================================
 
- \begin{figure}
+\begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_6/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+  $ a = 0.418$ con un coeficiente de relación $R^2=0.987$. 
+  El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
 
 \begin{figure}
   \centering
   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_0}}
   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_20}}
   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}}
 \end{figure}
   % ========================================= caso_6 ========================================================================
 
+Dado que para Lax y HLL, conforme se aumente la resolución el programa funciona mejor dado que el programa no para antes de lo estipulado para resoluciones
+grandes, ademas el exponente se acerca a 0.4. Aunque HLL es un poco mejor que Lax se, la diferencia no es tan notoria y se pueden usar los 2 sin ningún 
+problema.
+
 % ========================================= caso_7 ========================================================================
+\section{Casos relativistas}
+
+
+para los casos relativistas, tanto para HLL como Lax, la conclusión es la 
+
 
 \begin{figure}
   \centering
@@ -1868,7 +1887,7 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
   } \label{fig_velocidad_vs_radio_computacionalmente}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
@@ -1889,7 +1908,7 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
   } \label{fig_velocidad_vs_radio_computacionalmente}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
@@ -1910,7 +1929,6 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
   } \label{fig_velocidad_vs_radio_computacionalmente}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
 
 \begin{figure}
   \centering
@@ -1932,7 +1950,7 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
   } \label{fig_velocidad_vs_radio_computacionalmente}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
@@ -1954,7 +1972,7 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
   } \label{fig_velocidad_vs_radio_computacionalmente}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
@@ -1976,7 +1994,7 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
   } \label{fig_velocidad_vs_radio_computacionalmente}
 \end{figure}
 
-En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
 
 \begin{figure}
   \centering
