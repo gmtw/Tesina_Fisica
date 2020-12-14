@@ -1687,13 +1687,71 @@ A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrec
 
 Para ver que el código realmente funciona se implementará un explosión esférica como la que se trata en las Ecuaciones de Sedov-Taylor. 
 Los valores del choque esférico fue para la densidad
-$\rho = 3.48 x 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$, la presión $P = 2.01 x 10^{-6} $ $\mathrm{dyn}$, se tomo un radio de 2 pc. Los valores para el medio que rodean
-la onda de choque fue $\rho = 1.67 \, x \, 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$ y la presión $P = 8.97 x 10^{-10} $ $\mathrm{dyn}$
+% $\rho = 3.48 x 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$, la presión $P = 2.01 x 10^{-6} $ $\mathrm{dyn}$, se tomo un radio de 2 pc.
+% Los valores para el medio que rodean la onda de choque fue $\rho = 1.67 \, x \, 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$ y 
+% la presión $P = 8.97 x 10^{-10} $ $\mathrm{dyn}$
 
+
+\begin{table}[htbp]
+  \begin{center}
+  \begin{tabular}{|c|c|c|}
+  \hline 
+  \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
+  \hline 
+  $R_{in}$ & Radio interno de la onda expansiva & $6.17 \times 10^{18}$ [cm] \\ 
+  \hline 
+  $\rho_{in}$ &  Densidad interna de la onda expansiva & $3.48 \times 10^{-24}$ [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
+  \hline 
+  $\rho_{out}$ &  Densidad del medio  & $1.67 \, \times  \, 10^{-24}$ [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
+  \hline 
+  $P_{int}$ & Presión interna de la onda expansiva & $2.01 \times 10^{-6}$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
+  \hline 
+  $P_{out}$ &  Presión del medio  & $8.97 \times 10^{-10}$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
+  \hline 
+  $v_{x_{int}}$ & Velocidad interna en el eje x de la onda expansiva & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+  \hline 
+  $v_{y_{int}}$ & Velocidad interna en el eje y de la onda expansiva & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+  \hline 
+  $v_{x_{out}}$ & Velocidad en el eje x del medio & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
+  \hline 
+  $v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+  \hline 
+  Co & Número de Courant & 0.7 \\ 
+  \hline 
+  \end{tabular}
+  \caption{\label{Tabla_parametros}Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque, estos valores son para fluidos newtonianos.}
+  \end{center}
+  \end{table}
+  
+  % ========================================= Caso 1 ========================================================================
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion_del_codigo/Radio_vs_tiempo_computacionalmente.png}
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_1/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, 
+es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+
+  % ========================================= Caso 1 ========================================================================
+
+
+  % ========================================= Caso 2 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_2/Expansion}
   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
   } \label{fig_velocidad_vs_radio_computacionalmente}
@@ -1703,11 +1761,235 @@ En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi c�
 
 \begin{figure}
   \centering
-  \subfigure[$t = 5.676 \,\times 10^9$ s]{\includegraphics[scale = 0.25]{./Figuras/verificacion_del_codigo/t_06.png}}
-  \subfigure[$t = 11.352 \,\times 10^9$ s]{\includegraphics[scale = 0.25]{./Figuras/verificacion_del_codigo/t_12.png}}
-  \subfigure[$t = 23.65 \,\times 10^9$ s]{\includegraphics[scale = 0.25]{./Figuras/verificacion_del_codigo/t_25.png}}
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_40}}
   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
 \end{figure}
+  % ========================================= Caso 2 ========================================================================
+
+
+
+  % ========================================= caso_3 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_3/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_3 ========================================================================
+
+
+
+  % ========================================= caso_4 ========================================================================
+
+  \begin{figure}
+    \centering
+      \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_4/Expansion}
+    \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+    un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+    } \label{fig_velocidad_vs_radio_computacionalmente}
+  \end{figure}
+  
+  En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+  
+  \begin{figure}
+    \centering
+    \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_0}}
+    \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_20}}
+    \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_40}}
+    \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+  \end{figure}
+    % ========================================= caso_4 ========================================================================
+  
+  
+
+ % ========================================= caso_5 ========================================================================
+
+ \begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_5/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_5 ========================================================================
+
+ % ========================================= caso_6 ========================================================================
+
+ \begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_6/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_6 ========================================================================
+
+% ========================================= caso_7 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_7/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_7 ========================================================================
+
+% ========================================= caso_8 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_8/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_8 ========================================================================
+
+% ========================================= caso_9 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_9/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_9 ========================================================================
+
+
+% ========================================= caso_10 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_10/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_10 ========================================================================
+
+
+% ========================================= caso_11 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_11/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_11 ========================================================================
+
+
+% ========================================= caso_12 ========================================================================
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_12/Expansion}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+  } \label{fig_velocidad_vs_radio_computacionalmente}
+\end{figure}
+
+En este capítulo se van a realizar algunas pruebas de la funcionalidad de mi código, el objetivo de esto, es tener una idea de cual método, ya sea Lax o HLL, es mejor para la ejecución de los jets.
+
+\begin{figure}
+  \centering
+  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_0}}
+  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_20}}
+  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_40}}
+  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+\end{figure}
+  % ========================================= caso_12 ========================================================================
+
+
+
+
 
 \section{Onda de choque} \label{sec:onda de choque}%Shock Wave and High Pressure Phenomena) Isabelle Sochet (eds.
 La onda de choque se produce por la liberación rápida de energía comprimida dentro de un volumen de radio $R$. Esta explosión divide a nuestro dominio en 2 
