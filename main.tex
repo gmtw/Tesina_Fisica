@@ -1687,344 +1687,481 @@ A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrec
 
 \section{Pruebas unidimensionales}
 
-\begin{figure}
-  \centering
-    \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/rarefaction.png}
-  \caption{} \label{}
-\end{figure}
+Para tener la seguridad de que el programa realmente funcione se realizarán pruebas unidimensionales en un tubo de Sod.
+Esta prueba consiste en determinar como se comporta un gas ideal en un tubo que tiene valores iniciales discontinuos,
+es decir, que a cierta longitud del tubo, el gas tendrá ciertos valores para la densidad, velocidad y presión,
+mientras que en la otra parte tendrá distintos valores.
 
-\begin{figure}
-  \centering
-    \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/rarefaction-rarefaction.png}
-  \caption{} \label{}
-\end{figure}
+En las siguientes secciones se implementará el programa con los métodos Lax y HLL para ponerlos a prueba
+con casos newtonianos y luego se procederá a hacer lo mismo pero con casos relativistas.
 
-\begin{figure}
-  \centering
-    \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/rarefaction-rel.png}
-  \caption{} \label{}
-\end{figure}
 
-Para validar que el código realmente funciona se implementará un explosión esférica como la que se trata en las ecuaciones de Sedov-Taylor. Como
-este problema es hidrodinámico, tenemos que ver que el radio de la onda de choque se expanda como $t^{0.4}$. Las simulaciones se programaróna para 
-que corriera de un tiempo $t = 0$ s hasta $t = 9.6 \times 10^{10}$ s
-Los valores del choque esférico estan dados en la tabla \ref{Tabla_parametros_sedov}
+% Para validar que el código realmente funciona se implementará un explosión esférica como la que se trata en las ecuaciones de Sedov-Taylor. Como
+% este problema es hidrodinámico, tenemos que ver que el radio de la onda de choque se expanda como $t^{0.4}$. Las simulaciones se programaróna para 
+% que corriera de un tiempo $t = 0$ s hasta $t = 9.6 \times 10^{10}$ s
+% Los valores del choque esférico estan dados en la tabla \ref{Tabla_parametros_sedov}
 % $\rho = 3.48 x 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$, la presión $P = 2.01 x 10^{-6} $ $\mathrm{dyn}$, se tomo un radio de 2 pc.
 % Los valores para el medio que rodean la onda de choque fue $\rho = 1.67 \, x \, 10^{-24} $ $\mathrm{g} \, \mathrm{cm}^{-3}$ y 
 % la presión $P = 8.97 x 10^{-10} $ $\mathrm{dyn}$
 
 
+\subsection{Casos newtonianos}
+Para los casos newtoniano usaremos los valores del cuadro \ref{Cuadro_parametros_sod_tube}. El primer 
+caso es "Rarefacción-Choque". Por lo que simularemos poner un gas dentro de un tubo el cual estará
+dividido a la mitad por una membrana. La densidad y presión de la cámara del lado izquierdo serán
+mas grandes que la del lado izquierdo.
+
+
 \begin{table}[htbp]
   \begin{center}
-  \begin{tabular}{|c|c|c|}
+  \begin{tabular}{|c|c|c|c|c|c|c|}
   \hline 
-  \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
+  \textbf{Caso} & \textbf{$p_l$} & \textbf{$p_r$} & \textbf{$v_l$} & \textbf{$v_r$} & \textbf{$\rho_l$} & \textbf{$\rho_r$} \\ 
   \hline 
-  $R_{in}$ & Radio interno de la onda expansiva & $6.17 \times 10^{18}$ [cm] \\ 
+  Rarefaction-shock & 1.0 & 0.1 & 0.0 & 0.0 & 1.0 & 0.125 \\ 
   \hline 
-  $\rho_{in}$ &  Densidad interna de la onda expansiva & $3.48 \times 10^{-24}$ [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
-  \hline 
-  $\rho_{out}$ &  Densidad del medio  & $1.67 \, \times  \, 10^{-24}$ [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
-  \hline 
-  $P_{int}$ & Presión interna de la onda expansiva & $2.01 \times 10^{-6}$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
-  \hline 
-  $P_{out}$ &  Presión del medio  & $8.97 \times 10^{-10}$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
-  \hline 
-  $v_{x_{int}}$ & Velocidad interna en el eje x de la onda expansiva & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-  \hline 
-  $v_{y_{int}}$ & Velocidad interna en el eje y de la onda expansiva & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-  \hline 
-  $v_{x_{out}}$ & Velocidad en el eje x del medio & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
-  \hline 
-  $v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-  \hline 
-  Co & Número de Courant & 0.7 \\ 
+  Rarefaction-rarefaction & 0.4 & 0.4 & -1.0 & 1.0 & 1.0 & 1.0  \\ 
   \hline 
   \end{tabular}
-  \caption{\label{Tabla_parametros_sedov}Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque,
-  las velocidades que alcanza la onda son velocidades no relativistas.}
+  \caption{\label{Cuadro_parametros_sod_tube} Valores iniciales para los casos newtonianos. Para todos los
+  casos el dominio espacial será $x \in [0,1]$, $x_0 = 0.5$ y $\Gamma = 1.4$}
   \end{center}
-  \end{table}
-  
-  % ========================================= Caso 1 ========================================================================
-  \section{Casos newtonianos}
+\end{table}
 
-  Las siguientes simulaciones presentan una onda de choque como se mostro en la sección \ref{seccion_ecuaciones_de_sedov_taylor}. La figura 
-  \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250} muestra la velocidad de una onda expansiva con una resolución de 250x250 pixeles
-  con un error del 32 \% sobre el exponente. El programa paró a tiempo $t= 4.12 \times 10^{10}$ s mucho antes de lo estipulado.
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_1/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-  $ a = 0.8593$ con un coeficiente de relación $R^2=0.994$. 
-  El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250}
-\end{figure}
-
-La figura \ref{fig_cmap_lax_newtoniano_250} muestra la evolución de la onda de choque con una resolución de 250x250 usando el método de Lax 
-newtoniano
-
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la 
-  figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250}} \label{fig_cmap_lax_newtoniano_250}
-\end{figure}
-
-  % ========================================= Caso 1 ========================================================================
-Al aumentar la resolución los exponentes tienen un menor error,  ya que para resoluciones de 500x500 y de 1000x1000, los errores son del 11 \% y
-del 6 \% respectivamente
-
-  % ========================================= Caso 2 ========================================================================
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_2/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-  $ a = 0.44$ con un coeficiente de relación $R^2=0.992$. 
-  El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_500}
-\end{figure}
+Una onda de rarefacción viaja a través de una región de alta densidad, 
+la cual para nuestro caso se moverá hacia la izquierda, mientras que una onda de choque se moverá hacia
+la derecha en una zona de baja densidad. La simulación del caso rerefaccion-choque se muestra en la 
+figura \ref{caso_new_rar_shock} a distintos tiempos.
 
 
-
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_500}}
-\end{figure} \label{fig_cmap_lax_newtoniano_500}
-  % ========================================= Caso 2 ========================================================================
-
-
-
-  % ========================================= caso_3 ========================================================================
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_3/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-  $ a = 0.419$ con un coeficiente de relación $R^2=0.992$. 
-  El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}
-\end{figure}
-
-
-
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}}
-\end{figure}
-  % ========================================= caso_3 ========================================================================
-Para el caso HLL newtoniano se tienen los mismos casos, pero HLL es sutílmente mejor al aproximarse al exponente , tanto para HLL con Lax en
-el caso newtoniano el tiempo para para casos donde la resolución es de 250x250 el programa para al tiempo $t= 4.12 \times 10^{10}$, para 500x500 
-$t= 8.13 \times 10^{10}$
-
-
-  % ========================================= caso_4 ========================================================================
 
   \begin{figure}
     \centering
-      \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_4/Expansion}
-    \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-    $ a = 0.474$ con un coeficiente de relación $R^2=0.988$. 
-    El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}
+        \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_rho.png}}
+        \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_v.png}}
+        \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_p.png}}
+      \caption{\label{caso_new_rar_shock} Evolución temporal del caso rarefacción-choque donde se muestra
+      las magnitudes de densidad, presión y velocidad. Su usó $\Gamma = 1.4$ y las unidades del tiempo vienen
+      en segundos.}
   \end{figure}
+
+  
+Se usó el método Lax para mostrar la evolución temporal de los casos newtonianos, dado que como se muestra
+en la figura \ref{comparacion_analitico_newtoniano_caso_1}, tanto Lax como HLL son idénticos. Aunque
+Lax es un poco mas rápido que su homólogo.
+
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/rarefaction.png}
+  \caption{Representación del caso rarefacción-choque a $t = 0.25$ s. El panel de abajo hacia la
+  derecha muestra la comparación a distintas resoluciones para la densidad. Los demás paneles muestran
+  las diferencias de los métodos HLL y Lax con una resolución de 10,000 } \label{comparacion_analitico_newtoniano_caso_1}
+\end{figure}
+
+Como se puede ver en la figura \ref{comparacion_analitico_newtoniano_caso_1} tanto Lax como HLL se ajustan muy bien 
+al caso analítico para resoluciones $\leq 1000$.
+
+El 2° caso se llama rarefacción-rarefacción. Como se puede ver en el cuadro \ref{Cuadro_parametros_sod_tube}
+tanto la densidad como la presión son las mismas, mientras que la velocidad ya no es nula  y tienen
+la misma magnitud pero se mueven en sentidos opuestos. La figura \ref{caso_new_rar_rar} muestra, usando
+el método de Lax, la evolución temporal del 2° caso.
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_rar_rho.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_rar_v.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_rar_p.png}}
+    \caption{ Evolución temporal del caso rarefacción-rarefacción. La magnitud del tiempo esta dada en segundos
+    y al igual que el primer caso se toma $\Gamma = 1.4$ \label{caso_new_rar_rar}.}
+\end{figure}
+
+La comparación del método de Lax y HLL se da en la figura \ref{comparacion_analitico_newtoniano_caso_2}.
+Como se puede ver en los paneles de arriba y el de abajo hacia la izquierda, comparación con el método
+analítico viene siendo la mmisma para ambos métodos. Ambos métodos funcionan bien para resoluciones $\leq 1000$.
+
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/rarefaction-rarefaction.png}
+  \caption{Representación del caso rarefacción-rarefacción a $t = 0.25$ s. El panel de abajo hacia la
+  derecha muestra la comparación a distintas resoluciones para la densidad. Los demás paneles muestran
+  las diferencias de los métodos HLL y Lax con una resolución de 10,000 } \label{comparacion_analitico_newtoniano_caso_2}
+\end{figure}
+
+
+
+\subsection{Casos relativistas}
+
+Para los casos relativistas, se voleverán a repetir los mismos casos que en el newtoniano,
+pero los valores serán distintos y se tomará $\Gamma = 4/3$. Los valores con los que se toman los casos del
+caso relativista estan en el cuadro \ref{Cuadro_parametros_sod_tube_rel}.
+
+\begin{table}[htbp]
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|}
+  \hline 
+  \textbf{Caso} & \textbf{$p_l$} & \textbf{$p_r$} & \textbf{$v_l$} & \textbf{$v_r$} & \textbf{$\rho_l$} & \textbf{$\rho_r$} \\ 
+  \hline 
+  Rarefaction-shock & 13.33 & 0.0 & 0.0 & 0.0 & 10 & 1 \\ 
+  \hline 
+  Rarefaction-rarefaction & 0.05 & 0.05 & -0.2 & 0.2 & 0.1 & 0.1  \\ 
+  \hline 
+  \end{tabular}
+  \caption{\label{Cuadro_parametros_sod_tube_rel} Valores iniciales para los casos relativistas. Para todos los
+  casos el dominio espacial será $x \in [0,1]$, $x_0 = 0.5$ y $\Gamma = 3/4$}
+  \end{center}
+\end{table}
+
+Tanto en el caso rarefacción-choque como rarefacción-rarefacción. La evolución temporal se hará usando el método
+de Lax falla al tratar de simular las condiciones iniciales de este problema, dado que que necesita de altas
+resoluciones $\leq 10,000$ para poder funcionar.
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock_rho.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock_v.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock_p.png}}
+    \caption{  Evolución temporal del caso rarefacción-choque donde se muestra
+    las magnitudes de densidad, presión y velocidad. Su usó $\Gamma = 3/4$ y las unidades del tiempo vienen
+    en segundos. \label{caso_rel_rar_shock}}
+\end{figure}
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock.png}
+  \caption{Representación del caso rarefacción-choque relativista  a $t = 0.35$ s. El panel de abajo hacia la
+  derecha muestra la comparación a distintas resoluciones para la densidad. Los demás paneles muestran
+  las diferencias de los métodos HLL y Lax con una resolución de 10,000.} \label{caso_rel_rar_shock}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_rar.png}
+  \caption{} \label{}
+\end{figure}
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_rar_rho.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_rar_v.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_rar_p.png}}
+    \caption{ \label{caso_new_rar_shock}}
+\end{figure}
+
+
+% \begin{table}[htbp]
+%   \begin{center}
+%   \begin{tabular}{|c|c|c|}
+%   \hline 
+%   \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
+%   \hline 
+%   $R_{in}$ & Radio interno de la onda expansiva & $6.17 \times 10^{18}$ [cm] \\ 
+%   \hline 
+%   $\rho_{in}$ &  Densidad interna de la onda expansiva & $3.48 \times 10^{-24}$ [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
+%   \hline 
+%   $\rho_{out}$ &  Densidad del medio  & $1.67 \, \times  \, 10^{-24}$ [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
+%   \hline 
+%   $P_{int}$ & Presión interna de la onda expansiva & $2.01 \times 10^{-6}$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
+%   \hline 
+%   $P_{out}$ &  Presión del medio  & $8.97 \times 10^{-10}$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
+%   \hline 
+%   $v_{x_{int}}$ & Velocidad interna en el eje x de la onda expansiva & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+%   \hline 
+%   $v_{y_{int}}$ & Velocidad interna en el eje y de la onda expansiva & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+%   \hline 
+%   $v_{x_{out}}$ & Velocidad en el eje x del medio & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
+%   \hline 
+%   $v_{y_{out}}$ & Velocidad en el eje y del medio & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
+%   \hline 
+%   Co & Número de Courant & 0.7 \\ 
+%   \hline 
+%   \end{tabular}
+%   \caption{\label{Tabla_parametros_sedov}Parámetros que se utilizarán en las siguientes pruebas que se van a realizar para la onda de choque,
+%   las velocidades que alcanza la onda son velocidades no relativistas.}
+%   \end{center}
+%   \end{table}
+  
+%   % ========================================= Caso 1 ========================================================================
+%   \section{Casos newtonianos}
+
+%   Las siguientes simulaciones presentan una onda de choque como se mostro en la sección \ref{seccion_ecuaciones_de_sedov_taylor}. La figura 
+%   \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250} muestra la velocidad de una onda expansiva con una resolución de 250x250 pixeles
+%   con un error del 32 \% sobre el exponente. El programa paró a tiempo $t= 4.12 \times 10^{10}$ s mucho antes de lo estipulado.
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_1/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+%   $ a = 0.8593$ con un coeficiente de relación $R^2=0.994$. 
+%   El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250}
+% \end{figure}
+
+% La figura \ref{fig_cmap_lax_newtoniano_250} muestra la evolución de la onda de choque con una resolución de 250x250 usando el método de Lax 
+% newtoniano
+
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_1/LAX_NR_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la 
+%   figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_250}} \label{fig_cmap_lax_newtoniano_250}
+% \end{figure}
+
+%   % ========================================= Caso 1 ========================================================================
+% Al aumentar la resolución los exponentes tienen un menor error,  ya que para resoluciones de 500x500 y de 1000x1000, los errores son del 11 \% y
+% del 6 \% respectivamente
+
+%   % ========================================= Caso 2 ========================================================================
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_2/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+%   $ a = 0.44$ con un coeficiente de relación $R^2=0.992$. 
+%   El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_500}
+% \end{figure}
+
+
+
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_500}}
+% \end{figure} \label{fig_cmap_lax_newtoniano_500}
+%   % ========================================= Caso 2 ========================================================================
+
+
+
+%   % ========================================= caso_3 ========================================================================
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_3/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+%   $ a = 0.419$ con un coeficiente de relación $R^2=0.992$. 
+%   El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}
+% \end{figure}
+
+
+
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}}
+% \end{figure}
+%   % ========================================= caso_3 ========================================================================
+% Para el caso HLL newtoniano se tienen los mismos casos, pero HLL es sutílmente mejor al aproximarse al exponente , tanto para HLL con Lax en
+% el caso newtoniano el tiempo para para casos donde la resolución es de 250x250 el programa para al tiempo $t= 4.12 \times 10^{10}$, para 500x500 
+% $t= 8.13 \times 10^{10}$
+
+
+%   % ========================================= caso_4 ========================================================================
+
+%   \begin{figure}
+%     \centering
+%       \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_4/Expansion}
+%     \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+%     $ a = 0.474$ con un coeficiente de relación $R^2=0.988$. 
+%     El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}
+%   \end{figure}
   
   
   
-  \begin{figure}
-    \centering
-    \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_0}}
-    \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_20}}
-    \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_40}}
-    \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}}
-  \end{figure}
-    % ========================================= caso_4 ========================================================================
+%   \begin{figure}
+%     \centering
+%     \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_0}}
+%     \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_20}}
+%     \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_40}}
+%     \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}}
+%   \end{figure}
+%     % ========================================= caso_4 ========================================================================
   
   
 
- % ========================================= caso_5 ========================================================================
+%  % ========================================= caso_5 ========================================================================
 
- \begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_5/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-  $ a = 0.427$ con un coeficiente de relación $R^2=0.982$. 
-  El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}
-\end{figure}
-
-
-
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}}
-\end{figure}
-  % ========================================= caso_5 ========================================================================
-
-% ========================================= caso_6 ========================================================================
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_6/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-  $ a = 0.418$ con un coeficiente de relación $R^2=0.987$. 
-  El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}
-\end{figure}
-
-
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}}
-\end{figure}
-  % ========================================= caso_6 ========================================================================
-
-Dado que para Lax y HLL, conforme se aumente la resolución el programa funciona mejor dado que el programa no para antes de lo estipulado para resoluciones
-grandes, ademas el exponente se acerca a 0.4. Aunque HLL es un poco mejor que Lax se, la diferencia no es tan notoria y se pueden usar los 2 sin ningún 
-problema.
-
-% ========================================= caso_7 ========================================================================
-\section{Casos relativistas}
-
-
-para los casos relativistas, tanto para HLL como Lax, la conclusión es la 
-
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_7/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
-\end{figure}
+%  \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_5/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+%   $ a = 0.427$ con un coeficiente de relación $R^2=0.982$. 
+%   El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}
+% \end{figure}
 
 
 
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-\end{figure}
-  % ========================================= caso_7 ========================================================================
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}}
+% \end{figure}
+%   % ========================================= caso_5 ========================================================================
 
-% ========================================= caso_8 ========================================================================
+% % ========================================= caso_6 ========================================================================
 
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_8/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
-\end{figure}
-
-
-
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-\end{figure}
-  % ========================================= caso_8 ========================================================================
-
-% ========================================= caso_9 ========================================================================
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_9/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
-\end{figure}
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_6/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
+%   $ a = 0.418$ con un coeficiente de relación $R^2=0.987$. 
+%   El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}
+% \end{figure}
 
 
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-\end{figure}
-  % ========================================= caso_9 ========================================================================
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}}
+% \end{figure}
+%   % ========================================= caso_6 ========================================================================
+
+% Dado que para Lax y HLL, conforme se aumente la resolución el programa funciona mejor dado que el programa no para antes de lo estipulado para resoluciones
+% grandes, ademas el exponente se acerca a 0.4. Aunque HLL es un poco mejor que Lax se, la diferencia no es tan notoria y se pueden usar los 2 sin ningún 
+% problema.
+
+% % ========================================= caso_7 ========================================================================
+% \section{Casos relativistas}
 
 
-% ========================================= caso_10 ========================================================================
+% para los casos relativistas, tanto para HLL como Lax, la conclusión es la 
 
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_10/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
-\end{figure}
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_7/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+%   } \label{fig_velocidad_vs_radio_computacionalmente}
+% \end{figure}
 
 
 
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-\end{figure}
-  % ========================================= caso_10 ========================================================================
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+% \end{figure}
+%   % ========================================= caso_7 ========================================================================
 
+% % ========================================= caso_8 ========================================================================
 
-% ========================================= caso_11 ========================================================================
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_11/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
-\end{figure}
-
-
-
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-\end{figure}
-  % ========================================= caso_11 ========================================================================
-
-
-% ========================================= caso_12 ========================================================================
-
-\begin{figure}
-  \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_12/Expansion}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-  un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-  } \label{fig_velocidad_vs_radio_computacionalmente}
-\end{figure}
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_8/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+%   } \label{fig_velocidad_vs_radio_computacionalmente}
+% \end{figure}
 
 
 
-\begin{figure}
-  \centering
-  \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_0}}
-  \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_20}}
-  \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_40}}
-  \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-\end{figure}
-  % ========================================= caso_12 ========================================================================
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+% \end{figure}
+%   % ========================================= caso_8 ========================================================================
+
+% % ========================================= caso_9 ========================================================================
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_9/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+%   } \label{fig_velocidad_vs_radio_computacionalmente}
+% \end{figure}
+
+
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+% \end{figure}
+%   % ========================================= caso_9 ========================================================================
+
+
+% % ========================================= caso_10 ========================================================================
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_10/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+%   } \label{fig_velocidad_vs_radio_computacionalmente}
+% \end{figure}
+
+
+
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_10/LAX_REL_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+% \end{figure}
+%   % ========================================= caso_10 ========================================================================
+
+
+% % ========================================= caso_11 ========================================================================
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_11/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+%   } \label{fig_velocidad_vs_radio_computacionalmente}
+% \end{figure}
+
+
+
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_11/LAX_REL_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+% \end{figure}
+%   % ========================================= caso_11 ========================================================================
+
+
+% % ========================================= caso_12 ========================================================================
+
+% \begin{figure}
+%   \centering
+%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_12/Expansion}
+%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
+%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
+%   } \label{fig_velocidad_vs_radio_computacionalmente}
+% \end{figure}
+
+
+
+% \begin{figure}
+%   \centering
+%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_0}}
+%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_20}}
+%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_12/LAX_REL_screenshot_40}}
+%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
+% \end{figure}
+%   % ========================================= caso_12 ========================================================================
 
 
 
