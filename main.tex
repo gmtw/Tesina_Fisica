@@ -1687,14 +1687,7 @@ A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrec
 
 \section{Pruebas unidimensionales}
 
-Para tener la seguridad de que el programa realmente funcione se realizarán pruebas unidimensionales en un tubo de Sod.
-Esta prueba consiste en determinar como se comporta un gas ideal en un tubo que tiene valores iniciales discontinuos,
-es decir, que a cierta longitud del tubo, el gas tendrá ciertos valores para la densidad, velocidad y presión,
-mientras que en la otra parte tendrá distintos valores.
-
-En las siguientes secciones se implementará el programa con los métodos Lax y HLL para ponerlos a prueba
-con casos newtonianos y luego se procederá a hacer lo mismo pero con casos relativistas.
-
+Para tener la seguridad de que el código funcione bien se realizaron pruebas unidimensionales de un tubo de Sod ya sea en el régimen newtoniano así como en el relativista (y en ambos usando los métodos Lax y HLL). Estas pruebas consisten en determinar como se comporta un gas ideal en un tubo el cual cuenta con una discontinuidad. Antes de un valor de distancia crítico el gas tiene ciertos valores para la densidad, velocidad y presión, y a partir ese punto crítico el gas tiene distintos valores.
 
 % Para validar que el código realmente funciona se implementará un explosión esférica como la que se trata en las ecuaciones de Sedov-Taylor. Como
 % este problema es hidrodinámico, tenemos que ver que el radio de la onda de choque se expanda como $t^{0.4}$. Las simulaciones se programaróna para 
@@ -1707,15 +1700,7 @@ con casos newtonianos y luego se procederá a hacer lo mismo pero con casos rela
 
 \subsection{Casos newtonianos}
 
-Para los casos newtoniano usaremos los valores del cuadro \ref{Cuadro_parametros_sod_tube}. El primer 
-caso es una onda de rarefacción y una onda de choque. Por lo que simularemos poner un gas dentro de un tubo el cual estará
-dividido a la mitad por una membrana ($x_0$). El tubo tendrá densidad ($\rho_l$), velocidad ($v_l$) y
-presión ($p_l$) del lado izquierdo\footnote{Los subíndices \emph{l} y \emph{r} vienen del ingĺés
-\emph{left} y \emph{right} que significan izquierda y derecha respectivamente.}
-de la membrana, mientras que del lado derecho tendrán densidad ($\rho_r$), velocidad ($v_r$) y 
-presión ($p_r$). La elección del índice adiabático $\gamma = 1.4$ se dio para poder simular 
-los mismos problemas que en \cite{Exact-solution_riemman-solver} 
-
+\color[red]{Para las pruebas newtonianas se usaron los valores del cuadro \ref{Cuadro_parametros_sod_tube}. El primer  caso (denominado caso 1 newtoniano), produce una onda de rarefacción y una onda de choque. La condición inicial gas consiste en tener el dominio unidimensional dividido a la mitad del dominio (en $x_0$) con ciertos valores de densidad ($\rho_l$), velocidad ($v_l$) y presión ($p_l$) del lado izquierdo\footnote{Los subíndices \emph{l} y \emph{r} vienen del ingĺés \emph{left} y \emph{right} que significan izquierda y derecha respectivamente.}, mientras que del lado derecho tendrán densidad ($\rho_r$), velocidad ($v_r$) y  presión ($p_r$). La elección del índice adiabático $\gamma = 1.4$ se dio para poder simular los mismos modelos que en \cite{Exact-solution_riemman-solver}.}
 
 \begin{table}[htbp]
   \begin{center}
@@ -1733,29 +1718,24 @@ los mismos problemas que en \cite{Exact-solution_riemman-solver}
   \end{center}
 \end{table}
 
-Una onda de rarefacción viaja a través de una región de alta densidad, 
-la cual para nuestro caso se moverá hacia la izquierda, mientras que una onda de choque se moverá hacia
-la derecha en una zona de baja densidad. La simulación del caso rarefacción-choque se muestra en la 
-figura \ref{caso_new_rar_shock} a distintos tiempos.
+\color[red]{Primero explica como sabes o puedes distinguir cual es una onda de rarefacción y cual es la onda de choque. Ya luego puedes decir algo como: La onda de rarefacción evolucionará hacia la izquierda de $x_0$, mientras que una onda de choque se moverá hacia la derecha de $x_0$.}
 
-
+\color[red]{En la figura \ref{caso_new_rar_shock} se muestra la evolución temporal de la densidad, presión y velocidad para el caso 1 newtoniano usando el método Lax. En la figura previa se ve como una onda de rarefacción viaja hacia la derecha a través de la región de alta densidad. Notamos como para 0.2 segundos el perfil de densidad tiene dos brincos situados aproximadamente en x=0.70 y x=0.85 (posición en la cual la velocidad y la presión también tienen una discontinuidad presente). Para el tiempo t=0.4 la onda de rarefacción... (HACE FALTA QUE EXPLIQUES MAS DETALLADAMENTE CADA PANEL).}
 
   \begin{figure}
     \centering
         \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_rho.png}}
         \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_v.png}}
         \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_p.png}}
-      \caption{\label{caso_new_rar_shock} Evolución temporal del caso 1 newtoniano donde se muestra
+      \caption{\label{caso_new_rar_shock} Evolución temporal del caso 1 newtoniano (usando el método Lax) donde se muestra
       las magnitudes de densidad (arriba a la izquierda), presión (abajo) y velocidad (arriba a la derecha). 
       Su usó un índice adiabático $\Gamma = 1.4$ y las unidades del tiempo vienen
       en segundos.}
   \end{figure}
 
-  
-Se usó el método Lax para mostrar la evolución temporal de los casos newtonianos, dado que como se muestra
-en la figura \ref{comparacion_analitico_newtoniano_caso_1}, tanto Lax como HLL son idénticos. Aunque
-Lax es más rápido que su homólogo.
+\color[red]{El caso 1 newtoniano tambien fue resuelto utilizando el método HLL. En la figura \ref{comparacion_analitico_newtoniano_caso_1}, se muestra la comparación entre los métodos Lax y HLL. Quea claro que tanto Lax como HLL reproducen de forma muy parecida la solución analítica para este caso (REFERENCIA). Cabe señalar que el método Lax resultó ser más rápido que su homólogo (POR CUANTO? 5\%, 25\%?).}
 
+\color[red]{Además, como se puede ver en el panel de abajo a la derecha de la figura \ref{comparacion_analitico_newtoniano_caso_1} conforme se va incrementando la resolución, más se apega el resultado numérico a la solución analítica. Para resoluciones con $\leq 1000$ píxeles\footnote{Para fines prácticos, usaremos la palabra "píxel" para describir los $\Delta x$ en las que se divide nuestro dominio espacial, es decir, si el dominio tiene una resolución de $n$ píxeles, entonces, $\Delta x = 1/n$ } la solución numérica para Lax se apega a la analítica.}
 
 \begin{figure}
   \centering
@@ -1765,13 +1745,6 @@ Lax es más rápido que su homólogo.
   El panel de abajo hacia la derecha muestra la comparación a distintas resoluciones para la densidad. Los demás paneles muestran
   las diferencias de los métodos HLL y Lax con una resolución de 10,000 píxeles.\label{comparacion_analitico_newtoniano_caso_1}}
 \end{figure}
-
-Como se puede ver en la figura \ref{comparacion_analitico_newtoniano_caso_1} tanto Lax como HLL se ajustan 
-al caso analítico para resoluciones $\leq 1000$ píxeles\footnote{
-  Para fines prácticos, usaremos la palabra "píxel" para describir los $\Delta x$ en las que 
-  se divide nuestro dominio
-  espacial, es decir, si el dominio tiene una resolución de $n$ píxeles, entonces, $\Delta x = 1/n$
-}.
 
 En el 2° caso, se simulan 2 ondas de rarefacción, una se moverá a la izquierda el otro a la derecha. 
 Como se puede ver en el cuadro \ref{Cuadro_parametros_sod_tube}
