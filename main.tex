@@ -1704,16 +1704,16 @@ valores.
 
 
 \subsection{Casos newtonianos}
-{
-\color{red}Para las pruebas newtonianas se usaron los valores del cuadro 
+
+Para las pruebas newtonianas se usaron los valores del cuadro 
 \ref{Cuadro_parametros_sod_tube}. El primer  caso (denominado caso 1 newtoniano), produce una onda 
 de rarefacción y una onda de choque. La condición inicial gas consiste en tener el dominio 
 unidimensional dividido a la mitad del dominio (en $x_0$) con ciertos valores de densidad ($\rho_l$), 
 velocidad ($v_l$) y presión ($p_l$) del lado izquierdo\footnote{Los subíndices \emph{l} y \emph{r} 
 vienen del ingĺés \emph{left} y \emph{right} que significan izquierda y derecha respectivamente.}, 
 mientras que del lado derecho tendrán densidad ($\rho_r$), velocidad ($v_r$) y  presión ($p_r$). 
-La elección del índice adiabático $\gamma = 1.4$ se dio para poder simular los mismos modelos que 
-en \cite{Exact-solution_riemman-solver}.}
+La elección del índice adiabático $\Gamma = 1.4$ se dio para poder simular los mismos modelos que 
+mostrados por F.D. Lora-Clavijo \emph{et al.} \cite{Exact-solution_riemman-solver}.
 
 \begin{table}[htbp]
   \begin{center}
@@ -1731,27 +1731,15 @@ en \cite{Exact-solution_riemman-solver}.}
   \end{center}
 \end{table}
 
-{\color{red}Primero explica como sabes o puedes distinguir cual es una onda de rarefacción y cual es 
-la onda de choque. Ya luego puedes decir algo como: La onda de rarefacción evolucionará hacia la 
-izquierda de $x_0$, mientras que una onda de choque se moverá hacia la derecha de $x_0$.}
-
-{\color{blue}Una onda de rarefacción es la progresión de partículas que se aceleran lejos de una zona 
+Una onda de rarefacción es la progresión de partículas que se aceleran lejos de una zona 
 comprimida. Siempre se mueven a regiones de mayor densidad y no presentan discontinuidades, mientras que
 una onda de choque se moverá siempre a las zonas de menor densidad y presentará discontinuidades además
 de que su valor siempre será una constante. Dado que para el primer caso tendremos valores de densidad
 y presión más grandes que el lado derecho de la membrana ($x_0$), podemos decir que del lado izquierdo 
 de la membrana será una una onda de rarefacción que se moverá a la izquierda, mientras que del lado
-derecho será una onda de choque que se moverá a la derecha.}
+derecho será una onda de choque que se moverá a la derecha.
 
-{\color{red}En la figura \ref{caso_new_rar_shock} se muestra la evolución temporal de la densidad, 
-presión y velocidad para el caso 1 newtoniano usando el método Lax. En la figura previa se ve como 
-una onda de rarefacción viaja hacia la derecha a través de la región de alta densidad. 
-Notamos como para 0.2 segundos el perfil de densidad tiene dos brincos situados aproximadamente en 
-x=0.70 y x=0.85 (posición en la cual la velocidad y la presión también tienen una discontinuidad 
-presente). Para el tiempo t=0.4 la onda de rarefacción... 
-(HACE FALTA QUE EXPLIQUES MAS DETALLADAMENTE CADA PANEL).}
-
-{\color{blue}En la figura \ref{caso_new_rar_shock} se muestra la evolución temporal de la densidad, 
+En la figura \ref{caso_new_rar_shock} se muestra la evolución temporal de la densidad, 
 presión y velocidad para el caso 1 newtoniano usando el método Lax. En la figura previa se ve como 
 una onda de choque viaja hacia la derecha a través de la región de alta densidad. 
 Notamos como para 0.2 segundos el perfil de densidad tiene dos brincos situados aproximadamente en 
@@ -1759,12 +1747,13 @@ x=0.70 y x=0.85 (posición en la cual la velocidad y la presión también tienen
 presente). La primera discontinuidad hace referencia a la onda de contacto que tiene la misma velocidad
 que que los estados de la izquierda y la derecha $V_c = v_l = v_r$ donde $V_c$
 es la velocidad de la onda de contacto por lo que esto hace que las presiones sean iguales 
-$p_l = p_r$ [\cite{Exact-solution_riemman-solver}] por lo que esta primera discontinuidad solo se presenta en el panel de las densidad. 
+$p_l = p_r$ (F.D. Lora-Clavijo \emph{et al.} \cite{Exact-solution_riemman-solver}) por lo que esta primera discontinuidad solo se presenta en el panel de las densidad. 
 La otra discontinuidad que se presenta en los 3 páneles es la discontinuidad de la onda de choque.
 Para el tiempo t=0.4 la onda de rarefacción se mueve más lento que la onda de choque puesto que la
 discontinuidad de la onda de choque ya no se presenta en nuestro dominio de los 3 páneles, mientras 
 que la onda de rarefacción todavia se muestra en $x \approx 0.01$. La unica discontinuidad presente es la de onda de 
-contacto y esta es más lenta que la onda de rarefacción ya que se encuentra en $x \approx 0.85$.}
+contacto y esta es más lenta que la onda de rarefacción ya que se encuentra en $x \approx 0.85$.
+
   \begin{figure}
     \centering
         \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_rho.png}}
@@ -1776,22 +1765,21 @@ contacto y esta es más lenta que la onda de rarefacción ya que se encuentra en
       en segundos.}
   \end{figure}
 
-{\color{red}El caso 1 newtoniano tambien fue resuelto utilizando el método HLL. En la figura 
-\ref{comparacion_analitico_newtoniano_caso_1}, se muestra la comparación entre los métodos Lax y HLL. 
-Queda claro que tanto Lax como HLL reproducen de forma muy parecida la solución analítica para este 
-caso (REFERENCIA) {\color{blue} No entiendo bien a que referencia tengo que ir, si es la figura donde 
-se muestran las comparaciones entre los métodos numéricos y analiticos ya esta citado arriba}. 
-Cabe señalar que el método Lax resultó ser {\color{blue} 220 \%} más rápido que su homólogo. 
-\footnote{Probado con una resoluciónn de 10,000 pixeles con un procesador AMD Ryzen 3 3300U de
-2.10 Ghz} 
-}
+  El caso 1 newtoniano tambien fue resuelto utilizando el método HLL. En la figura 
+  \ref{comparacion_analitico_newtoniano_caso_1}, se muestra la comparación entre los métodos Lax y HLL. 
+  Queda claro que tanto Lax como HLL reproducen de forma muy parecida la solución analítica para este 
+  caso (F.D. Lora Clavijo \emph{et al.} \cite{Exact-solution_riemman-solver}). 
+  Cabe señalar que el método Lax resultó ser 220 \% más rápido que su homólogo. 
+  \footnote{Probado con una resolución de 10,000 pixeles con un procesador AMD Ryzen 3 3300U de
+  2.10 Ghz} 
+  
 
-{\color{red}Además, como se puede ver en el panel de abajo a la derecha de la figura 
+Además, como se puede ver en el panel de abajo a la derecha de la figura 
 \ref{comparacion_analitico_newtoniano_caso_1} conforme se va incrementando la resolución, más se 
-apega el resultado numérico a la solución analítica. Para resoluciones con $\leq 1000$ 
-píxeles\footnote{Para fines prácticos, usaremos la palabra "píxel" para describir los $\Delta x$ en 
+apega el resultado numérico a la solución analítica, para resoluciones $\leq 1000$ 
+píxeles.\footnote{Para fines prácticos, usaremos la palabra "píxel" para describir los $\Delta x$ en 
 las que se divide nuestro dominio espacial, es decir, si el dominio tiene una resolución de $n$ 
-píxeles, entonces, $\Delta x = 1/n$ } la solución numérica para Lax se apega a la analítica.}
+píxeles, entonces, $\Delta x = 1/n$ }
 
 \begin{figure}
   \centering
@@ -1802,10 +1790,11 @@ píxeles, entonces, $\Delta x = 1/n$ } la solución numérica para Lax se apega 
   las diferencias de los métodos HLL y Lax con una resolución de 10,000 píxeles.\label{comparacion_analitico_newtoniano_caso_1}}
 \end{figure}
 
-En el 2° caso, se simulan 2 ondas de rarefacción, una se moverá a la izquierda el otro a la derecha. 
-Como se puede ver en el cuadro \ref{Cuadro_parametros_sod_tube}
-tanto la densidad como la presión son las mismas, mientras que la velocidad ya no es nula  y tienen
-la misma magnitud pero se mueven en sentidos opuestos. La figura \ref{caso_new_rar_rar} muestra, usando
+En el 2° caso, se simulan 2 ondas de rarefacción, para este caso los valores de de la densidad
+y presión serán las mismas en ambos estados del tubo, pero las velocidades serán de igual magnitud
+pero de sentido contrario. Por lo que una se moverá a la izquierda el otro a la derecha, como se 
+puede ver en el cuadro \ref{Cuadro_parametros_sod_tube}.
+La figura \ref{caso_new_rar_rar} muestra, usando
 el método de Lax, la evolución temporal del 2° caso.
 
 \begin{figure}
@@ -1818,10 +1807,22 @@ el método de Lax, la evolución temporal del 2° caso.
     \label{caso_new_rar_rar}.}
 \end{figure}
 
+Para los valores $t = 0$, la densidad (arriba a la izquierda) y la presión (abajo) son las mismas, 
+mientras que para el panel de
+la velocidad (arriba a la derecha) tiene una discontinuidad en $x = 0$. 
+Para el tiempo $t = 0.2$ s, se puede ver una 
+simetria ya que las cabezas de la onda de rarefacción tienen lugar en los puntos $x \approx 0.16$ y
+y $x \approx 0.84$.
+Ambas ondas estan unidas por la onda de contacto en los puntos $x  \approx 0.4$
+y $x  \approx 0.6$ que vienen siendo las colas de las ondas de rarefacción. 
+Para el tiempo $t = 0.4$ solo se aprecian las colas de las ondas de rarefacción
+en los puntos $x  \approx 0.3$ y $x  \approx 0.7$.
+
 La comparación del método de Lax y HLL se da en la figura \ref{comparacion_analitico_newtoniano_caso_2}.
-Como se puede ver en los paneles de arriba y el de abajo hacia la izquierda, la comparación con el método
-analítico viene siendo la misma para ambos métodos. 
-Ambos procedimientos funcionan para resoluciones $\leq 1000$.
+Como se puede ver en los paneles de densidad (arriba a la izquierda) , velocidad (arriba a la derecha) 
+y presión (abajo a la izquierda), la comparación con la solución numérica para Lax y HLL se 
+apega a la analítica. Para el panel de abajo a la derecha, mientras no haya discontinuidades de salto
+como en el anterior caso ambos procedimientos funcionan para resoluciones $\leq 100$.
 
 
 \begin{figure}
@@ -1836,8 +1837,10 @@ Ambos procedimientos funcionan para resoluciones $\leq 1000$.
 \end{figure}
 
 Para los casos newtonianos se pueden usar Lax o HLL ya que ambos se ajustan con el método analítico
-y con una resolución $\leq 1000$. Pero si requiere que el ajuste sea más preciso en las discontinuidades
-entonces se necesitan que se usen resoluciones $\leq 10,000$
+y con una resolución $\leq 1000$ pixeles, aunque Lax fue 20 \% mas rápido que HLL. 
+Si se requiere que el ajuste sea más preciso en las 
+discontinuidades
+entonces se necesitan que se usen resoluciones $\geq 10,000$ pixeles.
 % ========================================================================================================
 % ========================================================================================================
 
@@ -1846,20 +1849,20 @@ entonces se necesitan que se usen resoluciones $\leq 10,000$
 
 Para los casos relativistas, se voleverán a repetir los mismos casos que en el newtoniano,
 pero los valores serán distintos y se tomará el índice adiabático\footnote{En esta tesis,
-para fines explícitos, se tomará gamma mayúscula ($\Gamma$) como el índice adiabático. Mientras que gamma
-minúscula ($\gamma$) como el factor de Lorentz.} $\Gamma = 4/3$. Los valores con los que se toman los casos del
-caso relativista estan en el cuadro \ref{Cuadro_parametros_sod_tube_rel} y se tomó la velocidad de la luz 
-$c = 1$.
+para fines explícitos, se tomará gamma mayúscula ($\Gamma$) como el índice adiabático. Mientras que 
+gamma minúscula ($\gamma$) como el factor de Lorentz.} $\Gamma = 4/3$. Los valores con los que se 
+toman los casos del caso relativista estan en el cuadro \ref{Cuadro_parametros_sod_tube_rel} y se 
+tomó la velocidad de la luz $c = 1$.
 
 \begin{table}[htbp]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
   \hline 
-  \textbf{Caso} & \textbf{$p_l$} & \textbf{$p_r$} & \textbf{$v_l$} & \textbf{$v_r$} & \textbf{$\rho_l$} & \textbf{$\rho_r$} \\ 
+  \textbf{Caso} & \textbf{$p_l$} [$\text{dyn}/\text{cm}^2$] & \textbf{$p_r$} [$\text{dyn}/\text{cm}^2$] & \textbf{$v_l$}/c & \textbf{$v_r$}/c  & \textbf{$\rho_l$} [$\text{g}/\text{cm}^3$]& \textbf{$\rho_r$} [$\text{g}/\text{cm}^3$]\\ 
   \hline 
-  Caso 1 & 13.33 $\text{dyn}/\text{cm}^2$ & 0.0 $\text{dyn}/\text{cm}^2$ & 0.0 c& 0.0 c& 10 $\text{g}/\text{cm}^3$ & 1 $\text{g}/\text{cm}^3$\\ 
+  Caso 1 & 13.33  & 0.0  & 0.0 c& 0.0 c& 10  & 1 \\ 
   \hline 
-  Caso 2 & 0.05 $\text{dyn}/\text{cm}^2$ & 0.05 $\text{dyn}/\text{cm}^2$ & -0.2 c& 0.2 c& 0.1 $\text{g}/\text{cm}^3$ & 0.1 $\text{g}/\text{cm}^3$ \\ 
+  Caso 2 & 0.05  & 0.05  & -0.2 c& 0.2 c& 0.1  & 0.1  \\ 
   \hline 
   \end{tabular}
   \caption{\label{Cuadro_parametros_sod_tube_rel} Valores iniciales para los casos relativistas. Para todos los
@@ -1867,9 +1870,9 @@ $c = 1$.
   \end{center}
 \end{table}
 
-Tanto en el caso rarefacción-choque como rarefacción-rarefacción. La evolución temporal se hará usando 
+Tanto en el caso 1 como 2. La evolución temporal se hará usando 
 el método de HLL ya que Lax falla al tratar de simular las condiciones iniciales de este problema, 
-además de que necesita de altas resoluciones $\geq 10,000$ para poder funcionar.
+además de que necesita de altas resoluciones $\geq 10,000$ píxeles para poder funcionar.
 
 \begin{figure}
   \centering
@@ -1882,14 +1885,27 @@ además de que necesita de altas resoluciones $\geq 10,000$ para poder funcionar
     en segundos. \label{caso_rel_rar_shock_1}}
 \end{figure}
 
-En la figura \ref{caso_rel_rar_shock} muestra que HLL se ajusta al método analítico para resoluciones
-$\leq 1,000$ píxeles, pero si observamos el panel de abajo a la derecha, HLL funciona para
-resoluciones $\leq 100$ píxeles. A difencia de HLL, Lax colapsaba para resoluciones de $\leq 10,000$
-pixeles y para resoluciones $\geq 10,000$ solo calculaba para tiempos $t \leq 0.06$. Por lo que 
+En la figura \ref{caso_rel_rar_shock} cuando $t = 0$ el panel de la densidad y presión  (arriba izquierda y
+abajo) presental la discontinuidad en $x = 0.5$, mientras que la velocidad es nula en ambos estados
+al tiempo $t =0.2$ en el panel de la densidad, presión y velocidad (arriba a la derecha) 
+presenta un cambio en $x = 0.42$ que viene siendo la cabeza de la onda de rarefacción
+asi como 2 discontinuidades en $x \approx 0.78$ y $x \approx 0.82$, la primera refiere a la onda de 
+contacto y la segunda a la de la onda de choque. En en panel de la velocidad  y 
+presión  no presentan la discontinuidad porque presentan la mismos valores de presión 
+y velocidad (Esto es una condicion que se debe de imponer para este caso vease en \cite{Exact-solution_riemman-solver}). 
+Tambien en el panel de velocidad se puede ver que la onda de choque alcanza velocidades
+del 70 \% de la velocidad de la luz. Para el tiempo $t = 0.4$ s la discontinuidad de contacto se movió
+a $x \approx 0.8$ cm, la velocidad de la onda de contacto se mantiene igual que en el tiempo 
+$t = 0.2$.
+
+En la figura \ref{caso_rel_rar_shock} se muestra que HLL se ajusta al método analítico para 
+resoluciones $\leq 1,000$ píxeles, pero si observamos el panel de abajo a la derecha, 
+HLL funciona para resoluciones $\leq 100$ píxeles. A difencia de HLL, Lax colapsaba 
+para resoluciones $\geq 10,000$ píxeles y solo calculaba para tiempos $t \leq 0.06$. Por lo que 
 forzosamente, cuando el código se use para casos relativistas, se tiene que usar el método de HLL.
 
-En el panel de velocidad de la figura \ref{caso_rel_rar_shock} podemos ver que HLL no tiene problemas al
-compararse con el método analítico, cuando este alcanza velocidades cercanas a la de la luz.
+En el panel de velocidad de la figura \ref{caso_rel_rar_shock} podemos ver que HLL no tiene problemas 
+al compararse con el método analítico, cuando este alcanza velocidades cercanas a la de la luz.
 
 \begin{figure}
   \centering
@@ -1899,8 +1915,9 @@ compararse con el método analítico, cuando este alcanza velocidades cercanas a
   las diferencias de los métodos HLL y Lax con una resolución de 10,000.} \label{caso_rel_rar_shock}
 \end{figure}
 
-El caso 2 representa 2 ondas de rarefacción, a diferencia del caso 1 las velocidades que alcanzan las ondas
-no son velocidades relativistas, sin embargo, Lax todavia colapsa al tratar de simular este tipo de casos.
+El caso 2 representa 2 ondas de rarefacción, a diferencia del caso 1 las velocidades que alcanzan las 
+ondas no son velocidades relativistas, sin embargo, Lax todavia colapsa al tratar de simular este 
+tipo de casos.
 \begin{figure}
   \centering
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_rar_rho.png}}
@@ -1911,7 +1928,17 @@ no son velocidades relativistas, sin embargo, Lax todavia colapsa al tratar de s
 \end{figure}
 
 A diferencia del caso 1 relativista, el caso de las 2 ondas de rarefacción no presenta discontinuidades,
-por lo que se pueden usar resoluciones $\leq 100.$ píxeles.
+por lo que se pueden usar resoluciones $\leq 100.$ píxeles. A $t = 0$, en la figura \ref{caso_rel_rar_shock_2}.  
+El panel de la de la densidad y presión (arriba izquierda y abajo respectivamente) no presentan 
+discontinuidades mientras que para la velocidad (arriba derecha ) se presenta una en $x = 0$.
+Al igual que el caso newtoniano al simular las 2 ondas presenta una simetria con respecto a la 
+discontinuidad. Al tiempo $t = 0.2$ las cabezas de la onda de rarefacción se presentan en los puntos 
+$x \approx 0.35$ y $ x \approx 0.65$ y las colas de la onda en $x \approx 0.45$ y $ x \approx 0.55$.
+Cabe señalar que a diferencia de la densidad y la presión, la velocidad, del lado izquierdo, su cola de
+onda de rarefacción tiene un valor mas alto que la cabeza de la onda.
+Para el tiempo $t = 0.4$ se sigue manteniendo el mismo sistema que al tiempo $t =0.2$, ya que las ondas
+se están alejando de la discontinuidad y las cabezas la onda ahora están en los puntos 
+$x \approx 0.25$ y $ x \approx 0.75$. mientras que las colas estan en $x \approx 0.45$ y $ x \approx 0.65$.
 
 
 \begin{figure}
@@ -1922,6 +1949,12 @@ por lo que se pueden usar resoluciones $\leq 100.$ píxeles.
   } \label{caso_rel_rar_shock_2}
 \end{figure}
 
+En la figura \ref{caso_rel_rar_shock_2}, HLL se apega a la analítica, para los puntos en $x \approx 0.3$
+y $x \approx 0.7$ que son las cabezas de las ondas y $x \approx 0.32$ y $x \approx 0.68$ que son las
+colas de las ondas. Esto para la densidad (arriba izquierda), velocidad(arriba a la derecha) y presión 
+(abajo), para resoluciones $\geq 10,000$. En el panel de abajo a la derecha donde se sompara HLL
+con el método analítico para 3 distintas resoluciones, mientras no haya discontinuidades de salto,
+se pueden usar resoluciones de 100 pixeles.
 
 
 % \begin{table}[htbp]
