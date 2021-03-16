@@ -1179,7 +1179,7 @@ es la densidad de energía por unidad de volumen
 \end{equation}
 
 Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad, 
-$P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ la presion, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas 
+$P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ la presión, $\Gamma$ el indice adiabático adimensional donde para velocidades ultrarrelativistas 
 $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuacion \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
 
 \begin{equation}\label{RH_momento_j}
@@ -1741,8 +1741,8 @@ mostrados por  Lora-Clavijo \emph{et al.} (2013).
   \caption{\label{Cuadro_parametros_sod_tube} Valores iniciales de la presión ($p$), velocidad ($v$)
   y densidad ($\rho$), del lado izquierdo ($p_l, v_l, \rho_l$) y derecho ($p_r, v_r, \rho_r$)
   para los casos newtonianos. Para todos los
-  casos el dominio espacial será $x \in [0,1]$, la posición crítica sería
-  $x_0 = 0.5$ y un índice adiabático $\Gamma = 7/5$}
+  casos el dominio espacial será $x \in [0,1]$ cm, la posición crítica sería
+  $x_0 = 0.5$ cm y un índice adiabático $\Gamma = 7/5$}
   \end{center}
 \end{table}
 
@@ -1769,7 +1769,7 @@ $p_l = p_r$. Esta primera discontinuidad solo se
 presenta en el panel de las densidad, la otra discontinuidad que se presenta en los 3 páneles es la 
 discontinuidad de la onda de choque.
 
-Para el tiempo t=0.4 
+Para el tiempo t=0.4 s
 discontinuidad de la onda de choque ya no se presenta en nuestro dominio de los 3 páneles, mientras 
 que la cabeza de la onda de rarefacción todavia se muestra en $x \approx 0.01$ cm. La única discontinuidad 
 presente es la de onda de 
@@ -1785,7 +1785,8 @@ sus mismos valores.
         \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_v.png}}
         \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_newtoniano/caso_new_rar_shock_p.png}}
       \caption{\label{caso_new_rar_shock} Evolución temporal del caso 1 newtoniano (usando el método Lax) donde se muestra
-      las magnitudes de densidad (arriba a la izquierda), presión (abajo) y velocidad (arriba a la derecha). 
+      las magnitudes de densidad (arriba a la izquierda), presión (abajo) y 
+      velocidad (arriba a la derecha). 
       Se usó un índice adiabático $\Gamma = 7/5$ .}
   \end{figure}
 
@@ -1811,16 +1812,18 @@ sus mismos valores.
   donde se mantiene contante hasta la discontinuidad de choque en $x \approx 0.93$ cm y regresa a $v = 0$ cm/s.
   En este punto, tanto Lax como HLL, no tiene ninguna dificultad al reproducir a discontinuidad de 
   choque.
-  El panel de abajo a la izquierda es la presión, el cual cambia su valor $p = 1.0$ en $x \approx 0.48$ cm
-  bajando hasta $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $ en $x \approx 0.48$ cm, donde igual que la velocidad
+  El panel de abajo a la izquierda es la presión, el cual cambia su valor 
+  $p = 1.0 \,  \text{dyn}/ \text{cm}^2 $ en $x \approx 0.48$ cm
+  bajando hasta $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $ en $x \approx 0.48$ cm, 
+  donde igual que la velocidad
   mantiene su mismo valor hasta $x \approx 0.93$ cm donde su valor decae a $p = 0.1 \,  \text{dyn}/ \text{cm}^2 $
 
-  Queda claro que tanto Lax como HLL reproducen de forma muy parecida la solución analítica para este 
-  caso (Lora Clavijo \emph{et al.} 2013), sobre todo en las regiones donde se muestra una discontinuidad
-  o donde cambia suavemente. 
-  Cabe señalar que el método Lax resultó ser 220 \% más rápido que HLL. 
-  \footnote{Probado con una resolución de 10,000 píxeles con un procesador AMD Ryzen 3 3300U de
-  2.10 Ghz} 
+  % Queda claro que tanto Lax como HLL reproducen de forma muy parecida la solución analítica para este 
+  % caso (Lora Clavijo \emph{et al.} 2013), sobre todo en las regiones donde se muestra una discontinuidad
+  % o donde cambia suavemente. 
+  % Cabe señalar que el método Lax resultó ser 220 \% más rápido que HLL. 
+  % \footnote{Probado con una resolución de 10,000 píxeles con un procesador AMD Ryzen 3 3300U de
+  % 2.10 Ghz} 
   
 
 Además, como se puede ver en el panel de abajo a la derecha de la Figura 
@@ -1864,7 +1867,7 @@ Para los valores $t = 0$ s, la densidad ($\rho$) y la presión ($p$) son las mis
 mientras que para el panel de
 la velocidad  tiene una discontinuidad en $x = 0.5$ cm. 
 Para el tiempo $t = 0.2$ s, se puede ver una 
-simetria ya que la cabeza de la onda de rarefacción tienen lugar en los puntos $x \approx 0.16$
+simetria ya que la cabeza de la onda de rarefacción tienen lugar en los puntos $x \approx 0.16$ cm
 donde la densidad $\rho = 1.0 \,  \text{g}/ \text{cm}^3$ y 
 la presión $p = 0.40 \,  \text{dyn}/ \text{cm}^2 $,
 decrecen hasta $\rho \approx 0.25 \,  \text{g}/ \text{cm}^3$ y $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $ en forma parabólica hasta conectar con la cola de 
@@ -1881,7 +1884,7 @@ en los puntos $x  \approx 0.3$ y $x  \approx 0.7$, donde la densidad mantiene un
 $\rho \approx 0.25 \,  \text{g}/ \text{cm}^3$, la velocidad $v \approx 0.0$ cm/s y la presión $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $.
 
 La comparación del método de Lax y HLL se da en la Figura \ref{comparacion_analitico_newtoniano_caso_2}.
-Como se puede ver en los páneles de densidad (arriba a la izquierda) en el punto $x \lesssim  0.05$,
+Como se puede ver en los páneles de densidad (arriba a la izquierda) en el punto $x \lesssim  0.05$ cm,
 la densidad no esta perturbada y tiene un valor $\rho = 1.0 \,  \text{g}/ \text{cm}^3$,
 la velocidad (arriba a la derecha)
 $v = -1.0$ cm/s y la presión (abajo a la izquierda) $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $. Tanto Lax como HLL se ajustan perfectamente 
@@ -1915,7 +1918,7 @@ método de Lax\footnote{
   Se usó el método de Lax ya que es más rápido que HLL
 } notamos que para resoluciones $\leq 1000$ Lax no se ajusta correctamente debido al cambio de valor 
 en $x \approx 0.05$ cm donde inicia la cabeza de la onda de rarefacción. Para los puntos 
-$x \gtrsim 0.93$, los valores de la densidad, presión y velocidad se mantienen en 
+$x \gtrsim 0.93$ cm, los valores de la densidad, presión y velocidad se mantienen en 
 $\rho = 1 \,  \text{g}/ \text{cm}^3$, 
 $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $ y $v = 1.0$ cm/s, es decir, no han sido perturbados por la onda. Debido 
 a la cabeza de la onda Lax no se ajusta bien al método analítico para resoluciones $\leq 100$ píxeles.
@@ -1935,12 +1938,22 @@ como en el anterior caso ambos procedimientos funcionan para resoluciones $\leq 
   \label{comparacion_analitico_newtoniano_caso_2}} 
 \end{figure}
 
-Para los casos newtonianos se pueden usar Lax o HLL ya que ambos se ajustan con el método analítico
-(Lora-Clavijo \emph{et. al.} 2013)
-y con una resolución $\leq 1000$ píxeles, aunque Lax fue 20 \% mas rápido que HLL. 
+% Para los casos newtonianos se pueden usar Lax o HLL ya que ambos se ajustan con el método analítico
+% (Lora-Clavijo \emph{et. al.} 2013)
+% y con una resolución $\leq 1000$ píxeles.
+
+{\color{red}{Podemos concluir, para el caso newtoniano, que nuestros módulos de 
+Lax como HLL reproducen de forma casi perfecta la solución analítica para este 
+problema de Riemann
+(Lora Clavijo \emph{et al.} 2013), ya sea en las regiones donde se muestra una discontinuidad
+o donde cambia suavemente. 
+Cabe destacar que el método Lax resultó ser 220 \% más rápido que HLL. 
+\footnote{Probado con una resolución de 10,000 píxeles con un procesador AMD Ryzen 3 3300U de
+2.10 Ghz} 
 Si se requiere que el ajuste sea más preciso en las 
 discontinuidades
-entonces se necesita que se usen resoluciones $\geq 10,000$ píxeles.
+entonces se necesita que se usen resoluciones $\geq 10,000$ píxeles.}}
+
 % ========================================================================================================
 % ========================================================================================================
 
@@ -1987,13 +2000,13 @@ Además de que necesita de altas resoluciones $\geq 10,000$ píxeles para poder 
     del caso newtoniano, en el relativista se usa un índice adiabático $\Gamma = 4/3$. \label{caso_rel_rar_shock_1}}
 \end{figure}
 
-En la Figura \ref{caso_rel_rar_shock} cuando $t = 0$ el panel de la densidad (arriba a la izquierda) 
+En la Figura \ref{caso_rel_rar_shock} cuando $t = 0$ s el panel de la densidad (arriba a la izquierda) 
 y presión (abajo ) presentan una discontinuidad en $x = 0.5$ cm donde $\rho = 10 \,  \text{g}/ \text{cm}^3$
 y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ del lado izquierdo, mientras que del lado derecho $\rho = 0  \,  \text{g}/ \text{cm}^3$
 y $p = 0 \,  \text{dyn}/ \text{cm}^2 $. La velocidad no presenta discontinuidad y mantiene su velocidad nula para toda
 la región del tubo. 
 
-Al tiempo $t =0.2$ la densidad y presión 
+Al tiempo $t =0.2$ s la densidad y presión 
 descienden linealmente, mientras que la velocidad asciende en $x = 0.42$ cm
 que viene siendo la cabeza de la onda de rarefacción. El punto donde alcanzan 
 sus máximos y minimos es la cola de la onda que esta situada en el punto $x \approx 0.58$ cm,
@@ -2001,10 +2014,10 @@ le densidad y presión llegan a $\rho \approx 1.12 \,  \text{g}/ \text{cm}^3$ y
 $p \approx 1.12\,  \text{dyn}/ \text{cm}^2 $ mientras que las velocidad es
 cercana a la de la luz $v \approx 0.75c$. Las densidad vuelve a subir en el punto $x \approx 0.63$ cm
 y llega a $\rho = 5.6  \,  \text{g}/ \text{cm}^3$ mientras que la velocidad y presión se mantienen iguales. Para el punto
-$x \approx 0.68$ cm, la densidad, presion y velocidad bajan a valores nulos que es la zona del tubo que
+$x \approx 0.68$ cm, la densidad, presión y velocidad bajan a valores nulos que es la zona del tubo que
 no ha sido perturbada por la onda.
 
-Para el tiempo $t = 0.4$, la densidad y presión, que mantienen sus valores de 
+Para el tiempo $t = 0.4$ s, la densidad y presión, que mantienen sus valores de 
 $\rho = 10 \,  \text{g}/ \text{cm}^3$ y 
 $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ bajan sus valores en $x \approx 0.25$ cm, mientras que la velocidad , la cual es nula,
 asciende. En el punto $x \approx 0.68$ cm la presión alcanza $p \approx 1.12\,  \text{dyn}/ \text{cm}^2 $ y la densidad
@@ -2018,9 +2031,9 @@ En la Figura \ref{caso_rel_rar_shock} el panel de arriba a la izquierda muestra 
 arriba a la derecha la velocidad, la presión es el de abajo a la izquierda y el último panel que
 es de el de abajo a la derecha vuelve a mostrar la densidad, pero en este se compararán las distintas
 resoluciones. Cabe recalcar que  el tiempo 
-fue a $t = 0.35$.
+fue a $t = 0.35$ s.
 
-A la región $x \lesssim 0.33$, la densidad tiene un valor $\rho = 10 \,  \text{g}/ \text{cm}^3$, 
+A la región $x \lesssim 0.33$ cm, la densidad tiene un valor $\rho = 10 \,  \text{g}/ \text{cm}^3$, 
 la presión $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $
 y la velocidad es nula se puede ver que HLL se ajusta perfectamente para los valores constantes
 sin importar la resolución. 
@@ -2046,7 +2059,7 @@ al compararse con el método analítico, cuando este alcanza velocidades cercana
     \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock.png}
   \caption{Igual que en la Figura \ref{comparacion_analitico_newtoniano_caso_1} pero para el caso 1 
   relativista 
-  a $t = 0.35$. El panel de abajo 
+  a $t = 0.35$ s. El panel de abajo 
   hacia la
   derecha muestra la comparación a distintas resoluciones para la densidad. Los demás páneles muestran
   las diferencias de los métodos HLL y Lax con una resolución de 10,000.}\label{caso_rel_rar_shock}
@@ -2072,12 +2085,12 @@ el panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha
 y el de abajo la presión.
 Al igual que el caso newtoniano al simular las 2 ondas presenta una simetría con respecto a la 
 discontinuidad.
-En el tiempo $t = 0$, tanto la densidad como la presión mantienen los mismos valores 
+En el tiempo $t = 0$ s, tanto la densidad como la presión mantienen los mismos valores 
 $\rho =0.1 \,  \text{g}/ \text{cm}^3$
 y $p = 0.05$. mientras que la velocidad tiene una discontinuidad en $x = 0.5$ cm donde la parte del lado
 izquierdo de la discontinuidad es $v = -0.2$ c, mientras que del lado derecho es $v = 0.2$ c.
 
-Al tiempo $t = 0.2$ la cabeza de la onda de rarefacción se presenta en los punto 
+Al tiempo $t = 0.2$ s la cabeza de la onda de rarefacción se presenta en los punto 
 $x \approx 0.35$ cm donde los valores de de la presión ($p = 0.05$) y densidad 
 ($\rho =0.1 \,  \text{g}/ \text{cm}^3$) comienzan a descender linealmente,
 mientras que la velocidad ($v = 0.2$ c) desciende, solo en magnitud, hasta el punto $x \approx 0.45$ cm
@@ -2090,7 +2103,7 @@ hasta $x \approx 0.65$ cm donde ahora la densidad es
 $\rho = 0.1 \,  \text{g}/ \text{cm}^3$, la presión $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $ y 
 la velocidad $v = 0.2$ c
 
-Para el tiempo $t = 0.4$ se sigue manteniendo el mismo sistema que al tiempo $t =0.2$, ya que en
+Para el tiempo $t = 0.4$ s se sigue manteniendo el mismo sistema que al tiempo $t =0.2$ s, ya que en
 $x \approx 0.25$ cm los valores de la densidad ($\rho = 0.1 \,  \text{g}/ \text{cm}^3$), 
 presión ($p = 0.05 \,  \text{dyn}/ \text{cm}^2 $) 
 y velocidad ($v = -0.2$ c) descienden en forma lineal hasta el punto $x \approx 0.35$ cm, donde 
@@ -2106,7 +2119,7 @@ cambia de sentido $v = 0.2$ c.
   \centering
     \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_rar.png}
   \caption{Igual que en la Figura \ref{comparacion_analitico_newtoniano_caso_1} pero para el caso 2 
-  relativista. Se usó un índice adiabático $\Gamma = 4/3$ y $t = 0.25$.
+  relativista. Se usó un índice adiabático $\Gamma = 4/3$ y $t = 0.25$ s.
   } \label{caso_rel_rar_shock_2}
 \end{figure}
 
@@ -2116,7 +2129,7 @@ na comparación entre el método analítico y el método numérico (HLL) usando 
 10,000 píxeles. El panel de abajo a la derecha muestra vuelve a mostrar la densidad, pero esta vez
 se comparón distintas resoluciones.
 
-En $x \lesssim 0.33$ los valores de de la densidad, presión y velocidad son 
+En $x \lesssim 0.33$ cm los valores de de la densidad, presión y velocidad son 
 $\rho = 0.1 \,  \text{g}/ \text{cm}^3$, $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $
 y $v = -0.2$ c. HLL para resoluciones $\geq 500$ se ajusta perfectamente al analítico. Cuando los 
 valores descienden en $x \approx 0.37$ cm a $\rho \approx 0.075 \,  \text{g}/ \text{cm}^3$, 
@@ -2127,11 +2140,12 @@ esos puntos. En el punto $x \approx 0.63$  cm tanto la presión como la densidad
 sus valores hasta el punto $x \approx 0.65$ cm donde alcanzan los valores que tenial del lado izquierdo
 donde la densidad ahora es $\rho = 0.1 \,  \text{g}/ \text{cm}^3$, la presión $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $ 
 y la velocidad $v = 0.2$ c.
-HLL se apega a la analítica, para los puntos en $x \approx 0.63$ cm y $x \approx 0.65$ cm para 
-resoluciones $ \geq 500$ ya que, para resoluciones menores, se 
-suavizan demasiado las colas y cabezas de las ondas de rarefacción. Aún asi HLL se ajusta perfectamente en
-las discontinuidades, los valores constantes y las curvas donde los valores cambian gradualmente.
 
+% El módulo de HLL se apega a la analítica, para los puntos en $x \approx 0.63$ cm y $x \approx 0.65$ cm para 
+% resoluciones $ \geq 500$ ya que, para resoluciones menores, se 
+% suavizan demasiado las colas y cabezas de las ondas de rarefacción. 
+{\color{red}Por lo tanto podemos concluir que nuestro módulo HLL se ajusta perfectamente para el problema de 
+Riemann relativista con resoluciones $\geq 500$ píxeles.}
 
 % \begin{table}[htbp]
 %   \begin{center}
