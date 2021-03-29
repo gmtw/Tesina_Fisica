@@ -1995,7 +1995,7 @@ Además de que necesita de altas resoluciones $\geq 10,000$ píxeles para poder 
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock_rho.png}}
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock_v.png}}
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/caso_relativista/caso_rel_rar_shock_p.png}}
-    \caption{Igual que en la Figura \ref{caso_new_rar_shock} pero para el caso 2 newtoniano. A diferencia 
+    \caption{Igual que en la Figura \ref{caso_new_rar_shock} pero para el caso 1 relativista. A diferencia 
     del caso newtoniano, en el relativista se usa un índice adiabático $\Gamma = 4/3$. \label{caso_rel_rar_shock_1}}
 \end{figure}
 
@@ -2153,9 +2153,143 @@ A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solu
 Por lo tanto podemos concluir que nuestro módulo HLL se ajusta perfectamente para el problema de 
 Riemann relativista con resoluciones $\geq 500$ píxeles.
 
-\section{Pruebas 2D}
+\section{Pruebas bidimensionales}
 Ya que hemos visto el código funcionar correctamente para pruebas en una dimensión ahora nos toca ver
-como funciona en 2 dimensiones.
+como funciona en 2 dimensiones. Se hará una prueba de una onda de choque en 2 dimensiones, los valores
+que tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}.
+
+\begin{table}[htbp]
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+  \hline 
+  \textbf{Caso} & \textbf{$p_i$} [$\text{dyn}/\text{cm}^2$] & 
+  \textbf{$p_o$} [$\text{dyn}/\text{cm}^2$] & 
+  \textbf{$vx_i$}/c & \textbf{$vx_o$}/c  & \textbf{$vy_i$}/c & \textbf{$vy_o$}/c  & 
+  \textbf{$\rho_i$} [$\text{g}/\text{cm}^3$]& 
+  \textbf{$\rho_o$} [$\text{g}/\text{cm}^3$]\\ 
+  \hline 
+  Caso 1 & 13.33  & 0.0  & 0.0 & 0.0 & 0.0 & 0.0 & 10  & 1 \\ 
+  \hline 
+  \end{tabular}
+  \caption{\label{Cuadro_parametros_choque_2D} Valores iniciales 
+  de la presión ($p$), velocidad ($v$)
+  y densidad ($\rho$), del lado interno ($p_i, vx_i, vy_i, \rho_i$) y 
+  externo ($p_o, vx_o, vy_o, \rho_o$) de la onda de choque
+  para los casos relativistas. Para todos los
+  casos el dominio espacial será $x, y \in [0,1]\times[0,1] $, el radio de la onda
+  será $r = 0.5 \text{cm}$ y un índice adiabático $\Gamma = 4/3$}
+  \end{center}
+\end{table}
+
+Para comprobar que el código funciona correctamente en 2 dimensiones, se va a comparar
+los perfiles de densidad, velocidad y presión de los radios de la onda de choque que son 
+paralelos, perpendiculares y que forman un ángulo de 45° con el eje x con los resultados en 1 dimensión. 
+La Figura \ref{Example_blast_wave} muestra una mejor representación visual de donde se tomarán los 
+perfiles de la onda.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/Example.png}
+  \caption{Las flechas indican los perfiles de densidad, velocidad y presión se 
+  tomaran de los radios que son 
+  paralelos al eje x (0°), perpendiculares (90°) y a 45° y se compararán con las pruebas en 
+  1 dimensión.}\label{Example_blast_wave}
+\end{figure}
+
+En la Figura \ref{fig:comparacion_perfil_0} muestra la comparación entre la prueba unidimensional
+y la prueba bidimensional, la cual usa el perfil radial que es paralelo al eje x (0°).
+El panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha, la velocidad y 
+el de abajo la presión.
+La densidad y presión, para ambas pruebas, mantienen sus valores de 
+$\rho = 10 \,  \text{g}/ \text{cm}^3$ y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ 
+luego, bajan sus valores en $x \approx 0.25$
+mientras que la velocidad , la cual es nula,
+asciende. En el punto $x \approx 0.68$ cm la presión alcanza 
+$p \approx 2.0\,  \text{dyn}/ \text{cm}^2 $ y la densidad
+$\rho \approx 2.0 \,  \text{g}/ \text{cm}^3$, mientras que la velocidad sube a $v \approx 0.75c$
+en una dimensión. En 2 dimensiones la densidad baja hasta  $\rho \approx 1.0 \,  \text{g}/ \text{cm}^3$ y
+la presión $p \approx 1.8\,  \text{dyn}/ \text{cm}^2 $ mientras que la velocidad en $x \approx 0.68$ cm
+sube a $v \approx 0.8c$ y baja a $v \approx 0.7c$ en $x \approx 0.68$ cm
+
+
+La densidad en 1D como en 2D vuelve a subir
+en $x \approx 0.69$ cm y llega a $\rho \approx 5 \,  \text{g}/ \text{cm}^3$ y 
+se mantiene así hasta el punto $x \approx 0.7$ cm 
+donde la densidad, así como la velocidad y presión descienden sus valores a nulos.
+
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.17]{./Figuras/verificacion_del_codigo/pruebas_2D/0/densidad.png}}
+      \subfigure{\includegraphics[scale = 0.17]{./Figuras/verificacion_del_codigo/pruebas_2D/0/velocidad.png}}
+      \subfigure{\includegraphics[scale = 0.17]{./Figuras/verificacion_del_codigo/pruebas_2D/0/presion.png}}
+    \caption{La figura muestra la comparación que hay entre la prueba unidimensional 
+    (lineal roja punteada) y la prueba 
+    bidimensional (lineal azul sólida), la cual usa el perfil radial que es paralelo al eje x (0°). El panel de arriba a la 
+    izquierda muestra la densidad, el de arriba a la derecha la velocidad y el de abajo la presión
+    Ambas pruebas se usaron tomando en cuenta los valores del Cuadro \ref{Cuadro_parametros_choque_2D}
+    y al tiempo $t = 0.4$ s}
+    \label{fig:comparacion_perfil_0}
+\end{figure}
+En la Figura \ref{fig:comparacion_perfil_90} se compara los perfiles radiales que son ortogonales al
+eje x, basicamente esta Figura viene siendo lo mismo que la Figura \ref{fig:comparacion_perfil_0}.
+El panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha, la velocidad y 
+el de abajo la presión.
+La densidad y presión, para ambas pruebas, mantienen sus valores de 
+$\rho = 10 \,  \text{g}/ \text{cm}^3$ y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ 
+luego, bajan sus valores en $x \approx 0.25$
+mientras que la velocidad , la cual es nula,
+asciende. En el punto $x \approx 0.68$ cm la presión alcanza 
+$p \approx 2.0\,  \text{dyn}/ \text{cm}^2 $ y la densidad
+$\rho \approx 2.0 \,  \text{g}/ \text{cm}^3$, mientras que la velocidad sube a $v \approx 0.75c$
+en una dimensión. En 2 dimensiones la densidad baja hasta  $\rho \approx 1.0 \,  \text{g}/ \text{cm}^3$ y
+la presión $p \approx 1.8\,  \text{dyn}/ \text{cm}^2 $ mientras que la velocidad en $x \approx 0.68$ cm
+sube a $v \approx 0.8c$ y baja a $v \approx 0.7c$ en $x \approx 0.68$ cm
+
+
+La densidad en 1D como en 2D vuelve a subir
+en $x \approx 0.69$ cm y llega a $\rho \approx 5 \,  \text{g}/ \text{cm}^3$ y 
+se mantiene así hasta el punto $x \approx 0.7$ cm 
+donde la densidad, así como la velocidad y presión descienden sus valores a nulos.
+
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/90/densidad.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/90/velocidad.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/90/presion.png}}
+    \caption{Igual que la Figura \ref{fig:comparacion_perfil_0}, solo que se tomó un perfil radial
+    ortogonal al eje x (90°).}\label{fig:comparacion_perfil_90}
+\end{figure}
+En la Figura \ref{fig:comparacion_perfil_45} se compara los perfiles radiales que 
+estan inclinados 45° respecto al
+eje x
+La densidad y presión, para ambas pruebas, mantienen sus valores de 
+$\rho = 10 \,  \text{g}/ \text{cm}^3$ y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ 
+luego, bajan sus valores en $x \approx 0.25$
+mientras que la velocidad , la cual es nula,
+asciende. En el punto $x \approx 0.68$ cm la presión alcanza 
+$p \approx 2.0\,  \text{dyn}/ \text{cm}^2 $ y la densidad
+$\rho \approx 2.0 \,  \text{g}/ \text{cm}^3$, mientras que la velocidad sube a $v \approx 0.75c$
+en una dimensión. En 2 dimensiones la densidad baja hasta  $\rho \approx 1.0 \,  \text{g}/ \text{cm}^3$ y
+la presión $p \approx 1.8\,  \text{dyn}/ \text{cm}^2 $ mientras que la velocidad en $x \approx 0.68$ cm
+sube a $v \approx 0.8c$ y baja a $v \approx 0.7c$ en $x \approx 0.68$ cm
+
+
+La densidad en 1D  vuelve a subir
+en $x \approx 0.69$ cm y llega a $\rho \approx 5 \,  \text{g}/ \text{cm}^3$,
+mientras que en 2D, llega a $\rho \approx 5 \,  \text{g}/ \text{cm}^3$ y 
+se mantiene así hasta el punto $x \approx 0.7$ cm 
+donde la densidad, así como la velocidad y presión descienden sus valores a nulos.
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/45/densidad.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/45/velocidad.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/45/presion.png}}
+    \caption{Igual que la Figura \ref{fig:comparacion_perfil_0}, solo que se tomó un perfil radial
+    inclinado 45° sobre el eje de las x.}\label{fig:comparacion_perfil_45}
+\end{figure}
+
 
 % \begin{table}[htbp]
 %   \begin{center}
