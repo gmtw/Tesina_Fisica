@@ -2159,7 +2159,8 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 
 \section{Pruebas bidimensionales}
 Ya que hemos visto el código funcionar correctamente para pruebas en una dimensión ahora nos toca ver
-como funciona en 2 dimensiones. Se hará una prueba de una onda de choque en 2 dimensiones, los valores
+como funciona en 2 dimensiones. Se hará una prueba de una onda de choque relativista
+en 2 dimensiones, los valores
 que tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}.
 
 \begin{table}[htbp]
@@ -2168,7 +2169,7 @@ que tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}.
   \hline 
   \textbf{Caso} & \textbf{$p_i$} [$\text{dyn}/\text{cm}^2$] & 
   \textbf{$p_o$} [$\text{dyn}/\text{cm}^2$] & 
-  \textbf{$v_{xi}$}/c & \textbf{$v_{xo}$}/c  & \textbf{$vy_i$}/c & \textbf{$vy_o$}/c  & 
+  \textbf{$v_{xi}$}/c & \textbf{$v_{xo}$}/c  & \textbf{$v_{yi}$}/c & \textbf{$v_{yo}$}/c  & 
   \textbf{$\rho_i$} [$\text{g}/\text{cm}^3$]& 
   \textbf{$\rho_o$} [$\text{g}/\text{cm}^3$]\\ 
   \hline 
@@ -2193,7 +2194,7 @@ perfiles de la onda.
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.8\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/Example}
+    \includegraphics[width=0.4\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/Example}
   \caption{Las lineas indican los perfiles de densidad, velocidad y presión que se 
   tomaran de los radios que son 
   paralelos al eje x (0°), perpendiculares (90°) y a 45° y se compararán con las pruebas en 
@@ -2217,66 +2218,54 @@ el tiempo $t = 0.4$ s.
 \end{figure}
 
 Antes de compararlo con el perfil unidimensional, primero se comparará entre si mísmo. Es decir, se
-compararán los perfiles radiales tomados a 0°, 45°, 90°. En la Figura \ref{fig:comparacion_perfil_velocidad}
-el perfil de la densidad. Elpanel de arriba a la izquierda muestra a 0°, el de arriba a la derecha
-a 90° y el de abajo muestra a 45°.
+compararán los perfiles radiales tomados a 0°, 45°, 90°. 
+En la Figura \ref{fig:comparacion_perfil_radial}, el panel de arriba a la izquierda muestra la densidad, 
+el de arriba a la derecha la velocidad y el de abajo muestra la presión.
 
-En la Figura, para los 3 perfiles radiales, muestran una densidad $\rho \approx 10$ en $x \approx 0.2$
+En el panel de arriba a la derecha se muestra una densidad $\rho \approx 10$ en $x \approx 0.2$
 donde comienza a disminuir hasta $\rho \approx 1.5$ en $x \approx 0.6$. Después comienza a subir hasta 
 $\rho \approx 5$ para los perfiles de 90 y 0, mientras que para el de 45 sube hasta 5.5 en el punto
 $x \approx 0.7$. Después vuelve a disminuir a $\rho \approx 0$ en el punto $x \approx 0.8$ para los 
 3 perfiles radiales
 
 
-\begin{figure}
-  \centering
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/0/densidad.png}}
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/90/densidad.png}}
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/45/densidad.png}}
-    \caption{La figura muestra la comparación que hay entre los distintos perfiles de
-    densidad al tiempo $t = 0.4$ s. El panel de arriba a la izquierda muestra el perfil a 0°, el de
-    arriba a la derecha muestra a 90° y el panel de abajo muestra a 45°}
-    \label{fig:comparacion_perfil_densidad}
-\end{figure}
 
-Para el perfil de la velocidad (ver Figura \ref{fig:comparacion_perfil_velocidad}), 
+Para el perfil de la velocidad (panel arriba a la derecha), 
 en $x \approx 0.2$ la velocidad empieza a incrementar desde el reposo
 $v = 0$ hasta $v \approx 0.7$ en $x \approx 0.6$, esto aplica para los 3 perfiles de velocidad. Después
 va decreciendo hasta $v \approx 0.62$ en $x \approx 0.75$ para los perfiles de 0 y 90, mientras que para 
 el perfil de 45 lo hace en $x \approx 0.73$. A partir de este punto la velocidad vuelve a cero.
 
-\begin{figure}
-  \centering
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/0/velocidad.png}}
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/90/velocidad.png}}
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/45/velocidad.png}}
-    \caption{Igual que la Figura \ref{fig:comparacion_perfil_densidad}, solo que se tomó el perfil de
-    la velocidad.}\label{fig:comparacion_perfil_velocidad}
-\end{figure}
 
 
-El la figura \ref{fig:comparacion_perfil_presion} muestra el perfil de la presión, donde los paneles 
-vienen ordenados de igual manera que el perfil de densidad y velocidad. Para el punto $x \approx 0.18$
+
+El el panel de abajo muestra el perfil de la presión. Para el punto $x \approx 0.18$
 la presión comienza a disminuir de $p = 13.33$ hasta $p \approx 1 $ en $x \approx 0.7$ para los 
 3 perfiles. En $x \approx 0.71 $ vuelve a disminuir a $p = 0$ en $x \approx 0.74 $ para los perfiles de 
 0 y 90, mientras que para el perfil de 45 lo hace en $x \approx 0.73 $.
 
+Al comparar las gráficas, se puede ver que los perfiles de 0 y 90, tiene un error del 0 \% mientras que
+al compararse con el de 45 vemos que ... (verificar resultados).
+
+Por lo tanto al no haber una discrepencia grande en los valores de los 3 perfiles radiales podemos ver
+que nuestro codigo relativista no cambia a pesar de la dirección que tengan los perfiles radiales de 
+densidad, velocidad y presión. Siempre se tiene el mismo perfil en función del radio.
 
 \begin{figure}
   \centering
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/0/presion.png}}
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/90/presion.png}}
-      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/45/presion.png}}
-    \caption{Igual que la Figura \ref{fig:comparacion_perfil_densidad}, solo que se tomó el perfil de
-    la presión.}\label{fig:comparacion_perfil_presion}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/combinacion/densidad.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/combinacion/velocidad.png}}
+      \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/combinacion/presion.png}}
+    \caption{La figura muestra la comparación que hay entre los distintos perfiles de
+    densidad al tiempo $t = 0.4$ s. El panel de arriba a la izquierda muestra el perfil a 0° (linea roja
+    sólida), el de arriba a la derecha muestra a 90° (linea verde punteada) y el panel de abajo 
+    (linea azul de raya y punto) muestra a 45°}
+    \label{fig:comparacion_perfil_radial}
 \end{figure}
 
 
-
-
-
 En la Figura \ref{fig:comparacion_perfil_mean} muestra la comparación entre la prueba unidimensional
-y la prueba bidimensional, que es la media de los 3 perfiles radiales que se tomarón.
+y la prueba bidimensional, que es la media de los 3 perfiles radiales que se tomaron.
 El panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha, la velocidad y 
 el de abajo la presión.
 La densidad y presión, para ambas pruebas, mantienen sus valores de 
@@ -2296,8 +2285,9 @@ sube a $v \approx 0.8c$ y baja a $v \approx 0.7c$ en $x \approx 0.68$ cm
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/mean/densidad.png}}
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/mean/velocidad.png}}
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/mean/presion.png}}
-    \caption{Comparación entre la media de los 3 perfiles radiales (0, 90 y 45) y 
-    la prueba unidimensional.}\label{fig:comparacion_perfil_mean}
+    \caption{Comparación entre la media de los 3 perfiles radiales (linea sólida azul), la 
+    la prueba unidimensional (linea de puntos rojos) y la analítica (linea negra sólida)
+    .}\label{fig:comparacion_perfil_mean}
 \end{figure}
 
 
@@ -2309,181 +2299,14 @@ donde la densidad, así como la velocidad y presión descienden sus valores a nu
 La mayor diferencia que hay entre la 1D y 2D para la densidad es del 70 \%, mientras que para la 
 velocidad es del 238 \% y la de la presión es del 79 \%.
 
+Al comparar los perfiles bidimensionales con el analítico, para la densidad se tiene un error del
+13 \%, para la velocidad del 12 \% y para la presión del 16 \%. Luego al comparar el unidimensional
+con el analítico, la densidad es del 3 \%, la velocidad del 7\% y la presión del 4 \%.
 
+Al no haber tanta diferencia del resultado de la media de los perfiles radiales bidimensionales con 
+los perfiles unidimensionales y con el analítico puedo concluir que mi código relativista es válido
+para 2 dimensiones.
 
-
-
-
-% \begin{figure}
-%   \centering
-%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_0}}
-%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_20}}
-%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_2/LAX_NR_screenshot_40}}
-%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_500}}
-% \end{figure} \label{fig_cmap_lax_newtoniano_500}
-%   % ========================================= Caso 2 ========================================================================
-
-
-
-%   % ========================================= caso_3 ========================================================================
-
-% \begin{figure}
-%   \centering
-%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_3/Expansion}
-%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-%   $ a = 0.419$ con un coeficiente de relación $R^2=0.992$. 
-%   El método que se usó fue Lax no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}
-% \end{figure}
-
-
-
-% \begin{figure}
-%   \centering
-%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_0}}
-%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_20}}
-%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_3/LAX_NR_screenshot_40}}
-%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_lax_newtoniano_1000}}
-% \end{figure}
-%   % ========================================= caso_3 ========================================================================
-% Para el caso HLL newtoniano se tienen los mismos casos, pero HLL es sutílmente mejor al aproximarse al exponente , tanto para HLL con Lax en
-% el caso newtoniano el tiempo para para casos donde la resolución es de 250x250 el programa para al tiempo $t= 4.12 \times 10^{10}$, para 500x500 
-% $t= 8.13 \times 10^{10}$
-
-
-%   % ========================================= caso_4 ========================================================================
-
-%   \begin{figure}
-%     \centering
-%       \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_4/Expansion}
-%     \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-%     $ a = 0.474$ con un coeficiente de relación $R^2=0.988$. 
-%     El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}
-%   \end{figure}
-  
-  
-  
-%   \begin{figure}
-%     \centering
-%     \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_0}}
-%     \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_20}}
-%     \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_4/HLL_NR_screenshot_40}}
-%     \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_250}}
-%   \end{figure}
-%     % ========================================= caso_4 ========================================================================
-  
-  
-
-%  % ========================================= caso_5 ========================================================================
-
-%  \begin{figure}
-%   \centering
-%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_5/Expansion}
-%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-%   $ a = 0.427$ con un coeficiente de relación $R^2=0.982$. 
-%   El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}
-% \end{figure}
-
-
-
-% \begin{figure}
-%   \centering
-%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_0}}
-%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_20}}
-%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_5/HLL_NR_screenshot_40}}
-%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_500}}
-% \end{figure}
-%   % ========================================= caso_5 ========================================================================
-
-% % ========================================= caso_6 ========================================================================
-
-% \begin{figure}
-%   \centering
-%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_6/Expansion}
-%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El exponente con la que se expande la onda es 
-%   $ a = 0.418$ con un coeficiente de relación $R^2=0.987$. 
-%   El método que se usó fue HLL no relativista.} \label{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}
-% \end{figure}
-
-
-% \begin{figure}
-%   \centering
-%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_0}}
-%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_20}}
-%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_6/HLL_NR_screenshot_40}}
-%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente_hll_newtoniano_1000}}
-% \end{figure}
-%   % ========================================= caso_6 ========================================================================
-
-% Dado que para Lax y HLL, conforme se aumente la resolución el programa funciona mejor dado que el programa no para antes de lo estipulado para resoluciones
-% grandes, ademas el exponente se acerca a 0.4. Aunque HLL es un poco mejor que Lax se, la diferencia no es tan notoria y se pueden usar los 2 sin ningún 
-% problema.
-
-% % ========================================= caso_7 ========================================================================
-% \section{Casos relativistas}
-
-
-% para los casos relativistas, tanto para HLL como Lax, la conclusión es la 
-
-
-% \begin{figure}
-%   \centering
-%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_7/Expansion}
-%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-%   } \label{fig_velocidad_vs_radio_computacionalmente}
-% \end{figure}
-
-
-
-% \begin{figure}
-%   \centering
-%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_0}}
-%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_20}}
-%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_7/HLL_REL_screenshot_40}}
-%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-% \end{figure}
-%   % ========================================= caso_7 ========================================================================
-
-% % ========================================= caso_8 ========================================================================
-
-% \begin{figure}
-%   \centering
-%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_8/Expansion}
-%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-%   } \label{fig_velocidad_vs_radio_computacionalmente}
-% \end{figure}
-
-
-
-% \begin{figure}
-%   \centering
-%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_0}}
-%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_20}}
-%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_8/HLL_REL_screenshot_40}}
-%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-% \end{figure}
-%   % ========================================= caso_8 ========================================================================
-
-% % ========================================= caso_9 ========================================================================
-
-% \begin{figure}
-%   \centering
-%     \includegraphics[width=0.8\textwidth]{./Figuras/verificacion/casos/caso_9/Expansion}
-%   \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. El eje del tiempo tiene un factor de $10^{10}$ mientras que el del radio
-%   un factor de $10^19$. La ecuación con la que se expande la onda es $ Radio = 522773497555577.4 t^{0.4409}$ con un coeficiente de relación $R^2=0.9916$
-%   } \label{fig_velocidad_vs_radio_computacionalmente}
-% \end{figure}
-
-
-% \begin{figure}
-%   \centering
-%   \subfigure[$t = 0 $ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_0}}
-%   \subfigure[$t = 1.89\,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_20}}
-%   \subfigure[$t = 3.784 \,\times 10^{10}$ s]{\includegraphics[scale = 0.36]{./Figuras/verificacion/casos/caso_9/HLL_REL_screenshot_40}}
-%   \caption{Evolución de la onda de choque de la Figura \ref{fig_velocidad_vs_radio_computacionalmente}}
-% \end{figure}
-%   % ========================================= caso_9 ========================================================================
 
 
 % % ========================================= caso_10 ========================================================================
