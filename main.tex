@@ -2181,8 +2181,8 @@ que tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}.
   y densidad ($\rho$), del lado interno ($p_i, v_{x_{i}}, vy_i, \rho_i$) y 
   externo ($p_o, v_{xo}, v_{yo}, \rho_o$) de la onda de choque
   para los casos relativistas. Para todos los
-  casos el dominio espacial será $x, y \in [0,1]\times[0,1] $, el radio de la onda
-  será $r = 0.5 \text{cm}$ y un índice adiabático $\Gamma = 4/3$}
+  casos el dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda
+  será $r = 0.5 \, \text{cm}$ y un índice adiabático $\Gamma = 4/3$}
   \end{center}
 \end{table}
 
@@ -2195,15 +2195,15 @@ perfiles de la onda.
 \begin{figure}
   \centering
     \includegraphics[width=0.4\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/Example}
-  \caption{Las lineas indican los perfiles de densidad, velocidad y presión que se 
+  \caption{Las lineas punteadas indican los perfiles de densidad, velocidad y presión que se 
   tomaran de los radios que son 
   paralelos al eje x (0°), perpendiculares (90°) y a 45° y se compararán con las pruebas en 
   1 dimensión.}\label{Example_blast_wave}
 \end{figure}
 
 En la Figura \ref{fig:head_map} muestra como evoluciona la onda usando un mapa de calor que muestra la
-densidad. En el panel de arriba a la izquierda muestra el estado inicial al tiempo $t = 0$s, el panel
-de arriba a la derecha muestra su estado al tiempo $t = 0.2$s y el panel de abajo muestra su estado para
+densidad. En el panel de arriba a la izquierda muestra el estado inicial al tiempo $t = 0$ s, el panel
+de arriba a la derecha muestra su estado al tiempo $t = 0.2$ s y el panel de abajo muestra su estado para
 el tiempo $t = 0.4$ s.
 
 
@@ -2222,30 +2222,35 @@ compararán los perfiles radiales tomados a 0°, 45°, 90°.
 En la Figura \ref{fig:comparacion_perfil_radial}, el panel de arriba a la izquierda muestra la densidad, 
 el de arriba a la derecha la velocidad y el de abajo muestra la presión.
 
-En el panel de arriba a la derecha se muestra una densidad $\rho \approx 10$ en $x \approx 0.2$
-donde comienza a disminuir hasta $\rho \approx 1.5$ en $x \approx 0.6$. Después comienza a subir hasta 
-$\rho \approx 5$ para los perfiles de 90 y 0, mientras que para el de 45 sube hasta 5.5 en el punto
-$x \approx 0.7$. Después vuelve a disminuir a $\rho \approx 0$ en el punto $x \approx 0.8$ para los 
+En el panel de arriba a la derecha se muestra una densidad $\rho \approx 10 \, \text{g}/\text{cm}^3$ 
+en $x \approx 0.2$
+donde comienza a disminuir hasta $\rho \approx 1.5 \, \text{g}/\text{cm}^3$ en $x \approx 0.6$. Después comienza a subir hasta 
+$\rho \approx 5 \, \text{g}/\text{cm}^3$ para los perfiles de 90 y 0, mientras que para el de 45 sube hasta 5.5 en el punto
+$x \approx 0.7$ cm. Después vuelve a disminuir a $\rho \approx 0 \, \text{g}/\text{cm}^3$ en el punto $x \approx 0.8$ para los 
 3 perfiles radiales
 
 
 
 Para el perfil de la velocidad (panel arriba a la derecha), 
-en $x \approx 0.2$ la velocidad empieza a incrementar desde el reposo
-$v = 0$ hasta $v \approx 0.7$ en $x \approx 0.6$, esto aplica para los 3 perfiles de velocidad. Después
-va decreciendo hasta $v \approx 0.62$ en $x \approx 0.75$ para los perfiles de 0 y 90, mientras que para 
-el perfil de 45 lo hace en $x \approx 0.73$. A partir de este punto la velocidad vuelve a cero.
+en $x \approx 0.2$ cm la velocidad empieza a incrementar desde el reposo
+$v = 0$ hasta $v \approx 0.7c$ en $x \approx 0.6$ cm, esto aplica para los 3 perfiles de velocidad. Después
+va decreciendo hasta $v \approx 0.62c$ en $x \approx 0.75$ cm para los perfiles de 0 y 90, mientras que para 
+el perfil de 45 lo hace en $x \approx 0.73$ cm. A partir de este punto la velocidad vuelve a cero.
 
 
 
 
-El el panel de abajo muestra el perfil de la presión. Para el punto $x \approx 0.18$
-la presión comienza a disminuir de $p = 13.33$ hasta $p \approx 1 $ en $x \approx 0.7$ para los 
-3 perfiles. En $x \approx 0.71 $ vuelve a disminuir a $p = 0$ en $x \approx 0.74 $ para los perfiles de 
-0 y 90, mientras que para el perfil de 45 lo hace en $x \approx 0.73 $.
+El el panel de abajo muestra el perfil de la presión. Para el punto $x \approx 0.18$ cm
+la presión comienza a disminuir de $p = 13.33 \,  \text{dyn}/ \text{cm}^2$ 
+hasta $p \approx 1 \,  \text{dyn}/ \text{cm}^2$ en $x \approx 0.7$ cm para los 
+3 perfiles. En $x \approx 0.71 $ cm vuelve a disminuir a $p = 0 \,  \text{dyn}/ \text{cm}^2$ en 
+$x \approx 0.74 $ cm para los perfiles de 
+0 y 90, mientras que para el perfil de 45 lo hace en $x \approx 0.73 $ cm.
 
-Al comparar las gráficas, se puede ver que los perfiles de 0 y 90, tiene un error del 0 \% mientras que
-al compararse con el de 45 vemos que ... (verificar resultados).
+Al comparar las gráficas, se puede ver que los perfiles de 0 y 90, tiene un error del 0\% 
+para la densidad, velocidad y presión. Mientras que
+al compararse con el de 45 vemos que se tiene un error para la densidad del 0.04 \%,
+para la velocidad del 4.8 \% y para la presión del 6.6 \%.
 
 Por lo tanto al no haber una discrepencia grande en los valores de los 3 perfiles radiales podemos ver
 que nuestro codigo relativista no cambia a pesar de la dirección que tengan los perfiles radiales de 
@@ -2270,7 +2275,7 @@ El panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha
 el de abajo la presión.
 La densidad y presión, para ambas pruebas, mantienen sus valores de 
 $\rho = 10 \,  \text{g}/ \text{cm}^3$ y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ 
-luego, bajan sus valores en $x \approx 0.25$
+luego, bajan sus valores en $x \approx 0.25$ cm
 mientras que la velocidad , la cual es nula,
 asciende. En el punto $x \approx 0.68$ cm la presión alcanza 
 $p \approx 2.0\,  \text{dyn}/ \text{cm}^2 $ y la densidad
