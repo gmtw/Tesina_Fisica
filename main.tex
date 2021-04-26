@@ -1700,7 +1700,7 @@ el gas cambia abruptamente los valores de la densidad, presión y velocidad.}
 
 \subsection{Casos newtonianos}
 
-{\color{red}Los valores d $\rho$, $p$ y $v$ de los modelos newtonianos se indican en el cuadro
+{\color{red}Los valores de $\rho$, $p$ y $v$ de los modelos newtonianos se indican en el cuadro
 \ref{Cuadro_parametros_sod_tube}}. El primer  modelo (denominado caso 1 newtoniano), produce una onda 
 de rarefacción\footnote{
   Una onda de rarefacción es la progresión de partículas que se aceleran lejos de una zona 
@@ -1826,7 +1826,7 @@ sus mismos valores.}
 
 {\color{red}El panel de abajo a la derecha de la Figura 
 \ref{comparacion_analitico_newtoniano_caso_1} muestra como varia los resultados
-usando Lax con distintas resoluciones ($nx = 10^2, \, 10^3, \,10^4$), ademas, se muestra la solución
+usando Lax con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$), ademas, se muestra la solución
 analítica.}
 Queda claro como 
 conforme se incrementa la resolución (píxeles\footnote{Para fines prácticos, usaremos la palabra "píxel" para describir los $\Delta x$ en 
@@ -1917,7 +1917,7 @@ de rarefacción derecha el cual es $ x \approx 0.93 $ cm.
 usando Lax\footnote{
   Se usó el método de Lax ya que es más rápido que HLL
 }
-con distintas resoluciones ($nx = 10^2, \, 10^3, \,10^4$). Al igual que el caso 1 newtoniano,
+con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$). Al igual que el caso 1 newtoniano,
 conforme se incrementa la resolución, los resultados numéricos se apegan más a la solución analítica.
 A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solución analítica.}
 
@@ -2051,7 +2051,7 @@ todas las magnitudes ($\rho$, $v$ y $p$) disminuyen a su valor nulo y la resoluc
 puede ser $\geq 1,000$ píxeles dado que HLL no presenta dificultades con esta discontinuidad.
 
 En el panel de abajo a la derecha muestra la solución analítica, así como los resultados obtenidos 
-usando HLL con distintas resoluciones ($nx = 10^2, \, 10^3, \,10^4$).  
+usando HLL con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$).  
 En específico, para el problema 1 relativista, a partir de resoluciones mayores a 1000 los
 resultados se apegan mucho a la solución analítica.
 
@@ -2140,7 +2140,7 @@ sus valores hasta el punto $x \approx 0.65$ cm donde alcanzan los valores que te
 donde la densidad ahora es $\rho = 0.1 \,  \text{g}/ \text{cm}^3$, la presión $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $ 
 y la velocidad $v = 0.2$ c.
 En el panel de abajo a la derecha se muestra la solución analítica, así como los resultados obtenidos 
-usando HLL con distintas resoluciones ($nx = 10^2, \, 10^3, \,10^4$). 
+usando HLL con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$). 
 Al igual que el caso 1 relativista,
 conforme se incrementa la resolución, los resultados numéricos se apegan más a la solución analítica.
 A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solución analítica.
@@ -2169,12 +2169,12 @@ será $r = 0.5 \, \text{cm}$ y un índice adiabático $\Gamma = 4/3$}
   \textbf{$\rho_i$} [$\text{g}/\text{cm}^3$]& 
   \textbf{$\rho_o$} [$\text{g}/\text{cm}^3$]\\ 
   \hline 
-  Caso 1 & 13.33  & 0.0  & 0.0 & 0.0 & 0.0 & 0.0 & 10  & 1 \\ 
+  Caso 1 & 13.33  & 0.0  & 0.0 & 0.0 & 0.0 & 0.0 & 10.0  & 1.0 \\ 
   \hline 
   \end{tabular}
   \caption{\label{Cuadro_parametros_choque_2D} Valores iniciales 
   de la presión ($p$), velocidad ($v$)
-  y densidad ($\rho$), del lado interno ($p_i, v_{xi}, v{yi}, \rho_i$) y 
+  y densidad ($\rho$), del lado interno ($p_i, v_{xi}, v_{yi}, \rho_i$) y 
   externo ($p_o, v_{xo}, v_{yo}, \rho_o$) de la onda de choque
   para los casos relativistas. Para todos los
   casos el dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda
@@ -2296,9 +2296,8 @@ se mantiene así hasta el punto $x \approx 0.7$ cm
 donde la densidad, así como la velocidad y presión descienden sus valores a cero.
 Cabe señalar que la mayor diferencia que hay entre la 1D y 2D para la densidad es del 70 \%, mientras que para la 
 velocidad es del 238 \% y la de la presión es del 79 \%.
-{\color{red} Al comparar los perfiles bidimensionales con el analítico, para la densidad se tiene un error 
-máximo del
-13 \%, para la velocidad del 12 \% y para la presión del 16 \%. Para el caso unidimensional
+{\color{red} Al comparar los perfiles bidimensionales con el analítico, para la densidad se tiene un error promedio del
+13 \%, para la velocidad del 12 \% y para la presión del 16 \% (y errores máximos de... ). Para el caso unidimensional
 con el analítico, el error máximo para la $\rho$, $v$ y $p$ son 
 3 \%,  7\% y  4 \% respectivamente.}
 Al no haber tanta diferencia del resultado de los perfiles radiales bidimensionales con 
