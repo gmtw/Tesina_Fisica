@@ -2311,8 +2311,11 @@ en una y dos dimensiones.
 
 \chapter{Jet}
 
-En este capítulo se utilizará un jet, que se mueve a velocidades relativistas para probar, el 
-programa, con distintos medios de densidad.
+\section{Medio ambiente constante}
+
+En este capítulo se utilizará un jet, que se mueve a velocidades relativistas para probar el 
+código, con distintos medios de densidad. La primera prueba consistirá en comparar el código que se ha hecho
+hasta ahora con el de Mignone \emph{et al.} (2005).
 El jet  se modelará como un flujo de densidad $\rho$ con velocidad $v \simeq c$, que se propaga en un 
 medio ambiente con $\rho = \mathrm{cte}$. 
 Las condiciones con las que se va a modelar el jet serán las mismas en Mignone \emph{et al.} (2005), donde el índice adiabático
@@ -2354,7 +2357,7 @@ $x, y \in [0,40]\times[0,20] \, \text{cm}$ y un índice adiabático $\Gamma = 5/
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra un mapa de densidades de la evolución del jet.
 En el panel de arriba a la izquierda muestra el jet al tiempo $t = 20$ s, 
 el de arriba a la derecha muestra
-al tiempo $t = 40$ s mientras que el de anajo muestra el tiempo $t = 60$ s.
+al tiempo $t = 40$ s mientras que el de abajo muestra el tiempo $t = 60$ s.
 
 
 \begin{figure}
@@ -2368,13 +2371,20 @@ al tiempo $t = 40$ s mientras que el de anajo muestra el tiempo $t = 60$ s.
     y el de abajo muestra al tiempo t = 60 s}\label{fig:evolucion_temporal_del_jet}
 \end{figure}
 
-En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra la comparación del código que se ha implementado
-asta ahorita, que es el HLL relativista, contra el de Mignone. El panel de arriba muestra la comparación del
-de Mignone al tiempo t = 40 s (izquierda) y  el HLL relativista al tiempo t = 46 s. El panel de abajo es
+En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra la comparación del código que se ha 
+implementado
+hasta ahorita, que es el HLL relativista, contra el de Mignone. El panel de arriba muestra la comparación del
+de Mignone al tiempo t = 40 s (izquierda) y  el HLL relativista (derecha) al tiempo t = 46 s. 
+El panel de abajo es
 similar a los aspectos del panel de arriba con excepción de qie los tiempos son t = 80 (izquierda) y 
-t = 82 s. Podemos observar que hay un error en los tiempos 15 \% y que al incrementarse este se reduce al
+t = 82 s (derecha). Podemos observar que hay un error en los tiempos 15 \% y que al incrementarse este se reduce al
 2.5 \%. Otras observaciones es que el jet HLL relativista es más viscoso que el de Mignone ya que si
 vemos los paneles de arriba, se puede notar que HLL relativista tiene 5 cm mas de anchura que el de Mignone.
+Los capullos del jet miden aproximadamente 5 cm de ancho tanto en el código relativista como el de Mignone.
+Pero por desgracia no se pueden notar en el código HLL relativista 
+las turbulencias que se generan en el capullo de  de Mignone. Los choques colimados que se originan en el
+núcleo del jet son mas pequeños en el HLL relativista ya que se localizan en $x \approx 4.5$ cm mientras  que los
+de mignone se forman en $x \approx 7$ cm
 
 \begin{figure}
   \centering
@@ -2390,6 +2400,8 @@ vemos los paneles de arriba, se puede notar que HLL relativista tiene 5 cm mas d
     tiempo t = 82 s.}\label{fig:comparacion_temporal_del_jet}
 \end{figure}
 
+
+\section{Medio ambiente variable}
 % %====================================TABLE=================================
 
 
