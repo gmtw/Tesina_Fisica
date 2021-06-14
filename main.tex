@@ -1682,7 +1682,7 @@ A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrec
 % ======================================NUEVO CAPITULO ================================================
 % ======================================NUEVO CAPITULO ================================================
 
-\chapter{Verificación del código}
+\chapter{Verificación del código}\label{cap:Verificacion_del_codigo}
 
 
 \section{Pruebas unidimensionales}
@@ -1692,16 +1692,16 @@ unidimensionales (1D)
 de un tubo de Sod ya sea en el régimen newtoniano así como en el relativista (en ambos régimenes se usó
 el método de Lax así como el HLL, y se compararon los resultados con la solución analítica). 
 Estas pruebas consisten en determinar como se comporta un gas ideal en un tubo 1D 
-el cual se tiene inicialmente una discontinuidad. {\color{red} Esto es, que en un valor determinado,
-el gas cambia abruptamente los valores de la densidad, presión y velocidad.}
+el cual se tiene inicialmente una discontinuidad. Esto es, que en un valor determinado,
+el gas cambia abruptamente los valores de la densidad, presión y velocidad.
 
 
 
 
 \subsection{Casos newtonianos}
 
-{\color{red}Los valores de $\rho$, $p$ y $v$ de los modelos newtonianos se indican en el cuadro
-\ref{Cuadro_parametros_sod_tube}}. El primer  modelo (denominado caso 1 newtoniano), produce una onda 
+Los valores de $\rho$, $p$ y $v$ de los modelos newtonianos se indican en el cuadro
+\ref{Cuadro_parametros_sod_tube}. El primer  modelo (denominado caso 1 newtoniano), produce una onda 
 de rarefacción\footnote{
   Una onda de rarefacción es la progresión de partículas que se aceleran lejos de una zona 
   comprimida. Siempre se mueven a regiones de mayor densidad y no presentan discontinuidades
@@ -1719,7 +1719,7 @@ unidimensional dividido en un lugar del dominio (en $x_0$) con ciertos valores d
 velocidad ($v_l$) y presión ($p_l$) del lado izquierdo\footnote{Los subíndices \emph{l} y \emph{r} 
 vienen del ingĺés \emph{left} y \emph{right} que significan izquierda y derecha respectivamente.}, 
 mientras que del lado derecho tendrán densidad ($\rho_r$), velocidad ($v_r$) y  presión ($p_r$). 
-La elección del índice adiabático $\Gamma = 7/5$, {\color{red}un dominio $x \in [0,1]$ cm y $x_0 = 0.5$ cm }
+La elección del índice adiabático $\Gamma = 7/5$, un dominio $x \in [0,1]$ cm y $x_0 = 0.5$ cm 
 se dio para poder simular y comparar los mismos modelos
 mostrados por  Lora-Clavijo \emph{et al.} (2013).
 
@@ -1743,8 +1743,8 @@ mostrados por  Lora-Clavijo \emph{et al.} (2013).
 \end{table}
 
 
-En la Figura \ref{caso_new_rar_shock} se muestra la evolución temporal {\color{red} en tres 
-tiempos característicos $t = 0, \, 0.2, \, 0.4$}
+En la Figura \ref{caso_new_rar_shock} se muestra la evolución temporal en tres 
+tiempos característicos $t = 0, \, 0.2, \, 0.4$
 de la densidad, 
 presión y velocidad para el caso 1 newtoniano usando el método Lax. En la Figura se ve como 
 una onda de choque viaja hacia la derecha a través de la región de alta densidad.
@@ -1752,13 +1752,13 @@ En el panel superior izquierdo
 notamos como para 0.2 segundos el perfil de densidad $\rho$ tiene dos brincos situados 
 aproximadamente en 
 x=0.70 cm, donde la densidad ($\rho \approx 0.48 \,  \text{g}/ \text{cm}^3$), 
-cambia su densidad a $\rho \approx 0.28 \,  \text{g}/ \text{cm}^3$, {\color{red} mientras} la velocidad y la presión 
+cambia su densidad a $\rho \approx 0.28 \,  \text{g}/ \text{cm}^3$, mientras la velocidad y la presión 
 mantienen los mismos valores 
 ($v \approx 0.99$ cm/s y $p \approx 0.3 \,  \text{dyn}/ \text{cm}^2 $).
 En x=0.85 cm, la velocidad ($v \approx 0.99$ cm/s), la presión 
 ($p \approx 0.3  \,  \text{dyn}/ \text{cm}^2 $)  y La densidad 
 ($\rho \approx 0.28 \,  \text{g}/ \text{cm}^3$) 
-tienen una discontinuidad y cambian sus valores a los {\color{red} valores} iniciales del estado derecho del tubo
+tienen una discontinuidad y cambian sus valores a los valores iniciales del estado derecho del tubo
 que no han sido afectados por la onda. 
 La primera discontinuidad hace referencia a la onda de contacto que tiene la misma velocidad
 que que los estados de la izquierda y la derecha $V_c = v_l = v_r$ donde $V_c$
@@ -1770,10 +1770,10 @@ Para el tiempo t=0.4 s
 la discontinuidad de la onda de choque ya no se presenta en nuestro dominio de los 3 páneles, mientras 
 que la cabeza de la onda de rarefacción todavia se muestra en $x \approx 0.01$ cm. La única discontinuidad 
 presente es la de onda de 
-contacto, {\color{red} donde $\rho$ cambia su valor de $\rho \approx 0.48 \,  \text{g}/ \text{cm}^3$
+contacto, donde $\rho$ cambia su valor de $\rho \approx 0.48 \,  \text{g}/ \text{cm}^3$
 a $\rho \approx 0.28 \,  \text{g}/ \text{cm}^3$, mientras la velocidad $v \approx 0.99$ cm/s y 
 presión $p \approx 0.3 \,  \text{dyn}/ \text{cm}^2 $ mantienen
-sus mismos valores.}
+sus mismos valores.
 % Esta onda es más lenta que la de rarefacción ya que se encuentra en $x \approx 0.85$ cm.
 
   \begin{figure}
@@ -1788,16 +1788,16 @@ sus mismos valores.}
   \end{figure}
 
   El caso 1 newtoniano tambien fue resuelto utilizando el método HLL y usando varias resoluciones. 
-  {\color{red} En la Figura 
+  En la Figura 
   \ref{comparacion_analitico_newtoniano_caso_1}, se muestra la comparación de la $\rho, \, v$ y $p$
   entre los métodos Lax 
-  y HLL a 10,000 píxeles. }
+  y HLL a 10,000 píxeles. 
   El panel de arriba a la izquierda muestra la densidad $\rho = 1.0 \,  \text{g}/ \text{cm}^3$ 
   donde presenta un cambio en 
   $x \approx 0.24 $ cm y baja gradualmente hasta $x \approx 0.48$ cm donde la densidad ahora es $\rho \approx
-  0.45 \,  \text{g}/ \text{cm}^3$. {\color{red} Podemos ver que tanto Lax y HLL tienen el 
-  {\color{red} mismo comportamiento}
-  que el método analítico. }
+  0.45 \,  \text{g}/ \text{cm}^3$.  Podemos ver que tanto Lax y HLL tienen el 
+  mismo comportamiento
+  que el método analítico. 
   Para las discontinuidades en $x \approx 0.74$ cm (contacto) y $x \approx 0.93$ cm (choque) cambian los valores de densidad $
   \rho \approx 0.48 \,  \text{g}/ \text{cm}^3$ a $\rho \approx 0.35 \,  \text{g}/ \text{cm}^3$ y 
   después a $\rho =0.1 \,  \text{g}/ \text{cm}^3$ 
@@ -1806,16 +1806,16 @@ sus mismos valores.}
   pero logra adaptarse muy bien para la discontinuidad de choque, en si ambos métodos reproducen 
   casi a 
   la perfección toda la región donde se desarrolla la discontinuidad en resoluciones de 10,000 píxeles.
-  {\color{red} En el panel de arriba a la derecha se muestra como tanto HLL como Lax tambien reproducen la 
-  solución analítica esperada para}
+  En el panel de arriba a la derecha se muestra como tanto HLL como Lax tambien reproducen la 
+  solución analítica esperada para
   la velocidad. Ésta, al igual que la densidad cambian 
   sus valores gradualmente de $v = 0$ cm/s en $x \approx 0.20$ cm a $v \approx 0.99$ cm/s en 
   $x \approx 0.50$ cm,
   donde se mantiene contante hasta la discontinuidad de choque en $x \approx 0.93$ cm y regresa a $v = 0$ cm/s.
   En este punto, tanto Lax como HLL, no tiene ninguna dificultad al reproducir a discontinuidad de 
   choque.
-  El panel de abajo a la izquierda {\color{red} muestra como HLL y Lax reproducen la solución 
-  analítica para}
+  El panel de abajo a la izquierda muestra como HLL y Lax reproducen la solución 
+  analítica para
   la presión, el cual cambia su valor 
   $p = 1.0 \,  \text{dyn}/ \text{cm}^2 $ en $x \approx 0.48$ cm
   bajando hasta $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $ en $x \approx 0.48$ cm, 
@@ -1824,10 +1824,10 @@ sus mismos valores.}
 
 
 
-{\color{red}El panel de abajo a la derecha de la Figura 
+El panel de abajo a la derecha de la Figura 
 \ref{comparacion_analitico_newtoniano_caso_1} muestra como varia los resultados
 usando Lax con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$), ademas, se muestra la solución
-analítica.}
+analítica.
 Queda claro como 
 conforme se incrementa la resolución (píxeles\footnote{Para fines prácticos, usaremos la palabra "píxel" para describir los $\Delta x$ en 
 las que se divide nuestro dominio espacial, es decir, si el dominio tiene una resolución de $n$ 
@@ -1850,9 +1850,9 @@ se apegan mucho a la solución analítica.
 En el 2° caso newtoniano, los valores de la 
 densidad
 y presión serán las mismas en ambos estados del tubo, pero las velocidades serán de igual magnitud
-{\color{red} pero de sentido contrario. Esta condición inicial producirá 2 ondas de rarefacción. Una se moverá hacia
+pero de sentido contrario. Esta condición inicial producirá 2 ondas de rarefacción. Una se moverá hacia
 la izquierda y la otra hacia la derecha (véase el cuadro \ref{Cuadro_parametros_sod_tube} para más
-detalles)}.
+detalles).
 La Figura \ref{caso_new_rar_rar} muestra, usando
 el método de Lax, la evolución temporal del 2° caso newtoniano. El panel de arriba a la izquierda muestra la densidad.
 El panel arriba a la derecha muestra la velocidad y el de abajo, la presión. En todos los páneles se 
@@ -1913,13 +1913,13 @@ a $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $,
 mientras la velocidad incrementa
 linealmente a a $v = 1.0$ cm/s. El punto final hasta donde incrementan sus valores es la cabeza de la onda 
 de rarefacción derecha el cual es $ x \approx 0.93 $ cm.
-{\color{red} En el panel de abajo a la derecha muestra la solución analítica, así como los resultados obtenidos 
+En el panel de abajo a la derecha muestra la solución analítica, así como los resultados obtenidos 
 usando Lax\footnote{
   Se usó el método de Lax ya que es más rápido que HLL
 }
 con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$). Al igual que el caso 1 newtoniano,
 conforme se incrementa la resolución, los resultados numéricos se apegan más a la solución analítica.
-A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solución analítica.}
+A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solución analítica.
 
 
 
@@ -1927,9 +1927,9 @@ A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solu
 \begin{figure}
   \centering
     \includegraphics[width=1.0\textwidth]{./Figuras/verificacion_del_codigo/rarefaction-rarefaction.png}
-  \caption{ {\color{red} Igual que en la Figura \ref{comparacion_analitico_newtoniano_caso_1} pero para el 
+  \caption{ Igual que en la Figura \ref{comparacion_analitico_newtoniano_caso_1} pero para el 
   caso 2 newtoniano a $t = 0.25$ s. Los páneles vienen en 
-  el mismo orden que la Figura \ref{comparacion_analitico_newtoniano_caso_1}}.
+  el mismo orden que la Figura \ref{comparacion_analitico_newtoniano_caso_1}.
   El panel de abajo hacia la derecha muestra la comparación a distintas resoluciones para la densidad. 
   Los demás páneles muestran las diferencias de los métodos HLL y Lax con una resolución 
   de 10,000 píxeles.
@@ -1961,8 +1961,8 @@ y además se requiera usar el índice adiabático\footnote{En esta tesis,
 para fines explícitos, se tomará gamma mayúscula ($\Gamma$) como el índice adiabático. Mientras que 
 gamma minúscula ($\gamma$) como el factor de Lorentz.} $\Gamma = 4/3$. Los valores con los que se 
 toman los casos del caso relativista estan en el cuadro \ref{Cuadro_parametros_sod_tube_rel} y 
-cabe señalar que la velocidad de la luz está normalizada a $c = 1$ {\color{red} y que el dominio
-será $x \in [0,1]$, $x_0 = 0.5$ cm.}
+cabe señalar que la velocidad de la luz está normalizada a $c = 1$  y que el dominio
+será $x \in [0,1]$, $x_0 = 0.5$ cm.
 
 \begin{table}[htbp]
   \begin{center}
@@ -1984,8 +1984,8 @@ será $x \in [0,1]$, $x_0 = 0.5$ cm.}
   \end{center}
 \end{table}
 
-{\color{red} Tanto en el caso 1 relativista como el caso 2 relativista, la evolución temporal se hará usando 
-el método de HLL ya que es más preciso que el método de Lax}\footnote{
+Tanto en el caso 1 relativista como el caso 2 relativista, la evolución temporal se hará usando 
+el método de HLL ya que es más preciso que el método de Lax\footnote{
   Lax falla al tratar de simular las condiciones iniciales de este problema.
 }. 
 Además de que necesita de altas resoluciones $\geq 10,000$ píxeles para poder funcionar.
@@ -2000,10 +2000,10 @@ Además de que necesita de altas resoluciones $\geq 10,000$ píxeles para poder 
     adiabático $\Gamma = 4/3$. \label{caso_rel_rar_shock_1}}
 \end{figure}
 
-{\color{red} En la Figura \ref{caso_rel_rar_shock_1} se muestra la evolución temporal de la $\rho$, $p$ y $v$
+En la Figura \ref{caso_rel_rar_shock_1} se muestra la evolución temporal de la $\rho$, $p$ y $v$
 cuando $t = 0$ s el panel de la densidad 
 (arriba a la izquierda) 
-}y presión (abajo) presentan una discontinuidad en $x = 0.5$ cm donde $\rho = 10 \,  \text{g}/ \text{cm}^3$
+y presión (abajo) presentan una discontinuidad en $x = 0.5$ cm donde $\rho = 10 \,  \text{g}/ \text{cm}^3$
 y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ del lado izquierdo, mientras que del lado derecho $\rho = 0  \,  \text{g}/ \text{cm}^3$
 y $p = 0 \,  \text{dyn}/ \text{cm}^2 $. La velocidad no presenta discontinuidad y mantiene su 
 velocidad nula en toda la región del tubo. 
@@ -2027,8 +2027,8 @@ en $x \approx 0.75$ cm y llega a $\rho \approx 0.65 \,  \text{g}/ \text{cm}^3$ y
 se mantiene así hasta el punto $x \approx 0.83$ cm
 donde la densidad, así como la velocidad y presión descienden sus valores a nulos.
 
-{\color{red} En la Figura \ref{caso_rel_rar_shock} se muestra la comparación entre la solución obtenida con Lax
-(1000 pixeles) y la solución analítica}
+En la Figura \ref{caso_rel_rar_shock} se muestra la comparación entre la solución obtenida con Lax
+(1000 pixeles) y la solución analítica
 el panel de arriba a la izquierda muestra la densidad, el de 
 arriba a la derecha la velocidad, la presión es el de abajo a la izquierda. Cabe recalcar que  el 
 tiempo mostrado es  $t = 0.35$ s.
@@ -2091,8 +2091,8 @@ discontinuidad.
 En el tiempo $t = 0$ s, tanto la densidad como la presión mantienen los mismos valores 
 $\rho =0.1 \,  \text{g}/ \text{cm}^3$
 y $p = 0.05$. mientras que la velocidad tiene una discontinuidad en $x = 0.5$ cm donde la parte del lado
-izquierdo de la discontinuidad es $v = -0.2$ c, {\color{red} (el signo negativo solo muestra que las ondas de choque
-tienen una dirección opuesta entre si). }
+izquierdo de la discontinuidad es $v = -0.2$ c,  (el signo negativo solo muestra que las ondas de choque
+tienen una dirección opuesta entre si). 
 mientras que del lado derecho es $v = 0.2$ c.
 Al tiempo $t = 0.2$ s la cabeza de la onda de rarefacción se presenta en los punto 
 $x \approx 0.35$ cm donde los valores de de la presión ($p = 0.05$) y densidad 
@@ -2154,9 +2154,9 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 \section{Prueba relativistas bidimensional}
 Ya que hemos visto el código funcionar correctamente para pruebas relativistas en una dimensión ahora nos toca ver
 como funciona en 2 dimensiones. Se hará una prueba de una onda de choque relativista en 2 dimensiones, los valores
-que tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}. {\color{red}El dominio espacial 
+que tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}. El dominio espacial 
 será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda
-será $r = 0.5 \, \text{cm}$ y un índice adiabático $\Gamma = 4/3$}
+será $r = 0.5 \, \text{cm}$ y un índice adiabático $\Gamma = 4/3$
 
 \begin{table}[htbp]
   \begin{center}
@@ -2181,27 +2181,27 @@ será $r = 0.5 \, \text{cm}$ y un índice adiabático $\Gamma = 4/3$}
   \end{center}
 \end{table}
 
-{\color{red} Al tiempo $t = 0$, nuestro dominio estará dividido en 2 conjuntos, a los valores ($\rho$, $v_x$, $v_y$
+Al tiempo $t = 0$, nuestro dominio estará dividido en 2 conjuntos, a los valores ($\rho$, $v_x$, $v_y$
 y $p$) que esten en la región menor al radio serán los valores internos ($\rho_i$, $v_xi$, $v_yi$ 
 y $p_i$) mientras que los valores que no esten delimitados por el radio serán los valores externos
 ($\rho_o$, $v_xo$, $v_yo$ y $p_o$). Al ser $p_i > p_o$ y $\rho_i > \rho_o$, la onda se 
 expandirá incrementando el radio, por lo que la región de adentro se voleverá
-más grande.}
+más grande.
 
 Para comprobar que el código funciona correctamente en 2 dimensiones, se va a comparar
 los perfiles de densidad, velocidad y presión de los radios de la onda de choque que son 
 paralelos, perpendiculares y que forman un ángulo de 45° con el eje x con los resultados en 1 dimensión
 y contra la solución analítica. 
-{\color{red} La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negras punteadas),
+La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negras punteadas),
 que se tomarán de la onda de choque en 2D, para poder comparar con los resultados de las pruebas unidimensionales 
 asi como la analítica.
-}
+
 \begin{figure}
   \centering
     \includegraphics[width=0.4\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/Example.png}
   \caption{Las lineas punteadas indican los perfiles de densidad, velocidad y presión que se 
   tomaran de los radios que son 
-  paralelos al eje x , {\color{red} perpendiculares (0°, 45°,90°)} y se compararán con las pruebas en 
+  paralelos al eje x ,  perpendiculares (0°, 45°,90°) y se compararán con las pruebas en 
   1 dimensión.}\label{Example_blast_wave}
 \end{figure}
 
@@ -2221,25 +2221,25 @@ el tiempo $t = 0.4$ s.
     el de arriba a la derecha  al $t = 0.2$ s y el de abajo al tiempo $t = 0.4$ s. \label{fig:head_map}}
 \end{figure}
 
-{\color{red} Para mostrar que la solución bidimensional es la misma independientemente de la dirección del perfil
+Para mostrar que la solución bidimensional es la misma independientemente de la dirección del perfil
 radial se compararán los perfiles radiales tomados a 0°, 45°, 90°. 
 En la Figura \ref{fig:comparacion_perfil_radial}, se muestra la densidad, 
 la velocidad y la presión.
 En el panel de arriba a la izquierda se muestran
 los perfiles radiales tomados a 0°, 45°, 90°: los tres perfiles muestran una
-una densidad $\rho \approx 10 \, \text{g}/\text{cm}^3$ en $x \approx 0.2$}
+una densidad $\rho \approx 10 \, \text{g}/\text{cm}^3$ en $x \approx 0.2$
 donde comienza a disminuir hasta $\rho \approx 1.5 \, \text{g}/\text{cm}^3$ en $x \approx 0.6$. Después comienza a subir hasta 
 $\rho \approx 5 \, \text{g}/\text{cm}^3$ para los perfiles de 90 y 0, mientras que para el de 45 sube hasta 5.5 en el punto
 $x \approx 0.7$ cm. Después vuelve a disminuir a $\rho \approx 0 \, \text{g}/\text{cm}^3$ en el punto $x \approx 0.8$ para los 
 3 perfiles radiales
-{\color{red} Para los perfiles a 0°, 45° y 90° de la velocidad (panel arriba a la derecha), 
+Para los perfiles a 0°, 45° y 90° de la velocidad (panel arriba a la derecha), 
 se observa que en $x \approx 0.2$ cm la velocidad empieza a incrementar desde el reposo
 $v = 0$ hasta $v \approx 0.7c$ en $x \approx 0.6$ cm, esto aplica para los 3 perfiles de velocidad. 
-Después la velocidad}
+Después la velocidad
 va decreciendo hasta $v \approx 0.62c$ en $x \approx 0.75$ cm para los perfiles de 0 y 90, mientras que para 
 el perfil de 45 lo hace en $x \approx 0.73$ cm. A partir de este punto la velocidad vuelve a cero.
-{\color{red} El el panel de abajo muestra los perfiles a 0°, 45° y 90° de la presión. 
-Para el punto $x \approx 0.18$ cm}
+El el panel de abajo muestra los perfiles a 0°, 45° y 90° de la presión. 
+Para el punto $x \approx 0.18$ cm
 la presión comienza a disminuir de $p = 13.33 \,  \text{dyn}/ \text{cm}^2$ 
 hasta $p \approx 1 \,  \text{dyn}/ \text{cm}^2$ en $x \approx 0.7$ cm para los 
 3 perfiles. En $x \approx 0.71 $ cm vuelve a disminuir a $p = 0 \,  \text{dyn}/ \text{cm}^2$ en 
@@ -2268,7 +2268,7 @@ densidad, velocidad y presión.
 En la Figura \ref{fig:comparacion_perfil_mean} se muestra la comparación entre la prueba unidimensional
 y la prueba bidimensional, que es la media de los 3 perfiles radiales que se discutieron anteriormente.
 El panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha, la velocidad y 
-el de abajo la presión. {\color{red} Para ambas pruebas, se mantienen sus valores de }
+el de abajo la presión. Para ambas pruebas, se mantienen sus valores de 
 $\rho = 10 \,  \text{g}/ \text{cm}^3$ y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ 
 luego, bajan sus valores en $x \approx 0.25$ cm
 mientras que la velocidad , la cual es nula,
@@ -2295,10 +2295,10 @@ se mantiene así hasta el punto $x \approx 0.7$ cm
 donde la densidad, así como la velocidad y presión descienden sus valores a cero.
 Cabe señalar que la mayor diferencia que hay entre la 1D y 2D para la densidad es del 70 \%, mientras que para la 
 velocidad es del 238 \% y la de la presión es del 79 \%.
-{\color{red} Al comparar los perfiles bidimensionales con el analítico, para la densidad se tiene un error promedio del
+Al comparar los perfiles bidimensionales con el analítico, para la densidad se tiene un error promedio del
 13 \%, para la velocidad del 12 \% y para la presión del 16 \% y errores máximos del 156 \%, 19 \% y 119 \%. 
 Para el caso unidimensional con el analítico, el error medio para la $\rho$, $v$ y $p$ son 
-3 \%,  7\% y  4 \% y error máximo 119 \%, 20 \% y 3 \% respectivamente.}
+3 \%,  7\% y  4 \% y error máximo 119 \%, 20 \% y 3 \% respectivamente.
 Al no haber tanta diferencia del resultado de los perfiles radiales bidimensionales con 
 los perfiles unidimensionales y con el analítico se puede concluir que el código relativista es válido
 en una y dos dimensiones.
@@ -2311,11 +2311,28 @@ en una y dos dimensiones.
 
 \chapter{Jet relativista bidimensional}
 
-En este capítulo se estudiará la evolución de un jet 2D relativista \color[red]{(usando el módulo 2D HLL que se detalla en la sección...)} a través de distintos medios de densidad. La primera prueba consistirá en estudiar el caso en que el jet atraviesa un medio constante y comparar los resultados con aquellos de Mignone \emph{et al.} (2005). Después, se estudiarán los efectos que un medio variable produce en el jet relativista.
+En este capítulo se estudiará la evolución de un jet 2D relativista 
+{\color {red}(usando el módulo 2D HLL que se detalla en la sección
+\ref{cap:Verificacion_del_codigo})} a través de distintos medios de 
+densidad. La primera prueba consistirá en estudiar el caso en que el jet atraviesa un medio constante y 
+comparar los resultados con aquellos de Mignone \emph{et al.} (2005). Después, se estudiarán los efectos 
+que un medio variable produce en el jet relativista.
 
-El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$, y velocidad $v_j \simeq c$ (ver el cuadro 4.1 para más detalles). El índice adiabático de jet será $\Gamma = 5/3$, consistente con Mignone \emph{et al.} (2005). El medio ambiente a su vez, se modelará con una densidad y presión $\rho_a = \mathrm{cte}$ y $P_a = \mathrm{cte}$, respectivamente. El dominio espacial será $x, y \in [0,40]\times[0,20] \, \text{cm}$. 
+El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$, 
+y velocidad $v_j \simeq c$ (ver el cuadro 4.1 para más detalles). 
+{\color {red} El índice adiabático será $\Gamma = 5/3$}, consistente con Mignone 
+\emph{et al.} (2005). El medio ambiente a su vez, 
+se modelará con una densidad y presión $\rho_a = \mathrm{cte}$ y 
+$P_a = \mathrm{cte}$, respectivamente. 
+El dominio espacial será $x, y \in [0,40]\times[0,20] \, \text{cm}$. {\color {red}
+Se usara $\text{Co} = 0.5$, para las condiciones a la frontera se usara \emph{outflow},
+es decir, que una vez que salgan de nuestra malla, ya no sabremos que es lo que pasa.
+Estas condiciones estarán el la parte de arriba, abajo y del lado derecho de la malla.
+Para la parte del lado izquierdo las condicciones serán diferentes sólo en la parte 
+donde se ejecta el jet. La ejección del jet estará centrado en $y_c = y/2$ y el diámentro
+del jet será de 80 pixeles. El tiempo de integración será $t \in [0, 100] $.
+}
 
-\color[red]{EN EL TEXTO FALTA INDIAFR EL VALOR DE COURANT, LAS CONDICIONES A LA FRONTERA, CUANTOS PIXELES TIENE EL DIAMETRO O RADIO DEL JET, EL TIEMPO DE INTEGRACIÓN, Y EL INDICA ADAIABATICO PARA EL MEDIO AMBIENTE.}
 
 %====================================TABLE=================================
 \begin{table}[htbp]
@@ -2352,9 +2369,36 @@ $x, y \in [0,40]\times[0,20] \, \text{cm}$ y un índice adiabático $\Gamma = 5/
 
 \section{Jet 2D RHD en un medio ambiente constante}
 
-Para el caso en que el jet se mueve a través de un medio constante se utilizó $\rho_a = 0.1 g cm^{-1}$ y $P_a = 0.01 erg cm^{-3}$. En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del a través del medio constante en mapas de densidad y a los tiempos $t = 20$ s, $t = 40$ s, y $t = 60$ s. \color[red]{FALTA EXPLICAR MAS LA FIGURA, LA DISTANCIA EN X EN CADA TIEMPO, A ESTRUCTURA DEL JET (JET, COCOON, ONDAS DE COLIMACION...).}
+Para el caso en que el jet se mueve a través de un medio constante se utilizó 
+$\rho_a = 0.1 g cm^{-1}$ y $P_a = 0.01 erg cm^{-3}$. 
+En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del a 
+través del medio constante en mapas de densidad y a {\color {red} los tiempos $t = 20$ s
+(arriba a la izquierda), $t = 40$ s (arriba a la derecha), y $t = 60$ s (abajo).
 
-\color[red]{FALTA EXPLICAR LAS CARACTERÍSTICAS DE ESTUDIO DE MIGNONE}
+En el tiempo $t = 20$ s el tamaño del jet llega a $x \approx 8$ cm, las onda de colimación
+llegan a $x \approx 4$ cm. El ancho del jet se expande a 10 cm, el capullo del jet tiene
+apenas un ancho aproximado de 2 cm. Para el tiempo $t = 40$ s el jet se espande a 
+$x \approx 16$ cm, el doble de lo que se mostró al tiempo $t = 20$ s. el ancho del capullo ahora es de 
+4 cm, las ondas colimación no cambian, mantienen su posición en $x \approx 4$ cm. El ancho del jet se 
+incrementa a 14 cm. Para el tiempo $t = 60$ s el jet incrementa su tamaño a $x \approx 24$ cm. 
+El ancho
+jet sobrepasa los 20 cm. Las ondas de colimación siguen manteniendo el mismo tamaño en $x \approx 4$ cm
+y el capullo se incrementa a 5 cm.
+}
+
+
+
+% {\color {red}FALTA EXPLICAR MAS LA FIGURA, LA DISTANCIA EN X EN CADA TIEMPO, A ESTRUCTURA DEL JET 
+% (JET, COCOON, ONDAS DE COLIMACION...).}
+
+
+% {\color {red}FALTA EXPLICAR LAS CARACTERÍSTICAS DE ESTUDIO DE MIGNONE}
+{\color {red} El jet del estudio de Mignone (2005) utiliza un jet relativista con simetría axial en 
+coordenadas cilíndricas. Ellos usan una ecuación de estado ideal con $\Gamma = 5/3$, el dominio es 
+$0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240 x 700. Las condiciones de
+frontera son \emph{outflow} en todas su frontera excepto donde esta la eyección. El número de Courant que
+usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores dl jet y su medio ambiente son los
+mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}.}
 
 \begin{figure}
   \centering
@@ -2367,15 +2411,21 @@ Para el caso en que el jet se mueve a través de un medio constante se utilizó 
     y el de abajo muestra al tiempo t = 60 s}\label{fig:evolucion_temporal_del_jet}
 \end{figure}
 
-En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos, a los mismos tiempos y escalas de densidad, en comparación con los resultados de Mignone (2005). El panel de arriba muestra la comparación (páneles izquierdos: Mignone (2005), páneles derechos: este estudio) al tiempo t = 40 s, y t = 46 s. 
+En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos, a 
+los mismos tiempos y escalas de densidad, en comparación con los resultados de Mignone (2005). 
+El panel de arriba muestra la comparación (páneles izquierdos: Mignone (2005), páneles derechos: 
+este estudio) al tiempo t = 40 s, y t = 46 s. 
 
-\color[red]{FALTA EXPLICAR MAS CADA UNO DE TUS PANELES, LA DISTANCIA EN X EN CADA TIEMPO, A ESTRUCTURA DEL JET (JET, COCOON, ONDAS DE COLIMACION...).}
+{\color {red}FALTA EXPLICAR MAS CADA UNO DE TUS PANELES, LA DISTANCIA EN X EN CADA TIEMPO, A ESTRUCTURA DEL JET (JET, COCOON, ONDAS DE COLIMACION...).}
+{\color {red}Al enfocarse en los paneles de arriba se puede observar que tienen el mismo largo en 
+$x \approx z \approx 18$. Los choque de climación son más grandes en el estudio de Mignone que en este dado
+que se localizan en $r \approx 7$ cm y $x \approx 5$ cm }
 
-\color[red]{PRIMERO EXPLICA EL CASO DE t=40...).}
+{\color {red}PRIMERO EXPLICA EL CASO DE t=40...).}
 
 El panel de abajo es similar a los aspectos del panel de arriba con excepción de que los tiempos son t = 80 (izquierda) y  t = 82 s (derecha). Podemos observar que hay un error en los tiempos 15 \% y que al incrementarse este se reduce al 2.5 \%. Otras observaciones es que el jet HLL relativista es más viscoso que el de Mignone ya que si vemos los paneles de arriba, se puede notar que HLL relativista tiene 5 cm mas de anchura que el de Mignone. Los capullos del jet miden aproximadamente 5 cm de ancho tanto en el código relativista como el de Mignone. Pero por desgracia no se pueden notar en el código HLL relativista  las turbulencias que se generan en el capullo de  de Mignone. Los choques colimados que se originan en el núcleo del jet son mas pequeños en el HLL relativista ya que se localizan en $x \approx 4.5$ cm mientras  que los de Mignone se forman en $x \approx 7$ cm.
 
-\color[red]{FALTA PONER LOS RESULTADOS Y DISCUSION DE CUANDO SE USANDO UNA RESOLUCIÓN MUCHO MEJOR, O USANDO UN COURANT MUCHO MAS CHICO).}
+{\color {red}FALTA PONER LOS RESULTADOS Y DISCUSION DE CUANDO SE USANDO UNA RESOLUCIÓN MUCHO MEJOR, O USANDO UN COURANT MUCHO MAS CHICO).}
 
 \begin{figure}
   \centering
@@ -2394,7 +2444,7 @@ El panel de abajo es similar a los aspectos del panel de arriba con excepción d
 
 \section{Jet 2D RHD en un medio ambiente variable}
 
-\color[red]{FALTA... }
+{\color {red} FALTA... }
 
 % %====================================TABLE=================================
 
