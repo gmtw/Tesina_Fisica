@@ -2370,7 +2370,7 @@ $x, y \in [0,40]\times[0,20] \, \text{cm}$ y un índice adiabático $\Gamma = 5/
 \section{Jet 2D RHD en un medio ambiente constante}
 
 Para el caso en que el jet se mueve a través de un medio constante se utilizó 
-$\rho_a = 0.1 g cm^{-1}$ y $P_a = 0.01 erg cm^{-3}$. 
+$\rho_o = 0.1 \, g \text{cm}^{-1}$ y $P_o = 0.01 \, \text{erg} \text{cm}^{-3}$. 
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del a 
 través del medio constante en mapas de densidad y a {\color {red} los tiempos $t = 20$ s
 (arriba a la izquierda), $t = 40$ s (arriba a la derecha), y $t = 60$ s (abajo).
@@ -2397,7 +2397,7 @@ y el capullo se incrementa a 5 cm.
 coordenadas cilíndricas. Ellos usan una ecuación de estado ideal con $\Gamma = 5/3$, el dominio es 
 $0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240 x 700. Las condiciones de
 frontera son \emph{outflow} en todas su frontera excepto donde esta la eyección. El número de Courant que
-usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores dl jet y su medio ambiente son los
+usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores del jet y su medio ambiente son los
 mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}.}
 
 \begin{figure}
@@ -2412,37 +2412,82 @@ mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}.}
 \end{figure}
 
 En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos, a 
-los mismos tiempos y escalas de densidad, en comparación con los resultados de Mignone (2005). 
+los mismos tiempos y escalas de {\color{red} logaritmo de densidad}, en comparación con los resultados de Mignone (2005). 
 El panel de arriba muestra la comparación (páneles izquierdos: Mignone (2005), páneles derechos: 
-este estudio) al tiempo t = 40 s, y t = 46 s. 
+este estudio). 
 
-{\color {red}FALTA EXPLICAR MAS CADA UNO DE TUS PANELES, LA DISTANCIA EN X EN CADA TIEMPO, A ESTRUCTURA DEL JET (JET, COCOON, ONDAS DE COLIMACION...).}
+% {\color {red}FALTA EXPLICAR MAS CADA UNO DE TUS PANELES, LA DISTANCIA EN X EN CADA TIEMPO, A ESTRUCTURA DEL JET (JET, COCOON, ONDAS DE COLIMACION...).}
 {\color {red}Al enfocarse en los paneles de arriba se puede observar que tienen el mismo largo en 
-$x \approx z \approx 18$. Los choque de climación son más grandes en el estudio de Mignone que en este dado
-que se localizan en $r \approx 7$ cm y $x \approx 5$ cm }
+$x \approx z \approx 18$. Los choques de colimación son más grandes en el estudio de Mignone que en este, 
+dado que se localizan en $r \approx 7$ cm y $x \approx 5$ cm. El ancho del jet es más grande en este 
+estudio que en el de Mignone dado que se ve que el jet es más viscoso y se expande $<10$ cm más que el de 
+Mignone. Los anchos del capullo son de aproximadamente 4 cm. No se observa ningun error en los tiempos. }
 
-{\color {red}PRIMERO EXPLICA EL CASO DE t=40...).}
+% {\color {red}PRIMERO EXPLICA EL CASO DE t=40...).}
 
-El panel de abajo es similar a los aspectos del panel de arriba con excepción de que los tiempos son t = 80 (izquierda) y  t = 82 s (derecha). Podemos observar que hay un error en los tiempos 15 \% y que al incrementarse este se reduce al 2.5 \%. Otras observaciones es que el jet HLL relativista es más viscoso que el de Mignone ya que si vemos los paneles de arriba, se puede notar que HLL relativista tiene 5 cm mas de anchura que el de Mignone. Los capullos del jet miden aproximadamente 5 cm de ancho tanto en el código relativista como el de Mignone. Pero por desgracia no se pueden notar en el código HLL relativista  las turbulencias que se generan en el capullo de  de Mignone. Los choques colimados que se originan en el núcleo del jet son mas pequeños en el HLL relativista ya que se localizan en $x \approx 4.5$ cm mientras  que los de Mignone se forman en $x \approx 7$ cm.
+El panel de abajo es similar a los aspectos del panel de arriba con excepción de que los tiempos 
+son t = 80 (izquierda) y  t = 78 s (derecha), 
+{\color{red}  lo que nos muestra un error en el tiempo del 2.5 \%.
+El jet HLL relativista sigue mantieniendo una viscosidad 
+mayor que el de Mignone dado que el ancho del jet se sale del dominio de la simulación mientras 
+que Mignone se queda en la frontera de la simulación. 
+} 
+Los capullos del jet miden aproximadamente 4 cm de ancho tanto en el código relativista como el de 
+Mignone. Pero por desgracia no se pueden notar en el código HLL relativista 
+las turbulencias que se generan en el capullo de Mignone. 
+Los choques colimados que se originan en el núcleo del jet son 
+mas pequeños en el HLL relativista ya que se localizan en $x \approx 4.5$ cm mientras 
+que los de Mignone se forman en $x \approx 7$ cm.
 
-{\color {red}FALTA PONER LOS RESULTADOS Y DISCUSION DE CUANDO SE USANDO UNA RESOLUCIÓN MUCHO MEJOR, O USANDO UN COURANT MUCHO MAS CHICO).}
 
 \begin{figure}
   \centering
-  \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/40_m.png}}
-      \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/46_b&w.png}}
-      \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/80_m.png}}
-      \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/82_b&w.png}}
+    \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/40_m.png}}
+    \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/40_b&w_log.png}}
+    \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/80_m.png}}
+    \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/78_b&w_log.png}}
     \caption{Compración entre el jet relativista modelado por nuestro código HLL
     relativista y el modelo de Mignone \emph{el. al} (2005). El panel de arriba a la izquierda 
     muestra el jet de Mignone al tiempo t = 40 s, mientras que el derecho muestra
-    el código HLL relativista al tiempo t = 46 s. El panel de abajo a la izquierda 
-    muestra el de Mignone al tiempo t=80 s, mientras que el de la derecha, el HLL relativista al 
-    tiempo t = 82 s.}\label{fig:comparacion_temporal_del_jet}
+    el código HLL relativista al tiempo t = 40 s. El panel de abajo a la izquierda 
+    muestra el de Mignone al tiempo t=80 s, mientras que el de la derecha, el HLL relativista, al 
+    tiempo t = 78 s.}\label{fig:comparacion_temporal_del_jet}
 \end{figure}
 
 
+
+% {\color {red}FALTA PONER LOS RESULTADOS Y DISCUSION DE CUANDO SE USANDO UNA RESOLUCIÓN MUCHO MEJOR, O USANDO UN COURANT MUCHO MAS CHICO).}
+
+{\color{red}
+
+\subsection{Jet en alta resolución}
+
+Al usar una resolución mayor y compararlo con Mignone se pueden ver mas similitudes en ambas gráficas. En 
+la Figura \ref{fig:comparacion_temporal_del_jet_HD} hace la misma comparación que la Figura 
+\ref{fig:comparacion_temporal_del_jet} solo que la resolución es de 3200 x 1600 pixeles. En los páneles
+de arriba se muestra que el jet de estudio tiene casi el mismo ancho que el de Mignone dado 
+que el ancho del jet llega a aproximadamente 14 cm, mientras que el de este estudio, su ancho, se expande
+a 15 cm lo que hace ue este jet siga siendo todavia más viscoso. Las ondas de colimación 
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/40_m.png}}
+      \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/46_b&w_HD.png}}
+      \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/80_m.png}}
+      \subfigure{\includegraphics[scale = 0.3]{./Figuras/jet/comparacion/82_b&w_HD.png}}
+    \caption{Compración entre el jet relativista modelado por nuestro código HLL
+    relativista y el modelo de Mignone \emph{el. al} (2005) con una resolución
+    de 3200 x 1600 pixeles. El panel de arriba a la izquierda 
+    muestra el jet de Mignone al tiempo t = 40 s, mientras que el derecho muestra
+    el código HLL relativista al tiempo t = 46 s. El panel de abajo a la izquierda 
+    muestra el de Mignone al tiempo t=80 s, mientras que el de la derecha, el HLL relativista al 
+    tiempo t = 82 s.}\label{fig:comparacion_temporal_del_jet_HD}
+\end{figure}
+
 \section{Jet 2D RHD en un medio ambiente variable}
+
+}
+
 
 {\color {red} FALTA... }
 
