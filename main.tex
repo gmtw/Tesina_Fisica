@@ -2182,15 +2182,12 @@ será $r = 0.5 \, \text{cm}$ y un índice adiabático $\Gamma = 4/3$
 \end{table}
 
 Al tiempo $t = 0$, nuestro dominio estará dividido en 2 conjuntos, a los valores ($\rho$, $v_x$, $v_y$
-y $p$) que esten en la región menor al radio serán los valores internos ($\rho_i$, $v_xi$, $v_yi$ 
-y $p_i$) mientras que los valores que no esten delimitados por el radio serán los valores externos
+y $p$) que estén en la región menor al radio serán los valores internos ($\rho_i$, $v_xi$, $v_yi$ 
+y $p_i$) mientras que los valores que no estén delimitados por el radio serán los valores externos
 ($\rho_o$, $v_xo$, $v_yo$ y $p_o$). Al ser $p_i > p_o$ y $\rho_i > \rho_o$, la onda se 
-expandirá incrementando el radio, por lo que la región de adentro se voleverá
-más grande.
+expandirá incrementando el radio, por lo que la región de adentro se volverá más grande.
 
-Para comprobar que el código funciona correctamente en 2 dimensiones, se va a comparar
-los perfiles de densidad, velocidad y presión de los radios de la onda de choque que son 
-paralelos, perpendiculares y que forman un ángulo de 45° con el eje x con los resultados en 1 dimensión
+Para comprobar que el código funciona correctamente en 2 dimensiones, se va a comparar los perfiles de densidad, velocidad y presión de los radios de la onda de choque que son  paralelos, perpendiculares y que forman un ángulo de 45° con el eje x con los resultados en 1 dimensión
 y contra la solución analítica. 
 La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negras punteadas),
 que se tomarán de la onda de choque en 2D, para poder comparar con los resultados de las pruebas unidimensionales 
@@ -2311,27 +2308,12 @@ en una y dos dimensiones.
 
 \chapter{Jet relativista bidimensional}
 
-En este capítulo se estudiará la evolución de un jet 2D relativista 
-{\color {red}(usando el módulo 2D HLL que se detalla en la sección
-\ref{cap:Verificacion_del_codigo})} a través de distintos medios de 
-densidad. La primera prueba consistirá en estudiar el caso en que el jet atraviesa un medio constante y 
-comparar los resultados con aquellos de Mignone \emph{et al.} (2005). Después, se estudiarán los efectos 
-que un medio variable produce en el jet relativista.
+En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en la sección \ref{cap:Verificacion_del_codigo}) a través de distintos medios de  densidad. La primera prueba consistirá en estudiar el caso en que el jet atraviesa un medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). Después, se estudiarán los efectos  que un medio variable produce en el jet relativista.
 
-El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$, 
-y velocidad $v_j \simeq c$ (ver el cuadro 4.1 para más detalles). 
-{\color {red} El índice adiabático será $\Gamma = 5/3$}, consistente con Mignone 
+El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ (ver el cuadro 4.1 para más detalles). El índice adiabático será $\Gamma = 5/3$, consistente con Mignone 
 \emph{et al.} (2005). El medio ambiente a su vez, 
-se modelará con una densidad y presión $\rho_a = \mathrm{cte}$ y 
-$P_a = \mathrm{cte}$, respectivamente. 
-El dominio espacial será $x, y \in [0,40]\times[0,20] \, \text{cm}$. {\color {red}
-Se usara $\text{Co} = 0.5$, para las condiciones a la frontera se usara \emph{outflow},
-es decir, que una vez que salgan de nuestra malla, ya no sabremos que es lo que pasa.
-Estas condiciones estarán el la parte de arriba, abajo y del lado derecho de la malla.
-Para la parte del lado izquierdo las condicciones serán diferentes sólo en la parte 
-donde se ejecta el jet. La ejección del jet estará centrado en $y_c = y/2$ y el diámentro
-del jet será de 80 pixeles. El tiempo de integración será $t \in [0, 100] $.
-}
+se modelará con una densidad y presión $\rho_a = \mathrm{cte}$ y $P_a = \mathrm{cte}$, respectivamente. 
+El dominio espacial será $x, y \in [0,40]\times[0,20] \, \text{cm}$ {\color{red} (la resolución ser de 3200x1600 pixeles). Las condiciones a la frontera en $x_{max}$, $y_{max}$, y $y_{max}$ será de outlfow mientras que en $x_{min}$ se inyectará el jet relativista (el cual estará centrado en $y_c = y/2$ y el diámentro del jet será de 80 pixeles). El tiempo de integración será $t = 100$ (en unidades adimensionales) y el parámetro de Courant será $\text{Co} = 0.5$.}
 
 
 %====================================TABLE=================================
