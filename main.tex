@@ -2985,9 +2985,18 @@ Para entender lo que son las condiciones de frontera, vamos suponer una malla de
 \caption{Malla de puntos que resalta las fronteras, los puntos más oscuros representan representan una frontera \emph{fantasma}, es decir, ese conjunto de puntos estará allí como apoyo para resolver los cálculos que hará la computadora dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se graficarán} \label{fig: malla de puntos}
 \end{figure}
 
-La Figura \ref{fig: malla de puntos} muestra los puntos más negros como unos puntos que nos van a servir de apoyo para calcular los valores de los puntos más grises, esto debido a que para calcular los valores de algún punto $(x_i, y_j)$ necesitamos el punto posterior $x_{i+1}, y_{j+1}$ y el punto anterior $x_{i-1}, y_{j-1}$.
+La Figura \ref{fig: malla de puntos} muestra 
+los puntos más negros como unos puntos que nos van a 
+servir de apoyo para calcular los valores de los puntos más grises, esto debido a que para calcular 
+los valores de algún punto $(x_i, y_j)$ necesitamos el punto posterior $x_{i+1}, y_{j+1}$ y el punto 
+anterior $x_{i-1}, y_{j-1}$.
 
-Ahora, cuando llegamos a los últimos puntos de nuestro frontera, por ejemplo, el punto $x_{0}, y_{0}$, no podremos calcularlo debido a que no tendremos conocimiento acerca del punto anterior $x_{(-1)}, y_{(-1)}$, entonces tendremos que darles valores específicos a estos puntos, pero no podemos darles cualquier valor, en las siguientes secciones vamos a ver que valores válidos le podemos dar para el funcionamiento del código. 
+Ahora, cuando llegamos a los últimos puntos de nuestro frontera, 
+por ejemplo, el punto $x_{0}, y_{0}$, no podremos calcularlo debido a que 
+no tendremos conocimiento acerca del punto anterior $x_{(-1)}, y_{(-1)}$, entonces 
+tendremos que darles valores específicos a estos puntos, pero no podemos darles cualquier valor, 
+en las siguientes secciones vamos a ver que valores válidos le podemos dar para el funcionamiento 
+del código. 
 
 \subsection{Condiciones de frontera \emph{outflow}}
 
@@ -3035,8 +3044,8 @@ Las condiciones periódicas son cuando nuestra frontera fantasma toma los valore
  
 \begin{figure}[H]
 \centering
-\subfigure[Onda antes de tocar la frontera de abajo]{\includegraphics[scale = 0.50]{./Figuras/Apendice/periodicas1}}
-\subfigure[La onda pasa la frontera de abajo y sale por la parte de arriba]{\includegraphics[scale = 0.50]{./Figuras/Apendice/periodicas2}}
+\subfigure[Onda antes de tocar la frontera de abajo]{\includegraphics[scale = 0.50]{./Figuras/Apendice/periodicas1.png}}
+\subfigure[La onda pasa la frontera de abajo y sale por la parte de arriba]{\includegraphics[scale = 0.50]{./Figuras/Apendice/periodicas2.png}}
 \caption{Al llegar la onda abajo se puede ver que se transporta al lado de arriba, se eligió esa posición de la onda, solo para resaltar la periodicidad de la onda, ya que si se huebiera puesto en el centro, la onda chocaría contra si mismo y no podriamos ver el paso de la onda.} \label{fig:periodicas}
 \end{figure}
 
@@ -3050,15 +3059,15 @@ Las ecuaciones que representan este tipo de frontera son las siguientes:
 \end{eqnarray}
 
 
-\subsection{Condiciones de frontera \emph{Jet}}
+\subsection{Condiciones de frontera \emph{Jet} }
 
 Las condiciones de tipo jet, son en las que dado un lado de nuestra frontera (pueden se varios), se va a inyectar un energía y masa a una cierta velocidad constante todo el tiempo en una de las partes de la frontera.
 
  
 \begin{figure}[H]
 \centering
-\subfigure[La densidad del medio sin la inyección del jet]{\includegraphics[scale = 0.50]{./Figuras/Apendice/Jet1}}
-\subfigure[Jet inyectandose en el medio]{\includegraphics[scale = 0.50]{./Figuras/Apendice/Jet2}}
+\subfigure[La densidad del medio sin la inyección del jet]{\includegraphics[scale = 0.50]{./Figuras/Apendice/jet1.png}}
+\subfigure[Jet inyectandose en el medio]{\includegraphics[scale = 0.50]{./Figuras/Apendice/jet2.png}}
 \caption{El jet, es basicamente inyectar masa y energía en una parte de nuestra frontera, a cada tiempo que evoluciona.} \label{fig:periodicas}
 \end{figure}
 
