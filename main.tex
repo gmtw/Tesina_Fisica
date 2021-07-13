@@ -163,7 +163,7 @@ Fueron descubiertos por los satélites \emph{Vela}\footnote{\url{https://heasarc
 \end{figure}
 
 El objetivo principal del estudio de los GRBs es analizar las propiedades de los estallidos de los rayos gamma, así como sus progenitores y determinar las propiedades básicas de estos, la fusión de objetos compactos es el modelo progenitor más atractivo.
-Las categorias de los GRBs largos y cortos son aproximadamente 75\% y 25\% de la población \cite{GRB:PPP}. %Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
+Las categorías de los GRBs largos y cortos son aproximadamente 75\% y 25\% de la población \cite{GRB:PPP}. %Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
 La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X, los GRBs son uno de los eventos que más libera energía en el universo \cite{Berger:2013jza}, la energía liberada es del orden de $10^{52}$ ergs.
 
 Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
@@ -183,7 +183,7 @@ Muchas de las características de los GRBS ya sean estos largos o cortos, son la
 \subsection{Emisión pronta} %Azzam
 La emisión pronta es definido como el periodo de tiempo donde el detector de rayos $\gamma$ detecta una señal sobre el fondo. Estas consisten en fotones de alta energía, no tiene espectro térmico \cite{GRB:CAP}. El espectro térmico es producido por un gas en equilibio térmico. Además, tiene bastantes carterísticas observacionales.
 
-El flujo de energía varia dentro de cientos de Kev. La emisión de las curvas de luz son notoriamente irregulares sobre escalas de tiempo muy pequeñas \cite{SGRBr-Avanzo}(ver Figura \ref{lightcurve}). %Short gamma-ray bursts: A review; P. D’Avanzo
+El flujo de energía varía dentro de cientos de Kev. La emisión de las curvas de luz son notoriamente irregulares sobre escalas de tiempo muy pequeñas \cite{SGRBr-Avanzo}(ver Figura \ref{lightcurve}). %Short gamma-ray bursts: A review; P. D’Avanzo
 En los GRBs cortos, su espectro de emisión, se ha encontrado más duro que en los GRBs largos, esto debido a que es una combinación de componentes espectrales duros de baja energía. Una característica de principal es la duración de esta emisión, esta llega a ser del orden $\geq \, 10^{-2} $ s a $10^{3}$ s \cite{GRB:PPP}. Los valores promedio de dichas emisiones son $t \sim 20 $ s para GRBs largos y $t \sim 0.2 $ s para los cortos \cite{GRB:PPP}. %Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
 
 \begin{figure}
@@ -2486,7 +2486,40 @@ desfase en los tiempos.
 
 
 
-{\color {red} FALTA... }
+{\color {red} En este apartado vamos a repetir el mismo jet que producimos arriba solo que en esta ocasión la densidad
+del medio ambiente variará en función del eje $x$ (ver Figura \ref{fig:Decaimiento_densidad_jet}):
+
+\begin{equation}
+  \rho(x) = \frac{\rho_o}{x+\Delta x} 
+\end{equation}
+
+Donde $\rho_o$ es la densidad del medio ambiente y $\Delta X$ es un valor pequeño positivo que se usa para evitar singularidades.
+
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{./Figuras/jet/densidad_variable/densidad_variable.png}
+  \caption{Decaimiento de la densidad conforme a la posición}\label{fig:Decaimiento_densidad_jet}
+\end{figure}
+
+
+Las condiciones de frontera son las mismas a la de la anterior sección. La evolución temporal del jet se muestra en las siguiente 
+
+
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.2]{./Figuras/jet/densidad_variable/20.png}}
+      \subfigure{\includegraphics[scale = 0.2]{./Figuras/jet/densidad_variable/40.png}}
+      \subfigure{\includegraphics[scale = 0.2]{./Figuras/jet/densidad_variable/60.png}}
+    \caption{Evolución del jet relativista con los valores del Cuadro 
+    \ref{Cuadro: propiedades-jet-comparacion} con una densidad del medio que cambia en función de 
+    la posición. El panel de arriba a la izquierda muestra al 
+    tiempo t = 20, el de arriba a la derecha muestra al tiempo t = 40
+    y el de abajo muestra al tiempo t = 60 }\label{fig:evolucion_temporal_del_jet_densidad_variable}
+\end{figure}
+
+}
 
 % %====================================TABLE=================================
 
