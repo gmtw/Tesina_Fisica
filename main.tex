@@ -13,6 +13,8 @@
 \usepackage{float} %fijar Figuras
 \usepackage{listings} %este paquete esta agregado para que se pueda agregar lineas de código de programa (en este caso FORTRAN) a nuestro documento
 
+
+
 \spanishdecimal{.}
 
 %\usepackage{cancel} %cancelar términos
@@ -2315,7 +2317,8 @@ medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.}
 Después, se estudiarán los efectos que un {\color {red} medio que varía en función de la distancia} produce en el jet relativista.
 El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ 
 {\color {red} (ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles)}. El índice adiabático será $\Gamma = 5/3$, 
-consistente con Mignone \emph{et al.} (2005). El medio ambiente a su vez, se modelará con una densidad y presión $\rho_a = \mathrm{cte}$ y $P_a = \mathrm{cte}$, respectivamente. Las condiciones a la frontera en $x=x_{min}$ será de inyección del jet relativista en $y= y_{max}/2$ (con un diámetro $\delta y$), mientras que en el resto de la región de $x=x_{min}$, al igual que en $x=x_{max}$, $y=y_{min}$, y $y=y_{max}$, será de outflow. El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de {\color {red} 1600x800} pixeles). Cabe señalar que el diámetro del jet será de $\delta y$=80 pixeles. El tiempo de integración será $t = 100$  y el parámetro de Courant será $\text{Co} = 0.5$.
+consistente con Mignone \emph{et al.} (2005). El medio ambiente a su vez, se modelará con una densidad y presión $\rho_a = \mathrm{cte}$ y $P_a = \mathrm{cte}$, 
+respectivamente. Las condiciones a la frontera en $x=x_{min}$ será de inyección del jet relativista en $y= y_{max}/2$ (con un diámetro $\delta y$), mientras que en el resto de la región de $x=x_{min}$, al igual que en $x=x_{max}$, $y=y_{min}$, y $y=y_{max}$, será de outflow. El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de {\color {red} 1600x800} pixeles). Cabe señalar que el diámetro del jet será de $\delta y$=80 pixeles. El tiempo de integración será $t = 100$  y el parámetro de Courant será $\text{Co} = 0.5$.
 
 %====================================TABLE=================================
 \begin{table}[htbp]
@@ -2358,24 +2361,23 @@ En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del j
 través del medio constante en mapas de {\color {red} logaritmo\footnote{logaritmo en base \emph{e}} de densidad} y 
 {\color {red} a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), 
 $t = 20$ (abajo a la izquierda) y $t = 40$ (abajo a la derecha).
-En el tiempo $t = 1$ la protuberancia del jet apenas es visible y solo llega a $x \approx 1$. 
-Cuando $t = 10$ el tamaño del jet llega a $x \approx 6$, las onda de colimación, se observan a 
-lo largo de y=10 y llegan a $x \approx 4$. El ancho del jet se expande a 10, el capullo del jet tiene
-apenas un ancho aproximado de 2. Para el tiempo $t = 20$ el jet se espande a 
-$x \approx 10$. El ancho del capullo ahora es de 
-4, las ondas colimación no cambian, mantienen su posición en $x \approx 4$ a lo largo del eje $y = 10$. 
+En el tiempo $t = 1$, la protuberancia del jet apenas es visible y solo llega a $x \approx 1$. 
+{\color{blue} Cuando $t = 10$ el tamaño del jet llega a $x \approx 6$, las onda de colimación, se observan a 
+lo largo de y=10 y llegan a $x \approx 4$. Los isocontornos blancos delimitan el material del jet a la
+cual llamaremos zona I y la zona donde los isocontornos se limitan a colores negros y grises son
+la zona II del material donde el capullo esta tratando de interactuar con el jet}. El ancho del jet se expande a 10 unidades, el capullo del jet tiene
+apenas un ancho aproximado de 2 unidades por encima del jet, {\color{blue} la cual sería la zona III}. 
+Para el tiempo $t = 20$ el jet se expande a 
+$x \approx 10$. El ancho del capullo ahora es aproximadamente de 
+3 unidades por encima del capullo, las ondas colimación no cambian, mantienen su posición en $x \approx 4$ a lo largo del eje $y = 10$. 
 El ancho del jet se incrementa a 14. Para el tiempo $t = 40$ el jet incrementa su tamaño a $x \approx 21$. 
 El ancho del jet sobrepasa los 20, es decir, sale de nuestro dominio. Las ondas de colimación siguen manteniendo el mismo 
-tamaño en $x \approx 4$ y el capullo se incrementa a 5.
+tamaño en $x \approx 4$ y el capullo sobresale de nuestro dominio. {\color{blue} Podemos notar que en la zona I del jet 
+se forman 2 zonas ovaloides alrededor de las ondas de colimación que son menos densas que el jet y que tienen un 
+ancho de aproximado de 3 unidades para el tiempo t = 40.}
 }
 
 
-
-% {\color {red}FALTA EXPLICAR MAS LA FIGURA, LA DISTANCIA EN X EN CADA TIEMPO, A ESTRUCTURA DEL JET 
-% (JET, COCOON, ONDAS DE COLIMACION...).}
-
-
-% {\color {red}FALTA EXPLICAR LAS CARACTERÍSTICAS DE ESTUDIO DE MIGNONE}
 El jet del estudio de Mignone (2005) utiliza un jet relativista con simetría axial en 
 coordenadas cilíndricas. Ellos usan una ecuación de estado ideal con $\Gamma = 5/3$, el dominio es 
 $0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240 x 700. Las condiciones de
@@ -2388,18 +2390,21 @@ mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}.
   \includegraphics[width=1\textwidth]{./Figuras/jet/evolucion/evolucion.png}
     \caption{Evolución del jet relativista con los valores del Cuadro 
     \ref{Cuadro: propiedades-jet-comparacion}. {\color {red} El panel de arriba a la izquierda muestra al 
-    tiempo t = 1, el de arriba a la derecha muestra al tiempo t = 10
-    ,el de abajo a la izquierda muestra al tiempo t = 20 y el de abajo al tiempo t = 40} }\label{fig:evolucion_temporal_del_jet}
+    tiempo t = 1, el de arriba a la derecha muestra al tiempo t = 10, 
+    el de abajo a la izquierda muestra al tiempo t = 20 y el de abajo al tiempo t = 40.
+    Tambien se emplearon isocontornos (lineas punteadas) que se se componen de 5 niveles. En los 
+    cuales el nivel mas bajo, que es blanco, corresponde a $\rho = -2$ y el nivel mas alto, que es negro, 
+    corresponde a $\rho = 3$. Los demás niveles vienen escalonados, es decir, entre mas oscuros se vuelvan, su 
+    densidad aumenta mas.}}\label{fig:evolucion_temporal_del_jet}
 \end{figure}
 
 {\color {red} En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos en baja 
 (1600x800 pixeles) y alta (3200x1600) resolución, a 
 las mismas escalas de logaritmo de densidad, en comparación con los resultados de Mignone (2005).
 La Figura muestra de izquierda a derecha las gráficas de Mignone (izquierda), las gráficas en baja densidad (medio) 
-y las gráficas en alta densidad (derecha). Los páneles de arriba muestran al tiempo t = 40 mientras que los de abajo al tiempo
-t = 80}
-% {\color {red}FALTA EXPLICAR MAS CADA UNO DE TUS PANELES, LA DISTANCIA EN X EN CADA TIEMPO, 
-% A ESTRUCTURA DEL JET (JET, COCOON, ONDAS DE COLIMACION...).}
+y las gráficas en alta densidad (derecha). Los páneles de arriba muestran al tiempo t = 40 mientras que los de abajo al 
+tiempo t = 80.}
+
 {\color {red} Al enfocarse en los paneles de arriba, al tiempo t = 40, se puede observar que el de Mignone tiene un largo de 
 $x \approx 18$, mientras que el de baja resolución tiene un largo de 16. El jet de alta densidad tiene 3 unidades mas de ancho 
 que el de Mignone dado que el ancho del jet llega a aproximadamente 12, mientras que el de este estudio, su ancho, 
@@ -2449,6 +2454,13 @@ alta resolución esta más comprimido, es decir, es más cilíndrico que el de b
 \end{figure}
 
 
+\begin{figure}
+  \centering
+  \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_constantes.png}
+  \caption{{\color{red} perfil constante}}\label{fig:Decaimiento_constante_densidad_jet}
+\end{figure}
+
+
 \section{Jet 2D RHD en un medio ambiente variable}
 
 
@@ -2465,38 +2477,48 @@ Donde $\rho_o$ es la densidad del medio ambiente y $\Delta X$ es un valor peque�
 
 
 
-La figura \ref{fig:Decaimiento_densidad_jet} muestra los perfiles de densidad, velocidad y presión, es decir, solo mostrará 
-los valores que esten sobre $y = 10$ de la Figura \ref{fig:evolucion_temporal_del_jet_densidad_variable}. En el panel de arriba 
+La figura \ref{fig:Decaimiento_lineal_densidad_jet} muestra los perfiles de densidad, velocidad y presión, es decir, solo mostrará 
+los valores que esten sobre $y = 10$ de la Figura \ref{fig:evolucion_temporal_del_jet}. En el panel de arriba 
 a la izquierda  muestra el logaritmo de la densidad. El de arriba a la derecha, la velocidad. El de abajo a la izquierda el 
 logaritmo de la presión y el de abajo a la derecha muestra la comparación entre
 uno de mayor resolución con uno de baja resolución. Al tiempo t = 0, al no haber una inyección del jet, únicamente la densidad decae
 exponencialmente. altiempo t = 5, la densidad, en x = 1 tiene un máximo local que llega a $\rho \approx 6$, la velocidad lo tiene en 
 $v \approx 0.2$, la presión no tiene un máximo local, aunque si un cambio menos abrupto en $x = 1$ 
 
+
 \begin{figure}
   \centering
-    \includegraphics[width=1\textwidth]{./Figuras/jet/densidad_variable/perfiles.png}
+  \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_lineales.png}
   \caption{{\color{red} Perfiles de densidad, presión y velocidad, similar a la Figura \ref{fig:comparacion_perfil_radial},
   a lo largo de $y = 10$. El panel de arriba a la izquierda muestra el logaritmo de la densidad, el de arriba a la derecha la
   velocidad, el de abajo a la izquierda el logaritmo de la presión y el panel de abajo a la derecha muestra la comparación entre
   uno de mayor resolución (2000x1000, linea solida) con uno de baja resolución (1000X500,
-  linea punteada). Los colores son para diferenciar los tiempos.}}\label{fig:Decaimiento_densidad_jet}
+  linea punteada). Los colores son para diferenciar los tiempos.}}\label{fig:Decaimiento_lineal_densidad_jet}
 \end{figure}
-
-
-
-Las condiciones de frontera son las mismas a la de la anterior sección. La evolución temporal del jet se muestra en las siguiente 
 
 
 
 \begin{figure}
   \centering
-    \includegraphics[width=1\textwidth]{./Figuras/jet/densidad_variable/evolucion_HD.png}
-  \caption{Evolución del jet relativista con los valores del Cuadro 
-  \ref{Cuadro: propiedades-jet-comparacion} con una densidad del medio que cambia en función de 
-    la posición. El panel de arriba a la izquierda muestra al 
-    tiempo t = 20, el de arriba a la derecha muestra al tiempo t = 40
-    y el de abajo muestra al tiempo t = 60 }\label{fig:evolucion_temporal_del_jet_densidad_variable}
+  \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_cuadraticos.png}
+  \caption{{\color{red} Perfiles de densidad, presión y velocidad, similar a la Figura \ref{fig:comparacion_perfil_radial},
+  a lo largo de $y = 10$. El panel de arriba a la izquierda muestra el logaritmo de la densidad, el de arriba a la derecha la
+  velocidad, el de abajo a la izquierda el logaritmo de la presión y el panel de abajo a la derecha muestra la comparación entre
+  uno de mayor resolución (2000x1000, linea solida) con uno de baja resolución (1000X500,
+  linea punteada). Los colores son para diferenciar los tiempos.}}\label{fig:Decaimiento_cuadratico_densidad_jet}
+\end{figure}
+
+
+
+Las condiciones de frontera son las mismas a la de la anterior sección. 
+La evolución temporal del jet se muestra en las siguiente 
+
+
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{./Figuras/jet/perfiles/densidades_comparacion.png}
+  \caption{}\label{fig:perfiles_comparacion_jet}
 \end{figure}
 
 }
