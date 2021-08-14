@@ -2506,7 +2506,7 @@ La velocidad tiene un máximo en
 $x \approx 0.2$, donde alcanza  $v \approx 0.6$ al tiempo t = 5. {\color{blue} Para los tiempos t = 20, 50 ya no 
 presenta máximos sino que decae rápidamente en las posiciones $x \approx 6, \, 20$ respectivamente.}
 La presión no tiene un máximo local al tiempo t = 5, aunque si un cambio menos abrupto en $x = 1$. 
-{\color{blue} En los tiempos t = 20, 50 los maximos se situan en $x \approx 12$ y en $x \approx 30$}.
+{\color{blue} En los tiempos t = 20, 50 los máximos se situan en $x \approx 12$ y en $x \approx 30$}.
 En el panel inferior derecho, al comparar el logaritmo de la densidad en resoluciones de 3200x1600 y 1600x800,
 notamos que a diferencia del medio constante, no hay un desfase tan grande ya que para 
 $t = 5, \, x_{alta}- x_{baja} \approx 0$; para $t = 20, \, x_{alta}- x_{baja} \approx 0$ 
@@ -2519,14 +2519,29 @@ y para $t = 50, \, x_{alta}- x_{baja} \approx 1$}.
   \caption{{\color{red} Perfiles de densidad, presión y velocidad, similar a la Figura \ref{fig:comparacion_perfil_radial},
   a lo largo de $y = 10$. El panel de arriba a la izquierda muestra el logaritmo de la densidad, el de arriba a la derecha la
   velocidad, el de abajo a la izquierda el logaritmo de la presión y el panel de abajo a la derecha muestra la comparación entre
-  uno de mayor resolución (2000x1000, linea solida) con uno de baja resolución (1000X500,
+  uno de mayor resolución (2000x1000, linea sólida) con uno de baja resolución (1000X500,
   linea punteada). {\color{blue} Para tiempos t = 0, 5, 20, 50. La densidad decae como 
-  $ \rho \propto \frac{1}{x} $ }}}\label{fig:Decaimiento_lineal_densidad_jet}
+  $ \rho \propto x^{-1} $ }}}\label{fig:Decaimiento_lineal_densidad_jet}
 \end{figure}
 
 
 {\color{blue} En la Figura \ref{fig:Decaimiento_cuadratico_densidad_jet} se muestra la densidad de medio ambiente 
-que decae como $x \varpropto \frac{1}{x^2}$}
+que decae como $x \varpropto \frac{1}{x^2}$. Aquí podemos ver que los picos del logaritmo de la densidad estan en
+x = 1, 4, 12 con el logaritmo de la densidad $\log(\rho) \approx 7, \, 6.5, \, 6$ respectivamente. Por lo que a diferencia 
+del medio constante y el inversamente lineal los picos estan más cerca del cero. En la velocidad podemos observar
+que incrementa rápidamente a $v \approx 1.85$ en $x \approx 1$ al tiempo t = 5. Para el tiempo t = 20 la velocidad
+incrementa a $v \approx 0.7$ a $x \approx 1.5$. Al tiempo t = 50 la velocidad sube logaritmicamente del 
+punto $x \approx 1$ hasta el punto $ x = 8$ donde alcanza una velocidad de $v \approx 0.99$, donde desciende 
+a $v \approx 0.4$ en $x \approx 16$, lo cual, al comparar on los casos anteriores que hemos visto tiene un descenso menos 
+menos abrupto. En el caso del logaritmo de la presión, al tiempo t = 5, desciende rápidamente en $x \approx 0.5$.
+En el tiempo t = 20, la presión desciende exponencialmente hasta el punto $x \approx 1$, donde mantien un valor constante de 
+$\log(\rho) \approx 1$ hasta el punto $x \approx 3$ donde desciende hasta $\log(\rho) = -4.6$. Para el tiempo t = 50
+la presión desciende exponencialmente del punto $x \approx 1$ donde $\log(\rho) \approx 1$, hasta $x \approx 8$ donde 
+$\log(\rho) \approx -4$ para luego incrementar hasta $\log(\rho) \approx 0 $ y volver a descender en $x \approx 17.5$ a 
+$\log(\rho) = -4.3$. Al comparar las resoluciones de 3200x1600 con la de 1600x800 se vuelve a ver un desfase,
+ya que para $t = 5, \, x_{alta}- x_{baja} \approx 1$; para $t = 20, \, x_{alta}- x_{baja} \approx 3$ 
+y para $t = 50, \, x_{alta}- x_{baja} \approx 6$. Tambien se observó un desfase en los máximos, ya que para los 3 picos
+se observa $\log(\rho)_{alta} - \log(\rho)_{baja} \approx 2$}. 
 
 
 \begin{figure}
@@ -2535,21 +2550,30 @@ que decae como $x \varpropto \frac{1}{x^2}$}
   \caption{{\color{red} Perfiles de densidad, presión y velocidad, similar a la Figura \ref{fig:comparacion_perfil_radial},
   a lo largo de $y = 10$. El panel de arriba a la izquierda muestra el logaritmo de la densidad, el de arriba a la derecha la
   velocidad, el de abajo a la izquierda el logaritmo de la presión y el panel de abajo a la derecha muestra la comparación entre
-  uno de mayor resolución (2000x1000, linea solida) con uno de baja resolución (1000X500,
-  linea punteada). Los colores son para diferenciar los tiempos.}}\label{fig:Decaimiento_cuadratico_densidad_jet}
+  uno de mayor resolución (3200x1600, linea sólida) con uno de baja resolución (1600x800,
+  linea punteada). {\color{blue} Para tiempos t = 0, 5, 20, 50, la densidad decae como 
+  $ \rho \propto x^{-2} $ }}}\label{fig:Decaimiento_cuadratico_densidad_jet}
 \end{figure}
 
 
-
-Las condiciones de frontera son las mismas a la de la anterior sección. 
-La evolución temporal del jet se muestra en las siguiente 
+{\color{blue} En la Figura \ref{fig:perfiles_comparacion_jet} se muestra la comparación que hay cuando la densidad del medio
+ambiente cambia constantemente ($\rho \varpropto k$), cuando varia inversamente lineal ($\rho \varpropto x^{-1}$) y 
+cuando varia inversamente cuadrático ($\rho \varpropto x^{-2}$). Podemos observar que se presentan 2 máximos. Para el
+decaimiento inversamente cuadrático presenta un pico en $x \approx 1$ con $\log(\rho) = 0$, mientras que el lineal mantiene 
+su pico en $x \approx 7$ y el constante lo hace en  $x \approx 5$ con $\log(\rho) = -1$ y $\log(\rho) = -1.5$ respectivamente. 
+El segundo máximo está en $x \approx 12$ para el cuadrático, en $x \approx 20$ para el constante y en $x \approx 33$ para
+el lineal con $\log(\rho) = 5, \, 4, \, 1$ respectivamente. Por lo que el decaimiento cuadrático tiene una mayor densidad
+que el lineal y el constante a pesar de presentar los mismos valores iniciales.} 
 
 
 
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{./Figuras/jet/perfiles/densidades_comparacion.png}
-  \caption{}\label{fig:perfiles_comparacion_jet}
+  \caption{Gráfica de comparación de la posición vs el logaritmo de la densidad 
+  donde el medio ambiente es constante $\rho \varpropto k$ (verde), varía inversamente lineal
+  $\rho \varpropto x^{-1}$ (amarillo) y varía inversamente cuadrático $\rho \varpropto x^{-2}$ (rojo)
+  al tiempo t = 50 }\label{fig:perfiles_comparacion_jet}
 \end{figure}
 
 
