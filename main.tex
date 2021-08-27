@@ -2314,15 +2314,14 @@ en una y dos dimensiones.
 
 \chapter{Jet relativista bidimensional}
 
-En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en la 
-sección \ref{cap:Verificacion_del_codigo}) a {\color {red} través de medios con distinta densidad }. 
+En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en el capítulo \ref{cap:Verificacion_del_codigo}) a través de medios con distinta densidad . 
 La primera prueba consistirá en estudiar el caso en que el jet atraviesa un 
 medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). 
-Después, se estudiarán los efectos que un {\color {red} medio que varía en función de la distancia} produce en el jet relativista.
+Después, se estudiarán los efectos que un medio que varía en función de la distancia produce en el jet relativista.
 El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ 
-{\color {red} (ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles)}. El índice adiabático será $\Gamma = 5/3$, 
-consistente con Mignone \emph{et al.} (2005). El medio ambiente a su vez, se modelará con una densidad y presión $\rho_a = \mathrm{cte}$ y $P_a = \mathrm{cte}$, 
-respectivamente. Las condiciones a la frontera en $x=x_{min}$ será de inyección del jet relativista en $y= y_{max}/2$ (con un diámetro $\delta y$), mientras que en el resto de la región de $x=x_{min}$, al igual que en $x=x_{max}$, $y=y_{min}$, y $y=y_{max}$, será de outflow. El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de {\color {red} 1600x800} pixeles). Cabe señalar que el diámetro del jet será de $\delta y$=80 pixeles. El tiempo de integración será $t = 100$  y el parámetro de Courant será $\text{Co} = 0.5$.
+(ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático será $\Gamma = 5/3$, 
+consistente con Mignone \emph{et al.} (2005). {\color{red} Los cuales en la primera prueba serán constantes y luego variarán en función de x}. El medio ambiente a su vez, se modelará con una densidad y presión $\rho_a$ y $P_a$, 
+respectivamente. Las condiciones a la frontera en $x=x_{min}$ será de inyección del jet relativista en $y= y_{max}/2$ (con un diámetro $\delta y$), mientras que en el resto de la región de $x=x_{min}$, al igual que en $x=x_{max}$, $y=y_{min}$, y $y=y_{max}$, será de outflow. El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de 3200x1600 píxeles). Cabe señalar que el diámetro del jet será de $\delta y=80$ píxeles. El tiempo de integración será $t = 100$  y el parámetro de Courant será $\text{Co} = 0.5$.
 
 %====================================TABLE=================================
 \begin{table}[htbp]
@@ -2333,43 +2332,45 @@ respectivamente. Las condiciones a la frontera en $x=x_{min}$ será de inyecció
 \hline 
 $\rho_{j}$ &  Densidad del jet & 0.1  \\ 
 \hline 
-$\rho_{o}$ &  Densidad del medio ambiente & $10.0 \times 10^{4}$   \\
+$\rho_{a}$ &  Densidad del medio ambiente & {\color{red} $10^4$ REVISAR ESTE DATO}   \\
 \hline 
 $P_{j}$ & Presión interna del jet& $0.01 $ \\ 
 \hline 
-$P_{o}$ &  Presión del medio ambiente & $0.01 $  \\ 
+$P_{a}$ &  Presión del medio ambiente & $0.01 $  \\ 
 \hline 
 $v_{x_{j}}$ & Velocidad interna en el eje x del jet & 0.99 c \\ 
 \hline 
 $v_{y_{j}}$ & Velocidad interna en el eje y del jet & 0.0 c \\ 
 \hline 
-$v_{x_{o}}$ & Velocidad en el eje x del medio ambiente & 0.0 c \\
+$v_{x_{a}}$ & Velocidad en el eje x del medio ambiente & 0.0 c \\
 \hline 
-$v_{y_{o}}$ & Velocidad en el eje y del medio ambiente & 0.0 c \\ 
+$v_{y_{a}}$ & Velocidad en el eje y del medio ambiente & 0.0 c \\ 
 \hline 
 Co & Número de Courant & 0.5 \\ 
 \hline 
 \end{tabular}
 \caption{\label{Cuadro: propiedades-jet-comparacion} Valores iniciales de la densidad ,
-velocidad  y presión  en el jet ($\rho_j$, $v_{xj}$, $v_{yj}$, $p_j$) {\color {red} en unidades adimensionales} y fuera del jet 
-($\rho_o$, $v_{xo}$, $v_{yo}$, $p_o$). El jet será relativista, con un dominio 
+velocidad  y presión  en el jet ($\rho_j$, $v_{xj}$, $v_{yj}$, $p_j$) en unidades adimensionales y {\color{red} del medio ambiente}
+($\rho_a$, $v_{xa}$, $v_{ya}$, $p_{a}$). El jet será relativista, con un dominio 
 $x, y \in [0,40]\times[0,20]$ y un índice adiabático $\Gamma = 5/3$.}
 \end{center}
 \end{table}
 
 \section{Jet 2D RHD en un medio ambiente constante}
 
-Para el caso en que el jet se mueve a través de un medio constante se utilizó 
-$\rho_o = 0.1 $ y $P_o = 0.01$ {\color {red} consistente con los valores que Mignone \emph{et al.} (2005) utilizó}. 
+Para el caso en que el jet, {\color{red} el cual tiene una densidad $\rho_j = 0.1$, una velocidad que
+solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que} se mueve a través de un medio
+constante en el cual 
+$\rho_a = 0.1 $ y $P_a = 0.01$  consistente con los valores que Mignone \emph{et al.} (2005) utilizó. 
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del jet a 
-través del medio constante en mapas de {\color {red} logaritmo\footnote{logaritmo en base \emph{e}} de densidad} y 
-{\color {red} a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), 
+través del medio constante en mapas de densidad y 
+a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), 
 $t = 20$ (abajo a la izquierda) y $t = 40$ (abajo a la derecha).
-En el tiempo $t = 1$, la protuberancia del jet apenas es visible y solo llega a $x \approx 1$. 
-{\color{blue} Cuando $t = 10$ el tamaño del jet llega a $x \approx 6$, las onda de colimación, se observan a 
+En el tiempo $t = 1$, el jet apenas es visible y solo llega a $x \approx 1$. 
+Cuando $t = 10$ el tamaño del jet llega a $x \approx 6$, las onda de colimación, se observan a 
 lo largo de y=10 y llegan a $x \approx 4$. Los isocontornos blancos delimitan el material del jet a la
 cual llamaremos zona I y la zona donde los isocontornos se limitan a colores negros y grises son
-la zona II del material donde el capullo esta tratando de interactuar con el jet}. El ancho del jet se expande a 10 unidades, el capullo del jet tiene
+la zona II del material donde el capullo esta tratando de interactuar con el jet. El ancho del jet se expande a 10 unidades, el capullo del jet tiene
 apenas un ancho aproximado de 2 unidades por encima del jet, {\color{blue} la cual sería la zona III}. 
 Para el tiempo $t = 20$ el jet se expande a 
 $x \approx 10$. El ancho del capullo ahora es aproximadamente de 
@@ -2379,7 +2380,7 @@ El ancho del jet sobrepasa los 20, es decir, sale de nuestro dominio. Las ondas 
 tamaño en $x \approx 4$ y el capullo sobresale de nuestro dominio. {\color{blue} Podemos notar que en la zona I del jet 
 se forman 2 zonas ovaloides alrededor de las ondas de colimación que son menos densas que el jet y que tienen un 
 ancho de aproximado de 3 unidades para el tiempo t = 40.}
-}
+
 
 
 El jet del estudio de Mignone (2005) utiliza un jet relativista con simetría axial en 
@@ -2392,14 +2393,16 @@ mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}.
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{./Figuras/jet/evolucion/evolucion.png}
-    \caption{Evolución del jet relativista con los valores del Cuadro 
-    \ref{Cuadro: propiedades-jet-comparacion}. {\color {red} El panel de arriba a la izquierda muestra al 
+    \caption{{\color{red} Mapas de densidad en los que se muestra la} evolución del jet relativista 
+    con los valores del Cuadro 
+    \ref{Cuadro: propiedades-jet-comparacion}. El panel de arriba a la izquierda muestra al 
     tiempo t = 1, el de arriba a la derecha muestra al tiempo t = 10, 
     el de abajo a la izquierda muestra al tiempo t = 20 y el de abajo al tiempo t = 40.
-    Tambien se emplearon isocontornos (lineas punteadas) que se se componen de 5 niveles. En los 
-    cuales el nivel mas bajo, que es blanco, corresponde a $\rho = -2$ y el nivel mas alto, que es negro, 
-    corresponde a $\rho = 3$. Los demás niveles vienen escalonados, es decir, entre mas oscuros se vuelvan, su 
-    densidad aumenta mas.}}
+    También se emplearon isocontornos (lineas punteadas) que se se componen de 5 niveles. {\color{red} En los 
+    cuales el nivel mas bajo, que es blanco, corresponde a $\rho = -2$, blanco ligeramente grisáceo para $\rho = -1$,
+    gris para $\rho = 0$, gris oscuro para $\rho = 1$ y el nivel mas alto, que es negro, 
+    corresponde a $\rho = 2$}. Los demás niveles vienen escalonados, es decir, entre mas oscuros se vuelvan, su 
+    densidad aumenta mas.}
     \label{fig:evolucion_temporal_del_jet}
 \end{figure}
 
@@ -2407,7 +2410,7 @@ mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}.
 (1600x800 pixeles) y alta (3200x1600) resolución, a 
 las mismas escalas de logaritmo de densidad, en comparación con los resultados de Mignone (2005).
 La Figura muestra de izquierda a derecha las gráficas de Mignone (izquierda), las gráficas en baja densidad (medio) 
-y las gráficas en alta densidad (derecha). Los páneles de arriba muestran al tiempo t = 40 mientras que los de abajo al 
+y las gráficas en alta densidad (derecha). Los páneles de arriba muestran al tiempo t = 40 mientras que los de abajo al
 tiempo t = 80.}
 
 {\color {red} Al enfocarse en los paneles de arriba, al tiempo t = 40, se puede observar que el de Mignone tiene un largo de 
