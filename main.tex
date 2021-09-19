@@ -2320,8 +2320,14 @@ medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.}
 Después, se estudiarán los efectos que un medio que varía en función de la distancia produce en el jet relativista.
 El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ 
 (ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático será $\Gamma = 5/3$, 
-consistente con Mignone \emph{et al.} (2005). {\color{red} Los cuales en la primera prueba serán constantes y luego variarán en función de x}. El medio ambiente a su vez, se modelará con una densidad y presión $\rho_a$ y $P_a$, 
-respectivamente. Las condiciones a la frontera en $x=x_{min}$ será de inyección del jet relativista en $y= y_{max}/2$ (con un diámetro $\delta y$), mientras que en el resto de la región de $x=x_{min}$, al igual que en $x=x_{max}$, $y=y_{min}$, y $y=y_{max}$, será de outflow. El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de 3200x1600 píxeles). Cabe señalar que el diámetro del jet será de $\delta y=80$ píxeles. El tiempo de integración será $t = 100$  y el parámetro de Courant será $\text{Co} = 0.5$.
+consistente con Mignone \emph{et al.} (2005). 
+Los cuales en la primera prueba serán constantes y luego variarán en función de x. El medio ambiente a su vez, 
+se modelará con una densidad y presión $\rho_a$ y $P_a$, respectivamente. Las condiciones a la frontera en $x=x_{min}$ 
+será de inyección del jet relativista en $y= y_{max}/2$ (con un diámetro $\delta y$), mientras que en el 
+resto de la región de $x=x_{min}$, al igual que en $x=x_{max}$, $y=y_{min}$, y $y=y_{max}$, será de outflow. 
+El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de 3200x1600 píxeles). 
+Cabe señalar que el diámetro del jet será de $\delta y=80$ píxeles. El tiempo de integración será $t = 100$  y 
+el parámetro de Courant será $\text{Co} = 0.5$.
 
 %====================================TABLE=================================
 \begin{table}[htbp]
@@ -2332,7 +2338,7 @@ respectivamente. Las condiciones a la frontera en $x=x_{min}$ será de inyecció
 \hline 
 $\rho_{j}$ &  Densidad del jet & 0.1  \\ 
 \hline 
-$\rho_{a}$ &  Densidad del medio ambiente & {\color{red} 10}   \\
+$\rho_{a}$ &  Densidad del medio ambiente & 10   \\
 \hline 
 $P_{j}$ & Presión interna del jet& $0.01 $ \\ 
 \hline 
@@ -2350,16 +2356,16 @@ Co & Número de Courant & 0.5 \\
 \hline 
 \end{tabular}
 \caption{\label{Cuadro: propiedades-jet-comparacion} Valores iniciales de la densidad ,
-velocidad  y presión  en el jet ($\rho_j$, $v_{xj}$, $v_{yj}$, $p_j$) en unidades adimensionales y {\color{red} del medio ambiente}
-($\rho_a$, $v_{xa}$, $v_{ya}$, $p_{a}$). El jet será relativista, con un dominio 
+velocidad  y presión  en el jet ($\rho_j$, $v_{xj}$, $v_{yj}$, $p_j$) en unidades adimensionales y 
+del medio ambiente ($\rho_a$, $v_{xa}$, $v_{ya}$, $p_{a}$). El jet será relativista, con un dominio 
 $x, y \in [0,40]\times[0,20]$ y un índice adiabático $\Gamma = 5/3$.}
 \end{center}
 \end{table}
 
 \section{Jet 2D RHD en un medio ambiente constante}
 
-Para el caso en que el jet, {\color{red} el cual tiene una densidad $\rho_j = 0.1$, una velocidad que
-solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que} se mueve a través de un medio
+Para el caso en que el jet, el cual tiene una densidad $\rho_j = 0.1$, una velocidad que
+solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio
 constante en el cual 
 $\rho_a = 0.1 $ y $P_a = 0.01$  consistente con los valores que Mignone \emph{et al.} (2005) utilizó. 
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del jet a 
@@ -2367,116 +2373,120 @@ través del medio constante en mapas de densidad y
 a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), 
 $t = 20$ (abajo a la izquierda) y $t = 40$ (abajo a la derecha).
 En el tiempo $t = 1$, el jet apenas es visible y solo llega a $x \approx 1$. 
-Cuando $t = 10$ el tamaño del jet llega a $x \approx 6$, las onda de colimación, se observan a 
-lo largo de y=10 y llegan a $x \approx 4$. Los isocontornos blancos delimitan el material del jet a la
-cual llamaremos zona I y la zona donde los isocontornos se limitan a colores negros y grises son
-la zona II del material donde el capullo esta tratando de interactuar con el jet. {\color{red} El jet se 
-expande a 2 unidades sobre el eje y, mientras que en el eje x alcanza 1 unidad y no se muestra un capullo.}
+Cuando $t = 10$ el largo del jet llega {\color{red} a $x \approx 6$ de largo}, las onda de colimación, se observan a 
+lo largo de y=10 y llegan a $x \approx 4$. Los {\color{red} isocontornos blancos delimitan el material menos denso} del jet. 
+{\color{red} El capullo se expande a 5 unidades de largo, mientras que de ancho alcanza 4 unidades.}
 Para el tiempo $t = 20$, el jet se expande a 
-$x \approx 10$. {\color{red} El capullo mide 4 unidades tomando solo la parte $y > 10$, 
+{\color{red} $x \approx 10$ unidades de largo}. {\color{red} El capullo mide 4 unidades de ancho a partir de parte $y > 10$,} 
 las ondas de colimación no cambian, mantienen su posición en $x \approx 4$ a lo largo del eje $y = 10$, el jet se incrementa
-a 7}. Para el tiempo $t = 40$, {\color{red} el jet incrementa su tamaño a $x \approx 21$. 
-El capullo sobrepasa las 10 unidades}, es decir, sale de nuestro dominio. Las ondas de colimación siguen manteniendo el mismo 
+a {\color{red} 7 unidades de largo}. Para el tiempo $t = 40$, el jet incrementa su {\color{red} tamaño a $x \approx 21$ de largo}. 
+{\color{red} El capullo sobrepasa las 10 unidades de ancho}, es decir, sale de nuestro dominio. Las ondas de colimación siguen manteniendo el mismo 
 tamaño en $x \approx 4$ y el capullo sobresale de nuestro dominio. Podemos notar {\color{red} que el capullo está compuesto 
-de materia poco densa que el jet, donde alcanza valores mínimos de $\log(\rho) = -2$ y máximos de $\log(\rho) = 2$ en la
-parte externa del capullo}.
+de materia poco densa que el jet, donde alcanza valores mínimos de $\rho = 10^{-2}$ y máximos de $\rho = 10^{2}$ en la
+parte externa del capullo}. {\color{red}Cabe destacar que el jet conserva el mismo ancho en todos los tiempos y que el
+capullo, tiene el mismo largo para cada tiempo.}
 
-El jet del estudio de Mignone (2005) utiliza un jet relativista con simetría axial en 
-coordenadas cilíndricas, {\color{red} cabe resaltar que en este modelo, se usaron coordenadas cartesianas}. 
+El jet del estudio de {\color{red} Mignone \emph{et. al.}(2005)} utiliza un jet relativista con simetría axial en 
+coordenadas cilíndricas, {\color{red} en este modelo, se usaron coordenadas cartesianas}. 
 Ellos usan una ecuación de estado ideal con $\Gamma = 5/3$, el dominio es 
 $0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240 x 700. Las condiciones de
 frontera son \emph{outflow} en todas su frontera excepto donde esta la eyección. El número de Courant que
 usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores del jet y su medio ambiente son los
-mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}.
+mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}. {\color{red} El jet que se usó en esta tesis tiene las misma ecuación
+estado que se usó en Mignone \emph{et. al.}(2005), se integró en el mismo tiempo, y aunque son distintos sistemas
+de coordenasdas tiene el mismo dominio, asi como las mismas condiciones de frontera. Se diferencia únicamente,
+por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces, la resolución usada en Mignone 
+\emph{et. al.}(2005).}
 
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{./Figuras/jet/evolucion/evolucion.png}
-    \caption{{\color{red} Mapas de densidad en los que se muestra la} evolución del jet relativista 
+    \caption{Mapas de densidad en los que se muestra la evolución del jet relativista 
     con los valores del Cuadro 
     \ref{Cuadro: propiedades-jet-comparacion}. El panel de arriba a la izquierda muestra al 
     tiempo t = 1, el de arriba a la derecha muestra al tiempo t = 10, 
     el de abajo a la izquierda muestra al tiempo t = 20 y el de abajo al tiempo t = 40.
-    También se emplearon isocontornos (lineas punteadas) que se se componen de 5 niveles. {\color{red} En los 
-    cuales el nivel mas bajo, que es blanco, corresponde a $\rho = -2$, blanco ligeramente grisáceo para $\rho = -1$,
-    gris para $\rho = 0$, gris oscuro para $\rho = 1$ y el nivel mas alto, que es negro, 
-    corresponde a $\rho = 2$}. Los demás niveles vienen escalonados, es decir, entre mas oscuros se vuelvan, su 
+    También se emplearon isocontornos (lineas punteadas) que se se componen de 5 niveles. En los 
+    cuales el nivel mas bajo, que es blanco, corresponde a $\rho = 10^{-2}$, blanco ligeramente grisáceo para $\rho = 10^{-1}$,
+    gris para $\rho = 10^{0}$, gris oscuro para $\rho = 10^{1}$ y el nivel mas alto, que es negro, 
+    corresponde a $\rho = 10^{2}$. Los demás niveles vienen escalonados, es decir, entre mas oscuros se vuelvan, su 
     densidad aumenta mas.}
     \label{fig:evolucion_temporal_del_jet}
 \end{figure}
 
 En la Figura \ref{fig:Decaimiento_constante_densidad_jet} se hizo una comparación de los perfiles de densidad
-{\color{red} a $y = 10$}
+a $y = 10$
 del jet a tiempos t = 0, 5, 20, 50. Donde el pánel de arriba a la izquierda muestra el logaritmo de la densidad. En este panel
-podemos observar que para $x \approx 2, 8, 20$,  la densidad {\color{red} alcanza un  valor máximo} de 
-$\log(\rho) \approx 3.5$.
+podemos observar que para $x \approx 2, 8, 20$,  la densidad alcanza un valor máximo de 
+$\rho \approx 10^{3.5}$.
 En el pánel de arriba a la derecha se muestra la velocidad, donde se puede ver que el jet mantiene una velocidad 
-{\color{red} $v \approx 0.9 \, c$ y decae en $x \approx 17.5$ para llegar a $v \approx 0 $ en  $x \approx 21$.} 
+$v \approx 0.9 \, c$ y decae en $x \approx 17.5$ para llegar a $v \approx 0 $ en  $x \approx 21$. 
 En el pánel de abajo a la
-izquierda se muestra el logaritmo de la presión, la cual se puede observar que es parecido a la gráfica de la 
+izquierda se muestra la presión, la cual se puede observar que es parecido a la gráfica de la 
 densidad, ya que mantiene sus máximos en los puntos $x \approx 2, 8, 20$, pero tambien se observa que conforme avanza el
-tiempo los picos empiezan a decrecer, ya que para $t = 5, \, p \approx 0.5$; para $t = 20, \, p \approx 0.4$ y para 
-$t = 50, \, p \approx 0.3$. Para el último pánel que es el de abajo a la derecha, se hizo la misma comparación que el pánel 
-de la densidad, solo que esta vez se compararón distintas resoluciones, {\color{red} con lo que se puede observar que 
-para mayor resolución el jet se vuelve ligeramente más rápido}. En este panel se puede notar que
-los picos están desfasados conforme avanza el tiempo. {\color{red} El desfase entre el jet a alta y baja resolución 
-se va incrementando hasta $\Delta x \approx 3$ para $t = 50$.}
+tiempo los picos empiezan a decrecer, ya que para $t = 5, \, p \approx 10^{0.5}$; para $t = 20, \, p \approx 10^{0.4}$ y para 
+$t = 50, \, p \approx 10^{0.3}$. Para el último pánel que es el de abajo a la derecha, se hizo la misma comparación que el pánel 
+de la densidad, solo que esta vez se compararón distintas resoluciones, con lo que se puede observar que 
+para mayor resolución el jet se vuelve ligeramente más rápido. En este panel se puede notar que
+los picos están desfasados conforme avanza el tiempo. El desfase entre el jet a alta y baja resolución 
+se va incrementando hasta $\Delta x \approx 3$ para $t = 50$.
 
 
 \begin{figure}
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_constantes.png}
-  \caption{Perfiles de densidad,{\color{red} velocidad, presión y distintas resolucines, similar a la Figura 
+  \caption{Perfiles de densidad, velocidad, presión y distintas resolucines, similar a la Figura 
   \ref{fig:comparacion_perfil_radial} a tiempos t=0, 5,20, 50.
-  El prefil es de $y = 10$.}
+  El perfil es de $y = 10$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), el logaritmo 
-  de la presión (abajo a la izquierda). En el panel de abajo a la derecha se comparan {\color{red} la densidad usando} 
+  de la presión (abajo a la izquierda). En el panel de abajo a la derecha se comparan la densidad usando 
   2 distintas resoluciones. La de alta resolución
   es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_constante_densidad_jet}
 \end{figure}
 
-
 En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos en baja 
 (1600x800 pixeles) y alta (3200x1600) resolución, a 
-las mismas escalas de densidad, en comparación con los resultados de Mignone (2005).
-La Figura muestra de izquierda a derecha las gráficas de Mignone (izquierda), {\color{red} el modelo con baja resolución} 
-(medio) y {\color{red} el modelo con alta resolución} (derecha). Los páneles de arriba muestran al tiempo t = 40, mientras que los 
+las mismas escalas de densidad, en comparación con los resultados de Mignone \emph{et. al.} (2005).
+La Figura muestra de izquierda a derecha las gráficas de Mignone (izquierda), el modelo con baja resolución 
+(medio) y el modelo con alta resolución (derecha). Los páneles de arriba muestran al tiempo t = 40, mientras que los 
 de abajo al tiempo t = 80.
 
 Al enfocarse en los páneles de arriba, al tiempo t = 40, se puede observar que el jet de estudio de Mignone tiene un largo 
-de $x \approx 18$, mientras que el de baja resolución tiene un largo de 19 y el jet de alta densidad {\color{red} tiene 
-un largo de 19 por lo que podemos observar un error del 5 \% con el baja resolución y del 0 \% con el de alta resolución.}
-{\color{red} En el capullo esta compuesto de material de baja densidad, que rodean al jet , su ancho se mantiene 
-en aproximadamente 5 unidades.}
-Los choques de colimación son más grandes en el estudio de Mignone que en el de baja resolución, 
-dado que se localizan en {\color{red} $x \approx 10$ y $x \approx 5$ respectivamente, una diferencia del 50 \%}. 
-Los choques de alta resolución se localizan en $x \approx 4$ {\color{red} lo que muestra una diferencia de mas del 
-60 \% con el estudio de Mignone.}
-Se observa tambien que el capullo {\color{red} del estudio de Mignone mide 6 unidades para $y > 10$
-para la resolución baja, mientras que para la resolución alta mide 9 unidades,
-lo que nos da un error, solo para la resolución alta, del 33 \%.
+de $x \approx 18$ unidades, mientras que el de baja resolución tiene un largo de 19 unidades y 
+el jet de alta densidad  tiene un largo de 19 unidades por lo que podemos observar un error del 5 \% 
+con el baja resolución y del 0 \% con el de alta resolución. En el capullo esta compuesto de material de baja densidad 
+que rodea al jet, su ancho se mantiene en aproximadamente 5 unidades.
+Los choques de colimación son más grandes en el estudio de Mignone \emph{et. al.} (2005)
+que en el de baja resolución, 
+dado que se localizan en $x \approx 10$ y $x \approx 5$ respectivamente, una diferencia del 50 \%. 
+Los choques de alta resolución se localizan en $x \approx 4$  lo que muestra una diferencia de mas del 
+60 \% con el estudio de Mignone \emph{et. al.}(2005).
+Se observa tambien que el capullo de {\color{red} baja resolución mide más de 11 unidades de ancho} para $y > 10$, 
+mientras que para la resolución alta mide 9 unidades, lo que nos da un error, solo para la resolución alta, del 33 \%.
 Tanto en el capullo de baja resolución como en el de alta resolución no se muestran turbulencias 
-como en el estudio de Mignone, lo que da a entender que mi código es más viscoso.}
+como en el estudio de Mignone, lo que da a entender {\color{red} que el código que fue desarrollado para esta tesis} 
+es más viscoso.
 
-Para los páneles de abajo, el tiempo ahora es t = 80, se puede observar que el capullo,sobresale del dominio para los 
+Para los páneles de abajo, el tiempo ahora es t = 80, se puede observar que el capullo sobresale del dominio para los 
 3 casos que estamos comparando. Las ondas de colimación para alta como baja resolución
-estan en $x = 3$ mientras que las de Mignone se siguen manteniendo en $x = 6$, {\color{red} lo que nos sigue dando un error 
-del 50 \%}, por lo que estas no dependen del tiempo. 
-{\color{red} El jet para el estudio de Mignone mide $x \approx 35$, para el jet de resolución baja mide $x \approx 32$ y para el de
-resolución alta $x \approx 31$, lo que nos da un error del 9 \% para resolución baja y con el de resolución alta 
-un error del 11 \%}.
+estan en $x = 3$ mientras que las de Mignone se siguen manteniendo en $x = 6$, lo que nos sigue dando un error 
+del 50 \%, por lo que éstas no dependen del tiempo. 
+El jet para el estudio de Mignone mide $x \approx 35$ de largo, para el jet de resolución baja mide $x \approx 32$ unidades y 
+para el de resolución alta $x \approx 31$ unidades, lo que nos da un error del 9 \% para resolución baja y con el 
+de resolución alta un error del 11 \%.
 Otra diferencia fue que el jet de 
-alta resolución esta más comprimido, es decir, es más cilíndrico que el de baja resolución, 
-{\color{red} pero no tanto como el jet de Mignone. Asi tambien, no podemos encontrar, tanto para baja como alta resolución
-las turbulencias generadas en el jet de Mignone, pero tambien no se pueden comparar las densidades del mismo debido a que no
-presenta los valores}.
+{\color{red} alta resolución esta más comprimido, ya que tiene un grosor aproximado de 1.0 unidades de grosor 
+mientras que el de baja resolución tiene una resolución aproximada de 1.4 unidades,} 
+pero no tanto como el jet de Mignone \emph{et. al.}(2005). Asi tambien, no podemos encontrar, tanto para baja como 
+alta resolución las turbulencias generadas en el jet de Mignone, pero tambien no se pueden comparar las densidades del 
+mismo debido a que no presenta los valores.
 
 
 
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{./Figuras/jet/comparacion/multiple_comparation.png}
-    \caption{{\color{red} Mapas de densidad en los que se compara el} jet relativista con los valores del Cuadro 
+    \caption{Mapas de densidad en los que se compara el jet relativista con los valores del Cuadro 
     \ref{Cuadro: propiedades-jet-comparacion}. La Figura está dividida en 3 columnas. La de la izquierda muestra
     el estudio de Mignone, la de en medio el jet a baja resolución (1600x800 pixeles), y la de la derecha el jet a alta 
     resolución (3200x1600 pixeles).
@@ -2490,14 +2500,14 @@ presenta los valores}.
 
 
 
-Esta sección { \color{red} estudia los efectos que un medio variable produce en un jet.} La densidad
-del medio ambiente variará en función del eje, es decir, se modelará como:
+Esta sección estudia los efectos que un {\color{red}medio que varía en función de la distancia, $\rho = \rho(x)$} 
+produce en un jet. La densidad del medio ambiente variará en función del eje, es decir, se modelará como:
 
 \begin{equation}
   \rho(x) = \frac{\rho_{a}}{x} \,\,\,\,\,\,\,\,\, \text{y} \,\,\,\,\,\,\,\,\, \rho(x) = \frac{\rho_{a}}{x^2}
 \end{equation}
 
-Donde $\rho_a$ {\color{red} es el mismo valor mostrado en el Cuadro \ref{Cuadro: propiedades-jet-comparacion}.}
+Donde $\rho_a$ es el valor mostrado en el Cuadro \ref{Cuadro: propiedades-jet-comparacion}.
 
 
 
