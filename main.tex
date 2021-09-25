@@ -2435,12 +2435,11 @@ se va incrementando hasta $\Delta x \approx 3$ para $t = 50$.
 \begin{figure}
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_constantes.png}
-  \caption{Perfiles de densidad, velocidad, presión y distintas resolucines, similar a la Figura 
+  \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
   \ref{fig:comparacion_perfil_radial} a tiempos t=0, 5,20, 50.
   El perfil es de $y = 10$.
-  La densidad (arriba a la izquierda), velocidad (arriba a la derecha), el logaritmo 
-  de la presión (abajo a la izquierda). En el panel de abajo a la derecha se comparan la densidad usando 
-  2 distintas resoluciones. La de alta resolución
+  La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
+  En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución
   es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_constante_densidad_jet}
 \end{figure}
 
@@ -2475,7 +2474,7 @@ El jet para el estudio de Mignone mide $x \approx 35$ de largo, para el jet de r
 para el de resolución alta $x \approx 31$ unidades, lo que nos da un error del 9 \% para resolución baja y con el 
 de resolución alta un error del 11 \%.
 Otra diferencia fue que el jet de 
-{\color{red} alta resolución esta más comprimido, ya que tiene un grosor aproximado de 1.0 unidades de grosor 
+{\color{red} alta resolución esta más comprimido, ya que tiene un grosor aproximado de 1.0 unidades 
 mientras que el de baja resolución tiene una resolución aproximada de 1.4 unidades,} 
 pero no tanto como el jet de Mignone \emph{et. al.}(2005). Asi tambien, no podemos encontrar, tanto para baja como 
 alta resolución las turbulencias generadas en el jet de Mignone, pero tambien no se pueden comparar las densidades del 
@@ -2512,63 +2511,68 @@ Donde $\rho_a$ es el valor mostrado en el Cuadro \ref{Cuadro: propiedades-jet-co
 
 
 La Figura \ref{fig:Decaimiento_lineal_densidad_jet} muestra los perfiles de densidad, velocidad y presión, es decir, 
-solo mostrará los valores que esten sobre $y = 10$ de la Figura \ref{fig:evolucion_temporal_del_jet}. En el panel de arriba 
-a la izquierda  muestra la densidad. El de arriba a la derecha, la velocidad. El de abajo a la izquierda el 
-logaritmo de la presión y el de abajo a la derecha muestra la comparación entre
-uno de mayor resolución con uno de baja resolución. Al tiempo t = 0, al no haber una inyección del jet, únicamente la densidad decae
-exponencialmente. Al tiempo t = 5, la densidad, en x = 3 tiene un máximo local que llega a 
-$\log(\rho) \approx 3.5$, en t = 20, el pico se situa en $x \approx 12$ con un máximo de $\log(\rho) \approx 2.8$ y para el 
-tiempo t = 50, el pico se situa en $x \approx 33$ con $\log(\rho) = 1.3$ por lo que los máximos disminuyen en función de la 
+solo mostrará los valores que esten sobre $y = 10$ {para el caso cuando $\rho \varpropto \frac{1}{x}$}. En el panel de arriba 
+a la izquierda  muestra la densidad. El de arriba a la derecha, la velocidad. El de abajo a la izquierda la presión y 
+el de abajo a la derecha muestra la comparación entre
+uno de mayor resolución con uno de baja resolución. Al tiempo t = 0, al no haber una inyección del jet, únicamente la densidad 
+{\color{red} decae como $\frac{1}{x}$}. Al tiempo t = 5, la densidad, en x = 3 tiene un máximo local que llega a 
+$\rho \approx 10^{3.5}$, en t = 20, el pico se situa en $x \approx 12$ con un máximo de $\rho \approx 10^{2.8}$ y para el 
+tiempo t = 50, el pico se situa en $x \approx 33$ con $\rho = 10^{1.3}$ por lo que los máximos disminuyen en función de la 
 densidad del medio ambiente.
 La velocidad tiene un máximo en $x \approx 0.2$, donde alcanza  $v \approx 0.6$. Para los tiempos t = 20, 50 ya no 
 presenta máximos sino que decae rápidamente en las posiciones $x \approx 8, \, 25$ respectivamente.
-La presión tiene un valor máximo al tiempo t = 5 con $p \approx 0.5$, aunque si un cambio menos abrupto en $x = 3$. 
-En los tiempos t = 20, 50 {\color{red} los máximos globales se situan en $x \approx 12$ y en $x \approx 33$ con $\log (p) \approx 0$ 
-y $\log (p) \approx -0.50$ respectivamente}.
+La presión tiene un valor máximo al tiempo t = 5 con $p \approx 10^{0.5}$, aunque si un cambio menos abrupto en $x = 3$. 
+En los tiempos t = 20, 50 los máximos globales se situan en $x \approx 12$ y en $x \approx 33$ 
+con $p \approx 10^0$ y $p \approx 10^{-0.50}$ respectivamente.
 En el panel inferior derecho, al comparar el logaritmo de la densidad en resoluciones de 3200x1600 y 1600x800,
-notamos que a diferencia del medio constante, no hay un desfase tan grande. {\color{red} El desfase entre el jet a alta y baja resolución 
-se va incrementando hasta $\Delta x \approx 1$ para $t = 50$.}
+notamos que a diferencia del medio constante, no hay un desfase tan grande. El desfase entre el jet a alta y baja resolución 
+se va incrementando hasta $\Delta x \approx 1$ para $t = 50$. {\color{red}En resumen, los picos de la densidad y presión 
+son en general son más pequeños que los mostrados en donde la densidad del medio es constante, pero tambien recorren mayor 
+distancia que los anteriormente mencionadoas. Para la comparación, donde el medio decae como $\frac{1}{x^2}$, los picos 
+son grandes pero recorren menos distancia que el medio anteriormente mencionado.}
 
 
 
 \begin{figure}
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_lineales.png}
-  \caption{ Perfiles de densidad, presión y velocidad {\color{red} a $y = 0$}, similar a la Figura 
-  \ref{fig:comparacion_perfil_radial} {\color{red} para el caso cuando $\rho \varpropto \frac{1}{x}$}. 
-  El panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha la
-  velocidad, el de abajo a la izquierda la presión y el panel de abajo a la derecha muestra la comparación entre
-  uno de mayor resolución (3200x1600, linea sólida) con uno de baja resolución (1600x800,
-  linea punteada). Para tiempos t = 0, 5, 20, 50.}\label{fig:Decaimiento_lineal_densidad_jet}
+  \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
+  \ref{fig:comparacion_perfil_radial} {\color{red} para un perfil de densidad que varia en función de la distancia como
+  $\rho \varpropto \frac{1}{x}$} a tiempos t=0, 5,20, 50.
+  El perfil es de $y = 10$.
+  La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
+  En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución
+  es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_lineal_densidad_jet}
 \end{figure}
 
 
 En la Figura \ref{fig:Decaimiento_cuadratico_densidad_jet} se muestra la densidad de medio ambiente 
-que decae como $x \varpropto \frac{1}{x^2}$. Aquí podemos ver que los {\color{red} picos de la densidad estan en
-x = 3, 10, 33} con  la densidad {\color{red} $\log(\rho) \approx 4, \, 2.3, \, 2$ respectivamente}. Por lo que a diferencia 
+que decae como $\rho \varpropto \frac{1}{x^2}$. Aquí podemos ver que los  picos de la densidad estan en
+x = 3, 10, 33 con  la densidad {\color{red} $\rho \approx 10^4, \, 10^{2.3}, \, 10^2$ respectivamente}. Por lo que a diferencia 
 del medio constante y el inversamente lineal los picos estan más cerca del cero. En la velocidad podemos observar
-{\color{red} los frente de choque de la onda que se ubican en $x \approx 3, \, 13, \, 37$ con los valores de velocidad
-$v \approx 0.42, \, 0.58, \, 0.60$ respectivamente. Para más detalles véase el Cuadro \ref{Cuadro:valores_frente_choque}}.
+los frente de choque de la onda que se ubican en $x \approx 3, \, 13, \, 37$ con los valores de velocidad
+$v \approx 0.42, \, 0.58, \, 0.60$ respectivamente. Para más detalles véase el Cuadro \ref{Cuadro:valores_frente_choque}.
 En el caso del logaritmo de la presión, al tiempo t = 5, desciende rápidamente en $x \approx 0.5$ {\color{red} de 
-$p \approx 2.3$ a $p \approx 1$}.
-En el tiempo t = 20, la presión tiene un valor máximo en  {\color{red} $x \approx 10$}, 
+$p \approx 10^{2.3}$ a $p \approx 10^1$}.
+En el tiempo t = 20, la presión tiene un valor máximo en $x \approx 10$, 
 donde mantien un valor  de 
-$p \approx 2$. Para el tiempo t = 50
-la presión desciende {\color{red} exponencialmente del punto $x \approx 28$ donde $p \approx 5$}.
-Al comparar las resoluciones de {\color{red} 1600x800 con la de 800x400} se vuelve a ver un desfase.
-{\color{red} El desfase entre el jet a alta y baja resolución 
-se va incrementando hasta $\Delta x \approx 2.5$ para $t = 50$.} Tambien se observó un desfase en los máximos, ya que para los 3 picos
-se observa $\log(\rho)_{alta} - \log(\rho)_{baja} \approx 0.5$. 
+$p \approx 10^2$. Para el tiempo t = 50
+la presión desciende exponencialmente del punto $x \approx 28$ donde $p \approx 10^5$.
+Al comparar las resoluciones de 1600x800 con la de 800x400 se vuelve a ver un desfase. El desfase entre el jet a alta y 
+baja resolución se va incrementando hasta $\Delta x \approx 2.5$ para $t = 50$. Tambien se observó un desfase en los 
+máximos, ya que para los 3 picos se observa {\color{red} $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.08$. }
 
 
 \begin{figure}
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_cuadraticos.png}
-  \caption{Perfiles de densidad, presión y velocidad {\color{red} a $y = 0$}, similar a la
-  Figura \ref{fig:comparacion_perfil_radial} {\color{red} para el caso cuando $\rho \varpropto \frac{1}{x^2}$}. El panel de arriba a la izquierda muestra  la densidad, el de arriba a la derecha la
-  velocidad, el de abajo a la izquierda  la presión y el panel de abajo a la derecha muestra la comparación entre
-  uno de mayor resolución {\color{red} (1600x800, linea sólida) con uno de baja resolución (800x400,
-  linea punteada)}. Para tiempos t = 0, 5, 20, 50.}\label{fig:Decaimiento_cuadratico_densidad_jet}
+  \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
+  \ref{fig:comparacion_perfil_radial} {\color{red} para un perfil de densidad que varia en función de la distancia como
+  $\rho \varpropto \frac{1}{x^2}$} a tiempos t = 0, 5,20, 50.
+  El perfil es de $y = 10$.
+  La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
+  En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución
+  es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_cuadratico_densidad_jet}
 \end{figure}
 
 
@@ -2578,7 +2582,9 @@ se observa $\log(\rho)_{alta} - \log(\rho)_{baja} \approx 0.5$.
     \hline 
     & \multicolumn{4}{|c|}{$\rho = \rho_a$} & \multicolumn{4}{|c|}{$\rho_a \propto x^{-1}$} & \multicolumn{4}{|c|}{$\rho_a \propto x^{-2}$}\\
     \hline
-    t & $x$ & $\rho$ & $p$ & $v_{\text{fch}}$ & $x$ & $\rho$ & $p$ & $v_{\text{fch}}$ & $x$ & $\rho$ & $p$ & $v_{\text{fch}}$ \\
+    t & $x_{\text{fch}}$ & $\rho_{\text{fch}}$ & $p_{\text{fch}}$ & $v_{\text{fch}}$ & $x_{\text{fch}}$ & 
+    $\rho_{\text{fch}}$ & $p_{\text{fch}}$ & $v_{\text{fch}}$ & $x_{\text{fch}}$ & $\rho_{\text{fch}}$ & $p_{\text{fch}}$ & 
+    $v_{\text{fch}}$ \\
     \hline
      5 & 3  & 3.5 & 0.6 & 0.38    &  3  & 3.5 &  0.5  & 0.5     & 3  & 4   & 0.8  & 0.42 \\
     \hline
@@ -2588,23 +2594,31 @@ se observa $\log(\rho)_{alta} - \log(\rho)_{baja} \approx 0.5$.
     \hline
 
   \end{tabular}
-  \caption{\label{Cuadro:valores_frente_choque} {\color{red} Valores de densidad presión y velocidad que se muestran en el frente
+  \caption{\label{Cuadro:valores_frente_choque} Valores de densidad presión y velocidad que se muestran en el frente
   de choque de la onda del jet. Los valores obtenidos fueron tomados de las Figura \ref{fig:Decaimiento_constante_densidad_jet},
-  \ref{fig:Decaimiento_lineal_densidad_jet} y \ref{fig:Decaimiento_cuadratico_densidad_jet}}}
+  \ref{fig:Decaimiento_lineal_densidad_jet} y \ref{fig:Decaimiento_cuadratico_densidad_jet}}
   \end{center}
   \end{table}
 
 
+{\color{red} Se puede observar que el jet, conforme varía el medio ambiente, se vuelve más rapido }
 En la Figura \ref{fig:perfiles_comparacion_jet} se muestra la comparación que hay cuando la densidad del medio
 ambiente cambia constantemente ($\rho \varpropto \rho_a$), cuando varia inversamente lineal ($\rho \varpropto x^{-1}$) y 
-cuando varia inversamente cuadrático ($\rho \varpropto x^{-2}$) {\color{red} al tiempo $t = 50$}. {\color{red} El primer
-valor máximo que acentua más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene
-un valor $\rho \approx -0.4$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es 
-$\rho \approx -1$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, para el caso constante
-se localiza en $x \approx 20$ y alcanza $\rho \approx 3.5$, conforme se aumente el exponente el valor máximo se desplaza
-, asi como su disminución de la densidad ya que para el caso inversamente lineal el máximo se localiza en $x \approx 32$ 
-con $\rho \approx 0$ y para el caso inversamente cuadrático el valor máximo se localizó en $x \approx 34$ con 
-$\rho \approx -1$}.
+cuando varia inversamente cuadrático ($\rho \varpropto x^{-2}$) al tiempo $t = 50$. {\color{red} Las lineas
+punteadas muestran los exponentes intermedios entre los valores de 0, 1 y 2 en pasos de 0.2, es decir la densidad
+del medio ambiente descenderá como $x^0, \, x^{-0.2} \, , \, ,\, , x^{-0.8} , \, x^{-1}  , \, x^{-1.2}
+\, , \, , \, , \, x^{-2}$}.
+El primer valor máximo que acentua más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene
+un valor $\rho \approx 10^{-0.4}$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es 
+$\rho \approx 10^{-1}$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, para el caso 
+constante se localiza en $x \approx 20$ y alcanza $\rho \approx 10^{3.5}$, conforme se aumente el exponente el valor 
+máximo se desplaza, asi como su disminución de la densidad ya que para el caso inversamente lineal el máximo se localiza 
+en $x \approx 32$ con $\rho \approx 10^0$ y para el caso inversamente cuadrático el valor máximo se localizó en 
+$x \approx 34$ con $\rho \approx 10^{-1}$. {\color{red} Podemos observar que el primer valor máximo de la gráfica, el medio
+que varía com $x^{-2}$ tiene un valor mayor que el del medio constante, mientras que para el segundo valor máximo se invierte
+y el medio constante tiene un valor mayor que el del medio que varía como $x^{-2}$.
+La velocidad de la onda aumenta un 60 \% para medio inversamente lineal en correspondencia con el medio constante y un 6 \%
+para el medio inversamente cuadratico en correspondencia con el inversamente lineal.  }
 
 
 
@@ -2614,7 +2628,7 @@ $\rho \approx -1$}.
   \caption{Gráfica de comparación de la posición vs el logaritmo de la densidad 
   donde el medio ambiente es constante $\rho \varpropto k$ (verde), varía inversamente lineal
   $\rho \varpropto x^{-1}$ (amarillo) y varía inversamente cuadrático $\rho \varpropto x^{-2}$ (rojo)
-  al tiempo t = 50. {\color{red} Las lineas menos remarcadas muestranlos valores exponenciales entre 0 y 1 y enttre 1 y 2,
+  al tiempo t = 50. {\color{red} Las lineas punteadas muestranlos valores exponenciales entre 0 y 1 y entre 1 y 2,
   es decir, que la densidad descenderá como $x^0, \, x^{-0.2} \, , \, ,\, , x^{-0.8} , \, x^{-1}  , \, x^{-1.2}
   \, , \, , \, , \, x^{-2}$.}}\label{fig:perfiles_comparacion_jet}
 \end{figure}
