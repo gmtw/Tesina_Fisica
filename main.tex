@@ -2435,7 +2435,8 @@ de la densidad, solo que esta vez se compararón {\color{red} distintas resoluci
 y alta resolución "HD" (3200x1600)}, con lo que se puede observar que 
 para mayor resolución el jet se vuelve ligeramente más rápido. En este panel se puede notar que
 los picos están desfasados conforme avanza el tiempo. El desfase entre el jet a alta y baja resolución 
-se va incrementando hasta $\Delta x \approx 3$ para $t = 50$.
+se va incrementando hasta $\Delta x \approx 3$ y  {\color{red} el desfase en los 
+máximos se observa  $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$} para $t = 50$.
 
 
 \begin{figure}
@@ -2530,12 +2531,11 @@ presenta máximos sino que decae rápidamente en las posiciones $x \approx 8, \,
 La presión tiene un valor máximo al tiempo t = 5 con $p \approx e^{0.5} \approx 1.64$, aunque si un cambio menos abrupto en $x = 3$. 
 En los tiempos t = 20, 50 los máximos globales se situan en $x \approx 12$ y en $x \approx 33$ 
 con $p \approx e^0 = 1$ y $p \approx e^{-0.50} \approx 0.6$ respectivamente.
-En el panel inferior derecho, al comparar el logaritmo de la densidad en resoluciones de 3200x1600 y 1600x800,
+En el panel inferior derecho, al comparar la densidad en resoluciones de 3200x1600 y 1600x800,
 notamos que a diferencia del medio constante, no hay un desfase tan grande. El desfase entre el jet a alta y baja resolución 
-se va incrementando hasta $\Delta x \approx 1$ para $t = 50$. En resumen, los picos de la densidad y presión 
-son en general más pequeños que los mostrados en donde la densidad del medio es constante, pero tambien recorren mayor 
-distancia que los anteriormente mencionadoas. {\color{red}Para la comparación, donde el medio decae como $\frac{1}{x^2}$, 
-los picos son grandes pero recorren menos distancia que el medio anteriormente mencionado.}
+se va incrementando hasta $\Delta x \approx 1$  {\color{red} el desfase en los 
+máximos se observa  $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.09$} para $t = 50$. 
+
 
 
 
@@ -2565,8 +2565,8 @@ donde mantien un valor  de
 $p \approx e^2 \approx 7.3$. Para el tiempo t = 50
 la presión desciende exponencialmente del punto $x \approx 28$ donde $p \approx e^{-5} \approx 0.006$.
 Al comparar las resoluciones de 1600x800 con la de 800x400 se vuelve a ver un desfase. El desfase entre el jet a alta y 
-baja resolución se va incrementando hasta $\Delta x \approx 2.5$ para $t = 50$. Tambien se observó un desfase en los 
-máximos, ya que para los 3 picos se observa {\color{red} $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.08$. }
+baja resolución se va incrementando hasta $\Delta x \approx 2.5$ y {\color{red} el desfase en los 
+máximos se observa  $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63$} para $t = 50$.
 
 
 \begin{figure}
@@ -2581,6 +2581,11 @@ máximos, ya que para los 3 picos se observa {\color{red} $\frac{\rho_{alta} - \
   es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_cuadratico_densidad_jet}
 \end{figure}
 
+{\color{red}En resumen, los picos de la densidad y presión 
+son en general más pequeños que los mostrados en donde la densidad del medio es constante, pero tambien recorren mayor 
+distancia que los anteriormente mencionadoas. Para la comparación, donde el medio decae como $\frac{1}{x^2}$, 
+los picos son grandes pero recorren menos distancia que el medio anteriormente mencionado.}
+
 
 \begin{table}[htbp]
   \begin{center}
@@ -2592,11 +2597,11 @@ máximos, ya que para los 3 picos se observa {\color{red} $\frac{\rho_{alta} - \
     $\rho_{\text{fch}}$ & $p_{\text{fch}}$ & $v_{\text{fch}}$ & $x_{\text{fch}}$ & $\rho_{\text{fch}}$ & $p_{\text{fch}}$ & 
     $v_{\text{fch}}$ \\
     \hline
-     5 & 3  & 3.5 & 0.6 & 0.38    &  3  & 3.5 &  0.5  & 0.5     & 3  & 4   & 0.8  & 0.42 \\
+     5 & 3  & 3.5 & 0.6 & 0.38    &  3  & 3.5 &  0.5  & 0.4     & 3  & 4   & 0.8  & 0.42 \\
     \hline
-    20 & 9  & 3.5 & 0.6 & 0.37    &  12 & 2.6 &   0   & 0.55    & 13 & 2   & -1.8 & 0.58 \\
+    20 & 9  & 3.5 & 0.6 & 0.4    &  12 & 2.6 &   0   & 0.55    & 13 & 2   & -1.8 & 0.5 \\
     \hline
-    50 & 21 & 3.5 & 0.5 & 0.36    &  34 & 1.1 & -0.5  & 0.6     & 37 & 1.8 & -2.0 & 0.60 \\
+    50 & 21 & 3.5 & 0.5 & 0.6    &  34 & 1.1 & -0.5  & 0.64     & 37 & 1.8 & -2.0 & 0.64 \\
     \hline
 
   \end{tabular}
@@ -2616,11 +2621,12 @@ punteadas muestran los exponentes intermedios entre los valores de 0, 1 y 2 en p
 del medio ambiente descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}
 , \, . . . \,  , x^{-2}$.
 El primer valor máximo que acentua más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene
-un valor $\rho \approx 10^{-0.4}$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es 
-$\rho \approx 10^{-1}$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, para el caso 
-constante se localiza en $x \approx 20$ y alcanza $\rho \approx 10^{3.5}$, conforme se aumente el exponente el valor 
+un valor $\rho \approx e^{-0.4} \approx 0.6$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es 
+$\rho \approx e^{-1} \approx  0.3$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, 
+para el caso 
+constante se localiza en $x \approx 20$ y alcanza $\rho \approx e^{3.5} \approx 33$, conforme se aumente el exponente el valor 
 máximo se desplaza, asi como su disminución de la densidad ya que para el caso inversamente lineal el máximo se localiza 
-en $x \approx 32$ con $\rho \approx 10^0$ y para el caso inversamente cuadrático el valor máximo se localizó en 
+en $x \approx 32$ con $\rho \approx e^0 \approx 1$ y para el caso inversamente cuadrático el valor máximo se localizó en 
 $x \approx 34$ con $\rho \approx 10^{-1}$.  Podemos observar que el primer valor máximo de la gráfica, el medio
 que varía com $x^{-2}$ tiene un valor mayor que el del medio constante, mientras que para el segundo valor máximo se invierte
 y el medio constante tiene un valor mayor que el del medio que varía como $x^{-2}$.
