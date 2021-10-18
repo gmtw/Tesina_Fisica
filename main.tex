@@ -2322,10 +2322,11 @@ El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P
 (ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático será $\Gamma = 5/3$, 
 consistente con Mignone \emph{et al.} (2005). 
 Los cuales en la primera prueba serán constantes y luego variarán en función de x. El medio ambiente a su vez, 
-se modelará con una densidad y presión $\rho_a$ y $P_a$, respectivamente. {\color{red} Un jet de grosor $\Delta y$ será inyectado 
-en la frontera $x_{min}$ a la mitad de la altura $y_{max}$ (esto es, desde $y_{max}/2-\Delta y$ hasta $y_{max}/2+ \Delta y$). 
-El resto de la frontera de $x_{min}$ así como las otras fronteras ($x_{max}$, $x_{min}$, $y_{max}$) tendrán condiciones a la
-frontera de \emph{outflow}.} 
+se modelará con una densidad y presión {\color{red} en reposo}. Un jet de grosor $\Delta y$ será inyectado 
+en la frontera $x_{min}$ a la mitad de la altura $y_{max}$ (esto es, desde {\color{red} $\frac{y_{max}-\Delta y}{2}$ hasta 
+$\frac{y_{max}+ \Delta y}{2}$)}. 
+El resto de la frontera de $x_{min}$ así como las otras fronteras ($x_{max}$, $y_{min}$, $y_{max}$) tendrán condiciones a la
+frontera de \emph{outflow}. 
 El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de 3200x1600 píxeles). 
 Cabe señalar que el diámetro del jet será de $\delta y=80$ píxeles. El tiempo de integración será $t = 100$, 
 { \color{red}$\Delta t = 1$}  y el parámetro de Courant será $\text{Co} = 0.5$.
@@ -2366,8 +2367,8 @@ $x, y \in [0,40]\times[0,20]$ y un índice adiabático $\Gamma = 5/3$.}
 \section{Jet 2D RHD en un medio ambiente constante}
 
 Para el caso en que el jet, el cual tiene una densidad $\rho_j = 0.1$, una velocidad que
-solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio
-constante en el cual 
+solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un 
+{\color{red} medio en reposo y con densidad y presión constante} en el cual 
 $\rho_a = 0.1 $ y $P_a = 0.01$  consistente con los valores que Mignone \emph{et al.} (2005) utilizó. 
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del jet a 
 través del medio constante en mapas de densidad
@@ -2383,10 +2384,10 @@ las ondas de colimación no cambian, mantienen su posición en $x \approx 4$ a l
 a 7 unidades de longitud. Para el tiempo $t = 40$, el jet incrementa su tamaño a $x \approx 21$ de longitud. 
 El capullo sobrepasa las 10 unidades de ancho, es decir, sale de nuestro dominio. Las ondas de colimación siguen manteniendo el mismo 
 tamaño en $x \approx 4$ y el capullo sobresale de nuestro dominio. Podemos notar que el capullo está compuesto 
-de materia poco densa que el jet, donde alcanza valores mínimos de {\color{red} $\rho \approx e^{-2} \approx 0.05 $ y 
-máximos de $\rho \approx e^{2} \approx 20$} en la
-parte externa del capullo. {\color{red}Cabe destacar que el jet conserva el mismo ancho y que la longitud del capullo crece 
-en la misma proporción a la longitud del jet}
+de materia poco densa que el jet, donde alcanza valores mínimos de $\rho \approx 0.05 $ y 
+máximos de $\rho  \approx 20$ en la
+parte externa del capullo. Cabe destacar que el jet conserva el mismo ancho y que la longitud del capullo crece 
+en la misma proporción a la longitud del jet.
 
 El jet del estudio de  Mignone \emph{et. al.}(2005) utiliza un jet relativista con simetría axial en 
 coordenadas cilíndricas,  en este modelo, se usaron coordenadas cartesianas. 
@@ -2396,8 +2397,8 @@ frontera son \emph{outflow} en todas su frontera excepto donde esta la eyección
 usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores del jet y su medio ambiente son los
 mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}. El jet que se usó en esta tesis tiene las 
 misma ecuación estado que se usó en Mignone \emph{et. al.}(2005), se integró en el mismo tiempo, y aunque son distintos 
-sistemas de coordenasdas tiene el mismo dominio, asi como las mismas condiciones de frontera. Se diferencia únicamente,
-por la resolución, ya que el jet de este estudio tiene aproximadamente {\color{red} 3 veces más}, la resolución usada en Mignone 
+sistemas de coordenadas tiene el mismo dominio, asi como las mismas condiciones de frontera. Se diferencia únicamente,
+por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces más, la resolución usada en Mignone 
 \emph{et. al.}(2005).
 
 \begin{figure}
@@ -2409,30 +2410,31 @@ por la resolución, ya que el jet de este estudio tiene aproximadamente {\color{
     tiempo t = 1, el de arriba a la derecha muestra al tiempo t = 10, 
     el de abajo a la izquierda muestra al tiempo t = 20 y el de abajo al tiempo t = 40.
     También se emplearon isocontornos (lineas punteadas) que se se componen de 5 niveles. En los 
-    cuales el nivel mas bajo, que es blanco, corresponde a $\rho \approx e^{-2} \approx 0.13$, blanco ligeramente grisáceo 
-    para $\rho \approx e^{-1} \approx 0.36$,
-    gris para $\rho = e^{0} \approx 1$, gris oscuro para $\rho = e^{1} \approx 2.7$ y el nivel mas alto, que es negro, 
-    corresponde a $\rho \approx e^{2} \approx 7.3$.}
+    cuales el nivel mas bajo, que es blanco, corresponde a $\rho \approx 0.13$, blanco ligeramente grisáceo 
+    para $\rho \approx 0.36$,
+    gris para $\rho \approx 1$, gris oscuro para $\rho  \approx 2.7$ y el nivel mas alto, que es negro, 
+    corresponde a $\rho \approx 7.3$.}
     \label{fig:evolucion_temporal_del_jet}
 \end{figure}
 
-En la Figura \ref{fig:Decaimiento_constante_densidad_jet} se hizo una comparación de los perfiles de densidad
-a $y = 10$
-del {\color{red} jet a tiempos t = 0, donde no se muestra una onda; a t = 5 donde la onda se localiza en $x \approx 2$; 
-a t = 20, la onda se localiza a $x \approx 8$; y  t = 50, donde la onda se localiza en $x \approx 20$}. 
+En la Figura \ref{fig:Decaimiento_constante_densidad_jet} {\color{red} se muestra la comparación entre los perfiles de 
+densidad} a $y = 10$
+del jet al tiempo t = 0, donde no se muestra una onda; a t = 5 donde la onda se localiza en $x \approx 2$; 
+a t = 20, la onda se localiza a $x \approx 8$; y  t = 50, donde la onda se localiza en $x \approx 20$. 
 El pánel de arriba a la izquierda muestra la densidad, en donde
 podemos observar que para $x \approx 2, 8, 20$,  la densidad alcanza un valor máximo de 
-{\color{red} $\rho \approx e^{3.5} \approx 33$}.
+$\rho  \approx 33$.
 En el pánel de arriba a la derecha se muestra la velocidad, donde se puede ver que el jet mantiene una velocidad 
 $v \approx 0.9 \, c$ y decae en $x \approx 17.5$ para llegar a $v \approx 0 $ en  $x \approx 21$. 
 En el pánel de abajo a la
 izquierda se muestra la presión, la cual se puede observar que es parecido a la gráfica de la 
 densidad, ya que mantiene sus máximos en los puntos $x \approx 2, 8, 20$, pero tambien se observa que conforme avanza el
-tiempo los picos empiezan a decrecer, ya que para{\color{red} $t = 5, \, p \approx e^{0.5} \approx 1.6 $; 
-para $t = 20, \, p \approx e^{0.4}$ y para 
-$t = 50, \, p \approx e^{0.3} \approx 1.3$}. Para el pánel de abajo a la derecha, se hizo la misma comparación que el pánel 
-de la densidad, solo que esta vez se compararón {\color{red} distintas resoluciones: baja resolución "LD" (1600x800) 
-y alta resolución "HD" (3200x1600)}, con lo que se puede observar que 
+tiempo los picos empiezan a decrecer, ya que para $t = 5, \, p \approx 1.6 $; 
+para $t = 20, \, p \approx 1.49$ y para 
+$t = 50, \, p  \approx 1.3$. Para el pánel de abajo a la derecha, se hizo la misma comparación que el pánel 
+de la densidad, solo que esta vez se compararón  distintas resoluciones: baja resolución "LD" ({\color{red}
+con 1600 pixeles en el eje X y 800 en el eje Y}) 
+y alta resolución "HD" (3200x1600), con lo que se puede observar que 
 para mayor resolución el jet se vuelve ligeramente más rápido. En este panel se puede notar que
 los picos están desfasados conforme avanza el tiempo. El desfase entre el jet a alta y baja resolución 
 se va incrementando hasta $\Delta x \approx 3$ y  {\color{red} el desfase en los 
@@ -2447,8 +2449,8 @@ máximos se observa  $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04
   El perfil es de $y = 10$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
   En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución 
-  {\color{red} ("HD" -)
-  es de 3200x1600 y la de baja resolución ("LD" --)} es de 1600x800.}\label{fig:Decaimiento_constante_densidad_jet}
+  (HD)
+  es de 3200x1600 pixeles y la de baja resolución (LD) es de 1600x800 pixeles.}\label{fig:Decaimiento_constante_densidad_jet}
 \end{figure}
 
 En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos en baja 
@@ -2482,7 +2484,7 @@ de resolución alta un error del 11 \%.
 Otra diferencia fue que el jet de 
 alta resolución esta más comprimido, ya que tiene un grosor aproximado de 1.0 unidades 
 mientras que el de baja resolución tiene una resolución aproximada de 1.4 unidades, 
-{\color{red} aunque no está tan comprimido como el jet mostrado en el estudio de Mignone \emph{et. al.}(2005)}. Asi tambien, no podemos encontrar, tanto para baja como 
+aunque no está tan comprimido como el jet mostrado en el estudio de Mignone \emph{et. al.}(2005). Asi tambien, no podemos encontrar, tanto para baja como 
 alta resolución las turbulencias generadas en el jet de Mignone, pero tambien no se pueden comparar las densidades del 
 mismo debido a que no presenta los valores.
 
@@ -2509,7 +2511,7 @@ Esta sección estudia los efectos que un medio que varía en función de la dist
 produce en un jet. La densidad del medio ambiente variará en función del eje, es decir, se modelará como:
 
 \begin{equation}
-  \rho(x) \varpropto \frac{\rho_{a}}{x} \,\,\,\,\,\,\,\,\, \text{y} \,\,\,\,\,\,\,\,\, \rho(x) \varpropto \frac{\rho_{a}}{x^2}
+  \rho(x) \varpropto \frac{1}{x} \,\,\,\,\,\,\,\,\, \text{y} \,\,\,\,\,\,\,\,\, \rho(x) \varpropto \frac{1}{x^2}
 \end{equation}
 
 Donde $\rho_a$ es el valor mostrado en el Cuadro \ref{Cuadro: propiedades-jet-comparacion}.
@@ -2522,15 +2524,15 @@ a la izquierda  muestra la densidad. El de arriba a la derecha, la velocidad. El
 el de abajo a la derecha muestra la comparación entre
 uno de mayor resolución con uno de baja resolución. Al tiempo t = 0, al no haber una inyección del jet, únicamente la densidad 
 decae como $\frac{1}{x}$. Al tiempo t = 5, la densidad, en x = 3 tiene un máximo local que llega a 
-$\rho \approx e^{3.5} \approx 33$, en t = 20, el pico se situa en $x \approx 12$ con un máximo de 
-$\rho \approx e^{2.8} \approx 16.5$ y para el 
-tiempo t = 50, el pico se situa en $x \approx 33$ con $\rho \approx e^{1.3} \approx 3.6$ por lo que los máximos disminuyen en función de la 
+$\rho  \approx 33$, en t = 20, el pico se situa en $x \approx 12$ con un máximo de 
+$\rho  \approx 16.5$ y para el 
+tiempo t = 50, el pico se situa en $x \approx 33$ con $\rho  \approx 3.6$ por lo que los máximos disminuyen en función de la 
 densidad del medio ambiente.
 La velocidad tiene un máximo en $x \approx 0.2$, donde alcanza  $v \approx 0.6$. Para los tiempos t = 20, 50 ya no 
 presenta máximos sino que decae rápidamente en las posiciones $x \approx 8, \, 25$ respectivamente.
-La presión tiene un valor máximo al tiempo t = 5 con $p \approx e^{0.5} \approx 1.64$, aunque si un cambio menos abrupto en $x = 3$. 
+La presión tiene un valor máximo al tiempo t = 5 con $p \approx 1.64$, aunque si un cambio menos abrupto en $x = 3$. 
 En los tiempos t = 20, 50 los máximos globales se situan en $x \approx 12$ y en $x \approx 33$ 
-con $p \approx e^0 = 1$ y $p \approx e^{-0.50} \approx 0.6$ respectivamente.
+con $p \approx  1$ y $p  \approx 0.6$ respectivamente.
 En el panel inferior derecho, al comparar la densidad en resoluciones de 3200x1600 y 1600x800,
 notamos que a diferencia del medio constante, no hay un desfase tan grande. El desfase entre el jet a alta y baja resolución 
 se va incrementando hasta $\Delta x \approx 1$  {\color{red} el desfase en los 
@@ -2554,12 +2556,12 @@ máximos se observa  $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.09
 
 En la Figura \ref{fig:Decaimiento_cuadratico_densidad_jet} se muestra la densidad de medio ambiente 
 que decae como $\rho \varpropto \frac{1}{x^2}$. Aquí podemos ver que los  picos de la densidad estan en
-x = 3, 10, 33 con  la densidad $\rho \approx e^4 \approx 54, \, e^{2.3} \approx 10, \, e^2 \approx 7.3$ 
+x = 3, 10, 33 con  la densidad $\rho \approx 54, \,  10, \,  7.3$ 
 respectivamente. En la velocidad podemos observar
 los frente de choque de la onda que se ubican en $x \approx 3, \, 13, \, 37$ con los valores de velocidad
 $v \approx 0.42, \, 0.58, \, 0.60$ respectivamente. Para más detalles véase el Cuadro \ref{Cuadro:valores_frente_choque}.
 En el caso de la presión, al tiempo t = 5, desciende rápidamente en $x \approx 0.5$ de 
-$p \approx e^{2.3} \approx 10$ a $p \approx e^1 \approx 2.7$.
+$p  \approx 10$ a $p  \approx 2.7$.
 En el tiempo t = 20, la presión tiene un valor máximo en $x \approx 10$, 
 donde mantien un valor  de 
 $p \approx e^2 \approx 7.3$. Para el tiempo t = 50
@@ -2581,10 +2583,10 @@ máximos se observa  $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63
   es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_cuadratico_densidad_jet}
 \end{figure}
 
-{\color{red}En resumen, los picos de la densidad y presión 
+En resumen, los picos de la densidad y presión 
 son en general más pequeños que los mostrados en donde la densidad del medio es constante, pero tambien recorren mayor 
-distancia que los anteriormente mencionadoas. Para la comparación, donde el medio decae como $\frac{1}{x^2}$, 
-los picos son grandes pero recorren menos distancia que el medio anteriormente mencionado.}
+distancia que los anteriormente mencionadoas. {\color{red}En cambio, para el caso en que la densidad} decae como $\frac{1}{x^2}$, 
+los picos son grandes pero recorren menos distancia que el medio anteriormente mencionado.
 
 
 \begin{table}[htbp]
@@ -2612,7 +2614,7 @@ los picos son grandes pero recorren menos distancia que el medio anteriormente m
   \end{table}
 
 
-Se puede observar que el jet, conforme {\color{red} disminuye más rápidamente en función de la distancia \emph{x}}, 
+Conforme disminuye más rápidamente en función de la distancia \emph{x}, 
 se vuelve más rapido.
 En la Figura \ref{fig:perfiles_comparacion_jet} se muestra la comparación que hay cuando la densidad del medio
 ambiente cambia constantemente ($\rho \varpropto \rho_a$), cuando varia inversamente lineal ($\rho \varpropto x^{-1}$) y 
@@ -2621,13 +2623,13 @@ punteadas muestran los exponentes intermedios entre los valores de 0, 1 y 2 en p
 del medio ambiente descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}
 , \, . . . \,  , x^{-2}$.
 El primer valor máximo que acentua más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene
-un valor $\rho \approx e^{-0.4} \approx 0.6$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es 
-$\rho \approx e^{-1} \approx  0.3$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, 
+un valor $\rho \approx 0.6$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es 
+$\rho  \approx  0.3$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, 
 para el caso 
-constante se localiza en $x \approx 20$ y alcanza $\rho \approx e^{3.5} \approx 33$, conforme se aumente el exponente el valor 
+constante se localiza en $x \approx 20$ y alcanza $\rho  \approx 33$, conforme se aumente el exponente el valor 
 máximo se desplaza, asi como su disminución de la densidad ya que para el caso inversamente lineal el máximo se localiza 
-en $x \approx 32$ con $\rho \approx e^0 \approx 1$ y para el caso inversamente cuadrático el valor máximo se localizó en 
-$x \approx 34$ con $\rho \approx 10^{-1}$.  Podemos observar que el primer valor máximo de la gráfica, el medio
+en $x \approx 32$ con $\rho \approx 1$ y para el caso inversamente cuadrático el valor máximo se localizó en 
+$x \approx 34$ con $\rho \approx 0.36 $.  Podemos observar que el primer valor máximo de la gráfica, el medio
 que varía com $x^{-2}$ tiene un valor mayor que el del medio constante, mientras que para el segundo valor máximo se invierte
 y el medio constante tiene un valor mayor que el del medio que varía como $x^{-2}$.
 La velocidad de la onda aumenta un 60 \% para medio inversamente lineal en correspondencia con el medio constante y un 6 \%
