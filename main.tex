@@ -1434,10 +1434,12 @@ Diego
 
 \section{Ecuaciones de Sedov-Taylor por soluciones} \label{seccion_ecuaciones_de_sedov_taylor}
 
-Una forma de verificar si nuesto código funciona es usar el problema de Sedov-Taylor, que básicamente es modelar una onda de choque esférico con una determinada 
+Una forma de verificar si nuesto código funciona es usar el problema de Sedov-Taylor, que básicamente es modelar una 
+onda de choque esférico con una determinada 
 energía, presión y densidad sobre un medio externo. 
-Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, la cual crea explosiones muy violentas. 
-Este tipo tipo ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
+Una onda de choque se produce cuando se libera una gran cantidad de energía E, en un fluido con densidad $\rho_w$, 
+la cual crea explosiones muy violentas. 
+Este tipo de fenómenos ocurre muy a menudo en el universo. Este tipo de problemas son conocidos como explosiones de Sedov-Taylor. Este problema puede servir para testear mi código debido a que podemos resolver analíticamente el problema y compararlo con el método númerico.
 
 \subsection{Aproximación en funcion del analisis dimensional}
 Si consideramos un choque fuerte,
@@ -2428,9 +2430,12 @@ densidad, ya que mantiene sus máximos en los puntos $x \approx 2, 8, 20$, pero 
 tiempo los picos empiezan a decrecer, ya que para $t = 5, \, p \approx 1.6 $; 
 para $t = 20, \, p \approx 1.49$ y para 
 $t = 50, \, p  \approx 1.3$. Para el pánel de abajo a la derecha, se hizo la misma comparación que el pánel 
-de la densidad, solo que esta vez se compararón  distintas resoluciones: baja resolución "LD" (con 1600 pixeles en el eje X y 800 en el eje Y) y alta resolución "HD" (3200x1600), con lo que se puede observar que 
+de la densidad, solo que esta vez se compararón  distintas resoluciones: baja resolución "LD" (con 1600 pixeles en el eje X y 800 en el eje Y) 
+y alta resolución "HD" (3200x1600), con lo que se puede observar que 
 para mayor resolución el jet se vuelve ligeramente más rápido. En este panel se puede notar que
-los picos están desfasados conforme avanza el tiempo. {\color{red} Los efectos de la resolución son despreciables ya que la mayor diferencia, debida a la resolución, en la magnitud de los picos es relativamente pequeña (menor a 5\%). Ésta, se presenta a t=50 y corresponde a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$}.
+los picos están desfasados conforme avanza el tiempo. Los efectos de la resolución son despreciables ya 
+que la mayor diferencia, debida a la resolución, en la magnitud de los picos es relativamente pequeña (menor a 5\%). Ésta, se presenta a t=50 y corresponde 
+a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$.
 
 
 \begin{figure}
@@ -2526,7 +2531,9 @@ La presión tiene un valor máximo al tiempo t = 5 con $p \approx 1.64$, aunque 
 En los tiempos t = 20, 50 los máximos globales se sitúan en $x \approx 12$ y en $x \approx 33$ 
 con $p \approx  1$ y $p  \approx 0.6$ respectivamente.
 En el panel inferior derecho, al comparar la densidad en resoluciones de 3200x1600 y 1600x800,
-notamos que a diferencia del medio constante, no hay un desfase tan grande. {\color{red} Los efectos de la resolución en este caso también son pequeños. Lo anterior se debe a que la mayor diferencia, debida a la resolución, en la magnitud de los picos es menor a 10\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$ a t=50)}. 
+notamos que a diferencia del medio constante, no hay un desfase tan grande.  Los efectos de la resolución en este caso 
+también son pequeños. Lo anterior se debe a que la mayor diferencia, debida a la resolución, 
+en la magnitud de los picos es menor a 10\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$ a t=50). 
 
 \begin{figure}
   \centering
@@ -2553,7 +2560,11 @@ En el tiempo t = 20, la presión tiene un valor máximo en $x \approx 10$,
 donde mantien un valor  de 
 $p \approx e^2 \approx 7.3$. Para el tiempo t = 50
 la presión desciende exponencialmente del punto $x \approx 28$ donde $p \approx e^{-5} \approx 0.006$.
-Al comparar las resoluciones de 1600x800 con la de 800x400 se vuelve a ver un desfase. {\color{red} Los efectos de la resolución en este caso dejan deben ser tomado en cuenta. Lo anterior se debe a que la mayor diferencia, debida a la resolución, en la magnitud de los picos es mayor al 60\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63$ a t=50). Por ello, si se deseará estudiar un jet relativista a través de un medio que disminuye como $1/x^2$, o $1/r^2$ es necesario hacer estudios de convergencia para determinar la resolución necesaria para que no influya en los resultados}. 
+Al comparar las resoluciones de 1600x800 con la de 800x400 se vuelve a ver un desfase.Los efectos de la resolución 
+en este caso dejan deben ser tomado en cuenta. Lo anterior se debe a que la mayor diferencia, debida a la resolución, 
+en la magnitud de los picos es mayor al 60\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63$ a t=50). 
+Por ello, si se deseará estudiar un jet relativista a través de un medio que disminuye como $1/x^2$, o $1/r^2$ es 
+necesario hacer estudios de convergencia para determinar la resolución necesaria para que no influya en los resultados. 
 
 \begin{figure}
   \centering
@@ -2633,295 +2644,60 @@ para el medio inversamente cuadratico en correspondencia con el inversamente lin
 
 
 
-% %====================================TABLE=================================
-
-
-
-
-
-%====================================FIGURE==============================================
-% \begin{figure}
-% \centering
-% \includegraphics[scale=0.5]{./Figuras/Pruebas/Prueba_jet/jet_ejemplo}
-% \caption{\label{fig:condicion_inicial_jet}La condición inicial de la simulación para que se efectué la eyección del jet será que, del lado de una de las fronteras, tenga valores  densidad ($\rho$), velocidad ($v$) y presión ($P$) constantes. En este caso los valores estarán localizados en la parte de abajo del dominio. El jet tendrá un diámentro $D_{jet} = 4 \times 10^{8}$ cm. Así que estará localizado en los puntos $(x,y) = (0, \, [5\, \times 10^9 - 2\, \times 10^8, 5\, \times 10^9 + 2\, \times 10^8] )$ cm.}
-% \end{figure}
-% %====================================FIGURE==============================================
-
-
-% \section{Diferencia de los métodos numéricos sobre el jet}\label{sec:Diferencia_de_los_metodos_numéricos_sobre_el_jet}
-
-% Antes de realizar las pruebas con distintos medios de densidad, se usará Lax y HLL para 
-% determinar el método más eficiente en cuanto a simulación de jets. Las pruebas de esta sección y del 
-% capítulo en general se usarán jets con velocidades relativistas $\gamma = 5.0$. 
-% Tomando en cuenta la ecuación de continuidad de masa de Rankine-Hugoniot
-% \begin{equation}\label{eq:masa_?}
-% \rho_j V_j \gamma_j = \rho_m V_m \gamma_m 
-% \end{equation}
-
-% Donde $\rho$ es la densidad, $\gamma$ es el factor de lorentz y $V$ es el volumen. Los subíndices j, $\infty$ se refieren al jet inicial y al jey en infinito. Así como la ecuación de momentos
-
-% \begin{equation}\label{eq:momentos_?}
-% \left( \rho_j + 4P_j \right) V_j \gamma_j^2 + P_j = 
-% \left( \rho_{\infty} + 4P_{\infty} \right) V_{\infty} \gamma_{\infty}^2 + P_{\infty}
-% \end{equation}
-
-% Donde $P$ es la presión. Si despejamos $\rho_{\infty}$ de la ecuación \ref{eq:masa_?} y la sustitumos en \ref{eq:momentos_?} y si suponemos un choque fuerte ($P \rightarrow 0$).
-% Tenemos la siguiente ecuación 
-
-% \begin{equation}
-% \left( \rho_j + 4P_j \right) V_j \gamma_j^2 + P_j =
-% \rho_{\infty} V_{\infty} \gamma_{\infty} \gamma_{\infty} 
-% \end{equation}
-
-% Despejando $\gamma_{\infty}$
-
-% \begin{equation}
-% \gamma_{\infty} = \frac{\rho_j + P_j}{\rho_j}\gamma_j + \frac{P_j}{\rho_j V_j \gamma_j}
-% \end{equation}
-
-% Como el segundo término es muy pequeño y lo podemos despreciar con lo que al final nos queda
-
-% \begin{equation}
-% \gamma_{\infty} =  \left( \frac{P_j}{\rho_j} + 1 \right) \gamma_j
-% \end{equation}
-
-% Y si despejamos la presión $P_j$ nos queda lo siguiente
-
-% \begin{equation}
-% P_j = \frac{\rho_j}{4} \left( \frac{\gamma_{\infty}}{\gamma_j} - 1 \right)
-% \end{equation}
-
-% Lo valores del factor de lorentz que normalmente se toman para una simulación de jets son: $ \gamma_j \sim 5$ y $\gamma \sim 400$ por lo que sustituyendo en nuestra anterior ecuación nos quedaria
-
-% \begin{equation}
-% P_j \approx \frac{\rho_j}{4}80
-% \end{equation}
-
-% Con lo que finalmente nos queda la siguiente aproximación
-
-% \begin{equation}
-% P_j \approx 20 \times \rho_j
-% \end{equation}
-
-% Usando esto podemos tomar valores de la presión en función de la densidad del jet.  El Cuadro \ref{Cuadro: propiedades-jet-comparacion} muestran los parámetros con el cual se van a simular el jet. Cabe destacar que los valores de dicha tabla, se aplicaran para los métodos de HLL y Lax.
-
-% %====================================TABLE=================================
-% \begin{table}[htbp]
-% \begin{center}
-% \begin{tabular}{|c|c|c|}
-% \hline 
-% \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
-% \hline 
-% $\rho_{in}$ &  Densidad del jet & 1000 [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
-% \hline 
-% $\rho_{out}$ &  Densidad del medio ambiente & $1.0 \times 10^{4}$  [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
-% \hline 
-% $P_{int}$ & Presión interna del jet& $20 \times \lvert \rho_{jet} \lvert$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
-% \hline 
-% $P_{out}$ &  Presión del medio ambiente & $20 \times \lvert \rho_{ma} \lvert$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
-% \hline 
-% $v_{x_{int}}$ & Velocidad interna en el eje x del jet & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-% \hline 
-% $v_{y_{int}}$ & Velocidad interna en el eje y del jet & 0.9797959 c \\ 
-% \hline 
-% $v_{x_{out}}$ & Velocidad en el eje x del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
-% \hline 
-% $v_{y_{out}}$ & Velocidad en el eje y del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-% \hline 
-% Co & Número de Courant & 0.7 \\ 
-% \hline 
-% \end{tabular}
-% \caption{\label{Cuadro: propiedades-jet-comparacion}Los parámetros son para un jet relativista colimado sobre un medio ambiente más denso que el mismo Jet. Los valores se aplicarán tanto para el método de Lax como el método de HLL}
-% \end{center}
-% \end{table}
-
-% %====================================TABLE=================================
-
-% Los jets tendrán una densidad $\rho_{jet} = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y una presión $P_{jet} = 20 \times \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$. La densidad del medio ambiente será $\rho_{ma} = 1 \times 10^{4} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ y, similarmente al jet, $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-2}$.
-
-
-
-
-% En la Figura \ref{fig:jet_ma_1000_analisis}, en ambos métodos, se observa un jet con un radio $r_{jet} = 4 \times 10^{8} $ cm y un capullo que lo envuelve completamente. El capullo en el panel a) de la misma alcanza la altura $y \approx 1 \times 10^{10}$ cm. En el panel b) el capullo alcanza la altura aproximadamente $y \approx 7 \times 10^{9}$ cm. A diferencia de HLL, en el cual se observa que la densidad del capullo alcanza densidades cercanas a $\rho \simeq 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, con Lax, las densidades bajan a $\rho \simeq 4000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Las diferencias que hay al analizar los perfiles de densidades muestran con  una diferencia $\delta \sim 40\%$ donde  $\delta = \rho_{hll} \cdot \rho_{lax}^{-1}$ es el error relativo que hay entre las 2 densidades (ver Figura \ref{fig:perfil_densidades_jet}).
- 
-% %====================================FIGURE==============================================
-% \begin{figure} 
-% \centering
-% \subfigure[Lax]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/lax/jet_lax_80_ma_1e4}}
-% \subfigure[HLL]{\includegraphics[scale=0.15]{./Figuras/Pruebas/Prueba_jet/hll/jet_HLL_80_ma_1e4}}
-% \caption{\label{fig:jet_ma_1000_analisis} Jet al tiempo $t = 0.8$ s. La altura del capullo de Lax es cercana a $y = 1 \times 10^{10}$ cm, mientras con HLL la altura apenas alcanza $y = 7 \times 10^{9}$ cm. Las densidad en la eyección usando Lax es aproximadamente $\rho   \lesssim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, para el caso de HLL la densidad es $\rho   \lesssim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. }
-% \end{figure}
-% %====================================FIGURE==============================================
-
-% %====================================FIGURE==============================================
-% \begin{figure}
-% \centering
-% \subfigure[$y = 4 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_1}}
-% \subfigure[$y = 6 \times 10^{9}$ cm.]{\includegraphics[scale=0.2]{./Figuras/densidad_de_medios_ambientes/Perfil_de_densidad_2}}
-% \caption{\label{fig:perfil_densidades_jet}En el panel a) se observa la densidad que hay sobre el eje x, a la altura del eje $y = 4 \times 10^{9}$ cm. En el panel b) es similar que el panel a) solo que cambia la altura $y = 6 \times 10^{9}$ cm. Lax difiere un 40\% con respecto a HLL en cuestion de la densidad que se tiene. El perfil fue tomado al tiempo $t = 0.8$ s.}
-% \end{figure}
-% %====================================FIGURE==============================================
-% En la eyección del jet, la densidad que muestra el gráfico \ref{fig:jet_ma_1000_analisis} usando Lax es aproximadamente $\rho = 1000 \sim 2000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Pero en el caso de HLL, la densidad se eleva a $\rho = 7000 \sim 8000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$. Como la densidad del jet que se propuso del jet fue $\rho = 1000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, la densidad de Lax es la más cercana a los valores propuestos. Y también dado que HLL es aproximadamente 18 veces más lento que Lax para simular el jet, se usará el método de Lax de aquí en adelante.
-%  Para ver especificaciones de cuan más rapido es Lax que HLL se recomienda ver el apéndice \ref{aped.D}.
-
-
-
-
-% \section{SGRB en medio de densidad bajo}\label{sec:SGRB_en_medio_de_densidad_bajo}
-
-
-% Las pruebas del jet van a ser en un medio con una densidad de ambiente muy bajo. En general para todas las pruebas, la densidad del jet será de $\rho_{jet}  = 1000 \, g \cdot \mathrm{cm}^{-3}$, la presión $P_{jet} = 20 \times  \lvert \rho_{jet} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$, es decir, la presión sera 20 veces más grande que la magnitud de la densidad. Para nuestro medio ambiente, la densidad tendrá un valor de $\rho_{ma}  = 10^{-10} \, \mathrm{g} \cdot \mathrm{cm}^{-3}$, y al igual que el jet la presión será $P_{ma} = 20 \times \lvert \rho_{ma} \rvert \, \mathrm{erg} \cdot \mathrm{cm}^{-3}$ y la velocidad del medio ambiente será nula. La velocidad de los jets tendrán dirección solo en el eje $y$, con una velocidad de $v_{jet_{y}} = 0.9797959 \, c$.
-
-% %====================================TABLE=================================
-% \begin{table}[htbp]
-% \begin{center}
-% \begin{tabular}{|c|c|c|}
-% \hline 
-% \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
-% \hline 
-% $\rho_{in}$ &  Densidad del jet & 1000 [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
-% \hline 
-% $\rho_{out}$ &  Densidad del medio ambiente & $1.0 \times 10^{-10}$  [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
-% \hline 
-% $P_{int}$ & Presión interna del jet& $20 \times \lvert \rho_{jet} \lvert$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
-% \hline 
-% $P_{out}$ &  Presión del medio ambiente & $20 \times \lvert \rho_{ma} \lvert$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
-% \hline 
-% $v_{x_{int}}$ & Velocidad interna en el eje x del jet & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-% \hline 
-% $v_{y_{int}}$ & Velocidad interna en el eje y del jet & 0.9797959 c \\ 
-% \hline 
-% $v_{x_{out}}$ & Velocidad en el eje x del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
-% \hline 
-% $v_{y_{out}}$ & Velocidad en el eje y del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-% \hline 
-% Co & Número de Courant & 0.7 \\ 
-% \hline 
-% \end{tabular}
-% \caption{\label{Cuadro: propiedades-jet-densidad-baja} La densidad del medio ambiente es 11 veces denso que la del mismo jet.}
-% \end{center}
-% \end{table}
-% %==========================================TABLE===================================================
-
-% Se observa en la Figura \ref{fig:jet_ma_bajo_densidad} que en el jet, debido a la baja densidad del medio ambiente, no hay una formación de un capullo que lo envuelva.
-
-% %====================================FIGURE==============================================
-% \begin{figure}\
-% \centering
-% \subfigure[$t=0.01$]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_01^-10}}
-% \subfigure[$t=0.03$]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_03^-10}}
-% \subfigure[$t=0.05$]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_bajo/jet_lax_5_ma_05^-10}}
-% \caption{\label{fig:jet_ma_bajo_densidad}Ejección del jet relativista en un medio de densidad $\rho = 10^{-10} \, \mathrm{g}\cdot \mathrm{cm}^{-3}$. Las gráficas muestran al jet colimado.}
-% \end{figure}
-% %====================================FIGURE==============================================
-
-
-
-% Al graficar de la velocidad del jet sobre el eje y (ver Figura \ref{fig:jet_ma_bajo_densidad_vel}). En un ambiente con una densidad baja la velocidad del jet se mantiene constante. La velocidad del medio ambiente cuando interactua con el jet toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet.
-
-
-% %====================================FIGURE==============================================
-% \begin{figure}
-% \centering
-% \subfigure[$t=0.01$]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_lax_b01}}
-% \subfigure[$t=0.03$]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_lax_b03}}
-% \subfigure[$t=0.05$]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_bajo/vel_lax_b05}}
-% \caption{\label{fig:jet_ma_bajo_densidad_vel} Velocidad del jet sobre el eje y. La velocidad del medio ambiente se mantiene constante con las condiciones iniciales $v = 0.97 \, c$.}
-% \end{figure}
-% %====================================FIGURE==============================================
-
-
-% La velocidad del medio ambiente cuando interactua con el jet toma una velocidad similar que las condiciones iniciales con las que habiamos impuesto al jet.
-
-% %======================================================================================
-% %======================================================================================
-
-% \section{SGRB en medio de densidad alto}\label{sec:SGRB_en_medio_de_densidad_alto}
-% En esta sección el jet va a tener las mismas condiciones que el de la Figura \ref{fig:jet_ma_1000_analisis}. Dado que el medio ambiente es 10 veces mayor que el jet se puede observar un capullo que envuelve a la misma. El capullo alcanza un una densidad de cercana a los $\rho \sim 7000 \, \mathrm{g} \cdot \mathrm{cm}^{-3}$ (ver Figura \ref{fig:jet_ma_alto_densidad}).
-
-% %====================================TABLE=================================
-% \begin{table}[htbp]
-% \begin{center}
-% \begin{tabular}{|c|c|c|}
-% \hline 
-% \textbf{Parámetro} & \textbf{Descripción} & \textbf{valor} \\ 
-% \hline 
-% $\rho_{in}$ &  Densidad del jet & 1000 [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\ 
-% \hline 
-% $\rho_{out}$ &  Densidad del medio ambiente & $1.0 \times 10^{4}$  [$\mathrm{g} \cdot \mathrm{cm}^{-3}$] \\
-% \hline 
-% $P_{int}$ & Presión interna del jet& $20 \times \lvert \rho_{jet} \lvert$ [$ \mathrm{erg}\cdot \mathrm{cm}^{-2}$]\\ 
-% \hline 
-% $P_{out}$ &  Presión del medio ambiente & $20 \times \lvert \rho_{ma} \lvert$ [$\mathrm{erg}\cdot \mathrm{cm}^{-2}$] \\ 
-% \hline 
-% $v_{x_{int}}$ & Velocidad interna en el eje x del jet & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-% \hline 
-% $v_{y_{int}}$ & Velocidad interna en el eje y del jet & 0.9797959 c \\ 
-% \hline 
-% $v_{x_{out}}$ & Velocidad en el eje x del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$] \\
-% \hline 
-% $v_{y_{out}}$ & Velocidad en el eje y del medio ambiente & 0.0 [$\mathrm{cm}\cdot \mathrm{s}^{-1}$]\\ 
-% \hline 
-% Co & Número de Courant & 0.7 \\ 
-% \hline 
-% \end{tabular}
-% \caption{\label{Cuadro: propiedades-jet-densidad-baja} La densidad del medio ambiente es 10 veces denso que la del mismo jet.}
-% \end{center}
-% \end{table}
-% %==========================================TABLE===================================================
-
-% La velocidad del jet en el centro es $v_y = 0.9780 \mathrm{c} \, \mathrm{cm}\cdot \mathrm{s}^{-1}$. Al graficar la velocidad contra la distancia (ver Figura \ref{fig:jet_ma_alto_densidad_vel}) se nota que, la pérdida de velocidad del jet es lineal al tiempo $t = 0.2 \, s$ pero conforme se va formando el capullo que envuelve al jet, la velocidad se mentiene constante con $v \sim 2.25 \,c $. Por lo que puedo inferir que conforme pase el tiempo y el capullo se haga más grande el jet solo perderá, el 25 \% de su velocidad.
-
-% %====================================FIGURE==============================================
-% \begin{figure}
-% \centering
-% \subfigure[$t=0.2$]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_lax_20_ma_10^-10}}
-% \subfigure[$t=0.5$]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_lax_50_ma_10^-10}}
-% \subfigure[$t=0.8$]{\includegraphics[scale=0.15]{./Figuras/densidad_de_medios_ambientes/medio_alto/jet_lax_80_ma_10^-10}}
-% \caption{\label{fig:jet_ma_alto_densidad}Eyección del jet relativista sobre un medio de densidad $\rho = 10^{4} \, \mathrm{g}\cdot \mathrm{cm^{-3}}$. Se puede observar un capullo que rodea al jet. }
-% \end{figure}
-% %====================================FIGURE==============================================
-
-
-
-
-% %====================================FIGURE==============================================
-% \begin{figure}
-% \centering
-% \subfigure[$t=0.2$]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_lax_a20}}
-% \subfigure[$t=0.5$]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_lax_a50}}
-% \subfigure[$t=0.8$]{\includegraphics[scale=0.275]{./Figuras/densidad_de_medios_ambientes/medio_alto/vel_lax_a80}}
-% \caption{\label{fig:jet_ma_alto_densidad_vel}Velocidad sobre el eje y del jet, se observa que la perdidad de velocidad del jet sobre el medio ambiente es lineal ($t = 0.2 \,s$) y conforme va a avanzando ($t = 0.5 \, s$) la velocidad se mantiene constante a $v\sim 2/3 \, c$.}
-% \end{figure}
-%====================================FIGURE==============================================
-
 
 \chapter{Conclusiones}
 
-La motivación principal de este trabajo es poder realizar simulaciones de jets, empleando las ecuaciones de la hidrodinámica relativista y usando diferentes métodos numéricos. Los jets surgen de los destellos de rayos gamma cortos que se producen por la fusión de objetos compactos tales como la sistemas binarios de estrellas de neutrones o de hoyos negros. 
-
-La simulación partio de resolver las ecuaciones de la hidrodinámica en una dimensión y tomando velocidades newtonianas. Posteriormente se incremento la dimensión de la simulación y se tomó velocidades relativistas. Se realizaron varias pruebas con la onda de choque para poder verificar que la simulación no tiene fallos en las fronteras y poder observar los errores numéricos que puedra presentar el código.
-
-\begin{itemize}
-\item La posición de la onda de choque no altera el compartamiento de la misma, ya que al desplazar el centro no cambia la velocidad de expansión. Asimismo el código funciona perfectamente en las fronteras ya que no transmite algún ruido por salirse y se comporta como si la onda tuviera dominio infinito. Esto es para ambos métodos de Lax y HLL. (Sección \ref{sec:onda de choque})
-
-\item Tanto en Lax, como en HLL para el caso newtoniano muestran dos tipos de onda. Una se va alejando del centro de la misma (\emph{forward shock}) y una onda que se va acercando a la misma (\emph{reverse shock}). Estas se muestran independientemente si se mueve la onda de choque hacia las fronteras. (Sección \ref{sec:onda de choque})
-
-\item En el caso newtoniano, la velocidad de expansión de la onda fue un 1.3\% más veloz que el método de HLL. Pero HLL muestra una discontinuidad menós viscosa (ver Figura \ref{fig:Lax-hll-newtoniano1}) con una diferencia de densidades menores al $<0.5 \% $ lo que hace 
-a HLL un mejor resolvedor de Riemann para mí código. Aún así se pueden usar ambos métodos para el choque de onda. (Sección\ref{subs:Lax_vs_HLl})
-
-\item Para el caso relativista la expansión de la onda de choque tiene un descenso rápido de velocidad llegando al 19 \% de la velocidad de la luz al tiempo $< 0.7$ s sin importar la presión o energía que contenga. (Sección \ref{subs:Lax_vs_HLL_relativista}).
-
-\item Una diferencia entre las ondas de choque newtonianas y relativistas es que no muestran una discontinuidad, aunque siguen presentando las ondas \emph{forward} y \emph{reverse shock} como en el caso newtoniano. (Sección \ref{subs:Lax_vs_HLL_relativista}).
-
-\item Para el caso del jet relativista, el capullo es 4 veces mas denso usando Lax que HLL. Otra diferencia con los jet relativistas es que HLL muestra una eyección 4 veces más densa que las condiciones que se habian impuesto, mientras que con Lax se muestrasn las condiciones dadas. Por tal motivos Lax es un mejor método para mi programa y HLL es un método ineficiente. (Sección \ref{sec:Diferencia_de_los_metodos_numéricos_sobre_el_jet}).
-
-\item El jet en condiciones de densidad mantiene su velocidad cercana a la de la velocidad de la luz. A pesar de que el jet tuvo únicamente velocidad sobre el eje Y, este no es totalmente colimado y mantiene un ángulo de apertura de $\sim 10^o$. (Sección \ref{sec:SGRB_en_medio_de_densidad_bajo}).
-
-\item El jet en un medio de densidad alto al chocar con un medio de densidad 10 mas denso que el mismo ya no muestra velocidades relativistas dado que su velocidad disminuye a velocidades newtonianas. (Sección \ref{sec:SGRB_en_medio_de_densidad_alto}).
+La motivación principal de este trabajo es poder construir un programa que me permitiera simular jets, empleando las 
+ecuaciones de la hidrodinámica relativista y usando diferentes métodos numéricos. 
 
 
-\end{itemize}
+La simulación se construyó a partir de pruebas en un tubo de choque y comenzando en el régimen Newtoniano. 
+En ambas pruebas se uso tanto el método de Lax como el de HLL sobre condiciones donde se combinaban los casos de ondas 
+de choque y de rarefacción, asi como la variación del índice politrópico. Para el caso de la onda de rarefacción-choque, 
+donde la densidad y presión tienen valores distintos y velocidades nulas. 
+Tanto el método de Lax como el método de HLL son indistintos de usar para resoluciones mayores a 10,000 pixeles. Además 
+el método de Lax demostró ser una buena aproximación, para una resolución de 1,000 pixeles, comparado con el método analítico.
+En este caso el método de Lax resulto ser computacionalmente más rápido que el de HLL. Para el caso de 
+rarefacción-rarefacción, donde ahora las velocidades son distintas y las densidades y presiones son iguales, 
+se obtuvieron computacionalmente los mismos resultados, que en el anterior caso mencionado ya que, 
+tanto Lax como HLL se tienen una muy buena aproximación para el método analítico para resoluciones de 10,000 píxeles.
+Para ambos métodos se puede observar que en los valores discontinuos, presentan mayor dificultad, sobre todo en 
+las discontinuidades de contacto, mientras que para las discontinuidades de choque se muestra una mayor aproximación 
+a la solución analítica. Para las zonas donde no la hay ambos métodos se aproximaban bastante
+hasta para resoluciones de 100 píxeles.
+En lo particular el método de Lax fue mas 200 \% más rápido que HLL y con una buena aproximación de 1,000 píxeles para 
+los anteriores 2 casos descritos, por lo que para el régimen unidimensional y para velocidades newtonianas, es recomendable
+usar este método, dado que gasta menos recursos computacionales.
+
+Para los casos, donde el regimen es relativista pero manteniendo la misma dimensión. El método de Lax falla por completo, 
+sin importar la resolución que se establezca, se encontraron errores graves, por lo que no se pudo hacer una comparación 
+entre ambos métodos. A diferencia del caso newtoniano, el relativista no presenta dificultades en las discontinuidades de 
+contacto y tiene una buena aproximación al caso analítico para resoluciones mayores a 1000 píxeles.
+
+
+
+
+
+% \begin{itemize}
+% \item La posición de la onda de choque no altera el compartamiento de la misma, ya que al desplazar el centro no cambia la velocidad de expansión. Asimismo el código funciona perfectamente en las fronteras ya que no transmite algún ruido por salirse y se comporta como si la onda tuviera dominio infinito. Esto es para ambos métodos de Lax y HLL. (Sección \ref{sec:onda de choque})
+
+% \item Tanto en Lax, como en HLL para el caso newtoniano muestran dos tipos de onda. Una se va alejando del centro de la misma (\emph{forward shock}) y una onda que se va acercando a la misma (\emph{reverse shock}). Estas se muestran independientemente si se mueve la onda de choque hacia las fronteras. (Sección \ref{sec:onda de choque})
+
+% \item En el caso newtoniano, la velocidad de expansión de la onda fue un 1.3\% más veloz que el método de HLL. Pero HLL muestra una discontinuidad menós viscosa (ver Figura \ref{fig:Lax-hll-newtoniano1}) con una diferencia de densidades menores al $<0.5 \% $ lo que hace 
+% a HLL un mejor resolvedor de Riemann para mí código. Aún así se pueden usar ambos métodos para el choque de onda. (Sección\ref{subs:Lax_vs_HLl})
+
+% \item Para el caso relativista la expansión de la onda de choque tiene un descenso rápido de velocidad llegando al 19 \% de la velocidad de la luz al tiempo $< 0.7$ s sin importar la presión o energía que contenga. (Sección \ref{subs:Lax_vs_HLL_relativista}).
+
+% \item Una diferencia entre las ondas de choque newtonianas y relativistas es que no muestran una discontinuidad, aunque siguen presentando las ondas \emph{forward} y \emph{reverse shock} como en el caso newtoniano. (Sección \ref{subs:Lax_vs_HLL_relativista}).
+
+% \item Para el caso del jet relativista, el capullo es 4 veces mas denso usando Lax que HLL. Otra diferencia con los jet relativistas es que HLL muestra una eyección 4 veces más densa que las condiciones que se habian impuesto, mientras que con Lax se muestrasn las condiciones dadas. Por tal motivos Lax es un mejor método para mi programa y HLL es un método ineficiente. (Sección \ref{sec:Diferencia_de_los_metodos_numéricos_sobre_el_jet}).
+
+% \item El jet en condiciones de densidad mantiene su velocidad cercana a la de la velocidad de la luz. A pesar de que el jet tuvo únicamente velocidad sobre el eje Y, este no es totalmente colimado y mantiene un ángulo de apertura de $\sim 10^o$. (Sección \ref{sec:SGRB_en_medio_de_densidad_bajo}).
+
+% \item El jet en un medio de densidad alto al chocar con un medio de densidad 10 mas denso que el mismo ya no muestra velocidades relativistas dado que su velocidad disminuye a velocidades newtonianas. (Sección \ref{sec:SGRB_en_medio_de_densidad_alto}).
+
+
+% \end{itemize}
 
 
 \appendix
