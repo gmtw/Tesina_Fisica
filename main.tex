@@ -2672,9 +2672,19 @@ usar este método, dado que gasta menos recursos computacionales.
 Para los casos, donde el regimen es relativista pero manteniendo la misma dimensión. El método de Lax falla por completo, 
 sin importar la resolución que se establezca, se encontraron errores graves, por lo que no se pudo hacer una comparación 
 entre ambos métodos. A diferencia del caso newtoniano, el relativista no presenta dificultades en las discontinuidades de 
-contacto y tiene una buena aproximación al caso analítico para resoluciones mayores a 1000 píxeles.
+contacto y tiene una buena aproximación al caso analítico de onda de choque-rarefacción para resoluciones mayores 
+a 1000 píxeles. Para el caso rarefacción-rarefacción HLL, su aproximación para el caso analitico, fue casi igual para resoluciones
+de 10,000 pixeles y para las resoluciones de 500 y 1,000 pixeles muestra poca diferencia entre ambos métodos, por lo que  HLL
+para el regimen unidimensiolanl relativista solo necesita al menos 500 píxeles de resolución para un correcto modelaje de las 
+ecuaciones de la hidrodinámica relativista. 
+En resumen, para efectos de costo computacional, el método de Lax se recomienda usar
+ya que es ligeramente mas rápido que HLL, pero en el regimen relativista HLL es el único que muestra resultados viables.
 
-
+En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod, se descartó 
+el método de Lax y el regimen newtoniano, ya que lo que nos importa es que el código pueda reproducir flujos relativistas.
+Al usar el problema de la explosión de Sedov-Taylor, que a \emph{grosso modo} viene siendo lo que es un
+tubo de choque en 2 dimensiones se comparó 3 perfiles de densidad mostrando que para perfiles que se no son combinaciones 
+lineales. 
 
 
 
