@@ -2696,14 +2696,54 @@ velocidades relativistas.
 
 En las pruebas bidimensionales del jet se encontro que contiene las caracteristicas escenciales de todo jet, como lo es,
 el capullo y las ondas de colimación. Las gráficas muestran que se mueve a velocidades relativistas y que no presenta errores
-al llegar a tales velocidades. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet es ligeramente
+al llegar a tales velocidades. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente
 mas lento.
 
+Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} se encontraron similitudes, asi como algunas diferencias. 
+La principal es que no presenta turbulunecias, es decir, nuestro jet es mas viscoso y no se puede mejorar sin importar la resolución que 
+se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación y que el jet es cilíndrico,
+sim embargo no comparte el ancho o tiene una diferncia mayor debido a que, como ya se habia mencionado antes, jet de esta tesis
+es mas viscoso. Sobre este punto, que es la viscosidad, se puede observar que esta se reduce conforme se aumente la resolución,
+sin embargo, el jet de estudio de Mignone no necesita mucha resolución, por lo que el que la viscosidad del jet de este estudio 
+no es un problema de resolución sino mas bien usar un algortitmo mas robusto para resolver las ecuaciones de la hidrodinámica 
+tales como HLLC. Aunque el jet del estudio Mignone \emph{et al} de talla todas las caracteristicas de su jet, no podemos
+comparararlo perfectamente debido a la falta de mención de los valores de la densidad.
+
+Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et al}
+se pudo este código para pruebas en medios ambiente que decaen en función de la distancia. Al estudiar el jet se pasa de 
+un medio, que es homogéneo, a no que decae como $1/x$ o $1/x^2$, se encontró, como se esperaba, que los picos de densidad
+y presión decaian en proporcion a como lo hacia el medio ambiente. En los paneles de velocidad se podría observar que el jet
+alcanzaba velocidades relativista y que tambien en los paneles de densidad, al compararse los perfiles se pudo observar que 
+conforme el medio ambiente decae mas rapido el jet tambien se mueve más rápido, esto debido a que el material que barre es menor 
+y que es algo que se esperaria.
+
+\section{Trabajo a futuro}
+
+A pesar de que el jet fue probado en distintas situaciones, se puede mejorar bastante y mejorar considerablemente el tiempo de cómputo.
+ya que el código gasta muchos recursos, sobre todo en cuestión de tiempo.
+Las mejoras son remarcadas en los siguientes puntos:
 
 
-% \begin{itemize}
-% \item La posición de la onda de choque no altera el compartamiento de la misma, ya que al desplazar el centro no cambia la velocidad de expansión. Asimismo el código funciona perfectamente en las fronteras ya que no transmite algún ruido por salirse y se comporta como si la onda tuviera dominio infinito. Esto es para ambos métodos de Lax y HLL. (Sección \ref{sec:onda de choque})
 
+\begin{itemize}
+\item \textbf{Implementación de otro solucionador de Riemann}: A pesar de que HLL, es un algoritmo robusto y fácil de implementar
+promedia la solución completa al problema de Riemann en un solo estado y, por lo tanto, carece de la capacidad para resolver ondas intermedias únicas
+tales como las ondas de contacto. Por lo que una buena mejora sería usar el método de HLLC que restaura la estructura de onda completa dentro de
+la gráfica de ondas de Riemann.
+
+\item \textbf{Implementación del algoritmo AMR}: Como ya se vio anteriormente las areas de mayor atención son las zonas de ondas 
+de contacto y para poder reproducirlas lo mejor posible se necesita una mejor resolución. Sin embargo el costo computacional es alto
+y como no toda la región es de nuestro interes, la implementación de este algoritmo ayudaría a tener una mejor aproximación 
+d estas zonas a un costo computacional bajo sin perder toda la información de nuestro jet.
+
+\item \textbf{Paralelismo}: Algo que realmente podría hacer mas  rápido el código es hacerlo paralelo, es decir, que se puedan hacer varios procesos
+al mismo tiempo y no, necesariamente hacerlos secuencialmente y poder adaptarlo a la malla que generamos. si pudieramos hacer esto
+podriamos hacer uso de GPUs haciendo uso de CUDA Fortran o de algun otro compilador que pudiera trabajar GPU programando en
+Fortran.
+
+\item \textbf{Paradigma}: Si bien Fortran es una gran herramienta para el computo cientifíco, es difícil darle mantenimiento al 
+mismo programa ya que tiene un paradigma imperativo por lo que usar un paradigma orientado a objetos tal como en Julia 
+podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
 % \item Tanto en Lax, como en HLL para el caso newtoniano muestran dos tipos de onda. Una se va alejando del centro de la misma (\emph{forward shock}) y una onda que se va acercando a la misma (\emph{reverse shock}). Estas se muestran independientemente si se mueve la onda de choque hacia las fronteras. (Sección \ref{sec:onda de choque})
 
 % \item En el caso newtoniano, la velocidad de expansión de la onda fue un 1.3\% más veloz que el método de HLL. Pero HLL muestra una discontinuidad menós viscosa (ver Figura \ref{fig:Lax-hll-newtoniano1}) con una diferencia de densidades menores al $<0.5 \% $ lo que hace 
@@ -2720,7 +2760,7 @@ mas lento.
 % \item El jet en un medio de densidad alto al chocar con un medio de densidad 10 mas denso que el mismo ya no muestra velocidades relativistas dado que su velocidad disminuye a velocidades newtonianas. (Sección \ref{sec:SGRB_en_medio_de_densidad_alto}).
 
 
-% \end{itemize}
+\end{itemize}
 
 
 \appendix
