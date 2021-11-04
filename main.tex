@@ -2647,7 +2647,7 @@ para el medio inversamente cuadratico en correspondencia con el inversamente lin
 
 \chapter{Conclusiones}
 
-La motivación principal de este trabajo es poder construir un programa que me permitiera simular jets, empleando las 
+La motivación principal de este trabajo es poder un código que me permitiera simular jets, empleando las 
 ecuaciones de la hidrodinámica relativista y usando diferentes métodos numéricos. 
 
 
@@ -2681,10 +2681,23 @@ En resumen, para efectos de costo computacional, el método de Lax se recomienda
 ya que es ligeramente mas rápido que HLL, pero en el regimen relativista HLL es el único que muestra resultados viables.
 
 En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod, se descartó 
-el método de Lax y el regimen newtoniano, ya que lo que nos importa es que el código pueda reproducir flujos relativistas.
+el método de Lax y el regimen newtoniano, ya que lo que importa es que el código pueda reproducir flujos relativistas.
 Al usar el problema de la explosión de Sedov-Taylor, que a \emph{grosso modo} viene siendo lo que es un
-tubo de choque en 2 dimensiones se comparó 3 perfiles de densidad mostrando que para perfiles que se no son combinaciones 
-lineales. 
+tubo de choque en 2 dimensiones se comparó 3 perfiles de densidad mostrando que para perfiles que son ortogonales
+los valores de la densidad vienen teniendo el mismo resultado, mientras que para el perfil que es de 45°, solo hubo una 
+pequeña diferencia en la onda de choque de contacto. Por lo que mi código no tiene una preferencia de dirección.
+
+En las pruebas donde se comparan los perfiles de onda de choque bidimensional con la parte unidimensional y el analitico
+se muestra que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, sobre todo en la velocidad
+donde se puede ver que salvo en las ondas de choque y de contacto los valores son los mismos que el el analítico, mientras
+que el unidimensional mantiene valores mas alejados al analítico. Por lo tanto el código en 2 dimensiones es mejor que cuando
+lo presentamos en el caso unidimensional y entonces el código se puede usar para hacer simulaciones de jet que se mueven a 
+velocidades relativistas.
+
+En las pruebas bidimensionales del jet se encontro que contiene las caracteristicas escenciales de todo jet, como lo es,
+el capullo y las ondas de colimación. Las gráficas muestran que se mueve a velocidades relativistas y que no presenta errores
+al llegar a tales velocidades. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet es ligeramente
+mas lento.
 
 
 
