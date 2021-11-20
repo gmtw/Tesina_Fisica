@@ -2195,7 +2195,10 @@ y $p_i$) mientras que los valores que no estén delimitados por el radio serán 
 ($\rho_o$, $v_xo$, $v_yo$ y $p_o$). Al ser $p_i > p_o$ y $\rho_i > \rho_o$, la onda se 
 expandirá incrementando el radio, por lo que la región de adentro se volverá más grande.
 
-Para comprobar que el código funciona correctamente en 2 dimensiones, se va a comparar los perfiles de densidad, velocidad y presión de los radios de la onda de choque que son  paralelos, perpendiculares y que forman un ángulo de 45° con el eje x con los resultados en 1 dimensión
+Para comprobar que el código funciona correctamente en 2 dimensiones {\color{red} se graficará el radio de de expansión de la onda de choque
+contra el tiempo} y, se va a comparar los perfiles de densidad, 
+velocidad y presión de los radios de la onda de choque que 
+son  paralelos, perpendiculares y que forman un ángulo de 45° con el eje x con los resultados en 1 dimensión
 y contra la solución analítica. 
 La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negras punteadas),
 que se tomarán de la onda de choque en 2D, para poder comparar con los resultados de las pruebas unidimensionales 
@@ -2214,6 +2217,17 @@ En la Figura \ref{fig:head_map} muestra un mapa de densidades en el cual se ve l
 evolución de la onda. En el panel de arriba a la izquierda muestra el estado inicial al tiempo $t = 0$ s, el panel
 de arriba a la derecha muestra su estado al tiempo $t = 0.2$ s y el panel de abajo muestra su estado para
 el tiempo $t = 0.4$ s.
+{\color{red} En la gráfica \ref{fig:Expansion_radio_vs_tiempo} se muestra la expansión del radio de la explosión de la onda de choque contra el tiempo,
+y se ajustó una regresión exponencial para poder calcular el exponente con el que crece el radio, donde se muestra que crece como:
+
+\begin{equation}
+  R(t) \propto t^{0.426}
+  \label{eq:}
+\end{equation}
+
+y que tiene un $R^2 = 0.946$
+
+}
 
 
 \begin{figure}
@@ -2223,8 +2237,24 @@ el tiempo $t = 0.4$ s.
       \subfigure{\includegraphics[scale = 0.3]{./Figuras/verificacion_del_codigo/pruebas_2D/head_map/40.png}}
     \caption{Explosión de la onda de choque en 2 dimensiones usando un mapa de calor donde muestra
     la evolución de la densidad. El panel de arriba a la izquierda muestra el tiempo inicial $t=0$ s,
-    el de arriba a la derecha  al $t = 0.2$ s y el de abajo al tiempo $t = 0.4$ s. \label{fig:head_map}}
+    el de arriba a la derecha  al $t = 0.2$ s y el de abajo al tiempo $t = 0.4$ s. 
+    \label{fig:head_map}}
 \end{figure}
+
+
+
+
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/expansion_radio/Expansion.png}
+    \end{center}
+    \caption{{\color{red} Crecimiento del radio de la onda de choque en función del tiempo (cruz +). Se ajustó una regresión
+    exponencial (linea roja) donde el radio crece como $R(t) \propto t^{0.426}$
+    y cuyo coeficiente de determinacion es $R^2 = 0.946$} .}
+    \label{fig:Expansion_radio_vs_tiempo}
+\end{figure}
+
+
 
 Para mostrar que la solución bidimensional es la misma independientemente de la dirección del perfil
 radial se compararán los perfiles radiales tomados a 0°, 45°, 90°. 
@@ -2647,8 +2677,12 @@ para el medio inversamente cuadratico en correspondencia con el inversamente lin
 
 \chapter{Conclusiones}
 
-La motivación principal de este trabajo es poder un código que me permitiera simular jets, empleando las 
-ecuaciones de la hidrodinámica relativista y usando diferentes métodos numéricos. 
+El objetivo principal de este trabajo es construir un código que sea tanto newtoniano como relativista utilizando
+con distintos métodos numéricos de Riemann, realizar varias pruebas para poder verificar que tanto el código relativista
+como el newtoniano funcionan correctamente con el fin de hacer un jet relativista para poder obtener resultados muy 
+parecidos a los que obtuvo Mignone \emph{et. al.} 2007. Asi tambien como hacer un jet en medios que no son homogeneos y
+comparar los resultados con Mignone \emph{et. al.} 2007 .
+
 
 
 La simulación se construyó a partir de pruebas en un tubo de choque y comenzando en el régimen Newtoniano. 
