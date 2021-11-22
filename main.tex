@@ -2667,7 +2667,7 @@ para el medio inversamente cuadratico en correspondencia con el inversamente lin
   \caption{Gráfica de comparación de la posición vs el logaritmo de la densidad 
   donde el medio ambiente es constante $\rho \varpropto k$ (verde), varía inversamente lineal
   $\rho \varpropto x^{-1}$ (amarillo) y varía inversamente cuadrático $\rho \varpropto x^{-2}$ (rojo)
-  al tiempo t = 50.  Las lineas punteadas muestranlos valores exponenciales entre 0 y 1 y entre 1 y 2,
+  al tiempo t = 50.  Las lineas punteadas muestran los valores exponenciales entre 0 y 1 y entre 1 y 2,
   es decir, que la densidad descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}
   , \, . . . \,  , x^{-2}$.}\label{fig:perfiles_comparacion_jet}
 \end{figure}
@@ -2678,18 +2678,23 @@ para el medio inversamente cuadratico en correspondencia con el inversamente lin
 \chapter{Conclusiones}
 
 El objetivo principal de este trabajo es construir un código que sea tanto newtoniano como relativista utilizando
-con distintos métodos numéricos de Riemann, realizar varias pruebas para poder verificar que tanto el código relativista
+distintos métodos numéricos de Riemann, realizar varias pruebas para poder verificar que tanto el código relativista
 como el newtoniano funcionan correctamente con el fin de hacer un jet relativista para poder obtener resultados muy 
-parecidos a los que obtuvo Mignone \emph{et. al.} 2007. Asi tambien como hacer un jet en medios que no son homogeneos y
+parecidos a los que obtuvo Mignone \emph{et. al.} 2007. Así también como hacer un jet en medios que no son homogéneos y
 comparar los resultados con Mignone \emph{et. al.} 2007 .
 
 
-
-La simulación se construyó a partir de pruebas en un tubo de choque y comenzando en el régimen Newtoniano. 
-En ambas pruebas se uso tanto el método de Lax como el de HLL sobre condiciones donde se combinaban los casos de ondas 
-de choque y de rarefacción, asi como la variación del índice politrópico. Para el caso de la onda de rarefacción-choque, 
-donde la densidad y presión tienen valores distintos y velocidades nulas. 
-Tanto el método de Lax como el método de HLL son indistintos de usar para resoluciones mayores a 10,000 pixeles. Además 
+Los jets son eventos astronómicos de mucha energía que se pueden simular a partir de las leyes
+que rigen los fluidos, que es la hidrodinámica. Dado que son eventos muy violentos significa que alcanzan velocidades
+cercanas a la de la luz, por lo que la hidrodinámica que se tiene que usar tiene que estar sujeta a la teoría de relatividad
+especial.
+Para poder construir el programa se comenzó por realizar pruebas unidimensionales y en el régimen newtoniano. 
+La prueba consistió en resolver un tubo de choque el cual consiste en tener 2 fluidos con distinta densidad, velocidad y presión 
+en un tubo separado por un aislante y que posteriormente se retira para ver como interactúan 
+En ambas pruebas se uso tanto el método de Lax como el de HLL, que son métodos numéricos que se usan para 
+resolver ecuaciones diferenciales parciales. Para el caso donde  condiciones donde las presiones y las 
+velocidades son iguales pero que tienen una densidad distinta. Para este caso 
+tanto el método de Lax como el método de HLL  Para el régimen newtoniano son indistintos de usar para resoluciones mayores a 10,000 pixeles. Además 
 el método de Lax demostró ser una buena aproximación, para una resolución de 1,000 pixeles, comparado con el método analítico.
 En este caso el método de Lax resulto ser computacionalmente más rápido que el de HLL. Para el caso de 
 rarefacción-rarefacción, donde ahora las velocidades son distintas y las densidades y presiones son iguales, 
@@ -2721,37 +2726,36 @@ tubo de choque en 2 dimensiones se comparó 3 perfiles de densidad mostrando que
 los valores de la densidad vienen teniendo el mismo resultado, mientras que para el perfil que es de 45°, solo hubo una 
 pequeña diferencia en la onda de choque de contacto. Por lo que mi código no tiene una preferencia de dirección.
 
-En las pruebas donde se comparan los perfiles de onda de choque bidimensional con la parte unidimensional y el analitico
+En las pruebas donde se comparan los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico
 se muestra que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, sobre todo en la velocidad
 donde se puede ver que salvo en las ondas de choque y de contacto los valores son los mismos que el el analítico, mientras
 que el unidimensional mantiene valores mas alejados al analítico. Por lo tanto el código en 2 dimensiones es mejor que cuando
 lo presentamos en el caso unidimensional y entonces el código se puede usar para hacer simulaciones de jet que se mueven a 
 velocidades relativistas.
 
-En las pruebas bidimensionales del jet se encontro que contiene las caracteristicas escenciales de todo jet, como lo es,
+En las pruebas bidimensionales del jet se encontró que contiene las características esenciales de todo jet, como lo es,
 el capullo y las ondas de colimación. Las gráficas muestran que se mueve a velocidades relativistas y que no presenta errores
 al llegar a tales velocidades. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente
 mas lento.
 
 Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} se encontraron similitudes, asi como algunas diferencias. 
-La principal es que no presenta turbulunecias, es decir, nuestro jet es mas viscoso y no se puede mejorar sin importar la resolución que 
+La principal es que no presenta turbulencias, es decir, nuestro jet es mas viscoso y no se puede mejorar sin importar la resolución que 
 se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación y que el jet es cilíndrico,
 sim embargo no comparte el ancho o tiene una diferncia mayor debido a que, como ya se habia mencionado antes, jet de esta tesis
 es mas viscoso. Sobre este punto, que es la viscosidad, se puede observar que esta se reduce conforme se aumente la resolución,
 sin embargo, el jet de estudio de Mignone no necesita mucha resolución, por lo que el que la viscosidad del jet de este estudio 
-no es un problema de resolución sino mas bien usar un algortitmo mas robusto para resolver las ecuaciones de la hidrodinámica 
-tales como HLLC. Aunque el jet del estudio Mignone \emph{et al} de talla todas las caracteristicas de su jet, no podemos
+no es un problema de resolución sino mas bien usar un algoritmo mas robusto para resolver las ecuaciones de la hidrodinámica 
+tales como HLLC. Aunque el jet del estudio Mignone \emph{et al} de talla todas las características de su jet, no podemos
 comparararlo perfectamente debido a la falta de mención de los valores de la densidad.
 
 Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et al}
 se pudo este código para pruebas en medios ambiente que decaen en función de la distancia. Al estudiar el jet se pasa de 
 un medio, que es homogéneo, a no que decae como $1/x$ o $1/x^2$, se encontró, como se esperaba, que los picos de densidad
-y presión decaian en proporcion a como lo hacia el medio ambiente. En los paneles de velocidad se podría observar que el jet
-alcanzaba velocidades relativista y que tambien en los paneles de densidad, al compararse los perfiles se pudo observar que 
-conforme el medio ambiente decae mas rapido el jet tambien se mueve más rápido, esto debido a que el material que barre es menor 
-y que es algo que se esperaria.
+y presión decaían en proporción a como lo hacia el medio ambiente. En los paneles de velocidad se podría observar que el jet
+alcanzaba velocidades relativista y que también en los paneles de densidad, al compararse los perfiles se pudo observar que 
+conforme el medio ambiente decae mas rápido el jet también se mueve más rápido, esto debido a que el material que barre es menor 
+y que es algo que se esperaría.
 
-\section{Trabajo a futuro}
 
 A pesar de que el jet fue probado en distintas situaciones, se puede mejorar bastante y mejorar considerablemente el tiempo de cómputo.
 ya que el código gasta muchos recursos, sobre todo en cuestión de tiempo.
