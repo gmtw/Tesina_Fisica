@@ -2692,14 +2692,14 @@ Para poder construir el programa se comenzó por realizar pruebas unidimensional
 La prueba consistió en resolver un tubo de choque el cual consiste en tener 2 fluidos con distinta densidad, velocidad y presión 
 en un tubo separado por un aislante y que posteriormente se retira para ver como interactúan 
 En ambas pruebas se uso tanto el método de Lax como el de HLL, que son métodos numéricos que se usan para 
-resolver ecuaciones diferenciales parciales. Para el caso donde  condiciones donde las presiones y las 
-velocidades son iguales pero que tienen una densidad distinta. Para este caso 
-tanto el método de Lax como el método de HLL  Para el régimen newtoniano son indistintos de usar para resoluciones mayores a 10,000 pixeles. Además 
-el método de Lax demostró ser una buena aproximación, para una resolución de 1,000 pixeles, comparado con el método analítico.
-En este caso el método de Lax resulto ser computacionalmente más rápido que el de HLL. Para el caso de 
-rarefacción-rarefacción, donde ahora las velocidades son distintas y las densidades y presiones son iguales, 
+resolver ecuaciones diferenciales parciales. Para el caso donde las presiones y las 
+velocidades son iguales pero que tienen una densidad distinta, tanto el método de Lax como el método de HLL, 
+para el régimen newtoniano son indistintos de usar para cualquier tipo de resolución. Además 
+el método de Lax demostró ser una buena aproximación comparado con el método analítico.
+En este caso el método de Lax resulto ser computacionalmente más rápido que el de HLL. Para el caso en 
+donde ahora las velocidades son distintas y las densidades y presiones son iguales, 
 se obtuvieron computacionalmente los mismos resultados, que en el anterior caso mencionado ya que, 
-tanto Lax como HLL se tienen una muy buena aproximación para el método analítico para resoluciones de 10,000 píxeles.
+tanto Lax como HLL se tienen una muy buena aproximación para el método analítico para resoluciones altas.
 Para ambos métodos se puede observar que en los valores discontinuos, presentan mayor dificultad, sobre todo en 
 las discontinuidades de contacto, mientras que para las discontinuidades de choque se muestra una mayor aproximación 
 a la solución analítica. Para las zonas donde no la hay ambos métodos se aproximaban bastante
