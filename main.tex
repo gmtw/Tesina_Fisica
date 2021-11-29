@@ -2725,37 +2725,43 @@ ya que es ligeramente mas rápido que HLL, pero en el regimen relativista HLL es
 
 En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod, se descartó 
 el método de Lax y el regimen newtoniano, ya que lo que importa es que el código pueda reproducir flujos relativistas.
-Al usar el problema de la explosión de Sedov-Taylor, que a \emph{grosso modo} viene siendo lo que es un
-tubo de choque en 2 dimensiones. Al comparar los perfiles de densidad y comparandose con los unidimensionales
-los valores de la densidad vienen teniendo el mismo resultado. Por lo que mi código no tiene una preferencia de dirección.
+Se usó el problema de la explosión de Sedov-Taylor, que a \emph{grosso modo} viene siendo lo que es un
+tubo de choque en 2 dimensiones, es decir, una region en forma de círculo que se deja evolucionar 
+en el que el radio crece como $r(t) \varpropto t^{0.4}$ . Al calcularse como crecia el radio de la explosión
+en función del tiempo se encontró que tiene una diferencia del 5 \% 
+con respecto al teórico. Al comparar los perfiles de densidad con los unidimensionales
+los valores de la densidad vienen teniendo el mismo resultado. Por lo que mi código no tiene una preferencia de dirección. 
+Los perfiles son secciones unidimensionales que se toman de las partes bidimensional.
 
 Cuando se comparan los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico
 se muestra que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, sobre todo en la velocidad
-donde se observa que salvo en las ondas de choque y de contacto los valores son los mismos que el el analítico, mientras
+donde se observa que salvo en las ondas de choque y de contacto, los valores son los mismos que el el analítico, mientras
 que en la parte unidimensional mantiene valores mas alejados al analítico. Por lo tanto el código en 2 dimensiones es mejor que cuando
-lo presentamos en el caso unidimensional y por lo tanto el código se puede usar para hacer simulaciones de jet que se mueven a 
+lo presentamos en el caso unidimensional y entonces el código se puede usar para hacer simulaciones de jet que se mueven a 
 velocidades relativistas.
 
 Al simular el jet se encontró que contiene las características esenciales de todo jet, como lo es,
-el capullo y las ondas de colimación. Las gráficas muestran que se mueve a velocidades relativistas y que no presenta errores
+el capullo y las ondas de colimación. Conforme el jet se mueve a velocidad de la luz no se presentan errores
 al llegar a tales velocidades. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente
 mas lento.
 
-Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} 2007 se encontraron similitudes, asi como algunas diferencias. 
+Al compararse el jet de este código, con el del estudio de Mignone \emph{et. al.} 2007 se encontraron similitudes, asi como algunas diferencias. 
 La principal es que no presenta turbulencias, es decir, nuestro jet es mas viscoso y no se puede mejorar sin importar la resolución que 
-se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación asi como a parte cilíndrica del jet,
-sim embargo no se comparte el ancho o tiene una diferencia mayor debido a que, como ya se habia mencionado antes, el jet de esta tesis
+se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación asi como la parte cilíndrica del jet,
+sin embargo no se comparte el ancho o tiene una diferencia mayor debido a que, como ya se habia mencionado antes, el jet de esta tesis
 es mas viscoso. Sobre este punto, que es la viscosidad, se puede observar que esta se reduce conforme se aumente la resolución,
 sin embargo, el jet de estudio de Mignone no necesita mucha resolución, por lo que el que la viscosidad del jet de este estudio 
 no es un problema de resolución sino mas bien usar un algoritmo mas robusto para resolver las ecuaciones de la hidrodinámica 
-tales como HLLC que es otro método numérico . Aunque el jet del estudio Mignone \emph{et al} 2007 detalla todas las características de su jet, no podemos
-comparararlo perfectamente debido a la falta de mención de los valores de la densidad.
+tales como HLLC que como ya se habia mencionado antes, es otro método numérico . Aunque el jet del estudio Mignone \emph{et al} 2007 detalla 
+todas las características de su jet, no podemos comparararlo perfectamente debido a la falta de mención de los valores de la densidad.
+En resumen la comparación del jet de este estudio con el de Mignone comparten una morfologia casi identica, sin embargo al ser demasiado viscoso
+no representa correctamente bien las interacciones entre el jet y el capullo.
 
-Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et al}
-se pudo este código para pruebas en medios ambiente que decaen en función de la distancia. Al estudiar el jet se pasa de 
-un medio, que es homogéneo, a no que decae como $1/x$ o $1/x^2$, se encontró, como se esperaba, que los picos de densidad
-y presión decaían en proporción a como lo hacia el medio ambiente. En los paneles de velocidad se podría observar que el jet
-alcanzaba velocidades relativista y que también en los paneles de densidad, al compararse los perfiles se pudo observar que 
+Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et. al.}
+se fue mas allá y se probó este código para pruebas en medios ambiente que decaen en función de la distancia. Al estudiar el jet se pasa de 
+un medio, que es homogéneo, a uno que decae como $1/x$ o $1/x^2$, se encontró, como se esperaba, que los picos de densidad
+y presión decaían en proporción a como lo hacia el medio ambiente. Para la aparte de la velocidad se podría observar que el jet
+alcanzaba velocidades cercanas a la de la luz y que también para la densidad, al compararse los perfiles, se pudo observar que 
 conforme el medio ambiente decae mas rápido el jet también se mueve más rápido, esto debido a que el material que barre es menor 
 y que es algo que se esperaría.
 
