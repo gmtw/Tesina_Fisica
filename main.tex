@@ -2688,64 +2688,67 @@ Los jets son eventos astronómicos de mucha energía que se pueden simular a par
 que rigen los fluidos, que es la hidrodinámica. Dado que son eventos muy violentos significa que alcanzan velocidades
 cercanas a la de la luz, por lo que la hidrodinámica que se tiene que usar tiene que estar sujeta a la teoría de relatividad
 especial.
-Para poder construir el programa se comenzó por realizar pruebas unidimensionales y en el régimen newtoniano. 
-La prueba consistió en resolver un tubo de choque el cual consiste en tener 2 fluidos con distinta densidad, velocidad y presión 
-en un tubo separado por un aislante y que posteriormente se retira para ver como interactúan 
+Para poder construir el código se comenzó por realizar pruebas unidimensionales y en el régimen newtoniano. 
+La prueba consistió en resolver un tubo de choque el el cual se tiene 2 fluidos con distinta densidad, velocidad y presión 
+en un tubo separado por un aislante y que posteriormente se retira para ver su interacción. 
 En ambas pruebas se uso tanto el método de Lax como el de HLL, que son métodos numéricos que se usan para 
 resolver ecuaciones diferenciales parciales. Para el caso donde las presiones y las 
 velocidades son iguales pero que tienen una densidad distinta, tanto el método de Lax como el método de HLL, 
-para el régimen newtoniano son indistintos de usar para cualquier tipo de resolución. Además 
+para el régimen newtoniano, son indistintos de usar para cualquier tipo de resolución. Además 
 el método de Lax demostró ser una buena aproximación comparado con el método analítico.
 En este caso el método de Lax resulto ser computacionalmente más rápido que el de HLL. Para el caso en 
-donde ahora las velocidades son distintas y las densidades y presiones son iguales, 
+donde ahora las velocidades son distintas y las densidades y presiones son iguales 
 se obtuvieron computacionalmente los mismos resultados, que en el anterior caso mencionado ya que, 
-tanto Lax como HLL se tienen una muy buena aproximación para el método analítico para resoluciones altas.
+tanto Lax como HLL tienen una muy buena aproximación para el método analítico para resoluciones altas.
 Para ambos métodos se puede observar que en los valores discontinuos, presentan mayor dificultad, sobre todo en 
-las discontinuidades de contacto, mientras que para las discontinuidades de choque se muestra una mayor aproximación 
+las discontinuidades de contacto, estas discontinuidades son superficies que separan zonas de diferente densidad y temperatura.
+Por definición tal superficie esta en equilibrio de presión y ningun gas fluye a traves de él.
+Mientras que para las discontinuidades de choque, las cuales ocurren en medios compresibles cuando 
+los gradientes de presión son lo suficientemente grandes como para generar movimientos de compresión supersónicos. %INTERSTELLARSHOCK WAVES Christopher F. McKee 
+Debido a que el choque se propaga más rápido que la velocidad característica de la señal, el medio que está delante del 
+choque no puede responder dinámicamente al choque hasta que el choque golpea. Para este tipo de onda se muestra una mayor aproximación 
 a la solución analítica. Para las zonas donde no la hay ambos métodos se aproximaban bastante
-hasta para resoluciones de 100 píxeles.
-En lo particular el método de Lax fue mas 200 \% más rápido que HLL y con una buena aproximación de 1,000 píxeles para 
-los anteriores 2 casos descritos, por lo que para el régimen unidimensional y para velocidades newtonianas, es recomendable
+hasta para resoluciones bajas.
+En lo particular el método de Lax fue 200 \% más rápido que HLL y con una buena aproximación para resoluciones bajas descritas en  
+los anteriores 2 casos, por lo que para el régimen unidimensional y para velocidades newtonianas, es recomendable
 usar este método, dado que gasta menos recursos computacionales.
 
-Para los casos, donde el regimen es relativista pero manteniendo la misma dimensión. El método de Lax falla por completo, 
+Para los casos, donde el régimen es relativista pero se mantiene la misma dimensión, el método de Lax falla por completo, 
 sin importar la resolución que se establezca, se encontraron errores graves, por lo que no se pudo hacer una comparación 
 entre ambos métodos. A diferencia del caso newtoniano, el relativista no presenta dificultades en las discontinuidades de 
-contacto y tiene una buena aproximación al caso analítico de onda de choque-rarefacción para resoluciones mayores 
-a 1000 píxeles. Para el caso rarefacción-rarefacción HLL, su aproximación para el caso analitico, fue casi igual para resoluciones
-de 10,000 pixeles y para las resoluciones de 500 y 1,000 pixeles muestra poca diferencia entre ambos métodos, por lo que  HLL
-para el regimen unidimensiolanl relativista solo necesita al menos 500 píxeles de resolución para un correcto modelaje de las 
-ecuaciones de la hidrodinámica relativista. 
+contacto y tiene una buena aproximación al caso analítico de onda donde las densidades son distintas. 
+Para el caso donde las velocidades son distintas, la aproximación de HLL para el caso analitico, fue casi igual para resoluciones
+altas y bajas por lo que  HLL para el regimen unidimensional relativista 
+hace un correcto modelaje de las ecuaciones de la hidrodinámica relativista. 
 En resumen, para efectos de costo computacional, el método de Lax se recomienda usar
 ya que es ligeramente mas rápido que HLL, pero en el regimen relativista HLL es el único que muestra resultados viables.
 
 En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod, se descartó 
 el método de Lax y el regimen newtoniano, ya que lo que importa es que el código pueda reproducir flujos relativistas.
 Al usar el problema de la explosión de Sedov-Taylor, que a \emph{grosso modo} viene siendo lo que es un
-tubo de choque en 2 dimensiones se comparó 3 perfiles de densidad mostrando que para perfiles que son ortogonales
-los valores de la densidad vienen teniendo el mismo resultado, mientras que para el perfil que es de 45°, solo hubo una 
-pequeña diferencia en la onda de choque de contacto. Por lo que mi código no tiene una preferencia de dirección.
+tubo de choque en 2 dimensiones. Al comparar los perfiles de densidad y comparandose con los unidimensionales
+los valores de la densidad vienen teniendo el mismo resultado. Por lo que mi código no tiene una preferencia de dirección.
 
-En las pruebas donde se comparan los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico
+Cuando se comparan los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico
 se muestra que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, sobre todo en la velocidad
-donde se puede ver que salvo en las ondas de choque y de contacto los valores son los mismos que el el analítico, mientras
-que el unidimensional mantiene valores mas alejados al analítico. Por lo tanto el código en 2 dimensiones es mejor que cuando
-lo presentamos en el caso unidimensional y entonces el código se puede usar para hacer simulaciones de jet que se mueven a 
+donde se observa que salvo en las ondas de choque y de contacto los valores son los mismos que el el analítico, mientras
+que en la parte unidimensional mantiene valores mas alejados al analítico. Por lo tanto el código en 2 dimensiones es mejor que cuando
+lo presentamos en el caso unidimensional y por lo tanto el código se puede usar para hacer simulaciones de jet que se mueven a 
 velocidades relativistas.
 
-En las pruebas bidimensionales del jet se encontró que contiene las características esenciales de todo jet, como lo es,
+Al simular el jet se encontró que contiene las características esenciales de todo jet, como lo es,
 el capullo y las ondas de colimación. Las gráficas muestran que se mueve a velocidades relativistas y que no presenta errores
 al llegar a tales velocidades. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente
 mas lento.
 
-Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} se encontraron similitudes, asi como algunas diferencias. 
+Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} 2007 se encontraron similitudes, asi como algunas diferencias. 
 La principal es que no presenta turbulencias, es decir, nuestro jet es mas viscoso y no se puede mejorar sin importar la resolución que 
-se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación y que el jet es cilíndrico,
-sim embargo no comparte el ancho o tiene una diferncia mayor debido a que, como ya se habia mencionado antes, jet de esta tesis
+se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación asi como a parte cilíndrica del jet,
+sim embargo no se comparte el ancho o tiene una diferencia mayor debido a que, como ya se habia mencionado antes, el jet de esta tesis
 es mas viscoso. Sobre este punto, que es la viscosidad, se puede observar que esta se reduce conforme se aumente la resolución,
 sin embargo, el jet de estudio de Mignone no necesita mucha resolución, por lo que el que la viscosidad del jet de este estudio 
 no es un problema de resolución sino mas bien usar un algoritmo mas robusto para resolver las ecuaciones de la hidrodinámica 
-tales como HLLC. Aunque el jet del estudio Mignone \emph{et al} de talla todas las características de su jet, no podemos
+tales como HLLC que es otro método numérico . Aunque el jet del estudio Mignone \emph{et al} 2007 detalla todas las características de su jet, no podemos
 comparararlo perfectamente debido a la falta de mención de los valores de la densidad.
 
 Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et al}
