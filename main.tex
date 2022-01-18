@@ -273,7 +273,18 @@ esencialmente no oscilatorio (\emph{WENO} por sus siglas en inglés) para la cua
 
 \section{Mignone}
 
+En esta tesis se pretendrá hacer un código que reproduzca los jet que muestra Mignone \emph{et al} 2005 \cite{MB-HLLC-I} donde ellos consideran la propagación de un jet relativista axisimétrico ligero en 
+coordenadas cilíndrica 2D. Los valores que usó para poder simular el jet fueron los siguientes:
 
+\begin{equation}
+  \left(\rho, v_{r}, v_{z}, p\right)=\left\{\begin{array}{ll}
+  \left(0.1,0,0.99,10^{-2}\right) & \text { para } r, z<1 \\
+  \left(10,0,0,10^{-2}\right) & \text { caso contrario. }
+  \end{array}\right.
+\end{equation}
+
+Donde $\rho$ es la densidad, $v_r$ es la velocidad radial, $v_z$ es la velocidad sobre el eje z y $p$ es la presión. El índice politrópico que usaron fue $\Gamma = 5/3$ con un número de Courant $Co = 0.5$.
+Los métodos que emplearon fue el método de HLL y HLLC (Para mas información ver la sección \ref{secc:HLL}) 
 
 
 
@@ -964,7 +975,7 @@ Donde \emph{dtx, dty} son las derivadas con respecto a \emph{x}, \emph{y} y \emp
 
 
 
-\subsection{HLL}
+\subsection{HLL} \label{secc:HLL}
 
 	Otro método para resolver las ecuación  es de la hidrodinámica es usar el método de Harten-Van-Leer. Definiendo el flujo numérico intercelda de Gudonov
 
@@ -2250,8 +2261,10 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 % ===============================================================================================
 
 
-\section{Prueba relativista bidimensional (Sedov-Taylor)}
-Ya que hemos visto el código funciona correctamente para pruebas relativistas en una dimensión se hará una prueba de una onda de choque relativista en 2 dimensiones y se verificará que se comporte como la solución analítica auto-similar de Sedov-Taylor (para más detalles véase la sección 2.5). El dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda será $r = 0.5 \, \text{cm}$, se considerará un índice adiabático $\Gamma = 4/3$, y los valores que la onda bidimensional tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}. 
+\section{Prueba relativista bidimensional}
+Ya que hemos visto el código funciona correctamente para pruebas relativistas en una dimensión se hará una prueba de una onda de choque relativista en 2 dimensiones y se verificará que se comporta como la solución 
+analítica auto-similar de una prueba de un tubo de choque bidimensional. El dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda será $r = 0.5 \, \text{cm}$, se considerará un índice 
+adiabático $\Gamma = 4/3$, y los valores que la onda bidimensional tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}. 
 
 \begin{table}[htbp]
   \begin{center}
@@ -2313,8 +2326,7 @@ el panel de arriba a la derecha muestra su estado al tiempo $t = 0.2$ s y el pan
 
 %Ojo Julio
 {\color{blue} En la gráfica \ref{fig:Expansion_radio_vs_tiempo} se muestra la expansión del radio de la explosión de la onda de choque contra el tiempo, y se ajustó una regresión exponencial para poder calcular 
-el exponente con el que crece el radio, donde se muestra que crece como $R(t) \propto t^{0.426}$ y que tiene un $R^2 = 0.946$. 
-Cabe señalar que para la solución de Sedov-Taylor se tiene $R(t) \propto t^{0.4}$ por lo se puede concluir que el código reproduce correctamente las ondas de choque bidimensionales relativistas.}
+el exponente con el que crece el radio, donde se muestra que crece como $R(t) \propto t^{0.426}$ y que tiene un $R^2 = 0.946$.}
 
 %Ojo Julio
 \begin{figure}
@@ -2788,7 +2800,7 @@ que HLL, pero en el régimen relativista HLL es el único que muestra resultados
 {\color{blue} LUEGO MENIOCNARIA LAS PRUEBAS BIDIMENCIONALES RELATIVISTAS}
 
 En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod, {\color{red} se descartó el método de Lax y el régimen newtoniano}, ya que lo que importa es que el código pueda 
-reproducir flujos relativistas. Al usar el problema de la explosión de Sedov-Taylor, que a \emph{grosso modo} viene siendo lo que es un tubo de choque en 2 dimensiones. Y comparar los perfiles de densidad y 
+reproducir flujos relativistas. Al comparar los perfiles de densidad y 
 comparándose con los unidimensionales los valores de la densidad vienen teniendo el mismo resultado. Por lo que mi código no tiene una preferencia de dirección.
 
 Cuando se comparón los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico se mostró que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, 
