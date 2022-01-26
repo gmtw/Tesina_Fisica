@@ -2260,17 +2260,49 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 % ===============================================================================================
 % ===============================================================================================
 
-<<<<<<< HEAD
+
+\section{Prueba newtoniana bidimensional}
+
+En esta sección se probará el código que se desarrolló en la problema de Sedov-Taylor en la que se libera una gran cantidad de energía en un volumen muy pequeño. 
+Esto sucede en el medio interestelar cada vez que se dispara una supernova. 
+En este caso se inyecta instantáneamente una gran cantidad de energía \emph{E} en un medio ambienta de densidad uniforme $\rho_m$. 
+Posteriormente,  un frente de choque esférico se expandirá hacia el medio ambiente.
+
+Los valores típicos de una supernova con energía $E_{s}  \approx  1 \times 10^{52}$ ergs son $\rho_{s} = 3.48 \times 10^{-24} \text{g cm}^3$, una presión $P_{s} = 2.01 \times 10^{-6} \text{dyn}$. Se tomará un radio de 
+2 parsec. Para los valores del medio ambiente se tomó $\rho_{m} = 1.67 \times 10^{-24} \text{g cm}^3$, $P_{m} = 8.97 \times 10^{-10} \, \text{dyn}$, con un índice poitrópico de $\Gamma = 5/3$. El tiempo de integración será $t = 8.1 \times 10^10$ s. La Figura 
+\ref{fig:prueba_2d_newtoniana} muestra la evolución de la onda.
+
+\begin{figure}
+  \centering
+      \subfigure{\includegraphics[scale = 0.3]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/0_NR.png}}
+      \subfigure{\includegraphics[scale = 0.3]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/11_NR.png}}
+      \subfigure{\includegraphics[scale = 0.3]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/99_NR.png}}
+    \caption{Explosión de la onda de choque en 2 dimensiones usando un mapa de densidad. El panel de arriba a la izquierda muestra el tiempo inicial $t=0$ s con radio de onda de choque de 2 parsec,
+    el de arriba a la derecha  al $t \approx 10^{10}$ s con un radio de $r \approx 1.6$ pc y el panel de abajo muestra el tiempo $t = 8.1 \times 10^{10}$ s con un radio de expansión de $r \approx 4.5$ pc. Todos los 
+    páneles tienen una resolución 1000X1000 pixeles. Con un índice poitrópico de $\Gamma = 5/3$. Los valores internos de la onda fueron $\rho_{s} = 3.48 \times 10^{-24} \text{g cm}^3$ y $P_{s} = 2.01 \times 10^{-6} \text{dyn}$
+    mientras que los del medio ambiente fueron $\rho_{m} = 1.67 \times 10^{-24} \text{g cm}^3$ y $P_{m} = 8.97 \times 10^{-10} \, \text{dyn}$.
+    \label{fig:prueba_2d_newtoniana}}
+\end{figure}
+
+Al graficar los cambios del radio en el tiempo de integración, se puede obtener la siguiente gráfica (ver Figura \ref{fig:Expansion_HLL_NR}). Al utilizar una regresión exponencial se puede modelar la expansion del radio de la explosión
+como $r(t) = t^a$ donde nuestro coeficiente $a = 0.413$ con un coeficiente de determinación $R^2= 0.985$
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1\textwidth]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/Expansion_HLL_NR_res_1000.png}
+    \caption{}
+    \label{fig:Expansion_HLL_NR}
+\end{figure}
+
+
+
+
+
 
 \section{Prueba relativista bidimensional}
 Ya que hemos visto el código funciona correctamente para pruebas relativistas en una dimensión se hará una prueba de una onda de choque relativista en 2 dimensiones y se verificará que se comporta como la solución 
 analítica auto-similar de una prueba de un tubo de choque bidimensional. El dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda será $r = 0.5 \, \text{cm}$, se considerará un índice 
 adiabático $\Gamma = 4/3$, y los valores que la onda bidimensional tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}. 
-=======
-% Aca julio
-\section{Prueba relativista bidimensional (Sedov-Taylor)}
-Ya que hemos visto el código funciona correctamente para pruebas relativistas en una dimensión se hará una prueba de una onda de choque relativista en 2 dimensiones y se verificará que se comporte como la solución analítica auto-similar de Sedov-Taylor (para más detalles véase la sección 2.5). El dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda será $r = 0.5 \, \text{cm}$, se considerará un índice adiabático $\Gamma = 4/3$, y los valores que la onda bidimensional tendrá están en el cuadro \ref{Cuadro_parametros_choque_2D}. 
->>>>>>> refs/remotes/origin/master
 
 \begin{table}[htbp]
   \begin{center}
