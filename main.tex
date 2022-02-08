@@ -195,26 +195,26 @@ La fusión de objetos compactos es el modelo progenitor más atractivo.
 Las categorías de los GRBs largos y cortos son aproximadamente 75\% y 25\% de la población \cite{GRB:PPP}. %!Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
 La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X.
 Los GRBs son uno de los eventos que más libera energía en el universo y su energía liberada es del orden de $10^{52}$ ergs \cite{Berger:2013jza}.
-
 Se infiere que los jets relativistas de los blázares tienen un factor de Lorentz de hasta $\Gamma \thicksim 50$. 
 Pero en el modelo más ampliamente aceptado para GRB, una explosión altamente enfocada asociada con la formación de un agujero negro impulsa jet relativistas colimados con $\Gamma \lesssim 400$ 
 %!A Simulation Study of Ultra-Relativistic Jets - I. A New Code for Relativistic Hydrodynamics
 
 Los angulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5° de apertura, el cual puede variar hasta los 35° con un promedio de 
 $\langle \theta_j \rangle \gtrsim 10$ (ver Figura \ref{fig:Distribucion_angulo_apertura})
-
+En el medio intergaláctico dentro de las proximidades de las galaxias y dentro de los cúmulos de galaxias se tienen densidades numéricas que oscilan entre $5 \times 10^{-6}$ a 
+$ \sim 10^3 \, \text{cm}^{-3}$. Con las ecuaciones de Rankine-Hugoniot se pueden conocer las densidades del jet a partir de sus velocidades y el medio ambiente que lo rodea, para mas información 
+vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
+%! Relativistic AGN jets I. The delicate interplay between jet structure,cocoon morphology and jet-head propagation
+  
 \begin{figure} 
   %!fuente de la imagen: https://imagine.gsfc.nasa.gov/science/objects/bursts1.html
     \centering
       \includegraphics[width=0.5\textwidth]{Figuras/Introduccion/Distribucion_angulo_apertura.png}
     \caption{Distribucion de los ángulos de apertura para GRBs largos (azul) y cortos (rojos) basados en su emisión tardía y su \emph{jet break}}
     \label{fig:Distribucion_angulo_apertura}
-  \end{figure}
-
-En el medio intergaláctico dentro de las proximidades de las galaxias y dentro de los cúmulos de galaxias se tienen densidades numéricas que oscilan entre $5 \times 10^{-6}$ a 
-$ \sim 10^3 \, \text{cm}^{-3}$. Con las ecuaciones de Rankine-Hugoniot se pueden conocer las densidades del jet a partir de sus velocidades y el medio ambiente que lo rodea, para mas información 
-vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
-%! Relativistic AGN jets I. The delicate interplay between jet structure,cocoon morphology and jet-head propagation
+\end{figure}
+  
+  
 
 
 \section{Simulaciones de jet relativista}
@@ -247,7 +247,7 @@ los efectos de los neutrinos, el proceso r, el viento viscoso, la relatividad ge
       A      & Colapsar                      & 13.950                                &    9.2                   &               $7.83  \times 10^{52}$            &     $10^9$                 &       0                 \\ 
       B      & Colapsar                      & 13.950                                &    22.9                  &               $1.27  \times 10^{52}$            &     $10^9$                 &       0                 \\ 
     \end{tabular}
-  \caption{Valores que se usa las simalaciones de la Figura \ref{fig:jet_models} donde $\text{M}_{\bigodot}$ son masas solares, $\theta$ es el ángulo de apertura inicial, \emph{L} es la luminosidad isotrópica inicial,
+  \caption{Valores que se usa las simulaciones de la Figura \ref{fig:jet_models} donde $\text{M}_{\bigodot}$ son masas solares, $\theta$ es el ángulo de apertura inicial, \emph{L} es la luminosidad isotrópica inicial,
   $r_{\text{in}}$ es el radio de inyección del jet y $v_m$ la velocidad del medio ambiente.} \label{table:jet_models}
   \end{center}
 
@@ -274,7 +274,7 @@ esencialmente no oscilatorio (\emph{WENO} por sus siglas en inglés) para la cua
 \section{Mignone}
 
 En esta tesis se pretendrá hacer un código que reproduzca los jet que muestra Mignone \emph{et al} 2005 \cite{MB-HLLC-I} donde ellos consideran la propagación de un jet relativista axisimétrico ligero en 
-coordenadas cilíndrica 2D. Los valores que usó para poder simular el jet fueron los siguientes:
+coordenadas cilíndrica 2D (ver Figura \ref{fig:jet_mignone}). Los valores que usó para poder simular el jet fueron los siguientes:
 
 \begin{equation}
   \left(\rho, v_{r}, v_{z}, p\right)=\left\{\begin{array}{ll}
@@ -284,11 +284,20 @@ coordenadas cilíndrica 2D. Los valores que usó para poder simular el jet fuero
 \end{equation}
 
 Donde $\rho$ es la densidad, $v_r$ es la velocidad radial, $v_z$ es la velocidad sobre el eje z y $p$ es la presión. El índice politrópico que usaron fue $\Gamma = 5/3$ con un número de Courant $Co = 0.5$.
-Los métodos que emplearon fue el método de HLL y HLLC (Para mas información ver la sección \ref{secc:HLL}) 
+Los métodos que emplearon fue el método de HLL y HLLC (Para mas información ver la sección \ref{secc:HLL}). El tiempo de integración fue de $t = 80$ con condiciones de frontera \emph{outflow} excepto donde se 
+inyecta el jet. La velocidad de avance promedio  del jet fue de 0.39 con una resolución de 400X750. Un aspecto que jugó a favor del formalismo HLLC es la eficiencia computacional, particularmente crucial en 
+simulaciones a largo plazo en dos y tres dimensiones, tambien requierió pocos costos adicionales, entre 4 y 7 por ciento en una dimensión, con respecto al esquema HLL. 
 
 
-
-
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{Figuras/Introduccion/jet_mignone.png}
+  \end{center}
+  \caption{Logaritmo de la densidad de la masa en reposo para un jet relativista. El panel de arriba muestra el jet al tiempo t=40, mientras que el de abajo al tiempo t = 80.
+  La mitad de  (de ambos páneles) muestra la simulación hecha con el esquema HLLC, mientras que la parte de abajo muestra para el esquema HLL.
+  La resolución fue de 240x740 pixeles}
+  \label{fig:jet_mignone}
+\end{figure}
 
 
 
@@ -2290,7 +2299,9 @@ como $r(t) = t^a$ donde nuestro coeficiente $a = 0.413$ con un coeficiente de de
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/Expansion_HLL_NR_res_1000.png}
-    \caption{}
+    \caption{Crecimiento del radio de la onda de choque vs tiempo. Las cruces verdes muestran el tamaño del radio de la onda de choque se obtiene en un intervalo de tiempo de $t=8.1 \times 10^{10}$ s.
+    La línea sólida roja muestra una regresión exponencial con ecuación $r(t) = t^{0.413}$ con un coeficiente de determinación $R^2= 0.985$. Las cruces más remarcadas corresponden los radios que se muestran en la Figura 
+    \ref{fig:prueba_2d_newtoniana}}
     \label{fig:Expansion_HLL_NR}
 \end{figure}
 
