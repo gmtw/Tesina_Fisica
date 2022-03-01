@@ -168,13 +168,29 @@ estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquasare
 
 %----------------------------------------------------------------------------------
 % Acá mete lo de aguayo de los jets
+
+{\color{blue} Los jets y los flujos de salida son fenómenos naturales en los que la materia, la energía y otras cantidades físicas (como el flujo magnético) se expulsan a un medio alrededor de un cuerpo central gigante.
+Parecen ser un evento astrofísico omnipresente, ya que ocurren en una amplia gama de entornos astrofísicos.
+Desde objetos estelares hasta extragalácticos, con velocidades que van desde unas unos pocos $m \cdot s^{-1}$ hasta velocidades cercanas a la de la luz, y longitudes que van desde unas pocas unidades astronómicas 
+hasta kiloparsecs, todos vinculados por algún tipo de proceso de acreción.
+Un jet se diferencia de un flujo de salida en que el primero se refiere a una eyección altamente colimada, mientras que la segunda es menos colimada y más lenta.
+
+En comparación con sus contrapartes menos colimados, los jets altamente colimados se encuentran en entornos más particulares. Los jets son impulsados por la acreción de un agujero negro en regímenes relativistas, 
+ya sea un agujero negro de masa estelar como en las binarias de rayos X o un agujero negro supermasivo como en los AGN. Los estallidos cortos de rayos gamma, 
+que resultan de la colisión de dos sistemas binarios de estrellas de neutrones, y los GRB largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de vida, 
+contienen jets relativistas.
+
+Aunque la presencia de un objeto central masivo y un disco de acreción de gas giratorio a su alrededor es el componente principal en todos los escenarios astrofísicos donde se encuentran jets y flujos de salida, 
+el campo magnético y su interacción con todo el sistema parece ser un componente fundamental en la necesidad de estas eyecciones.
+Esto permite la formación y estabilidad del disco, así como el lanzamiento y colimación del chorro. Los procesos más aceptados para el lanzamiento del jet son los mecanismos magnetorrotacionales propuestos 
+por REF1 y REF2}
 %----------------------------------------------------------------------------------
 
 
-{\color{blue} Los jets de AGNs se forman cuando el agujero negro, con una masa de $10^6$-$10^{10}$ masas solares, gira y atrae masa de la galaxia que lo rodeas el cual forma un disco de acreción
+Los jets de AGNs se forman cuando el agujero negro, con una masa de $10^6$-$10^{10}$ masas solares, gira y atrae masa de la galaxia que lo rodeas el cual forma un disco de acreción
 que gira ortogonal al eje de rotación del agujero negro debido a la conservación del momento angular y que contiene un fuerte campo magnético. %!Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II Sky-Map 2007-07-03 - 2007-07-11
 Las propiedades de los jets también abarcan rangos muy amplios. Un caso particular son cuando los jets de AGN pueden permanecer bien colimados a distancias de cientos de kiloparsecs. %!The content of astrophysical jets
-}
+
 
 %\begin{figure} 
 %  %!Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II Sky-Map 2007-07-03 - 2007-07-11
@@ -207,7 +223,7 @@ Pero en el modelo más ampliamente aceptado para GRB, una explosión altamente e
 %!A Simulation Study of Ultra-Relativistic Jets - I. A New Code for Relativistic Hydrodynamics
 
 Los ángulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5° de apertura, el cual puede variar hasta los 35° con un promedio de 
-$\langle \theta_j \rangle \gtrsim 10$ (ver Figura \ref{fig:Distribucion_angulo_apertura})
+$\langle \theta_j \rangle \gtrsim 10$.
 En el medio intergaláctico dentro de las proximidades de las galaxias y dentro de los cúmulos de galaxias se tienen densidades numéricas que oscilan entre $5 \times 10^{-6}$ a 
 $ \sim 10^3 \, \text{cm}^{-3}$. Con las ecuaciones de Rankine-Hugoniot se pueden conocer las densidades del jet a partir de sus velocidades y el medio ambiente que lo rodea, para mas información 
 vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
@@ -228,7 +244,7 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
       Tiempo de vida [años]                       & $\thicksim 10^{-6}$           &    $\thicksim 10^{4}-10^{6}$     &  $\thicksim 10^{4}-10^{5}$     & $\thicksim 10^{7}-10^{8}$                           \\ 
       Tamaño del jet [pc]                         & $\thicksim 10$                &    $\thicksim 10$                &  $\thicksim 1$                 & $\thicksim 10^{5}$                                   \\ 
     \end{tabular}
-  \caption{{\color{blue} Propiedades de los jet de distintas fuentes. Se puede observar que, dependiendiendo de su origen, sus propiedades pueden variar considerablemente}} \label{table:propiedades_jets}
+  \caption{Propiedades de los jet de distintas fuentes. Se puede observar que, dependiendiendo de su origen, sus propiedades pueden variar considerablemente} \label{table:propiedades_jets}
   \end{center}
 
 \end{table}
@@ -249,11 +265,17 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets tomando en cuenta distintos métodos numéricos
 %--------------------------------------------------------------------------
-En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \cite{SURJ-I, MB-HLLC-I}, en el marco de AGNS (REFS), así como en el marco de GRBs (REFs), por mencionar algunos ejemplos. Un ejemplo de simulaciones de jets relativistas se presenta en \cite{SURJ-I} donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio uniforme utilizando distintos métodos numéricos (Weno JS, Weno Z, y Weno ZA). El jet el cilíndrico, tiene una densidad de $\rho_{jet} = 10^{-2}$, una velocidad $v_{x_{\text{jet}}},v_{y_{\text{jet}}} = 0.99, 0$ y una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ representa un factor de Lorentz $\gamma = 7$. El medio ambiente es estático, tiene una densidad $\rho_m = 1$ y una presión igual al del jet. En la Figura \ref{fig:jet_ejemplo_2} se muestra la configuración final utilizando los tres diferentes métodos numéricos.
-%ojo FALTA
-Explica la generalidad de la de arriba.
-Explica la generalidad del de en medio.
-Explica la generalidad de la de abajo.
+En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \cite{SURJ-I, MB-HLLC-I}, en el marco de AGNS (REFS), así como en el marco de GRBs (REFs), 
+por mencionar algunos ejemplos. Un ejemplo de simulaciones de jets relativistas se presenta en \cite{SURJ-I} donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio 
+uniforme utilizando distintos métodos numéricos (Weno JS, Weno Z, y Weno ZA). El jet el cilíndrico, tiene una densidad de $\rho_{jet} = 10^{-2}$, una velocidad $v_{x_{\text{jet}}},v_{y_{\text{jet}}} = 0.99, 0$ y 
+una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ representa un factor de Lorentz $\gamma = 7$. El medio ambiente es estático, tiene una densidad $\rho_m = 1$ y una presión igual al del jet. 
+En la Figura \ref{fig:jet_ejemplo_2} se muestra la configuración final utilizando los tres diferentes métodos numéricos.
+
+{\color{blue} En la parte  de arriba se muestra un jet con un tamaño de 3.15 unidades, usando el método de WENO JS. El ancho del jet mide 0.2 unidades y presenta una turbulencia similar al que usa WENO Z.
+La gráfica de en medio muestra un jet con longitud un poco mayor de 3.2 unidades y un ancho mayor de 0.21 unidades. Para el caso de la gráfica de abajo, donde usa el método de WENO ZA, el largo del jet, mide 3.21 unidades
+siendo el más largo de los tres  y mostranto una mayor turbulencia que los 2 anteriores. Su ancho es un poco menor ya que mide 1.8 unidades. }
+
+
 
 \begin{figure}
     \begin{center}
@@ -263,31 +285,50 @@ Explica la generalidad de la de abajo.
     \label{fig:jet_ejemplo_2}
 \end{figure}
 
-%--------------------------------------------------------------------------
-%Ejemplo de estudio de jets en el marco de AGNs. FALTA
-%--------------------------------------------------------------------------
-%Falta
-%Falta
-%Falta
-
 
 
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets en el marco de GRBs.
 %--------------------------------------------------------------------------
-Otro ejemplo de un simulaciones de jets relativistas es el estudio de \cite{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el marco de las colapsares \cite{JBEMGRB}. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través del medio producido tras la fusión de dos estrella de neutrones o de la envolvente del Colapsar. 
+Otro ejemplo de un simulaciones de jets relativistas es el estudio de \cite{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el 
+marco de las Colapsares \cite{JBEMGRB}. 
+En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través del medio producido tras la fusión de dos estrella de neutrones o de la envolvente del Colapsar. 
 \begin{figure} 
   \centering
-    \includegraphics[width=0.5\textwidth]{Figuras/Introduccion/jet_models.png}
-  \caption{Mapa de densidad de el jet, donde los paneles de arriba muestran ambientes de una fusión de estrellas de neutrones mientras que los paneles de abajo muestran para los colapsares.}
+    \includegraphics[width=0.7\textwidth]{Figuras/Introduccion/jet_models.png}
+  \caption{Mapa de densidad de el jet, donde los paneles de arriba muestran ambientes de una fusión de estrellas de neutrones mientras que los paneles de abajo muestran para los Colapsares.}
   \label{fig:jet_models}
 \end{figure}
 
-El jet que se lanza tras la fusión de las dos estrellas de neutrones (paneles de arriba) tiene una luminosidad de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8$ (panel de arriba a la izquierda) o de $\theta_0=18.8$ (panel de arriba a la derecha), es lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa es de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34 c$ (ver Cuadro~\ref{table:jet_models} para más detalles). El jet que se lanza dentro del Colapsar (paneles de abajo) tiene una luminosidad de $L_{\rm iso, 0} = 7.83 \times10^{52}$~erg~s$^{-1}$ (panel de abajo a la izquierda) o de $L_{\rm iso, 0} = 1.27 \times10^{52}$~erg~s$^{-1}$ (panel de abajo a la derecha), tiene un ángulo de apertura de $\theta_0=9.2$ (panel de arriba a la izquierda) o de $\theta_0=22.9$ (panel de arriba a la derecha), es lanzado desde una distancia $r_{in}=10^{9}$~cm, atraviesa un medio que está en reposo y cuya masa es de $M_{m} = 13.95 M_{\odot}$. El perfil de densidad en la región interior lo aproximan a una función de ley de potencias con un índice $n <3$ y $n \approx 1.5$ para el caso de colapsares. Cabe destacar que los modelos de los jet se asumen como no magnéticos, asi como otras limitaciones tales como los efectos de los neutrinos, el proceso r, el viento viscoso, la relatividad general, la rotación estelar, el campo magnético estelar, etc.
+{\color{blue} El jet que se lanza tras la fusión de las dos estrellas de neutrones (paneles de arriba) tiene una luminosidad de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, 
+un ángulo de apertura de $\theta_0=6.8$ (panel de arriba a la izquierda) o de $\theta_0=18.8$ (panel de arriba a la derecha), 
+es lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa es de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34 c$ (ver Cuadro~\ref{table:jet_models} 
+para más detalles). El jet que se lanza dentro del Colapsar (paneles de abajo) tiene una luminosidad de $L_{\rm iso, 0} = 7.83 \times10^{52}$~erg~s$^{-1}$ (panel de abajo a la izquierda) o 
+de $L_{\rm iso, 0} = 1.27 \times10^{52}$~erg~s$^{-1}$ (panel de abajo a la derecha), tiene un ángulo de apertura de $\theta_0=9.2$ (panel de arriba a la izquierda) o de $\theta_0=22.9$ (panel de arriba a la derecha), 
+es lanzado desde una distancia $r_{in}=10^{9}$~cm, atraviesa un medio que está en reposo y cuya masa es de $M_{m} = 13.95 M_{\odot}$.}
 
-%ojo FALTA
-Explica la generalidad de la de arriba a la izq y la de arriba a la derecha.
-Explica la generalidad de la de abajo a la izq y la de abajo a la derecha.
+{\color{blue} En el panel de arriba a la izquierda muestra un jet al tiempo $t = 0.22$~s con un tamaño de $3.75 \times 10^9 \, \text{cm}$, el capullo tiene un ancho de $3.75 \times 10^9 \, \text{cm}$. 
+Tambien se observa que en el centro, alrededor del capullo, la densidad de concentra mas, ya que llega a $\log_{10} \approx 3$ disminuye a $\log_{10} \approx 2$ a partir de $3.0 \times 10^9 \, \text{cm}$. 
+Otra observación es que hay una mayor turbulencia desde el radio de inyección y disminuye conforme se va alejando. Mantiene un ancho aproximado de jet de $0.05 \times 10^9 \, \text{cm}$. 
+El panel de arriba a la derecha al tiempo $t = 0.22$~s muestra un jet con un capullo de $1.0 \times 10^9 \, \text{cm}$ de ancho. El largo del jet es ligeramente mas grande que el anterior ya que 
+mide $5.5 \times 10^9 \, \text{cm}$. El jet no es completamente colimado, debido a que forma una figura ovaloide y alcanza un ancho máximo de $0.3 \times 10^9 \, \text{cm}$ a una altura de $3.0 \times 10^9 \, \text{cm}$. 
+Se muestra una mayor turbulencia que en la Figura de la izquierda, siendo más caótico al alejarse del radio de inyección del objeto compacto. Y la densidad de mayor concentración que 
+rodea el capullo $\log_{10} \approx 3$ solo llega hasta $2.1 \times 10^9 \, \text{cm}$.
+El panel de abajo a la izquierda muestra un jet de un Colapsar al tiempo $t = 3.8$~s. Su largo es de $3.75 \times 10^{10} \, \text{cm}$. El jet es completamente colimado con un ancho de $0.05 \times 10^{10} \, \text{cm}$. 
+Pero a diferencia de los formados por la fusión de estrellas de neutrones, mantiene una densidad máxima de $\log_{10} \approx 3$ sobre todo el capullo presentando una maoy turbulencia al inicio del radio de
+inyección.
+Para el panel de abajo a la derecha se muestra, al tiempo $t = 9.60$~s, un jet con un largo de $3.75 \times 10^9 \, \text{cm}$. El ancho del jet es de $0.1 \times 10^{10} \, \text{cm}$ y muestra una mayor densidad alrededor
+del capullo con $\log_{10} \approx 3$ sobre todo al inicio del radio de inyección del jet. El capullo mide $1 \times 10^{10} \, \text{cm}$ y muestra choques de ondas de colimación en los puntos
+$1.5 \times 10^{10} \, \text{cm}$, $2.5 \times 10^{10} \, \text{cm}$ y $3.5 \times 10^{10} \, \text{cm}$.}
+
+El perfil de densidad en la región interior lo aproximan a una función de ley de potencias con un índice $n<3$ y $n \approx 1.5$ para el caso de Colapsares. Cabe destacar 
+que los modelos de los jet se asumen como no magnéticos, asi como otras limitaciones tales como los efectos de los neutrinos, el proceso r, el viento viscoso, la relatividad general, 
+la rotación estelar, el campo magnético estelar, etc.
+
+
+
+
+
 
 \begin{table}
   \begin{center}
@@ -304,6 +345,27 @@ Explica la generalidad de la de abajo a la izq y la de abajo a la derecha.
   $r_{\text{in}}$ es el radio de inyección del jet y $v_m$ la velocidad del medio ambiente.} \label{table:jet_models}
   \end{center}
 \end{table}
+
+%--------------------------------------------------------------------------
+%Ejemplo de estudio de jets en el marco de AGNs. FALTA
+%--------------------------------------------------------------------------
+{\color{blue} En la Figura \ref{fig:jet_agn} siguiente ejemplo muestra la simulación de un jet de núcleos activos de galaxias. A escalas parsec, los jets de AGN parecen estar altamente colimados con un punto brillante 
+(el núcleo) en un extremo del jet y una serie de componentes que se separan del núcleo, a veces a velocidades superlumínicas. El jet se inyecta con un radio inicial de 100 pc con velocidades de flujo 
+$v_j = 0.984$~c  y una relación de densidad típica entre el material del chorro y el entorno de $\rho_j / \rho_a = 5\times10^{-4}$. La inyección de densidad es $\rho_j = 8.3 \times 10^{-29} \, \text{erg}\,s^{-1}$ y una 
+luminosidad $10^{46} \, \text{ergs} \, \text{s}^{-1}$. Las condiciones de frontera, son la reflexión en la base del jet, la reflexión en el eje del jet y outflow al final del dominio en las direcciones axial y radial.
+En el panel izquierdo se muestra el logaritmo de densidad al tiempo t = 1.1 Myr con un largo de 900 kpc. El capullo mide aproximadamente 400 kpc y muestra pequeñas cavidades dentro de esta y turbulencia alrededor del jet.
+En el panel derecho, el cual es un reflejo del izquierdo pero tomando en cuenta la temperatura, se pueden observar las mismas propiedades que en el logaritmo y una temperatura más alta en la zona de turbulencia.}
+
+
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{Figuras/Introduccion/jet_agn.png}
+  \end{center}
+  \caption{Mapa del logaritmo de densidad (izquierda) y temperatura (derecha) al tiempo t = 1.1 Myr. Las figuras muestran una imagen reflejada alrededor del eje de simetría. Donde se inyecta un jet con un radio inicial de 100 pc 
+  con velocidades de flujo $v_j = 0.984$~c y una densidad $\rho_j = 8.3 \times 10^{-29} \, \text{erg}\,s^{-1}$.}
+  \label{fig:jet_agn}
+\end{figure}
 
 
 %----------------------------------------------------------------------------------
@@ -2715,7 +2777,7 @@ de abajo al tiempo t = 80.
 Al enfocarse en los páneles de arriba, al tiempo t = 40, se puede observar que el jet de estudio de Mignone tiene un largo 
 de $x \approx 18$ unidades, mientras que el de baja resolución tiene un largo de 19 unidades y 
 el jet de alta densidad  tiene un largo de 19 unidades por lo que podemos observar un error del 5 \% 
-con el baja resolución y del 0 \% con el de alta resolución. En el capullo esta compuesto de material de baja densidad 
+con el baja resolución y del 0 \% con el de alta resolución. El capullo esta compuesto de material de alta densidad 
 que rodea al jet, su ancho se mantiene en aproximadamente 5 unidades.
 Los choques de colimación son más grandes en el estudio de Mignone \emph{et. al.} (2005)
 que en el de baja resolución, 
