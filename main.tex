@@ -265,7 +265,8 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets tomando en cuenta distintos métodos numéricos
 %--------------------------------------------------------------------------
-En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \cite{SURJ-I, MB-HLLC-I}, en el marco de AGNS (REFS), así como en el marco de GRBs (REFs), 
+En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \cite{SURJ-I, MB-HLLC-I}, en el marco de AGNS \cite{2011ApJ...743...42P}, así como en el marco de GRBs 
+\cite{2013ApJ...767...19L}, \cite{2018PhRvL.120x1103L}, \cite{2021MNRAS.500.3511G}, \cite{2012ApJ...751...57D},
 por mencionar algunos ejemplos. Un ejemplo de simulaciones de jets relativistas se presenta en \cite{SURJ-I} donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio uniforme utilizando distintos métodos numéricos (Weno JS, Weno Z, y Weno ZA). El jet el cilíndrico, tiene una densidad de $\rho_{jet} = 10^{-2}$, una velocidad $v_{x_{\text{jet}}},v_{y_{\text{jet}}} = 0.99, 0$ y 
 una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ representa un factor de Lorentz $\gamma = 7$. El medio ambiente es estático, tiene una densidad $\rho_m = 1$ y una presión igual al del jet. 
 En la Figura \ref{fig:jet_ejemplo_2} se muestra la configuración final utilizando los tres diferentes métodos numéricos.{\color{blue} En la parte  de arriba se muestra un jet con un tamaño de 3.15 unidades, usando el método de WENO JS. El ancho del jet mide 0.2 unidades y presenta una turbulencia similar al que usa WENO Z.
@@ -289,7 +290,10 @@ siendo el más largo de los tres  y mostranto una mayor turbulencia que los 2 an
 %--------------------------------------------------------------------------
 Otro ejemplo de un simulaciones de jets relativistas es el estudio de \cite{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el 
 marco de las Colapsares \cite{JBEMGRB}. 
-En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través del medio producido tras la fusión de dos estrella de neutrones o de la envolvente del Colapsar. {\color{blue} El jet que se lanza tras la fusión de las dos estrellas de neutrones (paneles de arriba) tiene una luminosidad de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha), es lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa es de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} 
+En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través del medio producido tras la fusión de dos estrella de neutrones o de la envolvente del Colapsar. {\color{blue} El jet que se 
+lanza tras la fusión de las dos estrellas de neutrones (paneles de arriba) tiene una luminosidad de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la 
+izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha), es lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa es de $M_{m} = 0.02 M_{\odot}$ que se mueve con 
+velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} 
 para más detalles). El jet que se lanza dentro del Colapsar (paneles de abajo) tiene una luminosidad de $L_{\rm iso, 0} = 7.83 \times10^{52}$~erg~s$^{-1}$ (panel de abajo a la izquierda) o 
 de $L_{\rm iso, 0} = 1.27 \times10^{52}$~erg~s$^{-1}$ (panel de abajo a la derecha), tiene un ángulo de apertura de $\theta_0=9.2^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=22.9^{\circ}$ (panel de arriba a la derecha), 
 es lanzado desde una distancia $r_{in}=10^{9}$~cm, atraviesa un medio que está en reposo y cuya masa es de $M_{m} = 13.95 M_{\odot}$.}
@@ -340,9 +344,8 @@ la rotación estelar, el campo magnético estelar, etc.
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets en el marco de AGNs. FALTA
 %--------------------------------------------------------------------------
-%\bibitem[Perucho et al.(2011)]{2011ApJ...743...42P} Perucho, M., Quilis, V., \& Mart{\'\i}, J.-M.\ 2011, \apj, 743, 42. doi:10.1088/0004-637X/743/1/42
 
-{\color{blue} En la Figura \ref{fig:jet_agn} se muestra la evolución de un jet emitido desde un AGN a través del medio interestelar (Perucho et al. 2011). A escalas parsec, los jets de AGN parecen estar altamente colimados con un punto brillante 
+{\color{blue} En la Figura \ref{fig:jet_agn} se muestra la evolución de un jet emitido desde un AGN a través del medio interestelar \cite{2011ApJ...743...42P}. A escalas parsec, los jets de AGN parecen estar altamente colimados con un punto brillante 
 (el núcleo) en un extremo del jet y una serie de componentes que se separan del núcleo, a veces a velocidades superlumínicas. El jet se inyecta con un radio inicial de 100 pc con velocidades de flujo 
 $v_j = 0.984$~c  y una relación de densidad típica entre el material del chorro y el entorno de $\rho_j / \rho_a = 5\times10^{-4}$. La inyección de densidad es $\rho_j = 8.3 \times 10^{-29} \, \text{erg}\,s^{-1}$ y una 
 luminosidad $10^{46} \, \text{ergs} \, \text{s}^{-1}$. Las condiciones de frontera, son la reflexión en la base del jet, la reflexión en el eje del jet y outflow al final del dominio en las direcciones axial y radial.
@@ -3745,6 +3748,9 @@ Jeongbhin Seo et al 2021 ApJ 920
 
 \bibitem[De Colle et al.(2012)]{2012ApJ...751...57D} De Colle, F., Ramirez-Ruiz, E., Granot, J., et al. 2012, apj, 751, 57. doi:10.1088/0004-637X/751/1/57
 % Simulations of Gamma-Ray Burst Jets in a Stratified External Medium: Dynamics, Afterglow Light Curves, Jet Breaks, and Radio Calorimetry
+
+\bibitem[Perucho et al.(2011)]{2011ApJ...743...42P} Perucho, M., Quilis, V., \& Martí, J.-M. 2011, apj, 743, 42. doi:10.1088/0004-637X/743/1/42
+
 
 
 
