@@ -144,21 +144,25 @@ mi familia}
 
 \markboth{RESUMEN}{RESUMEN} % encabezado
 %
-Uno de los eventos más energéticos de las galaxias son los jets, los cuáles están asociados a una
+{\color{blue} Uno de los eventos más energéticos de las galaxias son los jets, los cuáles están asociados a una
 gran expulsión de material. Estos irradian energía en todo el espectro 
 electromagnético. Sus fuentes están asociadas a destellos de rayos
 gamma que se producen al fusionar objetos compactos y a núcleos activos de galaxia. 
 Dado a las condiciones es las que se originan, son prácticamente imposibles
-de recrear experimentalmente. Por lo que una buena forma de estudiarlos es simularlos
-en la computadora. En esa tesis se tratará de modelar este tipo de jets y compararlo con otros estudios. 
+de recrear experimentalmente. Una buena forma de estudiarlos es simularlos
+computacionalmente. En esa tesis se tratará de modelar este tipo de jets y compararlo con otros estudios. 
 
 Para poder modelar ese tipo de eventos se debe tomar como un fluido sin viscosidad en la que la distancia y tiempo entre las colisiones sea mayor
-que las variables macroscópicas sea mayor con lo que podremos usar las ecuaciones de la hidrodinámica que son un tipo de ecuaciones diferenciales parciales las cuales se resolverán
+que las variables macroscópicas, con lo que podremos usar las ecuaciones de la hidrodinámica que son un tipo de ecuaciones diferenciales parciales las cuales se resolverán
 a través de métodos numéricos. En este caso se eligieron 2 tipos de métodos: el de Friederich-Lax y Harten-Lax-van-Leer. Con el fin de probar el código, se realizaron 
 varias pruebas en una y dos dimensiones así como en el régimen relativista como el newtoniano. 
 Para las pruebas unidimensionales se resolvió el problema del choque en un tubo unidimensional conocido como el problema de Sod. Estas pruebas se contemplaron primero para el régimen
-newtoniano y después para el régimen relativista. Lo siguiente fue pasarlos al plano 2-dimensional. En el régimen newtoniano se resolvió el problema de 
+newtoniano y después para el régimen relativista. Lo siguiente fue pasarlos al plano 2-dimensional. En el régimen newtoniano se resolvió el problema de Sedov-Taylor el cual refiere a una onda de choque
+producida por una fuerte explosión. Este fenómeno se ve mucho en las remanentes de Supernovas. Para el caso relativista, dado que no se encontró un problema analítico a resolver, 
+se volvio a tomar las pruebas similares al tubo de choque relativista, en el cual se tomaron los perfiles radiales de la onda y se compararon con las pruebas unidimensionales.
 
+Una vez que se que se hicieron las pruebas con los problemas analíticos se procedió a realizar las pruebas del jet. Estas pruebas consistieron en
+replicar las mismas condiciones que las del estudio de Mignone \emph{et al} (2005) para después comparar la morfología y comportamiento del jet. }
 
 
 
@@ -553,7 +557,7 @@ l = n^{-1/3} \ll L
 
 \section{Ecuaciones de la hidrodinámica}
 
-Considerando una serie de elementos de volumen fijos, las ecuación  es que describen el movimiento de un fluido sin considerar efectos viscosos son:
+Considerando una serie de elementos de volumen fijos, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
 
 La conservación de masa
 \begin{equation} \label{conservación_masa_hidrodinamica}
@@ -2394,10 +2398,10 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 
 \subsection{Caso newtoniano}
 
-En esta sección se probó el código que se desarrolló en la problema de Sedov-Taylor en la que se libera una gran cantidad de energía en un volumen muy pequeño. 
+{\color{blue} En esta sección se probó el código que se desarrolló en la problema de Sedov-Taylor en la que se libera una gran cantidad de energía en un volumen muy pequeño. 
 Esto sucede en el medio interestelar cada vez que se dispara una supernova. 
 En este caso se inyecta instantáneamente una gran cantidad de energía \emph{E} en un medio ambienta de densidad uniforme $\rho_m$. 
-Posteriormente,  un frente de choque esférico se expandirá hacia el medio ambiente.
+Posteriormente,  un frente de choque esférico se expandirá hacia el medio ambiente.}
 
 \begin{table}[htbp]
   \begin{center}
@@ -2405,7 +2409,7 @@ Posteriormente,  un frente de choque esférico se expandirá hacia el medio ambi
   \hline 
   \textbf{Unidades} & \textbf{$p_s$} [$\text{dyn}/\text{cm}^2$] & 
   \textbf{$p_m$} [$\text{dyn}/\text{cm}^2$] & 
-  \textbf{$v_{xs}$}/c & \textbf{$v_{xm}$}/c  & \textbf{$v_{ys}$}/c & \textbf{$v_{ym}$}/c  & 
+  $\frac{v_{xs}}{c}$ & $\frac{v_{xm}}{c}$  & $\frac{v_{ys}}{c}$ & $\frac{v_{ym}}{c}$  & 
   \textbf{$\rho_s$} [$\text{g}/\text{cm}^3$]& 
   \textbf{$\rho_m$} [$\text{g}/\text{cm}^3$]\\ 
   \hline 
@@ -2423,13 +2427,13 @@ Posteriormente,  un frente de choque esférico se expandirá hacia el medio ambi
 \end{table}
 
 
-Los valores típicos de una supernova con energía $E_{s}  \approx  1 \times 10^{52}$ ergs estan mencionados en el Cuadro \ref{Cuadro_parametros_choque_2D_newtoniano}. Se tomó un radio de 
+{\color{blue} Los valores típicos de una supernova con energía $E_{s}  \approx  1 \times 10^{52}$ ergs estan mencionados en el Cuadro \ref{Cuadro_parametros_choque_2D_newtoniano}. Se tomó un radio de 
 2 parsec. Se usó un índice politrópico de $\Gamma = 5/3$. El tiempo de integración fue $t = 8.1 \times 10^10$ s. La Figura \ref{fig:prueba_2d_newtoniana} se muestra la evolución de la onda. El panel de arriba a la izquierda
 muestra la onda de choque al tiempo $t = 0$. El panel de arriba a la derecha muestra la evolución al tiempo $t \approx 10^{10}$ s, se puede observar un incremento del radio con $r \approx 1.6$ pc, asi como
 un incremento simétrico. Tambien se observa una sobredensidad de $\rho \approx 3.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$ en el perimetro de la onda mientras que en el resto la densidad decae a 
 $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$. En el panel de abajo, se muestra una onda mas grande con un radio de expansión $r \approx 4.5$ pc al tiempo $t = 8.1 \times 10^{10}$. Sigue manteniendo una simetría y
 una sobredensidad $\rho \approx 4.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$, lo cual muestra que va a arrastrando mas material y que decae en el centro de la onda 
-rápidamente a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$
+rápidamente a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$}
 
 
 \begin{figure}
@@ -2446,9 +2450,10 @@ rápidamente a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$
 \end{figure}
 
 
-Al graficar los cambios del radio en el tiempo de integración, se puede obtener la siguiente gráfica (ver Figura \ref{fig:Expansion_HLL_NR}). Se usó una regresión exponencial para poder modelar la expansion del radio 
+{\color{blue} Al graficar los cambios del radio en el tiempo de integración, se puede obtener la siguiente gráfica (ver Figura \ref{fig:Expansion_HLL_NR}). Se usó una regresión exponencial para poder modelar la expansion del radio 
 de la explosión como $r(t) = t^a$ donde nuestro coeficiente $a = 0.413$. Se calculó coeficiente de determinación $R^2= 0.985$ lo cual nos dice que nuestro modelo se ajusta perfectamente a los puntos de la gráfica. Los
 puntos en forma de cruz mas grandes corresponden a los radios de la Figura \ref{Cuadro_parametros_choque_2D_newtoniano}. Al comparar nuestro modelo con la teoría podemos notar una discrepancia del 5 \%.
+}
 
 
 \begin{figure}
@@ -2476,7 +2481,7 @@ adiabático $\Gamma = 4/3$, y los valores que la onda bidimensional tendrá est�
   \hline 
   \textbf{Unidades} & \textbf{$p_i$} [$\text{dyn}/\text{cm}^2$] & 
   \textbf{$p_o$} [$\text{dyn}/\text{cm}^2$] & 
-  \textbf{$v_{xi}$}/c & \textbf{$v_{xo}$}/c  & \textbf{$v_{yi}$}/c & \textbf{$v_{yo}$}/c  & 
+  $\frac{v_{xi}}{c}$ & $\frac{v_{xo}}{c}$  & $\frac{v_{yi}}{c}$ & $\frac{v_{yo}}{c}$   & 
   \textbf{$\rho_i$} [$\text{g}/\text{cm}^3$]& 
   \textbf{$\rho_o$} [$\text{g}/\text{cm}^3$]\\ 
   \hline 
