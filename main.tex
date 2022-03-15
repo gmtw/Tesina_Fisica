@@ -144,9 +144,27 @@ mi familia}
 
 \markboth{RESUMEN}{RESUMEN} % encabezado
 %
-Una bonita historia
+Uno de los eventos más energéticos de las galaxias son los jets, los cuáles están asociados a una
+gran expulsión de material. Estos irradian energía en todo el espectro 
+electromagnético. Sus fuentes están asociadas a destellos de rayos
+gamma que se producen al fusionar objetos compactos y a núcleos activos de galaxia. 
+Dado a las condiciones es las que se originan, son prácticamente imposibles
+de recrear experimentalmente. Por lo que una buena forma de estudiarlos es simularlos
+en la computadora. En esa tesis se tratará de modelar este tipo de jets y compararlo con otros estudios. 
+
+Para poder modelar ese tipo de eventos se debe tomar como un fluido sin viscosidad en la que la distancia y tiempo entre las colisiones sea mayor
+que las variables macroscópicas sea mayor con lo que podremos usar las ecuaciones de la hidrodinámica que son un tipo de ecuaciones diferenciales parciales las cuales se resolverán
+a través de métodos numéricos. En este caso se eligieron 2 tipos de métodos: el de Friederich-Lax y Harten-Lax-van-Leer. Con el fin de probar el código, se realizaron 
+varias pruebas en una y dos dimensiones así como en el régimen relativista como el newtoniano. 
+Para las pruebas unidimensionales se resolvió el problema del choque en un tubo unidimensional conocido como el problema de Sod. Estas pruebas se contemplaron primero para el régimen
+newtoniano y después para el régimen relativista. Lo siguiente fue pasarlos al plano 2-dimensional. En el régimen newtoniano se resolvió el problema de 
+
+
+
+
+
 %
-%%%%%%%%%%%%%%%  CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%%%%%%%%%%%%%%%  CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %----------------------------------------------------------------------------------
@@ -2933,6 +2951,9 @@ para el medio inversamente cuadratico en correspondencia con el inversamente lin
 El objetivo principal de esta tesis fue construir un código que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann, realizar pruebas numéricas para poder verificar que tanto el código relativista como el newtoniano funcionan correctamente. Finalmente se reprodujo el jet bidimensional relativista en un medio constante de Mignone \emph{et. al.} 2007 y se estudió 
 como un medio cuya densidad disminuye en función de la distancia ($\rho \propto R^{-1}$ y $\rho \propto R^{-2}$) para observar como se afecta la evolución del jet.
 
+{\color{blue} En astrofísica, los eventos masivos se pueden
+modelar como un fluido, en este caso se pueden usar las
+ecuaciones de la hidrodinámica para poder simular su comportamiento y hacer predicciones sobre la misma.} 
 Dado que los jets astrofísicos, cuya evolución es descrita por la hidrodinámica pueden ser eventos muy violentos en los cuales se alcanzan velocidades cercanas a la de la luz, 
 las ecuaciones de la hidrodinámica 
 deberán tomar en cuenta los efectos de la relatividad especial. Debido a lo anterior, el código numérico que se construyó con un módulo newtoniano y uno relativista 
@@ -2959,20 +2980,20 @@ pero se mantiene la misma dimensión, el método de Lax falla
 por completo, sin importar la resolución que se establezca, donde se encontraron errores graves, por lo que no se pudo hacer una comparación entre ambos métodos. A diferencia del caso newtoniano, 
 el relativista no presenta dificultades en las discontinuidades de contacto y tiene una buena aproximación al caso analítico de onda donde las densidades son distintas. Para el caso donde las 
 velocidades son distintas, la aproximación de HLL para el caso analítico, fue casi igual para resoluciones altas y bajas por lo que  HLL para el régimen unidimensional relativista  
-hace un correcto modelaje de las ecuación  es de la hidrodinámica relativista. En resumen, para efectos de costo computacional, el método de Lax se recomienda usar ya que es ligeramente mas rápido 
+hace un correcto modelaje de las ecuaciones de la hidrodinámica relativista. En resumen, para efectos de costo computacional, el método de Lax se recomienda usar ya que es ligeramente mas rápido 
 que HLL, pero en el régimen relativista HLL es el único que muestra resultados viables.
 
 %Ojo Julio
-{\color{blue} ACA MENIOCNARIA LAS PRUEBAS BIDIMENCIONALES NEWTONIANAS} {\color{red} No se hicieron pruebas bidimensionales newtonianas}
 
 %Ojo Julio
-{\color{blue} LUEGO MENIOCNARIA LAS PRUEBAS BIDIMENCIONALES RELATIVISTAS}
 
-En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod, {\color{red} se descartó el método de Lax y el régimen newtoniano}, ya que lo que importa es que el código pueda 
+
+En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod. {\color{blue} Se uso el problema de Sedov-Taylor para probar el código en dos dimensiones. Este problema consiste en resolver una onda de choque con ciertos valores de 
+densidad y energía dentro de un medio ambiente con distintos parámetros. Se usaron valores típicos de una supernova para para observar el crecimiento del radio de la onda en función del tiempo. El código tuvo éxito ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado en el capítulo 2}. Ya que lo que importa es que el código pueda 
 reproducir flujos relativistas. Al comparar los perfiles de densidad y 
 comparándose con los unidimensionales los valores de la densidad vienen teniendo el mismo resultado. Por lo que mi código no tiene una preferencia de dirección.
 
-Cuando se comparón los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico se mostró que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, 
+Cuando se compararón los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico se mostró que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, 
 sobre todo en la velocidad donde se observa que salvo en las discontinuidades de choque y de contacto los valores son los mismos que el el analítico, mientras que en la parte unidimensional mantiene valores mas alejados al analítico. 
 Por lo tanto el código en 2 dimensiones es mejor que cuando lo presentamos en el caso unidimensional y por lo tanto el código se puede usar para hacer simulaciones de jet que se mueven a  velocidades relativistas.
 
