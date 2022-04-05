@@ -144,7 +144,12 @@ mi familia}
 
 \markboth{RESUMEN}{RESUMEN} % encabezado
 %
-{\color{red}Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con velocidades que van desde el límite no relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades ultra relativistas. Independientemente de si los jets provienen de los GNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. Una buena forma de estudiar los jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) y relativistas-hidrodinámicas (RHD). La intención de esta tesis es construir un código numérico HD y RHD para así poder estudiar este tipo de jets.}
+Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con mucha energía, 
+y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con velocidades que van desde el límite no 
+relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades ultra relativistas. 
+Independientemente de si los jets provienen de los GNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. Una buena forma de estudiar los 
+jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) y relativistas-hidrodinámicas (RHD). La intención de esta tesis es construir un código numérico HD y RHD para así poder estudiar este tipo 
+de jets.
 
 %----------------------------------------------------------------------------------------------
 %Falta que esto tenga la mismo cronología que los objetivos:
@@ -160,14 +165,28 @@ mi familia}
 %  
 %  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de Mignone \emph{et al} 2005, y se compararán los resultado obtenidos.
 %
-%  \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un medio constante.
+%  \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un medio 
+%         constante.
 %----------------------------------------------------------------------------------------------
 
-{\color{orange}Para poder modelar ese tipo de eventos se debe tomar como un fluido sin viscosidad en la que la distancia y tiempo entre las colisiones sea mayor que las variables macroscópicas, con lo que podremos usar las ecuaciones de la hidrodinámica que son un tipo de ecuaciones diferenciales parciales las cuales se resolverán a través de métodos numéricos. En este caso se eligieron 2 tipos de métodos: el de Friederich-Lax y Harten-Lax-van-Leer. Con el fin de probar el código, se realizaron varias pruebas en una y dos dimensiones así como en el régimen relativista como el newtoniano. Para las pruebas unidimensionales se resolvió el problema del choque en un tubo unidimensional conocido como el problema de Sod. Estas pruebas se contemplaron primero para el régimen newtoniano y después para el régimen relativista. Lo siguiente fue pasarlos al plano 2-dimensional. En el régimen newtoniano se resolvió el problema de Sedov-Taylor el cual refiere a una onda de choque producida por una fuerte explosión. Este fenómeno se ve mucho en las remanentes de Supernovas. Para el caso relativista, dado que no se encontró un problema analítico a resolver, 
-se volvió a tomar las pruebas similares al tubo de choque relativista, en el cual se tomaron los perfiles radiales de la onda y se compararon con las pruebas unidimensionales.
+{\color{blue}Para poder modelar ese tipo de eventos se usarón las ecuaciones de la hidrodinámica que son un tipo de ecuaciones diferenciales parciales. Estas dependen de los flujos y de unas funciones llamadas conservadas
+que a su vez dependen de la conservación de  masa, momento y energía. Dado que son un sistemas de ecuaciones que no es posible resolver analíticamente se implementaron dos métodos numéricos para poder resolverlos
+las cuales se resolverán a través de métodos numéricos.}
+{\color{red} En este caso se eligieron el métodos de Friederich-Lax y Harten-Lax-van-Leer que son métodos basados en diferencias finítas}. 
+{\color{blue} Para las pruebas unidimensionales se resolvió el problema del choque en un 
+tubo unidimensional conocido como el problema de Sod. Estas pruebas se contemplaron primero para el régimen newtoniano y después para el régimen relativista}. 
+{\color{red} Para el caso bidimensional, en el régimen 
+newtoniano se resolvió el problema de Sedov-Taylor el cual refiere a una onda de choque producida por una fuerte explosión. Este fenómeno se ve mucho en las remanentes de Supernovas. Para el caso relativista, dado que no 
+se encontró un problema analítico a resolver, se tomaron pruebas similares al tubo de choque relativista, en el cual se tomaron los perfiles radiales de la densidad de la onda y se compararon con las 
+pruebas unidimensionales.}
 
-Una vez que se que se hicieron las pruebas con los problemas analíticos se procedió a realizar las pruebas del jet. Estas pruebas consistieron en
-replicar las mismas condiciones que las del estudio de Mignone \emph{et al} (2005) para después comparar la morfología y comportamiento del jet. }
+{\color{blue} Una vez que se que se hicieron las pruebas con los problemas analíticos se procedió a realizar las pruebas del jet. Estas pruebas consistieron en
+replicar las mismas condiciones que las del estudio de Mignone \emph{et al} (2005) para después comparar la morfología y comportamiento del jet. El jet de esta tesis no mostró la misma viscosidad que el de el estudio de 
+Mignone.}
+
+{\color{red} Por último, se reprodujo el mismo jet en distintos medios que decaían como $x^{-\alpha}$, donde la variable \emph{x} hace referencia a la posición y $\alpha$ es una constante que esta entre 0 y 2. Se observó 
+como el jet era mas rápido conforme aumentaba $\alpha$, asi como la disminución de su densidad.}
+
 
 %%%%%%%%%%%%%%%  CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -192,12 +211,17 @@ estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquasare
 %----------------------------------------------------------------------------------
 % Acá mete lo de aguayo de los jets
 
-{\color{red} Los jets son fenómenos naturales en los que la materia, la energía y otras cantidades físicas (como el flujo magnético) se expulsan en un chorro colimado a través de un medio. Son un evento astrofísico transitorio común ya que ocurren en una amplia gama de entornos astrofísicos (desde objetos estelares hasta objetos extragalácticos). Las velocidades de los jets van desde unos pocos $m \cdot s^{-1}$ hasta velocidades cercanas a la de la luz ($c$), y tienen tamaños que van desde unas pocas unidades astronómicas hasta kiloparsecs.
+Los jets son fenómenos naturales en los que la materia, la energía y otras cantidades físicas (como el flujo magnético) se expulsan en un chorro colimado a través de un medio. 
+Son un evento astrofísico transitorio común ya que ocurren en una amplia gama de entornos astrofísicos (desde objetos estelares hasta objetos extragalácticos). Las velocidades de los jets van desde unos pocos 
+$m \cdot s^{-1}$ hasta velocidades cercanas a la de la luz ($c$), y tienen tamaños que van desde unas pocas unidades astronómicas hasta kiloparsecs.
 
-Los jets relativistas son impulsados por la acreción de un objeto compacto (por lo general estrellas de neutrones o desde un hoyo negro). Pueden ser lanzados desde un hoyo negro súper masivo localizado en el centro de una galaxia activa (AGN) \cite{2019ARA&A..57..467B}, desde un hoyonegro como en las binarias de rayos X \cite{2020ApJ...895L..31E}. Los destellos de rayos gamma (GRBs) cortos, que resultan de la colisión de dos sistemas binarios de estrellas de neutrones \cite{2021MNRAS.506.3483P}, y los GRBs largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de vida \cite{2022MNRAS.509.5964S}, también emiten jets relativistas.
-
-Aunque la presencia de un objeto central masivo y un disco de acreción de gas girando a su alrededor es el componente principal en todos los escenarios astrofísicos donde se encuentran jets, el campo magnético y su interacción con todo el sistema parece ser un componente fundamental en la necesidad de estas eyecciones. Esto permite la formación y estabilidad del disco, así como el lanzamiento y colimación del jet. Los procesos más aceptados para el lanzamiento del jet son los mecanismos magnetorrotacionales propuestos 
-por \cite{1977MNRAS.179..433B} y \cite{1982MNRAS.199..883B}}
+Los jets relativistas son impulsados por la acreción de un objeto compacto (por lo general estrellas de neutrones o desde un hoyo negro). Pueden ser lanzados desde un hoyo negro súper masivo localizado en el 
+centro de una galaxia activa (AGN) \cite{2019ARA&A..57..467B}, desde un hoyo negro como en las binarias de rayos X \cite{2020ApJ...895L..31E}. Los destellos de rayos gamma (GRBs) cortos, que resultan de la colisión 
+de dos sistemas binarios de estrellas de neutrones \cite{2021MNRAS.506.3483P}, y los GRBs largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de 
+vida \cite{2022MNRAS.509.5964S}, también emiten jets relativistas.
+Aunque la presencia de un objeto central masivo y un disco de acreción de gas girando a su alrededor es el componente principal en todos los escenarios astrofísicos donde se encuentran jets, el campo magnético y su 
+interacción con todo el sistema parece ser un componente fundamental en la necesidad de estas eyecciones. Esto permite la formación y estabilidad del disco, así como el lanzamiento y colimación del jet. Los procesos más 
+aceptados para el lanzamiento del jet son los mecanismos magnetorrotacionales propuestos por \cite{1977MNRAS.179..433B} y \cite{1982MNRAS.199..883B}
 %----------------------------------------------------------------------------------
 
 
@@ -206,20 +230,12 @@ que gira ortogonal al eje de rotación del agujero negro debido a la conservaci�
 Las propiedades de los jets también abarcan rangos muy amplios. Un caso particular son cuando los jets de AGN pueden permanecer bien colimados a distancias de cientos de kiloparsecs. %!The content of astrophysical jets
 
 
-%\begin{figure} 
-%  %!Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II Sky-Map 2007-07-03 - 2007-07-11
-%    \centering
-%      \includegraphics[width=0.3\textwidth]{Figuras/Introduccion/Schematic-picture-of-an-AGN-with-a-jet-Different-types-of-accelerated-particles-and.png}
-%    \caption{Figura esquemática de un un AGN con un jet el cual contiene diferentes tipos de particulas aceleradas debido al campo magnético producido por el disco de acreción}
-%    \label{fig:Schematic-picture-of-an-AGN-with-a-jet-Different-types-of-accelerated-particles-and}
-%\end{figure}
+
 
 
 Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos.
 Estos consisten en la emisión de energías altas como los rayos $\gamma$ y los rayos X, asi como energías bajas como el óptico, el radio, entre otros \cite{PGRB-piran}. %!Piran2005
 La fusión de objetos compactos es el modelo progenitor más atractivo.
-% Las categorías de los GRBs largos y cortos son aproximadamente 75\% y 25\% de la población \cite{GRB:PPP}. %!Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
-% La interacción de flujos de salida relativistas con el medio ambiente que lo rodea produce emisión sincrotrónica que va desde la banda de las ondas de radio a los rayos X.
 Los jets de los  GRBs son uno de los eventos que más libera energía en el universo y su energía liberada es del orden de $10^{52}$ ergs \cite{Berger:2013jza}.
 Se infiere que los jets relativistas de los blázares tienen un factor de Lorentz de hasta $\Gamma \thicksim 50$. 
 Pero en el modelo más ampliamente aceptado para GRB, una explosión altamente enfocada asociada con la formación de un agujero negro impulsa jets relativistas colimados con $\Gamma \lesssim 400$ 
@@ -252,13 +268,7 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
 
 \end{table}
   
-%\begin{figure} 
-  %!fuente de la imagen: https://imagine.gsfc.nasa.gov/science/objects/bursts1.html
-%    \centering
-%      \includegraphics[width=0.5\textwidth]{Figuras/Introduccion/Distribucion_angulo_apertura.png}
-%    \caption{Distribucion de los ángulos de apertura para GRBs largos (azul) y cortos (rojos) basados en su emisión tardía y su \emph{jet break}}
-%    \label{fig:Distribucion_angulo_apertura}
-%\end{figure}
+
   
   
 %--------------------------------------------------------------------------
@@ -270,7 +280,10 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
 %--------------------------------------------------------------------------
 En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \cite{SURJ-I, MB-HLLC-I}, en el marco de AGNS \cite{2011ApJ...743...42P}, así como en el marco de GRBs \cite{2013ApJ...767...19L}, \cite{2018PhRvL.120x1103L}, \cite{2021MNRAS.500.3511G}, \cite{2012ApJ...751...57D}, por mencionar algunos ejemplos. Un ejemplo de simulaciones de jets relativistas se presenta en \cite{SURJ-I} donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio uniforme utilizando distintos métodos numéricos (Weno JS, Weno Z, y Weno ZA). El jet es cilíndrico, tiene una densidad de $\rho_{jet} = 10^{-2}$, una velocidad $v_{x_{\text{jet}}},v_{y_{\text{jet}}} = 0.99, 0$ y 
 una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ representa un factor de Lorentz $\gamma = 7$. El medio ambiente es estático, tiene una densidad $\rho_m = 1$ y una presión igual al del jet. 
-{\color{red} En la Figura \ref{fig:jet_ejemplo_2} se muestra la configuración final utilizando los tres diferentes métodos numéricos (arriba: Weno JS, en medio: Weno Z, y abajo: Weno ZA). Usando el método de WENO JS el jet alcanza una longitud de $\sim$3.15 unidades y presenta turbulencia. Para el caso de WENO Z el jet una longitud un poco mayor con $\sim$3.2 unidades y presenta una turbulencia muy similar a la de WENO JSs. Para el caso de WENO ZA, el jet presenta mayor longitud que en los dos casos previos con $\sim$3.21 unidades y presenta mayor turbulencia que los 2 anteriores. Queda claro que los métodos numéricos que se utilizan para seguir a los jets afectan la evolución y morfología del mismo.}
+En la Figura \ref{fig:jet_ejemplo_2} se muestra la configuración final utilizando los tres diferentes métodos numéricos (arriba: Weno JS, en medio: Weno Z, y abajo: Weno ZA). Usando el método de WENO JS el 
+jet alcanza una longitud de $\sim$3.15 unidades y presenta turbulencia. Para el caso de WENO Z el jet una longitud un poco mayor con $\sim$3.2 unidades y presenta una turbulencia muy similar a la de WENO JSs. 
+Para el caso de WENO ZA, el jet presenta mayor longitud que en los dos casos previos con $\sim$3.21 unidades y presenta mayor turbulencia que los 2 anteriores. Queda claro que los métodos numéricos que se utilizan para 
+seguir a los jets afectan la evolución y morfología del mismo.
 
 \begin{figure}
     \begin{center}
@@ -283,7 +296,13 @@ una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ re
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas en el marco de AGNs.
 %--------------------------------------------------------------------------
-{\color{red} En la Figura \ref{fig:jet_agn} se muestra la evolución de un jet relativista emitido desde un AGN y el cual se mueve a través del medio interestelar \cite{2011ApJ...743...42P}. El jet se inyecta desde un radio inicial de 100 pc con $\rho_j = 8.3 \times 10^{-29} \, \text{erg}\,s^{-1}$ y $v_j = 0.984$~c (y una relación de densidad entre el material del jet y el entorno de $\rho_j / \rho_a = 5\times10^{-4}$). De este modo, el jet se lanza con una luminosidad de $10^{46} \, \text{ergs} \, \text{s}^{-1}$. Las condiciones de frontera, son la reflexión en la base del jet, la reflexión en el eje del jet y outflow al final del dominio en las direcciones axial y radial. En el panel izquierdo se muestra el logaritmo de densidad al tiempo t = 1.1 Myr con un largo de 900 kpc. El capullo mide aproximadamente 400 kpc, tiene una densidad de partículas del orden de $\sim10^{-28}-10^{30} cm^{-3}$. Además, se tiene turbulencia y hay pequeñas cavidades dentro del capullo con $\sim10^{-32} cm^{-3}$. En el panel derecho, el cual es un reflejo del izquierdo pero tomando en cuenta la temperatura. Los patrones de turbulencia también son visibles y las zonas menos densas son las más calientes (alcanzando $\sim 10^9$K). A escalas parsec, los jets de los AGNs siguen altamente colimados y se mueven a velocidades superlumínicas.}
+En la Figura \ref{fig:jet_agn} se muestra la evolución de un jet relativista emitido desde un AGN y el cual se mueve a través del medio interestelar \cite{2011ApJ...743...42P}. El jet se inyecta desde un 
+radio inicial de 100 pc con $\rho_j = 8.3 \times 10^{-29} \, \text{erg}\,s^{-1}$ y $v_j = 0.984$~c (y una relación de densidad entre el material del jet y el entorno de $\rho_j / \rho_a = 5\times10^{-4}$). De este modo, 
+el jet se lanza con una luminosidad de $10^{46} \, \text{ergs} \, \text{s}^{-1}$. Las condiciones de frontera, son la reflexión en la base del jet, la reflexión en el eje del jet y outflow al final del dominio en 
+las direcciones axial y radial. En el panel izquierdo se muestra el logaritmo de densidad al tiempo t = 1.1 Myr con un largo de 900 kpc. El capullo mide aproximadamente 400 kpc, tiene una densidad de partículas del 
+orden de $\sim10^{-28}-10^{30} cm^{-3}$. Además, se tiene turbulencia y hay pequeñas cavidades dentro del capullo con $\sim10^{-32} cm^{-3}$. En el panel derecho, el cual es un reflejo del izquierdo pero tomando en 
+cuenta la temperatura. Los patrones de turbulencia también son visibles y las zonas menos densas son las más calientes (alcanzando $\sim 10^9$K). A escalas parsec, los jets de los AGNs siguen altamente colimados y 
+se mueven a velocidades superlumínicas.
 
 \begin{figure}
   \begin{center}
@@ -297,17 +316,37 @@ una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ re
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas en el marco de GRBs.
 %--------------------------------------------------------------------------
-{\color{red} Otro ejemplo de un simulaciones de jets relativistas es el estudio de \cite{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el  marco de las Colapsares \cite{JBEMGRB}. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o a través de la envolvente de un Colapsar (paneles de abajo). El jet que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones tiene una luminosidad de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, tiene un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha), es lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa es de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} para más detalles). El jet que se lanza dentro del Colapsar tiene una luminosidad de $L_{\rm iso, 0} = 7.83 \times10^{52}$~erg~s$^{-1}$ y ángulo de apertura de $\theta_0=9.2^{\circ}$ (panel de abajo a la izquierda), o una luminosidad de $L_{\rm iso, 0} = 1.27 \times10^{52}$~erg~s$^{-1}$ y ángulo de apertura de $\theta_0=22.9^{\circ}$ (panel de arriba a la derecha), y son lanzados desde una distancia $r_{in}=10^{9}$~cm, atravesando un medio que está en reposo y cuya masa es de $M_{m} = 13.95 M_{\odot}$.}
+Otro ejemplo de simulaciones de jets relativistas es el estudio de \cite{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el  marco 
+de los Colapsares \cite{JBEMGRB}. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
+a través de la envolvente de un Colapsar (paneles de abajo). El jet que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones tiene una luminosidad 
+de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha). Es 
+lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} para más detalles). 
+El jet que se lanza dentro del Colapsar tiene una luminosidad de $L_{\rm iso, 0} = 7.83 \times10^{52}$~erg~s$^{-1}$ y ángulo de apertura de $\theta_0=9.2^{\circ}$ (panel de abajo a la izquierda), o una 
+luminosidad de $L_{\rm iso, 0} = 1.27 \times10^{52}$~erg~s$^{-1}$ y ángulo de apertura de $\theta_0=22.9^{\circ}$ (panel de abajo a la derecha), y son lanzados desde una distancia $r_{in}=10^{9}$~cm, 
+atravesando un medio que está en reposo y cuya masa es de $M_{m} = 13.95 M_{\odot}$.
 \begin{figure} 
   \centering
     \includegraphics[width=0.7\textwidth]{Figuras/Introduccion/jet_models.png}
   \caption{Mapa de densidad de el jet, donde los paneles de arriba muestran ambientes de una fusión de estrellas de neutrones mientras que los paneles de abajo muestran para los Colapsares.}
   \label{fig:jet_models}
 \end{figure}
-{\color{red} El panel de arriba a la izquierda de la Figura~\ref{fig:jet_models} muestra que para el tiempo $t = 0.22$~s el jet relativista y colimado ha avanzado una distancia de $3.75 \times 10^9 \, \text{cm}$ a través del medio producido tras la fusión de dos estrellas de neutrones. Para el tiempo final el capullo tiene un ancho de $3.75 \times 10^9 \, \text{cm}$. El capullo tiene una densidad que se encuentra dentro de $\sim10^{-1}-10^{2} g~cm^{-3}$. También se observa el jet en el centro del capullo en el cual la densidad disminuye a valores cercanos a $\sim 10^{-1}-10^{3} g~cm^{-3}$. Hay una mayor turbulencia cerca del radio de inyección y disminuye conforme el jet se va alejando. El jet se mantiene con un ancho aproximado de jet de $\sim 0.05 \times 10^9 \, \text{cm}$. El panel de arriba a la derecha muestra como el jet relativista menos colimado tarda casi el doble del tiempo en llegar a la misma distancia que el caso anterior (el jet colimado). Para el tiempo $t = 0.40$~s el capullo tiene $\sim 1.0 \times 10^9 \, \text{cm}$ de ancho. El jet no es completamente colimado, debido a que forma una figura ovaloide y alcanza un ancho máximo de $0.3 \times 10^9 \, \text{cm}$ a una altura de $3.0 \times 10^9 \, \text{cm}$. El jet menos colimado muestra una mayor turbulencia (comparado con el más colimado), y la turbulencia es más caótica conforme el jet se aleja del radio de inyección. La densidad del capullo es menos densa ya que hay más regiones con densidades $\sim 10^{-1} g~cm^{-3}$. El jet es más ancho y tiene densidades $\sim 10^{-3} g~cm^{-3}$.
+El panel de arriba a la izquierda de la Figura~\ref{fig:jet_models} muestra que para el tiempo $t = 0.22$~s el jet relativista y colimado ha avanzado una distancia de $3.75 \times 10^9 \, \text{cm}$ a través 
+del medio producido tras la fusión de dos estrellas de neutrones. Para el tiempo final el capullo tiene un ancho de $3.75 \times 10^9 \, \text{cm}$. El capullo tiene una densidad que se encuentra dentro 
+de $\sim10^{-1}-10^{2} g~cm^{-3}$. También se observa el jet en el centro del capullo en el cual la densidad disminuye a valores cercanos a $\sim 10^{-1}-10^{3} g~cm^{-3}$. Hay una mayor turbulencia cerca del radio de 
+inyección y disminuye conforme el jet se va alejando. El jet se mantiene con un ancho aproximado de jet de $\sim 0.05 \times 10^9 \, \text{cm}$. El panel de arriba a la derecha muestra como el jet relativista menos 
+colimado tarda casi el doble del tiempo en llegar a la misma distancia que el caso anterior (el jet colimado). Para el tiempo $t = 0.40$~s el capullo tiene $\sim 1.0 \times 10^9 \, \text{cm}$ de ancho. El jet no es 
+completamente colimado, debido a que forma una figura ovaloide y alcanza un ancho máximo de $0.3 \times 10^9 \, \text{cm}$ a una altura de $3.0 \times 10^9 \, \text{cm}$. El jet menos colimado muestra una mayor 
+turbulencia (comparado con el más colimado), y la turbulencia es más caótica conforme el jet se aleja del radio de inyección. La densidad del capullo es menos densa ya que hay más regiones con densidades 
+$\sim 10^{-1} g~cm^{-3}$. El jet es más ancho y tiene densidades $\sim 10^{-3} g~cm^{-3}$.
 
-El panel de abajo a la izquierda de la Figura~\ref{fig:jet_models} muestra el tiempo final de la evolución de un jet relativista y colimado a través de un Colapsar al tiempo $t = 3.8$~s. Su largo es de $3.75 \times 10^{10} \, \text{cm}$. El jet es completamente colimado con un ancho de $0.05 \times 10^{10} \, \text{cm}$. A diferencia de los jets moviéndose a través de un medio formado tras la fusión de estrellas de neutrones, el borde del capullo tiene densidades que alcanzan $\sim10^{2}-10^{3} g~cm^{-3}$, además el capullo presenta más turbulencia conforme incrementa la distancia desde el radio de inyección. El jet tiene densidades del orden de $\sim 10^{-2}-10^{-1} g~cm^{-3}$. El panel de abajo a la derecha muestra nuevamente como jets menos colimados tardan más tiempo en llegar a la misma posición que un jet colimado. Ene este caso el jet menos colimado requiere de $t = 9.60$~s para llegar a jet con un largo de $\sim 3.75 \times 10^9 \, \text{cm}$. El ancho del jet es de $0.1 \times 10^{10} \, \text{cm}$ y presenta una mayor densidad alrededor
-del capullo con $\sim10^{3} g~cm^{-3}$. El capullo mide $1 \times 10^{10} \, \text{cm}$ y muestra choques de ondas de colimación en los puntos $1.5 \times 10^{10} \, \text{cm}$, $2.5 \times 10^{10} \, \text{cm}$ y $3.5 \times 10^{10} \, \text{cm}$. Queda claro como las características del jet (luminosidad, ángulo de apertura, etc) así como las condiciones del medio a través del cual el o los jets se mueven afectan la evolución y morfología del mismo.}
+El panel de abajo a la izquierda de la Figura~\ref{fig:jet_models} muestra el tiempo final de la evolución de un jet relativista y colimado a través de un Colapsar al tiempo $t = 3.8$~s. Su largo es de
+$3.75 \times 10^{10} \, \text{cm}$. El jet es completamente colimado con un ancho de $0.05 \times 10^{10} \, \text{cm}$. A diferencia de los jets moviéndose a través de un medio formado tras la fusión de estrellas de 
+neutrones, el borde del capullo tiene densidades que alcanzan $\sim10^{2}-10^{3} g~cm^{-3}$, además el capullo presenta más turbulencia conforme incrementa la distancia desde el radio de inyección. El jet tiene densidades 
+del orden de $\sim 10^{-2}-10^{-1} g~cm^{-3}$. El panel de abajo a la derecha muestra nuevamente como jets menos colimados tardan más tiempo en llegar a la misma posición que un jet colimado. En este caso el jet menos 
+colimado requiere de $t = 9.60$~s para llegar a jet con un largo de $\sim 3.75 \times 10^9 \, \text{cm}$. El ancho del jet es de $0.1 \times 10^{10} \, \text{cm}$ y presenta una mayor densidad alrededor
+del capullo con $\sim10^{3} g~cm^{-3}$. El capullo mide $1 \times 10^{10} \, \text{cm}$ y muestra choques de ondas de colimación en los puntos $1.5 \times 10^{10} \, \text{cm}$, $2.5 \times 10^{10} \, \text{cm}$ 
+y $3.5 \times 10^{10} \, \text{cm}$. Queda claro como las características del jet (luminosidad, ángulo de apertura, etc) así como las condiciones del medio a través del cual el o los jets se mueven afectan la 
+evolución y morfología del mismo.
 
 \begin{table}
   \begin{center}
@@ -329,18 +368,22 @@ del capullo con $\sim10^{3} g~cm^{-3}$. El capullo mide $1 \times 10^{10} \, \te
 %----------------------------------------------------------------------------------
 \section{Estudio de un jet relativista en dos dimensiones (Mignone et al. 2005).}
 %----------------------------------------------------------------------------------
-{\color{red}Un de los objetivos de esta tesis es crear un código HD y RHD y lograr estudiar la evolución de un jet RHD. Para lo anterior se va a buscar reproducir los resultados del estudio de Mignone \emph{et al} 2005\cite{MB-HLLC-I} en que estudiaron la evolución de un jet relativista en dos dimensiones (ver Figura \ref{fig:jet_mignone}). 
+Uno de los objetivos de esta tesis es crear un código HD y RHD y lograr estudiar la evolución de un jet RHD. Para lo anterior se va a buscar reproducir los resultados del estudio de Mignone \emph{et al} 
+2005\cite{MB-HLLC-I} en que estudiaron la evolución de un jet relativista en dos dimensiones (ver Figura \ref{fig:jet_mignone}). 
 
-Los valores que usó para poder simular el jet relativista 2D (axisimétrico y en coordenadas cilíndrica), fueron los siguientes:}
+Los valores que usó para poder simular el jet relativista 2D (axisimétrico y en coordenadas cilíndrica), fueron los siguientes:
 \begin{equation}
   \left(\rho, v_{r}, v_{z}, p\right)=\left\{\begin{array}{ll}
   \left(0.1,0,0.99,10^{-2}\right) & \text { para } r, z<1 \\
   \left(10,0,0,10^{-2}\right) & \text { caso contrario, }
   \end{array}\right.
 \end{equation}
-donde $\rho$ es la densidad, $v_r$ es la velocidad radial, $v_z$ es la velocidad sobre el eje z y $p$ es la presión. El índice politrópico que usaron fue $\Gamma = 5/3$ con un número de Courant $Co = 0.5$. Los métodos que emplearon fue el método de HLL y HLLC (Para mas información ver la sección \ref{secc:HLL}). El tiempo de integración fue de $t = 80$ con condiciones de frontera \emph{outflow} excepto donde se inyecta el jet. La velocidad de avance promedio  del jet fue de 0.39 con una resolución de 400X750 pixeles. 
+donde $\rho$ es la densidad, $v_r$ es la velocidad radial, $v_z$ es la velocidad sobre el eje z y $p$ es la presión. El índice politrópico que usaron fue $\Gamma = 5/3$ con un número de Courant $Co = 0.5$. 
+Los métodos que emplearon fue el método de HLL y HLLC (Para mas información ver la sección \ref{secc:HLL}). El tiempo de integración fue de $t = 80$ con condiciones de frontera \emph{outflow} excepto donde se 
+inyecta el jet. La velocidad de avance promedio  del jet fue de 0.39 con una resolución de 400X750 pixeles. 
 
-{\color{red}La figura de arriba de \ref{fig:jet_mignone} muestra la morfología del jet a t=40, mientras que la de abajo a t=80. En ambas figuras el panel del arriba (i.e. el dominio positivo en Y) muestra el caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, el panel del abajo (i.e. el dominio negativo en Y) muestra el caso cuando se uso el esquema HLL.}
+La figura de arriba de \ref{fig:jet_mignone} muestra la morfología del jet a t=40, mientras que la de abajo a t=80. En ambas figuras el panel del arriba (i.e. el dominio positivo en Y) muestra el 
+caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, el panel del abajo (i.e. el dominio negativo en Y) muestra el caso cuando se uso el esquema HLL.
 \begin{figure}
   \begin{center}
     \includegraphics[width=0.5\textwidth]{Figuras/Introduccion/jet_mignone.png}
@@ -351,13 +394,16 @@ donde $\rho$ es la densidad, $v_r$ es la velocidad radial, $v_z$ es la velocidad
   \label{fig:jet_mignone}
 \end{figure}
 
-{\color{red}El panel de arriba muestra como para t=40, cuando se usa el esquema HLLC, el jet tiene un tamaño sobre el eje radial de $\sim$19 unidades y un ancho de $\sim$5 unidades, mientras el capullo tiene un ancho máximo de $\sim$7 unidades. Para el caso, en el que se usa HLL, el jet tiene un tamaño de $\sim$18 unidades, un grosor de $\sim$5 unidades, y el capullo alcanza una anchura de $\sim$4 unidades. El caso HLL presenta una menor turbulencia con respecto a HLLC.
-Para el panel de abajo (a t=80), en el caso de HLLC, presenta un largo de $\sim$32 unidades, un ancho es de $\sim$7 unidades y su capullo tiene una anchura de $\sim$11 unidades. Para el caso en que se usa HLL, el largo y ancho miden $\sim$31.5 y $\sim$8 respectivamente, y el capullo presenta un tamaño de $\sim$11.5 unidades. Nuevamente el caso HLL presenta menos turbulencia que el caso HLLC.}
+El panel de arriba muestra como para t=40, cuando se usa el esquema HLLC, el jet tiene un tamaño sobre el eje radial de $\sim$19 unidades y un ancho de $\sim$5 unidades, mientras el capullo tiene un 
+ancho máximo de $\sim$7 unidades. Para el caso, en el que se usa HLL, el jet tiene un tamaño de $\sim$18 unidades, un grosor de $\sim$5 unidades, y el capullo alcanza una anchura de $\sim$4 unidades. El caso HLL presenta 
+una menor turbulencia con respecto a HLLC.
+Para el panel de abajo (a t=80), en el caso de HLLC, presenta un largo de $\sim$32 unidades, un ancho es de $\sim$7 unidades y su capullo tiene una anchura de $\sim$11 unidades. Para el caso en que se usa HLL, el largo 
+y ancho miden $\sim$31.5 y $\sim$8 respectivamente, y el capullo presenta un tamaño de $\sim$11.5 unidades. Nuevamente el caso HLL presenta menos turbulencia que el caso HLLC.
 
 %--------------------------------------------------------------------------
 \section{Objetivos de la tesis}
 %--------------------------------------------------------------------------
-{\color{red} Los objetivos de esta tesis se enlistan a continuación:
+Los objetivos de esta tesis se enlistan a continuación:
 \begin{itemize}
   \item Desarrollar un código, que sea capaz de resolver numéricamente las ecuaciones de la hidrodinámica, tanto para los casos newtonianos (HD) así como los relativistas (RHD) en una (1D) y dos dimensiones (2D). 
   
@@ -373,121 +419,14 @@ Para el panel de abajo (a t=80), en el caso de HLLC, presenta un largo de $\sim$
 
 \end{itemize}
 
-}
-
-
-%-------------------------------------------------------------------------
-% Aunque hay mucha información acerca de los GRBs largos, los cortos son aún un estudio nuevo en el área de astrofísica de altas energías ya que debido a su corta duración son difíciles de estudiar. 
-% \section{Características de los GRBs}
-% Muchas de las características de los GRBS ya sean estos largos o cortos, son la duración media que tienen, mientras que en los GRBs largos tienen un promedio de duración de 100 s \cite{PGRB-piran}, los GRBs cortos duran menos de 2 segundos. Los estallidos de Rayos gamma se encuentran a miles de años luz de nuestra galaxia por lo que se puede decir que tienen un orígen cosmologico, mientras los GRBs largos se originan en los centros de las galaxias, los cortos lo hacen lejos de la galaxia donde se originaron y por consecuencia, estos tienen una densidad de ambiente muy bajo. El estudio de los SGRB ha sido muy difícil debido al tiempo de duración que conllevan estos eventos y a la dificultad de asociarlo con galaxias anfitrionas. 
-
-% %Las partes principales de los GRBs son la emisión propmt y  afterglow. %Piran2005
-
-% \begin{figure} %fuente de la imagen:https://astrobites.org/2017/11/13/grb-afterglows-coming-out-of-a-cocoon/
-%   \centering
-%     \includegraphics[width=0.5\textwidth]{Figuras/Gamma-ray_burst_by_a_blackhole-768x432.jpg}
-%   \caption{Diferentes partes de un GRB en general, mostrando las partes más características como el afterflow y la emisión prompt}
-%   \label{fig:Partes de GRBs}
-% \end{figure}
- 
-
-% \subsection{Emisión pronta} %Azzam
-% La emisión pronta es definido como el periodo de tiempo donde el detector de rayos $\gamma$ 
-% detecta una señal sobre el fondo. Estas consisten en fotones de alta energía, no tiene espectro térmico \cite{GRB:CAP}. El espectro térmico es producido por un gas en equilibio térmico. Además, tiene bastantes carterísticas observacionales.
-
-% El flujo de energía varía dentro de cientos de Kev. La emisión de las curvas de luz son notoriamente irregulares sobre escalas de tiempo muy pequeñas \cite{SGRBr-Avanzo}(ver Figura \ref{lightcurve}). %Short gamma-ray bursts: A review; P. D’Avanzo
-% En los GRBs cortos, su espectro de emisión, se ha encontrado más duro que en los GRBs largos, esto debido a que es una combinación de componentes espectrales duros de baja energía. Una característica de principal es la duración de esta emisión, esta llega a ser del orden $\geq \, 10^{-2} $ s a $10^{3}$ s \cite{GRB:PPP}. Los valores promedio de dichas emisiones son $t \sim 20 $ s para GRBs largos y $t \sim 0.2 $ s para los cortos \cite{GRB:PPP}. %Gamma Ray Burst Progress, problems and prospects Zhang, meszaros
-
-% \begin{figure}
-% \centering %Fuente Zhang
-% \includegraphics[width=1.0\textwidth]{Figuras/lightcurve_different}
-% \caption{\label{lightcurve} Diferentes curvas de luz captadas por el detector Batse detectadas en la emisión pronta de los GRBs. Las curvas de luz difieren bastantes unas de otras, mientras que BATSE 332 es un decaimiento exponencial , BATSE Trigger 1989  tiene 2 picos de intensidad. }
-% \end{figure}
-% \subsection{Emisión tardía}
-% La emisión tardía,conocida también como \emph{afterglow},  es después de la emisión prompt en el cual se pueden detectar otras longitudes de onda como el óptico, radio y los rayos X \cite{Berger:2013jza, PGRB-piran, SGRBr-Avanzo}. %\ref{fig:Partes de GRBs}.
-% La propiedad de "multiples longitudes de onda", hace una propiedad única de la emisión tardía. Estos cubren un amplio rango de frecuencias, desde las ondas de radio hasta los Tev. El espectro de banda ancha es descrito como una ley de potencias inversa, ya que la fuerza del choque se reduce a medida que la onda expansiva va desacelerando. Con lo que se espera que todas las longitudes de onda de las curvas de luz decaigan como ley de potencias. Entonces la densidad de flujo es proporcional a:
-
-% \begin{equation}
-% F_{\nu}(t,\nu) \propto t^{-\alpha} \nu^{\beta}
-% \end{equation}
-
-% Donde $\alpha$ y $\beta$ son reales positivos.
-
-
-% En Mayo y Julio del 2005 datos de eyecciones recopiladas por el satélite \emph{swift} al seguir al seguir al GRB 050509B, descubrieron las primeras fases tardías de los GRBs cortos, tiempo después el satélite HETE-2 junto con el observatorio \emph{chandra} de rayos X siguieron al satélite 050709 el cual localizo la fase tardía en rayos X y despues en la banda óptica, con estos datos recabados de la fase tardía se pudo llegar a que los GRBs cortos tienen una escala de densidad y una energía mas baja que los GRBs largos, también se llego a la conclusión de que los GRBs cortos tienen orígenes cosmologicos \cite{Berger:2013jza} y que las estrellas masivas no son sus progenitores como en el caso de GRBs cortos.
- 
-% \subsection{Energía y luminosidad}
-% Los GRBs largos tienen una luminosidad isotrópica $L_{iso} \sim 10^{49}-10^{54} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$. También  hay GRBs largos con una luminosidad baja, sus valores rondan acerca de $L_{iso} \sim 5 \times 10^{46}-10^{49} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$, pero estos son solo una pequeña fracción de los GRBs largos observados. Los GRBs cortos tiene generalmente una luminosidad de $L_{iso} \sim 10^{49} \, \mathrm{ergs} \cdot \mathrm{s}^{-1}$.
-
-% La distribución de energías es amplia para los GRBs, estos cubren valores $E_{iso} \sim 10^{49}-10^{55}$ ergs para los largos y para los cortos $E_{iso} \sim 3.3 \times 10^{46}-10^{53}$ ergs \cite{Zhang:PGRB}. %the physics of gamma ray burst
-
-% %
-% \section{Características de los GRBs cortos}
-% Los GRBS cortos, aunque tiene muchas carcteristicas en común con los GRBs largos, también tienen sus propias peculariedades que lo hacen diferente del otro.
-
-% \subsection{Progenitores} %ghrels2009
-% Los GRBs cortos por lo general se localizan en medios de baja formación estelar por lo que no se espera poder encontrarlos ambientes estelares jovenes además de que, conllevan una carencia para poder asociarlos con SNs. El modelo más aceptado en la literatura de los progenitores de los GRBs cortos son la fusión de objetos compactos binarios. Estos pueden comprender a dos estrellas de neutrones (NS-NS), una estrella de neutrones y un agujero negro (NS-BH) o dos agujeros negros (BH-BH) \cite{GRB-SE}. La fusión se logra a cabo debido a la pérdida de momento angular y energía debido a las ondas gravitacionales. La interacción de este fenómeno lleva a la extracción de energía por procesos magnetohidrodinámicos (MHD), los cuales impulsan un flujo relativista colimado. 
-
-% Las patadas natales pueden ser las causantes de las distancias en las que estos nacen y los sitios de explosión de estos sistemas \cite{Berger:2013jza}, la probabilidad para una galaxia de brillo $m$  a ser localizada a una separación $\delta R$ de la posición de un SGRB está dada por 
-
-% \begin{equation}
-% P_{cc} = 1 - \exp ^{- \pi (\delta R)^{2} \sum(\leq m)}
-% \end{equation}
-% Donde $\sum(\leq m) = 1.3\cdot 10^{0.33(m-24)-2.44} \mathrm{arcsec} ^{-2}$ son el número de cuentas de la galaxia. Los SGRBs sin galaxias anfitrionas se exhiben cerca galaxias de campo con una baja probabilidad de coincidencia, generalmente las distancias medias de separación del SGRB con su galaxia anfitriona es de $ \frac{\delta R}{r_e} \approx 1.5$ donde $r_e$ es el radio estelar. 
-
-% \subsection{Propiedades de las explosiones de los SGRB}
-
-% Los parámetros claves de interés de la emisión pronta y tardia \cite{Berger:2013jza}
-% \begin{itemize}
-% \item $E_{\gamma}$: Energía de rayos $\gamma$.
-% \item $E_k$: Energía cinética de la onda de choque de la emisión tardía.
-% \item $\theta_j$: El ángulo de apertura del jet.
-% \item $n$: Densidad del medio ambiente.
-% \end{itemize}
-
-% La emisión del sincrotrón de la emisión tardía incluye dos parámetros libres que tienen relación con la física del choque relativista:
-% \begin{itemize}
-% \item $\epsilon_{B}$: Fracción de energía del post-choque de los campos magnéticos.
-% \item $\epsilon_e$: Radiación relativista de los electrones. 
-% \end{itemize}
 
 
 
-% El flujo relativista interactuando con el medio circundante es el espectro de emisión sincrotónico. Esta se caracteríza por 3 frecuencias de corte:
-% \begin{itemize}
-% \item $\nu_a$: Auto absorción
-% \item $\nu_m$: Factor mínimo de Lorentz
-% \item $\nu_c$: enfriamiento sincrotrónico
-% \end{itemize}
-
-% Tomando en cuenta los valores de estos parámetros y la pendiente del espectro para $\nu < \nu_m$ se pueden llegar a encontrar los siguientes valores $E_{k, \, \mathrm{iso}}$, $n$, $\epsilon_{B}$ y $\epsilon_e$. La evolución temporal del espectro también se puede usar para encontrar el ángulo de apertura del jet $\theta_j$. La relacción que existe entre el ángulo de apertura $\theta_j$ y el tiempo $(t_j)$ al cual ocurre el jet break  está dado por la siguiente fórmula.
-
-% %La mayoría de estas frecuencias se encuentran entre 1 $\thicksim$ 10 GHz por lo cual ha sido difícil de detectarlas. La colimación del jet también influye en la taza de los SGRBs y proporciona una restricción adicional al modelo progenitor, la firmatura de la colimación de los destellos de los SGRBs son los llamados "Jet Break" que ocurren al tiempo $t_j$ cuando $\Gamma_j(t_j) = 1/ \theta_j$, esto lidera al cambio de emisión del espectro sincrotrónico
-% %
-% %\begin{equation}
-% %F_\nu \propto t^{-1} \longrightarrow F_\nu \propto t^{-p}
-% %\end{equation}
-% %
-% %La relación entre el "jet break" y el ángulo de apertura esta dado por:
-% %
-% \begin{equation}
-% \theta_j = 0.13 \left( \frac{t_{j,d}}{1+z} \right)^{3/8}
-% \left(\frac{n_0}{E_{52}} \right)^{1/8}
-% \end{equation}
-% %
-% %\section{GRB del 17 de agosto del 2017}
-% %
-
-% \begin{figure}
-% \centering
-% \includegraphics[scale=0.7]{./Figuras/Distribucion_angulo_apertura}
-% \caption{La Figura muestra la distribución de los ángulos de apertura para los GRBs largos (rojos) y los GRBs cortos (azules). Las flechas muestran el límite superior e inferior de los ángulos. }
-% \end{figure}
 
 \chapter{Teoría}
 
 Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
-las ecuación  es de la hidrodinámica.
+las ecuaciones de la hidrodinámica.
 Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las variables macroscópicas.
 
 \begin{equation}
@@ -506,7 +445,7 @@ l = n^{-1/3} \ll L
 
 
 
-\section{Ecuaciones de la hidrodinámica}
+\section{Ecuaciones de la hidrodinámica}\label{sec:Ecuacioneshidrodinamica}
 
 Considerando una serie de elementos de volumen fijos, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
 
@@ -531,7 +470,7 @@ Ecuación de estado
 e=\frac{1}{2} \rho \mathbf{u}^{2} + \frac{p}{\Gamma - 1}
 \end{equation}
 
-Con estas ecuación  es podemos formar una matriz de $5x5$ escritas en coordenadas cartesianas:
+Con estas ecuaciones podemos formar una matriz de $5x5$ escritas en coordenadas cartesianas:
 
 \begin{equation} \label{euler_cartesianas}
 \dfrac{\partial \mathbf{U}}{\partial t}+\dfrac{\partial \mathbf{F}}{\partial x}+\dfrac{\partial \mathbf{G}}{\partial y}+\dfrac{\partial \mathbf{H}}{\partial z}= \mathbf{S}
@@ -588,7 +527,8 @@ G-L+\textbf{f} \cdot \textbf{u} \\
 $
 \end{center}
 
-El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. Para poder resolver computacionalmente estas ecuación  es diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar tos términos fuente es decir $\mathbf{S}=0$ en el siguiente capitulo si se trataran fuentes particulares.
+El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. 
+Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar tos términos fuente es decir $\mathbf{S}=0$ en el siguiente capitulo si se trataran fuentes particulares.
 
 La implementación en el código se hará en 2 dimensiones por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero el bloque de código esta en una subrutina llamada \emph{fluxes}, 
 donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas.Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
@@ -612,7 +552,7 @@ la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ .
 Las variables \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle, el término $\mathbf{H}$ no es incluido, debido a que es computacionalmente 
 caro. El término \emph{u} hace alusión a las variables conservadas.
 
-\subsection{Desacoplamiento de las ecuación  es de la hidrodinámica}
+\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica}\label{subsec:DesacoplamientoEcuacionesHidrodinamica}
 
 Al final del método de las diferencias finitas, obtenemos nuestras variables conservadas (\emph{U}), pero para calcular nuestros flujos de nuevo necesitamos recuperar nuestras primitivas, es decir, calcular nuestras variables primitivas $(\rho, \, u, \, v,\, w, \, P )$ en función de nuestras variables conservadas $(u_1, \, u_2, \, u_3, \, u_4, \, u_5)$.
 
@@ -654,7 +594,7 @@ Los GRBs generalmente tienen velocidades relativistas, por lo que la parte newto
 En esta parte se añadirá a los códigos que ya hemos generado previamente, las próximas secciones abordara acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
 
 \subsection{Primitivas}
-Las ecuación  es que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas. Para esto vamos a partir de 2 ecuación  es importantes que son la ecuación de energía-momento y la ecuación de conservación de masa:
+Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación de masa:
 
 \begin{equation}\label{ecuación  _conservación_masa}
 \left( \rho u^{\alpha} \right)_{, \alpha} =0
@@ -665,7 +605,7 @@ T_{, \beta}^{\alpha \beta}=0
 \end{equation}
 
 De la ecuación \ref{ecuación  _conservación_masa} tenemos la cuadrivelocidad para un sistema de 
-3 coordenadas y considaremos a la velocidad de la luz como $c=1$ lo podemos ver como $u^{\mu}=\gamma \left( 1, \textbf{v}\right)$ y sustituyendo este resultado (en 2 dimensiones espaciales) tendremos las ecuación  es $u_1$, $F_1$ y $G_1$. Para la ecuación \ref{ecuación  _momento_energia} podemos escribir el tensor de energía-momento como $T^{\mu \nu} = \rho h u^{\mu} u^{\nu} + Pg^{\mu \nu}$ y usando la métrica de Minkowski
+3 coordenadas y considaremos a la velocidad de la luz como $c=1$ lo podemos ver como $u^{\mu}=\gamma \left( 1, \textbf{v}\right)$ y sustituyendo este resultado (en 2 dimensiones espaciales) tendremos las ecuaciones $u_1$, $F_1$ y $G_1$. Para la ecuación \ref{ecuación  _momento_energia} podemos escribir el tensor de energía-momento como $T^{\mu \nu} = \rho h u^{\mu} u^{\nu} + Pg^{\mu \nu}$ y usando la métrica de Minkowski
 
 \begin{equation}
 \eta_{\alpha \beta}= 
@@ -692,7 +632,7 @@ rho h \gamma^2 v_{y} & \rho h \gamma^2 v_{y}v_{x} & \rho h \gamma^2 v_{y}^{2}+P 
 
 \end{pmatrix}
 \end{equation}
-Entonces nuestras ecuación  es quedarían de la siguiente manera
+Entonces nuestras ecuaciones quedarían de la siguiente manera
 \begin{align}
 u_{1}& = \rho \gamma \\ 
 u_{2}& = \rho v_{x} \gamma^{2} h \\ 
@@ -742,8 +682,8 @@ La implementación en el código es de la siguiente manera, el factor de Lorentz
 A diferencia de los flujos newtonianos, para los flujos relativistas se tienen que calcular antes el factor de Lorentz \emph{lor} y la entalpía \emph{h},
 las variables \emph{i}, \emph{j} son contadores sobre el espacio.
 
-\subsection{Desacoplamiento de las ecuación  es de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuación  es_de_la_hidrodinámica_relativista}
-Para poder desacoplar las ecuación  es, partimos de la relación de las densidades de energía total y del módulo de los momentos
+\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuación  es_de_la_hidrodinámica_relativista}
+Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
 
 \begin{equation}\label{ecuación  _de_energia}
   e=W-p
@@ -789,7 +729,7 @@ Donde $h$ también puede ser escrito como
 \begin{equation}
 h=1+\epsilon+\frac{p}{\rho}
 \end{equation}
-Si combinamos estas 2 últimas ecuación  es podemos llegar a que 
+Si combinamos estas 2 últimas ecuaciones podemos llegar a que 
 \begin{equation}
 p(\chi,\rho)=\frac{\Gamma-1}{\Gamma}\chi
 \end{equation}
@@ -859,7 +799,7 @@ f(W^{'})=W^{'}-e^{'}-p
 \end{equation}
 
 Donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
-Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuación  es \ref{ecuación  _de_energia} 
+Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuaciones \ref{ecuación  _de_energia} 
 y \ref{modulos de los momentos} podemos llegar a que la presión es:
 %===============================================================================================
 
@@ -900,7 +840,7 @@ Presión térmica
 p&=&\frac{\Gamma-1}{\Gamma} \chi
 \end{eqnarray}
 
-Aunque en el método newtoniano se podían desacoplar las ecuación  es sobre el mismo bucle, 
+Aunque en el método newtoniano se podían desacoplar las ecuaciones sobre el mismo bucle, 
 para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y así poder obtenerlas en función de las conservadas. 
 Al igual que en el método newtoniano vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, 
 y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. 
@@ -961,7 +901,7 @@ Las variables \emph{qp} mostradas en el código son las primitivas mientras que 
 
 
 \section{Diferencias finitas} \label{sec:Diferencias_finitas}
-Ya hemos visto que ecuación  es describen la hidrodinámica, ahora nos toca resolverlas, dado que analíticamente es difícil, se va a hacer computacionalmente, para 
+Ya hemos visto que ecuaciones describen la hidrodinámica, ahora nos toca resolverlas, dado que analíticamente es difícil, se va a hacer computacionalmente, para 
 eso se hará uso del método numérico de las diferencias finitas.
 Si tenemos una función $f(x)$ lo suficientemente diferenciable la podemos aproximar por el Teorema de Taylor  en la vecindad de un punto $x_0+\Delta x$ entonces si conocemos todas sus $n$ derivadas de la función $f(x)$ en el punto $x_0$ podemos aproximar de la siguiente manera
 
@@ -989,7 +929,7 @@ también se puede hacer en el entorno $x_0- \Delta x$ y siguiendo los mismos pas
 f_{back}^{'}=\frac{f\left(x \right) - f(x - \Delta x) }{\Delta x}=\frac{f_{i}-f_{i-1}}{\Delta x}
 \end{equation}
 
-Si obtenemos el promedio de las ecuación es \ref{fwd} y \ref{bwd} obtenemos la central:
+Si obtenemos el promedio de las ecuaciones \ref{fwd} y \ref{bwd} obtenemos la central:
 
 \begin{equation} \label{Centrada}
 f_{central}^{'}=\frac{f\left(x + \Delta x\right) - f(x - \Delta x) }{2\Delta x}=\frac{f_{i+1}-f_{i-1}}{2 \Delta x}
@@ -1061,7 +1001,7 @@ Donde \emph{dtx, dty} son las derivadas con respecto a \emph{x}, \emph{y} y \emp
 
 \subsection{HLL} \label{secc:HLL}
 
-	Otro método para resolver las ecuación  es de la hidrodinámica es usar el método de Harten-Van-Leer. Definiendo el flujo numérico intercelda de Gudonov
+	Otro método para resolver las ecuaciones de la hidrodinámica es usar el método de Harten-Van-Leer. Definiendo el flujo numérico intercelda de Gudonov
 
 \begin{equation}
 F_{i+\frac{1}{2}}=F \left( U_{i+\frac{1}{2}} \right)
@@ -1309,8 +1249,8 @@ end do
 
 \subsection{Rankine-Hugoniot Newtoniano}
 
-Ya hemos visto como se resuelven las ecuación  es de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque
-, esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se resuelve con las ecuación  es de 
+Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque
+, esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se resuelve con las ecuaciones de 
 Rankine-Hugoniot.
 Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
 hacia la derecha (ver Figura \ref{fig_move_shock}) sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
@@ -1333,7 +1273,7 @@ se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale
   flujos que están a la derecha e izquierda de la onda se mueven hacia la izquierda } \label{fig_stationary_shock}
 \end{figure}
 
-Las ecuación  es de Rankine-Hugoniot parten de las ecuación  es de la hidrodinámica considerando un sistema cerrado usando las ecuación  es \ref{conservación_masa_hidrodinamica}, \ref{conservación  _momento_hidrodinamica} y \ref{conservación  _energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
+Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservación  _momento_hidrodinamica} y \ref{conservación  _energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
 
 
 La conservación de masa
@@ -1366,7 +1306,7 @@ Considerando una dimensión:
 \dfrac{d \left( u\left[e +P \right] \right)}{d x} = 0
 \end{equation}
 
-Si integramos, la ecuación  es se van a igualar a constantes y podemos reescribir las ecuación  es del siguiente modo usando la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
+Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
 es la densidad de energía por unidad de volumen
 
 \begin{equation}\label{RH_masa}
@@ -1629,7 +1569,7 @@ Al obtener la densidad ya podemos simular el jet dado que la luminosidad se pued
 Diego
 
 
-\section{Solución de Sedov-Taylor} \label{seccion_sedov_taylor}
+\section{Solución de Sedov-Taylor} \label{sec:sedov_taylor}
 
 %Ojo Julio
 Una forma de verificar si el código funciona correctamente es verificar si una onda de choque esférica (o circular en 2D) sigue la solución analítica y auto similar obtenida por Sedov y Taylor \cite{PAFD}. 
@@ -1727,7 +1667,7 @@ Si combinamos la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo
 	h_0 = \frac{a^2}{\Gamma - 1} \left( 1 + \frac{\Gamma - 1}{2} M^2 \right)
 \end{equation}
 
-Esta ecuación servirá más adelante. Volviendo a las ecuación  es de Rankine-Hugoniot podemos usar la ecuación  
+Esta ecuación servirá más adelante. Volviendo a las ecuaciones de Rankine-Hugoniot podemos usar la ecuación  
 \ref{RH_Energia} y \ref{entalpía_función_presion_densidad} para obtener la ecuación   de la energía en función de la entalpía, lo que nos va a quedar al final como
 
 \begin{equation}\label{RH_entalpía}
@@ -1763,7 +1703,7 @@ Por lo que podemos definir a la velocidad del sonido como:
   a_m = \left( \Gamma-1 \right) h_m = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_m^2 \right)
 \end{equation}
 
-Sustituyendo las ecuación  es \ref{eq_sonido_onda} y \ref{eq_sonido_medio} en la ecuación \ref{eq_diferencia_velocidades}
+Sustituyendo las ecuaciones \ref{eq_sonido_onda} y \ref{eq_sonido_medio} en la ecuación \ref{eq_diferencia_velocidades}
 nos queda
 
 \begin{equation}
@@ -1808,13 +1748,13 @@ de la fracción, podemos definir el cociente de las densidades \ref{eq_fraccion_
   \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}
 \end{equation}
 
-Entonces para encontrar las presiones combinamos las ecuación  es \ref{RH_momento} y \ref{RH_masa} tenemos
+Entonces para encontrar las presiones combinamos las ecuaciones \ref{RH_momento} y \ref{RH_masa} tenemos
 
 \begin{equation}
   P_m - P_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right)
 \end{equation}
 
-Usando la siguiente relación $\rho v^2 = \Gamma P M^2$, que se obtiene de las ecuación  es \ref{eq_sonido_1} y
+Usando la siguiente relación $\rho v^2 = \Gamma P M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y
 \ref{eq_Mach},dividiendo por $P_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación 
 \ref{eq_fraccion_momentos_función_mach}
 nos queda
@@ -1892,7 +1832,7 @@ el gas cambia abruptamente los valores de la densidad, presión y velocidad.
 
 
 
-\subsection{Casos newtonianos}
+\subsection{Casos newtonianos} \label{subsec:casos_newtonianos_1D}
 
 Los valores de $\rho$, $p$ y $v$ de los modelos newtonianos se indican en el cuadro
 \ref{Cuadro_parametros_sod_tube}. El primer  modelo (denominado caso 1 newtoniano), produce una onda 
@@ -2147,7 +2087,7 @@ Cabe destacar que el método Lax resultó ser 220 \% más rápido que HLL.
 % ========================================================================================================
 
 
-\subsection{Casos relativistas}
+\subsection{Casos relativistas} \label{subsec:casos_relativistas_1D}
 
 Para los casos relativistas, se tomarán valores a partir de los cuales $v \rightarrow c$,
 y además se requiera usar el índice adiabático\footnote{En esta tesis,
@@ -2346,9 +2286,15 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 
 \section{Pruebas bidimensionales}
 
-\subsection{Caso Newtoniano (Sedov-Taylor)}
+\subsection{Caso Newtoniano (Sedov-Taylor)}\label{subsec:caso_newtoniano_2d}
 
-{\color{red} En esta sección se verificó que el código newtoniano reprodujera correctamente la expansión de la onda bidimensional de Sedov-Taylor (en la que se libera una gran cantidad de energía en un volumen muy pequeño, y la cual es discutida a fondo en la Sección 2.5). Para lo anterior, se inyecta instantáneamente una gran cantidad de energía \emph{E} dentro de un radio R inmerso un medio ambienta de densidad uniforme $\rho_m$. Posteriormente, un frente de choque bidimensional se expandirá a través del medio ambiente. El radio inicial de la onda se tomó de $r = 2$pc, y el dominio computacional fue de $x, y \in [0,4 \times 10^{20}]\times[0,4 \times 10^{20}] \, \text{cm}$. {\color{red} La resolución fue de 1000x1000 pixeles}, se tomó un índice adiabático $\Gamma = 5/3$, y el tiempo de integración fue $t = 8.1 \times 10^10$ s. Dentro del radio inicial la densidad, presión, y velocidades fueron: $\rho_s, p_s, v_{xs}, v_{ys}$, para el medio ambiente la densidad, presión, y velocidades fueron: $\rho_m, p_m, v_{xm}, v_{ym}$. Los valores típicos de una supernova con energía $E_{s}  \approx 10^{52}$ ergs están mencionados en el Cuadro \ref{Cuadro_parametros_choque_2D_newtoniano}:}
+En esta sección se verificó que el código newtoniano reprodujera correctamente la expansión de la onda bidimensional de Sedov-Taylor (en la que se libera una gran cantidad de energía en un volumen muy pequeño, 
+y la cual es discutida a fondo en la Sección 2.5). Para lo anterior, se inyecta instantáneamente una gran cantidad de energía \emph{E} dentro de un radio R inmerso en un medio ambiente de densidad uniforme $\rho_m$. 
+Posteriormente, un frente de choque bidimensional se expandirá a través del medio ambiente. El radio inicial de la onda se tomó de $r = 2$pc, y el dominio computacional fue de 
+$x, y \in [0,4 \times 10^{20}]\times[0,4 \times 10^{20}] \, \text{cm}$. La resolución fue de 1000x1000 pixeles, se tomó un índice adiabático $\Gamma = 5/3$, y el tiempo de integración 
+fue $t = 8.1 \times 10^{10}$ s. Dentro del radio inicial la densidad, presión, y velocidades fueron: $\rho_s, p_s, v_{xs}, v_{ys}$, para el medio ambiente la densidad, presión, y velocidades fueron: 
+$\rho_m, p_m, v_{xm}, v_{ym}$. Los valores típicos de una supernova con energía $E_{s}  \approx 10^{52}$ ergs están mencionados en el Cuadro \ref{Cuadro_parametros_choque_2D_newtoniano}:
+
 \begin{table}[htbp]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -2367,18 +2313,25 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
   \end{center}
 \end{table}
 
-{\color{red} La Figura \ref{fig:prueba_2d_newtoniana} se muestra la evolución de la onda. El panel de arriba a la izquierda muestra la onda de choque al tiempo $t = 0$, el panel de arriba a la derecha muestra la evolución al tiempo $t = 10^{10}$ s, y la de abajo al tiempo $t =8.1 \times 10^{10}$ s. En éstos se observa como a $10^{10}$ s y a 8.1 \times 10^{10} s la onda tiene un radio de $\sim 1.6$ pc y $\sim 4.5$ pc, respectivamente. En ambos tiempos la explosión es esférica y se tiene una sobredensidad de $\rho \approx 3.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$ en el perímetro de la onda mientras que dentro de la onda la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.}
+La Figura \ref{fig:prueba_2d_newtoniana} se muestra la evolución de la onda. El panel de arriba a la izquierda muestra la onda de choque al tiempo $t = 0$, el panel de arriba a la derecha muestra 
+la evolución al tiempo $t = 10^{10}$ s, y la de abajo al tiempo $t =8.1 \times 10^{10}$ s. En éstos se observa como a $10^{10}$ s y a $8.1 \times 10^{10}$ s la onda tiene un radio de $\sim 1.6$ pc y $\sim 4.5$ pc, 
+respectivamente. En ambos tiempos la explosión es esférica y se tiene una sobredensidad de $\rho \approx 3.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$ en el perímetro de la onda mientras que dentro de la onda 
+la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.
 
 \begin{figure}
   \centering
       \subfigure{\includegraphics[scale = 0.3]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/0_NR.png}}
       \subfigure{\includegraphics[scale = 0.3]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/11_NR.png}}
       \subfigure{\includegraphics[scale = 0.3]{./Figuras/verificacion_del_codigo/prueba_2d_newtoniana/99_NR.png}}
-    \caption{Mapas de densidad mostrando la evolución de la onda de choque de Sedov-Taylor en 2 dimensiones. El panel de arriba a la izquierda muestra el tiempo inicial $t=0$ s, el de arriba a la derecha al $t \approx 10^{10}$ s, y el panel de abajo muestra el tiempo $t = 8.1 \times 10^{10}$ s.
+    \caption{Mapas de densidad mostrando la evolución de la onda de choque de Sedov-Taylor en 2 dimensiones. El panel de arriba a la izquierda muestra el tiempo inicial $t=0$ s, el de arriba a la derecha al 
+    $t \approx 10^{10}$ s, y el panel de abajo muestra el tiempo $t = 8.1 \times 10^{10}$ s.
     \label{fig:prueba_2d_newtoniana}}
 \end{figure}
 
-{\color{red} Para verificar que el código HD estaba reproduciendo correctamente la solución analítica de Sedov-Taylor se comprobó que el radio de la onda de expansión de la simulación siguiese la solución analítica dada en la ecuación 2.151, esto es, que el radio de la onda creciera como $r\propto t^{2/5}$. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución del radio de la onda en función del tiempo (verde) así como la curva que mejor se le ajusta (rojo). La curva que mejor se ajusta a los datos resultó ser $r(t) = t^{0.413}$. El coeficiente de determinación fue $R^2= 0.985$ lo cual nos indica que el modelo se ajusta muy bien a los datos de la simulación.. Al comparar nuestro modelo con la teoría podemos notar una discrepancia del 5 \%, y por ende podemos concluir que el problema de Sedov-Taylor fue resuelto correctamente por el código HD.}
+Para verificar que el código HD estaba reproduciendo correctamente la solución analítica de Sedov-Taylor se comprobó que el radio de la onda de expansión de la simulación siguiese la solución analítica 
+dada en la ecuación \ref{eq_Radio_proporcional}, esto es, que el radio de la onda creciera como $r\propto t^{2/5}$. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución del radio de la onda en función del tiempo (verde) así como 
+la curva que mejor se le ajusta (rojo). La curva que mejor se ajusta a los datos resultó ser $r(t) = t^{0.413}$. El coeficiente de determinación fue $R^2= 0.985$ lo cual nos indica que el modelo se ajusta muy bien a 
+los datos de la simulación. Al comparar nuestro modelo con la teoría podemos notar una discrepancia del 5 \%, y por ende podemos concluir que el problema de Sedov-Taylor fue resuelto correctamente por el código HD.
 
 \begin{figure}
   \centering
@@ -2387,8 +2340,11 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
     \label{fig:Expansion_HLL_NR}
 \end{figure}
 
-\subsection{Caso relativista}
-Para verificar que el código RHD funciona correctamente en 2D se hará una prueba de una onda de choque relativista en 2 dimensiones y se verificará que se comporta como la solución analítica auto-similar de una prueba de un tubo de choque bidimensional. El dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la onda será $r = 0.5 \, \text{cm}$, se considerará un índice adiabático $\Gamma = 4/3$, y {\color{red}la resolución es de 1000x1000 pixeles}. Los valores que habrá dentro de la onda bidimensional así como los que el medio ambiente tendrá, se muestran en el cuadro \ref{Cuadro_parametros_choque_2D}. 
+\subsection{Caso relativista} \label{subsec:caso_relativista_2d}
+Para verificar que el código RHD funciona correctamente en 2D se hará una prueba de una onda de choque relativista en 2 dimensiones y se verificará que se comporta como la solución analítica auto-similar de 
+una prueba de un tubo de choque bidimensional. El dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la 
+onda será $r = 0.5 \, \text{cm}$, se considerará un índice adiabático $\Gamma = 4/3$, y la resolución es de 1000x1000 pixeles. Los valores que habrá dentro de la onda bidimensional así como 
+los que el medio ambiente tendrá, se muestran en el cuadro \ref{Cuadro_parametros_choque_2D}. 
 \begin{table}[htbp]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -2407,9 +2363,13 @@ Para verificar que el código RHD funciona correctamente en 2D se hará una prue
   \end{center}
 \end{table}
 
-Al tiempo $t = 0$, nuestro dominio estará dividido en 2 conjuntos, a los valores ($\rho$, $v_x$, $v_y$ y $p$) que estén en la región menor al radio serán los valores internos ($\rho_i$, $v_xi$, $v_yi$ y $p_i$) mientras que los valores que no estén delimitados por el radio serán los valores externos ($\rho_o$, $v_xo$, $v_yo$ y $p_o$). Al ser $p_i > p_o$ y $\rho_i > \rho_o$, la onda se  expandirá incrementando el radio, por lo que la región de adentro se volverá más grande.
+Al tiempo $t = 0$, nuestro dominio estará dividido en 2 conjuntos, a los valores ($\rho$, $v_x$, $v_y$ y $p$) que estén en la región menor al radio serán los valores internos ($\rho_i$, $v_xi$, $v_yi$ y $p_i$) mientras 
+que los valores que no estén delimitados por el radio serán los valores externos ($\rho_o$, $v_xo$, $v_yo$ y $p_o$). Al ser $p_i > p_o$ y $\rho_i > \rho_o$, la onda se  expandirá incrementando el radio, por 
+lo que la región de adentro se volverá más grande.
 
-La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negras punteadas), que se tomarán de la onda de choque en 2D, para poder comparar con los resultados de las pruebas unidimensionales así como la analítica. En la Figura \ref{fig:head_map} muestra un mapa de densidades en el cual se ve la evolución de la onda. En el panel de arriba a la izquierda muestra el estado inicial al tiempo $t = 0$ s, el panel de arriba a la derecha muestra su estado al tiempo $t = 0.2$ s y el panel de abajo muestra su estado para el tiempo $t = 0.4$ s. 
+La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negras punteadas), que se tomarán de la onda de choque en 2D, para poder comparar con los resultados de las pruebas unidimensionales 
+así como la analítica. En la Figura \ref{fig:head_map} muestra un mapa de densidades en el cual se ve la evolución de la onda. En el panel de arriba a la izquierda muestra el estado inicial al tiempo $t = 0$ s, el panel 
+de arriba a la derecha muestra su estado al tiempo $t = 0.2$ s y el panel de abajo muestra su estado para el tiempo $t = 0.4$ s. 
 
 \begin{figure}
   \centering
@@ -2431,20 +2391,34 @@ La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negr
     \label{fig:head_map}}
 \end{figure}
 
-{\color{red} En la gráfica \ref{fig:Expansion_radio_vs_tiempo} se muestra la expansión del radio de la explosión de la onda de choque contra el tiempo, y se ajustó una regresión exponencial para poder calcular el exponente con el que crece el radio, donde se muestra que crece como $R(t) \propto t^{0.426}$ y que tiene un $R^2 = 0.946$, lo cual coincide aproximadamente con la solución newtoniana de Sedov-Taylor (véase la Sección 3.2.1).}
+En la gráfica \ref{fig:Expansion_radio_vs_tiempo} se muestra la expansión del radio de la explosión de la onda de choque contra el tiempo, y se ajustó una regresión exponencial para 
+poder calcular el exponente con el que crece el radio, donde se muestra que crece como $R(t) \propto t^{0.426}$ y que tiene un $R^2 = 0.946$, lo cual coincide aproximadamente con la solución newtoniana de Sedov-Taylor 
+(véase la Sección \ref{subsec:caso_newtoniano_2d}).
 
 \begin{figure}
     \begin{center}
       \includegraphics[width=0.95\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/expansion_radio/Expansion.png}
     \end{center}
-    \caption{Perfil del radio de la onda de choque en función del tiempo (cruces verdes). Además, se muestra la curva que mejor se ajusta a los datos $r(t) \propto t^{0.426}$ (línea roja). El coeficiente de determinación es $R^2 = 0.946$.}
+    \caption{Perfil del radio de la onda de choque en función del tiempo (cruces verdes). Además, se muestra la curva que mejor se ajusta a los datos $r(t) \propto t^{0.426}$ (línea roja). El coeficiente de 
+    determinación es $R^2 = 0.946$.}
     \label{fig:Expansion_radio_vs_tiempo}
 \end{figure}
 
-{\color{red}Para mostrar que la solución bidimensional es la misma independientemente de la dirección del perfil radial se compararon los perfiles radiales tomados en distintas direcciones. En la Figura \ref{fig:comparacion_perfil_radial} se muestran los perfiles de densidad (arriba ala izquierda), velocidad (arriba a la derecha), y presión (abajo) a 0$^{\circ}$ (i.e. sobre el eje X, línea roja), así como a 45$^{\circ}$ (linea punteada azul), y 90$^{\circ}$ (línea punteada verde).} Los tres perfiles de la densidad muestran básicamente la misma estructura, esto es, una densidad $\rho \approx 10 \, \text{g}/\text{cm}^3$ en $x \approx 0.2$ donde comienza a disminuir hasta $\rho \approx 1.5 \, \text{g}/\text{cm}^3$ en $x \approx 0.6$. Después comienza a subir hasta $\rho \approx 5 \, \text{g}/\text{cm}^3$ para los perfiles de 90$^{\circ}$ y 0$^{\circ}$, mientras que para el de 45$^{\circ}$ sube hasta 5.5 en el punto $x \approx 0.7$ cm. Después vuelve a disminuir a $\rho \approx 0 \, \text{g}/\text{cm}^3$ en el punto $x \approx 0.8$ para los 3 perfiles radiales.
-Los perfiles de la velocidad también muestra la misma morfología independientemente de la dirección del perfil. En $x \approx 0.2$ cm la velocidad empieza a incrementar desde el reposo $v = 0$ hasta $v \approx 0.7c$ en $x \approx 0.6$ cm, esto aplica para los 3 perfiles de velocidad. Después, la velocidad va decreciendo hasta $v \approx 0.62c$ en $x \approx 0.75$ cm para los perfiles de 0$^{\circ}$ y 90$^{\circ}$, mientras que para el perfil de 45$^{\circ}$ lo hace en $x \approx 0.73$ cm. A partir de este punto la velocidad vuelve a cero.
-Los perfiles de la presión también se comportan de igual forma independientemente dela dirección del perfil. Para el punto $x \approx 0.18$ cm la presión comienza a disminuir de $p = 13.33 \,  \text{dyn}/ \text{cm}^2$  hasta $p \approx 1 \,  \text{dyn}/ \text{cm}^2$ en $x \approx 0.7$ cm para los 3 perfiles. En $x \approx 0.71 $ cm vuelve a disminuir a $p = 0 \,  \text{dyn}/ \text{cm}^2$ en $x \approx 0.74 $ cm para los perfiles de 0$^{\circ}$ y 90$^{\circ}$, mientras que para el perfil de 45$^{\circ}$ lo hace en $x \approx 0.73 $ cm.
-Los perfiles de 0$^{\circ}$ y 90$^{\circ}$ de la densidad, velocidad y presión son idénticos. El perfil de 45$^{\circ}$ tiene un error máximo (comparado con los otros dos perfiles) del 0.04\% para la densidad, de un 4.8\% para la velocidad, y de 6.6\% para la presión. Cabe señalar que estos errores máximos se presentan únicamente en el pico de la onda de choque, y en el resto del perfil el error es del 0\%. Por lo tanto, al no haber una discrepancia grande en los valores de los 3 perfiles radiales podemos ver que nuestro código relativista no cambia a pesar de la dirección que tengan los perfiles radiales de  densidad, velocidad y presión.
+Para mostrar que la solución bidimensional es la misma independientemente de la dirección del perfil radial se compararon los perfiles radiales tomados en distintas direcciones. En la Figura 
+\ref{fig:comparacion_perfil_radial} se muestran los perfiles de densidad (arriba ala izquierda), velocidad (arriba a la derecha), y presión (abajo) a 0$^{\circ}$ (i.e. sobre el eje X, línea roja), así como a 
+45$^{\circ}$ (linea punteada azul), y 90$^{\circ}$ (línea punteada verde). Los tres perfiles de la densidad muestran básicamente la misma estructura, esto es, una densidad $\rho \approx 10 \, \text{g}/\text{cm}^3$ 
+en $x \approx 0.2$ donde comienza a disminuir hasta $\rho \approx 1.5 \, \text{g}/\text{cm}^3$ en $x \approx 0.6$. Después comienza a subir hasta $\rho \approx 5 \, \text{g}/\text{cm}^3$ para los perfiles de 90$^{\circ}$ 
+y 0$^{\circ}$, mientras que para el de 45$^{\circ}$ sube hasta 5.5 en el punto $x \approx 0.7$ cm. Después vuelve a disminuir a $\rho \approx 0 \, \text{g}/\text{cm}^3$ en el punto $x \approx 0.8$ para los 3 perfiles 
+radiales.
+Los perfiles de la velocidad también muestra la misma morfología independientemente de la dirección del perfil. En $x \approx 0.2$ cm la velocidad empieza a incrementar desde el reposo $v = 0$ hasta $v \approx 0.7c$ 
+en $x \approx 0.6$ cm, esto aplica para los 3 perfiles de velocidad. Después, la velocidad va decreciendo hasta $v \approx 0.62c$ en $x \approx 0.75$ cm para los perfiles de 0$^{\circ}$ y 90$^{\circ}$, mientras que 
+para el perfil de 45$^{\circ}$ lo hace en $x \approx 0.73$ cm. A partir de este punto la velocidad vuelve a cero.
+Los perfiles de la presión también se comportan de igual forma independientemente dela dirección del perfil. Para el punto $x \approx 0.18$ cm la presión comienza a disminuir de $p = 13.33 \,  \text{dyn}/ \text{cm}^2$ 
+hasta $p \approx 1 \,  \text{dyn}/ \text{cm}^2$ en $x \approx 0.7$ cm para los 3 perfiles. En $x \approx 0.71 $ cm vuelve a disminuir a $p = 0 \,  \text{dyn}/ \text{cm}^2$ en $x \approx 0.74 $ cm para los perfiles de 
+0$^{\circ}$ y 90$^{\circ}$, mientras que para el perfil de 45$^{\circ}$ lo hace en $x \approx 0.73 $ cm.
+Los perfiles de 0$^{\circ}$ y 90$^{\circ}$ de la densidad, velocidad y presión son idénticos. El perfil de 45$^{\circ}$ tiene un error máximo (comparado con los otros dos perfiles) del 0.04\% para la densidad, 
+de un 4.8\% para la velocidad, y de 6.6\% para la presión. Cabe señalar que estos errores máximos se presentan únicamente en el pico de la onda de choque, y en el resto del perfil el error es del 0\%. Por lo tanto, 
+al no haber una discrepancia grande en los valores de los 3 perfiles radiales podemos ver que nuestro código relativista no cambia a pesar de la dirección que tengan los perfiles radiales de  densidad, velocidad y presión.
 
 \begin{figure}
   \centering
@@ -2504,7 +2478,8 @@ en una y dos dimensiones.
 
 \chapter{Jets relativistas bidimensionales}
 
-En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en el capítulo \ref{cap:Verificacion_del_codigo}) a través de medios con distinta densidad. La primera prueba consistirá en estudiar el caso en que el jet atraviesa un medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). 
+En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en el capítulo \ref{cap:Verificacion_del_codigo}) a través de medios con distinta densidad. La primera prueba 
+consistirá en estudiar el caso en que el jet atraviesa un medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). 
 Después, se estudiarán los efectos que un medio que varía en función de la distancia produce en los jets relativistas.
 El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ 
 (ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático será $\Gamma = 5/3$, 
@@ -2551,7 +2526,7 @@ $x, y \in [0,40]\times[0,20]$ y un índice adiabático $\Gamma = 5/3$.}
 \end{center}
 \end{table}
 
-\section{Jet 2D RHD en un medio ambiente constante}
+\section{Jet 2D RHD en un medio ambiente constante} \label{sec:jet_ambiente_constante}
 
 Para el caso en que el jet, el cual tiene una densidad $\rho_j = 0.1$, una velocidad que
 solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio en reposo y con densidad y presión constante en el cual 
@@ -2684,7 +2659,7 @@ mismo debido a que no presenta los valores.
 \end{figure}
 
 
-\section{Jet 2D RHD en un medio ambiente variable}
+\section{Jet 2D RHD en un medio ambiente variable} \label{sec:jet_ambiente_variable}
 Esta sección estudia los efectos que un medio que varía en función de la distancia, $\rho = \rho(x)$, 
 produce en un jet. La densidad del medio ambiente variará en función del eje, es decir, se modelará como:
 
@@ -2788,77 +2763,94 @@ se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muest
 %Falta que esto tenga la mismo cronología que los objetivos:
 %----------------------------------------------------------------------------------------------
 %\begin{itemize}
-%  \item Desarrollar un código, que sea capaz de resolver numéricamente las ecuaciones de la hidrodinámica, tanto para los casos newtonianos (HD) así como los relativistas (RHD) en una (1D) y dos dimensiones (2D). Esto se explica en la Sección tal.
+%  \item Desarrollar un código, que sea capaz de resolver numéricamente las ecuaciones de la hidrodinámica, tanto para los casos newtonianos (HD) así como los relativistas (RHD) en una (1D) y dos dimensiones (2D). 
+%         Esto se explica en la Sección tal.
 %  
 %  \item Incorporar los resolvedores numéricos Lax y HLL en el código (tanto en el HD como en el RHD). Esto se explica en la Sección tal.
 %  
-%  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL. Esto se verificó y discutió en la Sección tal.
+%  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL. Esto se verificó y 
+%         discutió en la Sección tal.
 %
-%  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL. Esto se verificó y discutió en la Sección tal.
+%  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL. Esto se verificó y 
+%        discutió en la Sección tal.
 %  
-%  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de Mignone \emph{et al} 2005, y se compararán los resultado obtenidos. Esto se verificó y discutió en la Sección tal.
+%  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de Mignone \emph{et al} 2005, y se compararán los resultado obtenidos. Esto se verificó y discutió en 
+%       la Sección tal.
 %
-%  \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un medio constante. Esto se verificó y discutió en la Sección tal.
+%  \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un 
+%         medio constante. Esto se verificó y discutió en la Sección tal.
 
 %----------------------------------------------------------------------------------------------
 
 \chapter{Conclusiones}
 
-El objetivo principal de esta tesis fue construir un código que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann, realizar pruebas numéricas para poder verificar que tanto el código relativista como el newtoniano funcionan correctamente. Finalmente se reprodujo el jet bidimensional relativista en un medio constante de Mignone \emph{et. al.} 2007 y se estudió como un medio cuya densidad disminuye en función de la distancia ($\rho \propto R^{-1}$ y $\rho \propto R^{-2}$) para observar como se afecta la evolución del jet.
+El objetivo principal de esta tesis fue construir un código que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann, realizar 
+pruebas numéricas para poder verificar que tanto el código relativista como el newtoniano funcionan correctamente. Finalmente se reprodujo el jet bidimensional relativista en un medio constante de 
+Mignone \emph{et. al.} 2007 y se estudió como un medio cuya densidad disminuye en función de la distancia ($\rho \propto R^{-1}$ y $\rho \propto R^{-2}$) para observar como se afecta la evolución del jet.
 
-{\color{blue} En astrofísica, los eventos masivos se pueden
-modelar como un fluido, en este caso se pueden usar las
-ecuaciones de la hidrodinámica para poder simular su comportamiento y hacer predicciones sobre la misma.} 
-Dado que los jets astrofísicos, cuya evolución es descrita por la hidrodinámica pueden ser eventos muy violentos en los cuales se alcanzan velocidades cercanas a la de la luz, 
-las ecuaciones de la hidrodinámica 
-deberán tomar en cuenta los efectos de la relatividad especial. Debido a lo anterior, el código numérico que se construyó con un módulo newtoniano y uno relativista 
-(ambos en una y dos dimensiones).
-{\color{blue} Para poder resolver estas ecuaciones se usaron 2 métodos numéricos, los cuales son el método de Lax y el de HLL. El primero es un método numérico para resolver ecuaciones diferenciales parciales
-usando diferencias finitas mientras que el método de HLL es parecido pero teóricamente mejor.}
 
-Las primeras pruebas que se realizaron consistieron en pruebas unidimensionales en el régimen newtoniano. Estas consistieron en resolver varias configuraciones del tubo de Sod, esto es, 
+{\color{blue} Para poder resolver las ecuaciones de la hidrodinámica, dado que son ecuaciones diferenciales parciales se usaron distintos tipos métodos numéricos. Estas ecuaciones dependen de las variables de
+densidadad, velocidad y de la densidad de energía. Dado que era una un sistema de ecuaciones, estas variables estaban acopladas, por lo que se tenian que desacoplar. El desacoplamiento en el regimen newtoniano
+fue directo, mientras que en el régimen relativista fue un proceso mas complejo, que involucró la creación de varios módulos en el código. Esto se explica en la secciones 
+\ref{sec:Ecuacioneshidrodinamica} y \ref{subsec:DesacoplamientoEcuacionesHidrodinamica}}
+
+{\color{red} Los métodos que se usaron para resolver estas ecuaciones fueron el de Friederich-Lax y el de Haar-Lax-van Leer. El método de Lax esta basado en diferencias finítas hacia adelante en el tiempo y centrado en
+el espacio. El otro método HLL es mas complejo, ya que los estados (que dependen de las variables conservadas) estan delimitados por las  ondas acústicas y se promedian en un solo estado constante. Esto se puede 
+ver en la sección \ref{sec:Diferencias_finitas}
+}
+
+{\color{blue} Las primeras pruebas que se realizaron consistieron en pruebas unidimensionales en el régimen newtoniano. Estas consistieron en resolver el problema del tubo de Sod, esto es, 
 analizar la evolución de dos fluidos con distinta densidad, velocidad y presión que inicialmente estaban separados en una posición determinada. Cabe señalar que en estas pruebas se analizaron las diferencias 
 que se tienen al utilizar el método de Lax o el de HLL. Para el caso donde se tienen distintas densidades (y las presiones y las velocidades son iguales) tanto el método de Lax como el método de HLL son indistintos 
 y se reproduce la solución analítica. En este caso el método de Lax resulto ser computacionalmente más rápido que el de HLL. Para el caso en donde ahora las velocidades son distintas y las densidades y presiones son 
 iguales también se reprodujo la solución analítica indistintamente del método de Riemann que se utilizara. El método de Lax resultó ser notoriamente más rápido que HLL por lo que para el régimen unidimensional y para 
-velocidades newtonianas, es recomendable usar este método.
-
-Las siguientes pruebas consistieron en verificar que en los tubos de Sod, en donde los fluidos evolucionaran con velocidades cercanas a la de la luz, se reprodujeran correctamente con el 
+velocidades newtonianas, es recomendable usar este método. Esto se observó y discutió en la sección \ref{subsec:casos_newtonianos_1D}
+Las siguientes pruebas consistieron en verificar que en los tubos de Sod, en donde los fluidos evolucionaron con velocidades cercanas a la de la luz, se reprodujeran correctamente con el 
 módulo relativista. 
-{\color{blue}
 Para ambos métodos se puede observar que se tienen errores cuando se aproximan a los valores discontinuos, principalmente en las discontinuidades de contacto (superficies que separan 
 zonas de diferente densidad y temperatura). Mientras que para las discontinuidades de choque (ocurren cuando los gradientes de presión son lo suficientemente grandes como para generar movimientos de compresión supersónicos),  %INTERSTELLARSHOCK WAVES Christopher F. McKee 
-se muestra una mayor aproximación a la solución analítica. Y para las zonas donde no se presentan discontinuidades, ambos métodos se aproximaban bastante para resoluciones bajas.} Para los casos, donde el régimen es relativista 
+se muestra una mayor aproximación a la solución analítica. Y para las zonas donde no se presentan discontinuidades, ambos métodos se aproximaban bastante para resoluciones bajas. Para los casos, donde el régimen es relativista 
 pero se mantiene la misma dimensión, el método de Lax falla 
 por completo, sin importar la resolución que se establezca, donde se encontraron errores graves, por lo que no se pudo hacer una comparación entre ambos métodos. A diferencia del caso newtoniano, 
 el relativista no presenta dificultades en las discontinuidades de contacto y tiene una buena aproximación al caso analítico de onda donde las densidades son distintas. Para el caso donde las 
 velocidades son distintas, la aproximación de HLL para el caso analítico, fue casi igual para resoluciones altas y bajas por lo que  HLL para el régimen unidimensional relativista  
 hace un correcto modelaje de las ecuaciones de la hidrodinámica relativista. En resumen, para efectos de costo computacional, el método de Lax se recomienda usar ya que es ligeramente mas rápido 
-que HLL, pero en el régimen relativista HLL es el único que muestra resultados viables.
+que HLL, pero en el régimen relativista HLL es el único que muestra resultados viables. Esto se observó y discutió en la sección \ref{subsec:casos_relativistas_1D}}
 
-En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod. {\color{blue} Se uso el problema de Sedov-Taylor para probar el código en dos dimensiones. Este problema consiste en resolver una onda de choque con ciertos valores de 
-densidad y energía dentro de un medio ambiente con distintos parámetros. Se usaron valores típicos de una supernova para para observar el crecimiento del radio de la onda en función del tiempo. El código tuvo éxito ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado en el capítulo 2}. Ya que lo que importa es que el código pueda 
-reproducir flujos relativistas. Al comparar los perfiles de densidad y 
-comparándose con los unidimensionales los valores de la densidad vienen teniendo el mismo resultado. Por lo que mi código no tiene una preferencia de dirección.
 
-Cuando se comparación los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico se mostró que  el perfil en 2 dimensiones es en promedio mucho mas cercano al valor analítico, 
-sobre todo en la velocidad donde se observa que salvo en las discontinuidades de choque y de contacto los valores son los mismos que el el analítico, mientras que en la parte unidimensional mantiene valores mas alejados al analítico. 
-Por lo tanto el código en 2 dimensiones es mejor que cuando lo presentamos en el caso unidimensional y por lo tanto el código se puede usar para hacer simulaciones de jet que se mueven a  velocidades relativistas.
+{\color{red} En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod no se utilizo Lax. El problema de Sedov-Taylor se usó para probar el código en 
+el régimen newtoniano. Este problema consiste en resolver una onda de choque con ciertos valores de 
+densidad y energía dentro de un medio ambiente con distintos parámetros. Se usaron valores típicos de una supernova para para observar el crecimiento del radio de la onda en función del tiempo. El código tuvo éxito 
+ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual 
+es muy parecido al valor analítico mostrado en la sección \ref{sec:sedov_taylor}.
+Para las pruebas relativistas se tomó una prueba de una onda de choque, es decir, se tomó el mismo problema del tubo de sod relativista en una dimensión y se expandió a dos 
+dimensiones.  Esto se observó y discutió en la sección \ref{subsec:caso_newtoniano_2d}.
+Al tomarse los perfiles de densidad y 
+comparándolos con los unidimensionales, los valores de la densidad vienen siendo iguales. Por lo que mi código no tiene una preferencia de dirección.
+Cuando se comparó los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico se mostró que  el perfil en 2 dimensiones es, en promedio, mucho mas cercano al valor analítico, 
+sobre todo en la velocidad, donde se observa que salvo en las discontinuidades de choque y de contacto los valores son los mismos que el el analítico, mientras que en la parte unidimensional mantiene valores mas alejados 
+al analítico. Por lo tanto el código en 2 dimensiones es mejor que cuando lo presentamos en el caso unidimensional y por lo tanto el código se puede usar para hacer simulaciones de jet que se mueven a 
+velocidades relativistas.  Esto se observó y discutió en la sección \ref{subsec:caso_relativista_2d}}
 
-Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} 2007 se encontraron similitudes, así como algunas diferencias.  La principal es que no presenta turbulencias, es decir, nuestro jet es 
-mas viscoso y no se puede mejorar sin importar la resolución que se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación así como a parte cilíndrica del jet, 
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                              JET               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\color{blue} Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} 2007 se encontraron similitudes, así como algunas diferencias. La principal es que no presenta turbulencias, es decir, nuestro jet es 
+mas viscoso y no se puede mejorar sin importar la resolución que se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación así como la parte cilíndrica del jet, 
 sin embargo no se comparte el ancho o tiene una diferencia mayor debido a que, como ya se había mencionado antes, el jet de esta tesis es mas viscoso. Sobre este punto, que es la viscosidad, se puede observar que esta 
-se reduce conforme se aumente la resolución, sin embargo, el jet de estudio de Mignone no necesita mucha resolución, por lo que el que la viscosidad del jet de este estudio no es un problema de resolución sino mas 
-bien usar un algoritmo mas robusto para resolver las ecuación  es de la hidrodinámica  tales como HLLC que es otro método numérico . Aunque el jet del estudio Mignone \emph{et al} 2007 detalla todas las 
+se reduce conforme se aumente la resolución, sin embargo, el jet de estudio de Mignone no necesita mucha resolución, por lo que la viscosidad del jet de este estudio no es un problema de resolución sino mas 
+bien usar un algoritmo mas robusto para resolver las ecuaciones de la hidrodinámica  tales como HLLC que es otro método numérico. Aunque el jet del estudio Mignone \emph{et al} 2007 detalla todas las 
 características de su jet, no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad.
+Tambien se encontró que contiene las características esenciales de todo jet, como lo es, el capullo y las ondas de colimación.  Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, 
+es ligeramente mas lento. Esto se verificó y discutió en la Sección \ref{sec:jet_ambiente_constante}}
 
-Al simular el jet se encontró que contiene las características esenciales de todo jet, como lo es, el capullo y las ondas de colimación. Las gráficas muestran que se mueve a velocidades relativistas y que no presenta 
-errores al llegar a tales velocidades. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente mas lento.
-
-Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et al} (2017) se implementó este código para pruebas en medios ambiente que decaen en función de la 
+{\color{red} Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et al} (2017) se implementó este código para pruebas en medios ambiente que decaen en 
+función de la 
 distancia. Al estudiar el jet se pasa de  un medio, que es homogéneo, a no que decae como $1/x$ o $1/x^2$, se encontró, como se esperaba, que los picos de densidad y presión decaían en proporción a como lo hacia el 
 medio ambiente. En los paneles de velocidad se podría observar que el jet alcanzaba velocidades relativista y que también en los paneles de densidad, al compararse los perfiles se pudo observar que conforme el medio 
-ambiente decae mas rápido el jet también se mueve más rápido, esto debido a que el material que barre es menor  y que es algo que se esperaría.
+ambiente decae mas rápido el jet también se mueve más rápido, esto debido a que el material que barre es menor  y que es algo que se esperaría. Esto se discutió y verificó en la Sección \ref{sec:jet_ambiente_variable}}
 
 A pesar de que el jet fue probado en distintas situaciones, se puede mejorar bastante y mejorar considerablemente el tiempo de cómputo ya que el código gasta muchos recursos, sobre todo en cuestión de tiempo. 
 Las mejoras son remarcadas en los siguientes puntos:
@@ -2872,20 +2864,6 @@ Las mejoras son remarcadas en los siguientes puntos:
 
 \item \textbf{Paradigma}: Si bien Fortran es una gran herramienta para el computo científico, es difícil darle mantenimiento al mismo programa ya que tiene un paradigma imperativo por lo que usar un paradigma orientado a objetos tal como en Julia podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
 
-% \item Tanto en Lax, como en HLL para el caso newtoniano muestran dos tipos de onda. Una se va alejando del centro de la misma (\emph{forward shock}) y una onda que se va acercando a la misma (\emph{reverse shock}). Estas se muestran independientemente si se mueve la onda de choque hacia las fronteras. (Sección \ref{sec:onda de choque})
-
-% \item En el caso newtoniano, la velocidad de expansión de la onda fue un 1.3\% más veloz que el método de HLL. Pero HLL muestra una discontinuidad menós viscosa (ver Figura \ref{fig:Lax-hll-newtoniano1}) con una diferencia de densidades menores al $<0.5 \% $ lo que hace 
-% a HLL un mejor resolvedor de Riemann para mí código. Aún así se pueden usar ambos métodos para el choque de onda. (Sección\ref{subs:Lax_vs_HLl})
-
-% \item Para el caso relativista la expansión de la onda de choque tiene un descenso rápido de velocidad llegando al 19 \% de la velocidad de la luz al tiempo $< 0.7$ s sin importar la presión o energía que contenga. (Sección \ref{subs:Lax_vs_HLL_relativista}).
-
-% \item Una diferencia entre las ondas de choque newtonianas y relativistas es que no muestran una discontinuidad, aunque siguen presentando las ondas \emph{forward} y \emph{reverse shock} como en el caso newtoniano. (Sección \ref{subs:Lax_vs_HLL_relativista}).
-
-% \item Para el caso del jet relativista, el capullo es 4 veces mas denso usando Lax que HLL. Otra diferencia con los jet relativistas es que HLL muestra una eyección 4 veces más densa que las condiciones que se habian impuesto, mientras que con Lax se muestrasn las condiciones dadas. Por tal motivos Lax es un mejor método para mi programa y HLL es un método ineficiente. (Sección \ref{sec:Diferencia_de_los_metodos_numéricos_sobre_el_jet}).
-
-% \item El jet en condiciones de densidad mantiene su velocidad cercana a la de la velocidad de la luz. A pesar de que el jet tuvo únicamente velocidad sobre el eje Y, este no es totalmente colimado y mantiene un ángulo de apertura de $\sim 10^o$. (Sección \ref{sec:SGRB_en_medio_de_densidad_bajo}).
-
-% \item El jet en un medio de densidad alto al chocar con un medio de densidad 10 mas denso que el mismo ya no muestra velocidades relativistas dado que su velocidad disminuye a velocidades newtonianas. (Sección \ref{sec:SGRB_en_medio_de_densidad_alto}).
 
 \end{itemize}
 
@@ -3022,7 +3000,7 @@ En la subrutína \textit{initconds} se calcularán las condiciones iniciales, to
 En esta parte dan los valores iniciales para nuestra malla tanto en $x$ como en $y$ en el tiempo $t=0$
 
 \subsection{Condición de Courant}
-Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales se van a calcular en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia y la estabilidad de nuestras ecuación  es diferenciales parciales (ecuación \ref{u_posterior_tensor}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación diferencial parcial original si todos los intervalos finitos tienden a cero, una condición necesaria para la convergencia es que los errores, por ejemplo los debidos al redondeo, no se incrementen con en tiempo. Esta es la llamada la condición de estabilidad. Es una condición tan importante que implica ciertas restricciones al tamaño del paso de tiempo en un proceso explícito. Un análisis de estabilidad para esquemas explícitos a partir de la teoría de las características para soluciones continuas lleva a la conclusión que dichos esquemas, para ser estables, deben cumplir la condición de Courant, que es: 
+Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales se van a calcular en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia y la estabilidad de nuestras ecuaciones diferenciales parciales (ecuación \ref{u_posterior_tensor}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación diferencial parcial original si todos los intervalos finitos tienden a cero, una condición necesaria para la convergencia es que los errores, por ejemplo los debidos al redondeo, no se incrementen con en tiempo. Esta es la llamada la condición de estabilidad. Es una condición tan importante que implica ciertas restricciones al tamaño del paso de tiempo en un proceso explícito. Un análisis de estabilidad para esquemas explícitos a partir de la teoría de las características para soluciones continuas lleva a la conclusión que dichos esquemas, para ser estables, deben cumplir la condición de Courant, que es: 
 
 \begin{equation}
 \Delta t \leq \frac{\Delta x}{u+C}
@@ -3097,7 +3075,7 @@ Las condiciones \emph{outflow}, son en las que los valores de nuestra frontera f
 \caption{Al pasar la onda nuestra frontera, esta sigue su trayecto normal como si el dominio fuera infinito} \label{fig:reflexion}
 \end{figure}
 
-Las ecuación  es que obedece nuestra frontera son las siguientes:
+Las ecuaciones que obedece nuestra frontera son las siguientes:
 \begin{eqnarray}
 \textbf{U}(0,j)&=&\textbf{U}(1,j) \\
 \textbf{U}(n+1,j)&=&\textbf{U}(n,j) \\
@@ -3118,7 +3096,7 @@ Las condiciones de reflexión funcionan como una pared en la que no se le permit
 \caption{Al llegar la frontera la onda se reflejará y chocará con la misma} \label{fig:reflexion}
 \end{figure}
 
-Las ecuación  es que obedece nuestra frontera son las siguientes:
+Las ecuaciones que obedece nuestra frontera son las siguientes:
 \begin{eqnarray}
 \textbf{U}(0,j)&=&-\textbf{U}(1,j) \\
 \textbf{U}(n+1,j)&=&-\textbf{U}(n,j) \\
@@ -3137,7 +3115,7 @@ Las condiciones periódicas son cuando nuestra frontera fantasma toma los valore
 \caption{Al llegar la onda abajo se puede ver que se transporta al lado de arriba, se eligió esa posición de la onda, solo para resaltar la periodicidad de la onda, ya que si se hubiera puesto en el centro, la onda chocaría contra si mismo y no podríamos ver el paso de la onda.} \label{fig:periodicas}
 \end{figure}
 
-Las ecuación  es que representan este tipo de frontera son las siguientes:
+Las ecuaciones que representan este tipo de frontera son las siguientes:
 
 \begin{eqnarray}
 \textbf{U}(0,j)&=&\textbf{U}(n,j) \\
@@ -3159,7 +3137,7 @@ Las condiciones de tipo jet, son en las que dado un lado de nuestra frontera (pu
 \caption{El jet, es básicamente inyectar masa y energía en una parte de nuestra frontera, a cada tiempo que evoluciona.} \label{fig:periodicas}
 \end{figure}
 
-Para obtener las ecuación es de esta frontera, igualamos los valores de la frontera \emph{fantasma} con las variables primitivas de nuestro jet, las siguientes ecuación son para la parte de abajo de nuestro dominio.
+Para obtener las ecuaciones de esta frontera, igualamos los valores de la frontera \emph{fantasma} con las variables primitivas de nuestro jet, las siguientes ecuación son para la parte de abajo de nuestro dominio.
 
 No relativista
 
