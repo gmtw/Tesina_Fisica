@@ -80,7 +80,7 @@ stringstyle=\color{orange},
   \LARGE{F}\large{ACULTAD DE } \LARGE{C}\large{IENCIAS}\\[2cm]
 
   \large{
-Simulaciones numéricas hidrodinámicas relativistas de Destellos de Rayos Gamma cortos lanzados desde un objeto compacto en varios tipos de medios ambientes. }\\[2cm]
+Simulaciones numéricas hidrodinámicas de jets relativistas en distintos medios. }\\[2cm]
 
   \huge{
 T \hspace{1cm} E \hspace{1cm} S \hspace{1cm} I \hspace{1cm} S  }\\[1cm]
@@ -139,53 +139,18 @@ mi familia}
 ¡Muchas gracias a todos!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%----------------------------------------------------------------------------------------------
 \chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
 \addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
-
-\markboth{RESUMEN}{RESUMEN} % encabezado
-%
-Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con mucha energía, 
-y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con velocidades que van desde el límite no 
-relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades ultra relativistas. 
-Independientemente de si los jets provienen de los GNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. Una buena forma de estudiar los 
-jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) y relativistas-hidrodinámicas (RHD). La intención de esta tesis es construir un código numérico HD y RHD para así poder estudiar este tipo 
-de jets.
-
 %----------------------------------------------------------------------------------------------
-%Falta que esto tenga la mismo cronología que los objetivos:
+\markboth{RESUMEN}{RESUMEN}
 %----------------------------------------------------------------------------------------------
-%\begin{itemize}
-%  \item Desarrollar un código, que sea capaz de resolver numéricamente las ecuaciones de la hidrodinámica, tanto para los casos newtonianos (HD) así como los relativistas (RHD) en una (1D) y dos dimensiones (2D). 
-%  
-%  \item Incorporar los resolvedores numéricos Lax y HLL en el código (tanto en el HD como en el RHD).
-%  
-%  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL.
-%
-%  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL.
-%  
-%  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de Mignone \emph{et al} 2005, y se compararán los resultado obtenidos.
-%
-%  \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un medio 
-%         constante.
-%----------------------------------------------------------------------------------------------
+Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con velocidades que van desde el límite no relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. Una buena forma de estudiar los 
+jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un código numérico HD y RHD en una y dos dimensiones para así poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
 
-{\color{blue}Para poder modelar ese tipo de eventos se usarón las ecuaciones de la hidrodinámica que son un tipo de ecuaciones diferenciales parciales. Estas dependen de los flujos y de unas funciones llamadas conservadas
-que a su vez dependen de la conservación de  masa, momento y energía. Dado que son un sistemas de ecuaciones que no es posible resolver analíticamente se implementaron dos métodos numéricos para poder resolverlos
-las cuales se resolverán a través de métodos numéricos.}
-{\color{red} En este caso se eligieron el métodos de Friederich-Lax y Harten-Lax-van-Leer que son métodos basados en diferencias finítas}. 
-{\color{blue} Para las pruebas unidimensionales se resolvió el problema del choque en un 
-tubo unidimensional conocido como el problema de Sod. Estas pruebas se contemplaron primero para el régimen newtoniano y después para el régimen relativista}. 
-{\color{red} Para el caso bidimensional, en el régimen 
-newtoniano se resolvió el problema de Sedov-Taylor el cual refiere a una onda de choque producida por una fuerte explosión. Este fenómeno se ve mucho en las remanentes de Supernovas. Para el caso relativista, dado que no 
-se encontró un problema analítico a resolver, se tomaron pruebas similares al tubo de choque relativista, en el cual se tomaron los perfiles radiales de la densidad de la onda y se compararon con las 
-pruebas unidimensionales.}
+Para verificar que el código funcionaba correctamente primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales HD y RHD, y pruebas bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilzaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). Para la pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las soluciones conocidas.
 
-{\color{blue} Una vez que se que se hicieron las pruebas con los problemas analíticos se procedió a realizar las pruebas del jet. Estas pruebas consistieron en
-replicar las mismas condiciones que las del estudio de Mignone \emph{et al} (2005) para después comparar la morfología y comportamiento del jet. El jet de esta tesis no mostró la misma viscosidad que el de el estudio de 
-Mignone.}
-
-{\color{red} Por último, se reprodujo el mismo jet en distintos medios que decaían como $x^{-\alpha}$, donde la variable \emph{x} hace referencia a la posición y $\alpha$ es una constante que esta entre 0 y 2. Se observó 
-como el jet era mas rápido conforme aumentaba $\alpha$, asi como la disminución de su densidad.}
+Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de Mignone \emph{et al} 2007. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 
 
 %%%%%%%%%%%%%%%  CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1411,50 +1376,7 @@ P_{j} = \frac{3}{4}\rho_m u_m^{2}
 
 \subsection{Rankine-Hugoniot Relativista}
 
-% Si suponenmos las condiciones de Rankine-Hugoniot en un jet relativista, la presión interna del jet va a a ser mucho más grande que la del medio que lo está
-% rodeando. Si colocamos nuestro marco de referencia sobre el jet, su masa será:
 
-% \begin{equation}
-%   M = \pi \rho v_j R^2 t
-% \end{equation}
-
-% Donde $M$, $\rho$, $v_j$ y $R$ son la masa, densidad, velocidad y radio del jet respectivamente, $t$ es el tiempo. Si multiplicamos todo por $c^2$,
-% que es la velocidad de la luz al cuadrado, obtenemos la energía.
-
-% \begin{equation}
-%   E = Mc^2 = \pi \rho v_j R^2 t c^2
-% \end{equation}
-
-
-
-% Como tenemos nuestro sistema de referencia en la onda de choque inicial ($\gamma_j$) sobre nuestro objeto compacto. La energía del jet es:
-% \begin{equation}
-%   E = \gamma_{\infty} E
-% \end{equation}
-% Donde $\gamma_{\infty}$ es factor de lorentz con el que se mueve el jet cuando ya se ha alejado del objecto compacto.
-% Y si ahora nos movemos al sistema de referencia visto desde la Tierra, la energía se vuelve:
-
-
-
-% \begin{equation}
-%   E = \gamma_{j} \gamma_{\infty} E_j
-% \end{equation}
-
-% Donde $\gamma_j$ es el factor de lorentz del jet y $E_j$ es la energía 
-% del jet.
-
-% Si derivamos con respecto al tiempo obtenemos la luminosidad.
-
-
-% \begin{equation}
-%   L = \dfrac{dE}{dt} = \gamma_{j} \gamma_{\infty}  \pi \rho v_j R^2 c^2
-% \end{equation}
-
-% Podemos obtener la densidad del jet despejando $\rho$ de la anterior ecuación
-
-% \begin{equation}
-%   \rho_j = \frac{L}{\gamma_{j} \gamma_{\infty}  \pi v_j R^2 c^2}
-% \end{equation}
 
 Considerando la conservación de masa:
 
@@ -2757,120 +2679,46 @@ se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muest
   , \, . . . \,  , x^{-2}$.}\label{fig:perfiles_comparacion_jet}
 \end{figure}
 
-
-
 %----------------------------------------------------------------------------------------------
-%Falta que esto tenga la mismo cronología que los objetivos:
-%----------------------------------------------------------------------------------------------
-%\begin{itemize}
-%  \item Desarrollar un código, que sea capaz de resolver numéricamente las ecuaciones de la hidrodinámica, tanto para los casos newtonianos (HD) así como los relativistas (RHD) en una (1D) y dos dimensiones (2D). 
-%         Esto se explica en la Sección tal.
-%  
-%  \item Incorporar los resolvedores numéricos Lax y HLL en el código (tanto en el HD como en el RHD). Esto se explica en la Sección tal.
-%  
-%  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL. Esto se verificó y 
-%         discutió en la Sección tal.
-%
-%  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL. Esto se verificó y 
-%        discutió en la Sección tal.
-%  
-%  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de Mignone \emph{et al} 2005, y se compararán los resultado obtenidos. Esto se verificó y discutió en 
-%       la Sección tal.
-%
-%  \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un 
-%         medio constante. Esto se verificó y discutió en la Sección tal.
-
-%----------------------------------------------------------------------------------------------
-
 \chapter{Conclusiones}
+%----------------------------------------------------------------------------------------------
+El objetivo principal de esta tesis fue construir un código numérico hidrodinámico que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann. Para verificar que el código funcionaba correctamente dicho código debía ser capaz de reproducir pruebas numéricas cuya solución ya era conocida previamente (ya fuera por medio de modelos analíticos o simulaciones numéricas previas de otros grupos de investigación). En específico se verificó que el código numérico reprodujera pruebas unidimensionales newtonianas y relativistas (tubos de choques), y pruebas bidimensionales newtonianas (por ejemplo Sedov-Taylor) y relativistas. Además, se estudió la evolución de un jet bidimensional con velocidad relativista a través de un medio variable (estático). Para lo anterior primero se reprodujeron los resultados de un jet en un medio constante de Mignone \emph{et. al.} 2007, y segundo, se estudió como es afectada la evolución del jet relativista en un medio variable (i.e. un medio cuya densidad disminuye en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$).
 
-El objetivo principal de esta tesis fue construir un código que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann, realizar 
-pruebas numéricas para poder verificar que tanto el código relativista como el newtoniano funcionan correctamente. Finalmente se reprodujo el jet bidimensional relativista en un medio constante de 
-Mignone \emph{et. al.} 2007 y se estudió como un medio cuya densidad disminuye en función de la distancia ($\rho \propto R^{-1}$ y $\rho \propto R^{-2}$) para observar como se afecta la evolución del jet.
+En el capítulo 2, se detalla la física y detalles numéricos que se emplean en el código numérico creado para el desarrollo de esta tesis. En específico, en las secciones \ref{sec:Ecuacioneshidrodinamica} y \ref{subsec:DesacoplamientoEcuacionesHidrodinamica} se detallan las ecuaciones de la hidrodinámica así como los distintos métodos numéricos empleados para su resolución. Los métodos que se usaron fueron el de Friederich-Lax y el de Haar-Lax-van Leer. Además, dado que el sistema de ecuaciones de la hidrodinámica e hidrodinámica relativista están acopladas se detalla como se les desacopla y se obtiene la densidad, velocidades y densidad de energía para un paso temporal subsecuente.
 
-
-{\color{blue} Para poder resolver las ecuaciones de la hidrodinámica, dado que son ecuaciones diferenciales parciales se usaron distintos tipos métodos numéricos. Estas ecuaciones dependen de las variables de
-densidadad, velocidad y de la densidad de energía. Dado que era una un sistema de ecuaciones, estas variables estaban acopladas, por lo que se tenian que desacoplar. El desacoplamiento en el regimen newtoniano
-fue directo, mientras que en el régimen relativista fue un proceso mas complejo, que involucró la creación de varios módulos en el código. Esto se explica en la secciones 
-\ref{sec:Ecuacioneshidrodinamica} y \ref{subsec:DesacoplamientoEcuacionesHidrodinamica}}
-
-{\color{red} Los métodos que se usaron para resolver estas ecuaciones fueron el de Friederich-Lax y el de Haar-Lax-van Leer. El método de Lax esta basado en diferencias finítas hacia adelante en el tiempo y centrado en
-el espacio. El otro método HLL es mas complejo, ya que los estados (que dependen de las variables conservadas) estan delimitados por las  ondas acústicas y se promedian en un solo estado constante. Esto se puede 
-ver en la sección \ref{sec:Diferencias_finitas}
-}
-
-{\color{blue} Las primeras pruebas que se realizaron consistieron en pruebas unidimensionales en el régimen newtoniano. Estas consistieron en resolver el problema del tubo de Sod, esto es, 
-analizar la evolución de dos fluidos con distinta densidad, velocidad y presión que inicialmente estaban separados en una posición determinada. Cabe señalar que en estas pruebas se analizaron las diferencias 
-que se tienen al utilizar el método de Lax o el de HLL. Para el caso donde se tienen distintas densidades (y las presiones y las velocidades son iguales) tanto el método de Lax como el método de HLL son indistintos 
-y se reproduce la solución analítica. En este caso el método de Lax resulto ser computacionalmente más rápido que el de HLL. Para el caso en donde ahora las velocidades son distintas y las densidades y presiones son 
-iguales también se reprodujo la solución analítica indistintamente del método de Riemann que se utilizara. El método de Lax resultó ser notoriamente más rápido que HLL por lo que para el régimen unidimensional y para 
-velocidades newtonianas, es recomendable usar este método. Esto se observó y discutió en la sección \ref{subsec:casos_newtonianos_1D}
-Las siguientes pruebas consistieron en verificar que en los tubos de Sod, en donde los fluidos evolucionaron con velocidades cercanas a la de la luz, se reprodujeran correctamente con el 
-módulo relativista. 
-Para ambos métodos se puede observar que se tienen errores cuando se aproximan a los valores discontinuos, principalmente en las discontinuidades de contacto (superficies que separan 
-zonas de diferente densidad y temperatura). Mientras que para las discontinuidades de choque (ocurren cuando los gradientes de presión son lo suficientemente grandes como para generar movimientos de compresión supersónicos),  %INTERSTELLARSHOCK WAVES Christopher F. McKee 
-se muestra una mayor aproximación a la solución analítica. Y para las zonas donde no se presentan discontinuidades, ambos métodos se aproximaban bastante para resoluciones bajas. Para los casos, donde el régimen es relativista 
-pero se mantiene la misma dimensión, el método de Lax falla 
-por completo, sin importar la resolución que se establezca, donde se encontraron errores graves, por lo que no se pudo hacer una comparación entre ambos métodos. A diferencia del caso newtoniano, 
-el relativista no presenta dificultades en las discontinuidades de contacto y tiene una buena aproximación al caso analítico de onda donde las densidades son distintas. Para el caso donde las 
-velocidades son distintas, la aproximación de HLL para el caso analítico, fue casi igual para resoluciones altas y bajas por lo que  HLL para el régimen unidimensional relativista  
-hace un correcto modelaje de las ecuaciones de la hidrodinámica relativista. En resumen, para efectos de costo computacional, el método de Lax se recomienda usar ya que es ligeramente mas rápido 
-que HLL, pero en el régimen relativista HLL es el único que muestra resultados viables. Esto se observó y discutió en la sección \ref{subsec:casos_relativistas_1D}}
-
-
-{\color{red} En las pruebas bidimensionales, dado que el método de HLL fue el único que paso las pruebas del tubo de Sod no se utilizo Lax. El problema de Sedov-Taylor se usó para probar el código en 
-el régimen newtoniano. Este problema consiste en resolver una onda de choque con ciertos valores de 
-densidad y energía dentro de un medio ambiente con distintos parámetros. Se usaron valores típicos de una supernova para para observar el crecimiento del radio de la onda en función del tiempo. El código tuvo éxito 
-ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual 
-es muy parecido al valor analítico mostrado en la sección \ref{sec:sedov_taylor}.
-Para las pruebas relativistas se tomó una prueba de una onda de choque, es decir, se tomó el mismo problema del tubo de sod relativista en una dimensión y se expandió a dos 
-dimensiones.  Esto se observó y discutió en la sección \ref{subsec:caso_newtoniano_2d}.
-Al tomarse los perfiles de densidad y 
-comparándolos con los unidimensionales, los valores de la densidad vienen siendo iguales. Por lo que mi código no tiene una preferencia de dirección.
-Cuando se comparó los perfiles de onda de choque bidimensional con la parte unidimensional y el analítico se mostró que  el perfil en 2 dimensiones es, en promedio, mucho mas cercano al valor analítico, 
-sobre todo en la velocidad, donde se observa que salvo en las discontinuidades de choque y de contacto los valores son los mismos que el el analítico, mientras que en la parte unidimensional mantiene valores mas alejados 
-al analítico. Por lo tanto el código en 2 dimensiones es mejor que cuando lo presentamos en el caso unidimensional y por lo tanto el código se puede usar para hacer simulaciones de jet que se mueven a 
-velocidades relativistas.  Esto se observó y discutió en la sección \ref{subsec:caso_relativista_2d}}
-
-
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                              JET               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-{\color{blue} Al compararse el jet de este código, con el del estudio de Mignone \emph{et al} 2007 se encontraron similitudes, así como algunas diferencias. La principal es que no presenta turbulencias, es decir, nuestro jet es 
-mas viscoso y no se puede mejorar sin importar la resolución que se le aplique. Pero si comparte la morfología tales como la longitud del jet y las ondas de colimación así como la parte cilíndrica del jet, 
-sin embargo no se comparte el ancho o tiene una diferencia mayor debido a que, como ya se había mencionado antes, el jet de esta tesis es mas viscoso. Sobre este punto, que es la viscosidad, se puede observar que esta 
-se reduce conforme se aumente la resolución, sin embargo, el jet de estudio de Mignone no necesita mucha resolución, por lo que la viscosidad del jet de este estudio no es un problema de resolución sino mas 
-bien usar un algoritmo mas robusto para resolver las ecuaciones de la hidrodinámica  tales como HLLC que es otro método numérico. Aunque el jet del estudio Mignone \emph{et al} 2007 detalla todas las 
-características de su jet, no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad.
-Tambien se encontró que contiene las características esenciales de todo jet, como lo es, el capullo y las ondas de colimación.  Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, 
-es ligeramente mas lento. Esto se verificó y discutió en la Sección \ref{sec:jet_ambiente_constante}}
-
-{\color{red} Dado las comparaciones que se hicieron con en pruebas unidimensionales, bidimensionales y con el estudio de Mignone \emph{et al} (2017) se implementó este código para pruebas en medios ambiente que decaen en 
-función de la 
-distancia. Al estudiar el jet se pasa de  un medio, que es homogéneo, a no que decae como $1/x$ o $1/x^2$, se encontró, como se esperaba, que los picos de densidad y presión decaían en proporción a como lo hacia el 
-medio ambiente. En los paneles de velocidad se podría observar que el jet alcanzaba velocidades relativista y que también en los paneles de densidad, al compararse los perfiles se pudo observar que conforme el medio 
-ambiente decae mas rápido el jet también se mueve más rápido, esto debido a que el material que barre es menor  y que es algo que se esperaría. Esto se discutió y verificó en la Sección \ref{sec:jet_ambiente_variable}}
-
-A pesar de que el jet fue probado en distintas situaciones, se puede mejorar bastante y mejorar considerablemente el tiempo de cómputo ya que el código gasta muchos recursos, sobre todo en cuestión de tiempo. 
-Las mejoras son remarcadas en los siguientes puntos:
-
+En el capítulo 3, se muestran las pruebas numéricas hidrodinámicas e hidrodinámicas relativistas en una y dos dimensiones. A continuación se menciona cada una así como sus resultados principales: 
 \begin{itemize}
-\item \textbf{Implementación de otro solucionador de Riemann}: A pesar de que HLL, es un algoritmo robusto y fácil de implementar promedia la solución completa al problema de Riemann en un solo estado y, por lo tanto, carece de la capacidad para resolver ondas intermedias únicas tales como las ondas de contacto. Por lo que una buena mejora sería usar el método de HLLC que restaura la estructura de onda completa dentro de la gráfica de ondas de Riemann.
-
-\item \textbf{Implementación del algoritmo AMR}: Como ya se vio anteriormente las áreas de mayor atención son las zonas de ondas  de contacto y para poder reproducirlas lo mejor posible se necesita una mejor resolución. Sin embargo el costo computacional es alto y como no toda la región es de nuestro interés, la implementación de este algoritmo ayudaría a tener una mejor aproximación de estas zonas a un costo computacional bajo sin perder toda la información de nuestro jet.
-
-\item \textbf{Paralelismo}: Algo que realmente podría hacer mas  rápido el código es hacerlo paralelo, es decir, que se puedan hacer varios procesos al mismo tiempo y no, necesariamente hacerlos secuencialmente y poder adaptarlo a la malla que generamos. Si pudiéramos hacer esto podríamos hacer uso de GPUs haciendo uso de CUDA Fortran o de algún otro compilador que pudiera trabajar GPU programando en Fortran.
-
-\item \textbf{Paradigma}: Si bien Fortran es una gran herramienta para el computo científico, es difícil darle mantenimiento al mismo programa ya que tiene un paradigma imperativo por lo que usar un paradigma orientado a objetos tal como en Julia podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
-
-
+	\item En la sección \ref{subsec:casos_newtonianos_1D} se muestran las pruebas unidimensionales en el régimen newtoniano. Estas consistieron en resolver el problema del tubo de Sod, esto es, analizar la evolución de dos fluidos con distinta densidad, velocidad y presión que inicialmente estaban separados en una posición determinada. Cabe señalar que en estas pruebas se analizaron las diferencias que se tienen al utilizar el método de Lax o el de HLL. Para el caso donde se tienen distintas densidades (y las presiones y las velocidades son iguales) tanto el método de Lax como el método de HLL son indistintos y se reproduce la solución analítica. En este caso el método de Lax resultó ser computacionalmente más rápido que el de HLL. Para el caso en donde ahora las velocidades son distintas y las densidades y presiones son iguales también se reprodujo la solución analítica indistintamente del método de Riemann que se utilizara. El método de Lax resultó ser notoriamente más rápido que HLL por lo que para el régimen unidimensional y para velocidades newtonianas, es recomendable usar este método.
+	
+	\item En la sección \ref{subsec:casos_relativistas_1D} se muestran las pruebas unidimensionales en el régimen relativista. Éstas consistieron en verificar que en los tubos de Sod, en donde los fluidos evolucionaron con velocidades cercanas a la de la luz, se reprodujeran correctamente con el módulo relativista. Para ambos métodos se puede observar que se tienen errores cuando se aproximan a los valores discontinuos, principalmente en las discontinuidades de contacto (superficies que separan zonas de diferente densidad y temperatura). El método HLL siempre es consistente con los resultados esperados. Mientras tanto para ciertos casos relativistas el método de Lax falla sin importar la resolución que se utilice.
+	\item En la sección \ref{sec:sedov_taylor} se muestra la prueba bidimensional newtoniana. En específico, se estudio el problema de Sedov-Taylor. Este problema consiste en resolver una onda de choque con ciertos valores de densidad y energía dentro de un medio ambiente con distintos parámetros. El código tuvo éxito ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado en la sección \label{sec:sedov_taylor}.
+	\item En la sección \ref{subsec:caso_relativista_2d} se estudió una onda de choque bidimensional y relativista. Para lo anterior se tomó el mismo problema del tubo de Sod relativista en una dimensión y se expandió a dos dimensiones. Se verificó que se obtiene el  mismo resultado independiente de la dirección del perfila radial (sobre el eje X o sobre el eje Y o a 45 grados). Además, se verificó que el perfil radial de la onda bidimensional es consistente con aquel de una onda unidimensional y con su solución analítica correspondiente.
 \end{itemize}
 
+En el capítulo 4, se muestra la evolución de un jet bidimensional y relativista a través de distintos medios. 
+\begin{itemize}
+	\item En la sección \ref{sec:jet_ambiente_constante} se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de Mignone \emph{et al} 2007. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Además, en el estudio Mignone \emph{et al} 2007 no se detallan todas las características del jet, por ende no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente mas lento. 
+	
+	\item En la sección \label{sec:jet_ambiente_variable} se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$. Se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
+\end{itemize}
 
+Finalmente es preciso mencionar las mejorías que se le podrían hacer al código creado para esta tesis. Se pueden hacer modificaciones para mejorar considerablemente el tiempo de cómputo ya que el código en su versión actual gasta muchos recursos. Las posibles mejorías se listan a continuación:
+\begin{itemize}
+    \item \textbf{Implementación de otro solucionador de Riemann}: A pesar de que HLL, es un algoritmo robusto y fácil de implementar, éste promedia la solución completa al problema de Riemann en un solo estado y, por lo tanto, carece de la capacidad para resolver ondas intermedias (tales como las ondas de contacto). Se recomienda entonces incorporar otros métodos que tomen en cuenta más ondas (por ejemplo el método de HLLC).
+    
+    \item \textbf{Implementación de una malla AMR}: Tomando en cuenta que las zonas que requieren una resolución muy fina son las zonas de ondas de contacto (mientras el resto del problema no requiere de tanta resolución), y que estar resolviendo todo el dominio computacional con una resolución sumamente fina genera un alto costo computacional, es necesaria la implementación de una malla suya resolución se adapte al problema (i.e. resolución muy fina en donde haya discontinuidades, ondas de choques, turbulencia; y resolución poco fina en el resto del dominio). 
+
+    \item \textbf{Computo en paralelo}: Algo que realmente podría hacer mas  rápido el código es hacerlo paralelo, es decir, que se puedan hacer varios procesos al mismo tiempo y no, necesariamente hacerlos secuencialmente y poder adaptarlo a la malla que generamos.
+
+    \item \textbf{Paradigma}: Si bien Fortran es una gran herramienta para el computo científico, es difícil darle mantenimiento al mismo programa ya que tiene un paradigma imperativo por lo que usar un paradigma orientado a objetos tal como en Julia podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
+\end{itemize}
+%----------------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------------
 \appendix
+%----------------------------------------------------------------------------------------------
 \chapter{Código}\label{aped.A}
-
+%----------------------------------------------------------------------------------------------
 El programa está escrito en lenguaje FORTRAN se compone de un módulo principal el cual está compuesto de un programa principal y este a su vez llamará a varias subrutinas:
 \begin{itemize}
 \item \textbf{initconds}: Esta subrutina calculará los valores iniciales que le demos al programa
@@ -2922,7 +2770,6 @@ do i=0,nx+1
      u(3,i,j)=rhoout*vyout*lorout**2*hout
      u(4,i,j)=rhoout*lorout**2*hout-pout
      
-
 \end{lstlisting}
 y para los fluidos en la subrutina de fluxes
 \begin{lstlisting}[frame=single]
@@ -2999,7 +2846,9 @@ En la subrutína \textit{initconds} se calcularán las condiciones iniciales, to
 \end{lstlisting}
 En esta parte dan los valores iniciales para nuestra malla tanto en $x$ como en $y$ en el tiempo $t=0$
 
+%----------------------------------------------------------------------------------------------
 \subsection{Condición de Courant}
+%----------------------------------------------------------------------------------------------
 Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales se van a calcular en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia y la estabilidad de nuestras ecuaciones diferenciales parciales (ecuación \ref{u_posterior_tensor}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación diferencial parcial original si todos los intervalos finitos tienden a cero, una condición necesaria para la convergencia es que los errores, por ejemplo los debidos al redondeo, no se incrementen con en tiempo. Esta es la llamada la condición de estabilidad. Es una condición tan importante que implica ciertas restricciones al tamaño del paso de tiempo en un proceso explícito. Un análisis de estabilidad para esquemas explícitos a partir de la teoría de las características para soluciones continuas lleva a la conclusión que dichos esquemas, para ser estables, deben cumplir la condición de Courant, que es: 
 
 \begin{equation}
@@ -3040,11 +2889,9 @@ Donde $C$ es el número de Courant y nos limita a que nuestros $\Delta t$ no sea
 
 \end{lstlisting}
 
-
-
+%----------------------------------------------------------------------------------------------
 \chapter{Condiciones de frontera} \label{aped.B}
-
-
+%----------------------------------------------------------------------------------------------
 Las condiciones de frontera se usará para obtener los valores de nuestras variables conservadas en los extremos de nuestra malla de puntos, con el fin de evitar errores numéricos, las condiciones de frontera que generalmente se usan son de cuatro tipos las de \textit{outflow}, las de \textit{reflexión}, las \textit{periódicas} y las de \textit{jet}. Las del tipo \textit{outflow} serán aquellas en las que una vez los valores sobre la malla (ondas) queden fuera de esta, ya no sabremos que pasó después con estos datos, las de \textit{reflexión} serán aquellas en las que nuestros datos en vez de salir se reflejarán y las \textit{periódicas} serán parecidas a las de \textit{reflexión} solo que en vez de reflejarse las ondas, estas entrarán del lado contrario de donde salieron  y las de tipo \textit{jet}, será para que de un lado de nuestra malla salga una fuente de partículas.
 
 Para entender lo que son las condiciones de frontera, vamos suponer una malla de puntos, esta malla tendrá $n+2$ filas y $m+2$ columnas, para identificar los puntos vamos a indexarlos empezando desde el 0 hasta $n+1$ en el caso de las filas y de 0 hasta $m+1$ para el de las columnas.
@@ -3064,8 +2911,9 @@ anterior $x_{i-1}, y_{j-1}$.
 Ahora, cuando llegamos a los últimos puntos de nuestro frontera, 
 por ejemplo, el punto $x_{0}, y_{0}$, no podremos calcularlo debido a que  no tendremos conocimiento acerca del punto anterior $x_{(-1)}, y_{(-1)}$, entonces  tendremos que darles valores específicos a estos puntos, pero no podemos darles cualquier valor, en las siguientes secciones vamos a ver que valores válidos le podemos dar para el funcionamiento del código. 
 
+%----------------------------------------------------------------------------------------------
 \subsection{Condiciones de frontera \emph{outflow}}
-
+%----------------------------------------------------------------------------------------------
 Las condiciones \emph{outflow}, son en las que los valores de nuestra frontera fantasma(puntos negros) que toman los  mismos valores que su antecesor (puntos grises), los fenómenos físicos que atraviesan nuestra frontera, pasarán como si tuviéramos más dominio hacia afuera y una vez que salgan perderemos información sobre esta.
 
 \begin{figure}[H]
@@ -3085,8 +2933,9 @@ Las ecuaciones que obedece nuestra frontera son las siguientes:
 
 Donde $i,j \leq n,m \in \mathbb{N}$
 
+%----------------------------------------------------------------------------------------------
 \subsection{Condiciones de frontera \emph{reflexión}}
-
+%----------------------------------------------------------------------------------------------
 Las condiciones de reflexión funcionan como una pared en la que no se le permite al fenómeno físico escapar y al toparse con estas fronteras se reflejarán. Los valores que tendrán los puntos negros, serán los valores negativos de los puntos grises.
 
 \begin{figure}[H]
@@ -3104,8 +2953,9 @@ Las ecuaciones que obedece nuestra frontera son las siguientes:
 \textbf{U}(i,m+1)&=&-\textbf{U}(i,m) 
 \end{eqnarray}
 
-
-\subsection{Condiciones de frontera \emph{Periódicas}}
+%----------------------------------------------------------------------------------------------
+\subsection{Condiciones de frontera \emph{periódicas}}
+%----------------------------------------------------------------------------------------------
 Las condiciones periódicas son cuando nuestra frontera fantasma toma los valores de la frontera opuesta del lado que están, es decir, si un fenómeno físico pasa a través de la parte de arriba de nuestro dominio (ver Figura \ref{fig:periodicas}), este, saldrá por la parte de abajo y viceversa, lo mismo aplica para los fenómenos pasen por la parte izquierda o derecha de nuestro dominio.
  
 \begin{figure}[H]
@@ -3124,9 +2974,9 @@ Las ecuaciones que representan este tipo de frontera son las siguientes:
 \textbf{U}(i,m+1)&=&\textbf{U}(i,1) 
 \end{eqnarray}
 
-
+%----------------------------------------------------------------------------------------------
 \subsection{Condiciones de frontera \emph{Jet} }
-
+%----------------------------------------------------------------------------------------------
 Las condiciones de tipo jet, son en las que dado un lado de nuestra frontera (pueden se varios), se va a inyectar un energía y masa a una cierta velocidad constante todo el tiempo en una de las partes de la frontera.
 
  
@@ -3159,9 +3009,9 @@ Relativista
 
 donde $j\in \left[ a,b \right]$ y $a\geq 0, \, b\leq n+1$. Los puntos de la frontera que no sean del jet se pueden combinar con los 3 tipos de frontera mencionados anteriormente.
 
-
+%----------------------------------------------------------------------------------------------
 \chapter{Subrutina de Newton-Rapson}\label{ap_newrap}
-
+%----------------------------------------------------------------------------------------------
 Subrutina de Newton-Rapson, los valores de entrada son $m^2$ y las conservadas y devuelve $W$
 \begin{lstlisting} [frame=single]
   subroutine newrap(qu, w, m2)
@@ -3245,8 +3095,9 @@ Subrutina de Newton-Rapson, los valores de entrada son $m^2$ y las conservadas y
 
 \end{lstlisting}
 
+%----------------------------------------------------------------------------------------------
 \chapter{Subrutinas de Flujos calculados mediante el método de HLL}\label{ap_subrutina_fluxesHLL}
-
+%----------------------------------------------------------------------------------------------
 \begin{lstlisting} [frame=single]
   !     !Este modulo calcula los flujos hll
       use globals
@@ -3447,13 +3298,9 @@ Subrutina de Newton-Rapson, los valores de entrada son $m^2$ y las conservadas y
 
 \end{lstlisting}
 
-\chapter{Velocidad de lós métodos numéricos} \label{aped.D}
-
-Esto está en construcción
-
+%----------------------------------------------------------------------------------------------
 \begin{thebibliography}{20}
-
-
+%----------------------------------------------------------------------------------------------
 \bibitem{Berger:2013jza} 
   E.~Berger,
   Short-Duration Gamma-Ray Bursts,
@@ -3552,7 +3399,6 @@ Jeongbhin Seo et al 2021 ApJ 920
 \bibitem[Espinasse et al.(2020)]{2020ApJ...895L..31E} Espinasse, M., Corbel, S., Kaaret, P., et al. 2020, apjl, 895, L31. doi:10.3847/2041-8213/ab88b6
 % Relativistic X-Ray Jets from the Black Hole X-Ray Binary MAXI J1820+070
 
-
 \bibitem[Blandford et al.(2019)]{2019ARA&A..57..467B} Blandford, R., Meier, D., \& Readhead, A. 2019, araa, 57, 467. doi:10.1146/annurev-astro-081817-051948
 % Relativistic Jets from Active Galactic Nuclei
 
@@ -3568,11 +3414,8 @@ Jeongbhin Seo et al 2021 ApJ 920
 \bibitem[Blandford \& Payne(1982)]{1982MNRAS.199..883B} Blandford, R.~D. \& Payne, D.~G. 1982, mnras, 199, 883. doi:10.1093/mnras/199.4.883
 % Hydromagnetic flows from accretion disks and the production of radio jets.
 
-% FUENTES DE DIEGO (ABAJO)
-
 \bibitem[L{\'o}pez-C{\'a}mara et al.(2013)]{2013ApJ...767...19L} L{\'o}pez-C{\'a}mara, D., Morsony, B.~J., Begelman, M.~C., et al. 2013, apj, 767, 19. doi:10.1088/0004-637X/767/1/19
 % Three-dimensional Adaptive Mesh Refinement Simulations of Long-duration Gamma-Ray Burst Jets inside Massive Progenitor Stars
-
 
 \bibitem[Lazzati et al.(2018)]{2018PhRvL.120x1103L} Lazzati, D., Perna, R., Morsony, B.~J., et al. 2018, prl, 120, 241103. doi:10.1103/PhysRevLett.120.241103
 %Late Time Afterglow Observations Reveal a Collimated Relativistic Jet in the Ejecta of the Binary Neutron Star Merger GW170817
@@ -3585,15 +3428,9 @@ Jeongbhin Seo et al 2021 ApJ 920
 
 \bibitem[Perucho et al.(2011)]{2011ApJ...743...42P} Perucho, M., Quilis, V., \& Martí, J.-M. 2011, apj, 743, 42. doi:10.1088/0004-637X/743/1/42
 
-
-
-
-
-
-
-
+%----------------------------------------------------------------------------------------------
 \end{thebibliography}
-
-
-
+%----------------------------------------------------------------------------------------------
 \end{document}
+%----------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------
