@@ -126,8 +126,7 @@ Dr. Diego López Cámara Ramírez}
 \addcontentsline{toc}{chapter}{Dedicatoria}
 %
 \begin{flushright}
-\textit{Dedicado a \\
-mi familia}
+\textit{A mi padre Rafael, mi madre Lourdes y mi hermano Humberto. \\Sin sus consejos no hubiera podido llegar tan lejos. \\}
 \end{flushright}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,7 +135,11 @@ mi familia}
 \addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado
 
-¡Muchas gracias a todos!
+A mis padres por su apoyo incondicional. A la UNAM por darme un segundo hogar y formar parte de sus filas. También agradezco a mis sinodales por el
+tiempo y disposición para leer y corregir este trabajo. 
+
+Y sobre todo quiero agradecer a mi asesor Diego, ya que sin su apoyo, conocimientos brindados y sobre todo su paciencia
+no se hubiera podido realizar esta tesis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------------
@@ -145,10 +148,16 @@ mi familia}
 %----------------------------------------------------------------------------------------------
 \markboth{RESUMEN}{RESUMEN}
 %----------------------------------------------------------------------------------------------
-Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con velocidades que van desde el límite no relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. Una buena forma de estudiar los 
-jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un código numérico HD y RHD en una y dos dimensiones para así poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
+Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con 
+mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con velocidades que van desde el 
+límite no relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades 
+ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. Una buena forma de estudiar los 
+jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un código numérico HD y RHD en una y dos dimensiones para así 
+poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
 
-Para verificar que el código funcionaba correctamente primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales HD y RHD, y pruebas bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilzaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). Para la pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las soluciones conocidas.
+Para verificar que el código funcionaba correctamente primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales HD y RHD, y pruebas 
+bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilzaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). Para la 
+pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las soluciones conocidas.
 
 Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de Mignone \emph{et al} 2007. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 
@@ -171,7 +180,7 @@ Estos tienen forma de protuberancias cónicas o cilíndricas
 o semicilíndricas estrechas con ángulo de apertura pequeño. Sus principales características es que tienen una 
 amplia gama de luminosidad y grado de colimación. 
 Los ejemplos más poderosos observados que emergen de los núcleos de galaxias activas (o AGN). También se encuentran asociados a otros objetos estelares tales como la fusión de agujeros negros y/o
-estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquásares. %! ASTROPHYSICAL JETS AND OUTFLOWS Elisabete M. de Gouveia Dal Pino
+estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquásares \cite{deGouveiaDalPino:2004jy}. %! ASTROPHYSICAL JETS AND OUTFLOWS Elisabete M. de Gouveia Dal Pino
 
 %----------------------------------------------------------------------------------
 
@@ -3424,6 +3433,16 @@ Jeongbhin Seo et al 2021 ApJ 920
 % Simulations of Gamma-Ray Burst Jets in a Stratified External Medium: Dynamics, Afterglow Light Curves, Jet Breaks, and Radio Calorimetry
 
 \bibitem[Perucho et al.(2011)]{2011ApJ...743...42P} Perucho, M., Quilis, V., \& Martí, J.-M. 2011, apj, 743, 42. doi:10.1088/0004-637X/743/1/42
+
+\bibitem{deGouveiaDalPino:2004jy}
+E.~M.~de Gouveia Dal Pino,
+%``Astrophysical jets and outflows,''
+Adv. Space Res. \textbf{35} (2005), 908
+doi:10.1016/j.asr.2005.03.145
+[arXiv:astro-ph/0406319 [astro-ph]].
+%31 citations counted in INSPIRE as of 03 May 2022
+
+
 
 %----------------------------------------------------------------------------------------------
 \end{thebibliography}
