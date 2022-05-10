@@ -15,6 +15,9 @@
 \usepackage{setspace}
 
 
+\usepackage{natbib}
+% \setcitestyle{numbers}
+
 
 \spanishdecimal{.}
 
@@ -149,17 +152,19 @@ no se hubiera podido realizar esta tesis.
 \markboth{RESUMEN}{RESUMEN}
 %----------------------------------------------------------------------------------------------
 Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con 
-mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con velocidades que van desde el 
+mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con 
+velocidades que van desde el 
 límite no relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades 
-ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. Una buena forma de estudiar los 
-jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un código numérico HD y RHD en una y dos dimensiones para así 
-poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
+ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. 
+Una buena forma de estudiar los jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un 
+código numérico HD y RHD en una y dos dimensiones para así poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
 
-Para verificar que el código funcionaba correctamente primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales HD y RHD, y pruebas 
-bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilzaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). Para la 
-pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las soluciones conocidas.
+Para verificar que el código funcionaba correctamente primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales 
+HD y RHD, y pruebas bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilzaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). 
+Para la pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las 
+soluciones conocidas.
 
-Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de Mignone \emph{et al} 2007. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
+Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 
 
 %%%%%%%%%%%%%%%  CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -180,7 +185,7 @@ Estos tienen forma de protuberancias cónicas o cilíndricas
 o semicilíndricas estrechas con ángulo de apertura pequeño. Sus principales características es que tienen una 
 amplia gama de luminosidad y grado de colimación. 
 Los ejemplos más poderosos observados que emergen de los núcleos de galaxias activas (o AGN). También se encuentran asociados a otros objetos estelares tales como la fusión de agujeros negros y/o
-estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquásares \cite{deGouveiaDalPino:2004jy}. %! ASTROPHYSICAL JETS AND OUTFLOWS Elisabete M. de Gouveia Dal Pino
+estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquásares \citet{deGouveiaDalPino:2004jy}. %! ASTROPHYSICAL JETS AND OUTFLOWS Elisabete M. de Gouveia Dal Pino
 
 %----------------------------------------------------------------------------------
 
@@ -190,29 +195,29 @@ Son un evento astrofísico transitorio común ya que ocurren en una amplia gama 
 $m \cdot s^{-1}$ hasta velocidades cercanas a la de la luz ($c$), y tienen tamaños que van desde unas pocas unidades astronómicas hasta kiloparsecs.
 
 Los jets relativistas son impulsados por la acreción de un objeto compacto (por lo general estrellas de neutrones o desde un hoyo negro). Pueden ser lanzados desde un hoyo negro súper masivo localizado en el 
-centro de una galaxia activa (AGN) \cite{2019ARA&A..57..467B}, desde un hoyo negro como en las binarias de rayos X \cite{2020ApJ...895L..31E}. Los destellos de rayos gamma (GRBs) cortos, que resultan de la colisión 
-de dos sistemas binarios de estrellas de neutrones \cite{2021MNRAS.506.3483P}, y los GRBs largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de 
-vida \cite{2022MNRAS.509.5964S}, también emiten jets relativistas.
+centro de una galaxia activa (AGN) \citet{2019ARA&A..57..467B}, desde un hoyo negro como en las binarias de rayos X \citet{2020ApJ...895L..31E}. Los destellos de rayos gamma (GRBs) cortos, que resultan de la colisión 
+de dos sistemas binarios de estrellas de neutrones \citet{2021MNRAS.506.3483P}, y los GRBs largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de 
+vida, también emiten jets relativistas \citet{2022MNRAS.509.5964S}.
 Aunque la presencia de un objeto central masivo y un disco de acreción de gas girando a su alrededor es el componente principal en todos los escenarios astrofísicos donde se encuentran jets, el campo magnético y su 
 interacción con todo el sistema parece ser un componente fundamental en la necesidad de estas eyecciones. Esto permite la formación y estabilidad del disco, así como el lanzamiento y colimación del jet. Los procesos más 
-aceptados para el lanzamiento del jet son los mecanismos magnetorrotacionales propuestos por \cite{1977MNRAS.179..433B} y \cite{1982MNRAS.199..883B}
+aceptados para el lanzamiento del jet son los mecanismos magnetorrotacionales propuestos por \citet{1977MNRAS.179..433B} y \citet{1982MNRAS.199..883B}
 %----------------------------------------------------------------------------------
 
 
 Los jets de AGNs se forman cuando el agujero negro, con una masa de $10^6$-$10^{10}$ masas solares, gira y atrae masa de la galaxia que lo rodeas el cual forma un disco de acreción
-que gira ortogonal al eje de rotación del agujero negro debido a la conservación del momento angular y que contiene un fuerte campo magnético. %!Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II Sky-Map 2007-07-03 - 2007-07-11
-Las propiedades de los jets también abarcan rangos muy amplios. Un caso particular son cuando los jets de AGN pueden permanecer bien colimados a distancias de cientos de kiloparsecs. %!The content of astrophysical jets
+que gira ortogonal al eje de rotación del agujero negro debido a la conservación del momento angular y que contiene un fuerte campo magnético \citet{2008ICRC....5.1405H}. %!Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II Sky-Map 2007-07-03 - 2007-07-11
+Las propiedades de los jets también abarcan rangos muy amplios. Un caso particular son cuando los jets de AGN pueden permanecer bien colimados a distancias de cientos de kiloparsecs \citet{2021Romero}. %!The content of astrophysical jets
 
 
 
 
 
 Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de Mev, son cortos, intensos y no repetitivos.
-Estos consisten en la emisión de energías altas como los rayos $\gamma$ y los rayos X, así como energías bajas como el óptico, el radio, entre otros \cite{PGRB-piran}. %!Piran2005
+Estos consisten en la emisión de energías altas como los rayos $\gamma$ y los rayos X, así como energías bajas como el óptico, el radio, entre otros \citet{PGRB-piran, Zhang:PGRB}. %!Piran2005
 La fusión de objetos compactos es el modelo progenitor más atractivo.
-Los jets de los  GRBs son uno de los eventos que más libera energía en el universo y su energía liberada es del orden de $10^{52}$ ergs \cite{Berger:2013jza}.
+Los jets de los  GRBs son uno de los eventos que más libera energía en el universo y su energía liberada es del orden de $10^{52}$ ergs \citet{Berger:2013jza}.
 Se infiere que los jets relativistas de los blázares tienen un factor de Lorentz de hasta $\Gamma \thicksim 50$. 
-Pero en el modelo más ampliamente aceptado para GRB, una explosión altamente enfocada asociada con la formación de un agujero negro impulsa jets relativistas colimados con $\Gamma \lesssim 400$ 
+Pero en el modelo más ampliamente aceptado para GRB \citet{Seo2021}, una explosión altamente enfocada asociada con la formación de un agujero negro impulsa jets relativistas colimados con $\Gamma \lesssim 400$ 
 %!A Simulation Study of Ultra-Relativistic Jets - I. A New Code for Relativistic Hydrodynamics
 
 Los ángulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5$^{\circ}$ de apertura, el cual puede variar hasta los 35° con un promedio de 
@@ -252,7 +257,10 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas tomando en cuenta distintos métodos numéricos
 %--------------------------------------------------------------------------
-En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \cite{SURJ-I, MB-HLLC-I}, en el marco de AGNS \cite{2011ApJ...743...42P}, así como en el marco de GRBs \cite{2013ApJ...767...19L}, \cite{2018PhRvL.120x1103L}, \cite{2021MNRAS.500.3511G}, \cite{2012ApJ...751...57D}, por mencionar algunos ejemplos. Un ejemplo de simulaciones de jets relativistas se presenta en \cite{SURJ-I} donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio uniforme utilizando distintos métodos numéricos (Weno JS, Weno Z, y Weno ZA). El jet es cilíndrico, tiene una densidad de $\rho_{jet} = 10^{-2}$, una velocidad $v_{x_{\text{jet}}},v_{y_{\text{jet}}} = 0.99, 0$ y 
+En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \citet{Seo2021, MB-HLLC-I}, en el marco de AGNS \citet{2011ApJ...743...42P}, así como en el marco de GRBs 
+\citet{2013ApJ...767...19L}, \citet{2018PhRvL.120x1103L}, \citet{2021MNRAS.500.3511G}, \citet{2012ApJ...751...57D}, por mencionar algunos ejemplos. Un ejemplo de simulaciones de jets relativistas se presenta en 
+\citet{Seo2021} donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio uniforme utilizando distintos métodos numéricos (Weno JS, Weno Z, y Weno ZA). El jet es cilíndrico, tiene una 
+densidad de $\rho_{jet} = 10^{-2}$, una velocidad $v_{x_{\text{jet}}},v_{y_{\text{jet}}} = 0.99, 0$ y 
 una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ representa un factor de Lorentz $\gamma = 7$. El medio ambiente es estático, tiene una densidad $\rho_m = 1$ y una presión igual al del jet. 
 En la Figura \ref{fig:jet_ejemplo_2} se muestra la configuración final utilizando los tres diferentes métodos numéricos (arriba: Weno JS, en medio: Weno Z, y abajo: Weno ZA). Usando el método de WENO JS el 
 jet alcanza una longitud de $\sim$3.15 unidades y presenta turbulencia. Para el caso de WENO Z el jet una longitud un poco mayor con $\sim$3.2 unidades y presenta una turbulencia muy similar a la de WENO JSs. 
@@ -270,12 +278,12 @@ seguir a los jets afectan la evolución y morfología del mismo.
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas en el marco de AGNs.
 %--------------------------------------------------------------------------
-En la Figura \ref{fig:jet_agn} se muestra la evolución de un jet relativista emitido desde un AGN y el cual se mueve a través del medio interestelar \cite{2011ApJ...743...42P}. El jet se inyecta desde un 
+En la Figura \ref{fig:jet_agn} se muestra la evolución de un jet relativista emitido desde un AGN y el cual se mueve a través del medio interestelar \citet{2011ApJ...743...42P}. El jet se inyecta desde un 
 radio inicial de 100 pc con $\rho_j = 8.3 \times 10^{-29} \, \text{erg}\,s^{-1}$ y $v_j = 0.984$~c (y una relación de densidad entre el material del jet y el entorno de $\rho_j / \rho_a = 5\times10^{-4}$). De este modo, 
 el jet se lanza con una luminosidad de $10^{46} \, \text{ergs} \, \text{s}^{-1}$. Las condiciones de frontera, son la reflexión en la base del jet, la reflexión en el eje del jet y outflow al final del dominio en 
 las direcciones axial y radial. En el panel izquierdo se muestra el logaritmo de densidad al tiempo t = 1.1 Myr con un largo de 900 kpc. El capullo mide aproximadamente 400 kpc, tiene una densidad de partículas del 
 orden de $\sim10^{-28}-10^{30} cm^{-3}$. Además, se tiene turbulencia y hay pequeñas cavidades dentro del capullo con $\sim10^{-32} cm^{-3}$. En el panel derecho, el cual es un reflejo del izquierdo pero tomando en 
-cuenta la temperatura. Los patrones de turbulencia también son visibles y las zonas menos densas son las más calientes (alcanzando $\sim 10^9$K). A escalas parsec, los jets de los AGNs siguen altamente colimados y 
+cuenta la temperatura. Los patrones de turbulencia también son visibles y las zonas menos densas son las más calientes (alcanzando $\sim 10^9$K). A escalas parsec, los jets de los AGNs siguen siendo altamente colimados y 
 se mueven a velocidades superlumínicas.
 
 \begin{figure}
@@ -290,8 +298,8 @@ se mueven a velocidades superlumínicas.
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas en el marco de GRBs.
 %--------------------------------------------------------------------------
-Otro ejemplo de simulaciones de jets relativistas es el estudio de \cite{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el  marco 
-de los Colapsares \cite{JBEMGRB}. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
+Otro ejemplo de simulaciones de jets relativistas es el estudio de \citet{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el  marco 
+de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
 a través de la envolvente de un Colapsar (paneles de abajo). El jet que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones tiene una luminosidad 
 de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha). Es 
 lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} para más detalles). 
@@ -342,8 +350,8 @@ evolución y morfología del mismo.
 %----------------------------------------------------------------------------------
 \section{Estudio de un jet relativista en dos dimensiones (Mignone et al. 2005).}
 %----------------------------------------------------------------------------------
-Uno de los objetivos de esta tesis es crear un código HD y RHD y lograr estudiar la evolución de un jet RHD. Para lo anterior se va a buscar reproducir los resultados del estudio de Mignone \emph{et al} 
-2005\cite{MB-HLLC-I} en que estudiaron la evolución de un jet relativista en dos dimensiones (ver Figura \ref{fig:jet_mignone}). 
+Uno de los objetivos de esta tesis es crear un código HD y RHD y lograr estudiar la evolución de un jet RHD. Para lo anterior se va a buscar reproducir los resultados del estudio de \citet{MB-HLLC-I} en 
+que estudiaron la evolución de un jet relativista en dos dimensiones (ver Figura \ref{fig:jet_mignone}). 
 
 Los valores que usó para poder simular el jet relativista 2D (axisimétrico y en coordenadas cilíndrica), fueron los siguientes:
 \begin{equation}
@@ -387,7 +395,7 @@ Los objetivos de esta tesis se enlistan a continuación:
 
   \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL.
   
-  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de Mignone \emph{et al} 2005, y se compararán los resultado obtenidos.
+  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de \citet{MB-HLLC-I}, y se compararán los resultado obtenidos.
 
   \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un medio constante.
 
@@ -401,7 +409,8 @@ Los objetivos de esta tesis se enlistan a continuación:
 
 Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
 las ecuaciones de la hidrodinámica.
-Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las variables macroscópicas.
+Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las 
+variables macroscópicas.
 
 \begin{equation}
 \lambda_{mfp} \ll L
@@ -1494,14 +1503,14 @@ Despejando la densidad
   \rho = \frac{L}{4\pi r_j^2 v_j \gamma_j \gamma_{\infty} c^2}
 \end{equation}
 
-Al obtener la densidad ya podemos simular el jet dado que la luminosidad se puede obtener de detectores de Rayos $\gamma$ y las velocidades también ? preguntar a 
-Diego
+% Al obtener la densidad ya podemos simular el jet dado que la luminosidad se puede obtener de detectores de Rayos $\gamma$ y las velocidades también ? preguntar a 
+% Diego
 
 
 \section{Solución de Sedov-Taylor} \label{sec:sedov_taylor}
 
 %Ojo Julio
-Una forma de verificar si el código funciona correctamente es verificar si una onda de choque esférica (o circular en 2D) sigue la solución analítica y auto similar obtenida por Sedov y Taylor \cite{PAFD}. 
+Una forma de verificar si el código funciona correctamente es verificar si una onda de choque esférica (o circular en 2D) sigue la solución analítica y auto similar obtenida por Sedov y Taylor (véase \citet{PAFD}). 
 Cabe señalar que la onda de choque esférica es descrita por la inyección de energía 
 dentro de un radio el cual está inmerso en un medio en reposo. 
 
@@ -3305,142 +3314,174 @@ Subrutina de Newton-Rapson, los valores de entrada son $m^2$ y las conservadas y
 \end{lstlisting}
 
 %----------------------------------------------------------------------------------------------
-\begin{thebibliography}{20}
+\begin{thebibliography}{40}
 %----------------------------------------------------------------------------------------------
-\bibitem{Berger:2013jza} 
-  E.~Berger,
-  Short-Duration Gamma-Ray Bursts,
-  Ann.\ Rev.\ Astron.\ Astrophys.\  {\bf 52}, 43 (2014)
-  doi:10.1146/annurev-astro-081913-035926
-  [arXiv:1311.2603 [astro-ph.HE]].
-  %%CITATION = doi:10.1146/annurev-astro-081913-035926;%%
-  %424 citations counted in INSPIRE as of 02 Jan 2019
+
+% \bibitem{Berger:2013jza} 
+%   E.~Berger,
+%   Short-Duration Gamma-Ray Bursts,
+%   Ann.\ Rev.\ Astron.\ Astrophys.\  {\bf 52}, 43 (2014)
+%   doi:10.1146/annurev-astro-081913-035926
+%   [arXiv:1311.2603 [astro-ph.HE]].
+%   %%CITATION = doi:10.1146/annurev-astro-081913-035926;%%
+%   %424 citations counted in INSPIRE as of 02 Jan 2019
  
-%\bibitem{2012ApJ...760..122G} Gao, Y., \& Law, C.~K.\ 2012, \apj , 760, 122
+% %\bibitem{2012ApJ...760..122G} Gao, Y., \& Law, C.~K.\ 2012, \apj , 760, 122
 
-\bibitem{JBEMGRB}
-Hamidani, H., \& Ioka, K. (2020). Jet propagation in expanding medium for gamma-ray bursts. Monthly Notices of the Royal Astronomical Society, 500, 627-642.
+\bibitem[Mignone et al. (2005)]{MB-HLLC-I}Mignone, A., Bodo, G., 2005. An HLLC Riemann solver for relativistic flows -- I. Hydrodynamics. Monthly Notices of the Royal Astronomical Society 364, 126–136. doi:10.1111/j.1365-2966.2005.09546.x 
 
-\bibitem{Zhang:PGRB}
+\bibitem[Dal Pino (2004)]{deGouveiaDalPino:2004jy} de Gouveia Dal Pino, E.M., 2005. Astrophysical Jets and outflows. Advances in Space Research 35, 908–924. doi:10.1016/j.asr.2005.03.145 
+
+\bibitem[Blandford et al.(2019)]{2019ARA&A..57..467B} Blandford, R., Meier, D., Readhead, A., 2019. Relativistic jets from active galactic nuclei. Annual Review of Astronomy and Astrophysics 57, 467–509. doi:10.1146/annurev-astro-081817-051948 
+
+\bibitem[Espinasse et al.(2020)]{2020ApJ...895L..31E} Espinasse, M., Corbel, S., Kaaret, P., Tremou, E., Migliori, G., Plotkin, R.M., Bright, J., Tomsick, J., Tzioumis, A., Fender, R., Orosz, J.A., Gallo, E., Homan, J., 
+Jonker, P.G., Miller-Jones, J.C., Russell, D.M., Motta, S., 2020. Relativistic X-ray jets from the black hole X-ray binary maxi J1820+070. The Astrophysical Journal 895. doi:10.3847/2041-8213/ab88b6 
+
+\bibitem[Pavan et al.(2021)]{2021MNRAS.506.3483P} Pavan, A., Ciolfi, R., Kalinani, J.V., Mignone, A., 2021. Short gamma-ray burst jet propagation in binary neutron star merger environments. Monthly Notices of the Royal Astronomical Society 506, 
+3483–3498. doi:10.1093/mnras/stab1810 
+
+\bibitem[Shrestha et al.(2022)]{2022MNRAS.509.5964S} Shrestha, M., Steele, I.A., Kobayashi, S., Jordana-Mitjans, N., Smith, R.J., Jermak, H., Arnold, D., Mundell, C.G., Gomboc, A., Guidorzi, C., 2021. GRB 191016a: A highly collimated gamma-ray 
+burst jet with magnetized energy injection. Monthly Notices of the Royal Astronomical Society 509, 5964–5973. doi:10.1093/mnras/stab3368 
+
+
+\bibitem[Blandford \& Znajek(1977)]{1977MNRAS.179..433B} Blandford, R.D., Znajek, R.L., 1977. Electromagnetic extraction of energy from Kerr Black holes. Monthly Notices of the Royal Astronomical Society 179, 433–456. 
+doi:10.1093/mnras/179.3.433 
+
+\bibitem[Blandford \& Payne(1982)]{1982MNRAS.199..883B} Blandford, R.D., Payne, D.G., 1982. Hydromagnetic flows from accretion discs and the production of Radio Jets. Monthly Notices of the Royal Astronomical Society 199, 883–903. 
+doi:10.1093/mnras/199.4.883 
+
+\bibitem[H{\"u}lss and Wiebusch(2008)]{2008ICRC....5.1405H} H{\"u}lss, J.-P., Wiebusch, C.\ 2008.\ Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II 
+Sky-map.\ International Cosmic Ray Conference 5, 1405–1408.
+
+\bibitem[Romero (2021)]{2021Romero} Romero, G.E., 2021. The content of Astrophysical Jets. Astronomische Nachrichten 342, 727–734. doi:10.1002/asna.202113989 
+
+\bibitem[T. Pirán (2005)]{PGRB-piran} Piran, T., 2005. The physics of gamma-ray bursts. Reviews of Modern Physics 76, 1143–1210. doi:10.1103/revmodphys.76.1143 
+
+\bibitem[Zhang, B. (2018)]{Zhang:PGRB}
 Zhang, B. (2018). GRB Phenomenology. In The Physics of Gamma-Ray Bursts (pp. 27-121). Cambridge: Cambridge University Press. doi:10.1017/9781139226530.004
-% 2019-The Physics of Gamma-Ray Bursts.pdf
+% % 2019-The Physics of Gamma-Ray Bursts.pdf
 
-\bibitem{MB-HLLC-RSfRF}
-A. Mignone, G. Bodo, An HLLC Riemann solver for relativistic flows – II. Magnetohydrodynamics, Monthly Notices of the Royal Astronomical Society, Volume 368, Issue 3, May 2006, Pages 1040–1054, https://doi.org/10.1111/j.1365-2966.2006.10162.x
-%0601640.pdf
+\bibitem[Berger (2013)]{Berger:2013jza}Berger, E., 2014. Short-duration gamma-ray bursts. Annual Review of Astronomy and Astrophysics 52, 43–105. doi:10.1146/annurev-astro-081913-035926 
 
-\bibitem{MB-HLLC-I}
-A. Mignone, G. Bodo, An HLLC Riemann solver for relativistic flows — I. Hydrodynamics, Monthly Notices of the Royal Astronomical Society, Volume 364, Issue 1, November 2005, Pages 126–136, https://doi.org/10.1111/j.1365-2966.2005.09546.x
+\bibitem[Seo et al. (2021)]{Seo2021}Seo, J., Kang, H., Ryu, D., Ha, S., Chattopadhyay, I., 2021. A simulation study of ultra-relativistic jets–I. A new code for relativistic hydrodynamics. 
+The Astrophysical Journal 920, 143. doi:10.3847/1538-4357/ac19b3 
 
-\bibitem{PAFD}
-Clarke, C., \& Carswell, B. (2007). Blast waves. In Principles of Astrophysical Fluid Dynamics (pp. 89-106). Cambridge: Cambridge University Press. doi:10.1017/CBO9780511813450.009
-%Cathie Clarke, Bob Carswell - Principles of astrophysical fluid dynamics (2007, Cambridge University Press).pdf
+\bibitem[Perucho et al.(2011)]{2011ApJ...743...42P} Perucho, M., Quilis, V., Martí, J.-M., 2011. Intracluster medium reheating by Relativistic Jets. The Astrophysical Journal 743, 42. doi:10.1088/0004-637x/743/1/42 
 
-\bibitem{Decade-sgrb}
-Fong, W. et al. “A DECADE OF SHORT-DURATION GAMMA-RAY BURST BROADBAND AFTERGLOWS: ENERGETICS, CIRCUMBURST DENSITIES, AND JET OPENING ANGLES.” The Astrophysical Journal 815.2 (2015): 102. Crossref. Web.
-%1509.02922.pdf
+\bibitem[L{\'o}pez-C{\'a}mara et al.(2013)]{2013ApJ...767...19L} López-Cámara, D., Morsony, B.J., Begelman, M.C., Lazzati, D., 2013. Three-dimensional adaptive mesh refinement simulations of long-duration gamma-ray 
+burst jets inside massive progenitor stars. The Astrophysical Journal 767, 19. doi:10.1088/0004-637x/767/1/19
 
-\bibitem{Ecasgrb}
-Teboul, O \& Piran, T. (2017). Emission of cocoon afterglow for short Gamma Ray Burst : a counterpart of gravitational waves?. 
+\bibitem[Lazzati et al.(2018)]{2018PhRvL.120x1103L} Lazzati, D., Perna, R., Morsony, B.J., Lopez-Camara, D., Cantiello, M., Ciolfi, R., Giacomazzo, B., Workman, J.C., 2018. Late time afterglow observations reveal a 
+collimated relativistic jet in the ejecta of the binary neutron star Merger GW170817. Physical Review Letters 120. doi:10.1103/physrevlett.120.241103 
 
-\bibitem{ESRM}
-Mignone, A., and Jonathan C. McKinney. “Equation of State in Relativistic Magnetohydrodynamics: Variable Versus Constant Adiabatic Index.” Monthly Notices of the Royal Astronomical Society 378.3 (2007): 1118–1130. Crossref. Web.
-%mignone2007.pdf
+\bibitem[Gottlieb et al.(2021)]{2021MNRAS.500.3511G} Gottlieb, O., Nakar, E., Bromberg, O., 2020. The structure of hydrodynamic $\gamma$-Ray Burst Jets. Monthly Notices of the Royal Astronomical Society 500, 3511–3526. 
+doi:10.1093/mnras/staa3501 
 
-\bibitem{GRB:CAP}
-Azzam, W.J. \& Zitouni, Hannachi \& Guessoum, Nidhal. (2017). Gamma-Ray Bursts: Characteristics and Prospects. Journal of Physics: Conference Series. 869. 012065. 10.1088/1742-6596/869/1/012065. 
-%Azzam_2017_J._Phys.__Conf._Ser._869_012065.pdf
+\bibitem[De Colle et al.(2012)]{2012ApJ...751...57D} De Colle, F., Ramirez-Ruiz, E., Granot, J., Lopez-Camara, D., 2012. Simulations of gamma-ray burst jets in a stratified external medium: Dynamics, afterglow light 
+curves, jet breaks, and radio calorimetry. The Astrophysical Journal 751, 57. doi:10.1088/0004-637x/751/1/57 
 
-\bibitem{GRB:PPP}
-ZHANG, BING, and PETER MÉSZÁROS. “GAMMA-RAY BURSTS: PROGRESS, PROBLEMS \& PROSPECTS.” International Journal of Modern Physics A 19.15 (2004): 2385–2472. Crossref. Web.
-%zhang2004.pdf
+\bibitem[Hamidani \& Ioka (2020)]{JBEMGRB} Hamidani, H., Ioka, K., 2020. Jet propagation in expanding medium for gamma-ray bursts. Monthly Notices of the Royal Astronomical Society 500, 627–642. doi:10.1093/mnras/staa3276 
 
-\bibitem{PGRB-piran}
-Piran, Tsvi. “The Physics of Gamma-Ray Bursts.” Reviews of Modern Physics 76.4 (2005): 1143–1210. Crossref. Web.
-%piran2005.pdf
+\bibitem[Clarke \& Carswell (2007)]{PAFD}
+Clarke, C., Carswell, B., 2007. Blast waves. Principles of Astrophysical Fluid Dynamics 89–106. doi:10.1017/cbo9780511813450.009 
+% %Cathie Clarke, Bob Carswell - Principles of astrophysical fluid dynamics (2007, Cambridge University Press).pdf
 
-\bibitem{PSGRB}
-Lee, William H, and Enrico Ramirez-Ruiz. “The Progenitors of Short Gamma-Ray Bursts.” New Journal of Physics 9.1 (2007): 17–17. Crossref. Web.
-%lee2007.pdf
 
-\bibitem{PGRB-RJ}
-Kumar, Pawan, and Bing Zhang. “The Physics of Gamma-Ray Bursts \& Relativistic Jets.” Physics Reports 561 (2015): 1–109. Crossref. Web.
-%kumar2015.pdf
+% \bibitem{MB-HLLC-RSfRF}
+% A. Mignone, G. Bodo, An HLLC Riemann solver for relativistic flows – II. Magnetohydrodynamics, Monthly Notices of the Royal Astronomical Society, Volume 368, Issue 3, May 2006, Pages 1040–1054, https://doi.org/10.1111/j.1365-2966.2006.10162.x
+% %0601640.pdf
 
-\bibitem{GRB-SE}
-Gehrels, N., E. Ramirez-Ruiz, and D.B. Fox. “Gamma-Ray Bursts in theSwiftEra.” Annual Review of Astronomy and Astrophysics 47.1 (2009): 567–617. Crossref. Web.
-%gehrels2009.pdf
 
-\bibitem{PNCCA}
-Mignone, A. et al. “PLUTO: A Numerical Code for Computational Astrophysics.” The Astrophysical Journal Supplement Series 170.1 (2007): 228–242. Crossref. Web.
-%Mignone_2007_ApJS_170_228.pdf
+% \bibitem{Decade-sgrb}
+% Fong, W. et al. “A DECADE OF SHORT-DURATION GAMMA-RAY BURST BROADBAND AFTERGLOWS: ENERGETICS, CIRCUMBURST DENSITIES, AND JET OPENING ANGLES.” The Astrophysical Journal 815.2 (2015): 102. Crossref. Web.
+% %1509.02922.pdf
 
-\bibitem{GRB-levan}
-Levan, Andrew et al. “Gamma-Ray Burst Progenitors.” Space Science Reviews 202.1-4 (2016): 33–78. Crossref. Web.
-%Levan2016_Article_Gamma-RayBurstProgenitors.pdf
+% \bibitem{Ecasgrb}
+% Teboul, O \& Piran, T. (2017). Emission of cocoon afterglow for short Gamma Ray Burst : a counterpart of gravitational waves?. 
 
-\bibitem{Diego}
-Lazzati, Davide et al. “Off-Axis Prompt X-Ray Transients from the Cocoon of Short Gamma-Ray Bursts.” The Astrophysical Journal 848.1 (2017): L6. Crossref. Web.
-%Lazzati_2017_ApJL_848_L6.pdf
+% \bibitem{ESRM}
+% Mignone, A., and Jonathan C. McKinney. “Equation of State in Relativistic Magnetohydrodynamics: Variable Versus Constant Adiabatic Index.” Monthly Notices of the Royal Astronomical Society 378.3 (2007): 1118–1130. Crossref. Web.
+% %mignone2007.pdf
 
-\bibitem{RHRRC}
-Gao, Yang, and Chung K. Law. “RANKINE-HUGONIOT RELATIONS IN RELATIVISTIC COMBUSTION WAVES.” The Astrophysical Journal 760.2 (2012): 122. Crossref. Web.
-%Gao_2012_ApJ_760_122.pdf
+% \bibitem{GRB:CAP}
+% Azzam, W.J. \& Zitouni, Hannachi \& Guessoum, Nidhal. (2017). Gamma-Ray Bursts: Characteristics and Prospects. Journal of Physics: Conference Series. 869. 012065. 10.1088/1742-6596/869/1/012065. 
+% %Azzam_2017_J._Phys.__Conf._Ser._869_012065.pdf
 
-\bibitem{1973ApJ...179..897T} Thorne, K.~S.\ 1973.\ Relativistic Shocks: the Taub Adiabat.\ The Astrophysical Journal 179, 897.
-%1973ApJ...179..897T.pdf
+% \bibitem{GRB:PPP}
+% ZHANG, BING, and PETER MÉSZÁROS. “GAMMA-RAY BURSTS: PROGRESS, PROBLEMS \& PROSPECTS.” International Journal of Modern Physics A 19.15 (2004): 2385–2472. Crossref. Web.
+% %zhang2004.pdf
 
-\bibitem{Toro}
-Toro E.F. (1997) The HLL and HLLC Riemann Solvers. In: Riemann Solvers and Numerical Methods for Fluid Dynamics. Springer, Berlin, Heidelberg
 
-\bibitem{SGRBr-Avanzo}
-D'Avanzo, P.. (2015). Short gamma ray bursts: A review. Journal of High Energy Astrophysics. 7. 10.1016/j.jheap.2015.07.002. 
 
-\bibitem{Exact-solution_riemman-solver}
-F.D. Lora-Clavijo \emph(et. al.) (2013). Exact Solution oh the 1D riemann problem in Newtonian and relativistic hydrodynamics. Revista Mexicana de Física. E 59 (2013)28-50 
+% \bibitem{PSGRB}
+% Lee, William H, and Enrico Ramirez-Ruiz. “The Progenitors of Short Gamma-Ray Bursts.” New Journal of Physics 9.1 (2007): 17–17. Crossref. Web.
+% %lee2007.pdf
 
-\bibitem{SURJ-I} %A Simulation Study of Ultra-Relativistic Jets - I. A New Code for Relativistic Hydrodynamics
-Jeongbhin Seo et al 2021 ApJ 920 
+% \bibitem{PGRB-RJ}
+% Kumar, Pawan, and Bing Zhang. “The Physics of Gamma-Ray Bursts \& Relativistic Jets.” Physics Reports 561 (2015): 1–109. Crossref. Web.
+% %kumar2015.pdf
 
-\bibitem[Espinasse et al.(2020)]{2020ApJ...895L..31E} Espinasse, M., Corbel, S., Kaaret, P., et al. 2020, apjl, 895, L31. doi:10.3847/2041-8213/ab88b6
-% Relativistic X-Ray Jets from the Black Hole X-Ray Binary MAXI J1820+070
+% \bibitem{GRB-SE}
+% Gehrels, N., E. Ramirez-Ruiz, and D.B. Fox. “Gamma-Ray Bursts in theSwiftEra.” Annual Review of Astronomy and Astrophysics 47.1 (2009): 567–617. Crossref. Web.
+% %gehrels2009.pdf
 
-\bibitem[Blandford et al.(2019)]{2019ARA&A..57..467B} Blandford, R., Meier, D., \& Readhead, A. 2019, araa, 57, 467. doi:10.1146/annurev-astro-081817-051948
-% Relativistic Jets from Active Galactic Nuclei
+% \bibitem{PNCCA}
+% Mignone, A. et al. “PLUTO: A Numerical Code for Computational Astrophysics.” The Astrophysical Journal Supplement Series 170.1 (2007): 228–242. Crossref. Web.
+% %Mignone_2007_ApJS_170_228.pdf
 
-\bibitem[Pavan et al.(2021)]{2021MNRAS.506.3483P} Pavan, A., Ciolfi, R., Kalinani, J.~V., et al. 2021, mnras, 506, 3483. doi:10.1093/mnras/stab1810
-% Short gamma-ray burst jet propagation in binary neutron star merger environments
+% \bibitem{GRB-levan}
+% Levan, Andrew et al. “Gamma-Ray Burst Progenitors.” Space Science Reviews 202.1-4 (2016): 33–78. Crossref. Web.
+% %Levan2016_Article_Gamma-RayBurstProgenitors.pdf
 
-\bibitem[Shrestha et al.(2022)]{2022MNRAS.509.5964S} Shrestha, M., Steele, I.~A., Kobayashi, S., et al. 2022, mnras, 509, 5964. doi:10.1093/mnras/stab3368
-% GRB 191016A: a highly collimated gamma-ray burst jet with magnetized energy 
+% \bibitem{Diego}
+% Lazzati, Davide et al. “Off-Axis Prompt X-Ray Transients from the Cocoon of Short Gamma-Ray Bursts.” The Astrophysical Journal 848.1 (2017): L6. Crossref. Web.
+% %Lazzati_2017_ApJL_848_L6.pdf
 
-\bibitem[Blandford \& Znajek(1977)]{1977MNRAS.179..433B} Blandford, R.~D. \& Znajek, R.~L. 1977, mnras, 179, 433. doi:10.1093/mnras/179.3.433
-% Electromagnetic extraction of energy from Kerr black holes.
+% \bibitem{RHRRC}
+% Gao, Yang, and Chung K. Law. “RANKINE-HUGONIOT RELATIONS IN RELATIVISTIC COMBUSTION WAVES.” The Astrophysical Journal 760.2 (2012): 122. Crossref. Web.
+% %Gao_2012_ApJ_760_122.pdf
 
-\bibitem[Blandford \& Payne(1982)]{1982MNRAS.199..883B} Blandford, R.~D. \& Payne, D.~G. 1982, mnras, 199, 883. doi:10.1093/mnras/199.4.883
-% Hydromagnetic flows from accretion disks and the production of radio jets.
+% \bibitem{1973ApJ...179..897T} Thorne, K.~S.\ 1973.\ Relativistic Shocks: the Taub Adiabat.\ The Astrophysical Journal 179, 897.
+% %1973ApJ...179..897T.pdf
 
-\bibitem[L{\'o}pez-C{\'a}mara et al.(2013)]{2013ApJ...767...19L} L{\'o}pez-C{\'a}mara, D., Morsony, B.~J., Begelman, M.~C., et al. 2013, apj, 767, 19. doi:10.1088/0004-637X/767/1/19
-% Three-dimensional Adaptive Mesh Refinement Simulations of Long-duration Gamma-Ray Burst Jets inside Massive Progenitor Stars
+% \bibitem{Toro}
+% Toro E.F. (1997) The HLL and HLLC Riemann Solvers. In: Riemann Solvers and Numerical Methods for Fluid Dynamics. Springer, Berlin, Heidelberg
 
-\bibitem[Lazzati et al.(2018)]{2018PhRvL.120x1103L} Lazzati, D., Perna, R., Morsony, B.~J., et al. 2018, prl, 120, 241103. doi:10.1103/PhysRevLett.120.241103
-%Late Time Afterglow Observations Reveal a Collimated Relativistic Jet in the Ejecta of the Binary Neutron Star Merger GW170817
+% \bibitem{SGRBr-Avanzo}
+% D'Avanzo, P.. (2015). Short gamma ray bursts: A review. Journal of High Energy Astrophysics. 7. 10.1016/j.jheap.2015.07.002. 
 
-\bibitem[Gottlieb et al.(2021)]{2021MNRAS.500.3511G} Gottlieb, O., Nakar, E., \& Bromberg, O. 2021, mnras, 500, 3511. doi:10.1093/mnras/staa3501
-% The structure of hydrodynamic γ-ray burst jets
+% \bibitem{Exact-solution_riemman-solver}
+% F.D. Lora-Clavijo \emph(et. al.) (2013). Exact Solution oh the 1D riemann problem in Newtonian and relativistic hydrodynamics. Revista Mexicana de Física. E 59 (2013)28-50 
 
-\bibitem[De Colle et al.(2012)]{2012ApJ...751...57D} De Colle, F., Ramirez-Ruiz, E., Granot, J., et al. 2012, apj, 751, 57. doi:10.1088/0004-637X/751/1/57
-% Simulations of Gamma-Ray Burst Jets in a Stratified External Medium: Dynamics, Afterglow Light Curves, Jet Breaks, and Radio Calorimetry
 
-\bibitem[Perucho et al.(2011)]{2011ApJ...743...42P} Perucho, M., Quilis, V., \& Martí, J.-M. 2011, apj, 743, 42. doi:10.1088/0004-637X/743/1/42
 
-\bibitem{deGouveiaDalPino:2004jy}
-E.~M.~de Gouveia Dal Pino,
-%``Astrophysical jets and outflows,''
-Adv. Space Res. \textbf{35} (2005), 908
-doi:10.1016/j.asr.2005.03.145
-[arXiv:astro-ph/0406319 [astro-ph]].
-%31 citations counted in INSPIRE as of 03 May 2022
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % \bibitem[Pino (2004)]{deGouveiaDalPino:2004jy}
+% % E.~M.~de Gouveia Dal Pino,
+% % %``Astrophysical jets and outflows,''
+% % Adv. Space Res. \textbf{35} (2005), 908
+% % doi:10.1016/j.asr.2005.03.145
+% % [arXiv:astro-ph/0406319 [astro-ph]].
+% %31 citations counted in INSPIRE as of 03 May 2022
+
 
 
 
