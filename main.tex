@@ -407,10 +407,11 @@ Los objetivos de esta tesis se enlistan a continuación:
 
 \chapter{Teoría}
 
-Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
+% Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
+Los jets, ya sea que provengan de GRNs o AGNs, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
 las ecuaciones de la hidrodinámica.
 Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las 
-variables macroscópicas.
+variables macroscópicas \citet{LeVeque1998}.
 
 \begin{equation}
 \lambda_{mfp} \ll L
@@ -430,7 +431,7 @@ l = n^{-1/3} \ll L
 
 \section{Ecuaciones de la hidrodinámica}\label{sec:Ecuacioneshidrodinamica}
 
-Considerando una serie de elementos de volumen fijos, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
+Considerando una serie de elementos de volumen fijos \citet{Clarke2007}, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
 
 La conservación de masa
 \begin{equation} \label{conservación_masa_hidrodinamica}
@@ -572,11 +573,12 @@ Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los 
 donde que la variable \emph{u(4,i,j)} es la densidad de energía.
   
 \section{Hidrodinámica relativista}
-Los GRBs generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si nos servirá como apoyo para poder pasar a la hidrodinámica relativista.
+Los jets generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si nos servirá como apoyo para poder pasar a la hidrodinámica relativista.
 En esta parte se añadirá a los códigos que ya hemos generado previamente, las próximas secciones abordara acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
 
 \subsection{Primitivas}
-Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación de masa:
+Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas \citet{Marty1999}. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación 
+de masa:
 
 \begin{equation}\label{ecuación  _conservación_masa}
 \left( \rho u^{\alpha} \right)_{, \alpha} =0
@@ -665,7 +667,7 @@ A diferencia de los flujos newtonianos, para los flujos relativistas se tienen q
 las variables \emph{i}, \emph{j} son contadores sobre el espacio.
 
 \subsection{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuación  es_de_la_hidrodinámica_relativista}
-Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos
+Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos \cite{Berger:2014jza}. 
 
 \begin{equation}\label{ecuación  _de_energia}
   e=W-p
@@ -883,7 +885,7 @@ Las variables \emph{qp} mostradas en el código son las primitivas mientras que 
 
 \section{Diferencias finitas} \label{sec:Diferencias_finitas}
 Ya hemos visto que ecuaciones describen la hidrodinámica, ahora nos toca resolverlas, dado que analíticamente es difícil, se va a hacer computacionalmente, para 
-eso se hará uso del método numérico de las diferencias finitas.
+eso se hará uso del método numérico de las diferencias finitas \cite{Duran2021}.
 Si tenemos una función $f(x)$ lo suficientemente diferenciable la podemos aproximar por el Teorema de Taylor  en la vecindad de un punto $x_0+\Delta x$ entonces si conocemos todas sus $n$ derivadas de la función $f(x)$ en el punto $x_0$ podemos aproximar de la siguiente manera
 
 \begin{equation}\label{Serie_Taylor}
@@ -920,7 +922,7 @@ f_{central}^{'}=\frac{f\left(x + \Delta x\right) - f(x - \Delta x) }{2\Delta x}=
 
 \subsection{Lax-Friederich}
 
-Si consideramos la siguiente ecuación diferencial parcial
+Si consideramos la siguiente ecuación diferencial parcial \cite{Duchateau2002}
 
 \begin{equation} \label{ecu_conser}
 u_t+ f\left(u \right)_t=0
@@ -954,7 +956,8 @@ Y lo sustituimos en la ecuación \ref{esquema conservativo} nos queda el siguien
 u_i^{n+1} = u_i^{n} + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
 \end{equation}
 
-Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable Peter Lax y Kurt Friedrichs sustituyeron este término por $(u_{i+1}^n-u_{i-1}^n)$  por lo que podemos reescribir la ecuación \ref{ec_inestable} como
+Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable Peter Lax y Kurt Friedrichs sustituyeron este término por $(u_{i+1}^n-u_{i-1}^n)$  por lo que podemos 
+reescribir la ecuación \ref{ec_inestable} como
 
 \begin{equation}\label{ec_estable}
 u_i^{n+1} =(u_{i+1}^n-u_{i-1}^n) + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
@@ -982,7 +985,7 @@ Donde \emph{dtx, dty} son las derivadas con respecto a \emph{x}, \emph{y} y \emp
 
 \subsection{HLL} \label{secc:HLL}
 
-	Otro método para resolver las ecuaciones de la hidrodinámica es usar el método de Harten-Van-Leer. Definiendo el flujo numérico intercelda de Gudonov
+	Otro método para resolver las ecuaciones de la hidrodinámica es usar el método de Harten-Van-Leer \cite{Toro1997}. Definiendo el flujo numérico intercelda de Gudonov
 
 \begin{equation}
 F_{i+\frac{1}{2}}=F \left( U_{i+\frac{1}{2}} \right)
@@ -1230,9 +1233,9 @@ end do
 
 \subsection{Rankine-Hugoniot Newtoniano}
 
-Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque
-, esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se resuelve con las ecuaciones de 
-Rankine-Hugoniot.
+Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque, 
+esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se resuelve con las ecuaciones de 
+Rankine-Hugoniot \citet{Prunty2019}.
 Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
 hacia la derecha (ver Figura \ref{fig_move_shock}) sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
 $\rho_0$ y $P_0$ mientras que los flujos que están comprimidos detrás del frente de onda se mueven con una velocidad $v_p$ y que tienen densidad y presión $\rho_p$, $P_p$.
@@ -1394,7 +1397,7 @@ P_{j} = \frac{3}{4}\rho_m u_m^{2}
 
 
 
-Considerando la conservación de masa:
+Como se menciona en \citet{Landau1987} si consideramos la conservación de masa:
 
 \begin{equation}
   \rho_j v_j \gamma_j=  \rho_{\infty} v_{\infty} \gamma_{\infty}
@@ -3361,7 +3364,7 @@ Sky-map.\ International Cosmic Ray Conference 5, 1405–1408.
 Zhang, B. (2018). GRB Phenomenology. In The Physics of Gamma-Ray Bursts (pp. 27-121). Cambridge: Cambridge University Press. doi:10.1017/9781139226530.004
 % % 2019-The Physics of Gamma-Ray Bursts.pdf
 
-\bibitem[Berger (2013)]{Berger:2013jza}Berger, E., 2014. Short-duration gamma-ray bursts. Annual Review of Astronomy and Astrophysics 52, 43–105. doi:10.1146/annurev-astro-081913-035926 
+\bibitem[Berger (2014)]{Berger:2014jza}Berger, E., 2014. Short-duration gamma-ray bursts. Annual Review of Astronomy and Astrophysics 52, 43–105. doi:10.1146/annurev-astro-081913-035926 
 
 \bibitem[Seo et al. (2021)]{Seo2021}Seo, J., Kang, H., Ryu, D., Ha, S., Chattopadhyay, I., 2021. A simulation study of ultra-relativistic jets–I. A new code for relativistic hydrodynamics. 
 The Astrophysical Journal 920, 143. doi:10.3847/1538-4357/ac19b3 
@@ -3385,6 +3388,25 @@ curves, jet breaks, and radio calorimetry. The Astrophysical Journal 751, 57. do
 \bibitem[Clarke \& Carswell (2007)]{PAFD}
 Clarke, C., Carswell, B., 2007. Blast waves. Principles of Astrophysical Fluid Dynamics 89–106. doi:10.1017/cbo9780511813450.009 
 % %Cathie Clarke, Bob Carswell - Principles of astrophysical fluid dynamics (2007, Cambridge University Press).pdf
+
+\bibitem[LeVeque et al. (1998)]{LeVeque1998}LeVeque, R.J., Steiner, O., Gautschy, A., 1998. Nonlinear Conservation Laws and Finite Volume Methods, in: Computational Methods for Astrophysical Fluid Flow. Springer, Berlin, pp. 1–148. 
+
+\bibitem[Clarke et al. (2007)]{Clarke2007}Clarke, C., \& Carswell, B. (2007). The fluid equations. In Principles of Astrophysical Fluid Dynamics (pp. 12-19). 
+Cambridge: Cambridge University Press. doi:10.1017/CBO9780511813450.003
+
+\bibitem[Martí \& Müller (1999)]{Marty1999}Martí, J.M., Müller, E., 1999. Numerical hydrodynamics in special relativity. Living Reviews in Relativity 2. doi:10.12942/lrr-1999-3
+
+\bibitem[Duran (2010)]{Duran2021}Durran, D.R. (2010). Finite-Difference Approximations for One-Dimensional Transport. In: Numerical Methods for Fluid Dynamics. Texts in Applied Mathematics, 
+vol 32. Springer, New York, NY. https://doi.org/10.1007/978-1-4419-6412-0\_3
+
+\bibitem[Toro (1997)]{Toro1997} Toro E.F. (1997) The HLL and HLLC Riemann Solvers. In: Riemann Solvers and Numerical Methods for Fluid Dynamics. Springer, Berlin, Heidelberg
+
+\bibitem[Duchateau et al. (2002)]{Duchateau2002}Duchateau, P., Zachmann, D.W., 2002. Applied partial differential equations. Dover, Mineola, NY.
+
+\bibitem[Prunty (2019)]{Prunty2019}Prunty, S. (2019). Conditions Across the Shock: The Rankine-Hugoniot Equations. In: Introduction to Simple Shock Waves in Air . Shock Wave and High Pressure Phenomena. Springer, Cham. https://doi.org/10.1007/978-3-030-02565-6\_3
+
+\bibitem[Landau \& Lifshitz (1987)]{Landau1987}Landau Lev Davidovic, Lifsic, E.M., 514, 505, 1987. RELATIVISTIC FLUID DYNAMICS, in: 6: Fluid Mechanics. Butterworth-Heinemann, Oxford.
+
 
 
 % \bibitem{MB-HLLC-RSfRF}
@@ -3444,8 +3466,7 @@ Clarke, C., Carswell, B., 2007. Blast waves. Principles of Astrophysical Fluid D
 % \bibitem{1973ApJ...179..897T} Thorne, K.~S.\ 1973.\ Relativistic Shocks: the Taub Adiabat.\ The Astrophysical Journal 179, 897.
 % %1973ApJ...179..897T.pdf
 
-% \bibitem{Toro}
-% Toro E.F. (1997) The HLL and HLLC Riemann Solvers. In: Riemann Solvers and Numerical Methods for Fluid Dynamics. Springer, Berlin, Heidelberg
+
 
 % \bibitem{SGRBr-Avanzo}
 % D'Avanzo, P.. (2015). Short gamma ray bursts: A review. Journal of High Energy Astrophysics. 7. 10.1016/j.jheap.2015.07.002. 
