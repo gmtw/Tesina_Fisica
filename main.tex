@@ -19,6 +19,22 @@
 % \setcitestyle{numbers}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Selene
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{mfirstuc}
+\newcommand{\addReviewer}[2]{
+  \expandafter\newcommand\csname #1\endcsname[1]{{\textbf{ \color{#2} \capitalisewords{#1}:\,##1}}}
+  \expandafter\newcommand\csname #1cor\endcsname[2]{{\color{#2} \capitalisewords{#1}:\,\st{##1}{\textbf{##2}}}}
+  \expandafter\newcommand\csname #1color\endcsname{#2}
+  \expandafter\newcommand\csname #1todo\endcsname[1]{{\todo[inline,color=white!70!#2, caption={}]{\textbf{\capitalisewords{#1}}: ##1}}}
+}
+
+\addReviewer{Selene}{red}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Fin Selene
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \spanishdecimal{.}
 
 %\usepackage{cancel} %cancelar términos
@@ -152,19 +168,18 @@ no se hubiera podido realizar esta tesis.
 \markboth{RESUMEN}{RESUMEN}
 %----------------------------------------------------------------------------------------------
 Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con 
-mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro súper masivo) se mueven con 
+mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro \Selene{súper masivo}{supermasivo}) se mueven con 
 velocidades que van desde el 
-límite no relativista hasta el limite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro se mueven a velocidades 
-ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones es las que se originan son tales que es prácticamente imposible de recrear experimentalmente. 
+límite no relativista hasta el l\'imite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro, se mueven a velocidades 
+ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones \Selene{en las que?} es las que se originan son tales que es prácticamente imposible de recrear experimentalmente \Selene{<-- Esta frase no se entiende}.
 Una buena forma de estudiar los jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un 
 código numérico HD y RHD en una y dos dimensiones para así poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
 
-Para verificar que el código funcionaba correctamente primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales 
-HD y RHD, y pruebas bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilzaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). 
-Para la pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las 
-soluciones conocidas.
+Para verificar que el código funcionaba correctamente, primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales 
+HD y RHD, y pruebas bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilizaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). 
+Para las pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo, Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las soluciones conocidas.
 
-Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
+Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo, también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varía en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 
 
 %%%%%%%%%%%%%%%  CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -184,27 +199,25 @@ galácticos y extragalácticos hacia el medio exterior. Son los conductos que co
 Estos tienen forma de protuberancias cónicas o cilíndricas 
 o semicilíndricas estrechas con ángulo de apertura pequeño. Sus principales características es que tienen una 
 amplia gama de luminosidad y grado de colimación. 
-Los ejemplos más poderosos observados que emergen de los núcleos de galaxias activas (o AGN). También se encuentran asociados a otros objetos estelares tales como la fusión de agujeros negros y/o
+Los ejemplos más poderosos observados que emergen de los núcleos de galaxias activas (o AGN). También se encuentran asociados a otros objetos estelares, tales como la fusión de agujeros negros y/o
 estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquásares \citet{deGouveiaDalPino:2004jy}. %! ASTROPHYSICAL JETS AND OUTFLOWS Elisabete M. de Gouveia Dal Pino
 
 %----------------------------------------------------------------------------------
 
 
 Los jets son fenómenos naturales en los que la materia, la energía y otras cantidades físicas (como el flujo magnético) se expulsan en un chorro colimado a través de un medio. 
-Son un evento astrofísico transitorio común ya que ocurren en una amplia gama de entornos astrofísicos (desde objetos estelares hasta objetos extragalácticos). Las velocidades de los jets van desde unos pocos 
+Son un evento astrofísico transitorio común, ya que ocurren en una amplia gama de entornos astrofísicos (desde objetos estelares hasta objetos extragalácticos). Las velocidades de los jets van desde unos pocos 
 $m \cdot s^{-1}$ hasta velocidades cercanas a la de la luz ($c$), y tienen tamaños que van desde unas pocas unidades astronómicas hasta kiloparsecs.
 
-Los jets relativistas son impulsados por la acreción de un objeto compacto (por lo general estrellas de neutrones o desde un hoyo negro). Pueden ser lanzados desde un hoyo negro súper masivo localizado en el 
+Los jets relativistas son impulsados por la acreción de un objeto compacto (por lo general estrellas de neutrones o desde un hoyo negro). Pueden ser lanzados desde un hoyo negro \Selene{súper masivo}{supermasivo} localizado en el 
 centro de una galaxia activa (AGN) \citet{2019ARA&A..57..467B}, desde un hoyo negro como en las binarias de rayos X \citet{2020ApJ...895L..31E}. Los destellos de rayos gamma (GRBs) cortos, que resultan de la colisión 
 de dos sistemas binarios de estrellas de neutrones \citet{2021MNRAS.506.3483P}, y los GRBs largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de 
 vida, también emiten jets relativistas \citet{2022MNRAS.509.5964S}.
-Aunque la presencia de un objeto central masivo y un disco de acreción de gas girando a su alrededor es el componente principal en todos los escenarios astrofísicos donde se encuentran jets, el campo magnético y su 
-interacción con todo el sistema parece ser un componente fundamental en la necesidad de estas eyecciones. Esto permite la formación y estabilidad del disco, así como el lanzamiento y colimación del jet. Los procesos más 
-aceptados para el lanzamiento del jet son los mecanismos magnetorrotacionales propuestos por \citet{1977MNRAS.179..433B} y \citet{1982MNRAS.199..883B}
+Aunque la presencia de un objeto central masivo y un disco de acreción de gas girando a su alrededor es el componente principal en todos los escenarios astrofísicos donde se encuentran jets, el campo magnético y su interacción con todo el sistema parece ser un componente fundamental en la necesidad de estas eyecciones. Esto permite la formación y estabilidad del disco, así como el lanzamiento y colimación del jet. Los procesos más aceptados para el lanzamiento del jet son los mecanismos \Selene{magnetorrotacionales}{magneto-rotacionales} propuestos por \citet{1977MNRAS.179..433B} y \citet{1982MNRAS.199..883B}
 %----------------------------------------------------------------------------------
 
 
-Los jets de AGNs se forman cuando el agujero negro, con una masa de $10^6$-$10^{10}$ masas solares, gira y atrae masa de la galaxia que lo rodeas el cual forma un disco de acreción
+Los jets de AGNs se forman cuando el agujero negro, con una masa de $10^6$-$10^{10}$ masas solares, gira y atrae masa de la galaxia que lo rodea, el cual forma un disco de acreción
 que gira ortogonal al eje de rotación del agujero negro debido a la conservación del momento angular y que contiene un fuerte campo magnético \citet{2008ICRC....5.1405H}. %!Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II Sky-Map 2007-07-03 - 2007-07-11
 Las propiedades de los jets también abarcan rangos muy amplios. Un caso particular son cuando los jets de AGN pueden permanecer bien colimados a distancias de cientos de kiloparsecs \citet{2021Romero}. %!The content of astrophysical jets
 
@@ -220,10 +233,9 @@ Se infiere que los jets relativistas de los blázares tienen un factor de Lorent
 Pero en el modelo más ampliamente aceptado para GRB \citet{Seo2021}, una explosión altamente enfocada asociada con la formación de un agujero negro impulsa jets relativistas colimados con $\Gamma \lesssim 400$ 
 %!A Simulation Study of Ultra-Relativistic Jets - I. A New Code for Relativistic Hydrodynamics
 
-Los ángulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5$^{\circ}$ de apertura, el cual puede variar hasta los 35° con un promedio de 
-$\langle \theta_j \rangle \gtrsim 10$.
-En el medio intergaláctico dentro de las proximidades de las galaxias y dentro de los cúmulos de galaxias se tienen densidades numéricas que oscilan entre $5 \times 10^{-6}$ a 
-$ \sim 10^3 \, \text{cm}^{-3}$. Con las ecuaciones de Rankine-Hugoniot se pueden conocer las densidades del jet a partir de sus velocidades y el medio ambiente que lo rodea, para mas información 
+Los ángulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5$^{\circ}$ de apertura, el cual puede variar hasta los 35° con un promedio de $\langle \theta_j \rangle \gtrsim 10$.
+En el medio intergaláctico, dentro de las proximidades de las galaxias y dentro de los cúmulos de galaxias, se tienen densidades numéricas que oscilan entre $5 \times 10^{-6}$ a 
+$ \sim 10^3 \, \text{cm}^{-3}$. Con las ecuaciones de Rankine-Hugoniot se pueden conocer las densidades del jet a partir de sus velocidades y el medio ambiente que lo rodea, para más información 
 vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
 %! Relativistic AGN jets I. The delicate interplay between jet structure,cocoon morphology and jet-head propagation
 
@@ -242,7 +254,7 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
       Tiempo de vida [años]                       & $\thicksim 10^{-6}$           &    $\thicksim 10^{4}-10^{6}$     &  $\thicksim 10^{4}-10^{5}$     & $\thicksim 10^{7}-10^{8}$                           \\ 
       Tamaño del jet [pc]                         & $\thicksim 10$                &    $\thicksim 10$                &  $\thicksim 1$                 & $\thicksim 10^{5}$                                   \\ 
     \end{tabular}
-  \caption{Propiedades de los jet de distintas fuentes. Se puede observar que, dependiendo de su origen, sus propiedades pueden variar considerablemente} \label{table:propiedades_jets}
+  \caption{Propiedades de los jets de distintas fuentes. Se puede observar que, dependiendo de su origen, sus propiedades pueden variar considerablemente} \label{table:propiedades_jets}
   \end{center}
 
 \end{table}
@@ -257,14 +269,14 @@ vea la sección \ref{sec:Ecuacion_Rankine_Hugoniot}
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas tomando en cuenta distintos métodos numéricos
 %--------------------------------------------------------------------------
-En el pasado se han realizado estudios de jets relativistas tomando en cuenta distintos métodos numéricos \citet{Seo2021, MB-HLLC-I}, en el marco de AGNS \citet{2011ApJ...743...42P}, así como en el marco de GRBs 
+En el pasado se han realizado estudios de jets relativistas, tomando en cuenta distintos métodos numéricos \citet{Seo2021, MB-HLLC-I}, en el marco de AGNS \citet{2011ApJ...743...42P}, así como en el marco de GRBs 
 \citet{2013ApJ...767...19L}, \citet{2018PhRvL.120x1103L}, \citet{2021MNRAS.500.3511G}, \citet{2012ApJ...751...57D}, por mencionar algunos ejemplos. Un ejemplo de simulaciones de jets relativistas se presenta en 
 \citet{Seo2021} donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio uniforme utilizando distintos métodos numéricos (Weno JS, Weno Z, y Weno ZA). El jet es cilíndrico, tiene una 
 densidad de $\rho_{jet} = 10^{-2}$, una velocidad $v_{x_{\text{jet}}},v_{y_{\text{jet}}} = 0.99, 0$ y 
 una presión $p_{\text{jet}} = 10^{-3}$, donde la $v_{x_{\text{jet}}} = 0.99$ representa un factor de Lorentz $\gamma = 7$. El medio ambiente es estático, tiene una densidad $\rho_m = 1$ y una presión igual al del jet. 
 En la Figura \ref{fig:jet_ejemplo_2} se muestra la configuración final utilizando los tres diferentes métodos numéricos (arriba: Weno JS, en medio: Weno Z, y abajo: Weno ZA). Usando el método de WENO JS el 
-jet alcanza una longitud de $\sim$3.15 unidades y presenta turbulencia. Para el caso de WENO Z el jet una longitud un poco mayor con $\sim$3.2 unidades y presenta una turbulencia muy similar a la de WENO JSs. 
-Para el caso de WENO ZA, el jet presenta mayor longitud que en los dos casos previos con $\sim$3.21 unidades y presenta mayor turbulencia que los 2 anteriores. Queda claro que los métodos numéricos que se utilizan para 
+jet alcanza una longitud de $\sim$3.15 unidades y presenta turbulencia. Para el caso de WENO Z el jet una longitud un poco mayor con $\sim$3.2 unidades y presenta una turbulencia muy similar a la de WENO JS. 
+Para el caso de WENO ZA, el jet presenta mayor longitud que en los dos casos previos, con $\sim$3.21 unidades y presenta mayor turbulencia que los 2 anteriores. Queda claro que los métodos numéricos que se utilizan para 
 seguir a los jets afectan la evolución y morfología del mismo.
 
 \begin{figure}
@@ -298,7 +310,7 @@ se mueven a velocidades superlumínicas.
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas en el marco de GRBs.
 %--------------------------------------------------------------------------
-Otro ejemplo de simulaciones de jets relativistas es el estudio de \citet{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones así como en el  marco 
+Otro ejemplo de simulaciones de jets relativistas es el estudio de \citet{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones, así como en el  marco 
 de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
 a través de la envolvente de un Colapsar (paneles de abajo). El jet que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones tiene una luminosidad 
 de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha). Es 
@@ -318,8 +330,11 @@ de $\sim10^{-1}-10^{2} g~cm^{-3}$. También se observa el jet en el centro del c
 inyección y disminuye conforme el jet se va alejando. El jet se mantiene con un ancho aproximado de jet de $\sim 0.05 \times 10^9 \, \text{cm}$. El panel de arriba a la derecha muestra como el jet relativista menos 
 colimado tarda casi el doble del tiempo en llegar a la misma distancia que el caso anterior (el jet colimado). Para el tiempo $t = 0.40$~s el capullo tiene $\sim 1.0 \times 10^9 \, \text{cm}$ de ancho. El jet no es 
 completamente colimado, debido a que forma un óvalo y alcanza un ancho máximo de $0.3 \times 10^9 \, \text{cm}$ a una altura de $3.0 \times 10^9 \, \text{cm}$. El jet menos colimado muestra una mayor 
-turbulencia (comparado con el más colimado), y la turbulencia es más caótica conforme el jet se aleja del radio de inyección. La densidad del capullo es menos densa ya que hay más regiones con densidades 
+turbulencia (comparado con el más colimado), y la turbulencia es más caótica conforme el jet se aleja del radio de inyección. La densidad del capullo es menos densa, ya que hay más regiones con densidades 
 $\sim 10^{-1} g~cm^{-3}$. El jet es más ancho y tiene densidades $\sim 10^{-3} g~cm^{-3}$.
+\Selene{Nota general: Puedes mejorar la redacción si estas comparando dos cosas, en todo este parrafo me perdí. Quiza podrías hacer una tabla comparativa}
+\Selene{Las referencias a las figuras son confusas, creo que deberias poner la referencia de las figuras siempre, ya que tus descripciones son largas. Pero esto es porque te hace falta posicionar mejor las tablas y figuras, de modo que tu texto quede bien acomodado.}
+
 
 El panel de abajo a la izquierda de la Figura~\ref{fig:jet_models} muestra el tiempo final de la evolución de un jet relativista y colimado a través de un Colapsar al tiempo $t = 3.8$~s. Su largo es de
 $3.75 \times 10^{10} \, \text{cm}$. El jet es completamente colimado con un ancho de $0.05 \times 10^{10} \, \text{cm}$. A diferencia de los jets moviéndose a través de un medio formado tras la fusión de estrellas de 
@@ -327,7 +342,7 @@ neutrones, el borde del capullo tiene densidades que alcanzan $\sim10^{2}-10^{3}
 del orden de $\sim 10^{-2}-10^{-1} g~cm^{-3}$. El panel de abajo a la derecha muestra nuevamente como jets menos colimados tardan más tiempo en llegar a la misma posición que un jet colimado. En este caso el jet menos 
 colimado requiere de $t = 9.60$~s para llegar a jet con un largo de $\sim 3.75 \times 10^9 \, \text{cm}$. El ancho del jet es de $0.1 \times 10^{10} \, \text{cm}$ y presenta una mayor densidad alrededor
 del capullo con $\sim10^{3} g~cm^{-3}$. El capullo mide $1 \times 10^{10} \, \text{cm}$ y muestra choques de ondas de colimación en los puntos $1.5 \times 10^{10} \, \text{cm}$, $2.5 \times 10^{10} \, \text{cm}$ 
-y $3.5 \times 10^{10} \, \text{cm}$. Queda claro como las características del jet (luminosidad, ángulo de apertura, etc) así como las condiciones del medio a través del cual el o los jets se mueven afectan la 
+y $3.5 \times 10^{10} \, \text{cm}$. Queda claro como las características del jet (luminosidad, ángulo de apertura, etc.) así como las condiciones del medio a través del cual el o los jets se mueven afectan la 
 evolución y morfología del mismo.
 
 \begin{table}
@@ -346,14 +361,13 @@ evolución y morfología del mismo.
   \end{center}
 \end{table}
 
-
 %----------------------------------------------------------------------------------
 \section{Estudio de un jet relativista en dos dimensiones (Mignone et al. 2005).}
 %----------------------------------------------------------------------------------
 Uno de los objetivos de esta tesis es crear un código HD y RHD y lograr estudiar la evolución de un jet RHD. Para lo anterior se va a buscar reproducir los resultados del estudio de \citet{MB-HLLC-I} en 
 que estudiaron la evolución de un jet relativista en dos dimensiones (ver Figura \ref{fig:jet_mignone}). 
 
-Los valores que usó para poder simular el jet relativista 2D (axisimétrico y en coordenadas cilíndrica), fueron los siguientes:
+Los valores que usó para poder simular el jet relativista 2D (axisimétrico y en coordenadas cilíndricas), fueron los siguientes:
 \begin{equation}
   \left(\rho, v_{r}, v_{z}, p\right)=\left\{\begin{array}{ll}
   \left(0.1,0,0.99,10^{-2}\right) & \text { para } r, z<1 \\
@@ -361,11 +375,11 @@ Los valores que usó para poder simular el jet relativista 2D (axisimétrico y e
   \end{array}\right.
 \end{equation}
 donde $\rho$ es la densidad, $v_r$ es la velocidad radial, $v_z$ es la velocidad sobre el eje z y $p$ es la presión. El índice politrópico que usaron fue $\Gamma = 5/3$ con un número de Courant $Co = 0.5$. 
-Los métodos que emplearon fue el método de HLL y HLLC (Para mas información ver la sección \ref{secc:HLL}). El tiempo de integración fue de $t = 80$ con condiciones de frontera \emph{outflow} excepto donde se 
-inyecta el jet. La velocidad de avance promedio  del jet fue de 0.39 con una resolución de 400X750 pixeles. 
+Los métodos que emplearon fue el método de HLL y HLLC (Para más información ver la sección \ref{secc:HLL}). El tiempo de integración fue de $t = 80$ con condiciones de frontera \emph{outflow} excepto donde se 
+inyecta el jet. La velocidad de avance promedio  del jet fue de 0.39 con una resolución de 400X750 píxeles. 
 
 La figura de arriba de \ref{fig:jet_mignone} muestra la morfología del jet a t=40, mientras que la de abajo a t=80. En ambas figuras el panel del arriba (i.e. el dominio positivo en Y) muestra el 
-caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, el panel del abajo (i.e. el dominio negativo en Y) muestra el caso cuando se uso el esquema HLL.
+caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, el panel del abajo (i.e. el dominio negativo en Y) muestra el caso cuando se usó el esquema HLL.
 \begin{figure}
   \begin{center}
     \includegraphics[width=0.5\textwidth]{Figuras/Introduccion/jet_mignone.png}
@@ -380,8 +394,15 @@ El panel de arriba muestra como para t=40, cuando se usa el esquema HLLC, el jet
 ancho máximo de $\sim$7 unidades. Para el caso, en el que se usa HLL, el jet tiene un tamaño de $\sim$18 unidades, un grosor de $\sim$5 unidades, y el capullo alcanza una anchura de $\sim$4 unidades. El caso HLL presenta 
 una menor turbulencia con respecto a HLLC.
 Para el panel de abajo (a t=80), en el caso de HLLC, presenta un largo de $\sim$32 unidades, un ancho es de $\sim$7 unidades y su capullo tiene una anchura de $\sim$11 unidades. Para el caso en que se usa HLL, el largo 
-y ancho miden $\sim$31.5 y $\sim$8 respectivamente, y el capullo presenta un tamaño de $\sim$11.5 unidades. Nuevamente el caso HLL presenta menos turbulencia que el caso HLLC.
-
+y ancho miden $\sim$31.5 y $\sim$8 respectivamente, y el capullo presenta un tamaño de $\sim$11.5 unidades. Nuevamente, el caso HLL presenta menos turbulencia que el caso HLLC.
+\Selene{No sé si tu asesor o algún sinodal te guió para la redacción, si esta es tu introducción, para mi gusto es muy técnica, no me introduce.}
+\Selene{Sería genial que añadas una descripción de lo que vendrá en cada capitulo.}
+\Selene{Estas son algunas preguntas que me plantee para mi tesis, ojala te sirvan, \\
+- Responder a las siguientes cuestiones:\\
+¿Cuáles son los antecedentes?
+¿Cuál es el problema que responde \ resuelve mi trabajo?
+¿Cómo se contribuye a la solución?
+¿Cuáles son mis objetivos generales? --> Está si la respondes así que Ok :) }
 %--------------------------------------------------------------------------
 \section{Objetivos de la tesis}
 %--------------------------------------------------------------------------
@@ -433,7 +454,7 @@ l = n^{-1/3} \ll L
 
 Considerando una serie de elementos de volumen fijos \citet{Clarke2007}, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
 
-La conservación de masa
+La conservación de masa\Selene{: debes poner esos dos puntos}
 \begin{equation} \label{conservación_masa_hidrodinamica}
 \dfrac{\partial \rho }{\partial t} + \nabla \cdot \left( \rho \mathbf{u} \right)
 \end{equation}
@@ -511,6 +532,7 @@ G-L+\textbf{f} \cdot \textbf{u} \\
 $
 \end{center}
 
+\Selene{}{Pon : antes de cada ecuación}
 El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. 
 Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar los términos fuente, es decir, 
 $\mathbf{S}=0$.
@@ -518,7 +540,7 @@ $\mathbf{S}=0$.
 La implementación en el código se hará en 2 dimensiones por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero el bloque de código esta en una subrutina llamada \emph{fluxes}, 
 donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
 la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ . 
-
+\Selene{Si usas una tipografía para un simbolo no la cambies después. }
 
 \begin{lstlisting}[frame=single]
 
