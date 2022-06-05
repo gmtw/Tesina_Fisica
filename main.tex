@@ -512,10 +512,11 @@ $
 \end{center}
 
 El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. 
-Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar tos términos fuente es decir $\mathbf{S}=0$ en el siguiente capitulo si se trataran fuentes particulares.
+Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar los términos fuente, es decir, 
+$\mathbf{S}=0$.
 
 La implementación en el código se hará en 2 dimensiones por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero el bloque de código esta en una subrutina llamada \emph{fluxes}, 
-donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas.Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
+donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
 la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ . 
 
 
@@ -574,10 +575,10 @@ donde que la variable \emph{u(4,i,j)} es la densidad de energía.
   
 \section{Hidrodinámica relativista}
 Los jets generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si nos servirá como apoyo para poder pasar a la hidrodinámica relativista.
-En esta parte se añadirá a los códigos que ya hemos generado previamente, las próximas secciones abordara acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
+En esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordara acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
 
 \subsection{Primitivas}
-Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas \citet{Marty1999}. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación 
+Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas \citet{Marty1999, Landau1987}. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación 
 de masa:
 
 \begin{equation}\label{ecuación  _conservación_masa}
@@ -1743,7 +1744,7 @@ Si derivamos la ecuación \ref{eq_Radio_proporcional}, obtenemos la velocidad
   \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}
 \end{equation}
 
-A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (ver \ref{fig_velocidad_vs_radio})
+A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (ver Figura \ref{fig_velocidad_vs_radio})
 
 \begin{figure}
   \centering
@@ -1796,7 +1797,7 @@ vienen del ingĺés \emph{left} y \emph{right} que significan izquierda y derech
 mientras que del lado derecho tendrán densidad ($\rho_r$), velocidad ($v_r$) y  presión ($p_r$). 
 La elección del índice adiabático $\Gamma = 7/5$, un dominio $x \in [0,1]$ cm y $x_0 = 0.5$ cm 
 se dio para poder simular y comparar los mismos modelos
-mostrados por  Lora-Clavijo \emph{et al.} (2013).
+mostrados por \citet{Lora2013}.
 
 \begin{table}[htbp]
   \begin{center}
@@ -2424,7 +2425,7 @@ consistirá en estudiar el caso en que el jet atraviesa un medio constante y  co
 Después, se estudiarán los efectos que un medio que varía en función de la distancia produce en los jets relativistas.
 El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ 
 (ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático será $\Gamma = 5/3$, 
-consistente con Mignone \emph{et al.} (2005). 
+consistente con \citet{MB-HLLC-I}. 
 Los cuales en la primera prueba serán constantes y luego variarán en función de x. El medio ambiente a su vez, 
 se modelará con una densidad y presión en reposo. Un jet de grosor $\Delta y$ será inyectado 
 en la frontera $x_{min}$ a la mitad de la altura $y_{max}$ (esto es, desde $\frac{y_{max}-\Delta y}{2}$ hasta 
@@ -2471,7 +2472,7 @@ $x, y \in [0,40]\times[0,20]$ y un índice adiabático $\Gamma = 5/3$.}
 
 Para el caso en que el jet, el cual tiene una densidad $\rho_j = 0.1$, una velocidad que
 solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio en reposo y con densidad y presión constante en el cual 
-$\rho_a = 0.1 $ y $P_a = 0.01$  consistente con los valores que Mignone \emph{et al.} (2005) utilizó. 
+$\rho_a = 0.1 $ y $P_a = 0.01$  consistente con los valores que \citet{MB-HLLC-I} utilizó. 
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del jet a 
 través del medio constante en mapas de densidad
 a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), 
@@ -2491,17 +2492,16 @@ máximos de $\rho  \approx 20$ en la
 parte externa del capullo. Cabe destacar que el jet conserva el mismo ancho y que la longitud del capullo crece 
 en la misma proporción a la longitud del jet.
 
-El jet del estudio de  Mignone \emph{et. al.}(2005) utiliza un jet relativista con simetría axial en 
+El jet del estudio de  \citet{MB-HLLC-I} utiliza un jet relativista con simetría axial en 
 coordenadas cilíndricas,  en este modelo, se usaron coordenadas cartesianas. 
 Ellos usan una ecuación de estado ideal con $\Gamma = 5/3$, el dominio es 
 $0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240 x 700. Las condiciones de
 frontera son \emph{outflow} en todas su frontera excepto donde esta la eyección. El número de Courant que
 usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores del jet y su medio ambiente son los
 mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}. El jet que se usó en esta tesis tiene las 
-misma ecuación estado que se usó en Mignone \emph{et. al.}(2005), se integró en el mismo tiempo, y aunque son distintos 
+misma ecuación estado que se usó en \citet{MB-HLLC-I}, se integró en el mismo tiempo, y aunque son distintos 
 sistemas de coordenadas tiene el mismo dominio, así como las mismas condiciones de frontera. Se diferencia únicamente,
-por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces más, la resolución usada en Mignone 
-\emph{et. al.}(2005).
+por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces más, la resolución usada en \citet{MB-HLLC-I}.
 
 \begin{figure}
   \centering
@@ -2556,36 +2556,36 @@ a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$.
 
 En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos en baja 
 (1600x800 pixeles) y alta (3200x1600) resolución, a 
-las mismas escalas de densidad, en comparación con los resultados de Mignone \emph{et. al.} (2005).
-La Figura muestra de izquierda a derecha las gráficas de Mignone (izquierda), el modelo con baja resolución 
+las mismas escalas de densidad, en comparación con los resultados de \citet{MB-HLLC-I}.
+La Figura muestra de izquierda a derecha las gráficas de \citet{MB-HLLC-I} (izquierda), el modelo con baja resolución 
 (medio) y el modelo con alta resolución (derecha). Los paneles de arriba muestran al tiempo t = 40, mientras que los 
 de abajo al tiempo t = 80.
-Al enfocarse en los paneles de arriba, al tiempo t = 40, se puede observar que el jet de estudio de Mignone et al. tiene un largo 
+Al enfocarse en los paneles de arriba, al tiempo t = 40, se puede observar que el jet de estudio de \citet{MB-HLLC-I} tiene un largo 
 de $x \approx 18$ unidades, mientras que el de baja resolución tiene un largo de 19 unidades y 
 el jet de alta densidad  tiene un largo de 19 unidades por lo que podemos observar un error del 5 \% 
 con el baja resolución y del 0 \% con el de alta resolución. El capullo esta compuesto de material de alta densidad 
 que rodea al jet, su ancho se mantiene en aproximadamente 5 unidades.
-Los choques de colimación son más grandes en el estudio de Mignone \emph{et. al.} (2005)
+Los choques de colimación son más grandes en el estudio de \citet{MB-HLLC-I}
 que en el de baja resolución, 
 dado que se localizan en $x \approx 10$ y $x \approx 5$ respectivamente, una diferencia del 50 \%. 
 Los choques de alta resolución se localizan en $x \approx 4$  lo que muestra una diferencia de mas del 
-60 \% con el estudio de Mignone \emph{et. al.}(2005).
+60 \% con el estudio de \citet{MB-HLLC-I}.
 Se observa también que el capullo de baja resolución mide más de 11 unidades de ancho para $y > 10$, 
 mientras que para la resolución alta mide 9 unidades, lo que nos da un error, solo para la resolución alta del 33 \%.
 Tanto en el capullo de baja resolución como en el de alta resolución no se muestran turbulencias 
-como en el estudio de Mignone, lo que da a entender  que el código que fue desarrollado para esta tesis 
+como en el estudio de \citet{MB-HLLC-I}, lo que da a entender  que el código que fue desarrollado para esta tesis 
 es más viscoso.
 Para los paneles de abajo, el tiempo ahora es t = 80, se puede observar que el capullo sobresale del dominio para los 
-3 casos que estamos comparando. Las ondas de colimación para alta como baja resolución están en $x = 3$ mientras que las de Mignone se siguen manteniendo en $x = 6$, lo que nos sigue dando un error 
+3 casos que estamos comparando. Las ondas de colimación para alta como baja resolución están en $x = 3$ mientras que las de \citet{MB-HLLC-I} se siguen manteniendo en $x = 6$, lo que nos sigue dando un error 
 del 50 \%, por lo que éstas no dependen del tiempo. 
-El jet para el estudio de Mignone mide $x \approx 35$ de largo, para el jet de resolución baja mide $x \approx 32$ unidades y 
+El jet para el estudio de \citet{MB-HLLC-I} mide $x \approx 35$ de largo, para el jet de resolución baja mide $x \approx 32$ unidades y 
 para el de resolución alta $x \approx 31$ unidades, lo que nos da un error del 9 \% para resolución baja y con el 
 de resolución alta un error del 11 \%.
 Otra diferencia fue que el jet de 
 alta resolución esta más comprimido, ya que tiene un grosor aproximado de 1.0 unidades 
 mientras que el de baja resolución tiene una resolución aproximada de 1.4 unidades, 
-aunque no está tan comprimido como el jet mostrado en el estudio de Mignone \emph{et. al.}(2005). así también, no podemos encontrar, tanto para baja como 
-alta resolución las turbulencias generadas en el jet de Mignone, pero también no se pueden comparar las densidades del 
+aunque no está tan comprimido como el jet mostrado en el estudio de \citet{MB-HLLC-I}. así también, no podemos encontrar, tanto para baja como 
+alta resolución las turbulencias generadas en el jet de \citet{MB-HLLC-I}, pero también no se pueden comparar las densidades del 
 mismo debido a que no presenta los valores.
 
 \begin{figure}
@@ -2593,7 +2593,7 @@ mismo debido a que no presenta los valores.
   \includegraphics[width=1\textwidth]{./Figuras/jet/comparacion/multiple_comparation.png}
     \caption{Mapas de densidad en los que se compara el jet relativista con los valores del Cuadro 
     \ref{Cuadro: propiedades-jet-comparacion}. La Figura está dividida en 3 columnas. La de la izquierda muestra
-    el estudio de Mignone, la de en medio el jet a baja resolución (1600x800 pixeles), y la de la derecha el jet a alta 
+    el estudio de \citet{MB-HLLC-I}, la de en medio el jet a baja resolución (1600x800 pixeles), y la de la derecha el jet a alta 
     resolución (3200x1600 pixeles).
     }\label{fig:comparacion_temporal_del_jet}
 \end{figure}
@@ -2700,7 +2700,8 @@ se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muest
 %----------------------------------------------------------------------------------------------
 \chapter{Conclusiones}
 %----------------------------------------------------------------------------------------------
-El objetivo principal de esta tesis fue construir un código numérico hidrodinámico que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann. Para verificar que el código funcionaba correctamente dicho código debía ser capaz de reproducir pruebas numéricas cuya solución ya era conocida previamente (ya fuera por medio de modelos analíticos o simulaciones numéricas previas de otros grupos de investigación). En específico se verificó que el código numérico reprodujera pruebas unidimensionales newtonianas y relativistas (tubos de choques), y pruebas bidimensionales newtonianas (por ejemplo Sedov-Taylor) y relativistas. Además, se estudió la evolución de un jet bidimensional con velocidad relativista a través de un medio variable (estático). Para lo anterior primero se reprodujeron los resultados de un jet en un medio constante de Mignone \emph{et. al.} 2007, y segundo, se estudió como es afectada la evolución del jet relativista en un medio variable (i.e. un medio cuya densidad disminuye en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$).
+El objetivo principal de esta tesis fue construir un código numérico hidrodinámico que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann. Para verificar que el código funcionaba correctamente dicho código debía ser capaz de reproducir pruebas numéricas cuya solución ya era conocida previamente (ya fuera por medio de modelos analíticos o simulaciones numéricas previas de otros grupos de investigación). En específico se verificó que el código numérico reprodujera pruebas unidimensionales newtonianas y relativistas (tubos de choques), y pruebas bidimensionales newtonianas (por ejemplo Sedov-Taylor) y relativistas. Además, se estudió la evolución de un jet bidimensional con velocidad relativista a través de un medio variable (estático). Para lo anterior primero se reprodujeron los resultados de un jet en un medio constante de 
+\citet{MB-HLLC-I}, y segundo, se estudió como es afectada la evolución del jet relativista en un medio variable (i.e. un medio cuya densidad disminuye en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$).
 
 En el capítulo 2, se detalla la física y detalles numéricos que se emplean en el código numérico creado para el desarrollo de esta tesis. En específico, en las secciones \ref{sec:Ecuacioneshidrodinamica} y \ref{subsec:DesacoplamientoEcuacionesHidrodinamica} se detallan las ecuaciones de la hidrodinámica así como los distintos métodos numéricos empleados para su resolución. Los métodos que se usaron fueron el de Friederich-Lax y el de Haar-Lax-van Leer. Además, dado que el sistema de ecuaciones de la hidrodinámica e hidrodinámica relativista están acopladas se detalla como se les desacopla y se obtiene la densidad, velocidades y densidad de energía para un paso temporal subsecuente.
 
@@ -2715,7 +2716,7 @@ En el capítulo 3, se muestran las pruebas numéricas hidrodinámicas e hidrodin
 
 En el capítulo 4, se muestra la evolución de un jet bidimensional y relativista a través de distintos medios. 
 \begin{itemize}
-	\item En la sección \ref{sec:jet_ambiente_constante} se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de Mignone \emph{et al} 2007. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Además, en el estudio Mignone \emph{et al} 2007 no se detallan todas las características del jet, por ende no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente mas lento. 
+	\item En la sección \ref{sec:jet_ambiente_constante} se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Además, en el estudio Mignone \emph{et al} 2007 no se detallan todas las características del jet, por ende no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente mas lento. 
 	
 	\item En la sección \label{sec:jet_ambiente_variable} se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$. Se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 \end{itemize}
@@ -2867,7 +2868,11 @@ En esta parte dan los valores iniciales para nuestra malla tanto en $x$ como en 
 %----------------------------------------------------------------------------------------------
 \subsection{Condición de Courant}
 %----------------------------------------------------------------------------------------------
-Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales se van a calcular en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia y la estabilidad de nuestras ecuaciones diferenciales parciales (ecuación \ref{u_posterior_tensor}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación diferencial parcial original si todos los intervalos finitos tienden a cero, una condición necesaria para la convergencia es que los errores, por ejemplo los debidos al redondeo, no se incrementen con en tiempo. Esta es la llamada la condición de estabilidad. Es una condición tan importante que implica ciertas restricciones al tamaño del paso de tiempo en un proceso explícito. Un análisis de estabilidad para esquemas explícitos a partir de la teoría de las características para soluciones continuas lleva a la conclusión que dichos esquemas, para ser estables, deben cumplir la condición de Courant, que es: 
+Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales se van a calcular en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia y la estabilidad de 
+nuestras ecuaciones diferenciales parciales (ecuación \ref{euler_cartesianas}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación diferencial 
+parcial original si todos los intervalos finitos tienden a cero, una condición necesaria para la convergencia es que los errores, por ejemplo los debidos al redondeo, no se incrementen con en tiempo. 
+Esta es la llamada la condición de estabilidad. Es una condición tan importante que implica ciertas restricciones al tamaño del paso de tiempo en un proceso explícito. Un análisis de estabilidad para esquemas 
+explícitos a partir de la teoría de las características para soluciones continuas lleva a la conclusión que dichos esquemas, para ser estables, deben cumplir la condición de Courant, que es: 
 
 \begin{equation}
 \Delta t \leq \frac{\Delta x}{u+C}
@@ -2917,7 +2922,7 @@ Para entender lo que son las condiciones de frontera, vamos suponer una malla de
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{./Figuras/malla.png}
-\caption{Malla de puntos que resalta las fronteras, los puntos más oscuros representan representan una frontera \emph{fantasma}, es decir, ese conjunto de puntos estará allí como apoyo para resolver los cálculos que hará la computadora dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se graficarán} \label{fig: malla de puntos}
+\caption{Malla de puntos que resalta las fronteras, los puntos más oscuros representan representan una frontera \emph{fantasma}, es decir, ese conjunto de puntos estará allí como apoyo para resolver los cálculos que hará la computadora dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se graficarán.} \label{fig: malla de puntos}
 \end{figure}
 
 La Figura \ref{fig: malla de puntos} muestra 
@@ -3407,6 +3412,9 @@ vol 32. Springer, New York, NY. https://doi.org/10.1007/978-1-4419-6412-0\_3
 
 \bibitem[Landau \& Lifshitz (1987)]{Landau1987}Landau Lev Davidovic, Lifsic, E.M., 514, 505, 1987. RELATIVISTIC FLUID DYNAMICS, in: 6: Fluid Mechanics. Butterworth-Heinemann, Oxford.
 
+\bibitem[Lora et al. (2013)]{Lora2013}
+F.D. Lora-Clavijo \emph(et. al.) (2013). Exact Solution oh the 1D riemann problem in Newtonian and relativistic hydrodynamics. Revista Mexicana de Física. E 59 (2013)28-50 
+
 
 
 % \bibitem{MB-HLLC-RSfRF}
@@ -3471,8 +3479,6 @@ vol 32. Springer, New York, NY. https://doi.org/10.1007/978-1-4419-6412-0\_3
 % \bibitem{SGRBr-Avanzo}
 % D'Avanzo, P.. (2015). Short gamma ray bursts: A review. Journal of High Energy Astrophysics. 7. 10.1016/j.jheap.2015.07.002. 
 
-% \bibitem{Exact-solution_riemman-solver}
-% F.D. Lora-Clavijo \emph(et. al.) (2013). Exact Solution oh the 1D riemann problem in Newtonian and relativistic hydrodynamics. Revista Mexicana de Física. E 59 (2013)28-50 
 
 
 
