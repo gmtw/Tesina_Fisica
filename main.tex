@@ -22,7 +22,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Selene
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{mfirstuc}
+\usepackage{mfirstuc, soul}
 \newcommand{\addReviewer}[2]{
   \expandafter\newcommand\csname #1\endcsname[1]{{\textbf{ \color{#2} \capitalisewords{#1}:\,##1}}}
   \expandafter\newcommand\csname #1cor\endcsname[2]{{\color{#2} \capitalisewords{#1}:\,\st{##1}{\textbf{##2}}}}
@@ -310,8 +310,7 @@ se mueven a velocidades superlumínicas.
 %--------------------------------------------------------------------------
 %Ejemplo de estudio de jets relativistas en el marco de GRBs.
 %--------------------------------------------------------------------------
-Otro ejemplo de simulaciones de jets relativistas es el estudio de \citet{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones, así como en el  marco 
-de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
+Otro ejemplo de simulaciones de jets relativistas es el estudio de \citet{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones, así como en el  marco de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
 a través de la envolvente de un Colapsar (paneles de abajo). El jet que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones tiene una luminosidad 
 de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha). Es 
 lanzado desde una distancia $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} para más detalles). 
@@ -321,7 +320,7 @@ atravesando un medio que está en reposo y cuya masa es de $M_{m} = 13.95 M_{\od
 \begin{figure} 
   \centering
     \includegraphics[width=0.7\textwidth]{Figuras/Introduccion/jet_models.png}
-  \caption{Mapa de densidad de el jet, donde los paneles de arriba muestran ambientes de una fusión de estrellas de neutrones mientras que los paneles de abajo muestran para los Colapsares.}
+  \caption{Mapa de densidad del jet, donde los paneles de arriba muestran ambientes de una fusión de estrellas de neutrones, mientras que los paneles de abajo muestran para los Colapsares.}
   \label{fig:jet_models}
 \end{figure}
 El panel de arriba a la izquierda de la Figura~\ref{fig:jet_models} muestra que para el tiempo $t = 0.22$~s el jet relativista y colimado ha avanzado una distancia de $3.75 \times 10^9 \, \text{cm}$ a través 
@@ -386,7 +385,7 @@ caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, el
   \end{center}
   \caption{Logaritmo de la densidad de la masa en reposo para un jet relativista. El panel de arriba muestra el jet al tiempo t=40, mientras que el de abajo al tiempo t = 80.
   La mitad de  (de ambos paneles) muestra la simulación hecha con el esquema HLLC, mientras que la parte de abajo muestra para el esquema HLL.
-  La resolución fue de 240x740 pixeles}
+  La resolución fue de 240x740 píxeles}
   \label{fig:jet_mignone}
 \end{figure}
 
@@ -395,7 +394,7 @@ ancho máximo de $\sim$7 unidades. Para el caso, en el que se usa HLL, el jet ti
 una menor turbulencia con respecto a HLLC.
 Para el panel de abajo (a t=80), en el caso de HLLC, presenta un largo de $\sim$32 unidades, un ancho es de $\sim$7 unidades y su capullo tiene una anchura de $\sim$11 unidades. Para el caso en que se usa HLL, el largo 
 y ancho miden $\sim$31.5 y $\sim$8 respectivamente, y el capullo presenta un tamaño de $\sim$11.5 unidades. Nuevamente, el caso HLL presenta menos turbulencia que el caso HLLC.
-\Selene{No sé si tu asesor o algún sinodal te guió para la redacción, si esta es tu introducción, para mi gusto es muy técnica, no me introduce.}
+\Selene{No sé si tu asesor o algún sinodal te guió para la redacción, si esta es tu introducción, para mi gusto tiene muchos datos técnicos que desconozco y siento que no me introduce, pero si tu crees que las personas que leerán esta tesis, especialistas en el tema no tendrán duda entonces esta bien.}
 \Selene{Sería genial que añadas una descripción de lo que vendrá en cada capitulo.}
 \Selene{Estas son algunas preguntas que me plantee para mi tesis, ojala te sirvan, \\
 - Responder a las siguientes cuestiones:\\
@@ -416,7 +415,7 @@ Los objetivos de esta tesis se enlistan a continuación:
 
   \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando Lax y HLL.
   
-  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de \citet{MB-HLLC-I}, y se compararán los resultado obtenidos.
+  \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de \citet{MB-HLLC-I}, y se compararán los resultados obtenidos.
 
   \item Estudiar la evolución de un jet 2D relativista a través de distintos medios variables ($\rho \propto R^{-n}$, con $n=1, 2, 3$) y se compararán los resultados contra el caso en el que jet se mueve en un medio constante.
 
@@ -431,7 +430,7 @@ Los objetivos de esta tesis se enlistan a continuación:
 % Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
 Los jets, ya sea que provengan de GRNs o AGNs, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
 las ecuaciones de la hidrodinámica.
-Para describir un sistema de partículas como un fluido bajo ciertas condiciones uno debe de conocer que el camino libre medio debe de ser mucho mas pequeño que la escala de longitud de las fluctuaciones de las 
+Para describir un sistema de partículas como un fluido bajo ciertas condiciones, uno debe de conocer que el camino libre medio debe de ser mucho más pequeño que la escala de longitud de las fluctuaciones de las 
 variables macroscópicas \citet{LeVeque1998}.
 
 \begin{equation}
@@ -442,7 +441,7 @@ El tiempo entre las colisiones debe de ser pequeña comparada con la escala del 
 \begin{equation}
 t_{c} \ll t_f
 \end{equation}
-La distancia media entre las partículas tiene que ser mas pequeña que la longitud de escala de las variables macroscópicas
+La distancia media entre las partículas tiene que ser más pequeña que la longitud de escala de las variables macroscópicas
 
 \begin{equation}
 l = n^{-1/3} \ll L
@@ -537,10 +536,10 @@ El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\
 Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar los términos fuente, es decir, 
 $\mathbf{S}=0$.
 
-La implementación en el código se hará en 2 dimensiones por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero el bloque de código esta en una subrutina llamada \emph{fluxes}, 
+La implementación en el código se hará en 2 dimensiones, por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero, el bloque de código está en una subrutina llamada \emph{fluxes}, 
 donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
 la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ . 
-\Selene{Si usas una tipografía para un simbolo no la cambies después. }
+\Selene{Si usas una tipografía para un símbolo no la cambies después. }
 
 \begin{lstlisting}[frame=single]
 
@@ -563,7 +562,7 @@ caro. El término \emph{u} hace alusión a las variables conservadas.
 
 Al final del método de las diferencias finitas, obtenemos nuestras variables conservadas (\emph{U}), pero para calcular nuestros flujos de nuevo necesitamos recuperar nuestras primitivas, es decir, calcular nuestras variables primitivas $(\rho, \, u, \, v,\, w, \, P )$ en función de nuestras variables conservadas $(u_1, \, u_2, \, u_3, \, u_4, \, u_5)$.
 
-Despejar la densidad es sencillo ya que es directo $u_1= \rho$ por lo tanto:
+Despejar la densidad es sencillo, ya que es directo, $u_1= \rho$ por lo tanto:
 
 \begin{equation}\label{primitiva_densidad}
 \rho = u_1
@@ -593,11 +592,11 @@ Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los 
 
 \end{lstlisting}
 
-donde que la variable \emph{u(4,i,j)} es la densidad de energía.
+donde que la variable \emph{u(4,i, j)} es la densidad de energía.
   
 \section{Hidrodinámica relativista}
 Los jets generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si nos servirá como apoyo para poder pasar a la hidrodinámica relativista.
-En esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordara acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
+En esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordará acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar, así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
 
 \subsection{Primitivas}
 Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas \citet{Marty1999, Landau1987}. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación 
@@ -647,7 +646,7 @@ u_{3}& = \rho v_{y} \gamma^{2} h \\
 u_{4}& = \rho \gamma^{2} h - P 
 \end{align}
 
-Donde $\rho$ es la densidad, $\gamma$ es el factor de Lorentz, $v_{x}$ y $v_{y}$ son las velocidades de nuestros fluidos (en 2 dimensiones pero se puede extender esto a 3 sin ningún problema), $h$ es la entalpía  y $P$ es la presión. Para los fluidos quedan de la siguiente manera
+Donde $\rho$ es la densidad, $\gamma$ es el factor de Lorentz, $v_{x}$ y $v_{y}$ son las velocidades de nuestros fluidos (en 2 dimensiones, pero se puede extender esto a 3 sin ningún problema), $h$ es la entalpía  y $P$ es la presión. Para los fluidos quedan de la siguiente manera
 \begin{align}
 F_{1}& = \rho v_{x} \gamma \\ 
 F_{2}& = \rho v_{x} v_{x} \gamma^{2} h + P\\ 
@@ -722,7 +721,7 @@ Donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \r
 \dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}
 \end{equation}
 
-Nosotros no sabemos como es la expresión $\dfrac{de}{dW^{'}}$, así que asumiremos que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena (para mas detalles consulte)
+Nosotros no sabemos como es la expresión $\dfrac{de}{dW^{'}}$, así que asumiremos que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena (para más detalles consulte)
 \begin{equation}\label{cadena}
 \dfrac{dp}{dW^{'}}=\dfrac{\partial p}{\partial\chi}\Bigg |_{\rho} \dfrac{d\chi}{dW^{'}} + \dfrac{\partial p}{\partial \rho}\Big |_{\chi} \dfrac{d \rho}{d W^{'}}
 \end{equation}
@@ -813,7 +812,7 @@ y \ref{modulos de los momentos} podemos llegar a que la presión es:
 p=\frac{\abs{m}^{2}-W^{2}\abs{v}^{2}+4W^{2}-4EW}{4W}
 \end{equation}
 
-Como podemos ver el denominador es una función convexa cuadrática que depende $\abs{v}^{2}$ y $W$ y cumple con que $W$ este fuera del intervalo de las raíces positivas y negativas.
+Como podemos ver, el denominador es una función convexa cuadrática que depende $\abs{v}^{2}$ y $W$ y cumple con que $W$ este fuera del intervalo de las raíces positivas y negativas.
 
 Al denominador de la  ecuación podemos encontrar $W$ ya que $\abs{v}^{2}=1-1/\gamma^{2}$ suponiendo $\gamma \rightarrow \infty$ podemos despejar $W$
 
@@ -848,7 +847,7 @@ p&=&\frac{\Gamma-1}{\Gamma} \chi
 
 Aunque en el método newtoniano se podían desacoplar las ecuaciones sobre el mismo bucle, 
 para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y así poder obtenerlas en función de las conservadas. 
-Al igual que en el método newtoniano vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, 
+Al igual que en el método newtoniano, vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, 
 y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. 
 Las variables conservadas las reasignamos a unas nuevas llamadas \emph{qu} para que podamos usar la subrutina, una vez que se desacoplan, 
 los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
@@ -902,7 +901,7 @@ y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular
   qp(4) =max(qp(4),1d-10*qp(1))
 \end{lstlisting}
 
-Las variables \emph{qp} mostradas en el código son las primitivas mientras que las otras son auxiliares mostradas en el capitulo 
+Las variables \emph{qp} mostradas en el código son las primitivas, mientras que las otras son auxiliares mostradas en el capítulo 
 \ref{Cap_Desacoplamiento_de_las_ecuación  es_de_la_hidrodinámica_relativista}
 
 
@@ -917,7 +916,7 @@ f\left( x_0 + \Delta x\right) = f\left( x_0 \right)+
 \right)
 \end{equation}
 
-Si truncamos la serie de Taylor y quitamos los términos de segundo orden podemos escribir la ecuación \ref{Serie_Taylor} como:
+Si truncamos la serie de Taylor y quitamos los términos de segundo orden, podemos escribir la ecuación \ref{Serie_Taylor} como:
 
 \begin{equation}
 f\left( x_0 + \Delta x \right) = f(x_0) - \Delta x f^{(1)} (x_0) + O \left( \Delta x \right)
@@ -945,7 +944,7 @@ f_{central}^{'}=\frac{f\left(x + \Delta x\right) - f(x - \Delta x) }{2\Delta x}=
 
 \subsection{Lax-Friederich}
 
-Si consideramos la siguiente ecuación diferencial parcial \cite{Duchateau2002}
+Sí consideramos la siguiente ecuación diferencial parcial \cite{Duchateau2002}
 
 \begin{equation} \label{ecu_conser}
 u_t+ f\left(u \right)_t=0
@@ -959,7 +958,7 @@ u_i^{n+1} = u_i^{n} -\frac{\Delta t}{\Delta x} \left(f_{i-\frac{1}{2}} - f_{i+\f
 
 
 
-Si hacemos la siguiente elección de flujo 
+Sí hacemos la siguiente elección de flujo 
 
 \begin{equation}
 f_{i+\frac{1}{2}} = f_{i+\frac{1}{2}} \left(
@@ -979,7 +978,7 @@ Y lo sustituimos en la ecuación \ref{esquema conservativo} nos queda el siguien
 u_i^{n+1} = u_i^{n} + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
 \end{equation}
 
-Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable Peter Lax y Kurt Friedrichs sustituyeron este término por $(u_{i+1}^n-u_{i-1}^n)$  por lo que podemos 
+Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable Peter Lax y Kurt Friedrichs sustituyeron este término, por $(u_{i+1}^n-u_{i-1}^n)$  por lo que podemos 
 reescribir la ecuación \ref{ec_inestable} como
 
 \begin{equation}\label{ec_estable}
@@ -1014,7 +1013,7 @@ Donde \emph{dtx, dty} son las derivadas con respecto a \emph{x}, \emph{y} y \emp
 F_{i+\frac{1}{2}}=F \left( U_{i+\frac{1}{2}} \right)
 \end{equation}
 
-Para el cual $U_{i+\frac{1}{2}}(0)$ tiene la misma solución para $U_{i+\frac{1}{2}}(x/t)$ con lo que el problema de Riemann se reduce a :
+Para el cual $U_{i+\frac{1}{2}}(0)$ tiene la misma solución para $U_{i+\frac{1}{2}}(x/t)$ con lo que el problema de Riemann se reduce a:
 
 \begin{equation} \label{ecuación  _discreta_conservada}
 \begin{array}{ll}
@@ -1032,12 +1031,12 @@ U_R \quad \textup{si} \quad x>0
 \begin{figure} %fuente de la imagen:libro del toro/
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/HLL_onda.png}
-  \caption{Plano x-t que muestra que muestra un volumen definido}
+  \caption{Plano x-t que muestra un volumen definido}
   \label{fig:Plano x_t}
 \end{figure}
 
-Si consideramos un control de volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas mas rápidas de los 
-estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Si usamos la forma integral de la 
+Si consideramos un control de volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas más rápidas de los 
+estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Sí usamos la forma integral de la 
 ecuación   \ref{ecuación  _discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
 
 \begin{equation*}\label{Forma_integral_conservadas}
@@ -1066,7 +1065,7 @@ Donde $F_L = F \left( U_L \right)$ y $F_R = F \left( U_R \right)$, entonces
 x_R U_R -x_L U_L+T \left( F_L- F_R \right)
 \end{equation}
 
-Si separamos ahora la ecuación \ref{integral_consistencia} en 3 integrales de la siguiente manera:
+Sí separamos ahora la ecuación \ref{integral_consistencia} en 3 integrales de la siguiente manera:
 
 \begin{equation}
 \int_{x_L}^{x_R} U\left( x, T \right) dx = 
@@ -1084,7 +1083,7 @@ Si ahora evaluamos el tercer y el primer término en el lado derecho, obtenemos:
 \left( x_L - T S_R \right) U_R
 \end{equation}
 
-Si combinamos la ecuación \ref{Condición_de_consistencia} y 
+Sí combinamos la ecuación \ref{Condición_de_consistencia} y 
 \ref{condicion_consistencia_2}
 
 \begin{equation*}
@@ -1110,7 +1109,7 @@ Con lo que al final nos queda
 T \left( S_R U_R - S_L U_L + F_L - F_R \right)
 \end{equation}
 
-Si dividimos la ecuación \ref{ull_sin_promedio} por la diferencia de las velocidades máximas de las señales de las ondas, obtenemos el promedio de la función que esta entre las velocidades de la onda, entonces
+Si dividimos la ecuación \ref{ull_sin_promedio} por la diferencia de las velocidades máximas de las señales de las ondas, obtenemos el promedio de la función que está entre las velocidades de la onda, entonces
 
 \begin{equation}
 \frac{1}{T \left( S_R -S_L \right)}\int_{T S_L}^{T S_R} U \left(x, T \right)dx =
@@ -1123,7 +1122,7 @@ Si conocemos las velocidades de la onda podemos escribir la ecuación como
 U^{hll} = \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}
 \end{equation}
 
-Ahora si aplicamos la forma integral ( como en el caso de la ecuación \ref{Condición_de_consistencia}) a lado izquierdo de nuestro plano obtenemos lo siguiente
+Ahora, si aplicamos la forma integral (como en el caso de la ecuación \ref{Condición_de_consistencia}) a lado izquierdo de nuestro plano, obtenemos lo siguiente:
 
 \begin{equation}
 \int_{T S_L}^{0} U\left( x, T \right) dx = 
@@ -1155,7 +1154,7 @@ U_R \quad \textup{si} \quad  \frac{x}{t} > S_R
 \right.
 \end{equation}
 
-Los flujos $F_R$ y $F_L$ pueden ser calculados directamente ya que solo dependen de $U_R$ y $U_L$ respectivamente pero $F_{hll} \neq F \left( U_{hll} \right)$, así que resolvemos la integral de la ecuación \ref{ec F_0L} para así obtener el flujo a través del eje t
+Los flujos $F_R$ y $F_L$ pueden ser calculados directamente, ya que solo dependen de $U_R$ y $U_L$ respectivamente, pero $F_{hll} \neq F \left( U_{hll} \right)$, así que resolvemos la integral de la ecuación \ref{ec F_0L} para así obtener el flujo a través del eje t
 
 \begin{equation*}
 F_{hll} = F_L -S_L U_L+ \frac{1}{T}U_{hll}\left(0- TS_L\right)
@@ -1181,7 +1180,7 @@ Eliminando términos semejantes queda
 F_{hll} = \frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L}
 \end{equation}
 
-Con lo que el flujo intermedio de la celda de Godunov esta dado por:
+Con lo que el flujo intermedio de la celda de Godunov está dado por:
 
 \begin{equation} \label{fluxesHLL}
 F_{i+\frac{1}{2}}^{hll} = 
@@ -1213,8 +1212,7 @@ Donde \emph{dtx}, \emph{dty} son las derivadas con respecto a \emph{x}, \emph{y}
 
 La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
 y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
-significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas mas rápidas de los estados iniciales \emph{U} 
-, las variable \emph{dtx} es la derivada con respecto a \emph{x} y \emph{dty} la derivada con respecto a \emph{y}. Para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
+significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas más rápidas de los estados iniciales \emph{U}, la variable \emph{dtx} es la derivada con respecto a \emph{x} y \emph{dty} la derivada con respecto a \emph{y}. Para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
 
 \begin{lstlisting} [frame=single]
   do i=1,nx
@@ -1266,7 +1264,7 @@ $\rho_0$ y $P_0$ mientras que los flujos que están comprimidos detrás del fren
 \begin{figure}
   \centering
   \includegraphics[scale=0.7]{./Figuras/Teoria/move_shock.png}
-  \caption{Onda de choque en movimiento sobre un flujo estacionario, tanto la onda como el flujo que esta a la izquierda se mueven a la derecha}\label{fig_move_shock}
+  \caption{Onda de choque en movimiento sobre un flujo estacionario, tanto la onda como el flujo que está a la izquierda se mueven a la derecha}\label{fig_move_shock}
 \end{figure}
   
 
@@ -1280,7 +1278,7 @@ se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale
   flujos que están a la derecha e izquierda de la onda se mueven hacia la izquierda } \label{fig_stationary_shock}
 \end{figure}
 
-Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservación  _momento_hidrodinamica} y \ref{conservación  _energia_hidrodinamica} donde no varia con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
+Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservación  _momento_hidrodinamica} y \ref{conservación  _energia_hidrodinamica} donde no varía con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
 
 
 La conservación de masa
@@ -1313,7 +1311,7 @@ Considerando una dimensión:
 \dfrac{d \left( u\left[e +P \right] \right)}{d x} = 0
 \end{equation}
 
-Si integramos, la ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones del siguiente modo usando la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
+Si integramos, las ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones \Selene{Aquí por ejemplo, escribes ''las ecuaciones" dos veces seguidas, eso debes corregirlo en toda tu redacción, puedes reescribirlo citando dichas ecuaciones o cambiando toda la frase}del siguiente modo usando la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
 es la densidad de energía por unidad de volumen
 
 \begin{equation}\label{RH_masa}
@@ -1420,7 +1418,7 @@ P_{j} = \frac{3}{4}\rho_m u_m^{2}
 
 
 
-Como se menciona en \citet{Landau1987} si consideramos la conservación de masa:
+Como se menciona en \citet{Landau1987} sí consideramos la conservación de masa:
 
 \begin{equation}
   \rho_j v_j \gamma_j=  \rho_{\infty} v_{\infty} \gamma_{\infty}
@@ -1516,8 +1514,7 @@ La taza de flujo de masa $\dot{M}$ se puede escribir como
   \dot{M} = \rho_j u_j A_j
 \end{equation}
 
-Donde $\rho$ es la densidad, $u_j = v_j \gamma_{j}$ es la cuadrivelocidad,  y $A_j$ es el área, que en este caso, corresponde la parte esférica del jet
-entonces la luminosidad se puede escribir como:
+Donde $\rho$ es la densidad, $u_j = v_j \gamma_{j}$ es la cuadrivelocidad,  y $A_j$ es el área, que en este caso, corresponde la parte esférica del jet, entonces la luminosidad se puede escribir como:
 
 \begin{equation}
   L \equiv \dfrac{d E}{d t} = 4\pi r_j^2 \rho_j v_j \gamma_j \gamma_{\infty} c^2
@@ -1536,9 +1533,8 @@ Despejando la densidad
 \section{Solución de Sedov-Taylor} \label{sec:sedov_taylor}
 
 %Ojo Julio
-Una forma de verificar si el código funciona correctamente es verificar si una onda de choque esférica (o circular en 2D) sigue la solución analítica y auto similar obtenida por Sedov y Taylor (véase \citet{PAFD}). 
-Cabe señalar que la onda de choque esférica es descrita por la inyección de energía 
-dentro de un radio el cual está inmerso en un medio en reposo. 
+Una forma de \Selenecor{verificar}{ver} si el código funciona correctamente es \Selenecor{verificar}{NO repitas la misma palabra tus oraciones} si una onda de choque esférica (o circular en 2D) sigue la solución analítica y auto similar obtenida por Sedov y Taylor (véase \citet{PAFD}). 
+Cabe señalar que la onda de choque esférica es descrita por la inyección de energía dentro de un radio, el cual está inmerso en un medio en reposo. 
 
 \subsection{Aproximación en función del análisis dimensional}
 Si consideramos un choque fuerte,
@@ -1558,8 +1554,7 @@ Las dimensiones de estas cantidades son
   \left[ t\right] = T
 \end{equation}
 
-La única cantidad que se puede construir que contenga la energía el tiempo y la densidad y que su dimensión sea
-la longitud es:
+La única cantidad que se puede construir que contenga la energía \Selenecor{ el tiempo y la densidad}{, tiempo y la densidad (Te faltan muchas comas)} y que su dimensión sea la longitud es \Selenecor{sea, es}{Usas el mismo verbo en la misma oración}:
 
 \begin{equation}
   \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L
@@ -1582,7 +1577,7 @@ Por lo que la constante $\eta$ debe ser de la siguiente manera
 \subsection{Aproximación en función de la conservación de la energía}
 
 Otra aproximación es buscando el cociente de presiones y densidades en función del número Mach.
-Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la onda es constante entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
+Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la onda es constante, entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
 entonces podemos aproximar la energía cinética de la onda como 
 
 \begin{equation}
@@ -1632,13 +1627,13 @@ Si combinamos la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo
 \end{equation}
 
 Esta ecuación servirá más adelante. Volviendo a las ecuaciones de Rankine-Hugoniot podemos usar la ecuación  
-\ref{RH_Energia} y \ref{entalpía_función_presion_densidad} para obtener la ecuación   de la energía en función de la entalpía, lo que nos va a quedar al final como
+\ref{RH_Energia} y \ref{entalpía_función_presion_densidad} para obtener la ecuación   de la energía en función de la entalpía, lo que nos va a quedar al final como\Selene{:}
 
 \begin{equation}\label{RH_entalpía}
   h_w +\frac{1}{2}v_w^2 = h_w +\frac{1}{2}v_w^2
 \end{equation} 
 
-Donde $ h $ es la entalpía y $v$ la velocidad, los subíndices $w$, $m$ corresponden a la onda y al medio respectivamente. Si dividimos la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los subíndices $j$ por $w$ obtenemos la siguiente ecuación 
+Donde $ h $ es la entalpía y $v$ la velocidad, los subíndices $w$, $m$ corresponden a la onda y al medio, respectivamente. Si dividimos la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los subíndices $j$ por $w$ obtenemos la siguiente ecuación\Selene{:} 
 
 \begin{equation} \label{RH_momento_masa}
   v_w + \frac{P_w}{\rho_w v_w} = v_m + \frac{P_m}{\rho_m v_m}
@@ -1651,7 +1646,7 @@ la siguiente manera:
   v_w-v_m = \frac{1}{\Gamma} \left(\frac{a_m^2}{v_m} - \frac{a_w^2}{v_w} \right)
 \end{equation}
 
-Por simplicidad definimos la entalpía estancada como 
+Por simplicidad definimos la entalpía estancada como\Selene{:}
 
 \begin{equation}
   h_w + \frac{1}{2} v_w = h_w + \frac{1}{2} v_w \equiv h_0
@@ -1686,7 +1681,7 @@ Que al final la podemos reescribir como
   \frac{1}{v_w v_m} = \frac{1}{\left( \Gamma -1\right) h_0} \frac{\Gamma + 1}{2}
 \end{equation}
 
-Otra ecuación que nos va a servir es la definición de Mach ya que como
+Otra ecuación que nos va a servir es la definición de Mach, ya que \Selenecor{como}{}
 
 \begin{equation}\label{velocidad_aire_mach}
   v_w^2 = a_w^2 M_w^2
@@ -1804,13 +1799,13 @@ de rarefacción\footnote{
   Una onda de rarefacción es la progresión de partículas que se aceleran lejos de una zona 
   comprimida. Siempre se mueven a regiones de mayor densidad y no presentan discontinuidades
 } que se mueve a la izquierda y una onda de choque\footnote{
-  Una onda de choque se moverá siempre a las zonas de menor densidad y presentará discontinuidades además
+  Una onda de choque se moverá siempre a las zonas de menor densidad y presentará discontinuidades, además
   de que su valor siempre será una constante.
 } que se mueve a la derecha. La condición inicial\footnote{
   Dado que para el primer caso tendremos valores de densidad
   y presión más grandes que el lado derecho de la posición crítica ($x_0$), 
   podemos decir que del lado izquierdo 
-  de $x_0$ será una una onda de rarefacción que se moverá a la izquierda, mientras que del lado
+  de $x_0$ será una onda de rarefacción que se moverá a la izquierda, mientras que del lado
   derecho será una onda de choque que se moverá a la derecha.
 } del gas consiste en tener el dominio 
 unidimensional dividido en un lugar del dominio (en $x_0$) con ciertos valores de densidad ($\rho_l$), 
@@ -1847,7 +1842,7 @@ de la densidad,
 presión y velocidad para el caso 1 newtoniano usando el método Lax. En la Figura se ve como 
 una onda de choque viaja hacia la derecha a través de la región de alta densidad.
 En el panel superior izquierdo
-notamos como para 0.2 segundos el perfil de densidad $\rho$ tiene dos brincos sitúados 
+notamos como para 0.2 segundos el perfil de densidad $\rho$ tiene dos brincos situados 
 aproximadamente en 
 x=0.70 cm, donde la densidad ($\rho \approx 0.48 \,  \text{g}/ \text{cm}^3$), 
 cambia su densidad a $\rho \approx 0.28 \,  \text{g}/ \text{cm}^3$, mientras la velocidad y la presión 
@@ -1859,10 +1854,10 @@ En x=0.85 cm, la velocidad ($v \approx 0.99$ cm/s), la presión
 tienen una discontinuidad y cambian sus valores a los valores iniciales del estado derecho del tubo
 que no han sido afectados por la onda. 
 La primera discontinuidad hace referencia a la onda de contacto que tiene la misma velocidad
-que que los estados de la izquierda y la derecha $V_c = v_l = v_r$ donde $V_c$
-es la velocidad de la onda de contacto por lo que esto hace que las presiones sean iguales 
+que los estados de la izquierda y la derecha $V_c = v_l = v_r$ donde $V_c$
+es la velocidad de la onda de contacto, por lo que esto hace que las presiones sean iguales 
 $p_l = p_r$. Esta primera discontinuidad solo se 
-presenta en el panel de las densidad, la otra discontinuidad que se presenta en los 3 paneles es la 
+presenta en el panel de las densidades, la otra discontinuidad que se presenta en los 3 paneles es la 
 discontinuidad de la onda de choque.
 Para el tiempo t=0.4 s
 la discontinuidad de la onda de choque ya no se presenta en nuestro dominio de los 3 paneles, mientras 
@@ -1901,12 +1896,12 @@ sus mismos valores.
   después a $\rho =0.1 \,  \text{g}/ \text{cm}^3$ 
   respectivamente. Aquí podemos ver
   tanto Lax como HLL presentan dificultad con la discontinuidad de contacto, 
-  pero logra adaptarse muy bien para la discontinuidad de choque, en si ambos métodos reproducen 
+  pero logra adaptarse muy bien para la discontinuidad de choque, en sí, ambos métodos reproducen 
   casi a 
   la perfección toda la región donde se desarrolla la discontinuidad en resoluciones de 10,000 píxeles.
   En el panel de arriba a la derecha se muestra como tanto HLL como Lax también reproducen la 
   solución analítica esperada para
-  la velocidad. Ésta, al igual que la densidad cambian 
+  la velocidad. Esta, al igual que la densidad, cambian 
   sus valores gradualmente de $v = 0$ cm/s en $x \approx 0.20$ cm a $v \approx 0.99$ cm/s en 
   $x \approx 0.50$ cm,
   donde se mantiene contante hasta la discontinuidad de choque en $x \approx 0.93$ cm y regresa a $v = 0$ cm/s.
@@ -1923,14 +1918,14 @@ sus mismos valores.
 
 
 El panel de abajo a la derecha de la Figura 
-\ref{comparacion_analitico_newtoniano_caso_1} muestra como varia los resultados
+\ref{comparacion_analitico_newtoniano_caso_1} muestra como varía los resultados
 usando Lax con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$), además, se muestra la solución
 analítica.
 Queda claro como 
 conforme se incrementa la resolución (píxeles\footnote{Para fines prácticos, usaremos la palabra "píxel" para describir los $\Delta x$ en 
 las que se divide nuestro dominio espacial, es decir, si el dominio tiene una resolución de $n$ 
 píxeles, entonces, $\Delta x = 1/n$ }) los resultados numéricos se apegan más a la analítica. 
-En específico, para el problema 1 newtoniano, a partir de resoluciones mayores a 1000 píxeles
+En específico, para el problema 1 newtoniano, a partir de resoluciones mayores a 1000 píxeles,
 los resultados 
 se apegan mucho a la solución analítica.
 
@@ -1945,8 +1940,7 @@ se apegan mucho a la solución analítica.
   \label{comparacion_analitico_newtoniano_caso_1}}
 \end{figure}
 
-En el 2° caso newtoniano, los valores de la 
-densidad y presión serán las mismas en ambos estados del tubo, pero las velocidades serán de igual magnitud
+En el 2º\Selene{segundo} caso newtoniano, los valores de la densidad y presión serán las mismas en ambos estados del tubo, pero las velocidades serán de igual magnitud
 pero de sentido contrario. Esta condición inicial producirá 2 ondas de rarefacción. Una se moverá hacia
 la izquierda y la otra hacia la derecha (véase el cuadro \ref{Cuadro_parametros_sod_tube} para más
 detalles).
@@ -1969,13 +1963,13 @@ Para los valores $t = 0$ s, la densidad ($\rho$) y la presión ($p$) son las mis
 mientras que para el panel de
 la velocidad  tiene una discontinuidad en $x = 0.5$ cm. 
 Para el tiempo $t = 0.2$ s, se puede ver una 
-simetría ya que la cabeza de la onda de rarefacción tienen lugar en los puntos $x \approx 0.16$ cm
+simetría, ya que la cabeza de la onda de rarefacción tienen lugar en los puntos $x \approx 0.16$ cm
 donde la densidad $\rho = 1.0 \,  \text{g}/ \text{cm}^3$ y 
 la presión $p = 0.40 \,  \text{dyn}/ \text{cm}^2 $,
 decrecen hasta $\rho \approx 0.25 \,  \text{g}/ \text{cm}^3$ y $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $ en forma parabólica hasta conectar con la cola de 
 la onda de rarefacción, mientras que la velocidad $v = -1.0 $ cm/s decrece linealmente en magnitud 
 hasta $v = 0$ cm/s. Entre los puntos $x \approx 0.4$ cm y $x \approx 0.6$ cm, que es la zona de contacto, mantienen
-un valor constante para conectar con la cola de la onda de rarefacción donde la densidad y presión 
+un valor constante para conectar con la cola de la onda de rarefacción, donde la densidad y presión 
 crecen parabólicamente hasta $x \approx 0.84$ cm, mientras que la velocidad lo hace linealmente al mismo puntos.
 Esa región es la cabeza de la onda y conecta con los estados iniciales del lado derecho del tubo, 
 donde no ha habido perturbación, y por ende, $\rho = 1.0 \,  \text{g}/ \text{cm}^3$, 
@@ -1986,20 +1980,20 @@ $\rho \approx 0.25 \,  \text{g}/ \text{cm}^3$, la velocidad $v \approx 0.0$ cm/s
 
 La comparación del método de Lax y HLL se muestra en la Figura \ref{comparacion_analitico_newtoniano_caso_2}.
 Como se puede ver en los paneles de densidad (arriba a la izquierda) en el punto $x \lesssim  0.05$ cm,
-la densidad no esta perturbada y tiene un valor $\rho = 1.0 \,  \text{g}/ \text{cm}^3$,
+la densidad no está perturbada y tiene un valor $\rho = 1.0 \,  \text{g}/ \text{cm}^3$,
 la velocidad (arriba a la derecha)
 $v = -1.0$ cm/s y la presión (abajo a la izquierda) $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $. Tanto Lax como HLL 
 se ajustan casi perfectamente 
-para valores constantes. Después del punto de la cabeza de la onda los valores de la densidad y 
+para valores constantes. Después del punto de la cabeza de la onda, los valores de la densidad y 
 la presión empiezan a disminuir a $\rho \approx 0.2 \,  \text{g}/ \text{cm}^3$ y 
 $p \approx 0.05 \,  \text{dyn}/ \text{cm}^2 $
 en forma parabólica, mientras que la velocidad disminuye (en magnitud) linealmente hasta $v = 0$ cm/s.
 Cabe señalar que los valores más bajos a los que disminuyen las magnitudes de densidad, velocidad y 
 presión son en el punto $x \approx 0.33$ cm, el cual es la cola de la onda de rarefacción. Al comparar
-las resoluciones, se nota que para resoluciones $\leq 1,000$ no se apega al método analítico sobre 
+las resoluciones, se nota que para resoluciones $\leq 1,000$ no se apega al método analítico, sobre 
 todo en la cabeza de la onda.
 
-De $x \approx 0.33$ cm , la densidad, velocidad y presión 
+De $x \approx 0.33$ cm, la densidad, velocidad y presión 
 mantienen valores constantes de $\rho \approx 0.1 \,  \text{g}/ \text{cm}^3$, $v \approx 0$ cm/s y 
 $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $ 
 hasta llegar al punto $x \approx 0.66$ cm donde conectan con la cola de la onda de rarefacción. En
@@ -2008,15 +2002,15 @@ Del punto de la cola de la onda de rarefacción de la derecha, la densidad y pre
 sus valores en forma parabólica hasta a $\rho  =  1.0 \,  \text{g}/ \text{cm}^3 $ y 
 a $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $, 
 mientras la velocidad incrementa
-linealmente a a $v = 1.0$ cm/s. El punto final hasta donde incrementan sus valores es la cabeza de la onda 
-de rarefacción derecha el cual es $ x \approx 0.93 $ cm.
+linealmente a $v = 1.0$ cm/s. El punto final hasta donde incrementan sus valores es la cabeza de la onda 
+de rarefacción derecha, el cual es $ x \approx 0.93 $ cm.
 En el panel de abajo a la derecha muestra la solución analítica, así como los resultados obtenidos 
 usando Lax\footnote{
-  Se usó el método de Lax ya que es más rápido que HLL
+  Se usó el método de Lax porque es más rápido que HLL \Selene{1}
 }
 con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$). Al igual que el caso 1 newtoniano,
 conforme se incrementa la resolución, los resultados numéricos se apegan más a la solución analítica.
-A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solución analítica.
+A partir de resoluciones mayores a 1000, los resultados se apegan mucho a la solución analítica.
 
 
 
@@ -2042,11 +2036,11 @@ Lax como HLL reproducen de forma casi perfecta la solución analítica para este
 problema de Riemann
 (Lora Clavijo \emph{et al.} 2013), ya sea en las regiones donde se muestra una discontinuidad
 o donde cambia suavemente. 
-Cabe destacar que el método Lax resultó ser 220 \% más rápido que HLL. 
+Cabe destacar que el método Lax resultó ser 220 \% más rápido que HLL. \Selene{Esto lo mencionaste antes, si haces una afirmación general asume ese hecho en lo posterior}
 \footnote{Probado con una resolución de 10,000 píxeles con un procesador AMD Ryzen 3 3300U de
 2.10 Ghz} 
 .
-
+\Selene{En general te hace falta pulir la redacción de varios parrafos, en algunos usas mal el plural y el singular de las frases. Te he corregido algunas faltas de ortografía pero debes volver a leer tu trabajo, te recomiendo que busques algunos sinonimos de algunas palabras que repites mucho.El texto es comprensible salvo errores que puedes quitar con las recomendaciones que te deje por aquí.}
 % ========================================================================================================
 % ========================================================================================================
 
@@ -2082,7 +2076,7 @@ será $x \in [0,1]$, $x_0 = 0.5$ cm.
 \end{table}
 
 Tanto en el caso 1 relativista como el caso 2 relativista, la evolución temporal se hará usando 
-el método de HLL ya que es más preciso que el método de Lax\footnote{
+el método de HLL, ya que es más preciso que el método de Lax\footnote{
   Lax falla al tratar de simular las condiciones iniciales de este problema.
 }. 
 Además de que necesita de altas resoluciones $\geq 10,000$ píxeles para poder funcionar.
@@ -2107,12 +2101,12 @@ velocidad nula en toda la región del tubo.
 Al tiempo $t =0.2$ s la densidad y presión 
 descienden linealmente, mientras que la velocidad asciende en $x = 0.42$ cm
 que viene siendo la cabeza de la onda de rarefacción. El punto donde alcanzan 
-sus máximos y mínimos es la cola de la onda que esta sitúada en el punto $x \approx 0.58$ cm,
+sus máximos y mínimos es la cola de la onda que está situada en el punto $x \approx 0.58$ cm,
 la densidad y presión llegan a $\rho \approx 1.12 \,  \text{g}/ \text{cm}^3$ y 
-$p \approx 1.12\,  \text{dyn}/ \text{cm}^2 $ mientras que las velocidad
-se acerca a la de la luz $v \approx 0.75c$. La densidad vuelve a subir en el punto $x \approx 0.63$ cm
+$p \approx 1.12\,  \text{dyn}/ \text{cm}^2 $ mientras que las velocidades
+se acercan a la de la luz $v \approx 0.75c$. La densidad vuelve a subir en el punto $x \approx 0.63$ cm
 y llega a $\rho = 5.6  \,  \text{g}/ \text{cm}^3$ mientras que la velocidad y presión se mantienen iguales. Para el punto
-$x \approx 0.68$ cm, la densidad, presión y velocidad bajan a valores nulos que es la zona del tubo que
+$x \approx 0.68$ cm, la densidad, presión y velocidad bajan a valores nulos, que es la zona del tubo que
 no ha sido perturbada por la onda.
 Para el tiempo $t = 0.4$ s, la densidad y presión, que mantienen sus valores de 
 $\rho = 10 \,  \text{g}/ \text{cm}^3$ y 
@@ -2122,20 +2116,20 @@ $\rho \approx 1.12 \,  \text{g}/ \text{cm}^3$, mientras que la velocidad sube a 
 La densidad vuelve a subir
 en $x \approx 0.75$ cm y llega a $\rho \approx 0.65 \,  \text{g}/ \text{cm}^3$ y 
 se mantiene así hasta el punto $x \approx 0.83$ cm
-donde la densidad, así como la velocidad y presión descienden sus valores a nulos.
+donde la densidad, así como la velocidad y presión, descienden sus valores a nulos.
 
 En la Figura \ref{caso_rel_rar_shock} se muestra la comparación entre la solución obtenida con Lax
-(1000 píxeles) y la solución analítica
+(1000 píxeles) y la solución analítica,
 el panel de arriba a la izquierda muestra la densidad, el de 
 arriba a la derecha la velocidad, la presión es el de abajo a la izquierda. Cabe recalcar que  el 
 tiempo mostrado es  $t = 0.35$ s.
 A la región $x \lesssim 0.33$ cm, la densidad tiene un valor $\rho = 10 \,  \text{g}/ \text{cm}^3$, 
 la presión $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $
-y la velocidad es nula se puede ver que HLL se ajusta casi perfectamente para los valores constantes
+y la velocidad es nula, se puede ver que HLL se ajusta casi perfectamente para los valores constantes
 sin importar la resolución. 
-En el punto $x \approx 0.33$ cm se localiza la cabeza de la onda donde la presión y la densidad 
-empiezan a decaer en forma parabólica, mientras que que la velocidad comienza subir en forma linealmente.
-El punto donde la densidad y presión alcanzan su mínimo mientras que la velocidad, su máximo
+En el punto $x \approx 0.33$ cm se localiza la cabeza de la onda, donde la presión y la densidad 
+empiezan a decaer en forma parabólica, mientras que la velocidad comienza subir en forma linealmente.
+El punto donde la densidad y presión alcanzan su mínimo, mientras que la velocidad, su máximo,
 se localiza en $x \approx 0.62$ cm. La resolución para esta región es $\geq 500$ 
 píxeles. En el punto $x \approx 0.75$ cm únicamente 
 la densidad tiene una discontinuidad, al cual se le conoce como discontinuidad de la onda de contacto
@@ -2149,7 +2143,7 @@ puede ser $\geq 1,000$ píxeles dado que HLL no presenta dificultades con esta d
 
 En el panel de abajo a la derecha muestra la solución analítica, así como los resultados obtenidos 
 usando HLL con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$).  
-En específico, para el problema 1 relativista, a partir de resoluciones mayores a 1000 los
+En específico, para el problema 1 relativista, a partir de resoluciones mayores a 1000, los
 resultados se apegan mucho a la solución analítica.
 
 
@@ -2183,16 +2177,16 @@ por lo que se pueden usar resoluciones $\leq 100.$ píxeles. En la Figura
 \ref{caso_rel_shock_shock},  
 el panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha la velocidad
 y el de abajo la presión.
-Al igual que el caso newtoniano al simular las 2 ondas presenta una simetría con respecto a la 
+Al igual que el caso newtoniano, al simular las 2 ondas presenta una simetría con respecto a la 
 discontinuidad.
 En el tiempo $t = 0$ s, tanto la densidad como la presión mantienen los mismos valores 
 $\rho =0.1 \,  \text{g}/ \text{cm}^3$
-y $p = 0.05$. mientras que la velocidad tiene una discontinuidad en $x = 0.5$ cm donde la parte del lado
+y $p = 0.05$. mientras que la velocidad tiene una discontinuidad en $x = 0.5$ cm, donde la parte del lado
 izquierdo de la discontinuidad es $v = -0.2$ c,  (el signo negativo solo muestra que las ondas de choque
-tienen una dirección opuesta entre si). 
+tienen una dirección opuesta entre sí). 
 mientras que del lado derecho es $v = 0.2$ c.
-Al tiempo $t = 0.2$ s la cabeza de la onda de rarefacción se presenta en los punto 
-$x \approx 0.35$ cm donde los valores de la presión ($p = 0.05$) y densidad 
+Al tiempo $t = 0.2$ s la cabeza de la onda de rarefacción se presenta en los puntos 
+$x \approx 0.35$ cm, donde los valores de la presión ($p = 0.05$) y densidad 
 ($\rho =0.1 \,  \text{g}/ \text{cm}^3$) comienzan a descender linealmente,
 mientras que la velocidad ($v = 0.2$ c) desciende hasta el punto $x \approx 0.45$ cm. En este punto los valores de la densidad, presión y velocidad
 son $\rho \approx 0.065 \,  \text{g}/ \text{cm}^3$, $p \approx 0.028\,  \text{dyn}/ \text{cm}^2 $ 
@@ -2231,17 +2225,17 @@ $\rho = 0.1 \,  \text{g}/ \text{cm}^3$, $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $
 y $v = -0.2$ c. HLL para resoluciones $\geq 500$ se ajusta perfectamente al analítico. Cuando los 
 valores descienden en $x \approx 0.37$ cm a $\rho \approx 0.075 \,  \text{g}/ \text{cm}^3$, 
 $v \approx 0$ c y $p \approx 0.025\,  \text{dyn}/ \text{cm}^2 $. En
-esta región podemos ver que para resoluciones $\leq 100$ pixeles se tiene dificultades para apegarse al
-método analítico sobre todo en las regiones de la cabeza y cola de la onda de rarefacción. En el punto $x \approx 0.63$  cm tanto la presión como la densidad y la velocidad vuelven a subir
-sus valores hasta el punto $x \approx 0.65$ cm donde alcanzan los valores que tenia del lado izquierdo
+esta región podemos ver que para resoluciones $\leq 100$ píxeles se tiene dificultades para apegarse al
+método analítico, sobre todo en las regiones de la cabeza y cola de la onda de rarefacción. En el punto $x \approx 0.63$  cm tanto la presión como la densidad y la velocidad vuelven a subir
+sus valores hasta el punto $x \approx 0.65$ cm donde alcanzan los valores que tenía del lado izquierdo
 donde la densidad ahora es $\rho = 0.1 \,  \text{g}/ \text{cm}^3$, la presión $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $ 
 y la velocidad $v = 0.2$ c.
 En el panel de abajo a la derecha se muestra la solución analítica, así como los resultados obtenidos 
 usando HLL con distintas resoluciones ($n_x = 10^2, \, 10^3, \,10^4$). 
 Al igual que el caso 1 relativista,
 conforme se incrementa la resolución, los resultados numéricos se apegan más a la solución analítica.
-A partir de resoluciones mayores a 1000 los resultados se apegan mucho a la solución analítica.
-Por lo tanto podemos concluir que nuestro módulo HLL se ajusta perfectamente para el problema de 
+A partir de resoluciones mayores a 1000, los resultados se apegan mucho a la solución analítica.
+Por lo tanto, podemos concluir que nuestro módulo HLL se ajusta perfectamente para el problema de 
 Riemann relativista con resoluciones $\geq 500$ píxeles.
 
 % ===============================================================================================
@@ -2255,7 +2249,7 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 En esta sección se verificó que el código newtoniano reprodujera correctamente la expansión de la onda bidimensional de Sedov-Taylor (en la que se libera una gran cantidad de energía en un volumen muy pequeño, 
 y la cual es discutida a fondo en la Sección 2.5). Para lo anterior, se inyecta instantáneamente una gran cantidad de energía \emph{E} dentro de un radio R inmerso en un medio ambiente de densidad uniforme $\rho_m$. 
 Posteriormente, un frente de choque bidimensional se expandirá a través del medio ambiente. El radio inicial de la onda se tomó de $r = 2$pc, y el dominio computacional fue de 
-$x, y \in [0,4 \times 10^{20}]\times[0,4 \times 10^{20}] \, \text{cm}$. La resolución fue de 1000x1000 pixeles, se tomó un índice adiabático $\Gamma = 5/3$, y el tiempo de integración 
+$x, y \in [0,4 \times 10^{20}]\times[0,4 \times 10^{20}] \, \text{cm}$. La resolución fue de 1000x1000 píxeles, se tomó un índice adiabático $\Gamma = 5/3$, y el tiempo de integración 
 fue $t = 8.1 \times 10^{10}$ s. Dentro del radio inicial la densidad, presión, y velocidades fueron: $\rho_s, p_s, v_{xs}, v_{ys}$, para el medio ambiente la densidad, presión, y velocidades fueron: 
 $\rho_m, p_m, v_{xm}, v_{ym}$. Los valores típicos de una supernova con energía $E_{s}  \approx 10^{52}$ ergs están mencionados en el Cuadro \ref{Cuadro_parametros_choque_2D_newtoniano}:
 
@@ -2278,8 +2272,8 @@ $\rho_m, p_m, v_{xm}, v_{ym}$. Los valores típicos de una supernova con energí
 \end{table}
 
 La Figura \ref{fig:prueba_2d_newtoniana} se muestra la evolución de la onda. El panel de arriba a la izquierda muestra la onda de choque al tiempo $t = 0$, el panel de arriba a la derecha muestra 
-la evolución al tiempo $t = 10^{10}$ s, y la de abajo al tiempo $t =8.1 \times 10^{10}$ s. En éstos se observa como a $10^{10}$ s y a $8.1 \times 10^{10}$ s la onda tiene un radio de $\sim 1.6$ pc y $\sim 4.5$ pc, 
-respectivamente. En ambos tiempos la explosión es esférica y se tiene una sobredensidad de $\rho \approx 3.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$ en el perímetro de la onda mientras que dentro de la onda 
+la evolución al tiempo $t = 10^{10}$ s, y la de abajo al tiempo $t =8.1 \times 10^{10}$ s. En estos se observa como a $10^{10}$ s y a $8.1 \times 10^{10}$ s la onda tiene un radio de $\sim 1.6$ pc y $\sim 4.5$ pc, 
+respectivamente. En ambos tiempos la explosión es esférica y se tiene una sobredensidad de $\rho \approx 3.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$ en el perímetro de la onda, mientras que dentro de la onda 
 la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.
 
 \begin{figure}
@@ -2307,7 +2301,7 @@ los datos de la simulación. Al comparar nuestro modelo con la teoría podemos n
 \subsection{Caso relativista} \label{subsec:caso_relativista_2d}
 Para verificar que el código RHD funciona correctamente en 2D se hará una prueba de una onda de choque relativista en 2 dimensiones y se verificará que se comporta como la solución analítica auto-similar de 
 una prueba de un tubo de choque bidimensional. El dominio espacial será $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la 
-onda será $r = 0.5 \, \text{cm}$, se considerará un índice adiabático $\Gamma = 4/3$, y la resolución es de 1000x1000 pixeles. Los valores que habrá dentro de la onda bidimensional así como 
+onda será $r = 0.5 \, \text{cm}$, se considerará un índice adiabático $\Gamma = 4/3$, y la resolución es de 1000x1000 píxeles. Los valores que habrá dentro de la onda bidimensional, así como 
 los que el medio ambiente tendrá, se muestran en el cuadro \ref{Cuadro_parametros_choque_2D}. 
 \begin{table}[htbp]
   \begin{center}
@@ -2331,16 +2325,16 @@ Al tiempo $t = 0$, nuestro dominio estará dividido en 2 conjuntos, a los valore
 que los valores que no estén delimitados por el radio serán los valores externos ($\rho_o$, $v_xo$, $v_yo$ y $p_o$). Al ser $p_i > p_o$ y $\rho_i > \rho_o$, la onda se  expandirá incrementando el radio, por 
 lo que la región de adentro se volverá más grande.
 
-La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (lineas negras punteadas), que se tomarán de la onda de choque en 2D, para poder comparar con los resultados de las pruebas unidimensionales 
+La Figura \ref{Example_blast_wave} muestra los perfiles de densidad (líneas negras punteadas), que se tomarán de la onda de choque en 2D, para poder comparar con los resultados de las pruebas unidimensionales, 
 así como la analítica. En la Figura \ref{fig:head_map} muestra un mapa de densidades en el cual se ve la evolución de la onda. En el panel de arriba a la izquierda muestra el estado inicial al tiempo $t = 0$ s, el panel 
 de arriba a la derecha muestra su estado al tiempo $t = 0.2$ s y el panel de abajo muestra su estado para el tiempo $t = 0.4$ s. 
 
 \begin{figure}
   \centering
     \includegraphics[width=0.4\textwidth]{./Figuras/verificacion_del_codigo/pruebas_2D/Example.png}
-  \caption{Las lineas punteadas indican los perfiles de densidad, velocidad y presión que se 
+  \caption{Las líneas punteadas indican los perfiles de densidad, velocidad y presión que se 
   tomaran de los radios que son 
-  paralelos al eje x ,  perpendiculares (0°, 45°,90°) y se compararán con las pruebas en 
+  paralelos al eje x,  perpendiculares (0°, 45°,90°) y se compararán con las pruebas en 
   1 dimensión.}\label{Example_blast_wave}
 \end{figure}
 
@@ -2368,9 +2362,9 @@ poder calcular el exponente con el que crece el radio, donde se muestra que crec
     \label{fig:Expansion_radio_vs_tiempo}
 \end{figure}
 
-Para mostrar que la solución bidimensional es la misma independientemente de la dirección del perfil radial se compararon los perfiles radiales tomados en distintas direcciones. En la Figura 
-\ref{fig:comparacion_perfil_radial} se muestran los perfiles de densidad (arriba ala izquierda), velocidad (arriba a la derecha), y presión (abajo) a 0$^{\circ}$ (i.e. sobre el eje X, línea roja), así como a 
-45$^{\circ}$ (linea punteada azul), y 90$^{\circ}$ (línea punteada verde). Los tres perfiles de la densidad muestran básicamente la misma estructura, esto es, una densidad $\rho \approx 10 \, \text{g}/\text{cm}^3$ 
+Para mostrar que la solución bidimensional es la misma independientemente de la dirección del perfil radial, se compararon los perfiles radiales tomados en distintas direcciones. En la Figura 
+\ref{fig:comparacion_perfil_radial} se muestran los perfiles de densidad (arriba, a la izquierda), velocidad (arriba a la derecha), y presión (abajo) a 0$^{\circ}$ (i.e. sobre el eje X, línea roja), así como a 
+45$^{\circ}$ (línea punteada azul), y 90$^{\circ}$ (línea punteada verde). Los tres perfiles de la densidad muestran básicamente la misma estructura, esto es, una densidad $\rho \approx 10 \, \text{g}/\text{cm}^3$ 
 en $x \approx 0.2$ donde comienza a disminuir hasta $\rho \approx 1.5 \, \text{g}/\text{cm}^3$ en $x \approx 0.6$. Después comienza a subir hasta $\rho \approx 5 \, \text{g}/\text{cm}^3$ para los perfiles de 90$^{\circ}$ 
 y 0$^{\circ}$, mientras que para el de 45$^{\circ}$ sube hasta 5.5 en el punto $x \approx 0.7$ cm. Después vuelve a disminuir a $\rho \approx 0 \, \text{g}/\text{cm}^3$ en el punto $x \approx 0.8$ para los 3 perfiles 
 radiales.
@@ -2382,7 +2376,7 @@ hasta $p \approx 1 \,  \text{dyn}/ \text{cm}^2$ en $x \approx 0.7$ cm para los 3
 0$^{\circ}$ y 90$^{\circ}$, mientras que para el perfil de 45$^{\circ}$ lo hace en $x \approx 0.73 $ cm.
 Los perfiles de 0$^{\circ}$ y 90$^{\circ}$ de la densidad, velocidad y presión son idénticos. El perfil de 45$^{\circ}$ tiene un error máximo (comparado con los otros dos perfiles) del 0.04\% para la densidad, 
 de un 4.8\% para la velocidad, y de 6.6\% para la presión. Cabe señalar que estos errores máximos se presentan únicamente en el pico de la onda de choque, y en el resto del perfil el error es del 0\%. Por lo tanto, 
-al no haber una discrepancia grande en los valores de los 3 perfiles radiales podemos ver que nuestro código relativista no cambia a pesar de la dirección que tengan los perfiles radiales de  densidad, velocidad y presión.
+al no haber una discrepancia grande en los valores de los 3 perfiles radiales, podemos ver que nuestro código relativista no cambia a pesar de la dirección que tengan los perfiles radiales de  densidad, velocidad y presión.
 
 \begin{figure}
   \centering
@@ -2390,9 +2384,9 @@ al no haber una discrepancia grande en los valores de los 3 perfiles radiales po
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/combinacion/velocidad.png}}
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/combinacion/presion.png}}
     \caption{La figura muestra la comparación que hay entre los distintos perfiles de
-    densidad al tiempo $t = 0.4$ s. El panel de arriba a la izquierda muestra el perfil a 0° (linea roja
-    sólida), el de arriba a la derecha muestra a 90° (linea verde punteada) y el panel de abajo 
-    (linea azul de raya y punto) muestra a 45°}
+    densidad al tiempo $t = 0.4$ s. El panel de arriba a la izquierda muestra el perfil a 0° (línea roja
+    sólida), el de arriba a la derecha muestra a 90° (línea verde punteada) y el panel de abajo 
+    (línea azul de raya y punto) muestra a 45°}
     \label{fig:comparacion_perfil_radial}
 \end{figure}
 
@@ -2401,13 +2395,13 @@ y la prueba bidimensional, que es la media de los 3 perfiles radiales que se dis
 El panel de arriba a la izquierda muestra la densidad, el de arriba a la derecha, la velocidad y 
 el de abajo la presión. Para ambas pruebas, se mantienen sus valores de 
 $\rho = 10 \,  \text{g}/ \text{cm}^3$ y $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ 
-luego, bajan sus valores en $x \approx 0.25$ cm
-mientras que la velocidad , la cual es nula,
+luego, bajan sus valores en $x \approx 0.25$ cm,
+mientras que la velocidad, la cual es nula,
 asciende. En el punto $x \approx 0.68$ cm la presión alcanza 
 $p \approx 2.0\,  \text{dyn}/ \text{cm}^2 $ y la densidad
 $\rho \approx 2.0 \,  \text{g}/ \text{cm}^3$, mientras que la velocidad sube a $v \approx 0.75c$
 en una dimensión. En 2 dimensiones la densidad baja hasta  $\rho \approx 1.0 \,  \text{g}/ \text{cm}^3$ y
-la presión $p \approx 1.8\,  \text{dyn}/ \text{cm}^2 $ mientras que la velocidad en $x \approx 0.68$ cm
+la presión, $p \approx 1.8\,  \text{dyn}/ \text{cm}^2 $ mientras que la velocidad en $x \approx 0.68$ cm
 sube a $v \approx 0.8c$ y baja a $v \approx 0.7c$ en $x \approx 0.68$ cm.
 
 \begin{figure}
@@ -2415,15 +2409,15 @@ sube a $v \approx 0.8c$ y baja a $v \approx 0.7c$ en $x \approx 0.68$ cm.
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/mean/densidad.png}}
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/mean/velocidad.png}}
       \subfigure{\includegraphics[scale = 0.16]{./Figuras/verificacion_del_codigo/pruebas_2D/mean/presion.png}}
-    \caption{Comparación entre la media de los 3 perfiles radiales (linea sólida azul), la 
-    la prueba unidimensional (linea de puntos rojos) y la analítica (linea negra sólida)
+    \caption{Comparación entre la media de los 3 perfiles radiales (línea sólida azul), la 
+    la prueba unidimensional (línea de puntos rojos) y la analítica (línea negra sólida)
     .}\label{fig:comparacion_perfil_mean}
 \end{figure}
 
 La densidad en 1D y 2D vuelve a subir
 en $x \approx 0.69$ cm y llega a $\rho \approx 5 \,  \text{g}/ \text{cm}^3$ y 
 se mantiene así hasta el punto $x \approx 0.7$ cm 
-donde la densidad, así como la velocidad y presión descienden sus valores a cero.
+donde la densidad, así como la velocidad y presión, descienden sus valores a cero.
 Cabe señalar que la mayor diferencia que hay entre la 1D y 2D para la densidad es del 70 \%, mientras que para la 
 velocidad es del 238 \% y la de la presión es del 79 \%.
 Al comparar los perfiles bidimensionales con el analítico, para la densidad se tiene un error promedio del
@@ -2431,7 +2425,7 @@ Al comparar los perfiles bidimensionales con el analítico, para la densidad se 
 Para el caso unidimensional con el analítico, el error medio para la $\rho$, $v$ y $p$ son 
 3 \%,  7\% y  4 \% y error máximo 119 \%, 20 \% y 3 \% respectivamente.
 Al no haber tanta diferencia del resultado de los perfiles radiales bidimensionales con 
-los perfiles unidimensionales y con el analítico se puede concluir que el código relativista es válido
+los perfiles unidimensionales y con el analítico, se puede concluir que el código relativista es válido
 en una y dos dimensiones.
 
 
@@ -2442,14 +2436,12 @@ en una y dos dimensiones.
 
 \chapter{Jets relativistas bidimensionales}
 
-En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en el capítulo \ref{cap:Verificacion_del_codigo}) a través de medios con distinta densidad. La primera prueba 
-consistirá en estudiar el caso en que el jet atraviesa un medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). 
+En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en el capítulo \ref{cap:Verificacion_del_codigo}) a través de medios con distinta densidad. La primera prueba consistirá en estudiar el caso en que el jet atraviesa un medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). 
 Después, se estudiarán los efectos que un medio que varía en función de la distancia produce en los jets relativistas.
 El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ 
 (ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático será $\Gamma = 5/3$, 
 consistente con \citet{MB-HLLC-I}. 
-Los cuales en la primera prueba serán constantes y luego variarán en función de x. El medio ambiente a su vez, 
-se modelará con una densidad y presión en reposo. Un jet de grosor $\Delta y$ será inyectado 
+Los cuales en la primera prueba serán constantes y luego variarán en función de x. El medio ambiente, a su vez, se modelará con una densidad y presión en reposo. Un jet de grosor $\Delta y$ será inyectado 
 en la frontera $x_{min}$ a la mitad de la altura $y_{max}$ (esto es, desde $\frac{y_{max}-\Delta y}{2}$ hasta 
 $\frac{y_{max}+ \Delta y}{2}$). 
 El resto de la frontera de $x_{min}$ así como las otras fronteras ($x_{max}$, $y_{min}$, $y_{max}$) tendrán condiciones a la
@@ -2492,25 +2484,17 @@ $x, y \in [0,40]\times[0,20]$ y un índice adiabático $\Gamma = 5/3$.}
 
 \section{Jet 2D RHD en un medio ambiente constante} \label{sec:jet_ambiente_constante}
 
-Para el caso en que el jet, el cual tiene una densidad $\rho_j = 0.1$, una velocidad que
-solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio en reposo y con densidad y presión constante en el cual 
-$\rho_a = 0.1 $ y $P_a = 0.01$  consistente con los valores que \citet{MB-HLLC-I} utilizó. 
+Para el caso en que el jet, \Selenecor{el cual tiene una densidad}{de densidad} $\rho_j = 0.1$, una velocidad que solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio en reposo y \Selenecor{con densidad}{una densidad} y presión constante, en el cual 
+$\rho_a = 0.1 $ y $P_a = 0.01$ es consistente con los valores que \citet{MB-HLLC-I} utilizó. 
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del jet a 
-través del medio constante en mapas de densidad
-a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), 
-$t = 20$ (abajo a la izquierda) y $t = 40$ (abajo a la derecha).
+través del medio constante en mapas de densidad a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), $t = 20$ (abajo a la izquierda) y $t = 40$ (abajo a la derecha).
 En el tiempo $t = 1$, el jet apenas es visible y solo llega a $x \approx 1$. 
-Cuando $t = 10$ el longitud del jet llega  a $x \approx 6$ de longitud, las onda de colimación, se observan a 
-lo longitud de y=10 y llegan a $x \approx 4$. Los  isocontornos blancos delimitan el material menos denso del jet. 
+Cuando $t = 10$ la longitud del jet llega  a $x \approx 6$ de longitud, las ondas de colimación, se observan a longitudes de y=10 y llegan a $x \approx 4$. Los isocontornos blancos delimitan el material menos denso del jet. 
 El capullo se expande a 5 unidades de longitud, mientras que de ancho alcanza 4 unidades.
 Para el tiempo $t = 20$, el jet se expande a 
 $x \approx 10$ unidades de longitud. El capullo mide 4 unidades de ancho a partir de parte $y > 10$, 
-las ondas de colimación no cambian, mantienen su posición en $x \approx 4$ a lo longitud del eje $y = 10$, el jet se incrementa
-a 7 unidades de longitud. Para el tiempo $t = 40$, el jet incrementa su tamaño a $x \approx 21$ de longitud. 
-El capullo sobrepasa las 10 unidades de ancho, es decir, sale de nuestro dominio. Las ondas de colimación siguen manteniendo el mismo 
-tamaño en $x \approx 4$ y el capullo sobresale de nuestro dominio. Podemos notar que el capullo está compuesto 
-de materia poco densa que el jet, donde alcanza valores mínimos de $\rho \approx 0.05 $ y 
-máximos de $\rho  \approx 20$ en la
+las ondas de colimación no cambian, mantienen su posición en $x \approx 4$ a lo longitud del eje $y = 10$, el jet se incrementa a 7 unidades de longitud. Para el tiempo $t = 40$, el jet incrementa su tamaño a $x \approx 21$ de longitud. 
+El capullo sobrepasa las 10 unidades de ancho, es decir, sale de nuestro dominio. Las ondas de colimación siguen manteniendo el mismo tamaño en $x \approx 4$ y el capullo sobresale de nuestro dominio. Podemos notar que el capullo está compuesto de materia poco densa que el jet, donde alcanza valores mínimos de $\rho \approx 0.05 $ y máximos de $\rho  \approx 20$ en la
 parte externa del capullo. Cabe destacar que el jet conserva el mismo ancho y que la longitud del capullo crece 
 en la misma proporción a la longitud del jet.
 
@@ -2518,12 +2502,10 @@ El jet del estudio de  \citet{MB-HLLC-I} utiliza un jet relativista con simetrí
 coordenadas cilíndricas,  en este modelo, se usaron coordenadas cartesianas. 
 Ellos usan una ecuación de estado ideal con $\Gamma = 5/3$, el dominio es 
 $0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240 x 700. Las condiciones de
-frontera son \emph{outflow} en todas su frontera excepto donde esta la eyección. El número de Courant que
+frontera son \emph{outflow} en todas su frontera, excepto donde está la eyección. El número de Courant que
 usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores del jet y su medio ambiente son los
-mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}. El jet que se usó en esta tesis tiene las 
-misma ecuación estado que se usó en \citet{MB-HLLC-I}, se integró en el mismo tiempo, y aunque son distintos 
-sistemas de coordenadas tiene el mismo dominio, así como las mismas condiciones de frontera. Se diferencia únicamente,
-por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces más, la resolución usada en \citet{MB-HLLC-I}.
+mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}. El jet que se usó en esta tesis tiene las
+misma ecuación de estado que se usó en \citet{MB-HLLC-I}, se integró en el mismo tiempo, y aunque son distintos sistemas de coordenadas, tienen el mismo dominio, así como las mismas condiciones de frontera. Se diferencian únicamente, por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces más, la resolución usada en \citet{MB-HLLC-I}.
 
 \begin{figure}
   \centering
@@ -2533,10 +2515,10 @@ por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces 
     \ref{Cuadro: propiedades-jet-comparacion}. El panel de arriba a la izquierda muestra al 
     tiempo t = 1, el de arriba a la derecha muestra al tiempo t = 10, 
     el de abajo a la izquierda muestra al tiempo t = 20 y el de abajo al tiempo t = 40.
-    También se emplearon isocontornos (lineas punteadas) que se se componen de 5 niveles. En los 
-    cuales el nivel mas bajo, que es blanco, corresponde a $\rho \approx 0.13$, blanco ligeramente grisáceo 
+    También se emplearon isocontornos (líneas punteadas) que se componen de 5 niveles. En los 
+    cuales el nivel más bajo, que es blanco, corresponde a $\rho \approx 0.13$, blanco ligeramente grisáceo 
     para $\rho \approx 0.36$,
-    gris para $\rho \approx 1$, gris oscuro para $\rho  \approx 2.7$ y el nivel mas alto, que es negro, 
+    gris para $\rho \approx 1$, gris oscuro para $\rho  \approx 2.7$ y el nivel más alto, que es negro, 
     corresponde a $\rho \approx 7.3$.}
     \label{fig:evolucion_temporal_del_jet}
 \end{figure}
@@ -2556,12 +2538,11 @@ densidad, ya que mantiene sus máximos en los puntos $x \approx 2, 8, 20$, pero 
 tiempo los picos empiezan a decrecer, ya que para $t = 5, \, p \approx 1.6 $; 
 para $t = 20, \, p \approx 1.49$ y para 
 $t = 50, \, p  \approx 1.3$. Para el panel de abajo a la derecha, se hizo la misma comparación que el panel 
-de la densidad, solo que esta vez se compararon  distintas resoluciones: baja resolución "LD" (con 1600 pixeles en el eje X y 800 en el eje Y) 
+de la densidad, solo que esta vez se compararon  distintas resoluciones: baja resolución "LD" (con 1600 píxeles en el eje X y 800 en el eje Y) 
 y alta resolución "HD" (3200x1600), con lo que se puede observar que 
 para mayor resolución el jet se vuelve ligeramente más rápido. En este panel se puede notar que
 los picos están desfasados conforme avanza el tiempo. Los efectos de la resolución son despreciables ya 
-que la mayor diferencia, debida a la resolución, en la magnitud de los picos es relativamente pequeña (menor a 5\%). Ésta, se presenta a t=50 y corresponde 
-a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$.
+que la mayor diferencia, debida a la resolución, en la magnitud de los picos es relativamente pequeña (menor a 5\%). \Selene{Esta}, se presenta a t=50 y corresponde a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$.
 
 
 \begin{figure}
@@ -2573,24 +2554,24 @@ a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
   En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución 
   (HD)
-  es de 3200x1600 pixeles y la de baja resolución (LD) es de 1600x800 pixeles.}\label{fig:Decaimiento_constante_densidad_jet}
+  es de 3200x1600 píxeles y la de baja resolución (LD) es de 1600x800 píxeles.}\label{fig:Decaimiento_constante_densidad_jet}
 \end{figure}
 
-En la Figura \ref{fig:comparacion_temporal_del_jet} se muestra los resultados obtenidos en baja 
-(1600x800 pixeles) y alta (3200x1600) resolución, a 
+En la Figura \ref{fig:comparacion_temporal_del_jet}  \Selenecor{se muestra}{se muestran} los resultados obtenidos en baja 
+(1600x800 píxeles) y alta (3200x1600) resolución, a 
 las mismas escalas de densidad, en comparación con los resultados de \citet{MB-HLLC-I}.
 La Figura muestra de izquierda a derecha las gráficas de \citet{MB-HLLC-I} (izquierda), el modelo con baja resolución 
 (medio) y el modelo con alta resolución (derecha). Los paneles de arriba muestran al tiempo t = 40, mientras que los 
 de abajo al tiempo t = 80.
 Al enfocarse en los paneles de arriba, al tiempo t = 40, se puede observar que el jet de estudio de \citet{MB-HLLC-I} tiene un largo 
 de $x \approx 18$ unidades, mientras que el de baja resolución tiene un largo de 19 unidades y 
-el jet de alta densidad  tiene un largo de 19 unidades por lo que podemos observar un error del 5 \% 
-con el baja resolución y del 0 \% con el de alta resolución. El capullo esta compuesto de material de alta densidad 
+el jet de alta densidad  tiene un largo de 19 unidades, por lo que podemos observar un error del 5 \% 
+con baja resolución y del 0 \% con el de alta resolución. El capullo está compuesto de material de alta densidad 
 que rodea al jet, su ancho se mantiene en aproximadamente 5 unidades.
 Los choques de colimación son más grandes en el estudio de \citet{MB-HLLC-I}
 que en el de baja resolución, 
 dado que se localizan en $x \approx 10$ y $x \approx 5$ respectivamente, una diferencia del 50 \%. 
-Los choques de alta resolución se localizan en $x \approx 4$  lo que muestra una diferencia de mas del 
+Los choques de alta resolución se localizan en $x \approx 4$  lo que muestra una diferencia de más del 
 60 \% con el estudio de \citet{MB-HLLC-I}.
 Se observa también que el capullo de baja resolución mide más de 11 unidades de ancho para $y > 10$, 
 mientras que para la resolución alta mide 9 unidades, lo que nos da un error, solo para la resolución alta del 33 \%.
@@ -2599,15 +2580,15 @@ como en el estudio de \citet{MB-HLLC-I}, lo que da a entender  que el código qu
 es más viscoso.
 Para los paneles de abajo, el tiempo ahora es t = 80, se puede observar que el capullo sobresale del dominio para los 
 3 casos que estamos comparando. Las ondas de colimación para alta como baja resolución están en $x = 3$ mientras que las de \citet{MB-HLLC-I} se siguen manteniendo en $x = 6$, lo que nos sigue dando un error 
-del 50 \%, por lo que éstas no dependen del tiempo. 
+del 50 \%, por lo que estas no dependen del tiempo. 
 El jet para el estudio de \citet{MB-HLLC-I} mide $x \approx 35$ de largo, para el jet de resolución baja mide $x \approx 32$ unidades y 
 para el de resolución alta $x \approx 31$ unidades, lo que nos da un error del 9 \% para resolución baja y con el 
 de resolución alta un error del 11 \%.
 Otra diferencia fue que el jet de 
-alta resolución esta más comprimido, ya que tiene un grosor aproximado de 1.0 unidades 
+alta resolución está más comprimido, ya que tiene un grosor aproximado de 1.0 unidades, 
 mientras que el de baja resolución tiene una resolución aproximada de 1.4 unidades, 
 aunque no está tan comprimido como el jet mostrado en el estudio de \citet{MB-HLLC-I}. así también, no podemos encontrar, tanto para baja como 
-alta resolución las turbulencias generadas en el jet de \citet{MB-HLLC-I}, pero también no se pueden comparar las densidades del 
+alta resolución, las turbulencias generadas en el jet de \citet{MB-HLLC-I}, pero también no se pueden comparar las densidades del 
 mismo debido a que no presenta los valores.
 
 \begin{figure}
@@ -2615,8 +2596,8 @@ mismo debido a que no presenta los valores.
   \includegraphics[width=1\textwidth]{./Figuras/jet/comparacion/multiple_comparation.png}
     \caption{Mapas de densidad en los que se compara el jet relativista con los valores del Cuadro 
     \ref{Cuadro: propiedades-jet-comparacion}. La Figura está dividida en 3 columnas. La de la izquierda muestra
-    el estudio de \citet{MB-HLLC-I}, la de en medio el jet a baja resolución (1600x800 pixeles), y la de la derecha el jet a alta 
-    resolución (3200x1600 pixeles).
+    el estudio de \citet{MB-HLLC-I}, la de en medio el jet a baja resolución (1600x800 píxeles), y la de la derecha el jet a alta 
+    resolución (3200x1600 píxeles).
     }\label{fig:comparacion_temporal_del_jet}
 \end{figure}
 
@@ -2640,7 +2621,7 @@ $\rho  \approx 16.5$ y para el
 tiempo t = 50, el pico se sitúa en $x \approx 33$ con $\rho  \approx 3.6$ por lo que los máximos disminuyen en función de la 
 densidad del medio ambiente.
 La velocidad tiene un máximo en $x \approx 0.2$, donde alcanza  $v \approx 0.6$. Para los tiempos t = 20, 50 ya no 
-presenta máximos sino que decae rápidamente en las posiciones $x \approx 8, \, 25$ respectivamente.
+presenta máximos, sino que decae rápidamente en las posiciones $x \approx 8, \, 25$ respectivamente.
 La presión tiene un valor máximo al tiempo t = 5 con $p \approx 1.64$, aunque si un cambio menos abrupto en $x = 3$. 
 En los tiempos t = 20, 50 los máximos globales se sitúan en $x \approx 12$ y en $x \approx 33$ 
 con $p \approx  1$ y $p  \approx 0.6$ respectivamente.
@@ -2653,7 +2634,7 @@ en la magnitud de los picos es menor a 10\% ($\frac{\rho_{alta} - \rho_{baja}}{\
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_lineales.png}
   \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
-  \ref{fig:comparacion_perfil_radial} para un perfil de densidad que varia en función de la distancia como
+  \ref{fig:comparacion_perfil_radial} para un perfil de densidad que varía en función de la distancia como
   $\rho \varpropto \frac{1}{x}$ a tiempos t=0, 5,20, 50.
   El perfil es de $y = 10$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
@@ -2661,14 +2642,14 @@ en la magnitud de los picos es menor a 10\% ($\frac{\rho_{alta} - \rho_{baja}}{\
   es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_lineal_densidad_jet}
 \end{figure}
 
-En la Figura \ref{fig:Decaimiento_cuadratico_densidad_jet} se muestra la densidad de medio ambiente que decae como $\rho \varpropto \frac{1}{x^2}$. Aquí podemos ver que los  picos de la densidad están en x = 3, 10, 33 con  la densidad $\rho \approx 54, \,  10, \,  7.3$, respectivamente. En la velocidad podemos observar los frente de choque de la onda que se ubican en $x \approx 3, \, 13, \, 37$ con los valores de velocidad $v \approx 0.42, \, 0.58, \, 0.60$ respectivamente. Para más detalles véase el Cuadro \ref{Cuadro:valores_frente_choque}.
-En el caso de la presión, al tiempo t = 5, desciende rápidamente en $x \approx 0.5$ de $p  \approx 10$ a $p  \approx 2.7$. En el tiempo t = 20, la presión tiene un valor máximo en $x \approx 10$, donde mantiene un valor de $p \approx e^2 \approx 7.3$. Para el tiempo t = 50 la presión desciende exponencialmente del punto $x \approx 28$ donde $p \approx e^{-5} \approx 0.006$. Al comparar las resoluciones de 1600x800 con la de 800x400 se vuelve a ver un desfase.Los efectos de la resolución en este caso dejan deben ser tomado en cuenta. Lo anterior se debe a que la mayor diferencia, debida a la resolución, en la magnitud de los picos es mayor al 60\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63$ a t=50). Por ello, si se deseará estudiar un jet relativista a través de un medio que disminuye como $1/x^2$, o $1/r^2$ es necesario hacer estudios de convergencia para determinar la resolución necesaria para que no influya en los resultados. 
+En la Figura \ref{fig:Decaimiento_cuadratico_densidad_jet} se muestra la densidad de medio ambiente que decae como $\rho \varpropto \frac{1}{x^2}$. Aquí podemos ver que los  picos de la densidad están en x = 3, 10, 33 con  la densidad $\rho \approx 54, \,  10, \,  7.3$, respectivamente. En la velocidad podemos observar el frente de choque de la onda que se ubican en $x \approx 3, \, 13, \, 37$ con los valores de velocidad $v \approx 0.42, \, 0.58, \, 0.60$ respectivamente. Para más detalles véase el Cuadro \ref{Cuadro:valores_frente_choque}.
+En el caso de la presión, al tiempo t = 5, desciende rápidamente en $x \approx 0.5$ de $p  \approx 10$ a $p  \approx 2.7$. En el tiempo t = 20, la presión tiene un valor máximo en $x \approx 10$, donde mantiene un valor de $p \approx e^2 \approx 7.3$. Para el tiempo t = 50 la presión desciende exponencialmente del punto $x \approx 28$ donde $p \approx e^{-5} \approx 0.006$. Al comparar las resoluciones de 1600x800 con la de 800x400 se vuelve a ver un desfase. Los efectos de la resolución en este caso dejan deben ser tomados en cuenta. Lo anterior se debe a que la mayor diferencia, debida a la resolución, en la magnitud de los picos es mayor al 60\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63$ a t=50). Por ello, si se deseará estudiar un jet relativista a través de un medio que disminuye como $1/x^2$, o $1/r^2$ es necesario hacer estudios de convergencia para determinar la resolución necesaria para que no influya en los resultados. 
 
 \begin{figure}
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_cuadraticos.png}
   \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
-  \ref{fig:comparacion_perfil_radial} para un perfil de densidad que varia en función de la distancia como
+  \ref{fig:comparacion_perfil_radial} para un perfil de densidad que varía en función de la distancia como
   $\rho \varpropto \frac{1}{x^2}$ a tiempos t = 0, 5,20, 50.
   El perfil es de $y = 10$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
@@ -2678,7 +2659,7 @@ En el caso de la presión, al tiempo t = 5, desciende rápidamente en $x \approx
 
 En resumen, los picos de la densidad y presión 
 son en general más pequeños que los mostrados en donde la densidad del medio es constante, pero también recorren mayor 
-distancia que los anteriormente mencionados. En cambio, para el caso en que la densidad decae como $\frac{1}{x^2}$, los picos son mayores pero recorren menos distancia que el medio anteriormente mencionado.
+distancia que los anteriormente mencionados. En cambio, para el caso en que la densidad decae como $\frac{1}{x^2}$, los picos son mayores, pero recorren menos distancia que el medio anteriormente mencionado.
 
 
 \begin{table}[htbp]
@@ -2699,14 +2680,14 @@ distancia que los anteriormente mencionados. En cambio, para el caso en que la d
     \hline
 
   \end{tabular}
-  \caption{\label{Cuadro:valores_frente_choque} Valores de densidad presión y velocidad que se muestran en el frente
+  \caption{\label{Cuadro:valores_frente_choque} Valores de densidad, presión y velocidad que se muestran en el frente
   de choque de la onda del jet. Los valores obtenidos fueron tomados de las Figura \ref{fig:Decaimiento_constante_densidad_jet},
   \ref{fig:Decaimiento_lineal_densidad_jet} y \ref{fig:Decaimiento_cuadratico_densidad_jet}}
   \end{center}
   \end{table}
 
 Conforme disminuye más rápidamente en función de la distancia \emph{x}, 
-se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muestra la comparación que hay cuando la densidad del medio ambiente cambia constantemente ($\rho \varpropto \rho_a$), cuando varia inversamente lineal ($\rho \varpropto x^{-1}$) y cuando varia inversamente cuadrático ($\rho \varpropto x^{-2}$) al tiempo $t = 50$. Las lineas punteadas muestran los exponentes intermedios entre los valores de 0, 1 y 2 en pasos de 0.2, es decir la densidad del medio ambiente descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}, \, . . . \,  , x^{-2}$. El primer valor máximo que acentúa más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene un valor $\rho \approx 0.6$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es $\rho  \approx  0.3$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, para el caso constante se localiza en $x \approx 20$ y alcanza $\rho  \approx 33$, conforme se aumente el exponente el valor máximo se desplaza, así como su disminución de la densidad ya que para el caso inversamente lineal el máximo se localiza en $x \approx 32$ con $\rho \approx 1$ y para el caso inversamente cuadrático el valor máximo se localizó en $x \approx 34$ con $\rho \approx 0.36 $.  Podemos observar que el primer valor máximo de la gráfica, el medio que varía como $x^{-2}$ tiene un valor mayor que el del medio constante, mientras que para el segundo valor máximo se invierte y el medio constante tiene un valor mayor que el del medio que varía como $x^{-2}$. La velocidad de la onda aumenta un 60 \% para medio inversamente lineal en correspondencia con el medio constante y un 6 \% para el medio inversamente cuadrático en correspondencia con el inversamente lineal.  
+se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muestra la comparación que hay cuando la densidad del medio ambiente cambia constantemente ($\rho \varpropto \rho_a$), cuando varía inversamente lineal ($\rho \varpropto x^{-1}$) y cuando varía inversamente cuadrático ($\rho \varpropto x^{-2}$) al tiempo $t = 50$. Las líneas punteadas muestran los exponentes intermedios entre los valores de 0, 1 y 2 en pasos de 0.2, es decir, la densidad del medio ambiente descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}, \, . . . \,  , x^{-2}$. El primer valor máximo que acentúa más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene un valor $\rho \approx 0.6$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es $\rho  \approx  0.3$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, para el caso constante, se localiza en $x \approx 20$ y alcanza $\rho  \approx 33$, conforme se aumente el exponente, el valor máximo se desplaza, así como su disminución de la densidad, ya que para el caso inversamente lineal el máximo se localiza en $x \approx 32$ con $\rho \approx 1$ y para el caso inversamente cuadrático el valor máximo se localizó en $x \approx 34$ con $\rho \approx 0.36 $.  Podemos observar que el primer valor máximo de la gráfica, el medio que varía como $x^{-2}$ tiene un valor mayor que el del medio constante, mientras que para el segundo valor máximo se invierte y el medio constante tiene un valor mayor que el del medio que varía como $x^{-2}$. La velocidad de la onda aumenta un 60 \% para medio inversamente lineal en correspondencia con el medio constante y un 6 \% para el medio inversamente cuadrático en correspondencia con el inversamente lineal.  
 
 \begin{figure}
   \centering
@@ -2714,7 +2695,7 @@ se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muest
   \caption{Gráfica de comparación de la posición contra el logaritmo de la densidad 
   donde el medio ambiente es constante $\rho \varpropto k$ (verde), varía inversamente lineal
   $\rho \varpropto x^{-1}$ (amarillo) y varía inversamente cuadrático $\rho \varpropto x^{-2}$ (rojo)
-  al tiempo t = 50.  Las lineas punteadas muestran los valores exponenciales entre 0 y 1 y entre 1 y 2,
+  al tiempo t = 50.  Las líneas punteadas muestran los valores exponenciales entre 0 y 1 y entre 1 y 2,
   es decir, que la densidad descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}
   , \, . . . \,  , x^{-2}$.}\label{fig:perfiles_comparacion_jet}
 \end{figure}
@@ -2722,36 +2703,36 @@ se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muest
 %----------------------------------------------------------------------------------------------
 \chapter{Conclusiones}
 %----------------------------------------------------------------------------------------------
-El objetivo principal de esta tesis fue construir un código numérico hidrodinámico que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann. Para verificar que el código funcionaba correctamente dicho código debía ser capaz de reproducir pruebas numéricas cuya solución ya era conocida previamente (ya fuera por medio de modelos analíticos o simulaciones numéricas previas de otros grupos de investigación). En específico se verificó que el código numérico reprodujera pruebas unidimensionales newtonianas y relativistas (tubos de choques), y pruebas bidimensionales newtonianas (por ejemplo Sedov-Taylor) y relativistas. Además, se estudió la evolución de un jet bidimensional con velocidad relativista a través de un medio variable (estático). Para lo anterior primero se reprodujeron los resultados de un jet en un medio constante de 
+El objetivo principal de esta tesis fue construir un código numérico hidrodinámico que fuera tanto newtoniano como relativista utilizando distintos métodos numéricos de Riemann. Para verificar que el código funcionaba correctamente, dicho código debía ser capaz de reproducir pruebas numéricas cuya solución ya era conocida previamente (ya fuera por medio de modelos analíticos o simulaciones numéricas previas de otros grupos de investigación). En específico, se verificó que el código numérico reprodujera pruebas unidimensionales newtonianas y relativistas (tubos de choques), y pruebas bidimensionales newtonianas (por ejemplo Sedov-Taylor) y relativistas. Además, se estudió la evolución de un jet bidimensional con velocidad relativista a través de un medio variable (estático). Para lo anterior, primero se reprodujeron los resultados de un jet en un medio constante de 
 \citet{MB-HLLC-I}, y segundo, se estudió como es afectada la evolución del jet relativista en un medio variable (i.e. un medio cuya densidad disminuye en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$).
 
-En el capítulo 2, se detalla la física y detalles numéricos que se emplean en el código numérico creado para el desarrollo de esta tesis. En específico, en las secciones \ref{sec:Ecuacioneshidrodinamica} y \ref{subsec:DesacoplamientoEcuacionesHidrodinamica} se detallan las ecuaciones de la hidrodinámica así como los distintos métodos numéricos empleados para su resolución. Los métodos que se usaron fueron el de Friederich-Lax y el de Haar-Lax-van Leer. Además, dado que el sistema de ecuaciones de la hidrodinámica e hidrodinámica relativista están acopladas se detalla como se les desacopla y se obtiene la densidad, velocidades y densidad de energía para un paso temporal subsecuente.
+En el capítulo 2, se detalla la física y detalles numéricos que se emplean en el código numérico creado para el desarrollo de esta tesis. En específico, en las secciones \ref{sec:Ecuacioneshidrodinamica} y \ref{subsec:DesacoplamientoEcuacionesHidrodinamica} se detallan las ecuaciones de la hidrodinámica, así como los distintos métodos numéricos empleados para su resolución. Los métodos que se usaron fueron el de Friederich-Lax y el de Haar-Lax-van Leer. Además, dado que el sistema de ecuaciones de la hidrodinámica e hidrodinámica relativista están acopladas, se detalla como se les desacopla y se obtiene la densidad, velocidades y densidad de energía para un paso temporal subsecuente.
 
-En el capítulo 3, se muestran las pruebas numéricas hidrodinámicas e hidrodinámicas relativistas en una y dos dimensiones. A continuación se menciona cada una así como sus resultados principales: 
+En el capítulo 3, se muestran las pruebas numéricas, hidrodinámicas e hidrodinámicas relativistas en una y dos dimensiones. A continuación se menciona cada una así como sus resultados principales: 
 \begin{itemize}
-	\item En la sección \ref{subsec:casos_newtonianos_1D} se muestran las pruebas unidimensionales en el régimen newtoniano. Estas consistieron en resolver el problema del tubo de Sod, esto es, analizar la evolución de dos fluidos con distinta densidad, velocidad y presión que inicialmente estaban separados en una posición determinada. Cabe señalar que en estas pruebas se analizaron las diferencias que se tienen al utilizar el método de Lax o el de HLL. Para el caso donde se tienen distintas densidades (y las presiones y las velocidades son iguales) tanto el método de Lax como el método de HLL son indistintos y se reproduce la solución analítica. En este caso el método de Lax resultó ser computacionalmente más rápido que el de HLL. Para el caso en donde ahora las velocidades son distintas y las densidades y presiones son iguales también se reprodujo la solución analítica indistintamente del método de Riemann que se utilizara. El método de Lax resultó ser notoriamente más rápido que HLL por lo que para el régimen unidimensional y para velocidades newtonianas, es recomendable usar este método.
+	\item En la sección \ref{subsec:casos_newtonianos_1D} se muestran las pruebas unidimensionales en el régimen newtoniano. Estas consistieron en resolver el problema del tubo de Sod, esto es, analizar la evolución de dos fluidos con distinta densidad, velocidad y presión que inicialmente estaban separados en una posición determinada. Cabe señalar que en estas pruebas se analizaron las diferencias que se tienen al utilizar el método de Lax o el de HLL. Para el caso donde se tienen distintas densidades (y las presiones y las velocidades son iguales) tanto el método de Lax como el método de HLL son indistintos y se reproduce la solución analítica. En este caso, el método de Lax resultó ser computacionalmente más rápido que el de HLL. Para el caso en donde ahora las velocidades son distintas y las densidades y presiones son iguales, también se reprodujo la solución analítica indistintamente del método de Riemann que se utilizara. El método de Lax resultó ser notoriamente más rápido que HLL por lo que para el régimen unidimensional y para velocidades newtonianas, es recomendable usar este método.
 	
-	\item En la sección \ref{subsec:casos_relativistas_1D} se muestran las pruebas unidimensionales en el régimen relativista. Éstas consistieron en verificar que en los tubos de Sod, en donde los fluidos evolucionaron con velocidades cercanas a la de la luz, se reprodujeran correctamente con el módulo relativista. Para ambos métodos se puede observar que se tienen errores cuando se aproximan a los valores discontinuos, principalmente en las discontinuidades de contacto (superficies que separan zonas de diferente densidad y temperatura). El método HLL siempre es consistente con los resultados esperados. Mientras tanto para ciertos casos relativistas el método de Lax falla sin importar la resolución que se utilice.
-	\item En la sección \ref{sec:sedov_taylor} se muestra la prueba bidimensional newtoniana. En específico, se estudio el problema de Sedov-Taylor. Este problema consiste en resolver una onda de choque con ciertos valores de densidad y energía dentro de un medio ambiente con distintos parámetros. El código tuvo éxito ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado en la sección \label{sec:sedov_taylor}.
-	\item En la sección \ref{subsec:caso_relativista_2d} se estudió una onda de choque bidimensional y relativista. Para lo anterior se tomó el mismo problema del tubo de Sod relativista en una dimensión y se expandió a dos dimensiones. Se verificó que se obtiene el  mismo resultado independiente de la dirección del perfila radial (sobre el eje X o sobre el eje Y o a 45 grados). Además, se verificó que el perfil radial de la onda bidimensional es consistente con aquel de una onda unidimensional y con su solución analítica correspondiente.
+	\item En la sección \ref{subsec:casos_relativistas_1D} se muestran las pruebas unidimensionales en el régimen relativista. Estas consistieron en verificar que en los tubos de Sod, en donde los fluidos evolucionaron con velocidades cercanas a la de la luz, se reprodujeran correctamente con el módulo relativista. Para ambos métodos se puede observar que se tienen errores cuando se aproximan a los valores discontinuos, principalmente en las discontinuidades de contacto (superficies que separan zonas de diferente densidad y temperatura). El método HLL siempre es consistente con los resultados esperados. Mientras tanto, para ciertos casos relativistas el método de Lax falla sin importar la resolución que se utilice.
+	\item En la sección \ref{sec:sedov_taylor} se muestra la prueba bidimensional newtoniana. En específico, se estudió el problema de Sedov-Taylor. Este problema consiste en resolver una onda de choque con ciertos valores de densidad y energía dentro de un medio ambiente con distintos parámetros. El código tuvo éxito, ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado en la sección \label{sec:sedov_taylor}.
+	\item En la sección \ref{subsec:caso_relativista_2d} se estudió una onda de choque bidimensional y relativista. Para lo anterior se tomó el mismo problema del tubo de Sod relativista en una dimensión y se expandió a dos dimensiones. Se verificó que se obtiene el  mismo resultado independiente de la dirección del perfil radial (sobre el eje X o sobre el eje Y o a 45 grados). Además, se verificó que el perfil radial de la onda bidimensional es consistente con aquel de una onda unidimensional y con su solución analítica correspondiente.
 \end{itemize}
 
 En el capítulo 4, se muestra la evolución de un jet bidimensional y relativista a través de distintos medios. 
 \begin{itemize}
-	\item En la sección \ref{sec:jet_ambiente_constante} se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Además, en el estudio Mignone \emph{et al} 2007 no se detallan todas las características del jet, por ende no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad. Al comparar las resoluciones, se puede notar que entre mas resolución se use el jet, es ligeramente mas lento. 
+	\item En la sección \ref{sec:jet_ambiente_constante} se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo, también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Además, en el estudio Mignone \emph{et al} 2007 no se detallan todas las características del jet, por ende no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad. Al comparar las resoluciones, se puede notar que entre más resolución se use el jet, es ligeramente más lento. 
 	
-	\item En la sección \label{sec:jet_ambiente_variable} se estudió la evolución del jet en un medio que varia en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$. Se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
+	\item En la sección \label{sec:jet_ambiente_variable} se estudió la evolución del jet en un medio que varía en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$. Se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 \end{itemize}
 
-Finalmente es preciso mencionar las mejorías que se le podrían hacer al código creado para esta tesis. Se pueden hacer modificaciones para mejorar considerablemente el tiempo de cómputo ya que el código en su versión actual gasta muchos recursos. Las posibles mejorías se listan a continuación:
+Finalmente, es preciso mencionar las mejorías que se \Selenecor{le}{podrían} hacer al código creado para esta tesis. Se pueden hacer modificaciones para mejorar considerablemente el tiempo de cómputo, ya que el código en su versión actual gasta muchos recursos. Las posibles mejorías se listan a continuación:
 \begin{itemize}
-    \item \textbf{Implementación de otro solucionador de Riemann}: A pesar de que HLL, es un algoritmo robusto y fácil de implementar, éste promedia la solución completa al problema de Riemann en un solo estado y, por lo tanto, carece de la capacidad para resolver ondas intermedias (tales como las ondas de contacto). Se recomienda entonces incorporar otros métodos que tomen en cuenta más ondas (por ejemplo el método de HLLC).
+    \item \textbf{Implementación de otro solucionador de Riemann}: A pesar de que HLL, es un algoritmo robusto y fácil de implementar, este promedia la solución completa al problema de Riemann en un solo estado y, por lo tanto, carece de la capacidad para resolver ondas intermedias (tales como las ondas de contacto). Se recomienda entonces incorporar otros métodos que tomen en cuenta más ondas (por ejemplo el método de HLLC).
     
     \item \textbf{Implementación de una malla AMR}: Tomando en cuenta que las zonas que requieren una resolución muy fina son las zonas de ondas de contacto (mientras el resto del problema no requiere de tanta resolución), y que estar resolviendo todo el dominio computacional con una resolución sumamente fina genera un alto costo computacional, es necesaria la implementación de una malla suya resolución se adapte al problema (i.e. resolución muy fina en donde haya discontinuidades, ondas de choques, turbulencia; y resolución poco fina en el resto del dominio). 
 
-    \item \textbf{Computo en paralelo}: Algo que realmente podría hacer mas  rápido el código es hacerlo paralelo, es decir, que se puedan hacer varios procesos al mismo tiempo y no, necesariamente hacerlos secuencialmente y poder adaptarlo a la malla que generamos.
+    \item \textbf{Computo en paralelo}: Algo que realmente podría hacer más  rápido el código es hacerlo paralelo, es decir, que se puedan hacer varios procesos al mismo tiempo y no, necesariamente hacerlos secuencialmente y poder adaptarlo a la malla que generamos.
 
-    \item \textbf{Paradigma}: Si bien Fortran es una gran herramienta para el computo científico, es difícil darle mantenimiento al mismo programa ya que tiene un paradigma imperativo por lo que usar un paradigma orientado a objetos tal como en Julia podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
+    \item \textbf{Paradigma}: Si bien Fortran es una gran herramienta para el cómputo científico, es difícil darle mantenimiento al mismo programa, ya que tiene un paradigma imperativo, por lo que usar un paradigma orientado a objetos tal como en Julia podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
 \end{itemize}
 %----------------------------------------------------------------------------------------------
 
@@ -2772,15 +2753,15 @@ El programa está escrito en lenguaje FORTRAN se compone de un módulo principal
 
 \item \textbf{boundaries}: En esta parte puedes definir las fronteras a utilizar como outflow o las condiciones para las del jet
 
-\item \textbf{fluxes}: Calculo de los flujos
+\item \textbf{fluxes}: Cálculo de los flujos
 \end{itemize}
 
-Al usar las ecuacuaciones hidrodinámica relativistas, se agregan 2 subrutinas más:
+Al usar las ecuaciones hidrodinámicas relativistas, se agregan 2 subrutinas más:
 
 \begin{itemize}
 \item \textbf{uprim}: Este módulo es agregado para poder desacoplar las variables conservadas
 
-\item \textbf{newraph}: Calcula el método de Newton-Rapson será de gran utilidad en el desacoplamineto de las variables conservadas y así obtener nuestras primitivas
+\item \textbf{newraph}: Calcula el método de Newton-Rapson será de gran utilidad en el desacoplamiento de las variables conservadas y así obtener nuestras primitivas
 \end{itemize}
 
 \begin{lstlisting}[frame=single] 
@@ -2890,9 +2871,8 @@ En esta parte dan los valores iniciales para nuestra malla tanto en $x$ como en 
 %----------------------------------------------------------------------------------------------
 \subsection{Condición de Courant}
 %----------------------------------------------------------------------------------------------
-Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales se van a calcular en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia y la estabilidad de 
-nuestras ecuaciones diferenciales parciales (ecuación \ref{euler_cartesianas}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación diferencial 
-parcial original si todos los intervalos finitos tienden a cero, una condición necesaria para la convergencia es que los errores, por ejemplo los debidos al redondeo, no se incrementen con en tiempo. 
+Esta parte del código tiene que ver con los incrementos $\Delta t$, \Selenecor{los cuales se van a calcular}{los cuales se pueden obtener} en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia y la estabilidad de nuestras ecuaciones diferenciales parciales (ecuación \ref{euler_cartesianas}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación diferencial 
+parcial original si todos los intervalos finitos tienden a cero, una condición necesaria para la convergencia es que los errores, por ejemplo, los debidos al redondeo, no se incrementen con en tiempo. 
 Esta es la llamada la condición de estabilidad. Es una condición tan importante que implica ciertas restricciones al tamaño del paso de tiempo en un proceso explícito. Un análisis de estabilidad para esquemas 
 explícitos a partir de la teoría de las características para soluciones continuas lleva a la conclusión que dichos esquemas, para ser estables, deben cumplir la condición de Courant, que es: 
 
@@ -2937,14 +2917,14 @@ Donde $C$ es el número de Courant y nos limita a que nuestros $\Delta t$ no sea
 %----------------------------------------------------------------------------------------------
 \chapter{Condiciones de frontera} \label{aped.B}
 %----------------------------------------------------------------------------------------------
-Las condiciones de frontera se usará para obtener los valores de nuestras variables conservadas en los extremos de nuestra malla de puntos, con el fin de evitar errores numéricos, las condiciones de frontera que generalmente se usan son de cuatro tipos las de \textit{outflow}, las de \textit{reflexión}, las \textit{periódicas} y las de \textit{jet}. Las del tipo \textit{outflow} serán aquellas en las que una vez los valores sobre la malla (ondas) queden fuera de esta, ya no sabremos que pasó después con estos datos, las de \textit{reflexión} serán aquellas en las que nuestros datos en vez de salir se reflejarán y las \textit{periódicas} serán parecidas a las de \textit{reflexión} solo que en vez de reflejarse las ondas, estas entrarán del lado contrario de donde salieron  y las de tipo \textit{jet}, será para que de un lado de nuestra malla salga una fuente de partículas.
+Las condiciones de frontera se usará para obtener los valores de nuestras variables conservadas en los extremos de nuestra malla de puntos, con el fin de evitar errores numéricos, las condiciones de frontera que generalmente se usan son de cuatro tipos, las de \textit{outflow}, las de \textit{reflexión}, las \textit{periódicas} y las de \textit{jet}. Las del tipo \textit{outflow} serán aquellas en las que una vez los valores sobre la malla (ondas) queden fuera de esta, ya no sabremos que pasó después con estos datos, las de \textit{reflexión} serán aquellas en las que nuestros datos en vez de salir se reflejarán y las \textit{periódicas} serán parecidas a las de \textit{reflexión} solo que en vez de reflejarse las ondas, estas entrarán del lado contrario de donde salieron  y las de tipo \textit{jet}, será para que de un lado de nuestra malla salga una fuente de partículas.
 
-Para entender lo que son las condiciones de frontera, vamos suponer una malla de puntos, esta malla tendrá $n+2$ filas y $m+2$ columnas, para identificar los puntos vamos a indexarlos empezando desde el 0 hasta $n+1$ en el caso de las filas y de 0 hasta $m+1$ para el de las columnas.
+Para entender lo que son las condiciones de frontera, vamos a suponer una malla de puntos, esta malla tendrá $n+2$ filas y $m+2$ columnas, para identificar los puntos vamos a indexarlos empezando desde el 0 hasta $n+1$ en el caso de las filas y de 0 hasta $m+1$ para el de las columnas.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{./Figuras/malla.png}
-\caption{Malla de puntos que resalta las fronteras, los puntos más oscuros representan representan una frontera \emph{fantasma}, es decir, ese conjunto de puntos estará allí como apoyo para resolver los cálculos que hará la computadora dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se graficarán.} \label{fig: malla de puntos}
+\caption{Malla de puntos que resalta las fronteras, los puntos más oscuros representan una frontera \emph{fantasma}, es decir, ese conjunto de puntos estará allí como apoyo para resolver los cálculos que hará la computadora, dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se graficarán.} \label{fig: malla de puntos}
 \end{figure}
 
 La Figura \ref{fig: malla de puntos} muestra 
@@ -2953,7 +2933,7 @@ servir de apoyo para calcular los valores de los puntos más grises, esto debido
 los valores de algún punto $(x_i, y_j)$ necesitamos el punto posterior $x_{i+1}, y_{j+1}$ y el punto 
 anterior $x_{i-1}, y_{j-1}$.
 
-Ahora, cuando llegamos a los últimos puntos de nuestro frontera, 
+Ahora, cuando llegamos a los últimos puntos de nuestra frontera, 
 por ejemplo, el punto $x_{0}, y_{0}$, no podremos calcularlo debido a que  no tendremos conocimiento acerca del punto anterior $x_{(-1)}, y_{(-1)}$, entonces  tendremos que darles valores específicos a estos puntos, pero no podemos darles cualquier valor, en las siguientes secciones vamos a ver que valores válidos le podemos dar para el funcionamiento del código. 
 
 %----------------------------------------------------------------------------------------------
@@ -3007,7 +2987,7 @@ Las condiciones periódicas son cuando nuestra frontera fantasma toma los valore
 \centering
 \subfigure[Onda antes de tocar la frontera de abajo]{\includegraphics[scale = 0.50]{./Figuras/Apendice/periodicas1.png}}
 \subfigure[La onda pasa la frontera de abajo y sale por la parte de arriba]{\includegraphics[scale = 0.50]{./Figuras/Apendice/periodicas2.png}}
-\caption{Al llegar la onda abajo se puede ver que se transporta al lado de arriba, se eligió esa posición de la onda, solo para resaltar la periodicidad de la onda, ya que si se hubiera puesto en el centro, la onda chocaría contra si mismo y no podríamos ver el paso de la onda.} \label{fig:periodicas}
+\caption{Al llegar la onda abajo se puede ver que se transporta al lado de arriba, se eligió esa posición de la onda, solo para resaltar la periodicidad de la onda, ya que si se hubiera puesto en el centro, la onda chocaría contra sí mismo y no podríamos ver el paso de la onda.} \label{fig:periodicas}
 \end{figure}
 
 Las ecuaciones que representan este tipo de frontera son las siguientes:
@@ -3022,17 +3002,17 @@ Las ecuaciones que representan este tipo de frontera son las siguientes:
 %----------------------------------------------------------------------------------------------
 \subsection{Condiciones de frontera \emph{Jet} }
 %----------------------------------------------------------------------------------------------
-Las condiciones de tipo jet, son en las que dado un lado de nuestra frontera (pueden se varios), se va a inyectar un energía y masa a una cierta velocidad constante todo el tiempo en una de las partes de la frontera.
+Las condiciones de tipo jet, son en las que dado un lado de nuestra frontera (pueden ser varios), se va a inyectar una energía y masa a una cierta velocidad constante todo el tiempo en una de las partes de la frontera.
 
  
 \begin{figure}[H]
 \centering
 \subfigure[La densidad del medio sin la inyección del jet]{\includegraphics[scale = 0.50]{./Figuras/Apendice/jet1.png}}
 \subfigure[Jet inyectándose en el medio]{\includegraphics[scale = 0.50]{./Figuras/Apendice/jet2.png}}
-\caption{El jet, es básicamente inyectar masa y energía en una parte de nuestra frontera, a cada tiempo que evoluciona.} \label{fig:periodicas}
+\caption{El jet es básicamente inyectar masa y energía en una parte de nuestra frontera, a cada tiempo que evoluciona.} \label{fig:periodicas}
 \end{figure}
 
-Para obtener las ecuaciones de esta frontera, igualamos los valores de la frontera \emph{fantasma} con las variables primitivas de nuestro jet, las siguientes ecuación son para la parte de abajo de nuestro dominio.
+Para obtener las ecuaciones de esta frontera, igualamos los valores de la frontera \emph{fantasma} con las variables primitivas de nuestro jet, las siguientes ecuaciones son para la parte de abajo de nuestro dominio.
 
 No relativista
 
