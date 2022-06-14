@@ -99,7 +99,7 @@ stringstyle=\color{orange},
   \LARGE{F}\large{ACULTAD DE } \LARGE{C}\large{IENCIAS}\\[2cm]
 
   \large{
-Simulaciones numéricas hidrodinámicas de jets relativistas en distintos medios. }\\[2cm]
+Simulaciones numéricas hidrodinámicas de jets relativistas en distintos medios }\\[2cm]
 
   \huge{
 T \hspace{1cm} E \hspace{1cm} S \hspace{1cm} I \hspace{1cm} S  }\\[1cm]
@@ -168,18 +168,21 @@ no se hubiera podido realizar esta tesis.
 \markboth{RESUMEN}{RESUMEN}
 %----------------------------------------------------------------------------------------------
 Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con 
-mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro \Selene{súper masivo}{supermasivo}) se mueven con 
+mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro supermasivo) se mueven con 
 velocidades que van desde el 
-límite no relativista hasta el l\'imite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro, se mueven a velocidades 
-ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones \Selene{en las que?} es las que se originan son tales que es prácticamente imposible de recrear experimentalmente \Selene{<-- Esta frase no se entiende}.
+límite no relativista hasta el límite relativista. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro, se mueven a velocidades 
+ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones en las que se originan son tales que es prácticamente imposible de recrear experimentalmente.
 Una buena forma de estudiar los jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un 
 código numérico HD y RHD en una y dos dimensiones para así poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
 
 Para verificar que el código funcionaba correctamente, primero se reprodujeron una serie de pruebas numéricas cuya solución ya era conocida previamente, i.e. se realizaron pruebas unidimensionales 
-HD y RHD, y pruebas bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilizaron dos métodos distintos para resolver el problema de Riemann: el método de Friederich-Lax y Harten-Lax-van-Leer (HLL). 
-Para las pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo, Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las soluciones conocidas.
+HD y RHD, y pruebas bidimensionales HD (Sedov-Taylor) y RHD. Cabe señalar que para HD y RHD se utilizaron dos métodos distintos para resolver las ecuaciones de Euler: el método de Friederich-Lax y 
+Harten-Lax-van-Leer (HLL). Para las pruebas HD tanto el método de Lax como el método de HLL reprodujeron correctamente las soluciones, sin embargo, Lax resultó ser computacionalmente más rápido. En las pruebas RHD el método HLL reprodujo mejor las soluciones conocidas.
 
-Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo, también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varía en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
+Se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema, 
+grosor del jet, ondas de colimación, ancho del capullo), sin embargo, también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme 
+se incrementa la resolución del código numérico creado para esta tesis. Finalmente, se estudió la evolución del jet en un medio que varía en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$ y 
+se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 
 
 %%%%%%%%%%%%%%%  CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3013,7 +3016,7 @@ Las condiciones de tipo jet, son en las que dado un lado de nuestra frontera (pu
 \end{figure}
 
 Para obtener las ecuaciones de esta frontera, igualamos los valores de la frontera \emph{fantasma} con las variables primitivas de nuestro jet, las siguientes ecuaciones son para la parte de abajo de nuestro dominio.
-
+7
 No relativista
 
 \begin{eqnarray}
