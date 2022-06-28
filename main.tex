@@ -431,9 +431,9 @@ Los objetivos de esta tesis se enlistan a continuación:
   
   \item Incorporar los resolvedores numéricos Lax y HLL en el código (tanto en el HD como en el RHD).
   
-  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando los métodos de Lax y HLL.
+  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analítica (en 1D y 2D). Comparar los resultados usando los métodos de Lax y HLL.
 
-  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analíticamente (en 1D y 2D). Comparar los resultados usando los métodos de Lax y HLL.
+  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analítica (en 1D y 2D). Comparar los resultados usando los métodos de Lax y HLL.
   
   \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de \citet{MB-HLLC-I}, y se compararán los resultados obtenidos.
 
@@ -448,59 +448,61 @@ Los objetivos de esta tesis se enlistan a continuación:
 \chapter{Teoría}
 
 % Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
-Los jets, ya sea que provengan de GRNs o AGNs, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
-las ecuaciones de la hidrodinámica.
-Para describir un sistema de partículas como un fluido bajo ciertas condiciones, uno debe de conocer que el camino libre medio debe de ser mucho más pequeño que la escala de longitud de las fluctuaciones de las 
-variables macroscópicas \citet{LeVeque1998}.
+Los jets, ya sea que provengan de GRBs o AGNs, se pueden describir como un fluido sin viscosidad %AQUI HAY QUE ACLARAR ESTA LÍNEA
+y estos pueden ser descritos bajo las ecuaciones de la hidrodinámica.
+Para describir un sistema de partículas como un fluido bajo ciertas condiciones, uno debe de conocer que el camino libre medio debe de ser mucho más pequeño que la escala de longitud de las 
+fluctuaciones de las variables macroscópicas \citep{LeVeque1998}.
 
 \begin{equation}
-\lambda_{mfp} \ll L
+\lambda_{mfp} \ll L.
 \end{equation}
 
-El tiempo entre las colisiones debe de ser pequeña comparada con la escala del tiempo de los cambios en el fluido
+El tiempo entre las colisiones debe de ser pequeño comparado con la escala del tiempo de los cambios en el fluido.
 \begin{equation}
-t_{c} \ll t_f
+t_{c} \ll t_f.
 \end{equation}
-La distancia media entre las partículas tiene que ser más pequeña que la longitud de escala de las variables macroscópicas
+
+La distancia media entre las partículas tiene que ser más pequeña que la longitud de escala de las variables macroscópicas.
 
 \begin{equation}
-l = n^{-1/3} \ll L
+l = n^{-1/3} \ll L.
 \end{equation}
 
 
 
 \section{Ecuaciones de la hidrodinámica}\label{sec:Ecuacioneshidrodinamica}
 
-Considerando una serie de elementos de volumen fijos \citet{Clarke2007}, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
+Considerando una serie de elementos de volumen fijos \citep{Clarke2007}, las ecuaciones que describen el movimiento de un fluido sin considerar efectos viscosos son:
 
-La conservación de masa\Selene{: debes poner esos dos puntos}
+La conservación de masa: 
 \begin{equation} \label{conservación_masa_hidrodinamica}
-\dfrac{\partial \rho }{\partial t} + \nabla \cdot \left( \rho \mathbf{u} \right)
+\dfrac{\partial \rho }{\partial t} + \nabla \cdot \left( \rho \mathbf{u} \right)=0.
 \end{equation}
 
-El momento
+El momento:
 \begin{equation}  \label{conservación  _momento_hidrodinamica}
-\dfrac{\partial \left( \rho \mathbf{u} \right) }{\partial t}+ \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = \mathbf{f_{ext}}
+\dfrac{\partial \left( \rho \mathbf{u} \right) }{\partial t}+ \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = \mathbf{f_{ext}}.
 \end{equation}
 
-Ecuación de la energía
+Ecuación de la energía:
 
 \begin{equation} \label{conservación  _energia_hidrodinamica}
-\dfrac{\partial E }{\partial t} + \nabla \cdot \left[ \mathbf{u} \left( e+p \right) \right] =G-L+\mathbf{f_{ext} \cdot \mathbf{u}}
+\dfrac{\partial e }{\partial t} + \nabla \cdot \left[ \mathbf{u} \left( e+p \right) \right] =G-L+\mathbf{f_{ext} \cdot \mathbf{u}}.
 \end{equation}
 
-Ecuación de estado
+Ecuación de estado:
 \begin{equation}
-e=\frac{1}{2} \rho \mathbf{u}^{2} + \frac{p}{\Gamma - 1}
+e=\frac{1}{2} \rho \mathbf{u}^{2} + \frac{p}{\Gamma - 1}.
 \end{equation}
 
-Con estas ecuaciones podemos formar una matriz de $5x5$ escritas en coordenadas cartesianas:
+Donde $\rho$ es la densidad, $\mathbf{u}$ es el vector de la velocidad y $p$ es la presión.
+Con estas ecuaciones podemos formar un sistema de 5 ecuaciones diferenciales parciales acopladas. En coordenadas cartesianas:
 
 \begin{equation} \label{euler_cartesianas}
-\dfrac{\partial \mathbf{U}}{\partial t}+\dfrac{\partial \mathbf{F}}{\partial x}+\dfrac{\partial \mathbf{G}}{\partial y}+\dfrac{\partial \mathbf{H}}{\partial z}= \mathbf{S}
+\dfrac{\partial \mathbf{U}}{\partial t}+\dfrac{\partial \mathbf{F}}{\partial x}+\dfrac{\partial \mathbf{G}}{\partial y}+\dfrac{\partial \mathbf{H}}{\partial z}= \mathbf{S}  ,
 \end{equation}
 
-Donde
+\noindent donde:
 \begin{center}
 
 
@@ -510,7 +512,7 @@ $\mathbf{U}=
 \rho u \\
 \rho v \\
 \rho w \\
-E \\
+e \\
 \end{smallmatrix}\right)
 $,
 $\mathbf{F} =
@@ -551,15 +553,13 @@ G-L+\textbf{f} \cdot \textbf{u} \\
 $
 \end{center}
 
-\Selene{}{Pon : antes de cada ecuación}
-El término de $\mathbf{U}$ son nuestras variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son nuestros fluidos  con velocidades en la dirección $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. 
-Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las diferencias finitas y el método de Lax sin considerar los términos fuente, es decir, 
+El término $\mathbf{U}$ son las variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son los fluidos en las direcciones $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. 
+Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las volúmenes finitos y el método de Lax sin considerar los términos fuente, es decir, 
 $\mathbf{S}=0$.
 
-La implementación en el código se hará en 2 dimensiones, por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero, el bloque de código está en una subrutina llamada \emph{fluxes}, 
+La implementación en el código se hará en 2 dimensiones, por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero. El bloque de código está en una subrutina llamada \emph{fluxes}, 
 donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
-la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ . 
-\Selene{Si usas una tipografía para un símbolo no la cambies después. }
+la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$. 
 
 \begin{lstlisting}[frame=single]
 
@@ -575,31 +575,33 @@ la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$ .
 
 \end{lstlisting}
 
-Las variables \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle, el término $\mathbf{H}$ no es incluido, debido a que es computacionalmente 
-caro. El término \emph{u} hace alusión a las variables conservadas.
+Las variables \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle, el término $\mathbf{H}$ no es incluido, dado que estamos en 2D. 
+El término \emph{u} hace alusión a las variables conservadas.
 
 \subsection{Desacoplamiento de las ecuaciones de la hidrodinámica}\label{subsec:DesacoplamientoEcuacionesHidrodinamica}
 
-Al final del método de las diferencias finitas, obtenemos nuestras variables conservadas (\emph{U}), pero para calcular nuestros flujos de nuevo necesitamos recuperar nuestras primitivas, es decir, calcular nuestras variables primitivas $(\rho, \, u, \, v,\, w, \, P )$ en función de nuestras variables conservadas $(u_1, \, u_2, \, u_3, \, u_4, \, u_5)$.
+Al final del método de volúmenes finitos, obtenemos las variables conservadas (\emph{U}), pero para calcular los flujos de nuevo necesitamos recuperar las primitivas, es decir, calcular las variables primitivas 
+$(\rho, \, u, \, v,\, w, \, p )$ en función de nuestras variables conservadas $(U_1, \, U_2, \, U_3, \, U_4, \, U_5)$.
 
-Despejar la densidad es sencillo, ya que es directo, $u_1= \rho$ por lo tanto:
+Despejar la densidad es sencillo, ya que es directo, $U_1= \rho$ por lo tanto:
 
 \begin{equation}\label{primitiva_densidad}
-\rho = u_1
+\rho = U_1.
 \end{equation}
 
-Para las velocidades $u_i=\rho \upsilon$, donde $i=2,3,4$ y $\upsilon=u,v,w$, nos da $\upsilon= u_i/ \rho$ y usando la ecuación \ref{primitiva_densidad} queda:
+\noindent Para las velocidades $U_i=\rho \upsilon_i$, donde $i=2,3,4$ y $\upsilon_i=u,v,w$, nos da $\upsilon_i= U_i/ \rho$ y usando la ecuación \ref{primitiva_densidad} queda:
 
 \begin{equation} \label{primitiva_velocidades}
-\upsilon = u_1/u_i
+\upsilon_i = U_1/U_i.
 \end{equation}
-Para la ecuación   de la energía $u_5=E$ combinando con la ecuación   de estado y la ecuación \ref{primitiva_velocidades} obtenemos
+Para la ecuación   de la energía $U_5=e$ combinando con la ecuación   de estado y la ecuación \ref{primitiva_velocidades} obtenemos:
 \begin{equation}
-P = \left( \Gamma - 1 \right) \left[ u_5 - \frac{u_1 \left( \sum_{i=2}^{4} u_1/u_i \right)^2}{2} \right]
+P = \left( \Gamma - 1 \right) \left[ U_5 - \frac{U_1 \left( \sum_{i=2}^{4} U_1/U_i \right)^2}{2} \right].
 \end{equation}
 
 En el código se implementa de la siguiente manera.
-Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento se implementa directamente en la subrutina \emph{fluxes}, para que se puedan calcular los flujos.
+Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los flujos, se tienen que calcular las primitivas. Dado que el desacoplamiento se implementa directamente en la subrutina \emph{fluxes}, para 
+que se puedan calcular los flujos.
 
 \begin{lstlisting}[frame=single] 
   
@@ -612,7 +614,7 @@ Las variables \emph{i}, \emph{j} son contadores, y antes de que se calculen los 
 
 \end{lstlisting}
 
-donde que la variable \emph{u(4,i, j)} es la densidad de energía.
+\noindent Donde la variable \emph{u(4,i, j)} es la densidad de energía, ya que, como se recordará, se está en 2 dimensiones.
   
 \section{Hidrodinámica relativista}
 Los jets generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si nos servirá como apoyo para poder pasar a la hidrodinámica relativista.
