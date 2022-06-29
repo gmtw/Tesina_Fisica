@@ -617,23 +617,25 @@ que se puedan calcular los flujos.
 \noindent Donde la variable \emph{u(4,i, j)} es la densidad de energía, ya que, como se recordará, se está en 2 dimensiones.
   
 \section{Hidrodinámica relativista}
-Los jets generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si nos servirá como apoyo para poder pasar a la hidrodinámica relativista.
-En esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordará acerca de como cambian nuestras primitivas, como afectan a nuestras variables conservadas y como las podemos desacoplar, así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
+Los jets generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si como apoyo para poder pasar a la hidrodinámica relativista.
+Esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordarán cómo cambian nuestras primitivas, cómo afectan a nuestras variables conservadas y cómo las podemos 
+desacoplar, así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
 
 \subsection{Primitivas}
-Las ecuaciones que teníamos para fluidos newtonianos se pueden modificar para hacerlos relativistas \citet{Marty1999, Landau1987}. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación 
+Las ecuaciones que se tienen para flujos newtonianos se pueden modificar para hacerlas relativistas \citep{Marty1999, Landau1987}. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación 
 de masa:
 
-\begin{equation}\label{ecuación  _conservación_masa}
-\left( \rho u^{\alpha} \right)_{, \alpha} =0
+\begin{equation}\label{ecuacion_conservación_masa}
+\left( \rho U^{\alpha} \right)_{, \alpha} =0 ,
 \end{equation}
 
-\begin{equation}\label{ecuación  _momento_energia}
-T_{, \beta}^{\alpha \beta}=0
+\begin{equation}\label{ecuacion_momento_energia}
+T_{, \beta}^{\alpha \beta}=0 .
 \end{equation}
 
-De la ecuación \ref{ecuación  _conservación_masa} tenemos la cuadrivelocidad para un sistema de 
-3 coordenadas y consideremos a la velocidad de la luz como $c=1$ lo podemos ver como $u^{\mu}=\gamma \left( 1, \textbf{v}\right)$ y sustituyendo este resultado (en 2 dimensiones espaciales) tendremos las ecuaciones $u_1$, $F_1$ y $G_1$. Para la ecuación \ref{ecuación  _momento_energia} podemos escribir el tensor de energía-momento como $T^{\mu \nu} = \rho h u^{\mu} u^{\nu} + Pg^{\mu \nu}$ y usando la métrica de Minkowski
+\noindent De la ecuación \ref{ecuacion_conservación_masa} se tiene la cuadrivelocidad para un sistema de 
+3 coordenadas y considerando a la velocidad de la luz como $c=1$ se puede ver como $U^{\mu}=\gamma \left( 1, \textbf{v}\right)$ y sustituyendo este resultado (en 2 dimensiones espaciales) tendremos las ecuaciones 
+$U_1$, $F_1$ y $G_1$. Para la ecuación \ref{ecuacion_momento_energia} podemos escribir el tensor de energía-momento como $T^{\mu \nu} = \rho h U^{\mu} U^{\nu} + pg^{\mu \nu}$ y usando la métrica de Minkowski
 
 \begin{equation}
 \eta_{\alpha \beta}= 
@@ -641,37 +643,38 @@ De la ecuación \ref{ecuación  _conservación_masa} tenemos la cuadrivelocidad 
  -1 & 0 & 0 & 0 \\
  0 & -1 & 0 & 0 \\
  0 & 0 & -1 & 0 \\
- 0 & 0 & 0 & 1 \\
-\end{pmatrix}
+ 0 & 0 & 0 & 1 \\ 
+\end{pmatrix},
 \end{equation}
 
-Con lo que podemos escribir a $T^{\mu \nu}$ matricialmente como:
+\noindent podemos escribir a $T^{\mu \nu}$ matricialmente como:
 
 \begin{equation}
 T^{\mu \nu} =
 \begin{pmatrix}
-\rho h \gamma^2-P & \rho h \gamma^2 v_{x}  & \rho h \gamma^2 v_{y} & \rho h \gamma^2 v_{z} \\
+\rho h \gamma^2-p & \rho h \gamma^2 v_{x}  & \rho h \gamma^2 v_{y} & \rho h \gamma^2 v_{z} \\
 
-\rho h \gamma^2 v_{x} & \rho h \gamma^2 v_{x}^{2}+P & \rho h \gamma^2 v_{x}v_{y} &  \rho h \gamma^2 v_{x}v_{z} \\
+\rho h \gamma^2 v_{x} & \rho h \gamma^2 v_{x}^{2}+p & \rho h \gamma^2 v_{x}v_{y} &  \rho h \gamma^2 v_{x}v_{z} \\
 
-rho h \gamma^2 v_{y} & \rho h \gamma^2 v_{y}v_{x} & \rho h \gamma^2 v_{y}^{2}+P & \rho h \gamma^2 v_{y}v_{z}\\
+\rho h \gamma^2 v_{y} & \rho h \gamma^2 v_{y}v_{x} & \rho h \gamma^2 v_{y}^{2}+p & \rho h \gamma^2 v_{y}v_{z}\\
 
-\rho h \gamma^2 v_{z} & \rho h \gamma^2 v_{z}v_{x} & \rho h \gamma^2 v_{z}v_{y} & \rho h \gamma^2 v_{z}^2 + P
+\rho h \gamma^2 v_{z} & \rho h \gamma^2 v_{z}v_{x} & \rho h \gamma^2 v_{z}v_{y} & \rho h \gamma^2 v_{z}^2 + p
 
-\end{pmatrix}
+\end{pmatrix} .
 \end{equation}
-Entonces nuestras ecuaciones quedarían de la siguiente manera
+Entonces nuestras ecuaciones quedarían de la siguiente manera:
 \begin{align}
 u_{1}& = \rho \gamma \\ 
 u_{2}& = \rho v_{x} \gamma^{2} h \\ 
 u_{3}& = \rho v_{y} \gamma^{2} h \\ 
-u_{4}& = \rho \gamma^{2} h - P 
+u_{4}& = \rho \gamma^{2} h - p 
 \end{align}
 
-Donde $\rho$ es la densidad, $\gamma$ es el factor de Lorentz, $v_{x}$ y $v_{y}$ son las velocidades de nuestros fluidos (en 2 dimensiones, pero se puede extender esto a 3 sin ningún problema), $h$ es la entalpía  y $P$ es la presión. Para los fluidos quedan de la siguiente manera
+\noindent donde $\rho$ es la densidad, $\gamma$ es el factor de Lorentz, $v_{x}$ y $v_{y}$ son las velocidades de los flujos (en 2 dimensiones, pero se puede extender esto a 3 sin ningún problema), 
+$h$ es la entalpía  y $p$ es la presión. Para los flujos quedan de la siguiente manera:
 \begin{align}
 F_{1}& = \rho v_{x} \gamma \\ 
-F_{2}& = \rho v_{x} v_{x} \gamma^{2} h + P\\ 
+F_{2}& = \rho v_{x} v_{x} \gamma^{2} h + p\\ 
 F_{3}& = \rho v_{x} v_{y} \gamma^{2} h \\ 
 F_{4}& = \rho v_{x} \gamma^{2} h 
 \end{align}
@@ -679,15 +682,10 @@ F_{4}& = \rho v_{x} \gamma^{2} h
 \begin{align}
 G_{1}& = \rho v_{y} \gamma \\ 
 G_{2}& = \rho v_{y} v_{x} \gamma^{2} h \\ 
-G_{3}& = \rho v_{y} v_{y} \gamma^{2} h + P\\ 
-G_{4}& = \rho v_{y} \gamma^{2} h
+G_{3}& = \rho v_{y} v_{y} \gamma^{2} h + p\\ 
+G_{4}& = \rho v_{y} \gamma^{2} h .
 \end{align}
-\begin{align}
-H_{1}& = \rho v_{z} \gamma \\ 
-H_{2}& = \rho v_{z} v_{x} \gamma^{2} h \\ 
-H_{3}& = \rho v_{z} v_{y} \gamma^{2} h \\ 
-H_{4}& = \rho v_{z}^{2} \gamma^{2} h + P
-\end{align}
+
 
 La implementación en el código es de la siguiente manera, el factor de Lorentz $\gamma$ es la variable $lor$, $h$ la entalpía, al igual que en la hidrodinámica newtoniana solo se considerará 2 dimensiones:
 
@@ -710,26 +708,27 @@ La implementación en el código es de la siguiente manera, el factor de Lorentz
 A diferencia de los flujos newtonianos, para los flujos relativistas se tienen que calcular antes el factor de Lorentz \emph{lor} y la entalpía \emph{h},
 las variables \emph{i}, \emph{j} son contadores sobre el espacio.
 
-\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuación  es_de_la_hidrodinámica_relativista}
-Para poder desacoplar las ecuaciones, partimos de la relación de las densidades de energía total y del módulo de los momentos \cite{Berger:2014jza}. 
+\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
+Para poder desacoplar las ecuaciones, se partirá de la relación de las densidades de energía total y del módulo de los momentos \citep{Berger:2014jza}. 
 
 \begin{equation}\label{ecuación  _de_energia}
-  e=W-p
+  e=W-p ,
 \end{equation}
 
 \begin{equation}\label{modulos de los momentos}
 \abs{m}^2= W^{2}\abs{v}^{2}
 \end{equation}
 
-Donde $W=D h \gamma$ y $D=\rho \gamma$. Para evitar errores en el límite no relativista se debe resolver la ecuación conservada restando la densidad de masa 
-a la energía para definir una nueva variable conservada ($e^{'}=e-D$), para las cancelaciones en el límite ultra-relativista basados en $\gamma \abs{v^2}$ que se tiene cuando $\abs{v} \rightarrow 1$, se debe de crear otra variable, que en este caso seria $\abs{u}^2=\gamma \abs{v^2}$ e introduciendo las variables $W^{'}=W-D$. Podemos reescribir la última ecuación de la siguiente manera:
+\noindent donde $W=D h \gamma$ y $D=\rho \gamma$. Para evitar errores en el límite no relativista se debe resolver la ecuación conservada restando la densidad de masa 
+a la energía para definir una nueva variable conservada ($e^{'}=e-D$). Para las cancelaciones en el límite ultra-relativista basados en $\gamma \abs{v^2}$ que se tiene cuando $\abs{v} \rightarrow 1$, se debe de crear 
+otra variable, que en este caso seria $\abs{u}^2=\gamma \abs{v^2}$ e introduciendo las variables $W^{'}=W-D$, podemos reescribir la última ecuación de la siguiente manera:
 \begin{eqnarray*}
  W^{'}& = &D(h \gamma -1)\\
 &=& D\left[ \left(1-\epsilon+ \frac{p}{\rho}\right) \gamma - 1 \right]\\
-&=& D \left(\gamma-1 \right) \frac{\gamma+1}{\gamma+1}+\frac{D \gamma }{\rho}\left(\rho \epsilon + p \right)
+&=& D \left(\gamma-1 \right) \frac{\gamma+1}{\gamma+1}+\frac{D \gamma }{\rho}\left(\rho \epsilon + p \right).
 \end{eqnarray*}
 
-Recordando que $D=\rho \gamma$ y que a partir de la variable introducida $u^{2}$ podemos 
+\noindent Recordando que $D=\rho \gamma$ y que a partir de la variable introducida $u^{2}$ podemos 
 reescribir el factor de Lorentz como $\gamma^{2} = 1-u^{2}$
 
 \begin{eqnarray}\label{W_prima}
@@ -738,141 +737,138 @@ reescribir el factor de Lorentz como $\gamma^{2} = 1-u^{2}$
 &=& \frac{D u^{2}}{\gamma + 1} + \gamma^{2} \chi
 \end{eqnarray}
 
-Donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \ref{ecuación  _de_energia} queda como
+\noindent donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \ref{ecuación  _de_energia} queda como
 \begin{equation}\label{derivada_E_W}
-\dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}
+\dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}.
 \end{equation}
 
-Nosotros no sabemos como es la expresión $\dfrac{de}{dW^{'}}$, así que asumiremos que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena (para más detalles consulte)
+\noindent No se sabe como es la expresión $\dfrac{de}{dW^{'}}$, así que asume que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena
 \begin{equation}\label{cadena}
-\dfrac{dp}{dW^{'}}=\dfrac{\partial p}{\partial\chi}\Bigg |_{\rho} \dfrac{d\chi}{dW^{'}} + \dfrac{\partial p}{\partial \rho}\Big |_{\chi} \dfrac{d \rho}{d W^{'}}
+\dfrac{dp}{dW^{'}}=\dfrac{\partial p}{\partial\chi}\Bigg |_{\rho} \dfrac{d\chi}{dW^{'}} + \dfrac{\partial p}{\partial \rho}\Big |_{\chi} \dfrac{d \rho}{d W^{'}}.
 \end{equation}
 
-Para calcular $\dfrac{dp}{d\chi}$ tenemos que por ser el caso de un gas ideal
+\noindent Para calcular $\dfrac{dp}{d\chi}$ tenemos que, por ser el caso de un gas ideal,
 \begin{equation} \label{entalpía_función_presion_densidad}
 h=1+\frac{\Gamma}{\Gamma-1}\frac{p}{\rho}
 \end{equation}
-Donde $h$ también puede ser escrito como
+donde $h$ también puede ser escrito como
 \begin{equation}
-h=1+\epsilon+\frac{p}{\rho}
+h=1+\epsilon+\frac{p}{\rho}.
 \end{equation}
 Si combinamos estas 2 últimas ecuaciones podemos llegar a que 
 \begin{equation}
-p(\chi,\rho)=\frac{\Gamma-1}{\Gamma}\chi
+p(\chi,\rho)=\frac{\Gamma-1}{\Gamma}\chi ,
 \end{equation}
 
-Con lo que al derivar con respecto de $\chi$ nos da como resultado
+\noindent con lo que al derivar con respecto de $\chi$ nos da como resultado:
 \begin{eqnarray}\label{der_presion}
-& \dfrac{d p}{d \chi}&=\frac{\Gamma-1}{\Gamma}\\ &\dfrac{d p}{d \rho}&= 0
+& \dfrac{d p}{d \chi}&=\frac{\Gamma-1}{\Gamma} ,\\ &\dfrac{d p}{d \rho}&= 0.
 \end{eqnarray}
 
-De la ecuación \ref{W_prima} podemos despejar $\chi$, lo que queda como
+\noindent De la ecuación \ref{W_prima} podemos despejar $\chi$, lo que queda como:
 \begin{equation}
-\chi=\frac{W^{'}}{\gamma}- \frac{D u^{2}}{(1+\gamma)\gamma^{2}}
+\chi=\frac{W^{'}}{\gamma}- \frac{D u^{2}}{(1+\gamma)\gamma^{2}}.
 \end{equation}
 
-Derivando implícitamente la ecuación \ref{W_prima} respecto a $W^{'}$ nos quedaría
+\noindent Derivando implícitamente la ecuación \ref{W_prima} respecto a $W^{'}$ nos quedaría
 \begin{eqnarray*}
 W^{'}&=&D\left(\gamma-1 \right) + \chi \gamma^{2}\\%salto de linea
-&=& D\left(\frac{1}{\sqrt{1-\nu^{2}}} -1\right)+\chi \dfrac{1}{1-\nu^{2}} \\%salto de linea
-\dfrac{d W^{'}}{d W^{'}} &=& D \dfrac{d (1-v^2)^{-1/2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+\dfrac{d (1-v^2)^{-1} }{d W^{'}}\chi \\  %salto de linea 
-1 &=& \frac{D(1-v^2)^{-3/2}}{2} \dfrac{d v^{2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+ \chi (1-v^2)^{-2}  \dfrac{d v^{2}}{d W^{'}} \\ %salto de linea
-\frac{1}{\gamma ^2} &=& \frac{D \gamma}{2} \dfrac{d v^{2}}{d W^{'}} + \dfrac{d \chi}{dW^{'}} + \chi \gamma^2 \dfrac{d v^2}{dW^{'}} \\ %salto de linea
+&=& D\left(\frac{1}{\sqrt{1-\nu^{2}}} -1\right)+\chi \dfrac{1}{1-\nu^{2}}, \\%salto de linea
+\dfrac{d W^{'}}{d W^{'}} &=& D \dfrac{d (1-v^2)^{-1/2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+\dfrac{d (1-v^2)^{-1} }{d W^{'}}\chi, \\  %salto de linea 
+1 &=& \frac{D(1-v^2)^{-3/2}}{2} \dfrac{d v^{2}}{d W^{'}}+\dfrac{d \chi}{dW^{'}}(1-v^2)^{-1}+ \chi (1-v^2)^{-2}  \dfrac{d v^{2}}{d W^{'}}, \\ %salto de linea
+\frac{1}{\gamma ^2} &=& \frac{D \gamma}{2} \dfrac{d v^{2}}{d W^{'}} + \dfrac{d \chi}{dW^{'}} + \chi \gamma^2 \dfrac{d v^2}{dW^{'}}. \\ %salto de linea
 \end{eqnarray*}
 
-Con lo que al final la ecuación se puede escribir de la siguiente manera
+\noindent Por lo tanto, la ecuación se puede escribir de la siguiente manera:
 
 \begin{equation}\label{der_chi}
-\dfrac{d \chi}{dW^{'}}=\frac{1}{\gamma^2}-\frac{\gamma}{2}(D-2\gamma \chi) \dfrac{d v^2}{dW^{'}}
+\dfrac{d \chi}{dW^{'}}=\frac{1}{\gamma^2}-\frac{\gamma}{2}(D-2\gamma \chi) \dfrac{d v^2}{dW^{'}},
 \end{equation}
 
-Y para
+\noindent y para
 
 \begin{equation}\label{der_rho}
-\dfrac{d \rho}{d W^{'}}= D \dfrac{d\left(1/ \rho \right) }{d W^{'}} = - \frac{D \gamma}{2}  \dfrac{d v^2}{dW^{'}}
+\dfrac{d \rho}{d W^{'}}= D \dfrac{d\left(1/ \rho \right) }{d W^{'}} = - \frac{D \gamma}{2}  \dfrac{d v^2}{dW^{'}}.
 \end{equation}
 
-despejando la ecuación \ref{modulos de los momentos} podemos llegar a escribir el módulo de la velocidad al cuadrado de la siguiente manera
+\noindent Despejando la ecuación \ref{modulos de los momentos} podemos llegar a escribir el módulo de la velocidad al cuadrado de la siguiente manera:
 \begin{equation}
 \abs{v^{2}} = \frac{\abs{m^{2}}}{W^{'}} 
 \end{equation}
-Donde $m_i= \rho v_i \gamma h$ para $i=x,y$.
+\noindent donde $m_i= \rho v_i \gamma h$ para $i=x,y$.
 
-Podemos demostrar que $\dfrac{d \abs{v^2}}{W}=\dfrac{d \abs{v^2}}{W^{'}}$ para esto vamos a partir de lo siguiente 
+Se puede demostrar que $\dfrac{d \abs{v^2}}{W}=\dfrac{d \abs{v^2}}{W^{'}}$ para esto vamos a partir de lo siguiente: 
 \begin{eqnarray*}
 \abs{v^2}&=& \abs{m^{2}} \left(W^{'} + D \right)^{-2} \\
 \dfrac{d \abs{v^2}}{d W^{'}} &=& \frac{-2 \abs{m}^2}{W^{'}+D^{3}} \\
 &=& \frac{2 \abs{m}^2}{W^{3}} \\
-&=& \dfrac{d \abs{v^2}}{d W^{'}}
+&=& \dfrac{d \abs{v^2}}{d W^{'}},
 \end{eqnarray*}
 
-Con lo que podemos decir que 
+\noindent con lo que se puede decir que 
 
 \begin{equation}\label{der_v2}
 \dfrac{d\abs{v}^2}{d W^{'} }=-\frac{2 \abs{m}^{2}}{W^{3}}
 \end{equation}
-Con todo esto ya sabemos cuanto es lo que vale la ecuación \ref{derivada_E_W}, con esto ya podemos usar el método de Newton-Rapson para poder encontrar $W^{'}$.\\
+Con todo esto ya se sabe cuanto es lo que vale la ecuación \ref{derivada_E_W}, por lo que se puede usar el método de Newton-Raphson para poder encontrar $W^{'}$.
+El método de Newton-Raphson es un algoritmo iterativo que se usa para encontrar raíces  de una función real:
 
-El método de Newton-Rapson es un algoritmo iterativo que se usa para encontrar raíces  de una función real:
-
-\begin{equation} \label{eq_Newton_Rapson}
-W^{'(k+1)}=W^{'}-\frac{f(W^{'})}{\dfrac{d f(W^{'})}{d W^{'}}}
+\begin{equation} \label{eq_Newton_Raphson}
+W^{'(k+1)}=W^{'}-\frac{f(W^{'})}{\dfrac{d f(W^{'})}{d W^{'}}}.
 \end{equation}
 
-De la ecuación de la densidad de energía, podemos utilizarla como a la función a la que queremos encontrar la raíz
+De la ecuación de la densidad de energía, se puede usar como a la función a la que se quiere encontrar la raíz
 
 \begin{equation} \label{ecuación_f}
 f(W^{'})=W^{'}-e^{'}-p
 \end{equation}
 
-Donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
-Para iniciar el proceso de iteración se tiene que hacer una suposición, para esto, con ayuda de las ecuaciones \ref{ecuación  _de_energia} 
-y \ref{modulos de los momentos} podemos llegar a que la presión es:
+\noindent donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
+Para iniciar el proceso de iteración se tiene que hacer una suposición. Para esto, con ayuda de las ecuaciones \ref{ecuación  _de_energia} 
+y \ref{modulos de los momentos}, se puede llegar a que la presión es:
 %===============================================================================================
 
 \begin{equation} \label{presion_de_newton}
-p=\frac{\abs{m}^{2}-W^{2}\abs{v}^{2}+4W^{2}-4EW}{4W}
+p=\frac{\abs{m}^{2}-W^{2}\abs{v}^{2}+4W^{2}-4eW}{4W}.
 \end{equation}
 
-Como podemos ver, el denominador es una función convexa cuadrática que depende $\abs{v}^{2}$ y $W$ y cumple con que $W$ este fuera del intervalo de las raíces positivas y negativas.
-
-Al denominador de la  ecuación podemos encontrar $W$ ya que $\abs{v}^{2}=1-1/\gamma^{2}$ suponiendo $\gamma \rightarrow \infty$ podemos despejar $W$
+Como se puede ver, el numerador es una función convexa cuadrática que depende $\abs{v}^{2}$ y $W$ y cumple con que $W$ este fuera del intervalo de las raíces positivas y negativas.
+Al denominador de la  ecuación se puede encontrar $W$, ya que $\abs{v}^{2}=1-1/\gamma^{2}$. Suponiendo $\gamma \rightarrow \infty$ podemos despejar $W$
 
 \begin{equation}\label{suposicion_de_W}
-W=\frac{-(-2E)+\sqrt{(-2E)^{2}-(3)(\abs{m}^{2})}}{3}
+W=\frac{-(-2e)+\sqrt{(-2e)^{2}-(3)(\abs{m}^{2})}}{3}.
 \end{equation}
 
-Con esto ya se puede hacer las aproximaciones para obtener $W$, y podemos calcular las siguientes relaciones 
+Con esto ya se puede hacer las aproximaciones para obtener $W$, y se puede calcular las siguientes relaciones: 
 \begin{eqnarray}
-\abs{v}^{2} &=& \frac{\abs{m}^{2}}{W^{2}}\label{prim_v2}\\ 
-u^{2}&=&\frac{\abs{v}^{2}}{1-\abs{v}^{2}}\label{u2}\\
+\abs{v}^{2} &=& \frac{\abs{m}^{2}}{W^{2}}\label{prim_v2},\\ 
+u^{2}&=&\frac{\abs{v}^{2}}{1-\abs{v}^{2}}\label{u2},\\
 \gamma &=& \sqrt{1+u^{2}}
 \end{eqnarray}
-Y las nuevas primitivas.\\
-
+y las nuevas primitivas.\\
 Velocidades:
 \begin{eqnarray}
-v_{x}&=&\frac{u_{2}}{W}\\
-v_{y}&=&\frac{u_{3}}{W}\\
+v_{x}&=&\frac{u_{2}}{W},\\
+v_{y}&=&\frac{u_{3}}{W}.\\
 \end{eqnarray}
 
-Densidad de masa 
+\noindent Densidad de masa: 
 \begin{equation}
-\rho=\frac{D}{\gamma}
+\rho=\frac{D}{\gamma}.
 \end{equation}
 
-Presión térmica
+\noindent Presión térmica:
 \begin{eqnarray}
-\chi&=&\frac{W-D}{\gamma^{2}}-\frac{D \abs{u}^{2}}{(1+\gamma)\gamma^{2}}\\
-p&=&\frac{\Gamma-1}{\Gamma} \chi
+\chi&=&\frac{W-D}{\gamma^{2}}-\frac{D \abs{u}^{2}}{(1+\gamma)\gamma^{2}},\\
+p&=&\frac{\Gamma-1}{\Gamma} \chi.
 \end{eqnarray}
 
 Aunque en el método newtoniano se podían desacoplar las ecuaciones sobre el mismo bucle, 
 para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y así poder obtenerlas en función de las conservadas. 
-Al igual que en el método newtoniano, vamos a correr el bucle sobre nuestra malla. La subrutina de desacoplamiento se llama \emph{uprim}, 
-y esta recibe un parámetro de entrada, que es la conservada \emph{u} y nos devuelve una variable primitiva. 
-Las variables conservadas las reasignamos a unas nuevas llamadas \emph{qu} para que podamos usar la subrutina, una vez que se desacoplan, 
-los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
+La subrutina de desacoplamiento se llama \emph{uprim}, 
+y ésta recibe un parámetro de entrada, que es la conservada \emph{u} y devuelve una variable primitiva. 
+Las variables conservadas se reasignan a unas nuevas llamadas \emph{qu} para que se pueda usar la subrutina, una vez que se desacoplan, 
+los valores de salida, éstas se reasignan a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
 
 \begin{lstlisting}[frame=single] 
         
@@ -894,9 +890,9 @@ los valores de salida los reasignamos a otras llamadas \emph{qpp}. Se tienen que
 
 \end{lstlisting}
 
-La subrutina de desacoplamiento para las variables conservadas que se mencionan en esta sección recibirá las variables conservadas
+\noindent La subrutina de desacoplamiento para las variables conservadas que se mencionan en esta sección recibirá las variables conservadas
 y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular 
-(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Rapson}.
+(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}.
 
 \begin{lstlisting} [frame=single]
   
@@ -924,7 +920,7 @@ y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular
 \end{lstlisting}
 
 Las variables \emph{qp} mostradas en el código son las primitivas, mientras que las otras son auxiliares mostradas en el capítulo 
-\ref{Cap_Desacoplamiento_de_las_ecuación  es_de_la_hidrodinámica_relativista}
+\ref{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}.
 
 
 \section{Diferencias finitas} \label{sec:Diferencias_finitas}
@@ -2783,7 +2779,7 @@ Al usar las ecuaciones hidrodinámicas relativistas, se agregan 2 subrutinas má
 \begin{itemize}
 \item \textbf{uprim}: Este módulo es agregado para poder desacoplar las variables conservadas
 
-\item \textbf{newraph}: Calcula el método de Newton-Rapson será de gran utilidad en el desacoplamiento de las variables conservadas y así obtener nuestras primitivas
+\item \textbf{newraph}: Calcula el método de Newton-Raphson será de gran utilidad en el desacoplamiento de las variables conservadas y así obtener nuestras primitivas
 \end{itemize}
 
 \begin{lstlisting}[frame=single] 
@@ -3057,9 +3053,9 @@ Relativista
 donde $j\in \left[ a,b \right]$ y $a\geq 0, \, b\leq n+1$. Los puntos de la frontera que no sean del jet se pueden combinar con los 3 tipos de frontera mencionados anteriormente.
 
 %----------------------------------------------------------------------------------------------
-\chapter{Subrutina de Newton-Rapson}\label{ap_newrap}
+\chapter{Subrutina de Newton-Raphson}\label{ap_newrap}
 %----------------------------------------------------------------------------------------------
-Subrutina de Newton-Rapson, los valores de entrada son $m^2$ y las conservadas y devuelve $W$
+Subrutina de Newton-Raphson, los valores de entrada son $m^2$ y las conservadas y devuelve $W$
 \begin{lstlisting} [frame=single]
   subroutine newrap(qu, w, m2)
 
@@ -3125,7 +3121,7 @@ Subrutina de Newton-Rapson, los valores de entrada son $m^2$ y las conservadas y
 
       dfdw   = 1.0 - dpdw    ! df/dw
 
-      w  = w0 - mu * f / dfdw                       ! Newton-Rapson iteration
+      w  = w0 - mu * f / dfdw                       ! Newton-Raphson iteration
 
       if(abs(w-w0).lt.eps) return
 
