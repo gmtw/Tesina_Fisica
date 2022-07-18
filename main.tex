@@ -241,7 +241,7 @@ Pero en el modelo más ampliamente aceptado para GRB \citep{Seo2021}, una explos
 Los ángulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5$^{\circ}$ de apertura, el cual puede variar hasta los 35° con un promedio de $\langle \theta_j \rangle \gtrsim 10^{\circ}$.
 En el medio intergaláctico, dentro de las proximidades de las galaxias y dentro de los cúmulos de galaxias, se tienen densidades numéricas que oscilan entre $5 \times 10^{-6}$ a 
 $ \sim 10^3 \, \text{cm}^{-3}$. Con las ecuaciones de Rankine-Hugoniot se pueden conocer las densidades del jet a partir de sus velocidades y el medio ambiente que lo rodea, para más información 
-véase la sección \ref{sec:Ecuacion_Rankine_Hugoniot}.
+véase la sección \ref{sec:Condiciones_Salto}.
 %! Relativistic AGN jets I. The delicate interplay between jet structure,cocoon morphology and jet-head propagation
 
 
@@ -480,13 +480,13 @@ La conservación de masa:
 \end{equation}
 
 El momento:
-\begin{equation}  \label{conservación  _momento_hidrodinamica}
+\begin{equation}  \label{conservacion_momento_hidrodinamica}
 \dfrac{\partial \left( \rho \mathbf{u} \right) }{\partial t}+ \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = \mathbf{f_{ext}}.
 \end{equation}
 
 Ecuación de la energía:
 
-\begin{equation} \label{conservación  _energia_hidrodinamica}
+\begin{equation} \label{conservacion_energia_hidrodinamica}
 \dfrac{\partial e }{\partial t} + \nabla \cdot \left[ \mathbf{u} \left( e+p \right) \right] =G-L+\mathbf{f_{ext} \cdot \mathbf{u}}.
 \end{equation}
 
@@ -923,10 +923,11 @@ Las variables \emph{qp} mostradas en el código son las primitivas, mientras que
 \ref{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}.
 
 
-\section{Diferencias finitas} \label{sec:Diferencias_finitas}
-Ya hemos visto que ecuaciones describen la hidrodinámica, ahora nos toca resolverlas, dado que analíticamente es difícil, se va a hacer computacionalmente, para 
-eso se hará uso del método numérico de las diferencias finitas \cite{Duran2021}.
-Si tenemos una función $f(x)$ lo suficientemente diferenciable la podemos aproximar por el Teorema de Taylor  en la vecindad de un punto $x_0+\Delta x$ entonces si conocemos todas sus $n$ derivadas de la función $f(x)$ en el punto $x_0$ podemos aproximar de la siguiente manera
+\section{Volúmenes finitos} \label{sec:Diferencias_finitas}
+Ya se ha visto que ecuaciones describen la hidrodinámica, ahora toca resolverlas. Dado que analíticamente es difícil, se va a hacer computacionalmente, para 
+eso se hará uso del método numérico de volúmenes finitos \citep{Duran2021}.
+Si tenemos una función $f(x)$ diferenciable la podemos aproximar por el teorema de Taylor en la vecindad de un punto $x_0$ y si se conocen todas sus $n$ derivadas de la función $f(x)$ en el punto $x_0$ se puede 
+aproximar de la siguiente manera
 
 \begin{equation}\label{Serie_Taylor}
 f\left( x_0 + \Delta x\right) = f\left( x_0 \right)+
@@ -934,25 +935,25 @@ f\left( x_0 + \Delta x\right) = f\left( x_0 \right)+
 \right)
 \end{equation}
 
-Si truncamos la serie de Taylor y quitamos los términos de segundo orden, podemos escribir la ecuación \ref{Serie_Taylor} como:
+Si se trunca la serie de Taylor y se quitan los términos de segundo orden, se puede escribir la ecuación \ref{Serie_Taylor} como:
 
 \begin{equation}
-f\left( x_0 + \Delta x \right) = f(x_0) - \Delta x f^{(1)} (x_0) + O \left( \Delta x \right)
+f\left( x_0 + \Delta x \right) = f(x_0) + \Delta x f^{(1)} (x_0) + O \left( \Delta x \right).
 \end{equation}
 
-Despejando $f(x_0)$ queda lo que se conoce como diferencias finitas hacia adelante
+\noindent Despejando $f(x_0)$ queda lo que se conoce como diferencias finitas hacia adelante
 \begin{equation}\label{fwd}
-f_{fwd}^{'}=\frac{f\left(x + \Delta x \right) - f(x) }{\Delta x}=\frac{f_{i+1}-f_{i}}{\Delta x}
+f_{fwd}^{'}=\frac{f\left(x + \Delta x \right) - f(x) }{\Delta x}=\frac{f_{i+1}-f_{i}}{\Delta x}.
 \end{equation}
 
-también se puede hacer en el entorno $x_0- \Delta x$ y siguiendo los mismos pasos anteriores llegamos a lo que se le conoce como diferencia finita hacia atrás.
+\noindent También se puede hacer en el entorno $x_0- \Delta x$, siguiendo los mismos pasos anteriores se llega a lo que se le conoce como diferencias finitas hacia atrás
 
 
 \begin{equation}\label{bwd}
-f_{back}^{'}=\frac{f\left(x \right) - f(x - \Delta x) }{\Delta x}=\frac{f_{i}-f_{i-1}}{\Delta x}
+f_{back}^{'}=\frac{f\left(x \right) - f(x - \Delta x) }{\Delta x}=\frac{f_{i}-f_{i-1}}{\Delta x}.
 \end{equation}
 
-Si obtenemos el promedio de las ecuaciones \ref{fwd} y \ref{bwd} obtenemos la central:
+\noindent Si se obtiene el promedio de las ecuaciones \ref{fwd} y \ref{bwd} se puede calcular la central:
 
 \begin{equation} \label{Centrada}
 f_{central}^{'}=\frac{f\left(x + \Delta x\right) - f(x - \Delta x) }{2\Delta x}=\frac{f_{i+1}-f_{i-1}}{2 \Delta x}
@@ -960,15 +961,15 @@ f_{central}^{'}=\frac{f\left(x + \Delta x\right) - f(x - \Delta x) }{2\Delta x}=
 
 
 
-\subsection{Lax-Friederich}
+\subsection{Lax-Friederichs}
 
-Sí consideramos la siguiente ecuación diferencial parcial \cite{Duchateau2002}
+Sí se considera la siguiente ecuación diferencial parcial \citep{Duchateau2002}
 
 \begin{equation} \label{ecu_conser}
-u_t+ f\left(u \right)_t=0
+u_t+ f\left(u \right)_t=0.
 \end{equation}
 
-Un método conservativo para resolver este tipo de ecuación diferencial es 
+\noindent Un método conservativo para resolver este tipo de ecuación diferencial es 
 
 \begin{equation}\label{esquema conservativo}
 u_i^{n+1} = u_i^{n} -\frac{\Delta t}{\Delta x} \left(f_{i-\frac{1}{2}} - f_{i+\frac{1}{2}}\right)
@@ -976,31 +977,37 @@ u_i^{n+1} = u_i^{n} -\frac{\Delta t}{\Delta x} \left(f_{i-\frac{1}{2}} - f_{i+\f
 
 
 
-Sí hacemos la siguiente elección de flujo 
+\noindent Sí se hace la siguiente elección de flujo 
 
 \begin{equation}
 f_{i+\frac{1}{2}} = f_{i+\frac{1}{2}} \left(
-u_{i} , u_{i+1}\right) =\frac{1}{2} \left(f_{i} + f_{i+1} \right) 
+u_{i} , u_{i+1}\right) =\frac{1}{2} \left(f_{i} + f_{i+1} \right), 
 \end{equation}
 
-Y para 
+\noindent y para 
 
 \begin{equation}
 f_{i-\frac{1}{2}} = f_{i-\frac{1}{2}} \left(
 u_{i} , u_{i-1}\right) =\frac{1}{2} \left(f_{i} - f_{i-1} \right) 
 \end{equation}
 
-Y lo sustituimos en la ecuación \ref{esquema conservativo} nos queda el siguiente resultado
+\noindent y si se sustituye en la ecuación \ref{esquema conservativo} nos queda el siguiente resultado
 
 \begin{equation}\label{ec_inestable}
-u_i^{n+1} = u_i^{n} + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
+u_i^{n+1} = u_i^{n} - \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right).
 \end{equation}
 
-Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable Peter Lax y Kurt Friedrichs sustituyeron este término, por $(u_{i+1}^n-u_{i-1}^n)$  por lo que podemos 
+\noindent Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable Peter Lax y Kurt Friedrichs sustituyeron este término, por $(u_{i+1}^n+u_{i-1}^n)/2$  por lo que se puede
 reescribir la ecuación \ref{ec_inestable} como
 
 \begin{equation}\label{ec_estable}
-u_i^{n+1} =(u_{i+1}^n-u_{i-1}^n) + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right)
+  u_{i,j}^{n+1} =(u_{i+1}^n+u_{i-1}^n)/2 + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right).
+\end{equation}
+
+\noindent Para 2 dimensiones sería
+
+\begin{equation}\label{ec_estable}
+  u_i^{n+1} =(u_{i+1,j}^n+u_{i-1,j}^n+u_{i,j+1}^n+u_{i,j-1}^n)/4 - \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1,j} - f_{i-1,j} \right)-\frac{1}{2}\frac{\Delta t}{\Delta y} \left(g_{i,j+1} - g_{i,j-1} \right).
 \end{equation}
 
 En el código, la implementación de la ecuación \ref{ec_estable} en 2 dimensiones es la siguiente
@@ -1019,28 +1026,43 @@ En el código, la implementación de la ecuación \ref{ec_estable} en 2 dimensio
   
 \end{lstlisting}
 
-Donde \emph{dtx, dty} son las derivadas con respecto a \emph{x}, \emph{y} y \emph{up} es la conservada posterior en el tiempo.
+\noindent donde $\text{dtx} = \frac{\Delta t}{\Delta x}$, $\text{dty} = \frac{\Delta t}{\Delta y}$ y \emph{up} es la conservada posterior en el tiempo.
 
 
 
 \subsection{HLL} \label{secc:HLL}
+Antes de seguir con este método, se procedera a dar una breve descripción del problema de Riemann. Éste consiste en un problema de condiciones iniciales para una ecuación hiperbólica en derivadas parciales, la cual
+se puede escribir matemáticamente de la siguiente manera: 
 
-	Otro método para resolver las ecuaciones de la hidrodinámica es usar el método de Harten-Van-Leer \cite{Toro1997}. Definiendo el flujo numérico intercelda de Gudonov
+\begin{equation}
+  \frac{\partial U}{\partial t}+\frac{\partial F}{\partial x}=0 \quad U=\left\{\begin{array}{l}
+  U_{L}, \, x<x_{0} \\
+  U_{R}, \, x>x_{0} 
+  \end{array}\right.
+\end{equation}
+
+\noindent donde $U$ son las conservadas y $F$ son los flujos. Los valores de $U_{L}$ y $U_{R}$ representan los estados izquierda y derecha de un gas que esta separado por una membrana en el punto $x_0$ al tiempo 
+inicial \citep{Lora2013}.
+Para más detalles acerca de este problema consulte \citet{Toro1997}.
+
+
+
+	Para usar el método de Harten-Van-Leer \citep{Toro1997} se tiene que definir el flujo numérico intercelda de Gudonov
 
 \begin{equation}
 F_{i+\frac{1}{2}}=F \left( U_{i+\frac{1}{2}} \right)
 \end{equation}
 
-Para el cual $U_{i+\frac{1}{2}}(0)$ tiene la misma solución para $U_{i+\frac{1}{2}}(x/t)$ con lo que el problema de Riemann se reduce a:
+\noindent para el cual $U_{i+\frac{1}{2}}(0)$ tiene la misma solución para $U_{i+\frac{1}{2}}(x/t)$ con lo que el problema de Riemann se reduce a:
 
-\begin{equation} \label{ecuación  _discreta_conservada}
+\begin{equation} \label{ecuacion_discreta_conservada}
 \begin{array}{ll}
 U_t + F \left( U \right)_x = 0 \\
 U \left(x,0 \right) = 
 \left\lbrace
 \begin{array}{rr}
 U_L \quad \textup{si} \quad x<0  \\
-U_R \quad \textup{si} \quad x>0
+U_R \quad \textup{si} \quad x>0.
 \end{array}
 \right.
 \end{array}
@@ -1049,169 +1071,166 @@ U_R \quad \textup{si} \quad x>0
 \begin{figure} %fuente de la imagen:libro del toro/
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/HLL_onda.png}
-  \caption{Plano x-t que muestra un volumen definido}
+  \caption{Plano x-t que muestra un volumen definido. Adaptado de \citet{Toro1997}}.
   \label{fig:Plano x_t}
 \end{figure}
 
-Si consideramos un control de volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas más rápidas de los 
-estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Sí usamos la forma integral de la 
-ecuación   \ref{ecuación  _discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
+\noindent Si se considera un volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas más 
+rápidas de los estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Y se usa la forma integral de la 
+ecuación   \ref{ecuacion_discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
 
 \begin{equation*}\label{Forma_integral_conservadas}
 \int_{x_L}^{x_R} \left[ U\left( x, T \right) -
  U\left( x, 0 \right) \right] dx = 
  \int_{0}^{T} \left[ F \left(U\left( x_L, t \right) \right) -
- F \left(U\left( x_R, t \right) \right) \right] dt 
+ F \left(U\left( x_R, t \right) \right) \right] dt, 
 \end{equation*}
-Entonces
+entonces
 \begin{equation}\label{integral_consistencia}
 \int_{x_L}^{x_R} U\left( x, T \right) dx =\int_{x_L}^{x_R} U\left( x, 0 \right) dx+
 \int_{0}^{T}  F \left(U\left( x_L, t \right) \right)dt -
-\int_{0}^{T}  F \left(U\left( x_R, t \right) \right) dt
+\int_{0}^{T}  F \left(U\left( x_R, t \right) \right) dt.
 \end{equation}
 
-Usando las condiciones de la ecuación \ref{ecuación  _discreta_conservada} podemos evaluar la integral
+\noindent Usando las condiciones de la ecuación \ref{ecuacion_discreta_conservada} se puede evaluar la integral
 
 \begin{equation*}
 \int_{x_L}^{x_R} U\left( x, T \right) dx = 
 x_R U_R -x_L U_L+T F_L-T F_R
 \end{equation*}
-Donde $F_L = F \left( U_L \right)$ y $F_R = F \left( U_R \right)$, entonces
+donde $F_L = F \left( U_L \right)$ y $F_R = F \left( U_R \right),$ 
+entonces
 
 \begin{equation}\label{Condición_de_consistencia}
 \int_{x_L}^{x_R} U\left( x, T \right) dx = 
-x_R U_R -x_L U_L+T \left( F_L- F_R \right)
+x_R U_R -x_L U_L+T \left( F_L- F_R \right).
 \end{equation}
 
-Sí separamos ahora la ecuación \ref{integral_consistencia} en 3 integrales de la siguiente manera:
+\noindent Si se separa la ecuación \ref{integral_consistencia} en 3 integrales de la siguiente manera:
 
 \begin{equation}
 \int_{x_L}^{x_R} U\left( x, T \right) dx = 
 \int_{x_L}^{T S_L} U \left(x, T \right)dx+
 \int_{T S_L}^{T S_R} U \left(x, T \right)dx+
-\int_{T S_R}^{x_R} U \left(x, T \right)dx
+\int_{T S_R}^{x_R} U \left(x, T \right)dx.
 \end{equation}
 
-Si ahora evaluamos el tercer y el primer término en el lado derecho, obtenemos:
+\noindent Evaluando el tercer y el primer término en el lado derecho, obtenemos:
 
 \begin{equation}\label{condicion_consistencia_2}
 \int_{x_L}^{x_R} U\left( x, T \right) dx =
 \int_{T S_L}^{T S_R} U \left(x, T \right)dx+
 \left( T S_L - x_L \right) U_L+
-\left( x_L - T S_R \right) U_R
+\left( x_L - T S_R \right) U_R.
 \end{equation}
 
-Sí combinamos la ecuación \ref{Condición_de_consistencia} y 
+\noindent Combinando la ecuación \ref{Condición_de_consistencia} y 
 \ref{condicion_consistencia_2}
 
 \begin{equation*}
 x_R U_R -x_L U_L+T \left( F_L- F_R \right) =
 \int_{T S_L}^{T S_R} U \left(x, T \right)dx+
 \left( T S_L - x_L \right) U_L+
-\left( x_L - T S_R \right) U_R
+\left( x_L - T S_R \right) U_R.
 \end{equation*}
 
-Entonces 
+\noindent Entonces 
 
 \begin{equation*}
 \int_{T S_L}^{T S_R} U \left(x, T \right)dx=
 \left( T S_L - x_L \right) U_L+ x_L U_L +
 \left( x_L - T S_R \right) U_R-x_R U_R -
-T \left( F_L- F_R \right)
+T \left( F_L- F_R \right),
 \end{equation*}
 
-Con lo que al final nos queda
+\noindent con lo que al final queda
 
 \begin{equation} \label{ull_sin_promedio}
 \int_{T S_L}^{T S_R} U \left(x, T \right)dx=
-T \left( S_R U_R - S_L U_L + F_L - F_R \right)
+T \left( S_R U_R - S_L U_L + F_L - F_R \right).
 \end{equation}
 
-Si dividimos la ecuación \ref{ull_sin_promedio} por la diferencia de las velocidades máximas de las señales de las ondas, obtenemos el promedio de la función que está entre las velocidades de la onda, entonces
+\noindent Dividiendo la ecuación \ref{ull_sin_promedio} por la diferencia de las velocidades máximas de las señales de las ondas, se obtiene el promedio de la función que está entre las velocidades de la onda, entonces
 
 \begin{equation}
 \frac{1}{T \left( S_R -S_L \right)}\int_{T S_L}^{T S_R} U \left(x, T \right)dx =
-\frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}
+\frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}.
 \end{equation}
 
-Si conocemos las velocidades de la onda podemos escribir la ecuación como 
+\noindent Si se conocen las velocidades de la onda, se puede escribir la ecuación como 
 
 \begin{equation}\label{u_hll}
-U^{hll} = \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}
+U^{hll} = \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L}.
 \end{equation}
 
-Ahora, si aplicamos la forma integral (como en el caso de la ecuación \ref{Condición_de_consistencia}) a lado izquierdo de nuestro plano, obtenemos lo siguiente:
+\noindent Aplicando la forma integral (como en el caso de la ecuación \ref{Condición_de_consistencia}) al lado izquierdo del plano, se obtiene lo siguiente:
 
 \begin{equation}
 \int_{T S_L}^{0} U\left( x, T \right) dx = 
 -T S_L U_L+T \left( F_L- F_{0L} \right)
 \end{equation}
-Donde $F_{0L}$ es el flujo a lo largo del eje $t$. Si despejamos $F_{0L}$, nos queda lo siguiente
+donde $F_{0L}$ es el flujo a lo largo del eje $t$. Si se despeja $F_{0L}$ queda lo siguiente:
 
 \begin{equation}\label{ec F_0L}
-F_{0L} = F_L - S_L U_L + \frac{1}{T}  \int_{T S_L}^{0} U\left( x, T \right) dx
+F_{0L} = F_L - S_L U_L + \frac{1}{T}  \int_{T S_L}^{0} U\left( x, T \right) dx.
 \end{equation}
 
-Esta última ecuación nos servirá para calcular los flujos usando el método de Harten-Van-Leer, el cual dividían el plano en tres espacios:
+\noindent Esta última ecuación servirá para calcular los flujos usando el método de Harten, Lax, van Leer, el cual dividían el plano en tres espacios alrededor de una interfase
 
 \begin{figure} %fuente de la imagen:libro del toro/
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/HLL.png}
-  \caption{Aproximación de 3 estados distintos en el plano x-t, en el cual se trata de calcular los flujos en la región $U^{hll}$ limitados por las velocidades de señal de la onda}
+  \caption{Aproximación de 3 estados distintos en el plano x-t, en el cual se trata de calcular los flujos en la región $U^{\text{hll}}$ limitados por las velocidades de señal de la onda.}
   \label{fig:HLL}
 \end{figure}
 
 \begin{equation}
-U \left(x,t \right) = 
-\left\lbrace
-\begin{array}{rr}
-U_L \quad \textup{si} \quad \frac{x}{t}< S_L  \\
-U_{hll} \quad \textup{si} \quad S_L< \frac{x}{t} <S_R \\
-U_R \quad \textup{si} \quad  \frac{x}{t} > S_R
-\end{array}
-\right.
+  U(x, t)=\left\{\begin{array}{lll}
+  U_{L} & \text { si } & \frac{x}{t}<S_{L} \\
+  U_{h l l} & \text { si } & S_{t}<\frac{x}{t}<S_{R} \\
+  U_{R} & \text { si } & \frac{x}{t}>S_{R}.
+  \end{array}\right.
 \end{equation}
 
-Los flujos $F_R$ y $F_L$ pueden ser calculados directamente, ya que solo dependen de $U_R$ y $U_L$ respectivamente, pero $F_{hll} \neq F \left( U_{hll} \right)$, así que resolvemos la integral de la ecuación \ref{ec F_0L} para así obtener el flujo a través del eje t
+Los flujos $F_R$ y $F_L$ pueden ser calculados directamente, ya que solo dependen de $U_R$ y $U_L$ respectivamente, pero $F_{hll} \neq F \left( U_{hll} \right)$, así que resolvemos la integral de 
+la ecuación \ref{ec F_0L} para así obtener el flujo a través del eje t
 
 \begin{equation*}
-F_{hll} = F_L -S_L U_L+ \frac{1}{T}U_{hll}\left(0- TS_L\right)
+F_{hll} = F_L -S_L U_L+ \frac{1}{T}U_{hll}\left(0- TS_L\right).
 \end{equation*}
 
-Entonces
-\begin{equation}\label{f_hll 1}
-F_{hll} = F_L +S_L \left( U_{hll} -U_L \right)
+\noindent Entonces
+\begin{equation}\label{f_hll_1}
+F_{hll} = F_L +S_L \left( U_{hll} -U_L \right).
 \end{equation}
 
-Si sustituimos \ref{u_hll} en \ref{f_hll 1} obtenemos:
+\noindent Si se sustituye \ref{u_hll} en \ref{f_hll_1} obtenemos
 
 \begin{equation*}
-F_{hll} = F_L +S_L \left( \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L} -U_L \right)
+F_{hll} = F_L +S_L \left( \frac{S_R U_R - S_L U_L + F_L - F_R}{S_R - S_L} -U_L \right),
 \end{equation*}
-Entonces
+entonces
 \begin{equation*}
-F_{hll} = \frac{F_L S_R -F_L S_L+S_L S_R U_R-S_L^2 U_L+S_L  F_L- S_L F_R-S_R S_L U_L + S_L^2 U_L}{S_R-S_L}
+F_{hll} = \frac{F_L S_R -F_L S_L+S_L S_R U_R-S_L^2 U_L+S_L  F_L- S_L F_R-S_R S_L U_L + S_L^2 U_L}{S_R-S_L}.
 \end{equation*}
 
-Eliminando términos semejantes queda
+\noindent Eliminando términos semejantes queda
 \begin{equation}
-F_{hll} = \frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L}
+F_{hll} = \frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L},
 \end{equation}
 
-Con lo que el flujo intermedio de la celda de Godunov está dado por:
+\noindent con lo que el flujo intermedio de la celda de Godunov está dado por:
+
 
 \begin{equation} \label{fluxesHLL}
-F_{i+\frac{1}{2}}^{hll} = 
-\left\lbrace
-\begin{array}{rr}
-F_L \quad \textup{si} \quad 0 \leq S_L  \\
-\frac{S_R F_L -S_L F_R + S_L S_R \left(U_R-U_L \right)}{S_R -S_L} \quad \textup{si} \quad S_L \leq 0 \leq S_R \\
-F_R \quad \textup{si} \quad  0 \geq  S_R
-\end{array}
-\right.
+  F_{i+\frac{1}{2}}^{h l l}=\left\{\begin{array}{l}
+  F_{L} \quad \text { si } \quad 0 \leq S_{L} \\
+  \frac{S_{R} F_{L}-S_{L} F_{R}+S_{L} S_{R}\left(U_{R}-U_{L}\right)}{S_{R}-S_{L}} \quad \text { si } \quad S_{L}  \leq 0 \leq S_{R} \\
+  F_{R} \quad \text { si } \quad 0 \geq S_{R}.
+  \end{array}\right.
 \end{equation}
 
-La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax}.
+La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax},
 
 \begin{lstlisting} [frame=single]
   call fluxesHLL(fhll, ghll)
@@ -1226,11 +1245,10 @@ La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax}.
 
 \end{lstlisting}
 
-Donde \emph{dtx}, \emph{dty} son las derivadas con respecto a \emph{x}, \emph{y} y \emph{fhll}, \emph{ghll} son los flujos calculados con el método de HLL.
-
+\noindent donde \emph{fhll} y \emph{ghll} son los flujos calculados con el método de HLL.
 La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
 y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
-significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas más rápidas de los estados iniciales \emph{U}, la variable \emph{dtx} es la derivada con respecto a \emph{x} y \emph{dty} la derivada con respecto a \emph{y}. Para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}
+significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas más rápidas de los estados iniciales \emph{U}. Para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}.
 
 \begin{lstlisting} [frame=single]
   do i=1,nx
@@ -1268,68 +1286,70 @@ end do
 
 
 
-\section{Ecuaciones de Rankine-Hugoniot}\label{sec:Ecuacion_Rankine_Hugoniot}
+\section{Condiciones de salto}\label{sec:Condiciones_Salto}
 
-\subsection{Rankine-Hugoniot Newtoniano}
+\subsection{Rankine-Hugoniot}
 
-Ya hemos visto como se resuelven las ecuaciones de la hidrodinámica, pero hay un problema, cuando un jet  choca contra el medio que lo rodea se genera una onda de choque, 
-esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se resuelve con las ecuaciones de 
-Rankine-Hugoniot \citet{Prunty2019}.
-Vamos a considerar las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
-hacia la derecha (ver Figura \ref{fig_move_shock}) sobre un flujo estacionario ($v = 0$) con una velocidad $v_s$, la presión y la densidad, que están enfrente de la onda, son asumidas como
-$\rho_0$ y $P_0$ mientras que los flujos que están comprimidos detrás del frente de onda se mueven con una velocidad $v_p$ y que tienen densidad y presión $\rho_p$, $P_p$.
+Ya se ha visto cómo se resuelven las ecuaciones de la hidrodinámica, pero hay un problema: cuando un jet  choca contra el medio que lo rodea se genera una onda de choque. 
+Esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se resuelve con las ecuaciones de 
+Rankine-Hugoniot \citep{Prunty2019}.
+Considerando las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
+hacia la derecha (ver Figura \ref{fig_move_shock}) sobre un fluido estacionario ($v = 0$) con una velocidad $v_s$. La presión y la densidad, que están enfrente de la onda, son asumidas como
+$\rho_0$ y $p_0$ mientras que los flujos que están comprimidos detrás del frente de onda se mueven con una velocidad $v_p$ y que tienen densidad y presión $\rho_p$, $p_p$.
 
 \begin{figure}
   \centering
   \includegraphics[scale=0.7]{./Figuras/Teoria/move_shock.png}
-  \caption{Onda de choque en movimiento sobre un flujo estacionario, tanto la onda como el flujo que está a la izquierda se mueven a la derecha}\label{fig_move_shock}
+  \caption{Onda de choque en movimiento sobre un flujo estacionario, tanto la onda como el flujo que está a la izquierda se mueven a la derecha.}\label{fig_move_shock}
 \end{figure}
   
 
-Si consideramos nuestro sistema de referencia posicionado sobre la onda (ver Figura \ref{fig_stationary_shock}), usando las transformaciones de Galileo, las direcciones de las velocidades
-se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$
+Si consideramos nuestro sistema de referencia posicionado sobre la onda (ver Figura \ref{fig:choque:estacionario}), usando las transformaciones de Galileo, las direcciones de las velocidades
+se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$.
 
 \begin{figure} 
   \centering
   \includegraphics[scale=0.7]{./Figuras/Teoria/stationary_shock.png}
-  \caption{Al tomar nuestro sistema de referencia sobre la onda, nuestro choque en movimiento se transforma en una choque estacionario, y los
-  flujos que están a la derecha e izquierda de la onda se mueven hacia la izquierda } \label{fig_stationary_shock}
+  \caption{Al tomar un sistema de referencia sobre la onda, el choque en movimiento se transforma en una choque estacionario, y los
+  flujos que están a la derecha e izquierda de la onda se mueven hacia la izquierda.} \label{fig:choque:estacionario}
 \end{figure}
 
-Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, \ref{conservación  _momento_hidrodinamica} y \ref{conservación  _energia_hidrodinamica} donde no varía con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
+Las ecuaciones de Rankine-Hugoniot parten de las ecuaciones de la hidrodinámica considerando un sistema cerrado usando las ecuaciones \ref{conservación_masa_hidrodinamica}, 
+\ref{conservacion_momento_hidrodinamica} y \ref{conservacion_energia_hidrodinamica} donde no varía con el tiempo, es decir, que $\dfrac{\partial}{\partial t}=0$, con lo que se pueden reescribir de la siguiente manera:
 
 
-La conservación de masa
+\noindent La conservación de masa:
 \begin{equation}
-  \nabla \cdot \left( \rho \mathbf{u} \right)=0
+  \nabla \cdot \left( \rho \mathbf{u} \right)=0.
 \end{equation}
 
-El momento
+\noindent El momento:
 \begin{equation}
-  \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = 0
+  \nabla \cdot \left( \rho \mathbf{u u} \right) + \nabla p = 0.
 \end{equation}
 
-Ecuación de la energía
+\noindent Ecuación de la energía:
 
 \begin{equation}
- \nabla \cdot \left[ \mathbf{u} \left( e+P \right) \right] = 0
+ \nabla \cdot \left[ \mathbf{u} \left( e+P \right) \right] = 0.
 \end{equation}
 
-Considerando una dimensión:
+Considerando una dimensión
 
 \begin{equation}
-\dfrac{d \left( \rho u \right)}{d x} = 0
-\end{equation}
-
-\begin{equation}
-\dfrac{d \left( \rho u^2 \right)}{d x}+ \dfrac{d P}{d x}=0
+\dfrac{d \left( \rho u \right)}{d x} = 0,
 \end{equation}
 
 \begin{equation}
-\dfrac{d \left( u\left[e +P \right] \right)}{d x} = 0
+\dfrac{d \left( \rho u^2 \right)}{d x}+ \dfrac{d p}{d x}=0,
 \end{equation}
 
-Si integramos, las ecuaciones se van a igualar a constantes y podemos reescribir las ecuaciones \Selene{Aquí por ejemplo, escribes ''las ecuaciones" dos veces seguidas, eso debes corregirlo en toda tu redacción, puedes reescribirlo citando dichas ecuaciones o cambiando toda la frase}del siguiente modo usando la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{P}{\Gamma-1}$ donde $e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
+\begin{equation}
+\dfrac{d \left( u\left[e +p \right] \right)}{d x} = 0.
+\end{equation}
+
+\noindent Integrando las ecuaciones e igualando a constantes, se pueden reescribir del siguiente modo usando la ecuación de estado $e = \frac{1}{2} \rho u^2 + \frac{p}{\Gamma-1}$ donde 
+$e \left[\frac{\mathrm{erg}}{\mathrm{cm^3}}\right]$ 
 es la densidad de energía por unidad de volumen
 
 \begin{equation}\label{RH_masa}
@@ -1337,80 +1357,82 @@ es la densidad de energía por unidad de volumen
 \end{equation}
 
 \begin{equation}\label{RH_momento}
-\rho_j u_{j}^{2}+P_j = \rho_m u_{m}^{2}+P_m
+\rho_j u_{j}^{2}+p_j = \rho_m u_{m}^{2}+p_m
 \end{equation}
 
 \begin{equation}\label{RH_Energia}
-\frac{1}{2} u_{j}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}} =
- \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
+\frac{1}{2} u_{j}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{p_{j}}{\rho_{j}} =
+ \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{p_{m}}{\rho_{m}}
 \end{equation}
 
-Donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad,  $P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ la presión, $\Gamma$ el índice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del jet y del medio respectivamente. Usando la ecuación   \ref{RH_masa}, podemos definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} podemos reescribirla como:
+\noindent donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad,  $P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ 
+la presión, $\Gamma$ el índice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del 
+jet y del medio respectivamente. Usando la ecuación   \ref{RH_masa}, se puede definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} se reescribe como:
 
 \begin{equation}\label{RH_momento_j}
-P_{j}+\frac{j^2}{\rho_{j}}=P_{m}+\frac{j^2}{\rho_{m}}
+p_{j}+\frac{j^2}{\rho_{j}}=p_{m}+\frac{j^2}{\rho_{m}}
 \end{equation}
 
-y la ecuación \ref{RH_Energia} llegamos a:
+\noindent y la ecuación \ref{RH_Energia} llegamos a:
 
 \begin{equation}\label{RH_Energia_j}
-\frac{1}{2} \frac{j^{2}}{\rho_{j}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{j}}{\rho_{j}}=
-\frac{1}{2} \frac{j^{2}}{\rho_{m}^2}+\frac{\Gamma}{\Gamma-1} \frac{P_{m}}{\rho_{m}}
+\frac{1}{2} \frac{j^{2}}{\rho_{j}^2}+\frac{\Gamma}{\Gamma-1} \frac{p_{j}}{\rho_{j}}=
+\frac{1}{2} \frac{j^{2}}{\rho_{m}^2}+\frac{\Gamma}{\Gamma-1} \frac{p_{m}}{\rho_{m}}.
 \end{equation}
 
-Despejando $j$ de la ecuación \ref{RH_momento_j} obtenemos:
+\noindent Despejando $j$ de la ecuación \ref{RH_momento_j} obtenemos:
 \begin{equation}\label{j^2}
--j^{2}=\frac{P_{j}-P_{m}}{\frac{1}{\rho_{m}}-\frac{1}{\rho_{j}}}
+-j^{2}=\frac{p_{j}-p_{m}}{\frac{1}{\rho_{m}}-\frac{1}{\rho_{j}}}.
 \end{equation}
 
-Ahora sustituyendo la ecuación en \ref{j^2} en \ref{RH_Energia_j} obtenemos:
+\noindent Sustituyendo la ecuación en \ref{j^2} en \ref{RH_Energia_j} obtenemos:
 
 \begin{equation*}
-\frac{1}{2} \left( \frac{P_{m}-P_{j}}{\frac{1}{\rho_{j}}-\frac{1}{\rho_{m}}} \right)
+\frac{1}{2} \left( \frac{p_{m}-p_{j}}{\frac{1}{\rho_{j}}-\frac{1}{\rho_{m}}} \right)
 \left(\frac{1}{\rho_{j}^{2}}-\frac{1}{\rho_{m}^{2}} \right)
 =
 \frac{\Gamma}{\Gamma-1}
-\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
+\left( \frac{p_{m}}{\rho_{m}}-\frac{p_{j}}{\rho_{j}} \right)
 \end{equation*}
 
 $\Rightarrow$
 
 \begin{equation*}
-\frac{1}{2}	\left( P_{m} - P_{j} \right)
+\frac{1}{2}	\left( p_{m} - p_{j} \right)
 \left( \frac{1}{\rho_{j}}+\frac{1}{\rho_{m}} \right)
 =
 \frac{\Gamma}{\Gamma-1}
-\left( \frac{P_{m}}{\rho_{m}}-\frac{P_{j}}{\rho_{j}} \right)
+\left( \frac{p_{m}}{\rho_{m}}-\frac{p_{j}}{\rho_{j}} \right)
 \end{equation*}
 
 $\Rightarrow$
 
 \begin{equation*}
-\frac{1}{\rho_{m}} \left( \frac{1}{2} P_{m}- \frac{1}{2} P_{j}-
-\frac{\Gamma}{\Gamma-1} P_{m} \right)
+\frac{1}{\rho_{m}} \left( \frac{1}{2} p_{m}- \frac{1}{2} p_{j}-
+\frac{\Gamma}{\Gamma-1} p_{m} \right)
 =
-\frac{1}{\rho_{j}} \left( \frac{1}{2} P_{j}- \frac{1}{2} P_{m}-
-\frac{\Gamma}{\Gamma-1} P_{j} \right)
+\frac{1}{\rho_{j}} \left( \frac{1}{2} p_{j}- \frac{1}{2} p_{m}-
+\frac{\Gamma}{\Gamma-1} p_{j} \right)
 \end{equation*}
 
 $\Rightarrow$
 
 \begin{equation*}
-\frac{1}{\rho_{m}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{m} + P_{j} \right]
+\frac{1}{\rho_{m}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) p_{m} + p_{j} \right]
 =
-\frac{1}{\rho_{j}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) P_{j} + P_{m} \right]
+\frac{1}{\rho_{j}} \left[  \left(\frac{\Gamma + 1}{\Gamma - 1} \right) p_{j} + p_{m} \right].
 \end{equation*}
 
-Con lo que nos queda:
+\noindent Con lo que queda:
 
 \begin{equation}\label{RH_no_rel_choque_no_fuerte}
 \frac{\rho_{m}}{\rho_j} =
-\frac{\left( \Gamma +1 \right) P_{m}+ \left( \Gamma -1 \right) P_{j
-}}{\left(\Gamma +1 \right) P_{j}+ \left( \Gamma -1 \right) P_{m}}
-= \frac{u_j}{u_m}
+\frac{\left( \Gamma +1 \right) p_{m}+ \left( \Gamma -1 \right) p_{j
+}}{\left(\Gamma +1 \right) p_{j}+ \left( \Gamma -1 \right) p_{m}}
+= \frac{u_j}{u_m}.
 \end{equation}
 
-Si consideramos choque fuerte, es decir, $P_j \gg P_m$, implicaría que $P_m \simeq 0$, por lo que
+\noindent Si se considera un choque fuerte, es decir, $p_j \gg p_m$, implicaría que $p_m \simeq 0$, por lo que
 
 \begin{equation}
 \rho_j = \frac{\Gamma +1}{\Gamma-1} \rho_m 
@@ -1418,127 +1440,125 @@ Si consideramos choque fuerte, es decir, $P_j \gg P_m$, implicaría que $P_m \si
 Tomando a $\Gamma = 5/3$ da
 
 \begin{equation}
-\rho_j = 4 \rho_m
+\rho_j = 4 \rho_m,
 \end{equation}
 
 \begin{equation}
-u_j = \frac{1}{4} u_m
+u_j = \frac{1}{4} u_m,
 \end{equation}
 
 \begin{equation}
-P_{j} = \frac{3}{4}\rho_m u_m^{2}
+p_{j} = \frac{3}{4}\rho_m u_m^{2}.
 \end{equation}
 
 
 
 
-\subsection{Rankine-Hugoniot Relativista}
+\subsection{Condiciones de Taub}
 
 
 
-Como se menciona en \citet{Landau1987} sí consideramos la conservación de masa:
+Como se menciona en \citet{Landau1987} si se considera la conservación de masa:
 
 \begin{equation}
   \rho_j v_j \gamma_j=  \rho_{\infty} v_{\infty} \gamma_{\infty}
 \end{equation}
 
-Donde $v_j$, $v_\infty$ es la velocidad del jet y del medio que lo rodea respectivamente, despejando $\rho_{\infty}$ obtenemos:
+\noindent donde $v_j$, $v_\infty$ es la velocidad del jet y del medio que lo rodea respectivamente. Despejando $\rho_{\infty}$ se obtiene:
 
 \begin{equation}\label{eq_masa_densidad_despejada}
-  \rho_\infty = \rho_j \frac{v_j \gamma_j }{v_\infty \gamma_\infty}
+  \rho_\infty = \rho_j \frac{v_j \gamma_j }{v_\infty \gamma_\infty}.
 \end{equation}
 
-Si ahora consideramos la ecuación de momentos
+\noindent Tambien se considera la ecuación de momentos
 
 \begin{equation}
-  \left( e_j + P_j\right) v^2_j \gamma^2_j + P_j = \left( e_{\infty} + P_{\infty}\right) v^2_{\infty} \gamma^2_{\infty} + P_{\infty}
+  \left( e_j + p_j\right) v^2_j \gamma^2_j + p_j = \left( e_{\infty} + p_{\infty}\right) v^2_{\infty} \gamma^2_{\infty} + p_{\infty}.
 \end{equation}
 
-La densidad de energía se compone de la energía interna del sistema y de la energía cinética
+\noindent La densidad de energía se compone de la energía interna del sistema y de la energía cinética
 
 \begin{equation} \label{eq_densidad_de_energia}
-  e = e_{int} + e_k
+  e = e_{int} + e_k.
 \end{equation}
 
-La energía interna para un sistema ultra-relativista es $ P = \frac{1}{3}e_{int}$ lo que implica que $e_{int} = 3P$, mientras que la densidad de energía
-cinética es $e_k = \rho c^2$ pero como estamos considerando a $c = 1$ esto se reduce a $e_k = \rho$. Si sustituimos todo esto en la ecuación
-\ref{eq_densidad_de_energia} entonces nos queda:
+\noindent La energía interna para un sistema ultra-relativista es $ p = \frac{1}{3}e_{int}$ lo que implica que $e_{int} = 3p$, mientras que la densidad de energía
+cinética es $e_k = \rho c^2$, pero como se esta considerando a $c = 1$ esto se reduce a $e_k = \rho$. Sustituyendo todo esto en la ecuación
+\ref{eq_densidad_de_energia} queda:
 
 \begin{equation} \label{eq_momentos_relativista_modificada}
-  \left( \rho_j + 4P_j \right) v^2_j \gamma^2_j  +P_j = \left( \rho_\infty + 4P_\infty \right) v^2_{\infty} \gamma^2_{\infty}  +P_\infty
+  \left( \rho_j + 4p_j \right) v^2_j \gamma^2_j  +p_j = \left( \rho_\infty + 4p_\infty \right) v^2_{\infty} \gamma^2_{\infty}  +p_\infty.
 \end{equation}
 
-Con la ecuación \ref{eq_masa_densidad_despejada} podemos modificar la ecuación \ref{eq_momentos_relativista_modificada}, con lo que nos queda:
+\noindent Con la ecuación \ref{eq_masa_densidad_despejada} podemos modificar la ecuación \ref{eq_momentos_relativista_modificada}, con lo que queda:
 
 \begin{equation}
-  \left( \rho_j + 4P_j \right)v_j \gamma^2 +P_j = \left( \rho_\infty + 4P_\infty \right)v_\infty \gamma^2 +P_\infty
+  \left( \rho_j + 4p_j \right)v_j \gamma^2 +p_j = \left( \rho_\infty + 4p_\infty \right)v_\infty \gamma^2 +p_\infty
 \end{equation}
 
-y tomando un choque fuerte $P_j \gg P_\infty $ Podemos reducir la ecuación a 
+\noindent y tomando un choque fuerte $p_j \gg p_\infty $ podemos reducir la ecuación a 
 
 \begin{equation} \label{eq_momentos_choque_fuerte}
-  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j =  \rho_\infty  v_\infty^2 \gamma_{\infty}^{2} 
+  \left( \rho_j + 4p_j \right)v_j^2 \gamma^2 +p_j =  \rho_\infty  v_\infty^2 \gamma_{\infty}^{2}. 
 \end{equation}
 
-Sustituyendo la ecuación \ref{eq_masa_densidad_despejada} en \ref{eq_momentos_choque_fuerte} obtenemos
+\noindent Sustituyendo la ecuación \ref{eq_masa_densidad_despejada} en \ref{eq_momentos_choque_fuerte} obtenemos:
 
-\begin{equation} \label{eq_momentos_choque_fuerte}
-  \left( \rho_j + 4P_j \right)v_j^2 \gamma^2 +P_j = \rho_j v_j v_\infty \gamma_j \gamma_\infty
+\begin{equation}
+  \left( \rho_j + 4p_j \right)v_j^2 \gamma^2 +p_j = \rho_j v_j v_\infty \gamma_j \gamma_\infty.
 \end{equation}
 
-Suponiendo $\left( \rho_j + 4P_j \right)v_j^2 \gamma^2 \gg P_j $
+\noindent Suponiendo $\left( \rho_j + 4p_j \right)v_j^2 \gamma^2 \gg p_j $
 
 
 
 \begin{equation}
-  \left( \rho_j + 4P_j \right)v_j \gamma_j = \rho_\infty v_\infty  \gamma_\infty
+  \left( \rho_j + 4p_j \right)v_j \gamma_j = \rho_\infty v_\infty  \gamma_\infty.
 \end{equation}
 
-Despejando la presión obtenemos
+\noindent Despejando la presión obtenemos
 
 \begin{equation}
-  P_j = \frac{\rho_j}{4}\left(\frac{v_\infty}{v_j} \frac{\gamma_\infty}{\gamma_j}-1\right)
+  p_j = \frac{\rho_j}{4}\left(\frac{v_\infty}{v_j} \frac{\gamma_\infty}{\gamma_j}-1\right),
 \end{equation}
 
-Como $v_j \thickapprox v_\infty \thickapprox c$
+\noindent como $v_j \thickapprox v_\infty \thickapprox c$
 
 \begin{equation}
-  P_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right)
+  p_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right).
 \end{equation}
 
-Para poder simular las condiciones de un jet, necesitamos saber la densidad, velocidad y presión del mismo, como los jet tienen velocidades cercanas a la
-de la luz, se pueden tomar valores cercanos a esta constante. La densidad se obtendrá en la siguiente sección 
+Para poder simular las condiciones de un jet, se necesita saber la densidad, velocidad y presión del mismo, como los jet tienen velocidades cercanas a la
+de la luz, se pueden tomar valores cercanos a esta constante. La densidad se obtendrá en la siguiente sección. 
 
 
 \subsection{Luminosidad}
-Si suponemos las condiciones de Rankine-Hugoniot en un jet relativista y si colocamos nuestro marco de referencia sobre el jet, la energía será:
+Si suponemos las condiciones de Taub en un jet relativista y si colocamos nuestro marco de referencia sobre el jet, la energía será:
 
 \begin{equation} \label{eq._energia_relativista}
   E = \gamma_{\infty} M c^2
 \end{equation}
 
-Donde $\gamma_{\infty}$ es factor de Lorentz con el que se mueve el jet cuando ya se ha alejado del objeto compacto y como sabemos 
-que $L \equiv \dfrac{d E}{d t}$ entonces derivando la ecuación \ref{eq._energia_relativista} respecto al tiempo
-
-Entonces tenemos 
+\noindent donde $\gamma_{\infty}$ es factor de Lorentz con el que se mueve el jet cuando ya se ha alejado del objeto compacto y como sabemos 
+que $L \equiv \dfrac{d E}{d t}$ entonces derivando la ecuación \ref{eq._energia_relativista} respecto al tiempo tenemos:
 
 \begin{equation} \label{eq._luminosidad_relativista}
-  \dfrac{d E}{d t} = \gamma_{j} \dot{ M }  c^2
+  \dfrac{d E}{d t} = \gamma_{j} \dot{ M }  c^2.
 \end{equation}
 
-La taza de flujo de masa $\dot{M}$ se puede escribir como
+La taza de flujo de masa $\dot{M}$ se puede escribir como:
 
 \begin{equation}
   \dot{M} = \rho_j u_j A_j
 \end{equation}
 
-Donde $\rho$ es la densidad, $u_j = v_j \gamma_{j}$ es la cuadrivelocidad,  y $A_j$ es el área, que en este caso, corresponde la parte esférica del jet, entonces la luminosidad se puede escribir como:
+\noindent donde $\rho$ es la densidad, $u_j = v_j \gamma_{j}$ es la cuadrivelocidad,  y $A_j$ es el área, que en este caso, corresponde la parte esférica del jet, entonces la luminosidad se puede escribir como:
 
 \begin{equation}
-  L \equiv \dfrac{d E}{d t} = 4\pi r_j^2 \rho_j v_j \gamma_j \gamma_{\infty} c^2
+  L \equiv \dfrac{d E}{d t} = 4\pi r_j^2 \rho_j v_j \gamma_j \gamma_{\infty} c^2,
 \end{equation}
 
-Despejando la densidad
+\noindent despejando la densidad
 
 \begin{equation}
   \rho = \frac{L}{4\pi r_j^2 v_j \gamma_j \gamma_{\infty} c^2}
@@ -1551,43 +1571,43 @@ Despejando la densidad
 \section{Solución de Sedov-Taylor} \label{sec:sedov_taylor}
 
 %Ojo Julio
-Una forma de \Selenecor{verificar}{ver} si el código funciona correctamente es \Selenecor{verificar}{NO repitas la misma palabra tus oraciones} si una onda de choque esférica (o circular en 2D) sigue la solución analítica y auto similar obtenida por Sedov y Taylor (véase \citet{PAFD}). 
+Una forma de verificar si el código funciona correctamente es ver si una onda de choque esférica (o circular en 2D) sigue la solución analítica y auto similar obtenida por Sedov y Taylor (véase \citet{PAFD}). 
 Cabe señalar que la onda de choque esférica es descrita por la inyección de energía dentro de un radio, el cual está inmerso en un medio en reposo. 
 
 \subsection{Aproximación en función del análisis dimensional}
-Si consideramos un choque fuerte,
-es decir, $P_w \gg P_m$,
-entonces las únicas variables que podemos tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
-Las dimensiones de estas cantidades son 
+Si se considera un choque fuerte,
+es decir, $p_w \gg p_m$,
+entonces las únicas variables que se pueden tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
+Las dimensiones de estas cantidades se muestran a continuación. 
 
 \begin{equation}
-  \left[ \rho_w \right] = \frac{M}{L^3}
+  \left[ \rho_w \right] = \frac{M}{L^3},
 \end{equation}
 
 \begin{equation}
-  \left[E\right] = M \frac{L^2}{T^2}
+  \left[E\right] = M \frac{L^2}{T^2},
 \end{equation}
 
 \begin{equation}
-  \left[ t\right] = T
+  \left[ t\right] = T.
 \end{equation}
 
-La única cantidad que se puede construir que contenga la energía \Selenecor{ el tiempo y la densidad}{, tiempo y la densidad (Te faltan muchas comas)} y que su dimensión sea la longitud es \Selenecor{sea, es}{Usas el mismo verbo en la misma oración}:
+\noindent La única cantidad que se puede construir que contenga la energía, tiempo y la densidad y que su dimensión sea la longitud es:
 
 \begin{equation}
-  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L
+  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L,
 \end{equation}
 
-Por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
+\noindent por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
 
 \begin{equation}
-  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}
+  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}.
 \end{equation}
 
-Por lo que la constante $\eta$ debe ser de la siguiente manera
+\noindent Por lo que la constante $\eta$ debe ser de la siguiente manera
 
 \begin{equation}
-  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}
+  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}.
 \end{equation}
 
 
@@ -1595,196 +1615,196 @@ Por lo que la constante $\eta$ debe ser de la siguiente manera
 \subsection{Aproximación en función de la conservación de la energía}
 
 Otra aproximación es buscando el cociente de presiones y densidades en función del número Mach.
-Podemos estimar el radio $R(t)$ de una onda de choque en función del tiempo, sabemos que el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la onda es constante, entonces el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
-entonces podemos aproximar la energía cinética de la onda como 
+Se puede saber el radio $R(t)$ de una onda de choque en función del tiempo. Tomando el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la región interior al choque es constante, entonces 
+el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
+por lo que se puede aproximar la energía cinética de la onda como 
 
 \begin{equation}
-	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_w R^3 \left( \frac{R}{t} \right) ^2 = \rho_w \frac{R^5}{t^2}
+	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_w R^3 \left( \frac{R}{t} \right) ^2 = \rho_w \frac{R^5}{t^2}.
 \end{equation}
 
-Ahora la energía térmica de una explosión es 
+\noindent La energía térmica de un gas ideal (monoatómico) es 
 
 \begin{equation} \label{eq_energia_termica}
-	E_{th} \sim \frac{3}{2}PV
+	E_{th} \sim \frac{3}{2}pV.
 \end{equation}
 
-Para encontrar la presión, primero se definirán algunas ecuaciones antes. La entalpía estancada se define en términos de la entalpía y la velocidad de la onda 
+\noindent Para encontrar la presión, primero se definirán algunas ecuaciones. La entalpía de estancamiento se define en términos de la entalpía y la velocidad de la onda 
 
 \begin{equation}
 	h_0 = h + \frac{1}{2} v^2
 \end{equation}
 
-La cual la podemos reescribir como
+\noindent la cual la podemos reescribir como
 
 \begin{equation} \label{eq_entalpía}
-	h_0 = h + \left( 1 +\frac{1}{2} \frac{v^2}{h} \right)
+	h_0 = h + \left( 1 +\frac{1}{2} \frac{v^2}{h} \right).
 \end{equation}
 
-Ahora sabemos que la velocidad del sonido puede ser definida como 
+\noindent La velocidad del sonido puede ser definida como 
 
 \begin{equation} \label{eq_sonido_1}
-	a = \sqrt{\frac{\Gamma P}{\rho}}
+	a = \sqrt{\frac{\Gamma p}{\rho}}
 \end{equation}
 
-y también como 
+\noindent y también como 
 
 \begin{equation} \label{eq_sonido_2}
 	a = \sqrt{(\Gamma-1) h}
 \end{equation}
 
-Donde $a$ es la velocidad del sonido, $h$ la entalpía, $v$ la velocidad, $P$ la presión y $\rho$ la densidad. también definimos el número de Mach como 
+\noindent donde $a$ es la velocidad del sonido, $h$ la entalpía, $v$ la velocidad, $p$ la presión y $\rho$ la densidad. También se define el número de Mach 
 
 \begin{equation} \label{eq_Mach}
 	M = \frac{v}{a}
 \end{equation}
 
-Si combinamos la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo sustituimos en la ecuación \ref{eq_entalpía} nos queda la entalpía en función de la velocidad de la onda y del sonido
+Si se combina la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo sustituimos en la ecuación \ref{eq_entalpía} se obtiene la entalpía en función de la velocidad de la onda y del sonido
 
 \begin{equation} \label{h_0_función_aire_mach}
-	h_0 = \frac{a^2}{\Gamma - 1} \left( 1 + \frac{\Gamma - 1}{2} M^2 \right)
+	h_0 = \frac{a^2}{\Gamma - 1} \left( 1 + \frac{\Gamma - 1}{2} M^2 \right).
 \end{equation}
 
-Esta ecuación servirá más adelante. Volviendo a las ecuaciones de Rankine-Hugoniot podemos usar la ecuación  
-\ref{RH_Energia} y \ref{entalpía_función_presion_densidad} para obtener la ecuación   de la energía en función de la entalpía, lo que nos va a quedar al final como\Selene{:}
+\noindent Esta ecuación servirá más adelante. Usando las ecuaciones  
+\ref{RH_Energia} y \ref{entalpía_función_presion_densidad} para obtener la ecuación de la energía en función de la entalpía, va a quedar como:
 
 \begin{equation}\label{RH_entalpía}
-  h_w +\frac{1}{2}v_w^2 = h_w +\frac{1}{2}v_w^2
+  h_w +\frac{1}{2}v_w^2 = h_m +\frac{1}{2}v_m^2
 \end{equation} 
 
-Donde $ h $ es la entalpía y $v$ la velocidad, los subíndices $w$, $m$ corresponden a la onda y al medio, respectivamente. Si dividimos la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los subíndices $j$ por $w$ obtenemos la siguiente ecuación\Selene{:} 
+\noindent donde los subíndices $w$, $m$ corresponden a la onda y al medio respectivamente. Dividiendo la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los 
+subíndices $j$ por $w$ se obtiene la siguiente ecuación: 
 
 \begin{equation} \label{RH_momento_masa}
-  v_w + \frac{P_w}{\rho_w v_w} = v_m + \frac{P_m}{\rho_m v_m}
+  v_w + \frac{p_w}{\rho_w v_w} = v_m + \frac{p_m}{\rho_m v_m}
 \end{equation}
 
-Usando la ecuación \ref{eq_sonido_1} en la ecuación \ref{RH_momento_masa} podemos reescribir la ecuación de 
+\noindent Usando la ecuación \ref{eq_sonido_1} en la ecuación \ref{RH_momento_masa} se puede reescribir de 
 la siguiente manera:
 
 \begin{equation} \label{eq_diferencia_velocidades}
-  v_w-v_m = \frac{1}{\Gamma} \left(\frac{a_m^2}{v_m} - \frac{a_w^2}{v_w} \right)
+  v_w-v_m = \frac{1}{\Gamma} \left(\frac{a_m^2}{v_m} - \frac{a_w^2}{v_w} \right).
 \end{equation}
 
-Por simplicidad definimos la entalpía estancada como\Selene{:}
+Se puede usar la entalpía de estancamiento para llegar a la siguiente igualdad:
 
 \begin{equation}
-  h_w + \frac{1}{2} v_w = h_w + \frac{1}{2} v_w \equiv h_0
+  h_w + \frac{1}{2} v_w = h_m + \frac{1}{2} v_m \equiv h_0,
 \end{equation}
 
-Por lo que podemos definir a la velocidad del sonido como:
+\noindent definiendo a la velocidad del sonido como:
 
 \begin{equation} \label{eq_sonido_onda}
-  a_w = \left( \Gamma-1 \right) h_w = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_w^2 \right)
+  a_w^2 = \left( \Gamma-1 \right) h_w = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_w^2 \right)
 \end{equation}
 
 \begin{equation} \label{eq_sonido_medio}
-  a_m = \left( \Gamma-1 \right) h_m = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_m^2 \right)
+  a_m^2 = \left( \Gamma-1 \right) h_m = \left( \Gamma-1 \right) \left( h_0 -\frac{1}{2} v_m^2 \right)
 \end{equation}
 
-Sustituyendo las ecuaciones \ref{eq_sonido_onda} y \ref{eq_sonido_medio} en la ecuación \ref{eq_diferencia_velocidades}
-nos queda
+\noindent sustituyendo las ecuaciones \ref{eq_sonido_onda} y \ref{eq_sonido_medio} en la ecuación \ref{eq_diferencia_velocidades}
+se obtiene
 
 \begin{equation}
-  v_w-v_m = \frac{\Gamma - 1}{\Gamma} \left[ \frac{h_0}{v_m} - \frac{h_0}{u_w} + \frac{1}{2} \left( v_w - v_m\right) \right]
+  v_w-v_m = \frac{\Gamma - 1}{\Gamma} h_0 \left[ \frac{1}{v_m} - \frac{1}{u_w} + \frac{1}{2} \left( v_w - v_m\right) \right]
 \end{equation}
 
-Dividiendo por $ \left( v_w - v_m \right)$
+\noindent dividiendo por $ \left( v_w - v_m \right)$
 
 \begin{equation}
-  1 = \frac{\Gamma - 1}{\Gamma} \left( \frac{h_0}{v_m v_w} + \frac{1}{2} \right)
+  1 = \frac{\Gamma - 1}{\Gamma} \left( \frac{h_0}{v_m v_w} + \frac{1}{2} \right),
 \end{equation}
 
-Que al final la podemos reescribir como
+\noindent que al final se puede reescribir como:
 
 \begin{equation} \label{eq_denominador}
   \frac{1}{v_w v_m} = \frac{1}{\left( \Gamma -1\right) h_0} \frac{\Gamma + 1}{2}
 \end{equation}
 
-Otra ecuación que nos va a servir es la definición de Mach, ya que \Selenecor{como}{}
+Otra ecuación de utilidad es la definición de Mach, ya que
 
 \begin{equation}\label{velocidad_aire_mach}
-  v_w^2 = a_w^2 M_w^2
+  v_w^2 = a_w^2 M_w^2.
 \end{equation}
 
-Entonces usando \ref{h_0_función_aire_mach} podemos reescribir la ecuación \ref{velocidad_aire_mach} como
-como
+\noindent Entonces usando la ecuacion \ref{h_0_función_aire_mach}, se puede reescribir la ecuación \ref{velocidad_aire_mach}
+como:
 
 \begin{equation} \label{eq_numerador}
-  v_w^2 = M_w^2 \frac{\left( \Gamma -1 \right) h_0}{1+\frac{\Gamma - 1}{2} M_w^2}
+  v_w^2 = M_w^2 \frac{\left( \Gamma -1 \right) h_0}{1+\frac{\Gamma - 1}{2} M_w^2}.
 \end{equation}
 
-Usando la ecuación de momentos \ref{RH_masa} podemos reescribirla como
+\noindent Usando la ecuación de momentos \ref{RH_masa}, se puede reescribir de la siguiente manera:
 
 \begin{equation} \label{eq_fraccion_momentos}
-  \frac{\rho_m }{\rho_w} = \frac{ v_w}{v_m} = \frac{v_w^2}{v_w v_m}
+  \frac{\rho_m }{\rho_w} = \frac{ v_w}{v_m} = \frac{v_w^2}{v_w v_m}.
 \end{equation}
 
-Como ya sabemos cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador})
-de la fracción, podemos definir el cociente de las densidades \ref{eq_fraccion_momentos} como 
+Como ya se sabe cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador})
+de la fracción, entonces se puede definir el cociente de las densidades \ref{eq_fraccion_momentos} como:
 
-\begin{equation}\label{eq_fraccion_momentos_función_mach}
-  \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}
+\begin{equation}\label{eq_fraccion_momentos_funcion_mach}
+  \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}.
 \end{equation}
 
-Entonces para encontrar las presiones combinamos las ecuaciones \ref{RH_momento} y \ref{RH_masa} tenemos
+\noindent Entonces para encontrar las presiones, se pueden combinar las ecuaciones \ref{RH_momento} y \ref{RH_masa} 
 
 \begin{equation}
-  P_m - P_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right)
+  p_m - p_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right).
 \end{equation}
 
-Usando la siguiente relación $\rho v^2 = \Gamma P M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y
-\ref{eq_Mach},dividiendo por $P_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación 
-\ref{eq_fraccion_momentos_función_mach}
-nos queda
+\noindent Empleando la siguiente relación $\rho v^2 = \Gamma p M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y
+\ref{eq_Mach}, dividiendo por $p_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación 
+\ref{eq_fraccion_momentos_funcion_mach} queda:
 
 \begin{equation} \label{eq_fraccion_Presiones}
-  \frac{P_m}{P_w} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_w^2 -1\right)
+  \frac{p_m}{p_w} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_w^2 -1\right).
 \end{equation}
 
-Usando la siguiente relación $ P_w = \frac{\rho a_w }{\Gamma}$ se puede obtener el límite del choque fuerte
+\noindent Si se usa la siguiente relación $ p_w = \frac{\rho a_w^2 }{\Gamma}$ se puede obtener el límite del choque fuerte
 
 \begin{equation}
-  P_m  \simeq \frac{2 \rho_w v_w^2}{\Gamma + 1}
+  p_m  \simeq \frac{2 \rho_w v_w^2}{\Gamma + 1}.
 \end{equation}
 
-Con esto ya podemos obtener la energía térmica de la ecuación \ref{eq_energia_termica} por lo que nos queda 
+\noindent Con esto ya se puede obtener la energía térmica de la ecuación \ref{eq_energia_termica} por lo que queda: 
 
 \begin{equation}
-  E_{th} \sim P_m R^3 \sim \rho_w v_w^2 R^3 \sim \rho_w \frac{R^5}{t^2}
+  E_{th} \sim P R^3 \sim \rho v^2 R^3 \sim \rho \frac{R^5}{t^2}.
 \end{equation}
 
-Como tiene el mismo orden que el de la energía cinética, entonces la energía total que es una cantidad conservada, se espera que
+\noindent Dado que tienen el mismo orden que el de la energía cinética, entonces la energía total que es una cantidad conservada, se puede esperar que:
 
 \begin{equation}
-  E_t = E_{kin} + E_{th} \sim \rho_w \frac{R^5}{t^2}
+  E_t = E_{kin} + E_{th} \sim \rho \frac{R^5}{t^2}
 \end{equation}
 
-Despejando el radio, obtenemos lo siguiente
+\noindent Despejando el radio, obtenemos lo siguiente
 
 \begin{equation} \label{eq_Radio_proporcional}
-  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}
+  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}.
 \end{equation}
 
-Vemos que la Figura \ref{fig_Radio_v_tiempo} parece una función logarítmica y su radio de expansión no crece muy rápidamente conforme avanza el tiempo,
-Para tiempos $t = 4$ y $t = 100$, el radio es $R = 1.74$ y $R = 6.30$ respectivamente
+\noindent En la Figura \ref{fig_Radio_v_tiempo} se observa una función parecida a la logaritmica. Su radio de expansión no crece muy rápidamente conforme avanza el tiempo.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Radio_vs_tiempo.png}
-  \caption{Radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_Radio_v_tiempo}
+  \caption{Radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_Radio_v_tiempo}
 \end{figure}
 
-Si derivamos la ecuación \ref{eq_Radio_proporcional}, obtenemos la velocidad
+Derivando la ecuación \ref{eq_Radio_proporcional}, se obtiene la velocidad
 
 \begin{equation}
-  \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}
+  \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}.
 \end{equation}
 
-A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (ver Figura \ref{fig_velocidad_vs_radio})
+\noindent A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (veáse la Figura \ref{fig_velocidad_vs_radio}).
 
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Velocidad_vs_tiempo.png}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo } \label{fig_velocidad_vs_radio}
+  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_velocidad_vs_radio}
 \end{figure}
 
 
@@ -2731,7 +2751,7 @@ En el capítulo 3, se muestran las pruebas numéricas, hidrodinámicas e hidrodi
 	\item En la sección \ref{subsec:casos_newtonianos_1D} se muestran las pruebas unidimensionales en el régimen newtoniano. Estas consistieron en resolver el problema del tubo de Sod, esto es, analizar la evolución de dos fluidos con distinta densidad, velocidad y presión que inicialmente estaban separados en una posición determinada. Cabe señalar que en estas pruebas se analizaron las diferencias que se tienen al utilizar el método de Lax o el de HLL. Para el caso donde se tienen distintas densidades (y las presiones y las velocidades son iguales) tanto el método de Lax como el método de HLL son indistintos y se reproduce la solución analítica. En este caso, el método de Lax resultó ser computacionalmente más rápido que el de HLL. Para el caso en donde ahora las velocidades son distintas y las densidades y presiones son iguales, también se reprodujo la solución analítica indistintamente del método de Riemann que se utilizara. El método de Lax resultó ser notoriamente más rápido que HLL por lo que para el régimen unidimensional y para velocidades newtonianas, es recomendable usar este método.
 	
 	\item En la sección \ref{subsec:casos_relativistas_1D} se muestran las pruebas unidimensionales en el régimen relativista. Estas consistieron en verificar que en los tubos de Sod, en donde los fluidos evolucionaron con velocidades cercanas a la de la luz, se reprodujeran correctamente con el módulo relativista. Para ambos métodos se puede observar que se tienen errores cuando se aproximan a los valores discontinuos, principalmente en las discontinuidades de contacto (superficies que separan zonas de diferente densidad y temperatura). El método HLL siempre es consistente con los resultados esperados. Mientras tanto, para ciertos casos relativistas el método de Lax falla sin importar la resolución que se utilice.
-	\item En la sección \ref{sec:sedov_taylor} se muestra la prueba bidimensional newtoniana. En específico, se estudió el problema de Sedov-Taylor. Este problema consiste en resolver una onda de choque con ciertos valores de densidad y energía dentro de un medio ambiente con distintos parámetros. El código tuvo éxito, ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado en la sección \label{sec:sedov_taylor}.
+	\item En la sección \ref{sec:sedov_taylor} se muestra la prueba bidimensional newtoniana. En específico, se estudió el problema de Sedov-Taylor. Este problema consiste en resolver una onda de choque con ciertos valores de densidad y energía dentro de un medio ambiente con distintos parámetros. El código tuvo éxito, ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado en la sección \ref{sec:sedov_taylor}.
 	\item En la sección \ref{subsec:caso_relativista_2d} se estudió una onda de choque bidimensional y relativista. Para lo anterior se tomó el mismo problema del tubo de Sod relativista en una dimensión y se expandió a dos dimensiones. Se verificó que se obtiene el  mismo resultado independiente de la dirección del perfil radial (sobre el eje X o sobre el eje Y o a 45 grados). Además, se verificó que el perfil radial de la onda bidimensional es consistente con aquel de una onda unidimensional y con su solución analítica correspondiente.
 \end{itemize}
 
