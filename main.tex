@@ -2472,18 +2472,18 @@ en una y dos dimensiones.
 
 \chapter{Jets relativistas bidimensionales}
 
-En este capítulo se estudiará la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en el capítulo \ref{cap:Verificacion_del_codigo}) a través de medios con distinta densidad. La primera prueba consistirá en estudiar el caso en que el jet atraviesa un medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). 
-Después, se estudiarán los efectos que un medio que varía en función de la distancia produce en los jets relativistas.
-El jet se modelará como un flujo cilíndrico con densidad $\rho_j$, presión $P_j$,  y velocidad $v_j \simeq c$ 
-(ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático será $\Gamma = 5/3$, 
+En este capítulo se estudia la evolución de un jet 2D relativista (usando el módulo 2D HLL que se detalla en el capítulo \ref{cap:Verificacion_del_codigo}) a través de medios con distinta densidad. La primera prueba 
+consiste en estudiar el caso en que el jet atraviesa un medio constante y  comparar los resultados con aquellos de Mignone \emph{et al.} (2005). 
+Se estudiaron los efectos que un medio que varía en función de la distancia produce en los jets relativistas.
+El jet se modela como un flujo cilíndrico con densidad $\rho_j$, presión $p_j$,  y velocidad $v_j \simeq c$ 
+(ver el cuadro \ref{Cuadro: propiedades-jet-comparacion} para más detalles). El índice adiabático fue $\Gamma = 5/3$, 
 consistente con \citet{MB-HLLC-I}. 
-Los cuales en la primera prueba serán constantes y luego variarán en función de x. El medio ambiente, a su vez, se modelará con una densidad y presión en reposo. Un jet de grosor $\Delta y$ será inyectado 
-en la frontera $x_{min}$ a la mitad de la altura $y_{max}$ (esto es, desde $\frac{y_{max}-\Delta y}{2}$ hasta 
-$\frac{y_{max}+ \Delta y}{2}$). 
+Las densidades del medio ambiente de la primera prueba fueron constantes y luego variaron en función de x. Un jet de grosor $\Delta y$ será inyectado 
+en la frontera $x_{min}$ a la mitad de la altura $y_{max}$ (esto es $\frac{y_{max} \pm  \Delta y}{2}$). 
 El resto de la frontera de $x_{min}$ así como las otras fronteras ($x_{max}$, $y_{min}$, $y_{max}$) tendrán condiciones a la
-frontera de \emph{outflow}. 
-El dominio espacial será $x, y \in [0,40]\times[0,20]$ con una resolución de 3200x1600 píxeles). 
-Cabe señalar que el diámetro del jet será de $\delta y=80$ píxeles. El tiempo de integración total será $t = 100$, y el parámetro de Courant será $\text{Co} = 0.5$.
+frontera \emph{outflow}. 
+El dominio espacial fue $x, y \in [0,40]\times[0,20]$ con una resolución de 3200$\times$1600 píxeles. 
+Cabe señalar que el diámetro del jet será de $\Delta y=80$ píxeles. El tiempo de integración total fue $t = 100$, y el parámetro de Courant fue $\text{Co} = 0.5$.
 
 %====================================TABLE=================================
 \begin{table}[htbp]
@@ -2520,28 +2520,31 @@ $x, y \in [0,40]\times[0,20]$ y un índice adiabático $\Gamma = 5/3$.}
 
 \section{Jet 2D RHD en un medio ambiente constante} \label{sec:jet_ambiente_constante}
 
-Para el caso en que el jet, \Selenecor{el cual tiene una densidad}{de densidad} $\rho_j = 0.1$, una velocidad que solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio en reposo y \Selenecor{con densidad}{una densidad} y presión constante, en el cual 
+El jet tiene una densidad $\rho_j = 0.1$, una velocidad que solo cambia en el eje x de $v_{x_{j}} = 0.99 \, c$, una presión $p_j = 0.01$ que se mueve a través de un medio en reposo y \Selenecor{con densidad}{una densidad} y presión constante, en el cual 
 $\rho_a = 0.1 $ y $P_a = 0.01$ es consistente con los valores que \citet{MB-HLLC-I} utilizó. 
 En la Figura \ref{fig:evolucion_temporal_del_jet} se muestra la evolución del jet a 
 través del medio constante en mapas de densidad a los tiempos $t = 1$ (arriba a la izquierda), $t = 10$ (arriba a la derecha), $t = 20$ (abajo a la izquierda) y $t = 40$ (abajo a la derecha).
 En el tiempo $t = 1$, el jet apenas es visible y solo llega a $x \approx 1$. 
-Cuando $t = 10$ la longitud del jet llega  a $x \approx 6$ de longitud, las ondas de colimación, se observan a longitudes de y=10 y llegan a $x \approx 4$. Los isocontornos blancos delimitan el material menos denso del jet. 
+Cuando $t = 10$ la longitud del jet llega  a $x \approx 6$ de longitud, las ondas de colimación se observan sobre y=10 y llegan a $x \approx 4$. Los isocontornos blancos delimitan el material menos denso del jet. 
 El capullo se expande a 5 unidades de longitud, mientras que de ancho alcanza 4 unidades.
 Para el tiempo $t = 20$, el jet se expande a 
-$x \approx 10$ unidades de longitud. El capullo mide 4 unidades de ancho a partir de parte $y > 10$, 
-las ondas de colimación no cambian, mantienen su posición en $x \approx 4$ a lo longitud del eje $y = 10$, el jet se incrementa a 7 unidades de longitud. Para el tiempo $t = 40$, el jet incrementa su tamaño a $x \approx 21$ de longitud. 
-El capullo sobrepasa las 10 unidades de ancho, es decir, sale de nuestro dominio. Las ondas de colimación siguen manteniendo el mismo tamaño en $x \approx 4$ y el capullo sobresale de nuestro dominio. Podemos notar que el capullo está compuesto de materia poco densa que el jet, donde alcanza valores mínimos de $\rho \approx 0.05 $ y máximos de $\rho  \approx 20$ en la
+$x \approx 10$ unidades de longitud. El capullo mide 4 unidades de ancho a partir de $y \geq 10$, 
+las ondas de colimación no cambian, mantienen su posición en $x \approx 4$ sobre $y = 10$, el jet se incrementa a 7 unidades de longitud. Para el tiempo $t = 40$, el jet incrementa su tamaño a 
+$x \approx 21$ de longitud. 
+El capullo sobrepasa las 10 unidades de ancho, es decir, sale del dominio. Las ondas de colimación siguen manteniendo el mismo tamaño en $x \approx 4$. 
+Se que el capullo está compuesto de materia poco densa que el jet, donde alcanza valores mínimos de $\rho \approx 0.05 $ y máximos de $\rho  \approx 20$ en la
 parte externa del capullo. Cabe destacar que el jet conserva el mismo ancho y que la longitud del capullo crece 
 en la misma proporción a la longitud del jet.
 
 El jet del estudio de  \citet{MB-HLLC-I} utiliza un jet relativista con simetría axial en 
-coordenadas cilíndricas,  en este modelo, se usaron coordenadas cartesianas. 
+coordenadas cilíndricas. En este modelo, se usaron coordenadas cartesianas. 
 Ellos usan una ecuación de estado ideal con $\Gamma = 5/3$, el dominio es 
-$0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240 x 700. Las condiciones de
-frontera son \emph{outflow} en todas su frontera, excepto donde está la eyección. El número de Courant que
+$0 \leqslant r \leqslant 12$ y $0 \leqslant z \leqslant 35$ con una malla de 240$\times$700. Las condiciones de
+frontera son \emph{outflow} en toda su frontera, excepto donde está la inyección. El número de Courant que
 usa es 0.5 y el tiempo de integración es hasta $t = 80$. Los valores del jet y su medio ambiente son los
 mismos que la del Cuadro \ref{Cuadro: propiedades-jet-comparacion}. El jet que se usó en esta tesis tiene las
-misma ecuación de estado que se usó en \citet{MB-HLLC-I}, se integró en el mismo tiempo, y aunque son distintos sistemas de coordenadas, tienen el mismo dominio, así como las mismas condiciones de frontera. Se diferencian únicamente, por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces más, la resolución usada en \citet{MB-HLLC-I}.
+misma ecuación de estado que se usó en \citet{MB-HLLC-I}, se integró en el mismo tiempo, y aunque son distintos sistemas de coordenadas, tienen el mismo dominio, así como las mismas condiciones de frontera. 
+Se diferencian únicamente por la resolución, ya que el jet de este estudio tiene aproximadamente 3 veces más la resolución que la usada en \citet{MB-HLLC-I}.
 
 \begin{figure}
   \centering
@@ -2564,10 +2567,10 @@ densidad a $y = 10$
 del jet al tiempo t = 0, donde no se muestra una onda; a t = 5 donde la onda se localiza en $x \approx 2$; 
 a t = 20, la onda se localiza a $x \approx 8$; y  t = 50, donde la onda se localiza en $x \approx 20$. 
 El panel de arriba a la izquierda muestra la densidad, en donde
-podemos observar que para $x \approx 2, 8, 20$,  la densidad alcanza un valor máximo de 
-$\rho  \approx 33$.
+se observa que para $x \approx 2, 8, 20$, la densidad alcanza un valor máximo de 
+$\rho  \approx 33$ a .
 En el panel de arriba a la derecha se muestra la velocidad, donde se puede ver que el jet mantiene una velocidad 
-$v \approx 0.9 \, c$ y decae en $x \approx 17.5$ para llegar a $v \approx 0 $ en  $x \approx 21$. 
+$v \approx 0.9 \, c$ y decae en $x \approx 17.5$ para llegar a $v \approx 0 $ en  $x \approx 21$ a $t = 20, \, 50$ respectivamente. 
 En el panel de abajo a la
 izquierda se muestra la presión, la cual se puede observar que es parecido a la gráfica de la 
 densidad, ya que mantiene sus máximos en los puntos $x \approx 2, 8, 20$, pero también se observa que conforme avanza el
@@ -2575,26 +2578,26 @@ tiempo los picos empiezan a decrecer, ya que para $t = 5, \, p \approx 1.6 $;
 para $t = 20, \, p \approx 1.49$ y para 
 $t = 50, \, p  \approx 1.3$. Para el panel de abajo a la derecha, se hizo la misma comparación que el panel 
 de la densidad, solo que esta vez se compararon  distintas resoluciones: baja resolución "LD" (con 1600 píxeles en el eje X y 800 en el eje Y) 
-y alta resolución "HD" (3200x1600), con lo que se puede observar que 
+y alta resolución "HD" (3200$\times$1600), con lo que se puede observar que 
 para mayor resolución el jet se vuelve ligeramente más rápido. En este panel se puede notar que
 los picos están desfasados conforme avanza el tiempo. Los efectos de la resolución son despreciables ya 
-que la mayor diferencia, debida a la resolución, en la magnitud de los picos es relativamente pequeña (menor a 5\%). \Selene{Esta}, se presenta a t=50 y corresponde a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$.
+que la mayor diferencia, debida a la resolución, en la magnitud de los picos es relativamente pequeña (menor a 5\%). Esta se presenta a t=50 y corresponde a $\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.04$.
 
 
 \begin{figure}
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_constantes.png}
   \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
-  \ref{fig:comparacion_perfil_radial} a tiempos t=0, 5,20, 50.
+  \ref{fig:comparacion_perfil_radial} a tiempos t=0, 5, 20, 50.
   El perfil es de $y = 10$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
   En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución 
   (HD)
-  es de 3200x1600 píxeles y la de baja resolución (LD) es de 1600x800 píxeles.}\label{fig:Decaimiento_constante_densidad_jet}
+  es de 3200$\times$1600 píxeles y la de baja resolución (LD) es de 1600$\times$800 píxeles.}\label{fig:Decaimiento_constante_densidad_jet}
 \end{figure}
 
-En la Figura \ref{fig:comparacion_temporal_del_jet}  \Selenecor{se muestra}{se muestran} los resultados obtenidos en baja 
-(1600x800 píxeles) y alta (3200x1600) resolución, a 
+En la Figura \ref{fig:comparacion_temporal_del_jet}  se muestran los resultados obtenidos en baja 
+(1600$\times$800 píxeles) y alta (3200$\times$1600) resolución, a 
 las mismas escalas de densidad, en comparación con los resultados de \citet{MB-HLLC-I}.
 La Figura muestra de izquierda a derecha las gráficas de \citet{MB-HLLC-I} (izquierda), el modelo con baja resolución 
 (medio) y el modelo con alta resolución (derecha). Los paneles de arriba muestran al tiempo t = 40, mientras que los 
@@ -2623,7 +2626,7 @@ de resolución alta un error del 11 \%.
 Otra diferencia fue que el jet de 
 alta resolución está más comprimido, ya que tiene un grosor aproximado de 1.0 unidades, 
 mientras que el de baja resolución tiene una resolución aproximada de 1.4 unidades, 
-aunque no está tan comprimido como el jet mostrado en el estudio de \citet{MB-HLLC-I}. así también, no podemos encontrar, tanto para baja como 
+aunque no está tan comprimido como el jet mostrado en el estudio de \citet{MB-HLLC-I}. Así también no se puede encontrar, tanto para baja como 
 alta resolución, las turbulencias generadas en el jet de \citet{MB-HLLC-I}, pero también no se pueden comparar las densidades del 
 mismo debido a que no presenta los valores.
 
@@ -2633,13 +2636,13 @@ mismo debido a que no presenta los valores.
     \caption{Mapas de densidad en los que se compara el jet relativista con los valores del Cuadro 
     \ref{Cuadro: propiedades-jet-comparacion}. La Figura está dividida en 3 columnas. La de la izquierda muestra
     el estudio de \citet{MB-HLLC-I}, la de en medio el jet a baja resolución (1600x800 píxeles), y la de la derecha el jet a alta 
-    resolución (3200x1600 píxeles).
+    resolución (3200$\times$1600 píxeles).
     }\label{fig:comparacion_temporal_del_jet}
 \end{figure}
 
 
 \section{Jet 2D RHD en un medio ambiente variable} \label{sec:jet_ambiente_variable}
-Esta sección estudia los efectos que un medio que varía en función de la distancia, $\rho = \rho(x)$, 
+Esta sección estudia los efectos de un medio el cual, varía en función de la distancia, $\rho = \rho(x)$, 
 produce en un jet. La densidad del medio ambiente variará en función del eje, es decir, se modelará como:
 
 \begin{equation}
@@ -2671,26 +2674,32 @@ en la magnitud de los picos es menor a 10\% ($\frac{\rho_{alta} - \rho_{baja}}{\
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_lineales.png}
   \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
   \ref{fig:comparacion_perfil_radial} para un perfil de densidad que varía en función de la distancia como
-  $\rho \varpropto \frac{1}{x}$ a tiempos t=0, 5,20, 50.
+  $\rho \varpropto \frac{1}{x}$ a tiempos t=0, 5, 20, 50.
   El perfil es de $y = 10$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
   En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución
-  es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_lineal_densidad_jet}
+  es de 3200$\times$1600 y la de baja resolución es de 1600$\times$800.}\label{fig:Decaimiento_lineal_densidad_jet}
 \end{figure}
 
-En la Figura \ref{fig:Decaimiento_cuadratico_densidad_jet} se muestra la densidad de medio ambiente que decae como $\rho \varpropto \frac{1}{x^2}$. Aquí podemos ver que los  picos de la densidad están en x = 3, 10, 33 con  la densidad $\rho \approx 54, \,  10, \,  7.3$, respectivamente. En la velocidad podemos observar el frente de choque de la onda que se ubican en $x \approx 3, \, 13, \, 37$ con los valores de velocidad $v \approx 0.42, \, 0.58, \, 0.60$ respectivamente. Para más detalles véase el Cuadro \ref{Cuadro:valores_frente_choque}.
-En el caso de la presión, al tiempo t = 5, desciende rápidamente en $x \approx 0.5$ de $p  \approx 10$ a $p  \approx 2.7$. En el tiempo t = 20, la presión tiene un valor máximo en $x \approx 10$, donde mantiene un valor de $p \approx e^2 \approx 7.3$. Para el tiempo t = 50 la presión desciende exponencialmente del punto $x \approx 28$ donde $p \approx e^{-5} \approx 0.006$. Al comparar las resoluciones de 1600x800 con la de 800x400 se vuelve a ver un desfase. Los efectos de la resolución en este caso dejan deben ser tomados en cuenta. Lo anterior se debe a que la mayor diferencia, debida a la resolución, en la magnitud de los picos es mayor al 60\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63$ a t=50). Por ello, si se deseará estudiar un jet relativista a través de un medio que disminuye como $1/x^2$, o $1/r^2$ es necesario hacer estudios de convergencia para determinar la resolución necesaria para que no influya en los resultados. 
+En la Figura \ref{fig:Decaimiento_cuadratico_densidad_jet} se muestra la densidad de medio ambiente que decae como $\rho \varpropto \frac{1}{x^2}$. Aquí podemos ver que los  picos de la densidad están en x = 3, 10, 33 con
+la densidad $\rho \approx 54, \,  10, \,  7.3$, respectivamente. En la velocidad podemos observar el frente de choque de la onda que se ubican en $x \approx 3, \, 13, \, 37$ con los valores de velocidad 
+$v \approx 0.42, \, 0.58, \, 0.60$ respectivamente. Para más detalles véase el Cuadro \ref{Cuadro:valores_frente_choque}.
+En el caso de la presión, al tiempo t = 5, desciende rápidamente en $x \approx 0.5$ de $p  \approx 10$ a $p  \approx 2.7$. En el tiempo t = 20, la presión tiene un valor máximo en $x \approx 10$, donde mantiene un 
+valor de $p \approx e^2 \approx 7.3$. Para el tiempo t = 50 la presión desciende exponencialmente del punto $x \approx 28$ donde $p \approx e^{-5} \approx 0.006$. Al comparar las resoluciones de 1600$\times$800 con 
+la de 800$\times$400 se vuelve a ver un desfase. Los efectos de la resolución en este caso deben ser tomados en cuenta. Lo anterior se debe a que la mayor diferencia, debida a la resolución, en la magnitud de 
+los picos es mayor al 60\% ($\frac{\rho_{alta} - \rho_{baja}}{\rho_{alta}} \approx 0.63$ a t=50). Por ello, si se deseara estudiar un jet relativista a través de un medio que disminuye como $1/x^2$, o $1/r^2$ es 
+necesario hacer estudios de convergencia para determinar la resolución necesaria para que no influya en los resultados. 
 
 \begin{figure}
   \centering
   \includegraphics[width = 1.0\textwidth]{./Figuras/jet/perfiles/perfiles_cuadraticos.png}
   \caption{Perfiles de densidad, velocidad, presión y distintas resoluciones, similar a la Figura 
   \ref{fig:comparacion_perfil_radial} para un perfil de densidad que varía en función de la distancia como
-  $\rho \varpropto \frac{1}{x^2}$ a tiempos t = 0, 5,20, 50.
+  $\rho \varpropto \frac{1}{x^2}$ a tiempos t = 0, 5, 20, 50.
   El perfil es de $y = 10$.
   La densidad (arriba a la izquierda), velocidad (arriba a la derecha), la presión (abajo a la izquierda). 
   En el panel de abajo a la derecha se comparan la densidad usando 2 distintas resoluciones. La de alta resolución
-  es de 3200x1600 y la de baja resolución es de 1600x800.}\label{fig:Decaimiento_cuadratico_densidad_jet}
+  es de 3200$\times$1600 y la de baja resolución es de 1600$\times$800.}\label{fig:Decaimiento_cuadratico_densidad_jet}
 \end{figure}
 
 En resumen, los picos de la densidad y presión 
@@ -2717,13 +2726,21 @@ distancia que los anteriormente mencionados. En cambio, para el caso en que la d
 
   \end{tabular}
   \caption{\label{Cuadro:valores_frente_choque} Valores de densidad, presión y velocidad que se muestran en el frente
-  de choque de la onda del jet. Los valores obtenidos fueron tomados de las Figura \ref{fig:Decaimiento_constante_densidad_jet},
-  \ref{fig:Decaimiento_lineal_densidad_jet} y \ref{fig:Decaimiento_cuadratico_densidad_jet}}
+  de choque de la onda del jet. Los valores obtenidos fueron tomados de las Figuras \ref{fig:Decaimiento_constante_densidad_jet},
+  \ref{fig:Decaimiento_lineal_densidad_jet} y \ref{fig:Decaimiento_cuadratico_densidad_jet}.}
   \end{center}
   \end{table}
 
 Conforme disminuye más rápidamente en función de la distancia \emph{x}, 
-se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muestra la comparación que hay cuando la densidad del medio ambiente cambia constantemente ($\rho \varpropto \rho_a$), cuando varía inversamente lineal ($\rho \varpropto x^{-1}$) y cuando varía inversamente cuadrático ($\rho \varpropto x^{-2}$) al tiempo $t = 50$. Las líneas punteadas muestran los exponentes intermedios entre los valores de 0, 1 y 2 en pasos de 0.2, es decir, la densidad del medio ambiente descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}, \, . . . \,  , x^{-2}$. El primer valor máximo que acentúa más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene un valor $\rho \approx 0.6$. Mientras para el decaimiento inversamente lineal se localiza en $x \approx 3$ y su valor es $\rho  \approx  0.3$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, para el caso constante, se localiza en $x \approx 20$ y alcanza $\rho  \approx 33$, conforme se aumente el exponente, el valor máximo se desplaza, así como su disminución de la densidad, ya que para el caso inversamente lineal el máximo se localiza en $x \approx 32$ con $\rho \approx 1$ y para el caso inversamente cuadrático el valor máximo se localizó en $x \approx 34$ con $\rho \approx 0.36 $.  Podemos observar que el primer valor máximo de la gráfica, el medio que varía como $x^{-2}$ tiene un valor mayor que el del medio constante, mientras que para el segundo valor máximo se invierte y el medio constante tiene un valor mayor que el del medio que varía como $x^{-2}$. La velocidad de la onda aumenta un 60 \% para medio inversamente lineal en correspondencia con el medio constante y un 6 \% para el medio inversamente cuadrático en correspondencia con el inversamente lineal.  
+se vuelve más rápido. En la Figura \ref{fig:perfiles_comparacion_jet} se muestra la comparación que hay cuando la densidad del medio ambiente es constante ($\rho \varpropto \rho_a$), 
+cuando varía inversamente lineal ($\rho \varpropto x^{-1}$) y cuando varía inversamente cuadrático ($\rho \varpropto x^{-2}$) al tiempo $t = 50$. Las líneas punteadas muestran los exponentes intermedios 
+entre los valores de 0, 1 y 2 en pasos de 0.2, es decir, la densidad del medio ambiente descenderá como $x^0, \, x^{-0.2}, \, . . . \,  ,x^{-0.8} , \, x^{-1}  , \, x^{-1.2}, \, . . . \,  , x^{-2}$. El primer 
+valor máximo que acentúa más en el decaimiento inversamente cuadrático que se localiza en $x \approx 2$ y tiene un valor $\rho \approx 0.6$. Mientras para el decaimiento inversamente lineal se localiza en 
+$x \approx 3$ y su valor es $\rho  \approx  0.3$. Para el caso constante, no remarca un máximo en especial. El segundo valor máximo, para el caso constante, se localiza en $x \approx 20$ y alcanza $\rho  \approx 33$, 
+conforme se aumente el exponente, el valor máximo se desplaza, así como su disminución de la densidad, ya que para el caso inversamente lineal el máximo se localiza en $x \approx 32$ con $\rho \approx 1$ y para el 
+caso inversamente cuadrático el valor máximo se localizó en $x \approx 34$ con $\rho \approx 0.36 $.  Podemos observar que el primer valor máximo de la gráfica, el medio que varía como $x^{-2}$ tiene un valor mayor 
+que el del medio constante, mientras que para el segundo valor máximo se invierte y el medio constante tiene un valor mayor que el del medio que varía como $x^{-2}$. La velocidad de la onda aumenta un 60 \% para 
+medio inversamente lineal en correspondencia con el medio constante y un 6 \% para el medio inversamente cuadrático en correspondencia con el inversamente lineal.  
 
 \begin{figure}
   \centering
@@ -2757,7 +2774,7 @@ En el capítulo 4, se muestra la evolución de un jet bidimensional y relativist
 \begin{itemize}
 	\item En la sección \ref{sec:jet_ambiente_constante} se estudió la evolución del jet en un medio constante y se obtuvieron resultados consistentes con aquellos de \citet{MB-HLLC-I}. El jet de nuestro estudio tiene básicamente la misma morfología (velocidad del sistema jet.capullo, grosor del jet, ondas de colimación, grosor del capullo), sin embargo, también resultó ser más viscoso (el capullo obtenido es más grueso y se tiene menos turbulencia dentro del mismo). Dicha diferencia disminuye conforme se incrementa la resolución del código numérico creado para esta tesis. Además, en el estudio Mignone \emph{et al} 2007 no se detallan todas las características del jet, por ende no podemos compararlo perfectamente debido a la falta de mención de los valores de la densidad. Al comparar las resoluciones, se puede notar que entre más resolución se use el jet, es ligeramente más lento. 
 	
-	\item En la sección \label{sec:jet_ambiente_variable} se estudió la evolución del jet en un medio que varía en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$. Se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
+	\item En la sección \ref{sec:jet_ambiente_variable} se estudió la evolución del jet en un medio que varía en función de la distancia como $\rho \propto R^{-1}$ y $\rho \propto R^{-2}$. Se encontró que conforme el medio decae más rápidamente, más veloz se propaga el jet en dicho medio.
 \end{itemize}
 
 Finalmente, es preciso mencionar las mejorías que se \Selenecor{le}{podrían} hacer al código creado para esta tesis. Se pueden hacer modificaciones para mejorar considerablemente el tiempo de cómputo, ya que el código en su versión actual gasta muchos recursos. Las posibles mejorías se listan a continuación:
