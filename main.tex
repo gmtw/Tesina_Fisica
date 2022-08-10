@@ -197,8 +197,8 @@ se encontró que conforme el medio decae más rápidamente con la distancia a la
 %----------------------------------------------------------------------------------
 \section{Jets relativistas}
 %----------------------------------------------------------------------------------
-En astrofísica, los jets son uno de los fenómenos más energéticos del universo. En ellos se concentran masa, energía, momento y flujo magnético, el cual se expulsa, en un chorro colimado, desde los objetos
-estelares, galácticos y extragalácticos hacia el medio exterior. Son los conductos que conectan los agujeros negros supermasivos y sus discos de acreción con las galaxias anfitrionas.
+En astrofísica, los jets son uno de los fenómenos más energéticos del universo. En ellos se inyecta masa, energía, momento y flujo magnético, el cual se expulsa, en un chorro colimado, desde los objetos
+estelares, galácticos y extragalácticos que se propaga en el medio circundante. Son los conductos que conectan los agujeros negros supermasivos y sus discos de acreción con las galaxias anfitrionas.
 Estos tienen forma de protuberancias cónicas o cilíndricas 
 o semicilíndricas estrechas con ángulo de apertura pequeño. Sus principales características es que tienen una 
 amplia gama de luminosidad y grado de colimación. 
@@ -431,11 +431,11 @@ Los objetivos de esta tesis se enlistan a continuación:
 \begin{itemize}
   \item Desarrollar un código que sea capaz de resolver numéricamente las ecuaciones de la hidrodinámica, tanto para los casos newtonianos (HD) así como los relativistas (RHD) en una (1D) y dos dimensiones (2D). 
   
-  \item Incorporar los resolvedores numéricos Lax y HLL en el código (tanto en el HD como en el RHD).
+  \item Implementar la solución con los métodos de Lax-Friedrichs y HLL en el código (tanto en el HD como en el RHD).
   
-  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analítica (en 1D y 2D). Comparar los resultados usando los métodos de Lax y HLL.
+  \item Verificar que el código HD funcione correctamente por medio de distintos problemas físicos que tengan solución analítica (en 1D y 2D). Comparar los resultados usando los métodos de Lax-Friedrichs y HLL.
 
-  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analítica (en 1D y 2D). Comparar los resultados usando los métodos de Lax y HLL.
+  \item Verificar que el código RHD funcione correctamente por medio de distintos problemas físicos que tengan solución analítica (en 1D y 2D). Comparar los resultados usando los métodos de Lax-Friedrichs y HLL.
   
   \item Estudiar la evolución de un jet 2D relativista a través de un medio constante. Se reproducirá el estudio de \citet{MB-HLLC-I}, y se compararán los resultados obtenidos.
 
@@ -450,8 +450,8 @@ Los objetivos de esta tesis se enlistan a continuación:
 \chapter{Teoría}
 
 % Los GRBs, ya sean largos o cortos, que se originan en el medio interestelar, se pueden describir como un fluido sin viscosidad y estos pueden ser descritos bajo
-Los jets, ya sea que provengan de GRBs o AGNs, se pueden describir como un fluido sin viscosidad %AQUI HAY QUE ACLARAR ESTA LÍNEA
-y estos pueden ser descritos bajo las ecuaciones de la hidrodinámica.
+Los jets, que pueden provenir de GRBs o AGNs, pueden ser descritos por medio de la hidrodinámica ideal (despreciando los términos viscosos). Esto significa considerar el sistema como un fluido, donde se consideran
+variables globales que describen el sistema en vez de la interacción de partículas individuales.
 Para describir un sistema de partículas como un fluido bajo ciertas condiciones, uno debe de conocer que el camino libre medio debe de ser mucho más pequeño que la escala de longitud de las 
 fluctuaciones de las variables macroscópicas \citep{LeVeque1998}.
 
@@ -556,12 +556,12 @@ $
 \end{center}
 
 El término $\mathbf{U}$ son las variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son los fluidos en las direcciones $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. 
-Para poder resolver computacionalmente estas ecuaciones diferenciales parciales vamos a utilizar el método de las volúmenes finitos y el método de Lax sin considerar los términos fuente, es decir, 
+Para poder resolver computacionalmente estas ecuaciones diferenciales parciales, primero vamos a utilizar el método de volúmenes finitos y el método de Lax sin considerar los términos fuente, es decir, 
 $\mathbf{S}=0$.
 
-La implementación en el código se hará en 2 dimensiones, por lo que la variable \emph{H} que corresponde a los flujos en el eje z será cero. El bloque de código está en una subrutina llamada \emph{fluxes}, 
-donde en el mismo bucle se desacoplan las primitivas para que queden en función de las conservadas. Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
-la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$. 
+La implementación en el código se hará en 2 dimensiones, por lo que la variable $\mathbf{H}$ que corresponde a los flujos en el eje z será cero. El bloque de código está en una subrutina llamada \emph{fluxes}, 
+donde en el mismo bucle se obtienen las primitivas para que queden en función de las conservadas. Cabe señalar que tanto en $f(4,i,j)$ y $g(4,i,j)$ se usa la
+la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e(i,j)$. 
 
 \begin{lstlisting}[frame=single]
 
@@ -577,13 +577,14 @@ la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e$.
 
 \end{lstlisting}
 
-Las variables \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle, el término $\mathbf{H}$ no es incluido, dado que estamos en 2D. 
-El término \emph{u} hace alusión a las variables conservadas.
+Los índices \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle. 
+El arreglo $\mathbf{U}$ contiene a las variables conservadas.
 
-\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica}\label{subsec:DesacoplamientoEcuacionesHidrodinamica}
+\subsection{Variables primitivas de las ecuaciones de la hidrodinámica}\label{subsec:DesacoplamientoEcuacionesHidrodinamica}
 
-Al final del método de volúmenes finitos, obtenemos las variables conservadas (\emph{U}), pero para calcular los flujos de nuevo necesitamos recuperar las primitivas, es decir, calcular las variables primitivas 
-$(\rho, \, u, \, v,\, w, \, p )$ en función de nuestras variables conservadas $(U_1, \, U_2, \, U_3, \, U_4, \, U_5)$.
+Las ecuaciones de la hidrodinámica se escriben como se vió anteriormente en términos de variables conservadas (densidades de masa, momento y energía).
+Sin embargo para el cálculo de los flujos se vuelve conveniente hacerlo a través de las llamadas variables primitivas (densidad de masa, velocidad y presión térmica).
+En el caso no relativista la transformación entre estas variables es trivial pero, para el caso relativista, es un poco más elaborado.
 
 Despejar la densidad es sencillo, ya que es directo, $U_1= \rho$ por lo tanto:
 
@@ -598,7 +599,7 @@ Despejar la densidad es sencillo, ya que es directo, $U_1= \rho$ por lo tanto:
 \end{equation}
 Para la ecuación   de la energía $U_5=e$ combinando con la ecuación   de estado y la ecuación \ref{primitiva_velocidades} obtenemos:
 \begin{equation}
-P = \left( \Gamma - 1 \right) \left[ U_5 - \frac{U_1 \left( \sum_{i=2}^{4} U_1/U_i \right)^2}{2} \right].
+p = \left( \Gamma - 1 \right) \left[ U_5 - \frac{U_1 \left( \sum_{i=2}^{4} U_1/U_i \right)^2}{2} \right].
 \end{equation}
 
 En el código se implementa de la siguiente manera.
@@ -619,7 +620,8 @@ que se puedan calcular los flujos.
 \noindent Donde la variable \emph{u(4,i, j)} es la densidad de energía, ya que, como se recordará, se está en 2 dimensiones.
   
 \section{Hidrodinámica relativista}
-Los jets generalmente tienen velocidades relativistas, por lo que la parte newtoniana no nos va a servir, pero si como apoyo para poder pasar a la hidrodinámica relativista.
+Para el caso en que los jets estén dentro del régimen relativista, la descripción newtoniana se vuelve inadecuada, y se vuelve necesario una descripción relativista (en este caso restringirá a la relatividad
+espacial).
 Esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordarán cómo cambian nuestras primitivas, cómo afectan a nuestras variables conservadas y cómo las podemos 
 desacoplar, así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
 
@@ -664,7 +666,7 @@ T^{\mu \nu} =
 
 \end{pmatrix} .
 \end{equation}
-Entonces las variables conservadas quedarían de la siguiente manera:
+Entonces las variables conservadas en función de las variables primitivas quedarían de la siguiente manera:
 \begin{align}
 u_{1}& = \rho \gamma \\ 
 u_{2}& = \rho v_{x} \gamma^{2} h \\ 
@@ -673,7 +675,7 @@ u_{4}& = \rho \gamma^{2} h - p
 \end{align}
 
 \noindent donde $\rho$ es la densidad, $\gamma$ es el factor de Lorentz, $v_{x}$ y $v_{y}$ son las velocidades de los flujos (en 2 dimensiones, pero se puede extender esto a 3 sin ningún problema), 
-$h$ es la entalpía  y $p$ es la presión. Para los flujos quedan de la siguiente manera:
+$h$ es la entalpía  y $p$ es la presión. Los flujos físicos quedan de la siguiente manera:
 \begin{align}
 F_{1}& = \rho v_{x} \gamma \\ 
 F_{2}& = \rho v_{x} v_{x} \gamma^{2} h + p\\ 
@@ -708,10 +710,10 @@ La implementación en el código es de la siguiente manera, el factor de Lorentz
 \end{lstlisting}
 
 A diferencia de los flujos newtonianos, para los flujos relativistas se tienen que calcular antes el factor de Lorentz \emph{lor} y la entalpía \emph{h},
-las variables \emph{i}, \emph{j} son contadores sobre el espacio.
+las variables \emph{i}, \emph{j} son índices que se utilizan para recorrer las coordenadas espaciales en el dominio computacional.
 
-\subsection{Desacoplamiento de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
-Para poder desacoplar las ecuaciones, se partirá de la relación de las densidades de energía total y del módulo de los momentos \citep{McKinney2007}. 
+\subsection{Variables primitivas de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
+Para obtener las variables primitivas a partir de las variables conservadas , se partirá de la relación de las densidades de energía total y del módulo de los momentos \citep{McKinney2007}. 
 
 \begin{equation}\label{ecuación  _de_energia}
   e=W-p ,
@@ -744,12 +746,12 @@ reescribir el factor de Lorentz como $\gamma^{2} = 1-u^{2}$
 \dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}.
 \end{equation}
 
-\noindent No se sabe como es la expresión $\dfrac{de}{dW^{'}}$, así que se asume que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena
+\noindent No se sabe como es la expresión $\dfrac{de}{dW^{'}}$, así que se supondrá que $p=p(\rho, \chi)$ por lo que podemos aplicar la regla de la cadena
 \begin{equation}\label{cadena}
 \dfrac{dp}{dW^{'}}=\dfrac{\partial p}{\partial\chi}\Bigg |_{\rho} \dfrac{d\chi}{dW^{'}} + \dfrac{\partial p}{\partial \rho}\Big |_{\chi} \dfrac{d \rho}{d W^{'}}.
 \end{equation}
 
-\noindent Para calcular $\dfrac{dp}{d\chi}$ tenemos que, por ser el caso de un gas ideal,
+\noindent Si uno considera un gas ideal, es posible calcular $\dfrac{dp}{d\chi}$
 \begin{equation} \label{entalpía_función_presion_densidad}
 h=1+\frac{\Gamma}{\Gamma-1}\frac{p}{\rho}
 \end{equation}
@@ -767,7 +769,7 @@ p(\chi,\rho)=\frac{\Gamma-1}{\Gamma}\chi ,
 & \dfrac{d p}{d \chi}&=\frac{\Gamma-1}{\Gamma} ,\\ &\dfrac{d p}{d \rho}&= 0.
 \end{eqnarray}
 
-\noindent De la ecuación \ref{W_prima} podemos despejar $\chi$, lo que queda como:
+\noindent De la ecuación \ref{W_prima} podemos despejar $\chi$:
 \begin{equation}
 \chi=\frac{W^{'}}{\gamma}- \frac{D u^{2}}{(1+\gamma)\gamma^{2}}.
 \end{equation}
@@ -781,7 +783,7 @@ W^{'}&=&D\left(\gamma-1 \right) + \chi \gamma^{2}\\%salto de linea
 \frac{1}{\gamma ^2} &=& \frac{D \gamma}{2} \dfrac{d v^{2}}{d W^{'}} + \dfrac{d \chi}{dW^{'}} + \chi \gamma^2 \dfrac{d v^2}{dW^{'}}. \\ %salto de linea
 \end{eqnarray*}
 
-\noindent Por lo tanto, la ecuación se puede escribir de la siguiente manera:
+\noindent Por lo tanto, se puede obtener:
 
 \begin{equation}\label{der_chi}
 \dfrac{d \chi}{dW^{'}}=\frac{1}{\gamma^2}-\frac{\gamma}{2}(D-2\gamma \chi) \dfrac{d v^2}{dW^{'}},
@@ -793,7 +795,7 @@ W^{'}&=&D\left(\gamma-1 \right) + \chi \gamma^{2}\\%salto de linea
 \dfrac{d \rho}{d W^{'}}= D \dfrac{d\left(1/ \rho \right) }{d W^{'}} = - \frac{D \gamma}{2}  \dfrac{d v^2}{dW^{'}}.
 \end{equation}
 
-\noindent Despejando la ecuación \ref{modulos de los momentos} podemos llegar a escribir el módulo de la velocidad al cuadrado de la siguiente manera:
+\noindent Despejando el módulo de la velocidad en la ecuación \ref{modulos de los momentos} podemos llegar a escribirlo de la siguiente manera:
 \begin{equation}
 \abs{v^{2}} = \frac{\abs{m^{2}}}{W^{'}} 
 \end{equation}
@@ -865,12 +867,12 @@ v_{y}&=&\frac{u_{3}}{W}.\\
 p&=&\frac{\Gamma-1}{\Gamma} \chi.
 \end{eqnarray}
 
-Aunque en el método newtoniano se podían desacoplar las ecuaciones sobre el mismo bucle, 
-para el método relativista se tuvo que crear una subrutina para poder desacoplar las primitivas y así poder obtenerlas en función de las conservadas. 
-La subrutina de desacoplamiento se llama \emph{uprim}, 
-y ésta recibe un parámetro de entrada, que es la conservada \emph{u} y devuelve una variable primitiva. 
-Las variables conservadas se reasignan a unas nuevas llamadas \emph{qu} para que se pueda usar la subrutina, una vez que se desacoplan, 
-los valores de salida, éstas se reasignan a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
+Aunque en el caso newtoniano se podían calcular las variables primitivas dentro del bucle, 
+para el caso relativista se tuvo que crear una subrutina para obtener las primitivas función de las conservadas. 
+La subrutina para obtener las primitivas se llama \emph{uprim}, 
+y ésta recibe un parámetro de entrada, que es la conservada $\mathbf{U}$ y devuelve los valores de todas las variables primitivas en una celda en particular. 
+Las variables conservadas se reasignan a unas nuevas llamadas \emph{qu} para que se pueda usar la subrutina, una vez que se obtienen las primitivas, 
+los valores de salida se reasignan a otras llamadas \emph{qpp}. Se tienen que reasignar dado que la subrutina pide números reales y no matrices.
 
 \begin{lstlisting}[frame=single] 
         
@@ -892,7 +894,7 @@ los valores de salida, éstas se reasignan a otras llamadas \emph{qpp}. Se tiene
 
 \end{lstlisting}
 
-\noindent La subrutina de desacoplamiento para las variables conservadas que se mencionan en esta sección recibirá las variables conservadas
+\noindent La subrutina que se mencionan en esta sección recibirá las variables conservadas
 y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular 
 (ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}.
 
@@ -926,7 +928,7 @@ Las variables \emph{qp} mostradas en el código son las primitivas, mientras que
 
 
 \section{Volúmenes finitos} \label{sec:Diferencias_finitas}
-Ya se ha visto que ecuaciones describen la hidrodinámica, ahora toca resolverlas. Dado que analíticamente es difícil, se va a hacer computacionalmente, para 
+Ya se ha visto qué ecuaciones describen la hidrodinámica, ahora toca resolverlas. Dado que analíticamente es difícil, se va a hacer computacionalmente, para 
 eso se hará uso del método numérico de volúmenes finitos \citep{Duran2021}.
 Si tenemos una función $f(x)$ diferenciable la podemos aproximar por el teorema de Taylor en la vecindad de un punto $x_0$ y si se conocen todas sus $n$ derivadas de la función $f(x)$ en el punto $x_0$ se puede 
 aproximar de la siguiente manera
@@ -1049,7 +1051,8 @@ Para más detalles acerca de este problema consulte \citet{Toro1997}.
 
 
 
-	Para usar el método de Harten-Van-Leer \citep{Toro1997} se tiene que definir el flujo numérico intercelda de Gudonov
+	Un elemento del método de volúmenes finitos es un algoritmo para resolver el problema de Riemann en las interfases de cada celda, y un caso particular (y bastante malo en realidad) de aproximar la solución al 
+  problema de Riemann es el método de Harten-Van-Leer \citep{Toro1997}. En él se tiene que definir el flujo numérico intercelda de Gudonov
 
 \begin{equation}
 F_{i+\frac{1}{2}}=F \left( U_{i+\frac{1}{2}} \right)
@@ -1292,9 +1295,10 @@ end do
 
 \subsection{Rankine-Hugoniot}
 
-Ya se ha visto cómo se resuelven las ecuaciones de la hidrodinámica, pero hay un problema: cuando un jet  choca contra el medio que lo rodea se genera una onda de choque. 
-Esta onda de choque es una discontinuidad de la masa, presión y energía entre el jet y el medio que los rodea. Este problema se resuelve con las ecuaciones de 
-Rankine-Hugoniot \citep{Prunty2019}.
+La aparición de choques obedece a que algunas perturbaciones en el medio producen soluciones discontinuas en el flujo. Una de estas son los choques. Las ecuaciones de Rankine-Hugoniot
+relacionan las variables a ambos lados de una solución discontinua.
+
+Un ejemplo de estas soluciones discontinuas se da cuando un jet supersónico interactua con un medio estático \citep{Prunty2019}.
 Considerando las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
 hacia la derecha (ver Figura \ref{fig_move_shock}) sobre un fluido estacionario ($v = 0$) con una velocidad $v_s$. La presión y la densidad, que están enfrente de la onda, son asumidas como
 $\rho_0$ y $p_0$ mientras que los flujos que están comprimidos detrás del frente de onda se mueven con una velocidad $v_p$ y que tienen densidad y presión $\rho_p$, $p_p$.
@@ -1306,13 +1310,13 @@ $\rho_0$ y $p_0$ mientras que los flujos que están comprimidos detrás del fren
 \end{figure}
   
 
-Si consideramos nuestro sistema de referencia posicionado sobre la onda (ver Figura \ref{fig:choque:estacionario}), usando las transformaciones de Galileo, las direcciones de las velocidades
+Si consideramos nuestro sistema de referencia posicionado sobre el choque (ver Figura \ref{fig:choque:estacionario}), usando las transformaciones de Galileo, las direcciones de las velocidades
 se invierten y la velocidad del flujo que entra al choque es $v_s$ y la que sale es $v_s-v_p$.
 
 \begin{figure} 
   \centering
   \includegraphics[scale=0.7]{./Figuras/Teoria/stationary_shock.png}
-  \caption{Al tomar un sistema de referencia sobre la onda, el choque en movimiento se transforma en una choque estacionario, y los
+  \caption{Al tomar un sistema de referencia sobre el choque, el choque en movimiento se transforma en una choque estacionario, y los
   flujos que están a la derecha e izquierda de la onda se mueven hacia la izquierda.} \label{fig:choque:estacionario}
 \end{figure}
 
@@ -1367,9 +1371,10 @@ es la densidad de energía por unidad de volumen
  \frac{1}{2} u_{m}^{2}+ \frac{\Gamma}{\Gamma-1} \frac{p_{m}}{\rho_{m}}
 \end{equation}
 
-\noindent donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad,  $P \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ 
-la presión, $\Gamma$ el índice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{j, m} que  relacionan a las propiedades del 
-jet y del medio respectivamente. Usando la ecuación   \ref{RH_masa}, se puede definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} se reescribe como:
+\noindent donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad,  $p \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ 
+la presión, $\Gamma$ el índice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{p} y \textit{0} se cambiaron por 
+\textit{p} y \textit{0} repectivamente las cuales se relacionan a las propiedades del 
+jet y del medio. Usando la ecuación   \ref{RH_masa}, se puede definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} se reescribe como:
 
 \begin{equation}\label{RH_momento_j}
 p_{j}+\frac{j^2}{\rho_{j}}=p_{m}+\frac{j^2}{\rho_{m}}
@@ -1434,7 +1439,7 @@ $\Rightarrow$
 = \frac{u_j}{u_m}.
 \end{equation}
 
-\noindent Si se considera un choque fuerte, es decir, $p_j \gg p_m$, implicaría que $p_m \simeq 0$, por lo que
+\noindent Si se considera un choque fuerte, es decir, $p_j \gg p_m$, esto es $p_m \rightarrow 0$, con lo que
 
 \begin{equation}
 \rho_j = \frac{\Gamma +1}{\Gamma-1} \rho_m 
@@ -1530,7 +1535,7 @@ cinética es $e_k = \rho c^2$, pero como se esta considerando a $c = 1$ esto se 
   p_j = \frac{\rho_j}{4}\left( \frac{\gamma_\infty}{\gamma_j}-1\right).
 \end{equation}
 
-Para poder simular las condiciones de un jet, se necesita saber la densidad, velocidad y presión del mismo, como los jet tienen velocidades cercanas a la
+Para poder simular las condiciones de un jet, se necesita saber la densidad, velocidad y presión del mismo, como los jets tienen velocidades cercanas a la
 de la luz, se pueden tomar valores cercanos a esta constante. La densidad se obtendrá en la siguiente sección. 
 
 
@@ -1548,7 +1553,7 @@ que $L \equiv \dfrac{d E}{d t}$ entonces derivando la ecuación \ref{eq._energia
   \dfrac{d E}{d t} = \gamma_{j} \dot{ M }  c^2.
 \end{equation}
 
-La taza de flujo de masa $\dot{M}$ se puede escribir como:
+La tasa de flujo de masa $\dot{M}$ se puede escribir como:
 
 \begin{equation}
   \dot{M} = \rho_j u_j A_j
@@ -1616,7 +1621,7 @@ Las dimensiones de estas cantidades se muestran a continuación.
 
 \subsection{Aproximación en función de la conservación de la energía}
 
-Otra aproximación es buscando el cociente de presiones y densidades en función del número Mach.
+Otra aproximación importante se obtiene buscando el cociente de presiones y densidades en función del número Mach.
 Se puede saber el radio $R(t)$ de una onda de choque en función del tiempo. Tomando el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la región interior al choque es constante, entonces 
 el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
 por lo que se puede aproximar la energía cinética de la onda como 
@@ -1723,7 +1728,7 @@ se obtiene
   \frac{1}{v_w v_m} = \frac{1}{\left( \Gamma -1\right) h_0} \frac{\Gamma + 1}{2}
 \end{equation}
 
-Otra ecuación de utilidad es la definición de Mach, ya que
+Otra ecuación de utilidad es la definición del número de Mach, ya que
 
 \begin{equation}\label{velocidad_aire_mach}
   v_w^2 = a_w^2 M_w^2.
