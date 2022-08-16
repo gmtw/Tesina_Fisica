@@ -203,7 +203,9 @@ Estos tienen forma de protuberancias cónicas o cilíndricas
 o semicilíndricas estrechas con ángulo de apertura pequeño. Sus principales características es que tienen una 
 amplia gama de luminosidad y grado de colimación. 
 Los ejemplos de jet más poderosos observados son los que, emergen de los núcleos de galaxias activas (o AGN). También se encuentran asociados a otros objetos estelares, tales como la fusión de agujeros negros y/o
-estrellas de neutrones, sistemas binarios, estrellas simbióticas y microquásares \citep{deGouveiaDalPino:2004jy}. %! ASTROPHYSICAL JETS AND OUTFLOWS Elisabete M. de Gouveia Dal Pino
+estrellas de neutrones, sistemas 
+
+ estrellas simbióticas y microquásares \citep{deGouveiaDalPino:2004jy}. %! ASTROPHYSICAL JETS AND OUTFLOWS Elisabete M. de Gouveia Dal Pino
 Para una mejor comprensión de las fuentes que producen los jets, puede consultar el Cuadro \ref{table:propiedades_jets}.
 
 %----------------------------------------------------------------------------------
@@ -214,7 +216,7 @@ $km \cdot s^{-1}$ hasta velocidades cercanas a la de la luz ($c$), y tienen tama
 
 Los jets relativistas son impulsados por la acreción de un objeto compacto (por lo general estrellas de neutrones u hoyos negros). Pueden ser lanzados desde un hoyo negro supermasivo localizado en el 
 centro de una galaxia activa (AGN) \citep{2019ARA&A..57..467B} ó, desde un hoyo negro como en las binarias de rayos X \citep{2020ApJ...895L..31E}. Los destellos de rayos gamma (GRBs) cortos, que resultan de la colisión 
-de un sistema binarios de dos estrellas de neutrones \citep{2021MNRAS.506.3483P}, y los GRBs largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de 
+de un sistema binario de dos estrellas de neutrones \citep{2021MNRAS.506.3483P}, y los GRBs largos, que resultan del colapso de una estrella masiva que gira rápidamente en sus últimas etapas de 
 vida, también emiten jets relativistas \citep{2022MNRAS.509.5964S}.
 Aunque la presencia de un objeto central masivo y un disco de acreción de gas girando a su alrededor es el componente principal en todos los escenarios astrofísicos donde se encuentran jets, el campo magnético y su 
 interacción con todo el sistema parece ser un componente fundamental para este tipo de eyecciones. Esto permite la formación y estabilidad del disco, así como el lanzamiento y colimación del jet. Los procesos más 
@@ -415,7 +417,8 @@ El panel de arriba muestra cómo para t=40, cuando se usa el método de HLLC, el
 ancho máximo de $\sim$7 unidades. Para el caso, en el que se usa HLL, el jet tiene un tamaño de $\sim$18 unidades, un grosor de $\sim$5 unidades, y el capullo alcanza una anchura de $\sim$4 unidades. El caso HLL presenta 
 una menor turbulencia con respecto a HLLC.
 Para el panel de abajo (a t=80), en el caso de HLLC, presenta un largo de $\sim$32 unidades, un ancho es de $\sim$7 unidades y su capullo tiene una anchura de $\sim$11 unidades. Para el caso en que se usa HLL, el largo 
-y ancho miden $\sim$31.5 y $\sim$8 respectivamente, mientras que el capullo presenta un tamaño de $\sim$11.5 unidades. Nuevamente, el caso HLL presenta menos turbulencia que el caso HLLC.
+y ancho miden $\sim$31.5 y $\sim$8 respectivamente, mientras que el capullo presenta un tamaño de $\sim$11.5 unidades. Nuevamente, el caso HLL presenta menos turbulencia que el caso HLLC. Por lo que se puede inferir que HLLC
+es un mejor métodos para la modelación de flujos.
 % \Selene{No sé si tu asesor o algún sinodal te guió para la redacción, si esta es tu introducción, para mi gusto tiene muchos datos técnicos que desconozco y siento que no me introduce, pero si tu crees que las personas que leerán esta tesis, especialistas en el tema no tendrán duda entonces esta bien.}
 % \Selene{Sería genial que añadas una descripción de lo que vendrá en cada capitulo.}
 % \Selene{Estas son algunas preguntas que me plantee para mi tesis, ojala te sirvan, \\
@@ -1792,12 +1795,12 @@ de la fracción, entonces se puede definir el cociente de las densidades \ref{eq
   R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}.
 \end{equation}
 
-\noindent En la Figura \ref{fig_Radio_v_tiempo} se observa una función parecida a la logaritmica. Su radio de expansión no crece muy rápidamente conforme avanza el tiempo.
+\noindent En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la onda de choque, el cual, se cambio a una escala logaritmica.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Radio_vs_tiempo.png}
-  \caption{Radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_Radio_v_tiempo}
+  \caption{Logaritmo en base 10 del radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_Radio_v_tiempo}
 \end{figure}
 
 Derivando la ecuación \ref{eq_Radio_proporcional}, se obtiene la velocidad
@@ -1806,12 +1809,12 @@ Derivando la ecuación \ref{eq_Radio_proporcional}, se obtiene la velocidad
   \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}.
 \end{equation}
 
-\noindent A diferencia del radio, la velocidad, se asemeja más a una asíntota que decrece muy rápidamente (veáse la Figura \ref{fig_velocidad_vs_radio}).
+\noindent A diferencia del radio, la velocidad tiene una pendiente negativa (veáse la Figura \ref{fig_velocidad_vs_radio}).
 
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Velocidad_vs_tiempo.png}
-  \caption{Velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_velocidad_vs_radio}
+  \caption{Logaritmo en base 10 de la velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_velocidad_vs_radio}
 \end{figure}
 
 
