@@ -157,8 +157,7 @@ Dr. Diego López Cámara Ramírez}
 A mis padres por su apoyo incondicional. A la UNAM por darme un segundo hogar y formar parte de sus filas. También agradezco a mis sinodales por el
 tiempo y disposición para leer y corregir este trabajo. 
 
-Y sobre todo quiero agradecer a mi asesor Diego, ya que sin su apoyo, conocimientos brindados y sobre todo su paciencia
-no se hubiera podido realizar esta tesis.
+Y sobre todo quiero agradecer a mi asesor Diego ya que sin su apoyo, conocimiento brindado, y sobre todo su paciencia, no se hubiera podido realizar esta tesis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------------
@@ -1750,8 +1749,7 @@ como:
   \frac{\rho_m }{\rho_w} = \frac{ v_w}{v_m} = \frac{v_w^2}{v_w v_m}.
 \end{equation}
 
-Como ya se sabe cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador})
-de la fracción, entonces se puede definir el cociente de las densidades \ref{eq_fraccion_momentos} como:
+Como ya se sabe cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador}) de la fracción, entonces se puede definir el cociente de las densidades \ref{eq_fraccion_momentos} como:
 
 \begin{equation}\label{eq_fraccion_momentos_funcion_mach}
   \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}.
@@ -1763,9 +1761,7 @@ de la fracción, entonces se puede definir el cociente de las densidades \ref{eq
   p_m - p_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right).
 \end{equation}
 
-\noindent Empleando la siguiente relación $\rho v^2 = \Gamma p M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y
-\ref{eq_Mach}, dividiendo por $p_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación 
-\ref{eq_fraccion_momentos_funcion_mach} queda:
+\noindent Empleando la siguiente relación $\rho v^2 = \Gamma p M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y \ref{eq_Mach}, dividiendo por $p_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación \ref{eq_fraccion_momentos_funcion_mach} queda:
 
 \begin{equation} \label{eq_fraccion_Presiones}
   \frac{p_m}{p_w} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_w^2 -1\right).
@@ -1790,31 +1786,30 @@ de la fracción, entonces se puede definir el cociente de las densidades \ref{eq
 \end{equation}
 
 \noindent Despejando el radio, obtenemos lo siguiente
-
 \begin{equation} \label{eq_Radio_proporcional}
-  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}}.
+  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}},
 \end{equation}
+con lo cual se obtiene $R(t) \varpropto t^{2/5}$.
 
-\noindent En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la onda de choque, el cual, se cambio a una escala logaritmica.
+En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la onda de choque de Sedov-Taylor (nótese que la grafica es log-log). Dado que la pendiente en la gráfica de logR vs logT es 2/5, entonces se conforma que el radio incrementa conforme pasa el tiempo como $R \propto t^{2/5}$.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Radio_vs_tiempo.png}
-  \caption{Logaritmo en base 10 del radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_Radio_v_tiempo}
+  \caption{Evolución del radio de una onda de choque de Sedov-Taylor en función del tiempo.} \label{fig_Radio_v_tiempo}
 \end{figure}
 
-Derivando la ecuación \ref{eq_Radio_proporcional}, se obtiene la velocidad
-
+Derivando la ecuación \ref{eq_Radio_proporcional}, se obtiene que la velocidad es:
 \begin{equation}
   \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}.
 \end{equation}
 
-\noindent A diferencia del radio, la velocidad tiene una pendiente negativa (veáse la Figura \ref{fig_velocidad_vs_radio}).
+\noindent A diferencia del radio, la velocidad disminuye conforme pasa el tiempo (veáse la Figura \ref{fig_velocidad_vs_radio}). La pendiente en la gráfica de logV vs logT es -3/5, con lo cual se tiene que $V \propto t^{-3/5}$.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.5\textwidth]{Figuras/Teoria/Velocidad_vs_tiempo.png}
-  \caption{Logaritmo en base 10 de la velocidad del radio de expansión de una onda de choque conforme avanza el tiempo. } \label{fig_velocidad_vs_radio}
+  \caption{Evolución de la velocidad de una onda de choque de Sedov-Taylor en función del tiempo.} \label{fig_velocidad_vs_radio}
 \end{figure}
 
 
