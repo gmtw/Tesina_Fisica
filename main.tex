@@ -401,8 +401,8 @@ a presión constante $C_p$ y calor específico a volumen constante $C_v$. Lo den
 Los métodos que emplearon fueron el método de HLL y HLLC (para más información ver la sección \ref{secc:HLL}). El tiempo de integración fue de $t = 80$ con condiciones de frontera \emph{outflow} excepto donde se 
 inyecta el jet. La velocidad de avance promedio  del jet fue de 0.39 con una resolución de 240$\times$700 píxeles. 
 
-La figura de arriba de \ref{fig:jet_mignone} muestra la morfología del jet a t=40, mientras que la de abajo a t=80. En ambas figuras el panel de arriba (i.e. el dominio positivo en Y) muestra el 
-caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, el panel del abajo (i.e. el dominio negativo en Y) muestra el caso cuando se usó el esquema HLL.
+El panel superior de la Figura \ref{fig:jet_mignone} muestra la morfología del jet a t=40, mientras que la de abajo a t=80. En la parte superior de ambos páneles (i.e. el dominio positivo en Y) muestra el 
+caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, la parte de abajo (i.e. el dominio negativo en Y) muestra el caso cuando se usó el esquema HLL.
 \begin{figure}
   \begin{center}
     \includegraphics[width=0.5\textwidth]{Figuras/capitulo_1/jet_mignone.png}
@@ -898,8 +898,9 @@ los valores de salida se reasignan a otras llamadas \emph{qpp}. Se tienen que re
 \end{lstlisting}
 
 \noindent La subrutina que se mencionan en esta sección recibirá las variables conservadas
-y devolverá las primitivas. La subrutina \emph{newrap} se usará en particular 
-(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}.
+y devolverá las primitivas. La subrutina \emph{newrap}  
+se usará en particular 
+(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}.  Las variables primitivas en el modúlo relativista fueron encontradas siguiendo la misma metodología que el código Mezcal \citep{Colle2012}.
 
 \begin{lstlisting} [frame=single]
   
@@ -2338,22 +2339,22 @@ la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.
 \end{figure}
 
 Para verificar que el código HD estaba reproduciendo correctamente la solución analítica de Sedov-Taylor se comprobó que el radio de la onda de expansión de la simulación siguiese la solución analítica 
-dada en la ecuación \ref{eq_Radio_proporcional}, esto es, que el radio de la onda creciera como $r\propto t^{2/5}$. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución del radio de la onda en función del tiempo (verde) así como 
-la curva que mejor se le ajusta (rojo). La curva que mejor se ajusta a los datos resultó ser $r(t) = t^{0.413}$. El coeficiente de determinación fue $R^2= 0.985$ lo cual nos indica que el modelo se ajusta muy bien a 
+dada en la ecuación \ref{eq_Radio_proporcional}, esto es, que el radio de la onda creciera como $r\propto t^{2/5}$. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución logaritmica del radio de la onda en función del tiempo (verde) así como 
+la curva que mejor se le ajusta (rojo). La curva que mejor se ajusta a los datos resultó ser $\log(r(t))= 0.429t+34.43$ lo que nos indica que el radio crece como $r(t) \propto t^{0.429}$. El coeficiente de determinación fue $R^2= 0.993$ lo cual nos indica que el modelo se ajusta muy bien a 
 los datos de la simulación. Al comparar nuestro modelo con la teoría podemos notar una discrepancia del 5 \%, y por ende podemos concluir que el problema de Sedov-Taylor fue resuelto correctamente por el código HD.
 
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{./Figuras/capitulo_3/prueba_2d_newtoniana/Expansion_HLL_NR_res_1000.png}
-    \caption{Crecimiento del radio de la onda de choque en función del tiempo. Las cruces verdes muestran la evolución del radio de la onda de choque en la simulación. La línea sólida roja muestra la curva que mejor 
-    se ajusta a los datos: $r(t) = t^{0.413}$ (con un coeficiente de determinación $R^2= 0.985$). Las cruces más remarcadas corresponden a los radios que se muestran en la Figura \ref{fig:prueba_2d_newtoniana}.}
+    \caption{Crecimiento logarítmico del radio de la onda de choque en función del tiempo. Las cruces verdes muestran la evolución del radio de la onda de choque en la simulación. La línea sólida roja muestra la curva que mejor 
+    se ajusta a los datos: $\log(r(t))= 0.429t+34.43$ (con un coeficiente de determinación $R^2= 0.993$). Las cruces más remarcadas corresponden a los radios que se muestran en la Figura \ref{fig:prueba_2d_newtoniana}.}
     \label{fig:Expansion_HLL_NR}
 \end{figure}
 
 \subsection{Caso relativista} \label{subsec:caso_relativista_2d}
 Para verificar que el código RHD funciona correctamente en 2D se hizo una prueba de una onda de choque relativista en 2 dimensiones y se verificó que se comporta como la solución analítica auto-similar de 
 una prueba de un tubo de choque bidimensional. El dominio espacial fue $x, y \in [0,1]\times[0,1] \, \text{cm}$, el radio de la 
-onda $r = 0.5 \, \text{cm}$. Se consideró un índice adiabático $\Gamma = 4/3$, y una resolución de 1000x1000 píxeles. Los valores que hay dentro de la onda bidimensional, así como 
+onda $r = 0.5 \, \text{cm}$. Se consideró un índice adiabático $\Gamma = 4/3$, y una resolución de 1000$\times$1000 píxeles. Los valores que hay dentro de la onda bidimensional, así como 
 los que el medio ambiente, se muestran en el cuadro \ref{Cuadro_parametros_choque_2D}. 
 \begin{table}[htbp]
   \begin{center}
@@ -2828,11 +2829,11 @@ código en su versión actual gasta muchos recursos. Las posibles mejorías se l
     y que estar resolviendo todo el dominio computacional con una resolución sumamente fina genera un alto costo computacional, es necesaria la implementación de una malla cuya resolución se adapte al problema 
     (i.e. resolución muy fina en donde haya discontinuidades, ondas de choques, turbulencia; y resolución poco fina en el resto del dominio). 
 
-    \item \textbf{Computo en paralelo}: Algo que realmente podría hacer más  rápido el código es hacerlo paralelo, es decir, que se puedan hacer varios procesos al mismo tiempo y no, necesariamente hacerlos 
+    \item \textbf{Computo en paralelo}: Algo que realmente podría hacer más rápido el código es hacerlo paralelo, es decir, que se puedan hacer varios procesos al mismo tiempo y no, necesariamente hacerlos 
     secuencialmente y poder adaptarlo a la malla que generamos.
 
     \item \textbf{Paradigma}: Si bien Fortran es una gran herramienta para el cómputo científico, es difícil darle mantenimiento al mismo programa, ya que tiene un paradigma imperativo, por lo que usar un paradigma 
-    orientado a objetos tal como en Julia podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
+    orientado a objetos podría facilitar el mejoramiento del código implementando las anteriores características ya mencionadas.
 \end{itemize}
 %----------------------------------------------------------------------------------------------
 
@@ -3459,6 +3460,9 @@ Clarke, C., Carswell, B., 2007. Blast waves. Principles of Astrophysical Fluid D
 
 \bibitem[Clarke et al. (2007)]{Clarke2007}Clarke, C., \& Carswell, B. (2007). The fluid equations. In Principles of Astrophysical Fluid Dynamics (pp. 12-19). 
 Cambridge: Cambridge University Press. doi:10.1017/CBO9780511813450.003
+
+\bibitem[De Colle et al.(2012)]{Colle2012} De Colle, F., Granot, J., López-Cámara, D., Ramirez-Ruiz, E., 2012. Gamma-ray burst dynamics and afterglow radiation from adaptive mesh refinement, special relativistic hydrodynamic simulations. 
+The Astrophysical Journal 746, 122. doi:10.1088/0004-637x/746/2/122  
 
 \bibitem[De Colle et al.(2012)]{2012ApJ...751...57D} De Colle, F., Ramirez-Ruiz, E., Granot, J., Lopez-Camara, D., 2012. Simulations of gamma-ray burst jets in a stratified external medium: Dynamics, afterglow light 
 curves, jet breaks, and radio calorimetry. The Astrophysical Journal 751, 57. doi:10.1088/0004-637x/751/1/57 
