@@ -718,7 +718,7 @@ las variables \emph{i}, \emph{j} son índices que se utilizan para recorrer las 
 \subsection{Variables primitivas de las ecuaciones de la hidrodinámica relativista} \label{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}
 Para obtener las variables primitivas a partir de las variables conservadas , se partirá de la relación de las densidades de energía total y del módulo de los momentos \citep{McKinney2007}. 
 
-\begin{equation}\label{ecuación  _de_energia}
+\begin{equation}\label{ecuacion_de_densidad_energia}
   e=W-p ,
 \end{equation}
 
@@ -744,7 +744,7 @@ reescribir el factor de Lorentz como $\gamma^{2} = 1-u^{2}$
 &=& \frac{D u^{2}}{\gamma + 1} + \gamma^{2} \chi
 \end{eqnarray}
 
-\noindent donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \ref{ecuación  _de_energia} queda como
+\noindent donde $\chi=\rho \epsilon + p$, derivando con respecto a $W^{'}$ la ecuación \ref{ecuacion_de_densidad_energia} queda como
 \begin{equation}\label{derivada_E_W}
 \dfrac{de}{dW^{'}}=1-\dfrac{dp}{dW^{'}}.
 \end{equation}
@@ -831,16 +831,33 @@ f(W^{'})=W^{'}-e^{'}-p
 \end{equation}
 
 \noindent donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
-Para iniciar el proceso de iteración se tiene que hacer una suposición. Para esto, con ayuda de las ecuaciones \ref{ecuación  _de_energia} 
-y \ref{modulos de los momentos}, se puede llegar a que la presión es:
-%===============================================================================================
+Para iniciar el proceso de iteración se tiene que hacer una suposición. Al principio de la primera iteración, se puede inicializar $W'^{(0)} = \tilde{W}_{+}-D $, donde $\tilde{W}_{+}$ es la raiz positiva de 
 
-\begin{equation} \label{presion_de_newton}
-p=\frac{\abs{m}^{2}-W^{2}\abs{v}^{2}+4W^{2}-4eW}{4W}.
+\begin{equation} \label{eq_semipresion_particular}
+  \mathcal{P}(W,1)=0, 
 \end{equation}
 
-Como se puede ver, el numerador es una función convexa cuadrática que depende $\abs{v}^{2}$ y $W$ y cumple con que $W$ este fuera del intervalo de las raíces positivas y negativas.
-Al denominador de la  ecuación se puede encontrar $W$, ya que $\abs{v}^{2}=1-1/\gamma^{2}$. Suponiendo $\gamma \rightarrow \infty$ podemos despejar $W$
+\noindent y $\mathcal{P}(W,\abs{v})$ es una función cuadrática convexa
+
+\begin{equation} \label{eq_semipresion_general}
+  \mathcal{P}(W,\abs{v}) = (4-\abs{v}^2)W^2-(4e)W+\abs{m}^2.
+\end{equation}
+
+
+\noindent Usando la ecuación \ref{ecuacion_de_densidad_energia}, se puede escribir la presión como 
+
+\begin{equation}
+  p = \frac{\mathcal{P}(W,\abs{v})}{4W}.
+\end{equation}
+
+\noindent Si la presión es positiva $p > 0$, se puede decir, que es equivalente a que $\tilde{W}_{+} \notin  \left[W_-, W_+\right]$, donde $\mathcal{P}(W_{\pm},\abs{v})=0$.
+Esto se puede demostrar ya que $\mathcal{P}(W,\abs{v}) \geqslant \mathcal{P}(W,1)$, lo que implica que $\tilde{W}_{+} \geqslant W_+$ por lo que la raíz de la ecuación \ref{eq_semipresion_particular} no cae
+en el intervalo que conforman las raíces de la ecuación \ref{eq_semipresion_general}. Despejando $W$ de la ecuación \ref{eq_semipresion_particular} usando la fórmula general cuadrática se obtiene:
+
+
+
+%===============================================================================================
+
 
 \begin{equation}\label{suposicion_de_W}
 W=\frac{-(-2e)+\sqrt{(-2e)^{2}-(3)(\abs{m}^{2})}}{3}.
