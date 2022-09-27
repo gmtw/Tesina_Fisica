@@ -232,14 +232,14 @@ Las propiedades de los jets también abarcan rangos muy amplios. Un caso particu
 Los destellos de rayos gamma (GRB por su acrónimo en inglés) son eyecciones de rayos gamma del orden de MeV, son cortos, intensos y no repetitivos.
 Estos consisten en la emisión de energías altas como los rayos $\gamma$ y los rayos X, así como energías bajas como el óptico, el radio, entre otros \citep{PGRB-piran, Zhang:PGRB}. %!Piran2005
 La fusión de objetos compactos es el modelo progenitor más atractivo.
-Los jets de los  GRBs son uno de los eventos que más libera energía en el universo y su energía liberada es del orden de $10^{52}$ ergs \citep{Berger:2014jza}.
+Los jets de los  GRBs son uno de los eventos que más energía libera en el universo y su energía liberada es del orden de $10^{52}$ ergs \citep{Berger:2014jza}.
 Se infiere que los jets relativistas de los blázares tienen un factor de Lorentz\footnote{En esta tesis,
 para fines explícitos, se tomará gamma mayúscula ($\Gamma$) como el índice adiabático. Mientras que 
 gamma minúscula ($\gamma$) como el factor de Lorentz.} de hasta $\gamma \thicksim 50$. 
 Pero en el modelo más ampliamente aceptado para GRB \citep{Seo2021}, una explosión altamente enfocada asociada con la formación de un agujero negro impulsa jets relativistas colimados con $\gamma \lesssim 400$. 
 %!A Simulation Study of Ultra-Relativistic Jets - I. A New Code for Relativistic Hydrodynamics
 
-Los ángulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5$^{\circ}$ de apertura, el cual puede variar hasta los 35° con un promedio de $\langle \theta_j \rangle \gtrsim 10^{\circ}$.
+Los ángulos de estos jets que vienen tanto de GRBs cortos como largos tienen, en su mayoría, 5$^{\circ}$ de apertura, los cuales pueden variar hasta los 35° con un promedio de $\langle \theta_j \rangle \gtrsim 10^{\circ}$.
 En el medio intergaláctico, dentro de las proximidades de las galaxias y dentro de los cúmulos de galaxias, se tienen densidades numéricas que oscilan entre $5 \times 10^{-6}$ a 
 $ \sim 10^3 \, \text{cm}^{-3}$. Con las ecuaciones de Rankine-Hugoniot se pueden conocer las densidades del jet a partir de sus velocidades y el medio ambiente que lo rodea, para más información 
 véase la sección \ref{sec:Condiciones_Salto}.
@@ -328,7 +328,7 @@ se mueven a velocidades cercanas a la de la luz.
 %Ejemplo de estudio de jets relativistas en el marco de GRBs.
 %--------------------------------------------------------------------------
 El último ejemplo de simulaciones de jets relativistas es el estudio de \citet{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones, así como en el  
-marco de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativista a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
+marco de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativistas a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
 a través de la envolvente de un Colapsar (paneles de abajo). El jet, que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones, tiene una luminosidad 
 de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha).
 Es lanzado dentro de un radio de inyección $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} para más detalles). 
@@ -558,7 +558,7 @@ G-L+\textbf{f} \cdot \textbf{u} \\
 $
 \end{center}
 
-El término $\mathbf{U}$ son las variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ son los fluidos en las direcciones $x$, $y$ y $z$ y $\mathbf{S}$ son los términos fuente. 
+El término $\mathbf{U}$ son las variables conservadas, los términos $\mathbf{F}$, $\mathbf{G}$, $\mathbf{H}$ flujos $x$, $y$ y $z$, respectivamente, mientras que S son los términos fuente. 
 Para poder resolver computacionalmente estas ecuaciones diferenciales parciales, primero vamos a utilizar el método de volúmenes finitos y el método de Lax sin considerar los términos fuente, es decir, 
 $\mathbf{S}=0$.
 
@@ -580,7 +580,7 @@ la variable conservada $u(4,i,j)$, ya que $u(4,i,j) = e(i,j)$.
 
 \end{lstlisting}
 
-Los índices \emph{i}, \emph{j} corren sobre todo el dominio espacial dentro de un bucle. 
+Los índices \emph{i}, \emph{j} permiten recorrer la discretización espacial en dos dimensiones. 
 El arreglo $\mathbf{U}$ contiene a las variables conservadas.
 
 \subsection{Variables primitivas de las ecuaciones de la hidrodinámica}\label{subsec:DesacoplamientoEcuacionesHidrodinamica}
@@ -625,8 +625,8 @@ que se puedan calcular los flujos.
 \section{Hidrodinámica relativista}
 Para el caso en que los jets estén dentro del régimen relativista, la descripción newtoniana se vuelve inadecuada, y se vuelve necesario una descripción relativista (en este caso restringida a la relatividad
 espacial).
-Esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordarán cómo cambian nuestras primitivas, cómo afectan a nuestras variables conservadas y cómo las podemos 
-desacoplar, así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
+Esta parte se añadirá a los códigos que ya hemos generado previamente. Las próximas secciones abordarán cómo cambian nuestras primitivas, cómo afectan a nuestras variables conservadas y cómo podemos calcular unas en 
+función de las otras, así como varios ejemplos al cambiar varios valores de nuestros parámetros y de las condiciones iniciales.
 
 \subsection{Primitivas}
 Las ecuaciones que se tienen para flujos newtonianos se pueden modificar para hacerlas relativistas \citep{Marty1999, Landau1987}. Para esto vamos a partir de 2 ecuaciones importantes que son la ecuación de energía-momento y la ecuación de conservación 
@@ -948,7 +948,7 @@ Las variables \emph{qp} mostradas en el código son las primitivas, mientras que
 \ref{Cap_Desacoplamiento_de_las_ecuaciones_de_la_hidrodinámica_relativista}.
 
 
-\section{Volúmenes finitos} \label{sec:Diferencias_finitas}
+\section{Diferencias finitas} \label{sec:Diferencias_finitas}
 Ya se ha visto qué ecuaciones describen la hidrodinámica, ahora toca resolverlas. Dado que analíticamente es difícil, se va a hacer computacionalmente, para 
 eso se hará uso del método numérico de volúmenes finitos \citep{Duran2021}.
 Si tenemos una función $f(x)$ diferenciable la podemos aproximar por el teorema de Taylor en la vecindad de un punto $x_0$ y si se conocen todas sus $n$ derivadas de la función $f(x)$ en el punto $x_0$ se puede 
@@ -994,7 +994,7 @@ Sí se considera la siguiente ecuación diferencial parcial \citep{Duchateau2002
 u_t+ f\left(u \right)_t=0.
 \end{equation}
 
-\noindent Un método conservativo para resolver este tipo de ecuación diferencial es 
+\noindent Una primera aplicación de derivadas en diferencias finitas a una ecuación de tipo conservación resulta en 
 
 \begin{equation}\label{esquema conservativo}
 u_i^{n+1} = u_i^{n} -\frac{\Delta t}{\Delta x} \left(f_{i-\frac{1}{2}} - f_{i+\frac{1}{2}}\right)
@@ -1072,7 +1072,7 @@ Para más detalles acerca de este problema consulte \citet{Toro1997}.
 
 
 
-	Un elemento del método de volúmenes finitos es un algoritmo para resolver el problema de Riemann en las interfases de cada celda, y un caso particular (y bastante malo en realidad) de aproximar la solución al 
+	Un elemento del método de volúmenes finitos es un algoritmo para resolver el problema de Riemann en las interfases de cada celda, y un caso particular (simple) de aproximar la solución al 
   problema de Riemann es el método de Harten-Van-Leer \citep{Toro1997}. En él se tiene que definir el flujo numérico intercelda de Gudonov
 
 \begin{equation}
@@ -1927,7 +1927,7 @@ En x=0.85 cm, la velocidad ($v \approx 0.99$ cm/s), presión
 ($\rho \approx 0.28 \,  \text{g}/ \text{cm}^3$) 
 tienen una discontinuidad y cambian sus valores a los valores iniciales del estado derecho del tubo
 que no han sido afectados por la onda. 
-La primera discontinuidad hace referencia a la onda de contacto que tiene la misma velocidad
+La primera discontiuidad se aprecia solo en densidad, mientras que la presión permanece constante. Este tipo de discontinuidades son llamadas "de contacto", las cuales tienen la misma velocidad
 que los estados de la izquierda y la derecha $V_c = v_l = v_r$ donde $V_c$
 es la velocidad de la onda de contacto, por lo que esto hace que las presiones sean iguales 
 $p_l = p_r$. Esta primera discontinuidad solo se 
@@ -2146,7 +2146,7 @@ es $x \in [0,1]$, $x_0 = 0.5$ cm.
 
 Tanto en el caso 1 relativista como el caso 2 relativista, la evolución temporal se hará usando 
 el método de HLL, ya que es más preciso que el método de Lax\footnote{
-  Lax falla al tratar de simular las condiciones iniciales de este problema.
+  Lax falla al tratar de simular las condiciones iniciales de este problema ya que no corre el programa al momento de su ejecución.
 }. 
 Además de que necesita de altas resoluciones $\geq 10,000$ píxeles para poder funcionar.
 
