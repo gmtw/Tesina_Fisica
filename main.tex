@@ -1022,12 +1022,14 @@ u_{i} , u_{i-1}\right) =\frac{1}{2} \left(f_{i} - f_{i-1} \right)
 u_i^{n+1} = u_i^{n} - \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right).
 \end{equation}
 
-\noindent Pero esta solución es inestable, por el primer término del lado derecho de la ecuación, para hacerlo estable Peter Lax y Kurt Friedrichs sustituyeron este término, por $(u_{i+1}^n+u_{i-1}^n)/2$  por lo que se puede
-reescribir la ecuación \ref{ec_inestable} como
+\noindent Pero esta solución es inestable por el primer término del lado derecho de la ecuación, para hacerlo 
+condicionalmente estable, Peter Lax y Kurt Friedrichs sustituyeron este término, por $(u_{i+1}^n+u_{i-1}^n)/2$  por lo que se puede reescribir la ecuación \ref{ec_inestable} como
 
 \begin{equation}\label{ec_estable}
   u_{i,j}^{n+1} =(u_{i+1}^n+u_{i-1}^n)/2 + \frac{1}{2}\frac{\Delta t}{\Delta x} \left(f_{i+1} - f_{i-1} \right).
 \end{equation}
+
+\noindent Esta condición es conocida como la condición de Courant-Friedrich-Lewy. Para más detalles véase el apéndice \ref{Ap:Condicion_Courant}
 
 \noindent Para 2 dimensiones sería
 
@@ -1822,7 +1824,7 @@ Como ya se sabe cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominad
 \end{equation}
 con lo cual se obtiene $R(t) \varpropto t^{2/5}$.
 
-En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la onda de choque de Sedov-Taylor (nótese que la grafica es log-log). Dado que la pendiente en la gráfica de logR vs logT es 2/5, entonces se conforma que el radio incrementa conforme pasa el tiempo como $R \propto t^{2/5}$.
+En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la onda de choque de Sedov-Taylor (nótese que la gráfica es log-log). Dado que la pendiente en la gráfica de logR vs logT es 2/5, entonces se conforma que el radio incrementa conforme pasa el tiempo como $R \propto t^{2/5}$.
 
 \begin{figure}
   \centering
@@ -2992,7 +2994,7 @@ como en $y$ $(v_x, v_y)$, la presión $(p)$ y $\Gamma$. Con estas constantes dad
 En esta parte dan los valores iniciales para nuestra malla tanto en $x$ como en $y$ en el tiempo $t=0$
 
 %----------------------------------------------------------------------------------------------
-\subsection{Condición de Courant}
+\section{Condición de Courant}\label{Ap:Condicion_Courant}
 %----------------------------------------------------------------------------------------------
 Esta parte del código tiene que ver con los incrementos $\Delta t$, los cuales se pueden obtener en este módulo, para poder calcularlos tenemos que tener en cuenta la convergencia 
 y la estabilidad de nuestras ecuaciones diferenciales parciales (ecuación \ref{euler_cartesianas}). La condición de convergencia establece que la solución de la ecuación numérica se aproxima a la solución con ecuación 
@@ -3005,7 +3007,8 @@ explícitos a partir de la teoría de las características para soluciones conti
 \Delta t \leq \frac{\Delta x}{u+C}
 \end{equation}
 
-\noindent donde $C$ es el número de Courant y nos limita a que nuestros $\Delta t$ no sean tan grandes
+\noindent donde $C$ es el número de Courant y nos limita a que nuestros $\Delta t$ no sean tan grandes. Para mas detalles
+consulte \cite{Toro1997}
 \begin{lstlisting}[frame=single]
 !==============================================================================
 ! CFL criterium module
