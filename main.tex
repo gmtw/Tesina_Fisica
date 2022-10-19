@@ -1055,10 +1055,17 @@ En el código, la implementación de la ecuación \ref{ec_estable} en 2 dimensio
 
 \noindent donde $\text{dtx} = \frac{\Delta t}{\Delta x}$, $\text{dty} = \frac{\Delta t}{\Delta y}$ y \emph{up} es la conservada posterior en el tiempo.
 
+\section{Volúmenes finitos}
+
+El método de volumen finito es un método de discretización para la simulación numérica de varios tipos de leyes de conservación; se ha utilizado en
+varios campos de la ingeniería, como la mecánica de fluidos, la transferencia de calor y masa. Algunas características importantes del método de volumen finito son similares a las del
+método de elementos finitos: se puede aplicar a geometrías arbitrarias, utiliza mallas estructuradas o no estructuradas y puede producir soluciones sólidas. Otra característica es la preservación local del
+flujo numérico, es decir, el flujo se conserva desde una unidad discreta hasta sus vecinos. Esta última propiedad hace que el método de volumen finito sea muy atractivo para modelar problemas donde
+el flujo es importante, como la mecánica de fluidos, la simulación de dispositivos semiconductores y la transferencia de calor y masa. Para más detalles puede consultar \citet{eymar2000}.
 
 
 \subsection{HLL} \label{secc:HLL}
-Antes de seguir con este método, se procedera a dar una breve descripción del problema de Riemann. Éste consiste en un problema de condiciones iniciales para una ecuación hiperbólica en derivadas parciales, la cual
+Antes de seguir con este método, se procederá a dar una breve descripción del problema de Riemann. Éste consiste en un problema de condiciones iniciales para una ecuación hiperbólica en derivadas parciales, la cual
 se puede escribir matemáticamente de la siguiente manera: 
 
 \begin{equation}
@@ -1074,7 +1081,7 @@ Para más detalles acerca de este problema consulte \citet{Toro1997}.
 
 
 
-	Un elemento del método de volúmenes finitos es un algoritmo para resolver el problema de Riemann en las interfases de cada celda, y un caso particular (simple) de aproximar la solución al 
+	El método de volúmenes finitos es un algoritmo para resolver el problema de Riemann en las interfases de cada celda, y un caso particular (simple) de aproximar la solución al 
   problema de Riemann es el método de Harten-Van-Leer \citep{Toro1997}. En él se tiene que definir el flujo numérico intercelda de Gudonov
 
 \begin{equation}
@@ -1607,21 +1614,14 @@ Cabe señalar que la onda de choque esférica es descrita por la inyección de e
 \subsection{Aproximación en función del análisis dimensional}
 Si se considera un choque fuerte,
 es decir, $p_w \gg p_m$,
-entonces las únicas variables que se pueden tomar son $E$, $\rho_w$ y $t$ que es el tiempo.
+entonces las únicas variables que se pueden tomar son $E$, $\rho_m$ y $t$ que es el tiempo.
 Las dimensiones de estas cantidades se muestran a continuación. 
 
 \begin{equation}
-  \left[ \rho_w \right] = \frac{M}{L^3},
+  \left[ \rho_m \right] = \frac{M}{L^3},
 \end{equation}
 
-\noindent esto lo podemos escribir en función de la densidad lineal, ya que el código solo grafica en dos dimensiones 
-
-
-\begin{equation}
-  \left[ \rho_w \right] = \frac{\Sigma}{L^2}
-\end{equation}
-
-\noindent donde $\Sigma = \frac{M}{L}$ es la densidad lineal. Las unidades de la energía son:
+\noindent las unidades de la energía son:
 
 
 \begin{equation}
@@ -1637,19 +1637,19 @@ Las dimensiones de estas cantidades se muestran a continuación.
 \noindent La única cantidad que se puede construir que contenga la energía, tiempo y la densidad y que su dimensión sea la longitud es:
 
 \begin{equation}
-  \left[ \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}}\right] = L,
+  \left[ \left( \frac{Et^2}{ \rho_m } \right)^{\frac{1}{5}}\right] = L,
 \end{equation}
 
 \noindent por lo que para cualquier radio de onda de cualquier choque, debe depender de estas variables
 
 \begin{equation}
-  R(t) = \eta  \left( \frac{Et^2}{ \rho_w } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}.
+  R(t) = \eta  \left( \frac{Et^2}{ \rho_m } \right)^{\frac{1}{5}} \varpropto t^{\frac{2}{5}}.
 \end{equation}
 
 \noindent Por lo que la constante $\eta$ debe ser de la siguiente manera
 
 \begin{equation}
-  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_w} \right)^{\frac{1}{5}}}.
+  \eta \equiv \frac{r}{\left( \frac{Et^2}{\rho_m} \right)^{\frac{1}{5}}}.
 \end{equation}
 
 
@@ -1658,11 +1658,11 @@ Las dimensiones de estas cantidades se muestran a continuación.
 
 Otra aproximación importante se obtiene buscando el cociente de presiones y densidades en función del número Mach.
 Se puede saber el radio $R(t)$ de una onda de choque en función del tiempo. Tomando el volumen de una esfera es $V = \frac{4}{3} \pi * R^3$ y la densidad de la región interior al choque es constante, entonces 
-el volumen $V = \frac{M}{\rho_w}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
+el volumen $V = \frac{M}{\rho_m}$. La velocidad media de la onda es $v(t) \sim \frac{R(t)}{t} $
 por lo que se puede aproximar la energía cinética de la onda como 
 
 \begin{equation}
-	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_w R^3 \left( \frac{R}{t} \right) ^2 = \rho_w \frac{R^5}{t^2}.
+	E_{kin} \sim \frac{1}{2} M v^2 \sim \rho_m R^3 \left( \frac{R}{t} \right) ^2 = \rho_m \frac{R^5}{t^2}.
 \end{equation}
 
 \noindent La energía térmica de un gas ideal (monoatómico) es 
@@ -1711,21 +1711,21 @@ Si se combina la ecuación \ref{eq_sonido_1} con la ecuación \ref{eq_Mach} y lo
 \ref{RH_Energia} y \ref{entalpía_función_presion_densidad} para obtener la ecuación de la energía en función de la entalpía, va a quedar como:
 
 \begin{equation}\label{RH_entalpía}
-  h_w +\frac{1}{2}v_w^2 = h_m +\frac{1}{2}v_m^2
+  h_m +\frac{1}{2}v_m^2 = h_w +\frac{1}{2}v_w^2
 \end{equation} 
 
 \noindent donde los subíndices $w$, $m$ corresponden a la onda y al medio respectivamente. Dividiendo la ecuación \ref{RH_momento} entre \ref{RH_masa}, y cambiando los 
-subíndices $j$ por $w$ se obtiene la siguiente ecuación: 
+subíndices $j$ por $m$ se obtiene la siguiente ecuación: 
 
 \begin{equation} \label{RH_momento_masa}
-  v_w + \frac{p_w}{\rho_w v_w} = v_m + \frac{p_m}{\rho_m v_m}
+  v_m + \frac{p_m}{\rho_m v_m} = v_w + \frac{p_w}{\rho_w v_w}
 \end{equation}
 
 \noindent Usando la ecuación \ref{eq_sonido_1} en la ecuación \ref{RH_momento_masa} se puede reescribir de 
 la siguiente manera:
 
 \begin{equation} \label{eq_diferencia_velocidades}
-  v_w-v_m = \frac{1}{\Gamma} \left(\frac{a_m^2}{v_m} - \frac{a_w^2}{v_w} \right).
+  v_m-v_w = \frac{1}{\Gamma} \left(\frac{a_w^2}{v_w} - \frac{a_m^2}{v_m} \right).
 \end{equation}
 
 Se puede usar la entalpía de estancamiento para llegar a la siguiente igualdad:
@@ -1748,10 +1748,10 @@ Se puede usar la entalpía de estancamiento para llegar a la siguiente igualdad:
 se obtiene
 
 \begin{equation}
-  v_w-v_m = \frac{\Gamma - 1}{\Gamma} h_0 \left[ \frac{1}{v_m} - \frac{1}{u_w} + \frac{1}{2} \left( v_w - v_m\right) \right]
+  v_m-v_w = \frac{\Gamma - 1}{\Gamma} h_0 \left[ \frac{1}{v_w} - \frac{1}{u_m} + \frac{1}{2} \left( v_m - v_w\right) \right]
 \end{equation}
 
-\noindent dividiendo por $ \left( v_w - v_m \right)$
+\noindent dividiendo por $ \left( v_m - v_w \right)$
 
 \begin{equation}
   1 = \frac{\Gamma - 1}{\Gamma} \left( \frac{h_0}{v_m v_w} + \frac{1}{2} \right),
@@ -1766,61 +1766,61 @@ se obtiene
 Otra ecuación de utilidad es la definición del número de Mach, ya que
 
 \begin{equation}\label{velocidad_aire_mach}
-  v_w^2 = a_w^2 M_w^2.
+  v_m^2 = a_m^2 M_m^2.
 \end{equation}
 
-\noindent Entonces usando la ecuacion \ref{h_0_función_aire_mach}, se puede reescribir la ecuación \ref{velocidad_aire_mach}
+\noindent Entonces usando la ecuación \ref{h_0_función_aire_mach}, se puede reescribir la ecuación \ref{velocidad_aire_mach}
 como:
 
 \begin{equation} \label{eq_numerador}
-  v_w^2 = M_w^2 \frac{\left( \Gamma -1 \right) h_0}{1+\frac{\Gamma - 1}{2} M_w^2}.
+  v_m^2 = M_m^2 \frac{\left( \Gamma -1 \right) h_0}{1+\frac{\Gamma - 1}{2} M_m^2}.
 \end{equation}
 
 \noindent Usando la ecuación de momentos \ref{RH_masa}, se puede reescribir de la siguiente manera:
 
 \begin{equation} \label{eq_fraccion_momentos}
-  \frac{\rho_m }{\rho_w} = \frac{ v_w}{v_m} = \frac{v_w^2}{v_w v_m}.
+  \frac{\rho_w }{\rho_m} = \frac{ v_m}{v_w} = \frac{v_m^2}{v_w v_m}.
 \end{equation}
 
 Como ya se sabe cuanto vale el numerador (ec. \ref{eq_numerador}) y el denominador (ec. \ref{eq_denominador}) de la fracción, entonces se puede definir el cociente de las densidades \ref{eq_fraccion_momentos} como:
 
 \begin{equation}\label{eq_fraccion_momentos_funcion_mach}
-  \frac{\rho_m}{\rho_w} = \frac{\left( \Gamma +1 \right) M_w^2}{2+ \left( \Gamma -1 \right) M_w^2}.
+  \frac{\rho_w}{\rho_m} = \frac{\left( \Gamma +1 \right) M_m^2}{2+ \left( \Gamma -1 \right) M_m^2}.
 \end{equation}
 
 \noindent Entonces para encontrar las presiones, se pueden combinar las ecuaciones \ref{RH_momento} y \ref{RH_masa} 
 
 \begin{equation}
-  p_m - p_w = \rho_w v_w^2 - \rho_m v_m^2 = \rho_w v_w^2 \left( 1 - \frac{v_m}{v_w}\right) = \rho_w v_w^2 \left( 1 - \frac{\rho_w}{\rho_m}\right).
+  p_w - p_m = \rho_m v_m^2 - \rho_w v_w^2 = \rho_m v_m^2 \left( 1 - \frac{v_w}{v_m}\right) = \rho_m v_m^2 \left( 1 - \frac{\rho_m}{\rho_w}\right).
 \end{equation}
 
-\noindent Empleando la siguiente relación $\rho v^2 = \Gamma p M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y \ref{eq_Mach}, dividiendo por $p_w$ y sustituyendo  $\frac{\rho_m}{\rho_w}$ de la ecuación \ref{eq_fraccion_momentos_funcion_mach} queda:
+\noindent Empleando la siguiente relación $\rho v^2 = \Gamma p M^2$, que se obtiene de las ecuaciones \ref{eq_sonido_1} y \ref{eq_Mach}, dividiendo por $p_m$ y sustituyendo  $\frac{\rho_w}{\rho_m}$ de la ecuación \ref{eq_fraccion_momentos_funcion_mach} queda:
 
 \begin{equation} \label{eq_fraccion_Presiones}
-  \frac{p_m}{p_w} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_w^2 -1\right).
+  \frac{p_w}{p_m} = 1 + \frac{2 \Gamma}{\Gamma + 1} \left( M_m^2 -1\right).
 \end{equation}
 
-\noindent Si se usa la siguiente relación $ p_w = \frac{\rho a_w^2 }{\Gamma}$ se puede obtener el límite del choque fuerte
+\noindent Si se usa la siguiente relación $ p_m = \frac{\rho a_m^2 }{\Gamma}$ se puede obtener el límite del choque fuerte
 
 \begin{equation}
-  p_m  \simeq \frac{2 \rho_w v_w^2}{\Gamma + 1}.
+  p_w  \simeq \frac{2 \rho_m v_m^2}{\Gamma + 1}.
 \end{equation}
 
 \noindent Con esto ya se puede obtener la energía térmica de la ecuación \ref{eq_energia_termica} por lo que queda: 
 
 \begin{equation}
-  E_{th} \sim P R^3 \sim \rho v^2 R^3 \sim \rho \frac{R^5}{t^2}.
+  E_{th} \sim p_m R^3 \sim \rho_m v^2 R^3 \sim \rho \frac{R^5}{t^2}.
 \end{equation}
 
 \noindent Dado que tienen el mismo orden que el de la energía cinética, entonces la energía total que es una cantidad conservada, se puede esperar que:
 
 \begin{equation}
-  E_t = E_{kin} + E_{th} \sim \rho \frac{R^5}{t^2}
+  E_t = E_{kin} + E_{th} \sim \rho_m \frac{R^5}{t^2}
 \end{equation}
 
 \noindent Despejando el radio, obtenemos lo siguiente
 \begin{equation} \label{eq_Radio_proporcional}
-  R(t) \varpropto \left(\frac{E t^2}{\rho_w}\right)^{\frac{1}{5}},
+  R(t) \varpropto \left(\frac{E t^2}{\rho_m}\right)^{\frac{1}{5}},
 \end{equation}
 con lo cual se obtiene $R(t) \varpropto t^{2/5}$.
 
@@ -1832,7 +1832,7 @@ En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la o
   \caption{Evolución del radio de una onda de choque de Sedov-Taylor en función del tiempo.} \label{fig_Radio_v_tiempo}
 \end{figure}
 
-Derivando la ecuación \ref{eq_Radio_proporcional}, se obtiene que la velocidad es:
+\noindent Derivando la ecuación \ref{eq_Radio_proporcional}, se obtiene que la velocidad es:
 \begin{equation}
   \dfrac{de}{dt} = \frac{2}{5}\frac{R(t)}{t} \varpropto t^{\frac{-3}{5}}.
 \end{equation}
@@ -2355,6 +2355,7 @@ la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.
     $t \approx 10^{10}$ s, y el panel de abajo muestra el tiempo $t = 8.1 \times 10^{10}$ s.
     \label{fig:prueba_2d_newtoniana}}
 \end{figure}
+
 
 Para verificar que el código HD estaba reproduciendo correctamente la solución analítica de Sedov-Taylor se comprobó que el radio de la onda de expansión de la simulación siguiese la solución analítica 
 dada en la ecuación \ref{eq_Radio_proporcional}, esto es, que el radio de la onda creciera como $r\propto t^{2/5}$. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución logaritmica del radio de la onda en función del tiempo (verde) así como 
@@ -3497,8 +3498,10 @@ curves, jet breaks, and radio calorimetry. The Astrophysical Journal 751, 57. do
 \bibitem[Duran (2010)]{Duran2021}Durran, D.R. (2010). Finite-Difference Approximations for One-Dimensional Transport. In: Numerical Methods for Fluid Dynamics. Texts in Applied Mathematics, 
 vol 32. Springer, New York, NY. https://doi.org/10.1007/978-1-4419-6412-0\_3
 
-\bibitem[Espinasse et al.(2020)]{2020ApJ...895L..31E} Espinasse, M., Corbel, S., Kaaret, P., Tremou, E., Migliori, G., Plotkin, R.M., Bright, J., Tomsick, J., Tzioumis, A., Fender, R., Orosz, J.A., Gallo, E., Homan, J., 
+\bibitem[Espinasse et al. (2020)]{2020ApJ...895L..31E} Espinasse, M., Corbel, S., Kaaret, P., Tremou, E., Migliori, G., Plotkin, R.M., Bright, J., Tomsick, J., Tzioumis, A., Fender, R., Orosz, J.A., Gallo, E., Homan, J., 
 Jonker, P.G., Miller-Jones, J.C., Russell, D.M., Motta, S., 2020. Relativistic X-ray jets from the black hole X-ray binary maxi J1820+070. The Astrophysical Journal 895. doi:10.3847/2041-8213/ab88b6 
+
+\bibitem[Eymar et al. (2000)]{eymar2000} Eymard, R., Gallouët, T., Herbin, R., 2000. Finite volume methods. Handbook of Numerical Analysis 713–1018. doi:10.1016/s1570-8659(00)07005-8 
 
 \bibitem[Lora et al. (2013)]{Lora2013}
 F.D. Lora-Clavijo \emph(et. al.) (2013). Exact Solution oh the 1D riemann problem in Newtonian and relativistic hydrodynamics. Revista Mexicana de Física. E 59 (2013)28-50 
