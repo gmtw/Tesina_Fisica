@@ -328,8 +328,8 @@ se mueven a velocidades cercanas a la de la luz.
 %Ejemplo de estudio de jets relativistas en el marco de GRBs.
 %--------------------------------------------------------------------------
 El último ejemplo de simulaciones de jets relativistas es el estudio de \citet{JBEMGRB} en el cual se estudió la evolución de jets que son lanzados tras la fusión de estrellas de neutrones, así como en el  
-marco de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativistas a través de medios producidos tras la fusión de dos estrellas de neutrones (paneles de arriba) o 
-a través de la envolvente de un Colapsar (paneles de abajo). El jet, que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones, tiene una luminosidad 
+marco de los Colapsares. En la Figura~\ref{fig:jet_models} se muestra la evolución de distintos jets relativistas a través de medios producidos tras la fusión de dos estrellas de neutrones (páneles de arriba) o 
+a través de la envolvente de un Colapsar (páneles de abajo). El jet, que se lanza a través del medio producido tras la fusión de las dos estrellas de neutrones, tiene una luminosidad 
 de $L_{\rm iso, 0} = 5.0 \times10^{50}$~erg~s$^{-1}$, un ángulo de apertura de $\theta_0=6.8^{\circ}$ (panel de arriba a la izquierda) o de $\theta_0=18.8^{\circ}$ (panel de arriba a la derecha).
 Es lanzado dentro de un radio de inyección $r_{in}=1.2\times10^{8}$~cm, y atraviesa un medio con masa de $M_{m} = 0.02 M_{\odot}$ que se mueve con velocidad $v_{m} = 0.34$~c (ver Cuadro~\ref{table:jet_models} para más detalles). 
 El jet que se lanza dentro del Colapsar tiene una luminosidad de $L_{\rm iso, 0} = 7.83 \times10^{52}$~erg~s$^{-1}$ con ángulo de apertura de $\theta_0=9.2^{\circ}$ (panel de abajo a la izquierda), o una 
@@ -340,7 +340,7 @@ Cabe aclarar que los ángulos de apertura son los ángulos con los que se inyect
 \begin{figure} 
   \centering
     \includegraphics[width=0.7\textwidth]{Figuras/capitulo_1/jet_models.png}
-  \caption{Mapa de densidad del jet, donde los paneles de arriba muestran ambientes de una fusión de estrellas de neutrones, mientras que los paneles de abajo muestran para los Colapsares. Adaptado de la Figura 5 de
+  \caption{Mapa de densidad del jet, donde los páneles de arriba muestran ambientes de una fusión de estrellas de neutrones, mientras que los páneles de abajo muestran para los Colapsares. Adaptado de la Figura 5 de
   \citet{JBEMGRB}.}
   \label{fig:jet_models}
 \end{figure}
@@ -408,7 +408,7 @@ caso cuando la simulación se hizo utilizando el esquema HLLC. Por otro lado, la
     \includegraphics[width=0.5\textwidth]{Figuras/capitulo_1/jet_mignone.png}
   \end{center}
   \caption{Logaritmo de la densidad de la masa en reposo para un jet relativista. El panel de arriba muestra el jet al tiempo t=40, mientras que el de abajo al tiempo t = 80.
-  La mitad de  (de ambos paneles) muestra la simulación hecha con el esquema HLLC, mientras que la parte de abajo muestra para el esquema HLL.
+  La mitad de  (de ambos páneles) muestra la simulación hecha con el esquema HLLC, mientras que la parte de abajo muestra para el esquema HLL.
   La resolución fue de 240$\times$700 píxeles. Adaptado de la Figura 12 de \citet{MB-HLLC-I}.}
   \label{fig:jet_mignone}
 \end{figure}
@@ -1110,8 +1110,16 @@ U_R \quad \textup{si} \quad x>0.
   \label{fig:Plano x_t}
 \end{figure}
 
-\noindent Si se considera un volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de las ondas más 
-rápidas de los estados iniciales $U_L$ y $U_R$ respectivamente y $T$ es un tiempo definido. Y se usa la forma integral de la 
+\noindent Si se considera un volumen $\left[x_L, x_R \right]\times \left[ 0 , T \right]$, tales que $x_L \leq TS_L$ y $x_R \geq TS_R$ (ver Figura \ref{fig:Plano x_t}) donde $S_L$ y $S_R$ son las velocidades de 
+las ondas más rápidas de los estados iniciales $U_L$ y $U_R$ respectivamente, estas se calculan a partir de las velocidades de la onda y del sonido
+
+\begin{equation}
+  S_i = v_i \pm c_{s_{i}}
+\end{equation}
+
+\noindent donde el subíndice \emph{i} denota los estados \emph{R} y \emph{L}, $c_{s}$ es la velocidad del sonido, en el que para un gas ideal se calcula como $c_{s}= \sqrt{\frac{\gamma p}{\rho}}$.
+\noindent Si es el estado derecho las velocidades se suman, sino se restan.
+\noindent $T$ es un tiempo definido y se usa la forma integral de la 
 ecuación   \ref{ecuacion_discreta_conservada} en nuestro volumen definido $\left[x_L, x_R \right]\times \left[ 0 , T \right]$
 
 \begin{equation*}\label{Forma_integral_conservadas}
@@ -1283,7 +1291,8 @@ La implementación de esta parte se lleva a cabo en la subrutina \emph{ulax},
 \noindent donde \emph{fhll} y \emph{ghll} son los flujos calculados con el método de HLL.
 La subrutina llama a \emph{fluxesHll}, que es la subrutina que se encarga de calcular los flujos usando el método de HLL, el siguiente código solo es una parte
 y solo calcula la ecuación \ref{fluxesHLL}, las variables $i$, $j$ refieren a todos los puntos de la malla, los subíndices \emph{l}, \emph{r}, \emph{u} y \emph{d}
-significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas más rápidas de los estados iniciales \emph{U}. Para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}.
+significan izquierda, derecha, arriba y abajo respectivamente y \emph{S} son las velocidades de las ondas más rápidas de los estados iniciales \emph{U}.
+Para ver toda la subrutina completa ver el apéndice \ref{ap_newrap}.
 
 \begin{lstlisting} [frame=single]
   do i=1,nx
@@ -1846,6 +1855,8 @@ En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la o
 \end{figure}
 
 
+Una obsevación importante es que, la explosión que se va a simular en esta tesis, es bidimensional por lo que el radio de la explosión crecería como $R(t) \varpropto t^{2/4}$ como lo describen en su artículo \citet{Kumar2022}.
+
 
 % ======================================NUEVO CAPITULO ================================================
 % ======================================NUEVO CAPITULO ================================================
@@ -1933,10 +1944,10 @@ La primera discontiuidad se aprecia solo en densidad, mientras que la presión p
 que los estados de la izquierda y la derecha $V_c = v_l = v_r$ donde $V_c$
 es la velocidad de la onda de contacto, por lo que esto hace que las presiones sean iguales 
 $p_l = p_r$. Esta primera discontinuidad solo se 
-presenta en el panel de las densidades, la otra discontinuidad que se presenta en los 3 paneles es la 
+presenta en el panel de las densidades, la otra discontinuidad que se presenta en los 3 páneles es la 
 discontinuidad de la onda de choque.
 Para el tiempo t=0.4 s
-la discontinuidad de la onda de choque ya no se presenta en nuestro dominio de los 3 paneles, mientras 
+la discontinuidad de la onda de choque ya no se presenta en nuestro dominio de los 3 páneles, mientras 
 que la cabeza de la onda de rarefacción todavía se muestra en $x \approx 0.01$ cm. La única discontinuidad 
 presente es la de onda de 
 contacto, donde $\rho$ cambia su valor de $\rho \approx 0.48 \,  \text{g}/ \text{cm}^3$
@@ -2011,7 +2022,7 @@ se apegan mucho a la solución analítica.
   \caption{Representación del caso 1 newtoniano a $t = 0.25$ s. Las magnitudes mostradas con
   la densidad (arriba a la izquierda), la velocidad (arriba a la derecha) y la presión (abajo a la 
   izquierda).
-  El panel de abajo hacia la derecha muestra la comparación a distintas resoluciones para la densidad. Los demás paneles muestran
+  El panel de abajo hacia la derecha muestra la comparación a distintas resoluciones para la densidad. Los demás páneles muestran
   las diferencias de los métodos HLL y Lax con una resolución de 10,000 píxeles.
   \label{comparacion_analitico_newtoniano_caso_1}}
 \end{figure}
@@ -2022,7 +2033,7 @@ la izquierda y la otra hacia la derecha (véase el cuadro \ref{Cuadro_parametros
 detalles).
 La Figura \ref{caso_new_rar_rar} muestra, usando
 el método de Lax, la evolución temporal del 2° caso newtoniano. El panel de arriba a la izquierda muestra la densidad.
-El panel arriba a la derecha muestra la velocidad y el de abajo la presión. En todos los paneles se 
+El panel arriba a la derecha muestra la velocidad y el de abajo la presión. En todos los páneles se 
 muestra $t = 0 \, , t = 0.2 \, ,t = 0.4$.
 
 \begin{figure}
@@ -2055,7 +2066,7 @@ en los puntos $x  \approx 0.3$ y $x  \approx 0.7$, donde la densidad mantiene un
 $\rho \approx 0.25 \,  \text{g}/ \text{cm}^3$, la velocidad $v \approx 0.0$ cm/s y la presión $p = 0.05 \,  \text{dyn}/ \text{cm}^2 $.
 
 La comparación del método de Lax y HLL se muestra en la Figura \ref{comparacion_analitico_newtoniano_caso_2}.
-Como se puede ver en los paneles de densidad (arriba a la izquierda) en el punto $x \lesssim  0.05$ cm,
+Como se puede ver en los páneles de densidad (arriba a la izquierda) en el punto $x \lesssim  0.05$ cm,
 la densidad no está perturbada y tiene un valor $\rho = 1.0 \,  \text{g}/ \text{cm}^3$,
 la velocidad (arriba a la derecha)
 $v = -1.0$ cm/s y la presión (abajo a la izquierda) $p = 0.4 \,  \text{dyn}/ \text{cm}^2 $. Tanto Lax como HLL 
@@ -2097,7 +2108,7 @@ A partir de resoluciones mayores a 1000, los resultados se apegan mucho a la sol
   \caption{ Igual que en la Figura \ref{comparacion_analitico_newtoniano_caso_1} pero para el 
   caso 2 newtoniano a $t = 0.25$ s.
   El panel de abajo hacia la derecha muestra la comparación a distintas resoluciones para la densidad. 
-  Los demás paneles muestran las diferencias de los métodos HLL y Lax con una resolución 
+  Los demás páneles muestran las diferencias de los métodos HLL y Lax con una resolución 
   de 10,000 píxeles.
   \label{comparacion_analitico_newtoniano_caso_2}} 
 \end{figure}
@@ -2224,7 +2235,7 @@ resultados se apegan mucho a la solución analítica.
   relativista 
   a $t = 0.35$ s. El panel de abajo 
   hacia la
-  derecha muestra la comparación a distintas resoluciones para la densidad. Los demás paneles muestran
+  derecha muestra la comparación a distintas resoluciones para la densidad. Los demás páneles muestran
   las diferencias de los métodos HLL y Lax con una resolución de 10,000.}\label{caso_rel_rar_shock}
 \end{figure}
 
@@ -2343,7 +2354,7 @@ $\rho_m, p_m, v_{xm}, v_{ym}$. Los valores típicos de una supernova con energí
 
 La Figura \ref{fig:prueba_2d_newtoniana} muestra la evolución de la onda. El panel de arriba a la izquierda muestra la onda de choque al tiempo $t = 0$, el panel de arriba a la derecha muestra 
 la evolución al tiempo $t = 10^{10}$ s, y la de abajo al tiempo $t =8.1 \times 10^{10}$ s. En estos se observa como a $10^{10}$ s y a $8.1 \times 10^{10}$ s la onda tiene un radio de $\sim 1.6$ pc y $\sim 4.5$ pc, 
-respectivamente. En ambos tiempos la explosión es esférica y se tiene una sobredensidad de $\rho \approx 3.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$ en el perímetro de la onda, mientras que dentro de la onda 
+respectivamente. En ambos tiempos la explosión es bidimensional y se tiene una sobredensidad de $\rho \approx 3.5 \times 10^{-24} \text{g} \, \text{cm}^{-3}$ en el perímetro de la onda, mientras que dentro de la onda 
 la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.
 
 \begin{figure}
@@ -2356,11 +2367,14 @@ la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.
     \label{fig:prueba_2d_newtoniana}}
 \end{figure}
 
+Para verificar que el código HD resuelva correctamente una explosión en dos dimensiones se buscó comparar la evolución temporal de la posición de la onda de choque en la simulación con una predicción analítica 
+similar a la solución de Sedov-Taylor, con la salvedad de que el sistema no tiene simetría esférica, es bidimensional y cartesiano. Se comparó que el radio de la onda de expansión de la simulación siguiese la solución 
+analítica $R(t)\varpropto t^{2/4}$ como se menciona en \citet{Kumar2022}. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución logaritmica del radio de la onda en función del tiempo (verde) así como 
+la curva que mejor se le ajusta (rojo). La curva que mejor se ajusta a los datos resultó ser $\log(r(t))= 0.429t+34.43$ lo que nos indica que el radio crece como $r(t) \propto t^{0.429}$. El coeficiente de determinación 
+fue $R^2= 0.993$ lo cual nos indica que el modelo se ajusta muy bien a los datos de la simulación. Al comparar nuestro modelo con la teoría podemos notar una discrepancia del 16 \%, y por ende podemos concluir que el 
+problema de Sedov-Taylor fue resuelto correctamente por el código HD.
 
-Para verificar que el código HD estaba reproduciendo correctamente la solución analítica de Sedov-Taylor se comprobó que el radio de la onda de expansión de la simulación siguiese la solución analítica 
-dada en la ecuación \ref{eq_Radio_proporcional}, esto es, que el radio de la onda creciera como $r\propto t^{2/5}$. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución logaritmica del radio de la onda en función del tiempo (verde) así como 
-la curva que mejor se le ajusta (rojo). La curva que mejor se ajusta a los datos resultó ser $\log(r(t))= 0.429t+34.43$ lo que nos indica que el radio crece como $r(t) \propto t^{0.429}$. El coeficiente de determinación fue $R^2= 0.993$ lo cual nos indica que el modelo se ajusta muy bien a 
-los datos de la simulación. Al comparar nuestro modelo con la teoría podemos notar una discrepancia del 5 \%, y por ende podemos concluir que el problema de Sedov-Taylor fue resuelto correctamente por el código HD.
+
 
 \begin{figure}
   \centering
@@ -2640,9 +2654,9 @@ En la Figura \ref{fig:comparacion_temporal_del_jet}  se muestran los resultados 
 (1600$\times$800 píxeles) y alta (3200$\times$1600) resolución, a 
 las mismas escalas de densidad, en comparación con los resultados de \citet{MB-HLLC-I}.
 La Figura muestra de izquierda a derecha las gráficas de \citet{MB-HLLC-I} (izquierda), el modelo con baja resolución 
-(medio) y el modelo con alta resolución (derecha). Los paneles de arriba muestran al tiempo t = 40, mientras que los 
+(medio) y el modelo con alta resolución (derecha). Los páneles de arriba muestran al tiempo t = 40, mientras que los 
 de abajo al tiempo t = 80.
-Al enfocarse en los paneles de arriba, al tiempo t = 40, se puede observar que el jet de estudio de \citet{MB-HLLC-I} tiene un largo 
+Al enfocarse en los páneles de arriba, al tiempo t = 40, se puede observar que el jet de estudio de \citet{MB-HLLC-I} tiene un largo 
 de $x \approx 18$ unidades, mientras que el de baja resolución tiene un largo de 19 unidades y 
 el jet de alta densidad  tiene un largo de 19 unidades, por lo que podemos observar un error del 5 \% 
 con baja resolución y del 0 \% con el de alta resolución. El capullo está compuesto de material de alta densidad 
@@ -2657,7 +2671,7 @@ mientras que para la resolución alta mide 9 unidades, lo que nos da un error, s
 Tanto en el capullo de baja resolución como en el de alta resolución no se muestran turbulencias 
 como en el estudio de \citet{MB-HLLC-I}, lo que da a entender  que el código que fue desarrollado para esta tesis 
 es más viscoso.
-Para los paneles de abajo, el tiempo ahora es t = 80, se puede observar que el capullo sobresale del dominio para los 
+Para los páneles de abajo, el tiempo ahora es t = 80, se puede observar que el capullo sobresale del dominio para los 
 3 casos que estamos comparando. Las ondas de colimación para alta como baja resolución están en $x = 3$ mientras que las de \citet{MB-HLLC-I} se siguen manteniendo en $x = 6$, lo que nos sigue dando un error 
 del 50 \%, por lo que estas no dependen del tiempo. 
 El jet para el estudio de \citet{MB-HLLC-I} mide $x \approx 35$ de largo, para el jet de resolución baja mide $x \approx 32$ unidades y 
@@ -2822,9 +2836,9 @@ En el capítulo 3, se muestran las pruebas numéricas, hidrodinámicas e hidrodi
   con velocidades cercanas a la de la luz, se reprodujeran correctamente con el módulo relativista. Para ambos métodos se puede observar que se tienen errores cuando se aproximan a los valores discontinuos, principalmente 
   en las discontinuidades de contacto (superficies que separan zonas de diferente densidad y temperatura). El método HLL siempre es consistente con los resultados esperados. Mientras tanto, para ciertos casos relativistas 
   el método de Lax falla sin importar la resolución que se utilice.
-	\item En la sección \ref{sec:sedov_taylor} se muestra la prueba bidimensional newtoniana. En específico, se estudió el problema de Sedov-Taylor. Este problema consiste en resolver una onda de choque con ciertos valores 
-  de densidad y energía dentro de un medio ambiente con distintos parámetros. El código tuvo éxito, ya que el crecimiento fue muy parecido a $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado 
-  en la sección \ref{sec:sedov_taylor}.
+	\item En la sección \ref{sec:sedov_taylor} se muestra la prueba bidimensional newtoniana. En específico, se estudió el problema de Sedov-Taylor en dos dimensiones. Este problema consiste en resolver una onda de choque 
+  con ciertos valores de densidad y energía dentro de un medio ambiente con distintos parámetros. El código tuvo éxito, ya que el crecimiento fue de $r(t) \propto t^{0.42}$ lo cual es muy parecido al valor analítico mostrado 
+  en la sección \ref{sec:sedov_taylor} para dos dimensiones.
 	\item En la sección \ref{subsec:caso_relativista_2d} se estudió una onda de choque bidimensional y relativista. Para lo anterior se tomó el mismo problema del tubo de Sod relativista en una dimensión y se expandió 
   a dos dimensiones. Se verificó que se obtiene el  mismo resultado independiente de la dirección del perfil radial (sobre el eje X o sobre el eje Y o a 45 grados). Además, se verificó que el perfil radial de la onda 
   bidimensional es consistente con aquel de una onda unidimensional y con su solución analítica correspondiente.
@@ -3510,6 +3524,8 @@ F.D. Lora-Clavijo \emph(et. al.) (2013). Exact Solution oh the 1D riemann proble
 doi:10.1093/mnras/staa3501 
 
 \bibitem[Hamidani \& Ioka (2020)]{JBEMGRB} Hamidani, H., Ioka, K., 2020. Jet propagation in expanding medium for gamma-ray bursts. Monthly Notices of the Royal Astronomical Society 500, 627–642. doi:10.1093/mnras/staa3276 
+
+\bibitem[Kumar \& Rajesh (2022)]{Kumar2022} Kumar, A., Rajesh, R., 2022. Blast waves in two and three dimensions: Euler versus navier–stokes equations. Journal of Statistical Physics 188. doi:10.1007/s10955-022-02933-3 
 
 \bibitem[H{\"u}lss and Wiebusch(2008)]{2008ICRC....5.1405H} H{\"u}lss, J.-P., Wiebusch, C.\ 2008.\ Search for Signatures of Extra-Terrestrial Neutrinos with a Multipole Analysis of the AMANDA-II 
 Sky-map.\ International Cosmic Ray Conference 5, 1405–1408.
