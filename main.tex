@@ -168,7 +168,7 @@ Y sobre todo quiero agradecer a mi asesor Diego ya que sin su apoyo, conocimient
 %----------------------------------------------------------------------------------------------
 Uno de los fenómenos más energéticos del universo son los jets asociados a las galaxias activas (AGNs), o a los destellos de rayos gamma (GRBs). En dichos chorros se expulsa material con 
 mucha energía, y pueden emitir en todo el espectro electromagnético. Los jets de los AGNs, lanzados desde el núcleo de la galaxia (en la que se tiene un hoyo negro supermasivo) se mueven con 
-velocidades que comprenden los régimenes tanto no relativistas como relativistas. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro, 
+velocidades que comprenden los regímenes tanto no relativistas como relativistas. Los jets de los GRBs, lanzados desde una estrella de neutrones masiva (formada tras la fusión de dos estrellas de neutrones) u hoyo negro, 
 se mueven a velocidades ultra relativistas. Independientemente de si los jets provienen de los AGNs o GRBs las condiciones en las que se originan son tales que son prácticamente imposibles de recrear experimentalmente.
 Una buena forma de estudiar los jets astrofísicos es numéricamente por medio de simulaciones hidrodinámicas (HD) e hidrodinámicas relativistas (RHD). La intención de esta tesis es construir un 
 código numérico HD y RHD en una y dos dimensiones para así poder estudiar la propagación de jets relativistas a través de distintos medios (constantes y variables).
@@ -277,7 +277,7 @@ véase la sección \ref{sec:Condiciones_Salto}.
 %--------------------------------------------------------------------------
 En el pasado se han realizado estudios de jets relativistas, tomando en cuenta distintos métodos numéricos \citep{Seo2021, MB-HLLC-I}, en el marco de AGNS \citep{2011ApJ...743...42P}, así como en el marco de GRBs 
 \citep{2013ApJ...767...19L}, \citep{2018PhRvL.120x1103L}, \citep{2021MNRAS.500.3511G}, \citep{2012ApJ...751...57D}, por mencionar algunos arquetipos. En el siguiente apartado se muestran 3 estudios de simulaciones
-de jets relativistas: el primero expone un jet en un medio homogeneo, el segundo un jet que tiene como fuente un AGN y el tercero un jet que proviene de la fusión de 2 estrellas de neutrones.
+de jets relativistas: el primero expone un jet en un medio homogéneo, el segundo un jet que tiene como fuente un AGN y el tercero un jet que proviene de la fusión de 2 estrellas de neutrones.
 
 El primer caso de simulaciones de jets relativistas se presenta en 
 \citet{Seo2021}, donde se estudia la evolución de un jet relativista inyectado horizontalmente en un medio uniforme utilizando distintos métodos numéricos. Ellos usan un esquema de pesos no oscilatorios WENO por
@@ -585,7 +585,7 @@ El arreglo $\mathbf{U}$ contiene a las variables conservadas.
 
 \subsection{Variables primitivas de las ecuaciones de la hidrodinámica}\label{subsec:DesacoplamientoEcuacionesHidrodinamica}
 
-Las ecuaciones de la hidrodinámica se escriben como se vió anteriormente en términos de variables conservadas (densidades de masa, momento y energía).
+Las ecuaciones de la hidrodinámica se escriben como se vio anteriormente en términos de variables conservadas (densidades de masa, momento y energía).
 Sin embargo para el cálculo de los flujos se vuelve conveniente hacerlo a través de las llamadas variables primitivas (densidad de masa, velocidad y presión térmica).
 En el caso no relativista la transformación entre estas variables es trivial pero, para el caso relativista, es un poco más elaborado.
 
@@ -831,7 +831,7 @@ f(W^{'})=W^{'}-e^{'}-p
 \end{equation}
 
 \noindent donde $e^{'}=W^{'}-p$ y que $\dfrac{d f(W^{'})}{d w} \equiv \dfrac{de}{dW^{'}}$ dado por la ecuación \ref{derivada_E_W}. 
-Para iniciar el proceso de iteración se tiene que hacer una suposición. Al principio de la primera iteración, se puede inicializar $W'^{(0)} = \tilde{W}_{+}-D $, donde $\tilde{W}_{+}$ es la raiz positiva de 
+Para iniciar el proceso de iteración se tiene que hacer una suposición. Al principio de la primera iteración, se puede inicializar $W'^{(0)} = \tilde{W}_{+}-D $, donde $\tilde{W}_{+}$ es la raíz positiva de 
 
 \begin{equation} \label{eq_semipresion_particular}
   \mathcal{P}(W,1)=0, 
@@ -917,7 +917,7 @@ los valores de salida se reasignan a otras llamadas \emph{qpp}. Se tienen que re
 \noindent La subrutina que se mencionan en esta sección recibirá las variables conservadas
 y devolverá las primitivas. La subrutina \emph{newrap}  
 se usará en particular 
-(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}.  Las variables primitivas en el modúlo relativista fueron encontradas siguiendo la misma metodología que el código Mezcal \citep{Colle2012}.
+(ver apéndice \ref{ap_newrap}) para resolver la ecuación \ref{eq_Newton_Raphson}.  Las variables primitivas en el módulo relativista fueron encontradas siguiendo la misma metodología que el código Mezcal \citep{Colle2012}.
 
 \begin{lstlisting} [frame=single]
   
@@ -1337,7 +1337,7 @@ end do
 La aparición de choques obedece a que algunas perturbaciones en el medio producen soluciones discontinuas en el flujo. Una de estas son los choques. Las ecuaciones de Rankine-Hugoniot
 relacionan las variables a ambos lados de una solución discontinua.
 
-Un ejemplo de estas soluciones discontinuas se da cuando un jet supersónico interactua con un medio estático \citep{Prunty2019}.
+Un ejemplo de estas soluciones discontinuas se da cuando un jet supersónico interactúa con un medio estático \citep{Prunty2019}.
 Considerando las relaciones que hay entre los 2 estados que se forman durante una onda de choque. Supongamos que la onda de choque se mueve 
 hacia la derecha (ver Figura \ref{fig_move_shock}) sobre un fluido estacionario ($v = 0$) con una velocidad $v_s$. La presión y la densidad, que están enfrente de la onda, son asumidas como
 $\rho_0$ y $p_0$ mientras que los flujos que están comprimidos detrás del frente de onda se mueven con una velocidad $v_p$ y que tienen densidad y presión $\rho_p$, $p_p$.
@@ -1412,7 +1412,7 @@ es la densidad de energía por unidad de volumen
 
 \noindent donde $\rho \left[\frac{\mathrm{g}}{\mathrm{cm}^3}\right]$ representa la densidad, $u \left[\frac{\mathrm{cm}}{\mathrm{s} }\right]$ la velocidad,  $p \left[\frac{\mathrm{dyn}}{\mathrm{cm}^2} \right]$ 
 la presión, $\Gamma$ el índice adiabático adimensional donde para velocidades ultrarrelativistas $\Gamma = 4/3$ y para no relativistas $\Gamma = 5/3$ y los índices \textit{p} y \textit{0} se cambiaron por 
-\textit{p} y \textit{0} repectivamente las cuales se relacionan a las propiedades del 
+\textit{p} y \textit{0} respectivamente las cuales se relacionan a las propiedades del 
 jet y del medio. Usando la ecuación   \ref{RH_masa}, se puede definir el flujo como $j \equiv \rho_j u_j = \rho_m u_m$, sustituyendo en la ecuación \ref{RH_momento} se reescribe como:
 
 \begin{equation}\label{RH_momento_j}
@@ -1516,7 +1516,7 @@ Como se menciona en \citet{Landau1987} si se considera la conservación de masa:
   \rho_\infty = \rho_j \frac{v_j \gamma_j }{v_\infty \gamma_\infty}.
 \end{equation}
 
-\noindent Tambien se considera la ecuación de momentos
+\noindent También se considera la ecuación de momentos
 
 \begin{equation}
   \left( e_j + p_j\right) v^2_j \gamma^2_j + p_j = \left( e_{\infty} + p_{\infty}\right) v^2_{\infty} \gamma^2_{\infty} + p_{\infty}.
@@ -1855,7 +1855,7 @@ En la Figura \ref{fig_Radio_v_tiempo} se muestra la expansión del radio de la o
 \end{figure}
 
 
-Una obsevación importante es que, la explosión que se va a simular en esta tesis, es bidimensional por lo que el radio de la explosión crecería como $R(t) \varpropto t^{2/4}$ como lo describen en su artículo \citet{Kumar2022}.
+Una observación importante es que, la explosión que se va a simular en esta tesis, es bidimensional por lo que el radio de la explosión crecería como $R(t) \varpropto t^{2/4}$ como lo describen en su artículo \citet{Kumar2022}.
 
 
 % ======================================NUEVO CAPITULO ================================================
@@ -1940,7 +1940,7 @@ En x=0.85 cm, la velocidad ($v \approx 0.99$ cm/s), presión
 ($\rho \approx 0.28 \,  \text{g}/ \text{cm}^3$) 
 tienen una discontinuidad y cambian sus valores a los valores iniciales del estado derecho del tubo
 que no han sido afectados por la onda. 
-La primera discontiuidad se aprecia solo en densidad, mientras que la presión permanece constante. Este tipo de discontinuidades son llamadas "de contacto", las cuales tienen la misma velocidad
+La primera discontinuidad se aprecia solo en densidad, mientras que la presión permanece constante. Este tipo de discontinuidades son llamadas "de contacto", las cuales tienen la misma velocidad
 que los estados de la izquierda y la derecha $V_c = v_l = v_r$ donde $V_c$
 es la velocidad de la onda de contacto, por lo que esto hace que las presiones sean iguales 
 $p_l = p_r$. Esta primera discontinuidad solo se 
@@ -2195,7 +2195,7 @@ $p = 13.33 \,  \text{dyn}/ \text{cm}^2 $ bajan sus valores en $x \approx 0.25$ c
 asciende. En el punto $x \approx 0.68$ cm la presión alcanza $p \approx 1.12\,  \text{dyn}/ \text{cm}^2 $ y la densidad
 $\rho \approx 1.12 \,  \text{g}/ \text{cm}^3$, mientras que la velocidad sube a $v \approx 0.75c$. 
 La densidad vuelve a subir
-en $x \approx 0.75$ cm y llega a $\rho \approx 0.65 \,  \text{g}/ \text{cm}^3$, manteniendose así hasta el punto $x \approx 0.83$ cm
+en $x \approx 0.75$ cm y llega a $\rho \approx 0.65 \,  \text{g}/ \text{cm}^3$, manteniéndose así hasta el punto $x \approx 0.83$ cm
 donde la densidad, así como la velocidad y presión, descienden sus valores a nulos.
 
 En la Figura \ref{caso_rel_rar_shock} se muestra la comparación entre la solución obtenida con HLL
@@ -2327,7 +2327,7 @@ Riemann relativista con resoluciones $\geq 500$ píxeles.
 
 \subsection{Caso Newtoniano (quasi Sedov-Taylor)}\label{subsec:caso_newtoniano_2d}
 
-En esta sección se verifica que el código newtoniano reproduja correctamente la expansión de la onda bidimensional de Sedov-Taylor (en la que se libera una gran cantidad de energía en un volumen muy pequeño, 
+En esta sección se verifica que el código newtoniano reproduzca correctamente la expansión de la onda bidimensional de Sedov-Taylor (en la que se libera una gran cantidad de energía en un volumen muy pequeño, 
 y la cual es discutida a fondo en la Sección 2.5). Para lo anterior, se inyecta instantáneamente una gran cantidad de energía \emph{E} dentro de un radio R inmerso en un medio ambiente de densidad uniforme $\rho_m$. 
 Posteriormente, un frente de choque bidimensional se expande a través del medio ambiente. El radio inicial de la onda es $r = 2$ pc, y el dominio computacional fue de 
 $x, y \in [0,4 \times 10^{20}]\times[0,4 \times 10^{20}] \, \text{cm}$. La resolución fue de 1000x1000 píxeles, se tomó un índice adiabático $\Gamma = 5/3$, y el tiempo de integración 
@@ -2369,7 +2369,7 @@ la densidad decae a $\rho \approx 10^{-24} \text{g} \, \text{cm}^{-3}$.
 
 Para verificar que el código HD resuelva correctamente una explosión en dos dimensiones se buscó comparar la evolución temporal de la posición de la onda de choque en la simulación con una predicción analítica 
 similar a la solución de Sedov-Taylor, con la salvedad de que el sistema no tiene simetría esférica, es bidimensional y cartesiano. Se comparó que el radio de la onda de expansión de la simulación siguiese la solución 
-analítica $R(t)\varpropto t^{2/4}$ como se menciona en \citet{Kumar2022}. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución logaritmica del radio de la onda en función del tiempo (verde) así como 
+analítica $R(t)\varpropto t^{2/4}$ como se menciona en \citet{Kumar2022}. La Figura \ref{fig:Expansion_HLL_NR} muestra la evolución logarítmica del radio de la onda en función del tiempo (verde) así como 
 la curva que mejor se le ajusta (rojo). La curva que mejor se ajusta a los datos resultó ser $\log(r(t))= 0.429t+34.43$ lo que nos indica que el radio crece como $r(t) \propto t^{0.429}$. El coeficiente de determinación 
 fue $R^2= 0.993$ lo cual nos indica que el modelo se ajusta muy bien a los datos de la simulación. Al comparar nuestro modelo con la teoría podemos notar una discrepancia del 16 \%, y por ende podemos concluir que el 
 problema de Sedov-Taylor fue resuelto correctamente por el código HD.
@@ -3073,7 +3073,7 @@ $n+1$ en el caso de las filas y de 0 hasta $m+1$ para el de las columnas.
 \centering
 \includegraphics[width=0.5\textwidth]{./Figuras/Apendice/malla.png}
 \caption{Malla de puntos que resalta las fronteras, los puntos más oscuros representan una frontera \emph{fantasma}, es decir, ese conjunto de puntos estará allí como apoyo para resolver los cálculos que hará 
-la computadora, dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se graficarán.} \label{fig: malla de puntos}
+la computadora, dado que tanto el método de Lax, como el método de HLL usan los puntos posteriores y anteriores en el espacio del punto que queremos saber su valor, pero no se grafican.} \label{fig: malla de puntos}
 \end{figure}
 
 La Figura \ref{fig: malla de puntos} muestra 
